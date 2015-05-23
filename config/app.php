@@ -148,6 +148,7 @@ return [
 		'Collective\Html\HtmlServiceProvider',
 
 		'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\Snappy\ServiceProvider',
 
 		'Intervention\Image\ImageServiceProvider',
 
@@ -205,6 +206,8 @@ return [
 		'Html'      => 'Collective\Html\HtmlFacade',
 
 		'Debugbar' => 'Barryvdh\Debugbar\Facade',
+		'PDF'      => 'Barryvdh\Snappy\Facades\SnappyPdf',
+		'Image'    => 'Barryvdh\Snappy\Facades\SnappyImage',
 
 		'Image'    => 'Intervention\Image\Facades\Image',
 
