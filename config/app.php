@@ -156,6 +156,8 @@ return [
 
 		'Laracasts\Flash\FlashServiceProvider',
 
+		'Kodeine\Acl\AclServiceProvider',
+
 	],
 
 	/*
