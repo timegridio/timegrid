@@ -41,7 +41,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					{{--/ Language Switcher --}}
 					<li class="dropdown">					
-					    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Config::get('languages')[App::getLocale()] 					}} <b class="caret"></b></a>
+					    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Config::get('languages')[App::getLocale()] }} <b class="caret"></b></a>
 					    <ul class="dropdown-menu">
 					        @foreach (Config::get('languages') as $lang => $language)
 					            @if ($lang != App::getLocale())
@@ -54,13 +54,13 @@
 					</li>
 					{{-- Language Switcher /--}}
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">Login</a></li>
-						<li><a href="{{ url('/auth/register') }}">Register</a></li>
+						<li><a href="{{ url('/auth/login') }}">{{ trans('login.nav.login') }}</a></li>
+						<li><a href="{{ url('/auth/register') }}">{{ trans('login.nav.register') }}</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->email }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">Logout</a></li>
+								<li><a href="{{ url('/auth/logout') }}">{{ trans('login.nav.logout') }}</a></li>
 							</ul>
 						</li>
 					@endif

@@ -14,5 +14,8 @@ return [
 	"remember_me" => "Remember me",
 	"login" => "Login",
 	"forgot" => "Forgot your password?",
+	"nav" => [	"login"     => "Login",
+				"register"  => "Register",
+				"logout"    => "Logout", ]
 
 ];
