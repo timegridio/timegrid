@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Laravel</title>
+	<title>Root</title>
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
@@ -30,11 +30,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@if (Auth::user()->isRoot())
-					<a class="navbar-brand" href="{{ action('RootController@index') }}">Root Dashboard</a>
-				@else
-					<a class="navbar-brand" href="{{ action('HomeController@index') }}">Home</a>
-				@endif
+				<a class="navbar-brand" href="{{ action('HomeController@index') }}">Home</a>
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

@@ -11,6 +11,11 @@
 |
 */
 
+Route::get('root', [
+    'uses'          => 'RootController@index',
+    'middleware'    => ['auth', 'acl'],
+    'is'            => 'root']);
+
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
 Route::get('/', 'WelcomeController@index');
@@ -21,3 +26,4 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
