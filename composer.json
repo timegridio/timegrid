@@ -12,7 +12,8 @@
 		"laravelcollective/html": "~5.0",
 		"patricktalmadge/bootstrapper": "~5",
 		"barryvdh/laravel-snappy": "0.2.x",
-		"laracasts/flash": "~1.3"
+		"laracasts/flash": "~1.3",
+		"caouecs/laravel4-lang": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
