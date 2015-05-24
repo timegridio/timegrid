@@ -10,5 +10,9 @@ return [
 	*/
 
 	"email" => "Dirección de Email",
+	"password" => "Contraseña",
+	"remember_me" => "Recordarme",
+	"login" => "Ingresar",
+	"forgot" => "Olvidaste tu contraseña?",
 
 ];
