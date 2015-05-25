@@ -158,6 +158,8 @@ return [
 
 		'Kodeine\Acl\AclServiceProvider',
 
+		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
+
 	],
 
 	/*
