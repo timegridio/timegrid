@@ -8,13 +8,12 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'welcome' => 
   array (
-    'title' => 'welcome.title',
+    'title' => 'xbooking',
+    'description' => 'Reservá tu turno. Así de fácil.',
     'btn' => 
     array (
-      'enter' => 'welcome.btn.enter',
+      'enter' => 'Ingresar',
     ),
-    'description' => 'welcome.description',
-    'quote' => 'Ingresar',
   ),
   //==================================== Translations ====================================//
   //================================== Obsolete strings ==================================//
