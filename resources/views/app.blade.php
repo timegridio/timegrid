@@ -30,16 +30,15 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				@if (!Auth::guest() && Auth::user()->isRoot())
-					<a class="navbar-brand" href="{{ action('RootController@index') }}">Root Dashboard</a>
-				@else
-					<a class="navbar-brand" href="{{ action('HomeController@index') }}">Home</a>
-				@endif
 			</div>
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="{{ url('/') }}">Home</a></li>
+					@if (!Auth::guest() && Auth::user()->isRoot())
+						<li><a class="navbar-brand" href="{{ action('RootController@index') }}">Root Dashboard</a></li>
+					@else
+						<li><a class="navbar-brand" href="{{ action('HomeController@index') }}">{{ trans('app.nav.home') }}</a></li>
+					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
@@ -58,13 +57,13 @@
 					</li>
 					{{-- Language Switcher /--}}
 					@if (Auth::guest())
-						<li><a href="{{ url('/auth/login') }}">{{ trans('login.nav.login') }}</a></li>
-						<li><a href="{{ url('/auth/register') }}">{{ trans('login.nav.register') }}</a></li>
+						<li><a href="{{ url('/auth/login') }}">{{ trans('app.nav.login') }}</a></li>
+						<li><a href="{{ url('/auth/register') }}">{{ trans('app.nav.register') }}</a></li>
 					@else
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->email }} <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ url('/auth/logout') }}">{{ trans('login.nav.logout') }}</a></li>
+								<li><a href="{{ url('/auth/logout') }}">{{ trans('app.nav.logout') }}</a></li>
 							</ul>
 						</li>
 					@endif

@@ -1,20 +1,25 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/05/25 19:43:21 
+ Generated via "php artisan localization:missing" at 2015/05/25 20:13:00 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/app.blade.php
+  //==================================== Translations ====================================//
+  'nav' => 
+  array (
+    'login' => 'Login',
+    'logout' => 'Logout',
+    'register' => 'Register',
+    'home' => 'Home',
+  ),
   'welcome' => 
   array (
-    'title' => 'xbooking',
-    'description' => 'Book any service. That easy.',
     'btn' => 
     array (
       'enter' => 'Enter',
     ),
+    'description' => 'Book any service. That easy.',
+    'title' => 'xbooking',
   ),
-  //==================================== Translations ====================================//
-  //================================== Obsolete strings ==================================//
 );
