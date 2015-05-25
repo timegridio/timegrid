@@ -14,7 +14,7 @@
 
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer">
-            <h1>xbooking</h1>
+            <h1>{{ trans('app.welcome.title') }}</h1>
             <p>{{ trans('app.welcome.description') }}</p>
             <div class="row">{!! Button::primary(trans('app.welcome.btn.enter'))->asLinkTo(action('HomeController@index')) !!}
         </header>
