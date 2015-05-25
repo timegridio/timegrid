@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/05/25 19:42:01 
+ Generated via "php artisan localization:missing" at 2015/05/25 19:43:21 
 *************************************************************************/
 
 return array (
@@ -8,11 +8,12 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'welcome' => 
   array (
+    'title' => 'welcome.title',
     'btn' => 
     array (
       'enter' => 'welcome.btn.enter',
     ),
     'description' => 'welcome.description',
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
+  //==================================== Translations ====================================//
 );
