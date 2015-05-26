@@ -2,10 +2,11 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Request;
 use App\Business;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Auth\Authenticatable as User;
+use Request;
+use Flash;
 
 class BusinessController extends Controller {
 
@@ -45,6 +46,8 @@ class BusinessController extends Controller {
 		\Auth::user()->businesses()->attach($business);
 
 		\Auth::user()->save();
+
+		Flash::success(trans('business.create.success'));
 
 		return Redirect::route('businesses.index')->with('message', 'Business created');
 	}
