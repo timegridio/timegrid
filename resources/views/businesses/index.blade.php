@@ -3,6 +3,9 @@
 @section('content')
 
 <div class='container'>
+
+	@include('flash::message')
+
 	<table class="table table-condensed">
 	@foreach ($businesses as $business)
 		<tr>
