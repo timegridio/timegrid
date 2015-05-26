@@ -226,7 +226,7 @@ return [
 		'Carousel'       => 'Bootstrapper\Facades\Carousel',
 		'ControlGroup'   => 'Bootstrapper\Facades\ControlGroup',
 		'DropdownButton' => 'Bootstrapper\Facades\DropdownButton',
-		'Form'           => 'Bootstrapper\Facades\Form',
+		# 'Form'           => 'Bootstrapper\Facades\Form',
 		'Helpers'        => 'Bootstrapper\Facades\Helpers',
 		'Icon'           => 'Bootstrapper\Facades\Icon',
 		'InputGroup'     => 'Bootstrapper\Facades\InputGroup',
