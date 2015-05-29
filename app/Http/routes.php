@@ -16,7 +16,7 @@ Route::get('root', [
     'middleware'    => ['auth', 'acl'],
     'is'            => 'root']);
 
-Route::resource('businesses', 'BusinessController');
+Route::resource('businesses', 'BusinessesController');
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
