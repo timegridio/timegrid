@@ -24,6 +24,30 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('select/{business_slug}', function ($business_slug) {
+    
+    try {
+
+    	$business_id = App\Business::where('slug', $business_slug)->first()->id;
+    	
+    } catch (Exception $e) {
+
+    	return 'error';
+
+    }
+
+    Session::set('selected.business_id', $business_id);
+
+	return $business_id;
+});
+
+Route::get('selected', function () {
+
+	$business_id = Session::get('selected.business_id');
+
+	return $business_id;
+});
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
