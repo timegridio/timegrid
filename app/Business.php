@@ -13,4 +13,9 @@ class Business extends Model {
 		return $this->belongsToMany(config('auth.model'))->withTimestamps();
 	}
 
+	public function owner()
+	{
+		return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
+	}
+
 }
