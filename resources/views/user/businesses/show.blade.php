@@ -12,7 +12,7 @@
 				</div>
 
 				<div class="panel-footer">
-					{!! Button::normal(trans('app.home.btn.select_business'))->asLinkTo(action('HomeController@selector')) !!}
+					{!! Button::normal(trans('user.businesses.show.btn.change'))->asLinkTo(action('HomeController@selector')) !!}
 				</div>
 
 			</div>

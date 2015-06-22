@@ -1,38 +1,39 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/05/28 23:48:10 
+ Generated via "php artisan localization:missing" at 2015/06/22 14:44:51 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/home.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/index.blade.php
   'home' => 
   array (
-    'biz' => 
-    array (
-      'title' => 'Mis comercios',
-    ),
     'btn' => 
     array (
-      'manage_business' => 'Administrar mis comercios',
+      'actions' => 'Acciones',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/home.blade.php
-  //==================================== Translations ====================================//
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/app.blade.php
   'nav' => 
   array (
     'home' => 'Inicio',
     'login' => 'Iniciar Sesión',
-    'logout' => 'Cerrar Sesión',
+    'logout' => 'Salir',
     'register' => 'Registrarme',
   ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/app.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/app.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/app.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'welcome' => 
   array (
     'btn' => 
     array (
-      'enter' => 'Ingresar',
+      'enter' => 'Entrar',
     ),
-    'description' => 'Reservá tu turno. Así de fácil.',
-    'title' => 'xbooking',
+    'description' => 'Entrar al sistema',
+    'title' => 'Bienvenido!',
   ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
 );

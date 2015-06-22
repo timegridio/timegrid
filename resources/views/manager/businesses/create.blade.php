@@ -5,7 +5,7 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">{{ trans('app.home.biz.title') }}</div>
+				<div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>
 
 				<div class="panel-body">
 					@include('flash::message')
@@ -26,17 +26,14 @@
 					@include('manager.businesses._form')
 
 					<div class="form-group">
-						{!! Button::primary(trans('businesses.btn.create'))->submit() !!}
+						{!! Button::primary(trans('manager.businesses.btn.store'))->submit() !!}
 					</div>
 
 					{!! Form::close() !!}
 				</div>
 
 				<div class="panel-footer">
-					{!! DropdownButton::normal(trans('app.home.btn.actions'))->withContents([
-								['url' => action('BusinessesController@index'),  'label' => trans('app.home.btn.manage_business')],
-								['url' => action('BusinessesController@create'), 'label' => trans('app.home.btn.manage_create')],
-							  ]) !!}
+
 				</div>
 
 			</div>

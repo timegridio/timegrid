@@ -1,32 +1,42 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/05/25 20:11:10 
+ Generated via "php artisan localization:missing" at 2015/06/22 14:44:51 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
-  //==================================== Translations ====================================//
   'login' => 
   array (
     'email' => 'Email',
     'forgot' => 'Olvidé mi contraseña',
-    'login' => 'Ingresar',
+    'login' => 'Iniciar sesión',
     'password' => 'Contraseña',
     'remember_me' => 'Recordarme',
   ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
   'register' => 
   array (
     'btn' => 
     array (
       'submit' => 'Registrarme',
     ),
-    'email' => 'E-mail',
+    'email' => 'Email',
     'msg' => 
     array (
-      'errors' => 'Hubo algunos errores',
+      'errors' => 'Errores',
     ),
-    'password' => 'Contraseña',
-    'password_confirmation' => 'Confirmá tu contraseña',
-    'title' => 'Registrarme',
+    'password' => 'Password',
+    'password_confirmation' => 'Confirmación de Password',
+    'title' => 'Registro',
   ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
 );

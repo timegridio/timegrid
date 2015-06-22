@@ -48,9 +48,9 @@ class BusinessesController extends Controller {
 
 		\Auth::user()->save();
 
-		Flash::success(trans('business.create.success'));
+		Flash::success(trans('manager.businesses.msg.store.success'));
 
-		return Redirect::route('manager.businesses.index')->with('message', trans('business.msg.store.success'));
+		return Redirect::route('manager.businesses.index')->with('message', trans('manager.businesses.msg.store.success'));
 	}
 
 	/**
@@ -97,7 +97,7 @@ class BusinessesController extends Controller {
             'description' => $request->get('description')
         ]);
 
-        Flash::success( trans('business.msg.edit.success') );
+        Flash::success( trans('manager.businesses.msg.update.success') );
 
         return \Redirect::route('manager.businesses.show', array($business->id));
 	}
@@ -116,7 +116,7 @@ class BusinessesController extends Controller {
 
         $business->delete();
 
-        Flash::success( trans('business.msg.destroy.success'));
+        Flash::success( trans('manager.businesses.msg.destroy.success'));
 
         return \Redirect::route('manager.businesses.index');
 	}
