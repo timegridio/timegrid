@@ -2,7 +2,7 @@
 
 use Session;
 use Redirect;
-use \App\Business;
+use App\Business;
 
 class HomeController extends Controller {
 
@@ -39,32 +39,37 @@ class HomeController extends Controller {
 		if (!$business_id) {
 			
 
-			return Redirect::
-route('manager.businesses.index')->with('message', 'Select a business');
+			return Redirect::route('manager.businesses.index')->with('message', 'Select a business');
 
 		}
 
-		$business = \App\Business::find( $business_id );
+		$business = Business::find( $business_id );
 
-		return view('home', compact('business'));
+		return view('user.businesses.show', compact('business'));
+	}
+
+	public function selector()
+	{
+		$businesses = Business::all();
+
+		return view('user.businesses.index', compact('businesses'));
 	}
 
 	public function select($business_slug)
 	{
     	try {
 	
-	    		$business_id = \App\Business::where('slug', $business_slug)->first()->id;
+	    		$business_id = Business::where('slug', $business_slug)->first()->id;
 	    		
 	    	} catch (Exception $e) {
 	
-	    		return 'error';
+	    		return 'ERROR';
 	
 	    	}
 	
 	    	Session::set('selected.business_id', $business_id);
 	
-		return Redirect::
-route('manager.businesses.index')->with('message', 'Business selected');
+		return Redirect::route('home')->with('message', 'Business selected');
 	}
 
 }

@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -22,9 +21,11 @@ Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@swit
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('home', 'HomeController@index');
+# Route::get('home', 'HomeController@index');
+Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('home/select/{business_slug}', ['as' => 'home/select', 'uses' => 'HomeController@select'] );
 Route::get('home/selected', 'HomeController@selected');
+Route::get('home/selector', 'HomeController@selector');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
