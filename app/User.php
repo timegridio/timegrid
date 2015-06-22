@@ -42,4 +42,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->businesses->contains($business);
 	}
 
+	public function hasBusiness()
+	{
+		return $this->businesses->count() > 0;
+	}
+
 }

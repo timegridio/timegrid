@@ -16,7 +16,7 @@
         <header class="jumbotron hero-spacer">
             <h1>{{ trans('app.welcome.title') }}</h1>
             <p>{{ trans('app.welcome.description') }}</p>
-            <div class="row">{!! Button::primary(trans('app.welcome.btn.enter'))->asLinkTo(action('HomeController@index')) !!}
+            <div class="row">{!! Button::primary(trans('app.welcome.btn.enter'))->asLinkTo(action('HomeController@selector')) !!}
         </header>
 
         <!-- Page Features -->

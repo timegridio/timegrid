@@ -22,7 +22,11 @@
 				</div>
 
 				<div class="panel-footer">
-          {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo(action('BusinessesController@index')) !!}
+          @if(\Auth::user()->hasBusiness())
+            {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo(action('BusinessesController@index')) !!}
+          @else
+            {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo(action('BusinessesController@create')) !!}
+          @endif
 				</div>
 
 			</div>
