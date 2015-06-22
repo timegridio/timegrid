@@ -11,7 +11,7 @@
 		{!! Form::label( trans('manager.businesses.form.slug.label') ) !!}
 		{!! Form::text('slug', null, 
 			array('required', 
-				  'disabled'=>'true', 
+				  'readonly'=>'true', 
 				  'id'=>'slug', 
 				  'class'=>'form-control', 
 				  'placeholder'=> trans('manager.businesses.form.slug.placeholder') )) !!}
