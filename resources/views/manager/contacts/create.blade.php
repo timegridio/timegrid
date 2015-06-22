@@ -2,11 +2,10 @@
 
 @section('content')
 <div class="container">
-
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">{{ trans('manager.businesses.show.title') }}</div>
+				<div class="panel-heading">{{ trans('manager.contacts.create.title') }}</div>
 
 				<div class="panel-body">
 					@include('flash::message')
@@ -22,14 +21,15 @@
 						</div>
 					@endif
 
-					<table class="table table-stripped">
-						<tr>
-							<td>{!! Button::primary($business->slug)->asLinkTo(action('BusinessesController@edit', $business)) !!}</td>
-							<td>{{ $business->name }}</td>
-							<td>{{ $business->description }}</td>
-						</tr>
-					</table>
+					{!! Form::model(new App\Contact, ['route' => ['manager.contacts.store']]) !!}
+			
+					@include('manager.contacts._form')
 
+					<div class="form-group">
+						{!! Button::primary(trans('manager.contacts.btn.store'))->submit() !!}
+					</div>
+
+					{!! Form::close() !!}
 				</div>
 
 				<div class="panel-footer">
@@ -37,10 +37,8 @@
 				</div>
 
 			</div>
-
-			@include('manager.businesses._contacts')
-
 		</div>
 	</div>
 </div>
+
 @endsection

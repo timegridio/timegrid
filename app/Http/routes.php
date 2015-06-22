@@ -16,6 +16,7 @@ Route::get('root', [
     'is'            => 'root']);
 
 Route::resource('manager/businesses', 'BusinessesController');
+Route::resource('manager/contacts', 'ContactsController');
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 

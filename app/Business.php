@@ -18,4 +18,9 @@ class Business extends Model {
 		return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
 	}
 
+	public function contacts()
+	{
+		return $this->belongsToMany('App\Contact');
+	}
+
 }
