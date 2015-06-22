@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2219f950b723afb5095720c8a799359f",
+    "hash": "ddedfa8ca122d718402a1805a68f58d8",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1602,6 +1602,44 @@
                 "laravel"
             ],
             "time": "2015-05-16 15:23:33"
+        },
+        {
+            "name": "pid/speakingurl",
+            "version": "0.11.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pid/speakingurl.git",
+                "reference": "fa5e7c2c17aa9a21463e63ea541a94aa5eebfd5f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pid/speakingurl/zipball/fa5e7c2c17aa9a21463e63ea541a94aa5eebfd5f",
+                "reference": "fa5e7c2c17aa9a21463e63ea541a94aa5eebfd5f",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Sascha Droste",
+                    "email": "pid@posteo.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Generate of so called 'static' or 'Clean URL' or 'Pretty URL' or 'nice-looking URL' or 'Speaking URL' or 'user-friendly URL' or 'SEO-friendly URL' or 'slug' from a string.",
+            "homepage": "http://pid.github.io/speakingurl/",
+            "keywords": [
+                "nice url",
+                "seo",
+                "slug",
+                "speakingurl",
+                "static url",
+                "url"
+            ],
+            "time": "2014-08-09 23:24:27"
         },
         {
             "name": "psr/log",
