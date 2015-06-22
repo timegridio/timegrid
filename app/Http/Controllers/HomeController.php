@@ -1,5 +1,8 @@
 <?php namespace App\Http\Controllers;
 
+use Session;
+use Redirect;
+
 class HomeController extends Controller {
 
 	/*
@@ -30,7 +33,18 @@ class HomeController extends Controller {
 	 */
 	public function index()
 	{
-		return view('home');
+		$business_id = Session::get('selected.business_id');
+
+		if (!$business_id) {
+			
+
+			return Redirect::route('businesses.index')->with('message', 'Select a business');
+
+		}
+
+		$business = \App\Business::find( $business_id );
+
+		return view('home', compact('business'));
 	}
 
 }

@@ -19,7 +19,7 @@ class BusinessesController extends Controller {
 	public function index()
 	{
 		$businesses = \Auth::user()->businesses()->get();
-		return view('businesses.index', compact('businesses'));
+		return view('manage.businesses.index', compact('businesses'));
 	}
 
 	/**
@@ -29,7 +29,7 @@ class BusinessesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('businesses.create');
+		return view('manage.businesses.create');
 	}
 
 	/**
@@ -49,7 +49,7 @@ class BusinessesController extends Controller {
 
 		Flash::success(trans('business.create.success'));
 
-		return Redirect::route('businesses.index')->with('message', 'Business created');
+		return Redirect::route('manage.businesses.index')->with('message', 'Business created');
 	}
 
 	/**
@@ -61,7 +61,7 @@ class BusinessesController extends Controller {
 	public function show($id, BusinessFormRequest $request)
 	{
 		$business = Business::findOrFail($id);
-		return view('businesses.show', compact('business'));
+		return view('manage.businesses.show', compact('business'));
 	}
 
 	/**
@@ -73,7 +73,7 @@ class BusinessesController extends Controller {
 	public function edit($id, BusinessFormRequest $request)
 	{
         $business = Business::findOrFail($id);
-        return view('businesses.edit', compact('business'));
+        return view('manage.businesses.edit', compact('business'));
 	}
 
 	/**
@@ -96,7 +96,7 @@ class BusinessesController extends Controller {
 
         Flash::success(trans('businesses.msg.edit.success'));
 
-        return \Redirect::route('businesses.show', array($business->id));
+        return \Redirect::route('manage.businesses.show', array($business->id));
 	}
 
 	/**
@@ -115,7 +115,7 @@ class BusinessesController extends Controller {
 
         Flash::success(trans('business.msg.deleted'));
 
-        return \Redirect::route('businesses.index');
+        return \Redirect::route('manage.businesses.index');
 	}
 
 }
