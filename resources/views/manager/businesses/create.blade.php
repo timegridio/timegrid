@@ -21,9 +21,9 @@
 						</div>
 					@endif
 
-					{!! Form::model(new App\Business, ['route' => ['businesses.store']]) !!}
+					{!! Form::model(new App\Business, ['route' => ['manager.businesses.store']]) !!}
 			
-					@include('businesses._form')
+					@include('manager.businesses._form')
 
 					<div class="form-group">
 						{!! Button::primary(trans('businesses.btn.create'))->submit() !!}

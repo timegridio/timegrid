@@ -21,9 +21,9 @@
 						</div>
 					@endif
 
-					{!! Form::model($business, ['method' => 'put', 'route' => ['businesses.update', $business->id]]) !!}
+					{!! Form::model($business, ['method' => 'put', 'route' => ['manager.businesses.update', $business->id]]) !!}
 			
-					@include('businesses._form')
+					@include('manager.businesses._form')
 
 					<div class="form-group">
 						{!! Button::primary(trans('businesses.btn.create'))->submit() !!}
