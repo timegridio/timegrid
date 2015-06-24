@@ -278,7 +278,7 @@
             		            {{ $contact->firstname }} {{ $contact->lastname }}
             		        </div>
             		        <div class="desc">{{ $contact->mobile }}</div>
-            		        <div class="desc">{{ $contact->birthdate }}</div>
+            		        <div class="desc">{{ $contact->birthdate }} {{ $contact->age() }}</div>
             		        <div class="desc">{{ $contact->notes }}</div>
             		        <div class="desc">{{ $contact->businesses()->first()->slug }}</div>
             		    </div>
