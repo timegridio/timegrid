@@ -1,6 +1,6 @@
 <div class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">{{ $appointment->statusLabel }}</div>
+  <div class="panel-heading">{{ trans('appointment.status.'.$appointment->statusLabel) }}</div>
   <div class="panel-body">
     <p>{{ $appointment->comments }}</p>
   </div>
