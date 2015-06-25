@@ -20,10 +20,6 @@
     cursor: pointer;
 }
 
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
 .table-user-information > tbody > tr:first-child {
     border-top: 0;
 }
@@ -110,7 +106,12 @@
           </div>
         </div>
       </div>
-    </div>
+
+    @if($contact->hasAppointment())
+        @include('manager.contacts._appointment', ['appointment' => $contact->appointments->first()] )
+    @endif
+
+</div>
 @endsection
 
 @section('scripts')
