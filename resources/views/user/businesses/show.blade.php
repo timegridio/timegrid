@@ -12,8 +12,6 @@
 					@else
 						{{ $business->name }}
 					@endif
-
-					
 				</div>
 
 				<div class="panel-body">

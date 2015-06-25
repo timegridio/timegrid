@@ -6,7 +6,7 @@
 		<table class="table table-stripped">
 		@foreach ($business->contacts as $contact)
 			<tr>
-				<td>{{ $contact->firstname }}</td>
+				<td>{!! link_to(route('manager.contacts.show', $contact->id), $contact->firstname) !!}</td>
 				<td>{{ $contact->lastname }}</td>
 			</tr>
 		@endforeach

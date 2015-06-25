@@ -43,23 +43,15 @@
 					@else
 						<li><a class="navbar-brand" href="{{ action('HomeController@index') }}">{{ trans('app.nav.home') }}</a></li>
 					@endif
+
+					@include('manager/_navmenu')
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-					{{--/ Language Switcher --}}
-					<li class="dropdown">					
-					    <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Config::get('languages')[App::getLocale()] }} <b class="caret"></b></a>
-					    <ul class="dropdown-menu">
-					        @foreach (Config::get('languages') as $lang => $language)
-					            @if ($lang != App::getLocale())
-					                <li>
-					                    {!! link_to_route('lang.switch', $language, $lang) !!}
-					                </li>
-					            @endif
-					        @endforeach
-					    </ul>
-					</li>
-					{{-- Language Switcher /--}}
+					@include('user/_navmenu')
+
+					@include('_navi18n')
+
 					@if (Auth::guest())
 						<li><a href="{{ url('/auth/login') }}">{{ trans('app.nav.login') }}</a></li>
 						<li><a href="{{ url('/auth/register') }}">{{ trans('app.nav.register') }}</a></li>
