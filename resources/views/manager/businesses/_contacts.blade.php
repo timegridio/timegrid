@@ -48,7 +48,8 @@ $(document).ready(function(){
 </script>
 @endsection
 
-@section('style')
+@section('css')
+<style>
 .filterable {
     margin-top: 15px;
 }
@@ -72,6 +73,7 @@ $(document).ready(function(){
 .filterable .filters input[disabled]:-ms-input-placeholder {
     color: #333;
 }
+</style>
 @endsection
 
     <div class="row">

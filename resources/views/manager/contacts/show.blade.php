@@ -1,5 +1,6 @@
 @extends('app')
 
+@section('css')
 <style>
 .user-row {
     margin-bottom: 14px;
