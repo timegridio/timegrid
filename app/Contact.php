@@ -11,6 +11,37 @@ class Contact extends Model {
 		return $this->belongsToMany('App\Business');
 	}
 
+	public function appointments()
+	{
+		return $this->hasMany('App\Appointment');
+	}
+
+	public function appointment()
+	{
+		return $this->appointments->first();	
+	}
+
+	public function hasAppointment()
+	{
+		return $this->appointmentsCount > 0;
+	}
+
+	public function appointmentsCount()
+	{
+		return $this->hasMany('App\Appointment')->selectRaw('contact_id, count(*) as aggregate')->groupBy('contact_id');
+	}
+	 
+	public function getAppointmentsCountAttribute()
+	{
+	  // if relation is not loaded already, let's do it first
+	  if ( ! array_key_exists('appointmentsCount', $this->relations)) $this->load('appointmentsCount');
+	 
+	  $related = $this->getRelation('appointmentsCount');
+
+	  // then return the count directly
+	  return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
+	}
+
 	public function age($semantic = false)
 	{
 	    $reference = new \DateTime;

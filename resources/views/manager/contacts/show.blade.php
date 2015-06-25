@@ -304,7 +304,8 @@
 				</div>
 
 				<div class="panel-footer">
-
+                    has {{ $contact->hasAppointment() }} / |
+                    c: {{ $contact->appointmentsCount }}
 				</div>
 
 			</div>
