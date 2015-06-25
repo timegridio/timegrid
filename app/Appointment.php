@@ -34,20 +34,15 @@ class Appointment extends Model {
 	public function getStatusLabelAttribute()
 	{
 		switch ($this->status) {
-			case Self::STATUS_RESERVED:
-				$label = trans('appointments.status.reserved');
+			case Self::STATUS_RESERVED:  $label = 'reserved';
 				break;
-			case Self::STATUS_CONFIRMED:
-				$label = trans('appointments.status.confirmed');
+			case Self::STATUS_CONFIRMED: $label = 'confirmed';
 				break;
-			case Self::STATUS_ANNULATED:
-				$label = trans('appointments.status.annulated');
+			case Self::STATUS_ANNULATED: $label = 'annulated';
 				break;
-			case Self::STATUS_SERVED:
-				$label = trans('appointments.status.annulated');
+			case Self::STATUS_SERVED:    $label = 'served';
 				break;
-			default:
-				$label = '?';
+			default: $label = '?';
 				break;
 		}
 		return $label;
