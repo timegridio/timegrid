@@ -1,13 +1,20 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/22 14:44:51 
+ Generated via "php artisan localization:missing" at 2015/06/25 18:11:21 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/create.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
   'businesses' => 
   array (
+    'contacts' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Crear',
+      ),
+    ),
     'btn' => 
     array (
       'store' => 'Registrar',
@@ -69,21 +76,79 @@ return array (
       'title' => 'Mi comercio',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/edit.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/create.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/edit.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/BusinessesController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/BusinessesController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/BusinessesController.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/create.blade.php
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'store' => 'Guardar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Contactos',
+    ),
+    'form' => 
+    array (
+      'birthdate' => 
+      array (
+        'label' => 'Nacimiento',
+        'placeholder' => 'fecha de nacimiento',
+      ),
+      'firstname' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'primer nombre',
+      ),
+      'gender' => 
+      array (
+        'female' => 
+        array (
+          'label' => 'Femenino',
+        ),
+        'label' => 'Sexo',
+        'male' => 
+        array (
+          'label' => 'Masculino',
+        ),
+      ),
+      'lastname' => 
+      array (
+        'label' => 'Apellido',
+        'placeholder' => 'apellido',
+      ),
+      'nin' => 
+      array (
+        'label' => 'NIN',
+        'placeholder' => 'número de identificación nacional',
+      ),
+      'notes' => 
+      array (
+        'label' => 'Notas',
+        'placeholder' => 'notas',
+      ),
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => 'Registrado Ok!',
+      ),
+    ),
+  ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/create.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
+  //==================================== Translations ====================================//
 );

@@ -1,17 +1,18 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/22 14:39:46 
+ Generated via "php artisan localization:missing" at 2015/06/25 18:13:34 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/index.blade.php
+  //==================================== Translations ====================================//
   'businesses' => 
   array (
     'index' => 
     array (
       'btn' => 
       array (
+        'create' => 'businesses.index.btn.create',
+        'manage' => 'businesses.index.btn.manage',
         'change' => 'businesses.index.btn.change',
       ),
       'title' => 'businesses.index.title',
@@ -24,6 +25,5 @@ return array (
       ),
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/show.blade.php
+  //================================== Obsolete strings ==================================//
 );

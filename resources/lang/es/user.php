@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/22 14:44:51 
+ Generated via "php artisan localization:missing" at 2015/06/25 18:11:21 
 *************************************************************************/
 
 return array (
@@ -12,6 +12,7 @@ return array (
     array (
       'btn' => 
       array (
+        'create' => 'Registrar comercio',
         'manage' => 'Mis comercios',
       ),
       'title' => 'Comercios disponibles',
@@ -24,6 +25,5 @@ return array (
       ),
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/index.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/show.blade.php
+  //==================================== Translations ====================================//
 );

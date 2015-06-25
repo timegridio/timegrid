@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/22 14:44:51 
+ Generated via "php artisan localization:missing" at 2015/06/25 18:13:34 
 *************************************************************************/
 
 return array (
@@ -26,7 +26,25 @@ return array (
     'home' => 'Home',
     'login' => 'Login',
     'logout' => 'Logout',
+    'manager' => 
+    array (
+      'business' => 
+      array (
+        'list' => 'nav.manager.business.list',
+        'menu' => 'nav.manager.business.menu',
+        'register' => 'nav.manager.business.register',
+      ),
+    ),
     'register' => 'Register',
+    'user' => 
+    array (
+      'business' => 
+      array (
+        'home' => 'nav.user.business.home',
+        'menu' => 'nav.user.business.menu',
+        'selector' => 'nav.user.business.selector',
+      ),
+    ),
   ),
   'welcome' => 
   array (
