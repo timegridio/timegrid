@@ -104,13 +104,13 @@
                  </div>
             
           </div>
+
+        @if($contact->hasAppointment())
+            @include('manager.contacts._appointment', ['appointment' => $contact->appointments->first()] )
+        @endif
+
         </div>
       </div>
-
-    @if($contact->hasAppointment())
-        @include('manager.contacts._appointment', ['appointment' => $contact->appointments->first()] )
-    @endif
-
 </div>
 @endsection
 
