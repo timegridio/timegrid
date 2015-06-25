@@ -53,4 +53,5 @@ return array (
     'description' => 'Entrar al sistema',
     'title' => 'Bienvenido!',
   ),
+  'gender' => ['M' => 'Masculino', 'F' => 'Femenino'],
 );
