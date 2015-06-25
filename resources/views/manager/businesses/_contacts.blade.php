@@ -102,7 +102,8 @@ $(document).ready(function(){
 						<td>{{ $contact->gender }}</td>
 						<td>{!! link_to(route('manager.contacts.show', $contact->id), $contact->firstname) !!}</td>
 						<td>{{ $contact->lastname }}</td>
-						<td>{{ $contact->mobile }}</td>
+						<td>{{ $contact->username }}</td>
+                        <td>{{ $contact->mobile }}</td>
 					</tr>
 				@endforeach
             </tbody>
