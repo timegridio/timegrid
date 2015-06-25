@@ -36,14 +36,19 @@ class HomeController extends Controller {
 	{
 		$business_id = Session::get('selected.business_id');
 
-		if (!$business_id) {
+		if (empty($business_id)) {
 			
-
-			return Redirect::route('manager.businesses.index')->with('message', 'Select a business');
+			return Redirect::route('manager.businesses.index')->with('error', 'Select a business');
 
 		}
 
 		$business = Business::find( $business_id );
+
+		if (empty($business)) {
+
+			return Redirect::route('manager.businesses.index')->with('error', 'Bad business Select a business');
+
+		}
 
 		return view('user.businesses.show', compact('business'));
 	}
