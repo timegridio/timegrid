@@ -22,8 +22,13 @@ class Appointment extends Model {
 	{
 		if (is_numeric($this->duration)) {
 			$carbon = new Carbon("{$this->date} {$this->time}");
-			return $carbon->addMinutes($this->duration);
+			return $carbon->addMinutes($this->duration)->toTimeString();
 		}
+	}
+
+	public function getCodeAttribute()
+	{
+		return strtoupper(substr($this->hash, 0, 6));
 	}
 
 	public function getStatusLabelAttribute()
