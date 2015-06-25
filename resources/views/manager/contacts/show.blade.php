@@ -70,7 +70,7 @@
                     <tbody>
                     <tr>
                         <td>{{ trans('manager.contacts.label.birthdate') }}</td>
-                        <td>{{ $contact->birthdate }} ({{ $contact->age() }})</td>
+                        <td>{{ $contact->birthdate }} ({{ $contact->age }})</td>
                     </tr>
                     <tr>
                         <td>{{ trans('manager.contacts.label.notes') }}</td>

@@ -47,7 +47,7 @@ class Contact extends Model {
 		return $this->firstname . ' ' . $this->lastname;
 	}
 
-	public function age($semantic = false)
+	public function getAgeAttribute($semantic = false)
 	{
 	    $reference = new \DateTime;
 	    $born = new \DateTime($this->birthdate);
