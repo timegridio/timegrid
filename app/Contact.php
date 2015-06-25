@@ -42,6 +42,11 @@ class Contact extends Model {
 	  return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
 	}
 
+	public function getFullnameAttribute()
+	{
+		return $this->firstname . ' ' . $this->lastname;
+	}
+
 	public function age($semantic = false)
 	{
 	    $reference = new \DateTime;
