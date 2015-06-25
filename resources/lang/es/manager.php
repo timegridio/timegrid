@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/25 19:32:09 
+ Generated via "php artisan localization:missing" at 2015/06/25 22:49:24 
 *************************************************************************/
 
 return array (
@@ -10,11 +10,32 @@ return array (
   array (
     'label' => 
     array (
+      'username' => 'contacts.label.username',
       'birthdate' => 'Nacimiento',
       'gender' => 'Sexo',
       'mobile' => 'Móvil',
       'notes' => 'Notas',
     ),
+    'list' => 
+    array (
+      'btn' => 
+      array (
+        'filter' => 'Filtro',
+      ),
+      'header' => 
+      array (
+        'firstname' => 'Nombre',
+        'lastname' => 'Apellido',
+        'gender' => 'Sexo',
+        'mobile' => 'Móvil',
+        'username' => 'Usuario',
+      ),
+      'msg' => 
+      array (
+        'filter_no_results' => 'Sin resultados',
+      ),
+    ),
+    'title' => 'contacts.title',
     'btn' => 
     array (
       'store' => 'Guardar',
@@ -71,9 +92,14 @@ return array (
       ),
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
   //==================================== Translations ====================================//
   'businesses' => 
   array (
