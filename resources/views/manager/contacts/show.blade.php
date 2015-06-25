@@ -70,31 +70,23 @@
                   <table class="table table-user-information">
                     <tbody>
                     <tr>
+                        <td>{{ trans('manager.contacts.label.username') }}</td>
+                        <td>{{ $contact->username }}</td>
+                    </tr>
+                    <tr>
                         <td>{{ trans('manager.contacts.label.birthdate') }}</td>
                         <td>{{ $contact->birthdate }} ({{ $contact->age }})</td>
                     </tr>
                     <tr>
                         <td>{{ trans('manager.contacts.label.notes') }}</td>
                         <td>{{ $contact->notes }}</td>
-                    </tr>
-                    <tr>
-                        <td>Other</td>
-                        <td>#</td>
-                    </tr>
-                   
+                    </tr>                   
                     <tr>
                       <tr>
                         <td>{{ trans('manager.contacts.label.gender') }}</td>
                         <td>{{ trans('app.gender.'.$contact->gender) }}</td>
-                      </tr>
-                        <tr>
-                        <td>Home Address</td>
-                        <td>#</td>
-                      </tr>
-                      <tr>
-                        <td>Email</td>
-                        <td>#</td>
-                      </tr>
+                    </tr>
+                    <tr>
                         <td>{{ trans('manager.contacts.label.mobile') }}</td>
                         <td>{{ $contact->mobile }}</td>
                     </tr>

@@ -6,6 +6,11 @@ class Contact extends Model {
 
 	protected $fillable = ['firstname', 'lastname', 'nin', 'birthdate', 'mobile', 'notes', 'gender'];
 
+	public function user()
+	{
+		return $this->belongsTo('App\User');
+	}
+
 	public function businesses()
 	{
 		return $this->belongsToMany('App\Business');
@@ -45,6 +50,11 @@ class Contact extends Model {
 	public function getFullnameAttribute()
 	{
 		return $this->firstname . ' ' . $this->lastname;
+	}
+
+	public function getUsernameAttribute()
+	{
+		return ($this->user !== null) ? $this->user->email : null;
 	}
 
 	public function getAgeAttribute($semantic = false)
