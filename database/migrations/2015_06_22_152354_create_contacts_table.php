@@ -17,11 +17,14 @@ class CreateContactsTable extends Migration {
 			$table->increments('id');
 			$table->integer('user_id')->unsigned()->nullable();
 			$table->foreign('user_id')->references('id')->on('users');
-			$table->string('nin')->unique();
+			$table->string('nin')->nullable()->index();
 			$table->enum('gender', ['M','F']);
 			$table->string('firstname');
 			$table->string('lastname');
-			$table->date('birthdate');
+			$table->string('occupation')->nullable();
+			$table->string('martial_status')->nullable();
+			$table->string('postal_address')->nullable();
+			$table->date('birthdate')->nullable();
 			$table->char('mobile', 15)->nullable();
 			$table->char('mobile_country', 2)->nullable();
 			$table->string('notes')->nullable();
