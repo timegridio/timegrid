@@ -32,7 +32,9 @@ class ContactFormRequest extends Request {
 				return [
         			  'firstname' => 'required|min:3',
         			  'lastname' => 'required|min:3',
-        			  'gender' => 'required|max:1'
+        			  'gender' => 'required|max:1',
+        			  'mobile' => 'phone',
+        			  'mobile_country' => 'required_with:mobile|max:2',
         			];
 				break;
 			

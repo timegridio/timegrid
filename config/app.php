@@ -160,6 +160,9 @@ return [
 
 		'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 
+		'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
+		'Webpatser\Countries\CountriesServiceProvider',
+
 	],
 
 	/*
@@ -243,6 +246,7 @@ return [
 		'Thumbnail'      => 'Bootstrapper\Facades\Thumbnail',
 
 		'Flash'    => 'Laracasts\Flash\Flash',
+		'Countries' => 'Webpatser\Countries\CountriesFacade',
 
 	],
 

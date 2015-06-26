@@ -14,9 +14,19 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
+		$this->call('CountriesSeeder');
+		$this->command->info('Seeded the Param Countries!'); 
+
 		$this->call('BusinessesTableSeeder');
+		$this->command->info('Seeded the Sample Businesses!'); 
+
 		$this->call('ContactsTableSeeder');
+		$this->command->info('Seeded the Sample Contacts!'); 
+
 		$this->call('AppointmentsTableSeeder');
+		$this->command->info('Seeded the Sample Appointments!'); 
+
+
 	}
 
 }

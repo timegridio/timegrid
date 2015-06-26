@@ -35,7 +35,7 @@ return array (
         'filter_no_results' => 'Sin resultados',
       ),
     ),
-    'title' => 'contacts.title',
+    'title' => 'Mis Clientes',
     'btn' => 
     array (
       'store' => 'Guardar',

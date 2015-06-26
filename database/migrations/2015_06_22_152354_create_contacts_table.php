@@ -22,7 +22,8 @@ class CreateContactsTable extends Migration {
 			$table->string('firstname');
 			$table->string('lastname');
 			$table->date('birthdate');
-			$table->integer('mobile')->nullable();
+			$table->char('mobile', 15)->nullable();
+			$table->char('mobile_country', 2)->nullable();
 			$table->string('notes')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

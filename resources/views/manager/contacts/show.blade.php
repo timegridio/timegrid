@@ -84,7 +84,7 @@
                     </tr>
                     <tr>
                         <td>{{ trans('manager.contacts.label.mobile') }}</td>
-                        <td>{{ $contact->mobile }}</td>
+                        <td>{{ ($contact->mobile !== null) ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
                     </tr>
                      
                     </tbody>
