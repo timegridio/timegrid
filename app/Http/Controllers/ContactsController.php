@@ -116,9 +116,17 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($id, ContactFormRequest $request)
 	{
-		//
+        $contact = Contact::findOrFail($id);
+
+        $contact->delete();
+
+        $selectd_business_id = Session::get('selected.business_id');
+
+        Flash::success( trans('manager.contacts.msg.destroy.success') );
+
+        return \Redirect::route('manager.businesses.show', $selectd_business_id);
 	}
 
 }
