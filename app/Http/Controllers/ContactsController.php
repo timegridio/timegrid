@@ -75,9 +75,11 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($id, ContactFormRequest $request)
 	{
-		//
+        $contact = Contact::findOrFail($id);
+
+        return view('manager.contacts.edit', compact('contact'));
 	}
 
 	/**
@@ -86,9 +88,26 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, ContactFormRequest $request)
 	{
-		//
+        $user = \Auth::user();
+
+        $contact = Contact::findOrFail($id);
+
+        $contact->update([
+            'firstname'       => $request->get('firstname'),
+            'lastname'        => $request->get('lastname'), 
+            'nin'             => $request->get('nin'), 
+            'gender'          => $request->get('gender'), 
+            'birthdate'       => $request->get('birthdate'), 
+            'mobile'          => $request->get('mobile'), 
+            'mobile_country'  => $request->get('mobile_country'), 
+            'notes'           => $request->get('notes')
+        ]);
+
+        Flash::success( trans('manager.contacts.msg.update.success') );
+
+        return \Redirect::route('manager.contacts.show', array($contact->id));
 	}
 
 	/**
