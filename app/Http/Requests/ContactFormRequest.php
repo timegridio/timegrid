@@ -2,6 +2,7 @@
 
 use App\Http\Requests\Request;
 use Session;
+use Input;
 
 class ContactFormRequest extends Request {
 
@@ -24,18 +25,20 @@ class ContactFormRequest extends Request {
 	 */
 	public function rules()
 	{
+
+		$rules = [	'firstname' => 'required|min:3',
+        			'lastname' => 'required|min:3',
+        			'gender' => 'required|max:1',
+        			'mobile' => 'phone',
+        			'mobile_country' => 'required_with:mobile|max:2'
+        		];
+		
 		switch ($this->method())
 		{
 			case 'PATCH':
 			case 'PUT':
 			case 'POST':
-				return [
-        			  'firstname' => 'required|min:3',
-        			  'lastname' => 'required|min:3',
-        			  'gender' => 'required|max:1',
-        			  'mobile' => 'phone',
-        			  'mobile_country' => 'required_with:mobile|max:2',
-        			];
+				return $rules;
 				break;
 			
 			default:

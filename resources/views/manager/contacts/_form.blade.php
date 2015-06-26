@@ -34,10 +34,9 @@
 
 	<div class="form-group">
 		{!! Form::label( trans('manager.contacts.form.mobile.label') ) !!}
-		{!! Form::select('mobile_country', ['ES'=>'ES','AR'=>'AR'] ) !!}
+		{!! Form::select('mobile_country', ['ES'=>'ES','AR'=>'AR','ZZ'=>'ZZ'] ) !!}
 		{!! Form::text('mobile', null, 
-			array('required', 
-				  'class'=>'form-control', 
+			array('class'=>'form-control', 
 				  'placeholder'=> trans('manager.contacts.form.mobile.placeholder') )) !!}
 	</div>
 

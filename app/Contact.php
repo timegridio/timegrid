@@ -57,6 +57,16 @@ class Contact extends Model {
 		return ($this->user !== null) ? $this->user->email : null;
 	}
 
+    public function setMobileAttribute($mobile)
+    {
+        $this->attributes['mobile'] = trim($mobile) !== '' ? $mobile : null;
+    }
+
+    public function setMobileCountryAttribute($country)
+    {
+        $this->attributes['mobile_country'] = trim($country) !== '' ? $country : null;
+    }
+
 	public function getAgeAttribute($semantic = false)
 	{
 	    $reference = new \DateTime;
