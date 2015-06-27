@@ -9,7 +9,12 @@ class AppointmentsTableSeeder extends Seeder
 {
     public function run()
     {
+    	DB::table('appointments')->delete();
         // TestDummy::times(20)->create('App\Post');
-        \App\Appointment::create(['contact_id' => 1, 'business_id' => 1, 'date' => '2015-07-01', 'time' => '18:30:00', 'duration' => 30, 'comments' => 'Appointment example']);
+    	$business = \App\Business::where(['slug' => 'sample-biz'])->first();
+
+    	$contact = \App\Contact::where(['nin' => 'YA4128062'])->first();
+
+        \App\Appointment::create(['contact_id' => $contact->id, 'business_id' => $business->id, 'date' => '2015-07-01', 'time' => '18:30:00', 'duration' => 30, 'comments' => 'Appointment example']);
     }
 }

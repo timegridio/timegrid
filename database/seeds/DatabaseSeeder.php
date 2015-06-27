@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder {
 		$this->call('CountriesSeeder');
 		$this->command->info('Seeded the Param Countries!'); 
 
+		$this->call('UsersTableSeeder');
+		$this->command->info('Seeded the Sample Users!'); 
+	
 		$this->call('BusinessesTableSeeder');
 		$this->command->info('Seeded the Sample Businesses!'); 
 
@@ -25,8 +28,6 @@ class DatabaseSeeder extends Seeder {
 
 		$this->call('AppointmentsTableSeeder');
 		$this->command->info('Seeded the Sample Appointments!'); 
-
-
 	}
 
 }
