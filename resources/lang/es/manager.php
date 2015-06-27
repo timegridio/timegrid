@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/25 22:49:24 
+ Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
 *************************************************************************/
 
 return array (
@@ -8,44 +8,23 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
   'contacts' => 
   array (
-    'label' => 
-    array (
-      'username' => 'contacts.label.username',
-      'birthdate' => 'Nacimiento',
-      'gender' => 'Sexo',
-      'mobile' => 'Móvil',
-      'notes' => 'Notas',
-    ),
-    'list' => 
-    array (
-      'btn' => 
-      array (
-        'filter' => 'Filtro',
-      ),
-      'header' => 
-      array (
-        'firstname' => 'Nombre',
-        'lastname' => 'Apellido',
-        'gender' => 'Sexo',
-        'mobile' => 'Móvil',
-        'username' => 'Usuario',
-      ),
-      'msg' => 
-      array (
-        'filter_no_results' => 'Sin resultados',
-      ),
-    ),
-    'title' => 'Mis Clientes',
     'btn' => 
     array (
+      'delete' => 'Eliminar',
       'store' => 'Guardar',
-    ),
-    'create' => 
-    array (
-      'title' => 'Contactos',
     ),
     'form' => 
     array (
+      'email' => 
+      array (
+        'label' => 'Email',
+        'placeholder' => 'email@ejemplo.com',
+      ),
+      'mobile' => 
+      array (
+        'label' => 'Móvil',
+        'placeholder' => 'número de móvil completo',
+      ),
       'birthdate' => 
       array (
         'label' => 'Nacimiento',
@@ -84,22 +63,66 @@ return array (
         'placeholder' => 'notas',
       ),
     ),
+    'label' => 
+    array (
+      'email' => 'Email',
+      'nin' => 'DNI',
+      'birthdate' => 'Nacimiento',
+      'gender' => 'Sexo',
+      'mobile' => 'Móvil',
+      'notes' => 'Notas',
+      'username' => 'Usuario',
+    ),
     'msg' => 
     array (
+      'destroy' => 
+      array (
+        'success' => 'Eliminado',
+      ),
       'store' => 
       array (
+        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
         'success' => 'Registrado Ok!',
       ),
+      'update' => 
+      array (
+        'success' => 'Actualizado Ok',
+      ),
     ),
+    'create' => 
+    array (
+      'title' => 'Contactos',
+    ),
+    'list' => 
+    array (
+      'btn' => 
+      array (
+        'filter' => 'Filtro',
+      ),
+      'header' => 
+      array (
+        'firstname' => 'Nombre',
+        'lastname' => 'Apellido',
+        'mobile' => 'Móvil',
+        'username' => 'Usuario',
+        'gender' => 'Sexo',
+      ),
+      'msg' => 
+      array (
+        'filter_no_results' => 'Sin resultados',
+      ),
+    ),
+    'title' => 'Mis Clientes',
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_contacts.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
   //==================================== Translations ====================================//
   'businesses' => 
   array (
@@ -171,4 +194,5 @@ return array (
       'title' => 'Mi comercio',
     ),
   ),
+  //================================== Obsolete strings ==================================//
 );

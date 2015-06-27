@@ -1,19 +1,23 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/25 22:55:40 
+ Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
 *************************************************************************/
 
 return array (
-  //==================================== Translations ====================================//
-  'home' => 
-  array (
-    'btn' => 
-    array (
-      'actions' => 'Acciones',
-    ),
-  ),
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/_navmenu.blade.php
   'nav' => 
   array (
+    'user' => 
+    array (
+      'business' => 
+      array (
+        'my_suscriptions' => 'Mis suscripciones',
+        'home' => 'Inicio',
+        'menu' => 'Comercios',
+        'selector' => 'Seleccionar',
+      ),
+    ),
     'home' => 'Inicio',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
@@ -27,14 +31,13 @@ return array (
       ),
     ),
     'register' => 'Registrarme',
-    'user' => 
+  ),
+  //==================================== Translations ====================================//
+  'home' => 
+  array (
+    'btn' => 
     array (
-      'business' => 
-      array (
-        'home' => 'Listar',
-        'menu' => 'Comercios',
-        'selector' => 'Seleccionar',
-      ),
+      'actions' => 'Acciones',
     ),
   ),
   'welcome' => 

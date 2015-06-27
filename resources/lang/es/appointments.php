@@ -1,16 +1,22 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/25 22:55:40 
+ Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_appointment.blade.php
-  'status' => ['reserved' => 'Reservado', 'confirmed' => 'Confirmado', 'annulated' => 'Anulado', 'served' => 'Servido'],
-  'text' =>
-  [
-  	'to' => 'a',
-  	'duration' => 'duración',
-  	'minutes' => 'minutos',
-  ]
+  //==================================== Translations ====================================//
+  'text' => 
+  array (
+    'minutes' => 'minutos',
+    'to' => 'a',
+    'duration' => 'duración',
+  ),
+  //================================== Obsolete strings ==================================//
+  'status' => 
+  array (
+    'annulated' => 'Anulado',
+    'confirmed' => 'Confirmado',
+    'reserved' => 'Reservado',
+    'served' => 'Servido',
+  ),
 );
