@@ -52,4 +52,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->businesses->count() > 0;
 	}
 
+	public function linkToContacts()
+	{
+		$contacts = \App\Contact::where(['email' => $this->email])->get();
+
+		foreach ($contacts as $contact) {
+
+			$contact->user()->associate($this)->save();
+
+		}
+	}
+
 }

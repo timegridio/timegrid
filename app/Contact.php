@@ -110,7 +110,7 @@ class Contact extends Model {
 
 	public function linkToUser($force_relink = false)
 	{
-		if ($this->user_id !== null && $force_relink == false) return $this->user_id;
+		if ($this->user_id !== null && $force_relink == false) return $this;
 
 		$user = \App\User::where(['email' => $this->email])->first();
 
@@ -123,11 +123,13 @@ class Contact extends Model {
 			$this->attributes['user_id'] = $user->id;
 		}
 
-		return $this->attributes['user_id'];
+		return $this;
 	}
 
 	public function unlinkUser()
 	{
 		$this->attributes['user_id'] = null;
+
+		return $this;
 	}
 }
