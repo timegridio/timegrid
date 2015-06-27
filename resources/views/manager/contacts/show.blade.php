@@ -70,6 +70,14 @@
                         <td>{{ $contact->username }}</td>
                     </tr>
                     <tr>
+                        <td>{{ trans('manager.contacts.label.email') }}</td>
+                        <td>{{ $contact->email }}</td>
+                    </tr>
+                    <tr>
+                        <td>{{ trans('manager.contacts.label.nin') }}</td>
+                        <td>{{ $contact->nin }}</td>
+                    </tr>
+                    <tr>
                         <td>{{ trans('manager.contacts.label.birthdate') }}</td>
                         <td>{{ $contact->birthdate }} ({{ $contact->age }})</td>
                     </tr>
@@ -91,12 +99,11 @@
                   </table>
                   
                   <a href="#" class="btn btn-primary">Reservar Turno</a>
-                  <a href="#" class="btn btn-primary">Contactar</a>
                 </div>
               </div>
             </div>
                  <div class="panel-footer">
-                        <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                        {!! Button::primary()->withIcon(Icon::link()) !!}
                         <span class="pull-right">
                             {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( action('ContactsController@edit', $contact) ) !!}
                             {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo(action('ContactsController@destroy', $contact)) !!}

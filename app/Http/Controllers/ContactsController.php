@@ -40,7 +40,16 @@ class ContactsController extends Controller {
 	 */
 	public function store(ContactFormRequest $request)
 	{
-		//
+		
+		$existing_contact = \App\Contact::where(['nin' => $request->input('nin')])->first();
+
+		if ($existing_contact !== null) {
+
+			Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+
+			return Redirect::route('manager.contacts.show', $existing_contact->first()->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+		}
+
 		$contact = \App\Contact::create( Request::all() );
 
 		$business_id = Session::get('selected.business_id');
@@ -97,6 +106,7 @@ class ContactsController extends Controller {
         $contact->update([
             'firstname'       => $request->get('firstname'),
             'lastname'        => $request->get('lastname'), 
+            'email'           => $request->get('email'), 
             'nin'             => $request->get('nin'), 
             'gender'          => $request->get('gender'), 
             'birthdate'       => $request->get('birthdate'), 

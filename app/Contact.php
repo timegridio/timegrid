@@ -4,7 +4,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model {
 
-	protected $fillable = ['firstname', 'lastname', 'nin', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'psotal_address'];
+	protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'psotal_address'];
+
+	public function save(array $options = array())
+	{		
+		$changed = $this->getDirty();
+
+		if (array_key_exists('email', $changed)) { $this->linkToUser(true); }
+
+		parent::save();
+	}
 
 	public function user()
 	{
@@ -91,4 +100,34 @@ class Contact extends Model {
 	    }
 	}
 
+    public function setEmailAttribute($email)
+    {
+    	if (trim($email) == '') {
+    		$this->attributes['email'] = null;
+    	}
+        $this->attributes['email'] = $email;
+    }
+
+	public function linkToUser($force_relink = false)
+	{
+		if ($this->user_id !== null && $force_relink == false) return $this->user_id;
+
+		$user = \App\User::where(['email' => $this->email])->first();
+
+		if ($user === null)
+		{
+			$this->unlinkUser();
+		}
+		else
+		{
+			$this->attributes['user_id'] = $user->id;
+		}
+
+		return $this->attributes['user_id'];
+	}
+
+	public function unlinkUser()
+	{
+		$this->attributes['user_id'] = null;
+	}
 }

@@ -18,6 +18,10 @@ Route::get('root', [
 Route::resource('manager/businesses', 'BusinessesController');
 Route::resource('manager/contacts', 'ContactsController');
 
+Route::get('user/booking/index', ['as' => 'user/booking/index', 'uses' => 'UserBooking@index']);
+Route::get('user/booking/book', ['as' => 'user/booking/book', 'uses' => 'UserBooking@book']);
+Route::post('user/booking/store', ['as' => 'user/booking/store', 'uses' => 'UserBooking@store']);
+
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
 Route::get('/', 'WelcomeController@index');

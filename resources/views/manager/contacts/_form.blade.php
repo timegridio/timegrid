@@ -11,6 +11,13 @@
 	</div>
 
 	<div class="form-group">
+		{!! Form::label( trans('manager.contacts.form.email.label') ) !!}
+		{!! Form::text('email', null, 
+			array('class'=>'form-control', 
+				  'placeholder'=> trans('manager.contacts.form.email.placeholder') )) !!}
+	</div>
+
+	<div class="form-group">
 		{!! Form::label( trans('manager.contacts.form.gender.label') ) !!}
 		{!! Form::radio('gender','M', true , ['id'=>'male']   ) !!} {!! Form::label( 'male',   trans('manager.contacts.form.gender.male.label') ) !!}
 		{!! Form::radio('gender','F', false, ['id'=>'female'] ) !!} {!! Form::label( 'female', trans('manager.contacts.form.gender.female.label') ) !!}
