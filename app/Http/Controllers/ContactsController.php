@@ -40,21 +40,23 @@ class ContactsController extends Controller {
 	 */
 	public function store(ContactFormRequest $request)
 	{
+		$business_id = Session::get('selected.business_id');
 		
-		$existing_contact = \App\Contact::where(['nin' => $request->input('nin')])->first();
+		$business = \App\Business::findOrFail($business_id);
 
-		if ($existing_contact !== null) {
+		$existing_contacts = \App\Contact::where(['nin' => $request->input('nin')])->get();
 
-			Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+		foreach ($existing_contacts as $existing_contact) {
 
-			return Redirect::route('manager.contacts.show', $existing_contact->first()->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+			if ($existing_contact->isSuscribedTo($business)) {
+				
+				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+
+				return Redirect::route('manager.contacts.show', $existing_contact->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+			}
 		}
 
 		$contact = \App\Contact::create( Request::all() );
-
-		$business_id = Session::get('selected.business_id');
-
-		$business = \App\Business::findOrFail($business_id);
 
 		$business->contacts()->attach($contact);
 
@@ -71,7 +73,7 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, ContactFormRequest $request)
 	{
 		$contact = Contact::findOrFail($id);
 

@@ -132,4 +132,9 @@ class Contact extends Model {
 
 		return $this;
 	}
+
+	public function isSuscribedTo(\App\Business $business)
+	{
+		return $this->businesses->contains($business);
+	}
 }

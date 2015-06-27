@@ -15,7 +15,13 @@ class ContactFormRequest extends Request {
 	{
 		$business = \App\Business::findOrFail( Session::get('selected.business_id') );
 
-		return \Auth::user()->isOwner($business);
+		if (! \Auth::user()->isOwner($business) ) return false;
+
+    	$contact_id = $this->route('contacts');
+
+    	if ($contact_id === null) return true;
+
+	    return \App\Contact::find($contact_id)->isSuscribedTo($business);
 	}
 
 	/**
