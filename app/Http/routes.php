@@ -31,6 +31,7 @@ Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
 Route::get('home/select/{business_slug}', ['as' => 'home/select', 'uses' => 'HomeController@select'] );
 Route::get('home/selected', 'HomeController@selected');
 Route::get('home/selector', 'HomeController@selector');
+Route::get('home/suscriptions', 'HomeController@suscriptions');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

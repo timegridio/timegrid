@@ -77,4 +77,11 @@ class HomeController extends Controller {
 		return Redirect::route('home')->with('message', 'Business selected');
 	}
 
+	public function suscriptions()
+	{
+		$contacts = \Auth::user()->contacts;
+
+		return view('user.businesses.suscriptions', compact('contacts'));
+	}
+
 }
