@@ -87,8 +87,6 @@ $(document).ready(function(){
         <table class="table">
             <thead>
                 <tr class="filters">
-                    <th><input type="text" class="form-control" placeholder="#" disabled></th>
-                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.gender') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.firstname') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.lastname') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.username') }}" disabled></th>
@@ -97,9 +95,7 @@ $(document).ready(function(){
             </thead>
             <tbody>
 				@foreach ($business->contacts as $contact)			
-					<tr>			
-						<td>{{ $contact->id }}</td>
-						<td>{{ $contact->gender }}</td>
+					<tr>
 						<td>{!! link_to(route('manager.contacts.show', $contact->id), $contact->firstname) !!}</td>
 						<td>{{ $contact->lastname }}</td>
 						<td>{{ $contact->username }}</td>
