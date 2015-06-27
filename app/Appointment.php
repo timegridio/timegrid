@@ -1,17 +1,25 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-
 use Carbon\Carbon;
 
 class Appointment extends Model {
 
 	protected $fillable = ['contact_id', 'business_id', 'date', 'time', 'duration', 'comments'];
 
+	protected $guarded = ['id', 'hash', 'status'];
+
 	const STATUS_RESERVED  = 'R';
 	const STATUS_CONFIRMED = 'C';
 	const STATUS_ANNULATED = 'A';
 	const STATUS_SERVED    = 'S';
+
+	public function save(array $options = array())
+	{
+		$this->attributes['hash'] = md5($this->attributes['date'].$this->attributes['time'].$this->attributes['contact_id']);
+
+		parent::save();
+	}
 
 	public function contact()
 	{
