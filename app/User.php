@@ -37,6 +37,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->belongsToMany('App\Business')->withTimestamps();
 	}
 
+	public function allBusinesses()
+	{
+		return $this->belongsToMany('App\Business')->withTrashed()->withTimestamps();
+	}
+
 	public function contacts()
 	{
 		return $this->hasMany('App\Contact');
@@ -44,7 +49,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
 	public function isOwner(\App\Business $business)
 	{
-		return $this->businesses->contains($business);
+		return $this->allBusinesses->contains($business);
 	}
 
 	public function hasBusiness()

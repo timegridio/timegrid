@@ -40,17 +40,35 @@ class BusinessesController extends Controller {
 	 */
 	public function store(BusinessFormRequest $request)
 	{
-		# $this->validate($request, $this->rules);
-				
-		$business = \App\Business::create( Request::all() );
+		$existing_business = \App\Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
-		\Auth::user()->businesses()->attach($business);
+		if ($existing_business === null) {
 
-		\Auth::user()->save();
+			$business = \App\Business::create( Request::all() );
+	
+			\Auth::user()->businesses()->attach($business);
 
-		Flash::success(trans('manager.businesses.msg.store.success'));
+			\Auth::user()->save();
 
-		return Redirect::route('manager.businesses.index')->with('message', trans('manager.businesses.msg.store.success'));
+			Flash::success(trans('manager.businesses.msg.store.success'));
+	
+			return Redirect::route('manager.businesses.index');
+		}
+
+		if (\Auth::user()->isOwner($existing_business)) {
+
+			$existing_business->restore();
+
+			Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
+
+			return Redirect::route('manager.businesses.index');
+		}
+		else
+		{
+			Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+
+			return Redirect::route('manager.businesses.index');
+		}
 	}
 
 	/**

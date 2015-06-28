@@ -15,9 +15,10 @@
 					@foreach ($contacts as $contact)
 						<tr>
 							<td>{{ $contact->nin }}</td>
-              <td>{{ $contact->firstname }}</td>
-              <td>{{ $contact->lastname }}</td>
-              <td>{{ $contact->email }}</td>
+              				<td>{{ $contact->firstname }}</td>
+              				<td>{{ $contact->lastname }}</td>
+              				<td>{{ $contact->email }}</td>
+              				<td>{{ $contact->suscriptions }}</td>
 						</tr>
 					@endforeach
 					</table>
