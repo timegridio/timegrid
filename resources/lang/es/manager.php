@@ -54,7 +54,7 @@ return array (
       ),
       'nin' => 
       array (
-        'label' => 'NIN',
+        'label' => 'DNI',
         'placeholder' => 'número de identificación nacional',
       ),
       'notes' => 
