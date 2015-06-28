@@ -61,7 +61,7 @@ return [
      * If your running your website locally and want to test different
      * IP addresses to see location detection set to true
      */
-    'localhost_testing' => false,
+    'localhost_testing' => env('APP_DEBUG', true),
 
     /*
      * Removes the location key from the session so it is retrieved on every
