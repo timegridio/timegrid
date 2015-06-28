@@ -3,7 +3,6 @@
 @section('content')
 <div class="container">
 	<div class="row">
-
 			<div class="panel panel-default">
 				<div class="panel-heading">{{ trans('manager.contacts.create.title') }}</div>
 
@@ -33,11 +32,10 @@
 				</div>
 
 				<div class="panel-footer">
-
+					
 				</div>
 
 			</div>
-
 	</div>
 </div>
 

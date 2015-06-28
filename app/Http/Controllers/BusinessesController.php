@@ -8,6 +8,7 @@ use Illuminate\Contracts\Auth\Authenticatable as User;
 use App\Http\Requests\BusinessFormRequest;
 use Request;
 use Flash;
+use GeoIP;
 
 class BusinessesController extends Controller {
 
@@ -30,7 +31,11 @@ class BusinessesController extends Controller {
 	 */
 	public function create()
 	{
-		return view('manager.businesses.create');
+		$location = GeoIP::getLocation();
+
+		$timezone = $location['timezone'];
+
+		return view('manager.businesses.create', compact('timezone'));
 	}
 
 	/**
@@ -94,7 +99,9 @@ class BusinessesController extends Controller {
 	{
         $business = Business::findOrFail($id);
 
-        return view('manager.businesses.edit', compact('business'));
+		$timezone = $business->timezone;
+
+        return view('manager.businesses.edit', compact('business', 'timezone'));
 	}
 
 	/**
@@ -112,6 +119,7 @@ class BusinessesController extends Controller {
         $business->update([
             'name' => $request->get('name'),
             'slug' => $request->get('slug'), 
+            'timezone' => $request->get('timezone'), 
             'description' => $request->get('description')
         ]);
 

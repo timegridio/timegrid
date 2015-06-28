@@ -10,7 +10,7 @@ class Business extends Model {
 	protected $dates = ['deleted_at'];
 	# protected $table = 'businesses';
 
-	protected $fillable = ['slug', 'name', 'description'];
+	protected $fillable = ['slug', 'name', 'timezone', 'description'];
 
 	public function owners()
 	{

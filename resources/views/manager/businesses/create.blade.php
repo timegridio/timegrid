@@ -25,20 +25,21 @@
 			
 					@include('manager.businesses._form')
 
-					<div class="form-group">
-						{!! Button::primary(trans('manager.businesses.btn.store'))->submit() !!}
+				    <div class="row">
+						<div class="form-group col-sm-2">
+							{!! Button::primary(trans('manager.businesses.btn.store'))->submit() !!}
+						</div>
 					</div>
 
 					{!! Form::close() !!}
 				</div>
 
 				<div class="panel-footer">
-
+					
 				</div>
 
 			</div>
 		</div>
 	</div>
 </div>
-
 @endsection

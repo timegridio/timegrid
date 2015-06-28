@@ -18,6 +18,7 @@ class CreateBusinessesTable extends Migration {
 			$table->string('slug')->unique();
 			$table->string('name');
 			$table->string('description');
+			$table->string('timezone');
 			$table->softDeletes();
 			$table->timestamps();
 		});

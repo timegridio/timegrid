@@ -164,6 +164,8 @@ return [
 		'Webpatser\Countries\CountriesServiceProvider',
 
 		'Stevebauman\Location\LocationServiceProvider',
+		'Torann\GeoIP\GeoIPServiceProvider',
+		'Camroncade\Timezone\TimezoneServiceProvider',
 
 	],
 
@@ -251,6 +253,8 @@ return [
 		'Countries' => 'Webpatser\Countries\CountriesFacade',
 
 		'Location' => 'Stevebauman\Location\Facades\Location',
+		'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
+		'Carbon' => 'Carbon\Carbon',
 
 	],
 
