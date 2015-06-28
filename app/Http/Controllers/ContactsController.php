@@ -30,7 +30,9 @@ class ContactsController extends Controller {
 	 */
 	public function create(ContactFormRequest $request)
 	{
-		return view('manager.contacts.create');
+
+
+		return view('manager.contacts.create', compact('headerlang'));
 	}
 
 	/**

@@ -163,6 +163,8 @@ return [
 		'Propaganistas\LaravelPhone\LaravelPhoneServiceProvider',
 		'Webpatser\Countries\CountriesServiceProvider',
 
+		'Stevebauman\Location\LocationServiceProvider',
+
 	],
 
 	/*
@@ -247,6 +249,8 @@ return [
 
 		'Flash'    => 'Laracasts\Flash\Flash',
 		'Countries' => 'Webpatser\Countries\CountriesFacade',
+
+		'Location' => 'Stevebauman\Location\Facades\Location',
 
 	],
 
