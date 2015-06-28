@@ -26,10 +26,15 @@ class Appointment extends Model {
 		return $this->belongsTo('\App\Contact');
 	}
 
+	public function business()
+	{
+		return $this->belongsTo('\App\Business');
+	}
+
 	public function getFinishTimeAttribute()
 	{
 		if (is_numeric($this->duration)) {
-			$carbon = new Carbon("{$this->date} {$this->time}");
+			$carbon = Carbon::parse($this->date . ' ' .$this->time)->timezone($this->tz);
 			return $carbon->addMinutes($this->duration)->toTimeString();
 		}
 	}
@@ -37,6 +42,16 @@ class Appointment extends Model {
 	public function getCodeAttribute()
 	{
 		return strtoupper(substr($this->hash, 0, 6));
+	}
+
+	public function getTZAttribute()
+	{
+		return $this->business->timezone;
+		/* Doesent seem to improve performance */
+		# if (!array_key_exists('timezone', $this->attributes)) {
+		#  	$this->attributes['timezone'] = $this->business->timezone;
+		# }
+		# return $this->attributes['timezone'];
 	}
 
 	public function getStatusLabelAttribute()
@@ -56,4 +71,13 @@ class Appointment extends Model {
 		return $label;
 	}
 
+	public function getTZTimeAttribute()
+	{
+		return Carbon::parse($this->time)->timezone($this->tz)->toTimeString();
+	}
+
+	public function getTZDateAttribute()
+	{
+		return Carbon::parse($this->date . ' ' . $this->time)->timezone($this->tz)->toDateString();
+	}
 }

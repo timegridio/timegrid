@@ -9,10 +9,10 @@
   <ul class="list-group">
   </ul>
     <li class="list-group-item">
-        {!! Icon::calendar() !!}&nbsp;{{ $appointment->date }} 
-        {!! Icon::time() !!}&nbsp;{{ $appointment->time }} 
+        <span title="{{ $appointment->tz }}">{!! Icon::calendar() !!}&nbsp;{{ $appointment->TZDate }} 
+        {!! Icon::time() !!}&nbsp;{{ $appointment->TZTime }} 
         &nbsp;{{ trans('appointments.text.to') }}&nbsp;
-        {{ $appointment->finishTime }}&nbsp;
+        {{ $appointment->finishTime }}</span>&nbsp;
         {!! Icon::hourglass() !!}&nbsp;{{ $appointment->duration }}&nbsp;
         {{ trans('appointments.text.minutes') }}
     </li>
