@@ -33,9 +33,6 @@
 		<div class="form-group col-sm-6">
 			{!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'selectpicker'], ['customValue' => 'true']) !!}
 		</div>
-		<div class="form-group col-sm-6">
-			<span class="alert alert-info">{{ Carbon::now()->timezone($timezone)->toDateTimeString() }}</span>
-		</div>
     </div>
 
 @section('scripts')

@@ -99,7 +99,9 @@ class BusinessesController extends Controller {
 	{
         $business = Business::findOrFail($id);
 
-		$timezone = $business->timezone;
+		$location = GeoIP::getLocation();
+
+		$timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
 
         return view('manager.businesses.edit', compact('business', 'timezone'));
 	}
