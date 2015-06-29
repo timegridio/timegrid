@@ -13,7 +13,7 @@
     </li>
     <li class="list-group-item">
       <span title="{{ $appointment->tz }}">
-        {!! Icon::time() !!}&nbsp;{{ $appointment->start_at->toDateString() }}&nbsp;{{ trans('appointments.text.to') }}&nbsp;{{ $appointment->finishTime }}
+        {!! Icon::time() !!}&nbsp;{{ $appointment->start_at->timezone($appointment->tz)->toTimeString() }}&nbsp;{{ trans('appointments.text.to') }}&nbsp;{{ $appointment->finish_at->timezone($appointment->tz)->toTimeString() }}
       </span>
     </li>
     <li class="list-group-item">
