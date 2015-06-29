@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contact extends Model {
 
-	protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'psotal_address'];
+	protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'postal_address'];
 
 	public function save(array $options = array())
 	{		

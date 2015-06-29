@@ -832,21 +832,22 @@
         },
         {
             "name": "intervention/image",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Intervention/image.git",
-                "reference": "1009557c32205b077e34b2ae611e6316fa423021"
+                "reference": "ff4f45412044f3ab26f29260570a14ff41631d87"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Intervention/image/zipball/1009557c32205b077e34b2ae611e6316fa423021",
-                "reference": "1009557c32205b077e34b2ae611e6316fa423021",
+                "url": "https://api.github.com/repos/Intervention/image/zipball/ff4f45412044f3ab26f29260570a14ff41631d87",
+                "reference": "ff4f45412044f3ab26f29260570a14ff41631d87",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
-                "php": ">=5.3.0"
+                "guzzlehttp/psr7": "~1.1",
+                "php": ">=5.4.0"
             },
             "require-dev": {
                 "mockery/mockery": "~0.9.2",
@@ -884,7 +885,7 @@
                 "thumbnail",
                 "watermark"
             ],
-            "time": "2015-06-10 17:50:36"
+            "time": "2015-06-28 15:55:12"
         },
         {
             "name": "intervention/imagecache",
