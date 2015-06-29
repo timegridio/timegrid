@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-
 <div class="container">
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
@@ -38,19 +37,10 @@
 		</div>
 	</div>
 </div>
-
 @endsection
 
 @section('scripts')
 <script type="text/javascript">
-/*
-<a href="posts/2" data-method="delete"> <---- We want to send an HTTP DELETE request
-
-- Or, request confirmation in the process -
-
-<a href="posts/2" data-method="delete" data-confirm="Are you sure?">
-*/
- 
 (function() {
  
   var laravel = {

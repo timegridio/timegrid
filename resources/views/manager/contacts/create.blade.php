@@ -9,34 +9,17 @@
 				<div class="panel-body">
 					@include('flash::message')
 
-					@if($errors->has())
-						<div class="alert alert-danger">
-							<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-							<ul>
-							@foreach($errors->all() as $error)
-								<li>{{ $error }}</li>
-							@endforeach
-							</ul>
-						</div>
-					@endif
+					@include('_errors')
 
 					{!! Form::model(new App\Contact, ['route' => ['manager.contacts.store']]) !!}
-			
-					@include('manager.contacts._form')
-
-					<div class="form-group">
-						{!! Button::primary(trans('manager.contacts.btn.store'))->submit() !!}
-					</div>
-
+						@include('manager.contacts._form',['submitLabel' => trans('manager.contacts.btn.store')])
 					{!! Form::close() !!}
 				</div>
 
 				<div class="panel-footer">
 					
 				</div>
-
 			</div>
 	</div>
 </div>
-
 @endsection
