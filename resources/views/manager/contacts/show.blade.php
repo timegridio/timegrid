@@ -98,22 +98,22 @@
                     </tbody>
                   </table>
                   
-                  <a href="#" class="btn btn-primary">Reservar Turno</a>
+                  
                 </div>
               </div>
             </div>
                  <div class="panel-footer">
                         {!! Button::primary()->withIcon(Icon::link()) !!}
                         <span class="pull-right">
-                            {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( action('ContactsController@edit', $contact) ) !!}
-                            {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo(action('ContactsController@destroy', $contact)) !!}
+                            {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.contacts.edit', $contact) ) !!}
+                            {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.contacts.destroy', $contact) ) !!}
                         </span>
                  </div>
             
           </div>
 
         @if($contact->hasAppointment())
-            @include('manager.contacts._appointment', ['appointment' => $contact->appointments->first()] )
+            @include('manager.contacts._appointment', ['appointments' => $contact->appointments] )
         @endif
 
         </div>

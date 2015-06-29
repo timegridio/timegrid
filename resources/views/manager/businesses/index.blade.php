@@ -18,9 +18,9 @@
 					<table class="table table-condensed">
 					@foreach ($businesses as $business)
 						<tr>
-							<td>{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo(action('BusinessesController@destroy', $business)) !!}</td>
-							<td>{!! Button::primary($business->slug)->asLinkTo( action('BusinessesController@show', $business) ) !!}</td>
-							<td>{!! Button::primary($business->name)->asLinkTo( route('home/select', ['business_slug' => $business->slug]) ) !!}</td>
+							<td>{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.businesses.destroy', $business) ) !!}</td>
+							<td>{!! Button::primary($business->slug)->asLinkTo( route('manager.businesses.show', $business) ) !!}</td>
+							<td>{!! Button::primary($business->name)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!}</td>
 							<td>{{ $business->description }}</td>
 						</tr>
 					@endforeach
@@ -29,8 +29,8 @@
 
 				<div class="panel-footer">
 					{!! DropdownButton::normal(trans('app.home.btn.actions'))->withContents([
-                ['url' => action('BusinessesController@index'),  'label' => trans('manager.businesses.index.btn.manage')],
-                ['url' => action('BusinessesController@create'), 'label' => trans('manager.businesses.index.btn.register')],
+                ['url' => route('manager.businesses.index'),  'label' => trans('manager.businesses.index.btn.manage')],
+                ['url' => route('manager.businesses.create'), 'label' => trans('manager.businesses.index.btn.register')],
           ]) !!}
 				</div>
 

@@ -14,7 +14,7 @@
 					<table class="table table-condensed">
 					@foreach ($businesses as $business)
 						<tr>
-							<td>{!! Button::primary($business->name)->asLinkTo( route('home/select', ['business_slug' => $business->slug]) ) !!}</td>
+							<td>{!! Button::primary($business->name)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!}</td>
 							<td>{{ $business->description }}</td>
 						</tr>
 					@endforeach
@@ -23,9 +23,9 @@
 
 				<div class="panel-footer">
           @if(\Auth::user()->hasBusiness())
-            {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo(action('BusinessesController@index')) !!}
+            {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo( route('manager.businesses.index') ) !!}
           @else
-            {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo(action('BusinessesController@create')) !!}
+            {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.businesses.create') ) !!}
           @endif
 				</div>
 

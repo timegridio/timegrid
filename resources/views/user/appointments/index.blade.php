@@ -6,27 +6,30 @@
 	<div class="row">
 		<div class="col-md-10 col-md-offset-1">
 			<div class="panel panel-default">
-				<div class="panel-heading">{{ trans('user.businesses.index.title') }}</div>
+				<div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
 
 				<div class="panel-body">
+
 					@include('flash::message')
-				
-					<table class="table table-condensed">
-					@foreach ($businesses as $business)
-						<tr>
-							<td>{!! Button::primary($business->name)->asLinkTo( route('home/select', ['business_slug' => $business->slug]) ) !!}</td>
-							<td>{{ $business->description }}</td>
-						</tr>
-					@endforeach
-					</table>
-				</div>
+
+          <table class="table table-condensed">
+            @foreach ($appointments as $appointment)
+              <tr>
+                <td>{{ $appointment->code }}</td>
+                <td>{{ $appointment->status }}</td>
+                <td>{{ $appointment->tzdate }}</td>
+                <td>{{ $appointment->tztime }}</td>
+                <td>{{ $appointment->tz }}</td>
+                <td>{{ $appointment->duration }}</td>
+                <td>{{ $appointment->business->name }}</td>
+              </tr>
+            @endforeach
+          </table>
+
+        </div>
 
 				<div class="panel-footer">
-          @if(\Auth::user()->hasBusiness())
-            {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo(action('BusinessesController@index')) !!}
-          @else
-            {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo(action('BusinessesController@create')) !!}
-          @endif
+
 				</div>
 
 			</div>

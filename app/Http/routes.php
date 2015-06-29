@@ -9,32 +9,43 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::get('home', ['as' => 'home', 'uses' => 'User\BusinessController@getList']);
+
+Route::group(['prefix' => 'user', 'namespace' => 'User'], function()
+{
+	Route::group(['prefix' => 'booking'], function()
+	{
+		Route::get('book',      ['as' => 'user.booking.book', 'uses' => 'BookingController@getBook']);
+		Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'BookingController@getIndex']);
+	});
+
+	Route::group(['prefix' => 'businesses'], function()
+	{
+		Route::get('home',                   ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
+		Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect'] );
+		Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
+		Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
+	});
+});
+
+Route::group(['prefix' => 'manager', 'namespace' => 'Manager'], function()
+{
+	Route::resource('businesses', 'BusinessesController');
+	Route::resource('contacts', 'ContactsController');
+});
 
 Route::get('root', [
-    'uses'          => 'RootController@index',
-    'middleware'    => ['auth', 'acl'],
-    'is'            => 'root']);
-
-Route::resource('manager/businesses', 'BusinessesController');
-Route::resource('manager/contacts', 'ContactsController');
-
-Route::get('user/booking/index', ['as' => 'user/booking/index', 'uses' => 'UserBooking@index']);
-Route::get('user/booking/book', ['as' => 'user/booking/book', 'uses' => 'UserBooking@book']);
-Route::post('user/booking/store', ['as' => 'user/booking/store', 'uses' => 'UserBooking@store']);
+	'as'            => 'root',
+	'uses'          => 'RootController@index',
+	'middleware'    => ['auth', 'acl'],
+	'is'            => 'root']
+);
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
-
-Route::get('/', 'WelcomeController@index');
-
-# Route::get('home', 'HomeController@index');
-Route::get('home', ['as' => 'home', 'uses' => 'HomeController@index']);
-Route::get('home/select/{business_slug}', ['as' => 'home/select', 'uses' => 'HomeController@select'] );
-Route::get('home/selected', 'HomeController@selected');
-Route::get('home/selector', 'HomeController@selector');
-Route::get('home/suscriptions', 'HomeController@suscriptions');
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
+Route::get('/', 'WelcomeController@index');

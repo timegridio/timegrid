@@ -27,7 +27,7 @@
 				</div>
 
 				<div class="panel-footer">
-				{!! Button::withIcon(Icon::edit())->primary()->asLinkTo(action('BusinessesController@edit', $business)) !!}
+					{!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.businesses.edit', $business) ) !!}
 				</div>
 			</div>
 

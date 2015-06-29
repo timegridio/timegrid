@@ -96,7 +96,7 @@ $(document).ready(function(){
             <tbody>
 				@foreach ($business->contacts as $contact)			
 					<tr>
-						<td>{!! link_to(route('manager.contacts.show', $contact->id), $contact->firstname) !!}</td>
+						<td>{!! link_to( route('manager.contacts.show', $contact->id), $contact->firstname) !!}</td>
 						<td>{{ $contact->lastname }}</td>
 						<td>{{ $contact->username }}</td>
                         <td>{{ $contact->mobile }}</td>
@@ -105,5 +105,5 @@ $(document).ready(function(){
             </tbody>
         </table>
     </div>
-{!! Button::primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( action('ContactsController@create') ) !!}
+{!! Button::primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.contacts.create') ) !!}
 </div>

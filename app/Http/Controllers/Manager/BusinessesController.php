@@ -1,4 +1,4 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Manager;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -20,7 +20,6 @@ class BusinessesController extends Controller {
 	public function index()
 	{
 		$businesses = \Auth::user()->businesses()->get();
-
 		return view('manager.businesses.index', compact('businesses'));
 	}
 
