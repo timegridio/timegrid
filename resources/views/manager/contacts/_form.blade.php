@@ -58,8 +58,7 @@
 	<div class="row">
 		<div class="form-group col-xs-11">
 			{!! Form::textarea('notes', null, 
-				array('required', 
-					  'class'=>'form-control', 
+				array('class'=>'form-control', 
 					  'placeholder'=> trans('manager.contacts.form.notes.label') )) !!}
 		</div>
 	</div>
