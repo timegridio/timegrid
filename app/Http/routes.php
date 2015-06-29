@@ -11,7 +11,7 @@
 */
 Route::get('home', ['as' => 'home', 'uses' => 'User\BusinessController@getList']);
 
-Route::group(['prefix' => 'user', 'namespace' => 'User'], function()
+Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function()
 {
 	Route::group(['prefix' => 'booking'], function()
 	{
@@ -29,7 +29,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function()
 	});
 });
 
-Route::group(['prefix' => 'manager', 'namespace' => 'Manager'], function()
+Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function()
 {
 	Route::resource('businesses', 'BusinessesController');
 	Route::resource('contacts', 'ContactsController');

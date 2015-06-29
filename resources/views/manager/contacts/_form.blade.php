@@ -23,7 +23,7 @@
 			{!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
 		</div>
 		<div class="form-group col-xs-6">
-			{!! Form::date('birthdate', null, 
+			{!! Form::date('birthdate', isset($contact) ? old('birthdate', $contact->birthdate->toDateString()) : null, 
 				array('required', 
 					  'class'=>'form-control',
 					  'id'=>'birthdate',
@@ -47,7 +47,7 @@
 	</div>
 	<div class="row">
 		<div class="form-group col-xs-4">
-			{!! Form::select('mobile_country', Location::lists(), Location::get()->countryCode, ['class'=>'selectpicker'] ) !!}
+			{!! Form::select('mobile_country', Location::lists(), isset($contact) ? old('mobile_country', $contact->mobile_country ) : Location::get()->countryCode, ['class'=>'selectpicker'] ) !!}
 		</div>
 		<div class="form-group col-xs-7">
 			{!! Form::text('mobile', null, 

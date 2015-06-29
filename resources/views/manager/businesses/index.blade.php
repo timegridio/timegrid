@@ -18,8 +18,8 @@
 					@foreach ($businesses as $business)
 						<tr>
 							<td>{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.businesses.destroy', $business) ) !!}</td>
-							<td>{!! Button::primary($business->slug)->asLinkTo( route('manager.businesses.show', $business) ) !!}</td>
-							<td>{!! Button::primary($business->name)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!}</td>
+							<td>{!! Button::primary($business->slug)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!}</td>
+              <td>{{ $business->name }}</td>
 							<td>{{ $business->description }}</td>
 						</tr>
 					@endforeach
