@@ -60,10 +60,12 @@
                         <td>{{ $contact->username }}</td>
                     </tr>
                     @endif
+                    @if ($contact->email)
                     <tr>
                         <td>{{ trans('manager.contacts.label.email') }}</td>
                         <td>{{ $contact->email }}</td>
                     </tr>
+                    @endif
                     <tr>
                         <td>{{ trans('manager.contacts.label.nin') }}</td>
                         <td>{{ $contact->nin }}</td>
