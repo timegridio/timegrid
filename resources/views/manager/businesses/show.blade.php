@@ -9,8 +9,6 @@
 
 				<div class="panel-body">
 					@include('flash::message')
-					
-					@include('_errors')
 
 					<p>{{ $business->description }}</p>
 				</div>

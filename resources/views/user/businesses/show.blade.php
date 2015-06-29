@@ -15,11 +15,11 @@
 				</div>
 
 				<div class="panel-body">
-{{--					{!! Button::normal(trans('user.businesses.show.btn.book'))->asLinkTo(action('UserBooking@book')) !!} --}}
+
 				</div>
 
 				<div class="panel-footer">
-					{!! Button::normal(trans('user.businesses.show.btn.change'))->asLinkTo( route('user.businesses.list')) !!}
+
 				</div>
 
 			</div>
