@@ -47,6 +47,18 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		return $this->hasMany('App\Contact');
 	}
 
+	public function appointments()
+	{
+		return $this->hasManyThrough('App\Appointment', 'App\Contact');
+	}
+
+	public function suscribedTo(Business $business)
+	{
+		return $this->contacts->filter(function($contact) use ($business) {
+		    return $contact->isSuscribedTo($business);
+		})->first();
+	}
+
 	public function isOwner(\App\Business $business)
 	{
 		return $this->allBusinesses->contains($business);
