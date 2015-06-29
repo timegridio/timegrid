@@ -23,11 +23,12 @@
 			{!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
 		</div>
 		<div class="form-group col-xs-6">
-			{!! Form::text('birthdate', null, 
+			{!! Form::date('birthdate', null, 
 				array('required', 
 					  'class'=>'form-control',
-					  'id'=>'birthdate', 
-					  'placeholder'=> trans('manager.contacts.form.birthdate.label') )) !!}
+					  'id'=>'birthdate',
+					  'placeholder'=> trans('manager.contacts.form.birthdate.label'),
+					  'title'=> trans('manager.contacts.form.birthdate.label') )) !!}
 		</div>
 	</div>
 	<div class="row">
