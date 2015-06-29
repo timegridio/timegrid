@@ -13,7 +13,7 @@
 					  'placeholder'=> trans('manager.contacts.form.nin.label') )) !!}
 		</div>
 		<div class="form-group col-xs-7">
-			{!! Form::text('email', null, 
+			{!! Form::email('email', null, 
 				array('class'=>'form-control', 
 					  'placeholder'=> trans('manager.contacts.form.email.label') )) !!}
 		</div>
