@@ -34,7 +34,7 @@ class Appointment extends Model {
 	public function getFinishTimeAttribute()
 	{
 		if (is_numeric($this->duration)) {
-			$carbon = Carbon::parse($this->date . ' ' .$this->time)->timezone($this->tz);
+			$carbon = Carbon::parse($this->TZDate . ' ' .$this->TZTime);
 			return $carbon->addMinutes($this->duration)->toTimeString();
 		}
 	}
@@ -79,5 +79,15 @@ class Appointment extends Model {
 	public function getTZDateAttribute()
 	{
 		return Carbon::parse($this->date . ' ' . $this->time)->timezone($this->tz)->toDateString();
+	}
+
+	public function setTimeAttribute($time)
+	{
+		$this->attributes['time'] = Carbon::parse($time, $this->tz)->timezone('UTC')->toTimeString();
+	}
+
+	public function setDateAttribute($date)
+	{
+		$this->attributes['date'] = Carbon::parse($date, $this->tz)->timezone('UTC')->toDateString();
 	}
 }
