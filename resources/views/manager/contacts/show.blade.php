@@ -54,10 +54,12 @@
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
+                    @if ($contact->username)
                     <tr>
                         <td>{{ trans('manager.contacts.label.username') }}</td>
                         <td>{{ $contact->username }}</td>
                     </tr>
+                    @endif
                     <tr>
                         <td>{{ trans('manager.contacts.label.email') }}</td>
                         <td>{{ $contact->email }}</td>
