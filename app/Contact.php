@@ -6,6 +6,8 @@ class Contact extends Model {
 
 	protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'postal_address'];
 
+	protected $dates = ['birthdate'];
+
 	public function save(array $options = array())
 	{		
 		$changed = $this->getDirty();
