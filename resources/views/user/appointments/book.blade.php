@@ -19,10 +19,11 @@
         </div>
         <div class="form-group col-sm-4">
 			{!! Form::label( trans('user.appointments.form.time.label') ) !!}
-			{!! Form::text('_time', null, 
+			{!! Form::input('time', '_time', null, 
 				array('required', 
 					  'class'=>'form-control',
 					  'id'=>'time',
+					  'step'=>'1800',
 					  'placeholder'=> trans('user.appointments.form.time.label') )) !!}
         </div>
 		<div class="form-group col-sm-2">
