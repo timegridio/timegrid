@@ -79,10 +79,12 @@
                         <td>{{ trans('manager.contacts.label.gender') }}</td>
                         <td>{{ trans('app.gender.'.$contact->gender) }}</td>
                     </tr>
+                    @if ($contact->mobile)
                     <tr>
                         <td>{{ trans('manager.contacts.label.mobile') }}</td>
                         <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
                     </tr>
+                    @endif
                      
                     </tbody>
                   </table>
