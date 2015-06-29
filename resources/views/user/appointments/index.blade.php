@@ -17,9 +17,9 @@
               <tr>
                 <td>{{ $appointment->code }}</td>
                 <td>{{ $appointment->status }}</td>
-                <td>{{ $appointment->tzdate }}</td>
-                <td>{{ $appointment->tztime }}</td>
-                <td>{{ $appointment->tz }}</td>
+                <td>{{ $appointment->start_at->timezone($appointment->tz)->toDateString() }}</td>
+                <td title="{{ $appointment->tz }}">{{ $appointment->start_at->timezone($appointment->tz)->toTimeString() }}</td>
+                <td title="{{ $appointment->tz }}">{{ $appointment->finish_at->timezone($appointment->tz)->toTimeString() }}</td>
                 <td>{{ $appointment->duration }}</td>
                 <td>{{ $appointment->business->name }}</td>
               </tr>

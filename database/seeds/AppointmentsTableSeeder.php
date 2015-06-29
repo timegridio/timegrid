@@ -15,6 +15,6 @@ class AppointmentsTableSeeder extends Seeder
 
     	$contact = \App\Contact::where(['nin' => 'YA4128062'])->first();
 
-        \App\Appointment::create(['contact_id' => $contact->id, 'business_id' => $business->id, 'date' => '2015-07-01', 'time' => '18:30:00', 'duration' => 30, 'comments' => 'Appointment example']);
+        \App\Appointment::create(['contact_id' => $contact->id, 'business_id' => $business->id, 'start_at' => '2015-07-01 18:30:00', 'duration' => 30, 'comments' => 'Appointment example']);
     }
 }

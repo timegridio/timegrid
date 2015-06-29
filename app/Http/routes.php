@@ -17,6 +17,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User'], function()
 	{
 		Route::get('book',      ['as' => 'user.booking.book', 'uses' => 'BookingController@getBook']);
 		Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'BookingController@getIndex']);
+		Route::post('store',    ['as' => 'user.booking.store','uses' => 'BookingController@postStore']);
 	});
 
 	Route::group(['prefix' => 'businesses'], function()

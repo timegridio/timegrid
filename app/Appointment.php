@@ -5,9 +5,11 @@ use Carbon\Carbon;
 
 class Appointment extends Model {
 
-	protected $fillable = ['contact_id', 'business_id', 'date', 'time', 'duration', 'comments'];
+	protected $fillable = ['contact_id', 'business_id', 'start_at', 'duration', 'comments'];
 
-	protected $guarded = ['id', 'hash', 'status'];
+	protected $guarded = ['id', 'hash', 'status', 'finish_at'];
+
+	protected $dates = ['start_at', 'finish_at'];
 
 	const STATUS_RESERVED  = 'R';
 	const STATUS_CONFIRMED = 'C';
@@ -16,7 +18,7 @@ class Appointment extends Model {
 
 	public function save(array $options = array())
 	{
-		$this->attributes['hash'] = md5($this->attributes['date'].$this->attributes['time'].$this->attributes['contact_id']);
+		$this->attributes['hash'] = md5($this->start_at.$this->contact_id);
 
 		parent::save();
 	}
@@ -31,11 +33,10 @@ class Appointment extends Model {
 		return $this->belongsTo('\App\Business');
 	}
 
-	public function getFinishTimeAttribute()
+	public function getFinishAtAttribute()
 	{
 		if (is_numeric($this->duration)) {
-			$carbon = Carbon::parse($this->TZDate . ' ' .$this->TZTime);
-			return $carbon->addMinutes($this->duration)->toTimeString();
+			return $this->start_at->addMinutes($this->duration);
 		}
 	}
 
@@ -47,11 +48,6 @@ class Appointment extends Model {
 	public function getTZAttribute()
 	{
 		return $this->business->timezone;
-		/* Doesent seem to improve performance */
-		# if (!array_key_exists('timezone', $this->attributes)) {
-		#  	$this->attributes['timezone'] = $this->business->timezone;
-		# }
-		# return $this->attributes['timezone'];
 	}
 
 	public function getStatusLabelAttribute()
@@ -71,23 +67,8 @@ class Appointment extends Model {
 		return $label;
 	}
 
-	public function getTZTimeAttribute()
+	public function setStartAtAttribute($datetime)
 	{
-		return Carbon::parse($this->time)->timezone($this->tz)->toTimeString();
-	}
-
-	public function getTZDateAttribute()
-	{
-		return Carbon::parse($this->date . ' ' . $this->time)->timezone($this->tz)->toDateString();
-	}
-
-	public function setTimeAttribute($time)
-	{
-		$this->attributes['time'] = Carbon::parse($time, $this->tz)->timezone('UTC')->toTimeString();
-	}
-
-	public function setDateAttribute($date)
-	{
-		$this->attributes['date'] = Carbon::parse($date, $this->tz)->timezone('UTC')->toDateString();
+		$this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
 	}
 }

@@ -5,13 +5,13 @@
 @endsection
 
 @section('content')
-{!! Form::open(array('route' => 'user/booking/store', 'class' => 'form')) !!}
+{!! Form::open(array('route' => 'user.booking.store', 'class' => 'form')) !!}
 {!! Form::hidden('business_id', Session::get('selected.business_id'), array('required') ) !!}
 <div class="container">
     <div class="row">
         <div class="form-group col-sm-4">
 			{!! Form::label( trans('user.appointments.form.date.label') ) !!}
-			{!! Form::text('date', null, 
+			{!! Form::text('_date', null, 
 				array('required', 
 					  'class'=>'form-control',
 					  'id'=>'date', 
@@ -19,7 +19,7 @@
         </div>
         <div class="form-group col-sm-4">
 			{!! Form::label( trans('user.appointments.form.time.label') ) !!}
-			{!! Form::text('time', null, 
+			{!! Form::text('_time', null, 
 				array('required', 
 					  'class'=>'form-control',
 					  'id'=>'time',

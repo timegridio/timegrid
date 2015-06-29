@@ -9,11 +9,11 @@
         {!! Icon::home() !!}&nbsp;{{ $appointment->business->name }} 
     </li>
     <li class="list-group-item">
-        {!! Icon::calendar() !!}&nbsp;{{ $appointment->TZDate }} 
+        {!! Icon::calendar() !!}&nbsp;{{ $appointment->start_at->toDateString() }} 
     </li>
     <li class="list-group-item">
       <span title="{{ $appointment->tz }}">
-        {!! Icon::time() !!}&nbsp;{{ $appointment->TZTime }}&nbsp;{{ trans('appointments.text.to') }}&nbsp;{{ $appointment->finishTime }}
+        {!! Icon::time() !!}&nbsp;{{ $appointment->start_at->toDateString() }}&nbsp;{{ trans('appointments.text.to') }}&nbsp;{{ $appointment->finishTime }}
       </span>
     </li>
     <li class="list-group-item">

@@ -21,8 +21,7 @@ class CreateAppointmentsTable extends Migration {
 			$table->foreign('business_id')->references('id')->on('businesses');
 			$table->string('hash', 32)->unique();
 			$table->enum('status', ['R','C', 'A', 'S']); // Reserved, Confirmed, Annulated, Served
-			$table->date('date');
-			$table->time('time');
+			$table->timestamp('start_at')->index();
 			$table->integer('duration')->nullable();
 			$table->json('services')->nullable();
 			$table->string('comments')->nullable();
