@@ -74,10 +74,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 		$contacts = \App\Contact::where(['email' => $this->email])->get();
 
 		foreach ($contacts as $contact) {
-
 			$contact->user()->associate($this)->save();
-
 		}
 	}
-
 }
