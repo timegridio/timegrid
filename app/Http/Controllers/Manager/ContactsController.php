@@ -41,27 +41,20 @@ class ContactsController extends Controller {
 	public function store(ContactFormRequest $request)
 	{
 		$business = Business::findOrFail( Session::get('selected.business_id') );
-
 		$existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
 		foreach ($existing_contacts as $existing_contact) {
-
 			if ($existing_contact->isSuscribedTo($business)) {
-				
 				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-
 				return Redirect::route('manager.contact.show', $existing_contact->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 			}
 		}
 
 		$contact = Contact::create( Request::all() );
-
 		$business->contacts()->attach($contact);
-
 		$business->save();
 
 		Flash::success(trans('manager.contacts.msg.store.success'));
-
 		return Redirect::route('manager.contact.show', $contact->id)->with('message', trans('manager.contacts.msg.store.success'));
 	}
 
@@ -96,7 +89,6 @@ class ContactsController extends Controller {
 	public function update(Contact $contact, ContactFormRequest $request)
 	{
         $user = \Auth::user();
-
         $contact->update([
             'firstname'       => $request->get('firstname'),
             'lastname'        => $request->get('lastname'), 
@@ -110,7 +102,6 @@ class ContactsController extends Controller {
         ]);
 
         Flash::success( trans('manager.contacts.msg.update.success') );
-
         return \Redirect::route('manager.contact.show', array($contact->id));
 	}
 
@@ -123,11 +114,9 @@ class ContactsController extends Controller {
 	public function destroy(Contact $contact, ContactFormRequest $request)
 	{
         $contact->delete();
-
         $selectd_business_id = Session::get('selected.business_id');
 
         Flash::success( trans('manager.contacts.msg.destroy.success') );
-
         return \Redirect::route('manager.business.show', $selectd_business_id);
 	}
 
