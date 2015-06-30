@@ -102,7 +102,7 @@ class ContactsController extends Controller {
 		]);
 
 		Flash::success( trans('manager.contacts.msg.update.success') );
-		return \Redirect::route('manager.contact.show', array($contact->id));
+		return Redirect::route('manager.contact.show', array($contact->id));
 	}
 
 	/**
@@ -116,6 +116,6 @@ class ContactsController extends Controller {
 		$contact->delete();
 
 		Flash::success( trans('manager.contacts.msg.destroy.success') );
-		return \Redirect::route('manager.business.show', Session::get('selected.business_id'));
+		return Redirect::route('manager.business.show', Session::get('selected.business_id'));
 	}
 }
