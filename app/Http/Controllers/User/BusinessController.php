@@ -8,16 +8,6 @@ use Flash;
 
 class BusinessController extends Controller {
 
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('auth');
-	}
-
 	public function getHome()
 	{
 		$business = Business::find( Session::get('selected.business_id') );
