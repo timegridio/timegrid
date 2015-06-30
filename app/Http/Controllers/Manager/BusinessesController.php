@@ -19,7 +19,7 @@ class BusinessesController extends Controller {
 	 */
 	public function index()
 	{
-		$businesses = \Auth::user()->businesses()->get();
+		$businesses = \Auth::user()->businesses;
 		return view('manager.businesses.index', compact('businesses'));
 	}
 
