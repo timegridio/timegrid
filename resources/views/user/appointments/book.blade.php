@@ -11,10 +11,11 @@
     <div class="row">
         <div class="form-group col-sm-4">
 			{!! Form::label( trans('user.appointments.form.date.label') ) !!}
-			{!! Form::text('_date', null, 
+			{!! Form::date('_date', null, 
 				array('required', 
 					  'class'=>'form-control',
-					  'id'=>'date', 
+					  'id'=>'date',
+					  'min'=> date('Y-m-d'),
 					  'placeholder'=> trans('user.appointments.form.date.label') )) !!}
         </div>
         <div class="form-group col-sm-4">
