@@ -46,7 +46,7 @@ class ContactsController extends Controller {
 		foreach ($existing_contacts as $existing_contact) {
 			if ($existing_contact->isSuscribedTo($business)) {
 				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-				return Redirect::route('manager.contact.show', $existing_contact->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+				return Redirect::route('manager.contact.show', $existing_contact->id);
 			}
 		}
 
@@ -55,7 +55,7 @@ class ContactsController extends Controller {
 		$business->save();
 
 		Flash::success(trans('manager.contacts.msg.store.success'));
-		return Redirect::route('manager.contact.show', $contact->id)->with('message', trans('manager.contacts.msg.store.success'));
+		return Redirect::route('manager.contact.show', $contact->id);
 	}
 
 	/**
