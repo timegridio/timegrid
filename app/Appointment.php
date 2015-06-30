@@ -71,4 +71,19 @@ class Appointment extends Model {
 	{
 		$this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
 	}
+
+	public function scopeServed($query)
+	{
+		return $query->where('status', '=', Self::STATUS_SERVED);
+	}
+
+	public function scopeActive($query)
+	{
+		return $query->where('status', '=', Self::STATUS_RESERVED)->orWhere('status', '=', Self::STATUS_CONFIRMED);
+	}
+
+	public function scopeAnnulated($query)
+	{
+		return $query->where('status', '=', Self::STATUS_ANNULATED);
+	}
 }
