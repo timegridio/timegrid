@@ -31,9 +31,7 @@ class BusinessesController extends Controller {
 	public function create()
 	{
 		$location = GeoIP::getLocation();
-
 		$timezone = $location['timezone'];
-
 		return view('manager.businesses.create', compact('timezone'));
 	}
 
@@ -47,30 +45,23 @@ class BusinessesController extends Controller {
 		$existing_business = \App\Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
 		if ($existing_business === null) {
-
 			$business = \App\Business::create( Request::all() );
-	
 			\Auth::user()->businesses()->attach($business);
-
 			\Auth::user()->save();
-
+			
 			Flash::success(trans('manager.businesses.msg.store.success'));
-	
 			return Redirect::route('manager.business.index');
 		}
 
 		if (\Auth::user()->isOwner($existing_business)) {
-
 			$existing_business->restore();
-
+			
 			Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-
 			return Redirect::route('manager.business.index');
 		}
 		else
 		{
 			Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-
 			return Redirect::route('manager.business.index');
 		}
 	}
@@ -95,10 +86,8 @@ class BusinessesController extends Controller {
 	public function edit(Business $business, BusinessFormRequest $request)
 	{
 		$location = GeoIP::getLocation();
-
 		$timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
-
-        return view('manager.businesses.edit', compact('business', 'timezone'));
+		return view('manager.businesses.edit', compact('business', 'timezone'));
 	}
 
 	/**
@@ -109,18 +98,17 @@ class BusinessesController extends Controller {
 	 */
 	public function update(Business $business, BusinessFormRequest $request)
 	{
-        $user = \Auth::user();
+		$user = \Auth::user();
 
-        $business->update([
-            'name' => $request->get('name'),
-            'slug' => $request->get('slug'), 
-            'timezone' => $request->get('timezone'), 
-            'description' => $request->get('description')
-        ]);
+		$business->update([
+			'name' => $request->get('name'),
+			'slug' => $request->get('slug'), 
+			'timezone' => $request->get('timezone'), 
+			'description' => $request->get('description')
+		]);
 
-        Flash::success( trans('manager.businesses.msg.update.success') );
-
-        return \Redirect::route('manager.business.show', array($business->id));
+		Flash::success( trans('manager.businesses.msg.update.success') );
+		return \Redirect::route('manager.business.show', array($business->id));
 	}
 
 	/**
@@ -131,13 +119,10 @@ class BusinessesController extends Controller {
 	 */
 	public function destroy(Business $business, BusinessFormRequest $request)
 	{
-	    $user = \Auth::user();
+		$user = \Auth::user();
+		$business->delete();
 
-        $business->delete();
-
-        Flash::success( trans('manager.businesses.msg.destroy.success'));
-
-        return \Redirect::route('manager.business.index');
+		Flash::success( trans('manager.businesses.msg.destroy.success'));
+		return \Redirect::route('manager.business.index');
 	}
-
 }
