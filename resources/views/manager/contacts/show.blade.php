@@ -101,11 +101,11 @@
 								 </div>
 						
 					</div>
-{{--
+
 				@if($contact->hasAppointment())
-						@include('manager.contacts._appointment', ['appointments' => $contact->appointments] )
+						@include('manager.contacts._appointment', ['appointments' => $contact->appointments()->Active()->get()] )
 				@endif
---}}
+
 				</div>
 			</div>
 </div>
