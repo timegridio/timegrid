@@ -4,6 +4,7 @@ use App\Http\Controllers\Controller;
 use Session;
 use Redirect;
 use App\Business;
+use Flash;
 
 class BusinessController extends Controller {
 
@@ -19,14 +20,10 @@ class BusinessController extends Controller {
 
 	public function getHome()
 	{
-		$business_id = Session::get('selected.business_id');
-		if (empty($business_id)) {
-			return Redirect::route('user.businesses.home')->with('error', 'Select a business');
-		}
-
-		$business = Business::find( $business_id );
+		$business = Business::find( Session::get('selected.business_id') );
 		if (empty($business)) {
-			return Redirect::route('user.businesses.home')->with('error', 'Bad business Select a business');
+			Flash::warning(trans('user.business.msg.please_select_a_business'));
+			return Redirect::route('user.businesses.list');
 		}
 		return view('user.businesses.show', compact('business'));
 	}
