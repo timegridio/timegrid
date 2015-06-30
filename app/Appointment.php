@@ -86,4 +86,9 @@ class Appointment extends Model {
 	{
 		return $query->where('status', '=', Self::STATUS_ANNULATED);
 	}
+
+	public function scopeOfBusiness($query, Business $business)
+	{
+		return $query->where('business_id', '=', $business->id);
+	}
 }

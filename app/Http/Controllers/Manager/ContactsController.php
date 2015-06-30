@@ -13,6 +13,13 @@ use Request;
 
 class ContactsController extends Controller {
 
+	protected $business = null;
+
+	public function __construct()
+	{
+		$this->business = Business::findOrFail( Session::get('selected.business_id') );
+	}
+
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -66,7 +73,8 @@ class ContactsController extends Controller {
 	 */
 	public function show(Contact $contact, ContactFormRequest $request)
 	{
-		return view('manager.contacts.show', compact('contact'));
+		$business = $this->business;
+		return view('manager.contacts.show', compact('contact', 'business'));
 	}
 
 	/**

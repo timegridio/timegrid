@@ -33,7 +33,7 @@ class ContactFormRequest extends Request {
 					'lastname' => 'required|min:3',
 					'gender' => 'required|max:1',
 					'mobile' => 'phone',
-					'mobile_country' => 'required_with:mobile|max:2'
+					'mobile_country' => 'required_with:mobile|max:2' /* FIXME: LENGHT MUST BE EXACT 2 */
 				];
 
 		switch ($this->method())
