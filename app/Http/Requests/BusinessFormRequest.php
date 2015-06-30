@@ -16,14 +16,10 @@ class BusinessFormRequest extends Request {
 			case 'POST':
 				return true;
 				break;
-			
 			default:
-				# $business = \App\Business::find($this->route()->parameter('businesses'));
-        		return $this->user()->id == $this->business->owner()->id;
-
+				return $this->user()->id == $this->business->owner()->id;
 				break;
 		}
-			# code...
 	}
 
 	/**
@@ -39,19 +35,14 @@ class BusinessFormRequest extends Request {
 			case 'PUT':
 			case 'POST':
 				return [
-        			  'name' => 'required|min:3',
-        			  'slug' => 'required|min:3',
-        			  'description' => 'required|min:10'
-        			];
+					  'name' => 'required|min:3',
+					  'slug' => 'required|min:3',
+					  'description' => 'required|min:10'
+					];
 				break;
-			
 			default:
-
-        		return [];
-
+				return [];
 				break;
 		}
-
 	}
-
 }

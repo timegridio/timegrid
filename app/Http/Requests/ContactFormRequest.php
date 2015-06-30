@@ -1,6 +1,8 @@
 <?php namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use App\Contact;
+use App\Business;
 use Session;
 use Input;
 
@@ -11,13 +13,13 @@ class ContactFormRequest extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize(\App\Contact $contact)
+	public function authorize(Contact $contact)
 	{
-		$business = \App\Business::findOrFail( Session::get('selected.business_id') );
+		$business = Business::findOrFail( Session::get('selected.business_id') );
 
 		if (! \Auth::user()->isOwner($business) ) return false;
 
-	    return $this->contact === null || $this->contact->isSuscribedTo($business);
+		return $this->contact === null || $this->contact->isSuscribedTo($business);
 	}
 
 	/**
@@ -27,28 +29,23 @@ class ContactFormRequest extends Request {
 	 */
 	public function rules()
 	{
-
 		$rules = [	'firstname' => 'required|min:3',
-        			'lastname' => 'required|min:3',
-        			'gender' => 'required|max:1',
-        			'mobile' => 'phone',
-        			'mobile_country' => 'required_with:mobile|max:2'
-        		];
-		
+					'lastname' => 'required|min:3',
+					'gender' => 'required|max:1',
+					'mobile' => 'phone',
+					'mobile_country' => 'required_with:mobile|max:2'
+				];
+
 		switch ($this->method())
 		{
 			case 'PATCH':
 			case 'PUT':
 			case 'POST':
 				return $rules;
-				break;
-			
+				break;			
 			default:
-
-        		return [];
-
+				return [];
 				break;
 		}
 	}
-
 }
