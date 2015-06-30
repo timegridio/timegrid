@@ -42,10 +42,10 @@ class BusinessesController extends Controller {
 	 */
 	public function store(BusinessFormRequest $request)
 	{
-		$existing_business = \App\Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
+		$existing_business = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
 		if ($existing_business === null) {
-			$business = \App\Business::create( Request::all() );
+			$business = Business::create( Request::all() );
 			\Auth::user()->businesses()->attach($business);
 			\Auth::user()->save();
 			
