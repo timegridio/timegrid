@@ -88,7 +88,6 @@ class ContactsController extends Controller {
 	 */
 	public function update(Contact $contact, ContactFormRequest $request)
 	{
-		$user = \Auth::user();
 		$contact->update([
 			'firstname'       => $request->get('firstname'),
 			'lastname'        => $request->get('lastname'), 
