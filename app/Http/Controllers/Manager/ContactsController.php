@@ -77,7 +77,7 @@ class ContactsController extends Controller {
 	 */
 	public function edit(Contact $contact, ContactFormRequest $request)
 	{
-        return view('manager.contacts.edit', compact('contact'));
+		return view('manager.contacts.edit', compact('contact'));
 	}
 
 	/**
@@ -88,21 +88,21 @@ class ContactsController extends Controller {
 	 */
 	public function update(Contact $contact, ContactFormRequest $request)
 	{
-        $user = \Auth::user();
-        $contact->update([
-            'firstname'       => $request->get('firstname'),
-            'lastname'        => $request->get('lastname'), 
-            'email'           => $request->get('email'), 
-            'nin'             => $request->get('nin'), 
-            'gender'          => $request->get('gender'), 
-            'birthdate'       => $request->get('birthdate'), 
-            'mobile'          => $request->get('mobile'), 
-            'mobile_country'  => $request->get('mobile_country'), 
-            'notes'           => $request->get('notes')
-        ]);
+		$user = \Auth::user();
+		$contact->update([
+			'firstname'       => $request->get('firstname'),
+			'lastname'        => $request->get('lastname'), 
+			'email'           => $request->get('email'), 
+			'nin'             => $request->get('nin'), 
+			'gender'          => $request->get('gender'), 
+			'birthdate'       => $request->get('birthdate'), 
+			'mobile'          => $request->get('mobile'), 
+			'mobile_country'  => $request->get('mobile_country'), 
+			'notes'           => $request->get('notes')
+		]);
 
-        Flash::success( trans('manager.contacts.msg.update.success') );
-        return \Redirect::route('manager.contact.show', array($contact->id));
+		Flash::success( trans('manager.contacts.msg.update.success') );
+		return \Redirect::route('manager.contact.show', array($contact->id));
 	}
 
 	/**
@@ -113,11 +113,9 @@ class ContactsController extends Controller {
 	 */
 	public function destroy(Contact $contact, ContactFormRequest $request)
 	{
-        $contact->delete();
-        $selectd_business_id = Session::get('selected.business_id');
+		$contact->delete();
 
-        Flash::success( trans('manager.contacts.msg.destroy.success') );
-        return \Redirect::route('manager.business.show', $selectd_business_id);
+		Flash::success( trans('manager.contacts.msg.destroy.success') );
+		return \Redirect::route('manager.business.show', Session::get('selected.business_id'));
 	}
-
 }
