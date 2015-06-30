@@ -42,7 +42,7 @@ class BusinessController extends Controller {
 			return 'ERROR';
 		}
 		Session::set('selected.business_id', $business_id);
-		return Redirect::route('user.businesses.home')->with('message', 'Business selected');
+		return Redirect::route('user.businesses.home');
 	}
 
 	public function getSuscriptions()
