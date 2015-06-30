@@ -101,7 +101,7 @@ class ContactsController extends Controller {
 		]);
 
 		Flash::success( trans('manager.contacts.msg.update.success') );
-		return Redirect::route('manager.contact.show', array($contact->id));
+		return Redirect::route('manager.contact.show', $contact->id);
 	}
 
 	/**
