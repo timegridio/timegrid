@@ -24,14 +24,14 @@ class BusinessController extends Controller {
 		return view('user.businesses.index', compact('businesses'));
 	}
 
-	public function getSelect($business_slug)
+	public function getSelect(Business $business)
 	{
-		try {
-			$business_id = Business::where('slug', $business_slug)->first()->id;	
-		} catch (Exception $e) {
-			return 'ERROR';
-		}
-		Session::set('selected.business_id', $business_id);
+		#try {
+		#	$business_id = Business::where('slug', $business_slug)->first()->id;	
+		#} catch (Exception $e) {
+		#	return 'ERROR';
+		#}
+		Session::set('selected.business_id', $business->id);
 		return Redirect::route('user.businesses.home');
 	}
 

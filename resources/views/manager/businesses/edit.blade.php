@@ -11,7 +11,7 @@
 
 				@include('_errors')
 
-				{!! Form::model($business, ['method' => 'put', 'route' => ['manager.businesses.update', $business->id]]) !!}
+				{!! Form::model($business, ['method' => 'put', 'route' => ['manager.business.update', $business->id]]) !!}
 				@include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.update')])
 				{!! Form::close() !!}
 			</div>

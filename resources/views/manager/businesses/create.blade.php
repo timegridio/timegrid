@@ -11,7 +11,7 @@
 
 				@include('_errors')
 
-				{!! Form::model(new App\Business, ['route' => ['manager.businesses.store']]) !!}
+				{!! Form::model(new App\Business, ['route' => ['manager.business.store']]) !!}
 				@include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
 				{!! Form::close() !!}
 			</div>

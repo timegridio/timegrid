@@ -9,7 +9,7 @@ class BusinessFormRequest extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize()
+	public function authorize(\App\Business $business)
 	{
 		switch ($this->method())
 		{
@@ -18,9 +18,8 @@ class BusinessFormRequest extends Request {
 				break;
 			
 			default:
-				$business = \App\Business::find($this->route()->parameter('businesses'));
-
-        		return $this->user()->id == $business->owner()->id;
+				# $business = \App\Business::find($this->route()->parameter('businesses'));
+        		return $this->user()->id == $this->business->owner()->id;
 
 				break;
 		}

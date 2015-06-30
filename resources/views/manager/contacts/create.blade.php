@@ -11,7 +11,7 @@
 
 					@include('_errors')
 
-					{!! Form::model(new App\Contact, ['route' => ['manager.contacts.store']]) !!}
+					{!! Form::model(new App\Contact, ['route' => ['manager.contact.store']]) !!}
 						@include('manager.contacts._form',['submitLabel' => trans('manager.contacts.btn.store')])
 					{!! Form::close() !!}
 				</div>

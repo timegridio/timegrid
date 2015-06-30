@@ -8,7 +8,7 @@
 
 				<div class="panel-heading">
 					@if(\Auth::user()->isOwner($business))
-						{!! Icon::star() !!} {!! link_to(route('manager.businesses.show', $business->id), $business->name) !!}
+						{!! Icon::star() !!} {!! link_to(route('manager.business.show', $business->id), $business->name) !!}
 					@else
 						{{ $business->name }}
 					@endif

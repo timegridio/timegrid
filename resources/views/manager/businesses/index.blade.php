@@ -17,7 +17,7 @@
 					<table class="table table-condensed">
 					@foreach ($businesses as $business)
 						<tr>
-							<td>{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.businesses.destroy', $business) ) !!}</td>
+							<td>{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.business.destroy', $business) ) !!}</td>
 							<td>{!! Button::primary($business->slug)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!}</td>
               <td>{{ $business->name }}</td>
 							<td>{{ $business->description }}</td>
@@ -28,8 +28,8 @@
 
 				<div class="panel-footer">
 					{!! DropdownButton::normal(trans('app.home.btn.actions'))->withContents([
-                ['url' => route('manager.businesses.index'),  'label' => trans('manager.businesses.index.btn.manage')],
-                ['url' => route('manager.businesses.create'), 'label' => trans('manager.businesses.index.btn.register')],
+                ['url' => route('manager.business.index'),  'label' => trans('manager.businesses.index.btn.manage')],
+                ['url' => route('manager.business.create'), 'label' => trans('manager.businesses.index.btn.register')],
           ]) !!}
 				</div>
 

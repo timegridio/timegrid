@@ -56,7 +56,7 @@ class BusinessesController extends Controller {
 
 			Flash::success(trans('manager.businesses.msg.store.success'));
 	
-			return Redirect::route('manager.businesses.index');
+			return Redirect::route('manager.business.index');
 		}
 
 		if (\Auth::user()->isOwner($existing_business)) {
@@ -65,13 +65,13 @@ class BusinessesController extends Controller {
 
 			Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
 
-			return Redirect::route('manager.businesses.index');
+			return Redirect::route('manager.business.index');
 		}
 		else
 		{
 			Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
 
-			return Redirect::route('manager.businesses.index');
+			return Redirect::route('manager.business.index');
 		}
 	}
 
@@ -81,10 +81,8 @@ class BusinessesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id, BusinessFormRequest $request)
+	public function show(Business $business, BusinessFormRequest $request)
 	{
-		$business = Business::findOrFail($id);
-
 		return view('manager.businesses.show', compact('business'));
 	}
 
@@ -94,10 +92,8 @@ class BusinessesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id, BusinessFormRequest $request)
+	public function edit(Business $business, BusinessFormRequest $request)
 	{
-        $business = Business::findOrFail($id);
-
 		$location = GeoIP::getLocation();
 
 		$timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
@@ -111,11 +107,9 @@ class BusinessesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, BusinessFormRequest $request)
+	public function update(Business $business, BusinessFormRequest $request)
 	{
         $user = \Auth::user();
-
-        $business = Business::findOrFail($id);
 
         $business->update([
             'name' => $request->get('name'),
@@ -126,7 +120,7 @@ class BusinessesController extends Controller {
 
         Flash::success( trans('manager.businesses.msg.update.success') );
 
-        return \Redirect::route('manager.businesses.show', array($business->id));
+        return \Redirect::route('manager.business.show', array($business->id));
 	}
 
 	/**
@@ -135,17 +129,15 @@ class BusinessesController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, BusinessFormRequest $request)
+	public function destroy(Business $business, BusinessFormRequest $request)
 	{
 	    $user = \Auth::user();
-
-        $business = Business::findOrFail($id);
 
         $business->delete();
 
         Flash::success( trans('manager.businesses.msg.destroy.success'));
 
-        return \Redirect::route('manager.businesses.index');
+        return \Redirect::route('manager.business.index');
 	}
 
 }

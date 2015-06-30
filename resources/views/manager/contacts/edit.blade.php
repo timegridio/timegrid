@@ -11,7 +11,7 @@
 
 					@include('_errors')
 
-					{!! Form::model($contact, ['method' => 'put', 'route' => ['manager.contacts.update', $contact->id]]) !!}
+					{!! Form::model($contact, ['method' => 'put', 'route' => ['manager.contact.update', $contact->id]]) !!}
 						@include('manager.contacts._form', ['submitLabel' => trans('manager.contacts.btn.update')])
 					{!! Form::close() !!}
 				</div>

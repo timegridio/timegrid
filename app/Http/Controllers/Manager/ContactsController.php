@@ -30,8 +30,6 @@ class ContactsController extends Controller {
 	 */
 	public function create(ContactFormRequest $request)
 	{
-
-
 		return view('manager.contacts.create', compact('headerlang'));
 	}
 
@@ -54,7 +52,7 @@ class ContactsController extends Controller {
 				
 				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 
-				return Redirect::route('manager.contacts.show', $existing_contact->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+				return Redirect::route('manager.contact.show', $existing_contact->id)->with('message', trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 			}
 		}
 
@@ -66,7 +64,7 @@ class ContactsController extends Controller {
 
 		Flash::success(trans('manager.contacts.msg.store.success'));
 
-		return Redirect::route('manager.contacts.show', $contact->id)->with('message', trans('manager.contacts.msg.store.success'));
+		return Redirect::route('manager.contact.show', $contact->id)->with('message', trans('manager.contacts.msg.store.success'));
 	}
 
 	/**
@@ -75,10 +73,8 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id, ContactFormRequest $request)
+	public function show(Contact $contact, ContactFormRequest $request)
 	{
-		$contact = Contact::findOrFail($id);
-
 		return view('manager.contacts.show', compact('contact'));
 	}
 
@@ -88,10 +84,8 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id, ContactFormRequest $request)
+	public function edit(Contact $contact, ContactFormRequest $request)
 	{
-        $contact = Contact::findOrFail($id);
-
         return view('manager.contacts.edit', compact('contact'));
 	}
 
@@ -101,11 +95,9 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id, ContactFormRequest $request)
+	public function update(Contact $contact, ContactFormRequest $request)
 	{
         $user = \Auth::user();
-
-        $contact = Contact::findOrFail($id);
 
         $contact->update([
             'firstname'       => $request->get('firstname'),
@@ -121,7 +113,7 @@ class ContactsController extends Controller {
 
         Flash::success( trans('manager.contacts.msg.update.success') );
 
-        return \Redirect::route('manager.contacts.show', array($contact->id));
+        return \Redirect::route('manager.contact.show', array($contact->id));
 	}
 
 	/**
@@ -130,17 +122,15 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id, ContactFormRequest $request)
+	public function destroy(Contact $contact, ContactFormRequest $request)
 	{
-        $contact = Contact::findOrFail($id);
-
         $contact->delete();
 
         $selectd_business_id = Session::get('selected.business_id');
 
         Flash::success( trans('manager.contacts.msg.destroy.success') );
 
-        return \Redirect::route('manager.businesses.show', $selectd_business_id);
+        return \Redirect::route('manager.business.show', $selectd_business_id);
 	}
 
 }
