@@ -15,7 +15,7 @@
 				</div>
 
 				<div class="panel-body">
-
+					{!! Button::normal(trans('user.appointments.btn.book'))->asLinkTo( route('user.booking.book') ) !!}
 				</div>
 
 				<div class="panel-footer">
