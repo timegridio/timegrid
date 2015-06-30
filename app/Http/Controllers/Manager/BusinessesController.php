@@ -98,8 +98,6 @@ class BusinessesController extends Controller {
 	 */
 	public function update(Business $business, BusinessFormRequest $request)
 	{
-		$user = \Auth::user();
-
 		$business->update([
 			'name' => $request->get('name'),
 			'slug' => $request->get('slug'), 
@@ -119,7 +117,6 @@ class BusinessesController extends Controller {
 	 */
 	public function destroy(Business $business, BusinessFormRequest $request)
 	{
-		$user = \Auth::user();
 		$business->delete();
 
 		Flash::success( trans('manager.businesses.msg.destroy.success'));
