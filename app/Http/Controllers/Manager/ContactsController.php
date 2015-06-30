@@ -40,9 +40,9 @@ class ContactsController extends Controller {
 	 */
 	public function store(ContactFormRequest $request)
 	{
-		$business = \App\Business::findOrFail( Session::get('selected.business_id') );
+		$business = Business::findOrFail( Session::get('selected.business_id') );
 
-		$existing_contacts = \App\Contact::where(['nin' => $request->input('nin')])->get();
+		$existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
 		foreach ($existing_contacts as $existing_contact) {
 
@@ -54,7 +54,7 @@ class ContactsController extends Controller {
 			}
 		}
 
-		$contact = \App\Contact::create( Request::all() );
+		$contact = Contact::create( Request::all() );
 
 		$business->contacts()->attach($contact);
 
