@@ -40,9 +40,7 @@ class ContactsController extends Controller {
 	 */
 	public function store(ContactFormRequest $request)
 	{
-		$business_id = Session::get('selected.business_id');
-		
-		$business = \App\Business::findOrFail($business_id);
+		$business = \App\Business::findOrFail( Session::get('selected.business_id') );
 
 		$existing_contacts = \App\Contact::where(['nin' => $request->input('nin')])->get();
 
