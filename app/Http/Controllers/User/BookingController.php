@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Flash;
 use App\Appointment;
 use Session;
+use URL;
 
 class BookingController extends Controller {
 
@@ -30,8 +31,8 @@ class BookingController extends Controller {
 	{
 		$business = \App\Business::findOrFail(Session::get('selected.business_id'));
 		if (!\Auth::user()->suscribedTo($business)) {
-			Flash::error(trans('user.booking.msg.you_are_not_suscribed_to_business'));
-			return Redirect::route('user.bookings');
+			Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
+			return Redirect::back();
 		}
 		return view('user.appointments.book');
 	}
@@ -45,7 +46,7 @@ class BookingController extends Controller {
 	{
 		if (!\Auth::user()->contacts) {
 			Flash::error(trans('user.booking.msg.you_are_not_suscribed_to_business'));
-			return Redirect::route('user.bookings');
+			return Redirect::back();
 		}
 
 		$data = $request->all();
