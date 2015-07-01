@@ -12,22 +12,12 @@ use GeoIP;
 
 class BusinessesController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		$businesses = \Auth::user()->businesses;
 		return view('manager.businesses.index', compact('businesses'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		$location = GeoIP::getLocation();
@@ -35,11 +25,6 @@ class BusinessesController extends Controller {
 		return view('manager.businesses.create', compact('timezone'));
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store(BusinessFormRequest $request)
 	{
 		$existing_business = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
@@ -66,23 +51,11 @@ class BusinessesController extends Controller {
 		}
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show(Business $business, BusinessFormRequest $request)
 	{
 		return view('manager.businesses.show', compact('business'));
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit(Business $business, BusinessFormRequest $request)
 	{
 		$location = GeoIP::getLocation();
@@ -90,12 +63,6 @@ class BusinessesController extends Controller {
 		return view('manager.businesses.edit', compact('business', 'timezone'));
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update(Business $business, BusinessFormRequest $request)
 	{
 		$business->update([
@@ -109,12 +76,6 @@ class BusinessesController extends Controller {
 		return \Redirect::route('manager.business.show', array($business->id));
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy(Business $business, BusinessFormRequest $request)
 	{
 		$business->delete();

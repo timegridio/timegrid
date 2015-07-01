@@ -11,22 +11,12 @@ use URL;
 
 class BookingController extends Controller {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function getIndex()
 	{
 		$appointments = \Auth::user()->appointments;
 		return view('user.appointments.index', compact('appointments'));
 	}
 
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function getBook()
 	{
 		$business = \App\Business::findOrFail(Session::get('selected.business_id'));
@@ -37,11 +27,6 @@ class BookingController extends Controller {
 		return view('user.appointments.book');
 	}
 
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function postStore(Request $request)
 	{
 		if (!\Auth::user()->contacts) {
@@ -61,45 +46,21 @@ class BookingController extends Controller {
 		return Redirect::route('user.booking.list')->with('message', trans('user.booking.msg.store.success'));
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function getShow($id)
 	{
 		//
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		//
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
 		//
 	}
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function destroy($id)
 	{
 		//

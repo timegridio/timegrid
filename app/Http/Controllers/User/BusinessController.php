@@ -26,11 +26,6 @@ class BusinessController extends Controller {
 
 	public function getSelect(Business $business)
 	{
-		#try {
-		#	$business_id = Business::where('slug', $business_slug)->first()->id;	
-		#} catch (Exception $e) {
-		#	return 'ERROR';
-		#}
 		Session::set('selected.business_id', $business->id);
 		return Redirect::route('user.businesses.home');
 	}
