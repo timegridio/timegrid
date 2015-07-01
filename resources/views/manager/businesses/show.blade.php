@@ -8,8 +8,6 @@
 				<div class="panel-heading">{{ $business->name }}</div>
 
 				<div class="panel-body">
-					@include('flash::message')
-
 					<p>{{ $business->description }}</p>
 				</div>
 

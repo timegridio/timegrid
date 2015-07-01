@@ -10,8 +10,6 @@
         <div class="panel-heading">{{ trans('manager.businesses.index.title') }}</div>
 
 				<div class="panel-body">
-					@include('flash::message')
-
           {!! Alert::info(trans('manager.businesses.index.help')) !!}
 
 					<table class="table table-condensed">

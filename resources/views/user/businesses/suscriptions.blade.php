@@ -9,8 +9,6 @@
 				<div class="panel-heading">{{ trans('user.businesses.suscriptions.title') }}</div>
 
 				<div class="panel-body">
-					@include('flash::message')
-				
 					<table class="table table-condensed">
 					@foreach ($contacts as $contact)
 						<tr>

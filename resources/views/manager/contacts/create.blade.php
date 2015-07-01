@@ -7,8 +7,6 @@
 				<div class="panel-heading">{{ trans('manager.contacts.create.title') }}</div>
 
 				<div class="panel-body">
-					@include('flash::message')
-
 					@include('_errors')
 
 					{!! Form::model(new App\Contact, ['route' => ['manager.business.contact.store', $business]]) !!}

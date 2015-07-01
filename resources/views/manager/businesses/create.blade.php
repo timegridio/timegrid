@@ -7,8 +7,6 @@
 			<div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>
 
 			<div class="panel-body">
-				@include('flash::message')
-
 				@include('_errors')
 
 				{!! Form::model(new App\Business, ['route' => ['manager.business.store']]) !!}

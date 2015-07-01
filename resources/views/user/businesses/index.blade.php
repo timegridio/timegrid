@@ -9,8 +9,6 @@
 				<div class="panel-heading">{{ trans('user.businesses.index.title') }}</div>
 
 				<div class="panel-body">
-					@include('flash::message')
-				
 					<table class="table table-condensed">
 					@foreach ($businesses as $business)
 						<tr>
