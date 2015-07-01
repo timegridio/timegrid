@@ -22,7 +22,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('footer_scripts')
 <script type="text/javascript">
 (function() {
  

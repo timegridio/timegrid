@@ -108,7 +108,7 @@
 </div>
 @endsection
 
-@section('scripts')
+@section('footer_scripts')
 <script>
 $(document).ready(function() {
 		var panels = $('.user-infos');

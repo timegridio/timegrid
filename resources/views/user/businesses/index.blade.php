@@ -34,7 +34,7 @@
 
 @endsection
 
-@section('scripts')
+@section('footer_scripts')
 <script type="text/javascript">
 /*
 <a href="posts/2" data-method="delete"> <---- We want to send an HTTP DELETE request
