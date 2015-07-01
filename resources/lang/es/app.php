@@ -1,23 +1,23 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
+ Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/_navmenu.blade.php
+  //==================================== Translations ====================================//
+  'home' => 
+  array (
+    'btn' => 
+    array (
+      'actions' => 'Acciones',
+    ),
+  ),
+  'label' => 
+  array (
+    'select_timezone' => 'Zona horaria',
+  ),
   'nav' => 
   array (
-    'user' => 
-    array (
-      'business' => 
-      array (
-        'my_suscriptions' => 'Mis suscripciones',
-        'home' => 'Inicio',
-        'menu' => 'Comercios',
-        'selector' => 'Seleccionar',
-      ),
-    ),
     'home' => 'Inicio',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
@@ -31,13 +31,16 @@ return array (
       ),
     ),
     'register' => 'Registrarme',
-  ),
-  //==================================== Translations ====================================//
-  'home' => 
-  array (
-    'btn' => 
+    'user' => 
     array (
-      'actions' => 'Acciones',
+      'business' => 
+      array (
+        'home' => 'Inicio',
+        'menu' => 'Comercios',
+        'my_appointments' => 'Mis turnos',
+        'my_suscriptions' => 'Mis suscripciones',
+        'selector' => 'Seleccionar',
+      ),
     ),
   ),
   'welcome' => 

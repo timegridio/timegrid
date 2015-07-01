@@ -1,26 +1,36 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
+ Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/index.blade.php
   'appointments' => 
   array (
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'status' => 'Estado',
+        'business' => 'Comercio',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'duration' => 'Duración',
+        'finish_time' => 'Finaliza',
+        'start_time' => 'Comienza',
+      ),
+      'title' => 'Turnos',
+    ),
+    'btn' => 
+    array (
+      'book' => 'Reservar Turno',
+    ),
     'form' => 
     array (
-      'business' => 
-      array (
-        'label' => 'Comercio',
-      ),
       'comments' => 
       array (
         'label' => 'Comentarios',
-      ),
-      'contact_id' => 
-      array (
-        'label' => 'Contacto',
       ),
       'date' => 
       array (
@@ -34,14 +44,17 @@ return array (
       array (
         'label' => 'Hora',
       ),
+      'business' => 
+      array (
+        'label' => 'Comercio',
+      ),
+      'contact_id' => 
+      array (
+        'label' => 'Contacto',
+      ),
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/UserBooking.php
+  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 
@@ -50,23 +63,18 @@ return array (
       array (
         'success' => 'Turno Registrado',
       ),
+      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al comercio antes',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/show.blade.php
+  'business' => 
+  array (
+    'msg' => 
+    array (
+      'please_select_a_business' => 'Seleccioná un comercio',
+    ),
+  ),
   'businesses' => 
   array (
-    'show' => 
-    array (
-      'btn' => 
-      array (
-        'book' => 'Reservar Turno',
-        'change' => 'Cambiar',
-      ),
-    ),
-    'suscriptions' => 
-    array (
-      'title' => 'Suscripciones',
-    ),
     'index' => 
     array (
       'btn' => 
@@ -76,7 +84,18 @@ return array (
       ),
       'title' => 'Comercios disponibles',
     ),
+    'suscriptions' => 
+    array (
+      'title' => 'Suscripciones',
+    ),
+    'show' => 
+    array (
+      'btn' => 
+      array (
+        'book' => 'Reservar Turno',
+        'change' => 'Cambiar',
+      ),
+    ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/suscriptions.blade.php
-  //==================================== Translations ====================================//
+  //================================== Obsolete strings ==================================//
 );

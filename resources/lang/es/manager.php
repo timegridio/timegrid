@@ -1,128 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/06/27 20:36:14 
+ Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  'contacts' => 
-  array (
-    'btn' => 
-    array (
-      'delete' => 'Eliminar',
-      'store' => 'Guardar',
-    ),
-    'form' => 
-    array (
-      'email' => 
-      array (
-        'label' => 'Email',
-        'placeholder' => 'email@ejemplo.com',
-      ),
-      'mobile' => 
-      array (
-        'label' => 'Móvil',
-        'placeholder' => 'número de móvil completo',
-      ),
-      'birthdate' => 
-      array (
-        'label' => 'Nacimiento',
-        'placeholder' => 'fecha de nacimiento',
-      ),
-      'firstname' => 
-      array (
-        'label' => 'Nombre',
-        'placeholder' => 'primer nombre',
-      ),
-      'gender' => 
-      array (
-        'female' => 
-        array (
-          'label' => 'Femenino',
-        ),
-        'label' => 'Sexo',
-        'male' => 
-        array (
-          'label' => 'Masculino',
-        ),
-      ),
-      'lastname' => 
-      array (
-        'label' => 'Apellido',
-        'placeholder' => 'apellido',
-      ),
-      'nin' => 
-      array (
-        'label' => 'DNI',
-        'placeholder' => 'número de identificación nacional',
-      ),
-      'notes' => 
-      array (
-        'label' => 'Notas',
-        'placeholder' => 'notas',
-      ),
-    ),
-    'label' => 
-    array (
-      'email' => 'Email',
-      'nin' => 'DNI',
-      'birthdate' => 'Nacimiento',
-      'gender' => 'Sexo',
-      'mobile' => 'Móvil',
-      'notes' => 'Notas',
-      'username' => 'Usuario',
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => 'Eliminado',
-      ),
-      'store' => 
-      array (
-        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
-        'success' => 'Registrado Ok!',
-      ),
-      'update' => 
-      array (
-        'success' => 'Actualizado Ok',
-      ),
-    ),
-    'create' => 
-    array (
-      'title' => 'Contactos',
-    ),
-    'list' => 
-    array (
-      'btn' => 
-      array (
-        'filter' => 'Filtro',
-      ),
-      'header' => 
-      array (
-        'firstname' => 'Nombre',
-        'lastname' => 'Apellido',
-        'mobile' => 'Móvil',
-        'username' => 'Usuario',
-        'gender' => 'Sexo',
-      ),
-      'msg' => 
-      array (
-        'filter_no_results' => 'Sin resultados',
-      ),
-    ),
-    'title' => 'Mis Clientes',
-  ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/_form.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/ContactsController.php
   //==================================== Translations ====================================//
   'businesses' => 
   array (
@@ -182,6 +63,8 @@ return array (
       ),
       'store' => 
       array (
+        'business_already_exists' => 'businesses.msg.store.business_already_exists',
+        'restored_trashed' => 'businesses.msg.store.restored_trashed',
         'success' => 'Comercio registrado Ok!',
       ),
       'update' => 
@@ -193,6 +76,115 @@ return array (
     array (
       'title' => 'Mi comercio',
     ),
+  ),
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'delete' => 'Eliminar',
+      'store' => 'Guardar',
+      'update' => 'contacts.btn.update',
+    ),
+    'create' => 
+    array (
+      'title' => 'Contactos',
+    ),
+    'form' => 
+    array (
+      'birthdate' => 
+      array (
+        'label' => 'Nacimiento',
+        'placeholder' => 'fecha de nacimiento',
+      ),
+      'email' => 
+      array (
+        'label' => 'Email',
+        'placeholder' => 'email@ejemplo.com',
+      ),
+      'firstname' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'primer nombre',
+      ),
+      'gender' => 
+      array (
+        'female' => 
+        array (
+          'label' => 'Femenino',
+        ),
+        'male' => 
+        array (
+          'label' => 'Masculino',
+        ),
+        'label' => 'Sexo',
+      ),
+      'lastname' => 
+      array (
+        'label' => 'Apellido',
+        'placeholder' => 'apellido',
+      ),
+      'mobile' => 
+      array (
+        'label' => 'Móvil',
+        'placeholder' => 'número de móvil completo',
+      ),
+      'nin' => 
+      array (
+        'label' => 'DNI',
+        'placeholder' => 'número de identificación nacional',
+      ),
+      'notes' => 
+      array (
+        'label' => 'Notas',
+        'placeholder' => 'notas',
+      ),
+    ),
+    'label' => 
+    array (
+      'birthdate' => 'Nacimiento',
+      'email' => 'Email',
+      'mobile' => 'Móvil',
+      'nin' => 'DNI',
+      'notes' => 'Notas',
+      'username' => 'Usuario',
+      'gender' => 'Sexo',
+    ),
+    'list' => 
+    array (
+      'btn' => 
+      array (
+        'filter' => 'Filtro',
+      ),
+      'header' => 
+      array (
+        'firstname' => 'Nombre',
+        'lastname' => 'Apellido',
+        'mobile' => 'Móvil',
+        'username' => 'Usuario',
+        'gender' => 'Sexo',
+      ),
+      'msg' => 
+      array (
+        'filter_no_results' => 'Sin resultados',
+      ),
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => 'Eliminado',
+      ),
+      'store' => 
+      array (
+        'success' => 'Registrado Ok!',
+        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Actualizado Ok',
+      ),
+    ),
+    'title' => 'Mis Clientes',
   ),
   //================================== Obsolete strings ==================================//
 );
