@@ -37,7 +37,8 @@ class BusinessFormRequest extends Request {
 				return [
 					  'name' => 'required|min:3',
 					  'slug' => 'required|min:3',
-					  'description' => 'required|min:10'
+					  'description' => 'required|min:10',
+					  'timezone' => 'timezone'
 					];
 				break;
 			default:
