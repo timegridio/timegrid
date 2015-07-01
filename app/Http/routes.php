@@ -32,7 +32,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function()
 {
 	Route::resource('business', 'BusinessesController');
-	Route::resource('contact', 'ContactsController');
+	Route::resource('business.contact', 'BusinessContactController');
 });
 
 Route::get('root', [

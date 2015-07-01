@@ -11,15 +11,15 @@ use Session;
 use Request;
 
 
-class ContactsController extends Controller {
-
-	protected $business = null;
-
-	public function __construct()
-	{
-		$this->business = Business::findOrFail( Session::get('selected.business_id') );
-	}
-
+class BusinessContactController extends Controller {
+#
+#	protected $business = null;
+#
+#	public function __construct()
+#	{
+#		$this->business = Business::findOrFail( Session::get('selected.business_id') );
+#	}
+#
 	/**
 	 * Display a listing of the resource.
 	 *
@@ -35,9 +35,9 @@ class ContactsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create(ContactFormRequest $request)
+	public function create(Business $business, ContactFormRequest $request)
 	{
-		return view('manager.contacts.create', compact('headerlang'));
+		return view('manager.contacts.create', compact('headerlang', 'business'));
 	}
 
 	/**
@@ -45,15 +45,15 @@ class ContactsController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(ContactFormRequest $request)
+	public function store(Business $business, ContactFormRequest $request)
 	{
-		$business = Business::findOrFail( Session::get('selected.business_id') );
+		# $business = Business::findOrFail( Session::get('selected.business_id') );
 		$existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
 		foreach ($existing_contacts as $existing_contact) {
 			if ($existing_contact->isSuscribedTo($business)) {
 				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-				return Redirect::route('manager.contact.show', $existing_contact->id);
+				return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
 			}
 		}
 
@@ -62,7 +62,7 @@ class ContactsController extends Controller {
 		$business->save();
 
 		Flash::success(trans('manager.contacts.msg.store.success'));
-		return Redirect::route('manager.contact.show', $contact->id);
+		return Redirect::route('manager.business.contact.show', [$business, $contact]);
 	}
 
 	/**
@@ -71,10 +71,10 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show(Contact $contact, ContactFormRequest $request)
+	public function show(Business $business, Contact $contact, ContactFormRequest $request)
 	{
-		$business = $this->business;
-		return view('manager.contacts.show', compact('contact', 'business'));
+		# $business = $this->business;
+		return view('manager.contacts.show', compact('business', 'contact'));
 	}
 
 	/**
@@ -83,9 +83,9 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit(Contact $contact, ContactFormRequest $request)
+	public function edit(Business $business, Contact $contact, ContactFormRequest $request)
 	{
-		return view('manager.contacts.edit', compact('contact'));
+		return view('manager.contacts.edit', compact('business', 'contact'));
 	}
 
 	/**
@@ -94,7 +94,7 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update(Contact $contact, ContactFormRequest $request)
+	public function update(Business $business, Contact $contact, ContactFormRequest $request)
 	{
 		$contact->update([
 			'firstname'       => $request->get('firstname'),
@@ -109,7 +109,7 @@ class ContactsController extends Controller {
 		]);
 
 		Flash::success( trans('manager.contacts.msg.update.success') );
-		return Redirect::route('manager.contact.show', $contact->id);
+		return Redirect::route('manager.business.contact.show', [$business, $contact]);
 	}
 
 	/**
@@ -118,11 +118,11 @@ class ContactsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy(Contact $contact, ContactFormRequest $request)
+	public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
 	{
 		$contact->delete();
 
 		Flash::success( trans('manager.contacts.msg.destroy.success') );
-		return Redirect::route('manager.business.show', Session::get('selected.business_id'));
+		return Redirect::route('manager.business.show', $business);
 	}
 }

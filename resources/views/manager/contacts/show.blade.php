@@ -95,8 +95,8 @@
 								 <div class="panel-footer">
 												{!! Button::primary()->withIcon(Icon::link()) !!}
 												<span class="pull-right">
-														{!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.contact.edit', $contact) ) !!}
-														{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.contact.destroy', $contact) ) !!}
+														{!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) ) !!}
+														{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
 												</span>
 								 </div>
 						
