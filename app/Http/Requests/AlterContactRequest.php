@@ -27,8 +27,9 @@ class AlterContactRequest extends Request
         $rules = [  'firstname' => 'required|min:3',
                     'lastname' => 'required|min:3',
                     'gender' => 'required|max:1',
+                    'mobile_country' => 'required_with:mobile|size:2',
                     'mobile' => 'phone',
-                    'mobile_country' => 'required_with:mobile|max:2' /* FIXME: LENGHT MUST BE EXACT 2 */
+                    'email' => 'email'
                 ];
 
         switch ($this->method()) {
