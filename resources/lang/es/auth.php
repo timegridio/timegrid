@@ -10,7 +10,7 @@ return array (
   array (
     'email' => 'Email',
     'forgot' => 'Olvidé mi contraseña',
-    'login' => 'Iniciar sesión',
+    'login' => 'Ingresar',
     'password' => 'Contraseña',
     'remember_me' => 'Recordarme',
   ),
