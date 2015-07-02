@@ -25,12 +25,12 @@ class Appointment extends Model
 
     public function contact()
     {
-        return $this->belongsTo('\App\Contact');
+        return $this->belongsTo('App\Contact');
     }
 
     public function business()
     {
-        return $this->belongsTo('\App\Business');
+        return $this->belongsTo('App\Business');
     }
 
     public function getFinishAtAttribute()
