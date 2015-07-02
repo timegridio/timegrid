@@ -50,6 +50,7 @@ class BusinessContactController extends Controller
         }
 
         $contact = Contact::create(Request::all());
+        $contact->user()->associate(\Auth::user());
         $business->contacts()->attach($contact);
         $business->save();
 
@@ -69,10 +70,16 @@ class BusinessContactController extends Controller
 
     public function update(Business $business, Contact $contact, AlterContactRequest $request)
     {
-        $contact->update([
+        $update = [
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country')
-        ]);
+        ];
+
+        /* Only allow filling empty fields, not modification */
+        if($contact->birthdate === null && $request->get('birthdate')) $update['birthdate'] = $request->get('birthdate');
+        if(trim($contact->nin) == '' && $request->get('nin')) $update['nin'] = $request->get('nin');
+
+        $contact->update($update);
 
         Flash::success(trans('user.contacts.msg.update.success'));
         return Redirect::route('user.business.contact.show', [$business, $contact]);
