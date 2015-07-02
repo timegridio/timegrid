@@ -8,8 +8,7 @@
 	<div class="row">
 		<div class="form-group col-xs-4">
 			{!! Form::text('nin', null, 
-				array('required', 
-					  'class'=>'form-control', 
+				array('class'=>'form-control', 
 					  'placeholder'=> trans('manager.contacts.form.nin.label') )) !!}
 		</div>
 		<div class="form-group col-xs-7">
