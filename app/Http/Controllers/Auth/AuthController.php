@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
 use Log;
+use Event;
+use App\Events\NewRegisteredUser;
 
 class AuthController extends Controller
 {
@@ -57,10 +59,11 @@ class AuthController extends Controller
     public function create(array $data)
     {
         Log::info("Register new user: <{$data['email']}>");
-
-        return User::create([
+        $user = User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+        Event::fire(new NewRegisteredUser($user));
+        return $user;
     }
 }
