@@ -10,72 +10,71 @@ use Flash;
 use Session;
 use Request;
 
+class BusinessContactController extends Controller
+{
+    public function index()
+    {
+        //
+    }
 
-class BusinessContactController extends Controller {
+    public function create(Business $business, ContactFormRequest $request)
+    {
+        return view('manager.contacts.create', compact('headerlang', 'business'));
+    }
 
-	public function index()
-	{
-		//
-	}
+    public function store(Business $business, ContactFormRequest $request)
+    {
+        $existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
-	public function create(Business $business, ContactFormRequest $request)
-	{
-		return view('manager.contacts.create', compact('headerlang', 'business'));
-	}
+        foreach ($existing_contacts as $existing_contact) {
+            if ($existing_contact->isSuscribedTo($business)) {
+                Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+                return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
+            }
+        }
 
-	public function store(Business $business, ContactFormRequest $request)
-	{
-		$existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
+        $contact = Contact::create(Request::all());
+        $business->contacts()->attach($contact);
+        $business->save();
 
-		foreach ($existing_contacts as $existing_contact) {
-			if ($existing_contact->isSuscribedTo($business)) {
-				Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-				return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
-			}
-		}
+        Flash::success(trans('manager.contacts.msg.store.success'));
+        return Redirect::route('manager.business.contact.show', [$business, $contact]);
+    }
 
-		$contact = Contact::create( Request::all() );
-		$business->contacts()->attach($contact);
-		$business->save();
+    public function show(Business $business, Contact $contact, ContactFormRequest $request)
+    {
+        # $business = $this->business;
+        return view('manager.contacts.show', compact('business', 'contact'));
+    }
 
-		Flash::success(trans('manager.contacts.msg.store.success'));
-		return Redirect::route('manager.business.contact.show', [$business, $contact]);
-	}
+    public function edit(Business $business, Contact $contact, ContactFormRequest $request)
+    {
+        return view('manager.contacts.edit', compact('business', 'contact'));
+    }
 
-	public function show(Business $business, Contact $contact, ContactFormRequest $request)
-	{
-		# $business = $this->business;
-		return view('manager.contacts.show', compact('business', 'contact'));
-	}
+    public function update(Business $business, Contact $contact, ContactFormRequest $request)
+    {
+        $contact->update([
+            'firstname'       => $request->get('firstname'),
+            'lastname'        => $request->get('lastname'),
+            'email'           => $request->get('email'),
+            'nin'             => $request->get('nin'),
+            'gender'          => $request->get('gender'),
+            'birthdate'       => $request->get('birthdate'),
+            'mobile'          => $request->get('mobile'),
+            'mobile_country'  => $request->get('mobile_country'),
+            'notes'           => $request->get('notes')
+        ]);
 
-	public function edit(Business $business, Contact $contact, ContactFormRequest $request)
-	{
-		return view('manager.contacts.edit', compact('business', 'contact'));
-	}
+        Flash::success(trans('manager.contacts.msg.update.success'));
+        return Redirect::route('manager.business.contact.show', [$business, $contact]);
+    }
 
-	public function update(Business $business, Contact $contact, ContactFormRequest $request)
-	{
-		$contact->update([
-			'firstname'       => $request->get('firstname'),
-			'lastname'        => $request->get('lastname'), 
-			'email'           => $request->get('email'), 
-			'nin'             => $request->get('nin'), 
-			'gender'          => $request->get('gender'), 
-			'birthdate'       => $request->get('birthdate'), 
-			'mobile'          => $request->get('mobile'), 
-			'mobile_country'  => $request->get('mobile_country'), 
-			'notes'           => $request->get('notes')
-		]);
+    public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
+    {
+        $contact->delete();
 
-		Flash::success( trans('manager.contacts.msg.update.success') );
-		return Redirect::route('manager.business.contact.show', [$business, $contact]);
-	}
-
-	public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
-	{
-		$contact->delete();
-
-		Flash::success( trans('manager.contacts.msg.destroy.success') );
-		return Redirect::route('manager.business.show', $business);
-	}
+        Flash::success(trans('manager.contacts.msg.destroy.success'));
+        return Redirect::route('manager.business.show', $business);
+    }
 }

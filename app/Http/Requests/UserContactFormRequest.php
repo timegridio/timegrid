@@ -5,42 +5,41 @@ use App\Business;
 use App\Contact;
 use Route;
 
-class UserContactFormRequest extends Request {
+class UserContactFormRequest extends Request
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return $this->contact === null || \Auth::user()->suscribedTo($this->business)->id == $this->contact->id;
+    }
 
-	/**
-	 * Determine if the user is authorized to make this request.
-	 *
-	 * @return bool
-	 */
-	public function authorize()
-	{
-		return $this->contact === null || \Auth::user()->suscribedTo($this->business)->id == $this->contact->id;
-	}
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        $rules = [    'firstname' => 'required|min:3',
+                    'lastname' => 'required|min:3',
+                    'gender' => 'required|max:1',
+                    'mobile' => 'phone',
+                    'mobile_country' => 'required_with:mobile|max:2' /* FIXME: LENGHT MUST BE EXACT 2 */
+                ];
 
-	/**
-	 * Get the validation rules that apply to the request.
-	 *
-	 * @return array
-	 */
-	public function rules()
-	{
-		$rules = [	'firstname' => 'required|min:3',
-					'lastname' => 'required|min:3',
-					'gender' => 'required|max:1',
-					'mobile' => 'phone',
-					'mobile_country' => 'required_with:mobile|max:2' /* FIXME: LENGHT MUST BE EXACT 2 */
-				];
-
-		switch ($this->method())
-		{
-			case 'PATCH':
-			case 'PUT':
-			case 'POST':
-				return $rules;
-				break;			
-			default:
-				return [];
-				break;
-		}
-	}
+        switch ($this->method()) {
+            case 'PATCH':
+            case 'PUT':
+            case 'POST':
+                return $rules;
+                break;
+            default:
+                return [];
+                break;
+        }
+    }
 }

@@ -2,14 +2,13 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
 use Illuminate\Http\Request;
 
-class RootController extends Controller {
-
-	public function index()
-	{
-		$users = \App\User::all();
-		return view('root.dashboard', compact('users'));
-	}
+class RootController extends Controller
+{
+    public function index()
+    {
+        $users = \App\User::all();
+        return view('root.dashboard', compact('users'));
+    }
 }

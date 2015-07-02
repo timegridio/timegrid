@@ -10,74 +10,73 @@ use Flash;
 use Session;
 use Request;
 
+class BusinessContactController extends Controller
+{
+    public function index()
+    {
+        //
+    }
 
-class BusinessContactController extends Controller {
+    public function create(Business $business, UserContactFormRequest $request)
+    {
+        $existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
 
-	public function index()
-	{
-		//
-	}
+        if ($existing_contact !== null && !$existing_contact->isSuscribedTo($business)) {
+            $business->contacts()->attach($existing_contact);
+            $business->save();
+            Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
+            return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
+        }
 
-	public function create(Business $business, UserContactFormRequest $request)
-	{
-		$existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
+        return view('user.contacts.create', compact('headerlang', 'business'));
+    }
 
-		if ($existing_contact !== null && !$existing_contact->isSuscribedTo($business)) {
-				$business->contacts()->attach($existing_contact);
-				$business->save();
-				Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
-				return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
-		}
+    public function store(Business $business, UserContactFormRequest $request)
+    {
+        $existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
-		return view('user.contacts.create', compact('headerlang', 'business'));
-	}
+        foreach ($existing_contacts as $existing_contact) {
+            if ($existing_contact->isSuscribedTo($business)) {
+                Flash::warning(trans('user.contacts.msg.store.warning_showing_existing_contact'));
+                return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
+            }
+        }
 
-	public function store(Business $business, UserContactFormRequest $request)
-	{
-		$existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
+        $contact = Contact::create(Request::all());
+        $business->contacts()->attach($contact);
+        $business->save();
 
-		foreach ($existing_contacts as $existing_contact) {
-			if ($existing_contact->isSuscribedTo($business)) {
-				Flash::warning(trans('user.contacts.msg.store.warning_showing_existing_contact'));
-				return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
-			}
-		}
+        Flash::success(trans('user.contacts.msg.store.success'));
+        return Redirect::route('user.business.contact.show', [$business, $contact]);
+    }
 
-		$contact = Contact::create( Request::all() );
-		$business->contacts()->attach($contact);
-		$business->save();
+    public function show(Business $business, Contact $contact, UserContactFormRequest $request)
+    {
+        return view('user.contacts.show', compact('business', 'contact'));
+    }
 
-		Flash::success(trans('user.contacts.msg.store.success'));
-		return Redirect::route('user.business.contact.show', [$business, $contact]);
-	}
+    public function edit(Business $business, Contact $contact, UserContactFormRequest $request)
+    {
+        return view('user.contacts.edit', compact('business', 'contact'));
+    }
 
-	public function show(Business $business, Contact $contact, UserContactFormRequest $request)
-	{
-		return view('user.contacts.show', compact('business', 'contact'));
-	}
+    public function update(Business $business, Contact $contact, UserContactFormRequest $request)
+    {
+        $contact->update([
+            'mobile'          => $request->get('mobile'),
+            'mobile_country'  => $request->get('mobile_country')
+        ]);
 
-	public function edit(Business $business, Contact $contact, UserContactFormRequest $request)
-	{
-		return view('user.contacts.edit', compact('business', 'contact'));
-	}
-
-	public function update(Business $business, Contact $contact, UserContactFormRequest $request)
-	{
-		$contact->update([
-			'mobile'          => $request->get('mobile'), 
-			'mobile_country'  => $request->get('mobile_country')
-		]);
-
-		Flash::success( trans('user.contacts.msg.update.success') );
-		return Redirect::route('user.business.contact.show', [$business, $contact]);
-	}
+        Flash::success(trans('user.contacts.msg.update.success'));
+        return Redirect::route('user.business.contact.show', [$business, $contact]);
+    }
 /*
-	public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
-	{
-		$contact->delete();
+    public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
+    {
+        $contact->delete();
 
-		Flash::success( trans('manager.contacts.msg.destroy.success') );
-		return Redirect::route('manager.business.show', $business);
-	}
+        Flash::success( trans('manager.contacts.msg.destroy.success') );
+        return Redirect::route('manager.business.show', $business);
+    }
 */
 }
