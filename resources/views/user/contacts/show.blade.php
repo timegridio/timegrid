@@ -69,7 +69,7 @@
 										</tr>
 										<tr>
 												<td>{{ trans('manager.contacts.label.birthdate') }}</td>
-												<td>{{ $contact->birthdate->toDateString() }}</td>
+												<td>{{ $contact->birthdate ? $contact->birthdate->toDateString() : '' }}</td>
 										</tr>
 										@if ($contact->mobile)
 										<tr>

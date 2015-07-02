@@ -22,7 +22,7 @@
 			{!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
 		</div>
 		<div class="form-group col-xs-6">
-			{!! Form::date('birthdate', isset($contact) ? old('birthdate', $contact->birthdate->toDateString()) : null, 
+			{!! Form::date('birthdate', isset($contact) ? old('birthdate', $contact->birthdate ? $contact->birthdate->toDateString() : null) : null, 
 				array('class'=>'form-control',
 					  'id'=>'birthdate',
 					  'placeholder'=> trans('manager.contacts.form.birthdate.label'),
