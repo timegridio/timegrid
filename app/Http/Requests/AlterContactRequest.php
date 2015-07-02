@@ -5,7 +5,7 @@ use App\Business;
 use App\Contact;
 use Route;
 
-class UserContactFormRequest extends Request
+class AlterContactRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class UserContactFormRequest extends Request
      */
     public function authorize()
     {
-        return $this->contact === null || \Auth::user()->suscribedTo($this->business)->id == $this->contact->id;
+        return $this->contact === null || \Auth::user()->contacts->contains($this->contact);
     }
 
     /**
@@ -24,7 +24,7 @@ class UserContactFormRequest extends Request
      */
     public function rules()
     {
-        $rules = [    'firstname' => 'required|min:3',
+        $rules = [  'firstname' => 'required|min:3',
                     'lastname' => 'required|min:3',
                     'gender' => 'required|max:1',
                     'mobile' => 'phone',

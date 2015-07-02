@@ -2,7 +2,8 @@
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\UserContactFormRequest;
+use App\Http\Requests\AlterContactRequest;
+use App\Http\Requests\ViewContactRequest;
 use App\Business;
 use App\Contact;
 use Illuminate\Support\Facades\Redirect;
@@ -17,7 +18,7 @@ class BusinessContactController extends Controller
         //
     }
 
-    public function create(Business $business, UserContactFormRequest $request)
+    public function create(Business $business, AlterContactRequest $request)
     {
         $existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
 
@@ -31,15 +32,21 @@ class BusinessContactController extends Controller
         return view('user.contacts.create', compact('headerlang', 'business'));
     }
 
-    public function store(Business $business, UserContactFormRequest $request)
+    public function store(Business $business, AlterContactRequest $request)
     {
         $existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
 
         foreach ($existing_contacts as $existing_contact) {
             if ($existing_contact->isSuscribedTo($business)) {
-                Flash::warning(trans('user.contacts.msg.store.warning_showing_existing_contact'));
+                \Auth::user()->contacts()->save($existing_contact);
+
+                Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));
                 return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
             }
+            $business->contacts()->attach($existing_contact);
+            $business->save();            
+            Flash::warning(trans('user.contacts.msg.store.warning.showing_existing_contact'));
+            return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
         }
 
         $contact = Contact::create(Request::all());
@@ -50,17 +57,17 @@ class BusinessContactController extends Controller
         return Redirect::route('user.business.contact.show', [$business, $contact]);
     }
 
-    public function show(Business $business, Contact $contact, UserContactFormRequest $request)
+    public function show(Business $business, Contact $contact, ViewContactRequest $request)
     {
         return view('user.contacts.show', compact('business', 'contact'));
     }
 
-    public function edit(Business $business, Contact $contact, UserContactFormRequest $request)
+    public function edit(Business $business, Contact $contact, AlterContactRequest $request)
     {
         return view('user.contacts.edit', compact('business', 'contact'));
     }
 
-    public function update(Business $business, Contact $contact, UserContactFormRequest $request)
+    public function update(Business $business, Contact $contact, AlterContactRequest $request)
     {
         $contact->update([
             'mobile'          => $request->get('mobile'),
