@@ -34,7 +34,7 @@ class BusinessContactController extends Controller
 
     public function store(Business $business, AlterContactRequest $request)
     {
-        $existing_contacts = Contact::where(['nin' => $request->input('nin')])->get();
+        $existing_contacts = Contact::where(['email' => $request->input('email')])->get();
 
         foreach ($existing_contacts as $existing_contact) {
             if ($existing_contact->isSuscribedTo($business)) {
