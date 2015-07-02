@@ -1,12 +1,11 @@
 <?php namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-# use Illuminate\Contracts\Auth\Guard;
-# use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Validation\ValidationServiceProvider;
+use App\Http\Controllers\Controller;
 use App\User;
 use Validator;
+use Log;
 
 class AuthController extends Controller
 {
@@ -57,6 +56,8 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
+        Log::info("Register new user: <{$data['email']}>");
+
         return User::create([
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
