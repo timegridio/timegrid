@@ -19,7 +19,11 @@
 				</div>
 
 				<div class="panel-footer">
-					{!! Button::normal(trans('user.appointments.btn.book'))->asLinkTo( route('user.booking.book') ) !!}
+					@if (\Auth::user()->suscribedTo($business) !== null)
+						{!! Button::normal(trans('user.appointments.btn.book'))->asLinkTo( route('user.booking.book') ) !!}
+					@else
+						{!! Button::normal(trans('user.business.btn.suscribe'))->asLinkTo( route('user.business.contact.create', $business) ) !!}
+					@endif
 				</div>
 
 			</div>

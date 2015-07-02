@@ -27,6 +27,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 		Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
 		Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
 	});
+
+	Route::resource('business.contact', 'BusinessContactController');
 });
 
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function()

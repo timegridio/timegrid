@@ -139,12 +139,12 @@ class Contact extends Model {
 		return $this->businesses->contains($business);
 	}
 
-	public function getSuscriptionsAttribute()
-	{
-		$suscriptions = [];
-		foreach ($this->businesses as $business) {
-			$suscriptions[] = $business->slug;
-		}
-		return implode(',', $suscriptions);
-	}
+#	public function getSuscriptionsAttribute()
+#	{
+#		$suscriptions = [];
+#		foreach ($this->businesses as $business) {
+#			$suscriptions[] = $business->slug;
+#		}
+#		return implode(',', $suscriptions);
+#	}
 }

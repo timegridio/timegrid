@@ -13,10 +13,16 @@
 					@foreach ($contacts as $contact)
 						<tr>
 							<td>{{ $contact->nin }}</td>
-              				<td>{{ $contact->firstname }}</td>
-              				<td>{{ $contact->lastname }}</td>
-              				<td>{{ $contact->email }}</td>
-              				<td>{{ $contact->suscriptions }}</td>
+							<td>{{ $contact->firstname }}</td>
+							<td>{{ $contact->lastname }}</td>
+							<td>{{ $contact->email }}</td>
+							<td>
+							@if($contact->businesses()->count())
+								@foreach ($contact->businesses as $business)
+									{!! Button::normal($business->slug)->asLinkTo( route('user.business.contact.show', [$business, $contact])) !!}
+								@endforeach
+							@endif
+							</td>
 						</tr>
 					@endforeach
 					</table>
