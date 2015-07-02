@@ -59,7 +59,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         })->first();
     }
 
-    public function isOwner(\App\Business $business)
+    public function isOwner(Business $business)
     {
         return $this->allBusinesses->contains($business);
     }
