@@ -13,13 +13,13 @@ class ContactFormRequest extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize(Contact $contact)
+	public function authorize()
 	{
-		$business = Business::findOrFail( Session::get('selected.business_id') );
+		# $business = Business::findOrFail( $this->business );
 
-		if (! \Auth::user()->isOwner($business) ) return false;
+		if (! \Auth::user()->isOwner($this->business) ) return false;
 
-		return $this->contact === null || $this->contact->isSuscribedTo($business);
+		return $this->contact === null || $this->contact->isSuscribedTo($this->business);
 	}
 
 	/**

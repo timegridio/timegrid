@@ -9,7 +9,7 @@ class BusinessFormRequest extends Request {
 	 *
 	 * @return bool
 	 */
-	public function authorize(\App\Business $business)
+	public function authorize()
 	{
 		switch ($this->method())
 		{
