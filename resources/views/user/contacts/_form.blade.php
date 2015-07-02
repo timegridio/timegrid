@@ -23,8 +23,7 @@
 		</div>
 		<div class="form-group col-xs-6">
 			{!! Form::date('birthdate', isset($contact) ? old('birthdate', $contact->birthdate->toDateString()) : null, 
-				array('required', 
-					  'class'=>'form-control',
+				array('class'=>'form-control',
 					  'id'=>'birthdate',
 					  'placeholder'=> trans('manager.contacts.form.birthdate.label'),
 					  'title'=> trans('manager.contacts.form.birthdate.label') )) !!}
