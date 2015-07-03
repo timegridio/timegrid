@@ -50,7 +50,8 @@ class BusinessContactController extends Controller
         }
 
         $contact = Contact::create(Request::all());
-        $contact->user()->associate(\Auth::user());
+        $contact->user()->associate(\Auth::user()->id);
+        $contact->save();
         $business->contacts()->attach($contact);
         $business->save();
 
