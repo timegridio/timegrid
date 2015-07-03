@@ -1,4 +1,6 @@
-<?php namespace App;
+<?php
+
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
@@ -16,7 +18,6 @@ class Contact extends Model
         if (array_key_exists('email', $changed)) {
             $this->linkToUser(true);
         }
-
         parent::save();
     }
 
@@ -53,14 +54,14 @@ class Contact extends Model
     public function getAppointmentsCountAttribute()
     {
         // if relation is not loaded already, let's do it first
-      if (! array_key_exists('appointmentsCount', $this->relations)) {
-          $this->load('appointmentsCount');
-      }
+        if (! array_key_exists('appointmentsCount', $this->relations)) {
+            $this->load('appointmentsCount');
+        }
      
         $related = $this->getRelation('appointmentsCount');
 
-      // then return the count directly
-      return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
+        // then return the count directly
+        return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
     }
 
     public function getFullnameAttribute()
@@ -92,9 +93,8 @@ class Contact extends Model
     {
         $reference = new \DateTime;
         $born = new \DateTime($this->birthdate);
-        # dd($this->birthdate);
+
         if ($this->birthdate > $reference) {
-            # Log::warning('Invalid birthdate: ');
             return '';
         }
 
@@ -147,13 +147,4 @@ class Contact extends Model
     {
         return $this->businesses->contains($business);
     }
-
-#	public function getSuscriptionsAttribute()
-#	{
-#		$suscriptions = [];
-#		foreach ($this->businesses as $business) {
-#			$suscriptions[] = $business->slug;
-#		}
-#		return implode(',', $suscriptions);
-#	}
 }
