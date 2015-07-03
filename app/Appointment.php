@@ -18,7 +18,7 @@ class Appointment extends Model
 
     public function save(array $options = array())
     {
-        $this->attributes['hash'] = md5($this->start_at.$this->contact_id);
+        $this->attributes['hash'] = md5($this->start_at.$this->contact_id.$this->business_id);
 
         parent::save();
     }
@@ -38,6 +38,7 @@ class Appointment extends Model
         if (is_numeric($this->duration)) {
             return $this->start_at->addMinutes($this->duration);
         }
+        return $this->start_at;
     }
 
     public function getCodeAttribute()
