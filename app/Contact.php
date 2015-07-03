@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Business;
 
 class Contact extends Model
 {
@@ -143,7 +144,7 @@ class Contact extends Model
         return $this;
     }
 
-    public function isSuscribedTo(\App\Business $business)
+    public function isSuscribedTo(Business $business)
     {
         return $this->businesses->contains($business);
     }
