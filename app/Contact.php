@@ -1,6 +1,7 @@
 <?php namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Contact extends Model
 {
@@ -82,13 +83,19 @@ class Contact extends Model
         $this->attributes['mobile_country'] = trim($country) !== '' ? $country : null;
     }
 
+    public function setBirthdateAttribute($birthdate)
+    {
+        $this->attributes['birthdate'] = $birthdate == '' ? null : Carbon::parse($birthdate);
+    }
+
     public function getAgeAttribute($semantic = false)
     {
         $reference = new \DateTime;
         $born = new \DateTime($this->birthdate);
-
+        # dd($this->birthdate);
         if ($this->birthdate > $reference) {
-            throw new \InvalidArgumentException('Provided birthday cannot be in future compared to the reference date.');
+            # Log::warning('Invalid birthdate: ');
+            return '';
         }
 
         $diff = $reference->diff($born);
