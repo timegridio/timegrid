@@ -1,9 +1,18 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
+ Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/show.blade.php
+  'general' => 
+  array (
+    'btn' => 
+    array (
+      'confirm_deletion' => 'general.btn.confirm_deletion',
+    ),
+  ),
   //==================================== Translations ====================================//
   'home' => 
   array (
@@ -26,8 +35,8 @@ return array (
       'business' => 
       array (
         'list' => 'Listar',
-        'menu' => 'Mis Comercios',
-        'register' => 'Registrar Comercio',
+        'menu' => 'Mis Prestadores',
+        'register' => 'Registrar Prestador',
       ),
     ),
     'register' => 'Registrarme',
@@ -36,7 +45,7 @@ return array (
       'business' => 
       array (
         'home' => 'Inicio',
-        'menu' => 'Comercios',
+        'menu' => 'Prestadores',
         'my_appointments' => 'Mis turnos',
         'my_suscriptions' => 'Mis suscripciones',
         'selector' => 'Seleccionar',

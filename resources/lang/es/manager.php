@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
+ Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
 *************************************************************************/
 
 return array (
@@ -21,60 +21,60 @@ return array (
     ),
     'create' => 
     array (
-      'title' => 'Registrar un comercio',
+      'title' => 'Registrar un prestador',
     ),
     'edit' => 
     array (
-      'title' => 'Edición de datos de comercio',
+      'title' => 'Edición de datos del prestador',
     ),
     'form' => 
     array (
       'description' => 
       array (
         'label' => 'Descripción',
-        'placeholder' => 'Describe tu comercio',
+        'placeholder' => 'Describe al prestador',
       ),
       'name' => 
       array (
         'label' => 'Nombre',
-        'placeholder' => 'Nombre completo de tu comercio',
+        'placeholder' => 'Nombre completo del prestador',
       ),
       'slug' => 
       array (
-        'label' => 'Slug',
-        'placeholder' => 'Nombre corto de tu comercio',
+        'label' => 'Nombre Corto',
+        'placeholder' => 'Nombre corto',
       ),
     ),
     'index' => 
     array (
       'btn' => 
       array (
-        'manage' => 'Administrar mis comercios',
-        'register' => 'Registrar un comercio',
+        'manage' => 'Administrar prestadores',
+        'register' => 'Registrar un prestador',
       ),
-      'help' => 'Desde aquí puedes administrar todos tus comercios',
-      'title' => 'Mis comercios',
+      'help' => 'Desde aquí puedes administrar todos los prestadores',
+      'title' => 'Mis Prestadores',
     ),
     'msg' => 
     array (
       'destroy' => 
       array (
-        'success' => 'Comercio eliminado Ok!',
+        'success' => 'Prestador removido',
       ),
       'store' => 
       array (
-        'business_already_exists' => 'businesses.msg.store.business_already_exists',
-        'restored_trashed' => 'businesses.msg.store.restored_trashed',
-        'success' => 'Comercio registrado Ok!',
+        'business_already_exists' => 'El prestador ya está registrado',
+        'restored_trashed' => 'Prestador restaurado',
+        'success' => 'Prestador registrado',
       ),
       'update' => 
       array (
-        'success' => 'Comercio actualizado Ok!',
+        'success' => 'Datos del prestador actualizados',
       ),
     ),
     'show' => 
     array (
-      'title' => 'Mi comercio',
+      'title' => 'Prestador',
     ),
   ),
   'contacts' => 
@@ -83,7 +83,7 @@ return array (
     array (
       'delete' => 'Eliminar',
       'store' => 'Guardar',
-      'update' => 'contacts.btn.update',
+      'update' => 'Actualizar Contacto',
     ),
     'create' => 
     array (

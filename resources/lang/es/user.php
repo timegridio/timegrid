@@ -1,27 +1,62 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/01 13:44:08 
+ Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/index.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/show.blade.php
+  'business' => 
+  array (
+    'btn' => 
+    array (
+      'suscribe' => 'Suscribir',
+    ),
+    'msg' => 
+    array (
+      'please_select_a_business' => 'Seleccioná un prestador',
+    ),
+  ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/create.blade.php
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'store' => 'Guardar',
+      'update' => 'Editar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Mis datos',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'associated_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',
+        'success' => 'Guardado',
+        'warning' => 
+        array (
+          'already_registered' => 'Se asoció tu perfil a los datos ya registrados',
+          'showing_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',
+        ),
+      ),
+      'update' => 
+      array (
+        'success' => 'Actualizado',
+      ),
+    ),
+  ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/edit.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/edit.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
+  //==================================== Translations ====================================//
   'appointments' => 
   array (
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'status' => 'Estado',
-        'business' => 'Comercio',
-        'calendar' => 'Fecha',
-        'code' => 'Código',
-        'duration' => 'Duración',
-        'finish_time' => 'Finaliza',
-        'start_time' => 'Comienza',
-      ),
-      'title' => 'Turnos',
-    ),
     'btn' => 
     array (
       'book' => 'Reservar Turno',
@@ -53,8 +88,21 @@ return array (
         'label' => 'Contacto',
       ),
     ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'business' => 'Comercio',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'duration' => 'Duración',
+        'finish_time' => 'Finaliza',
+        'start_time' => 'Comienza',
+        'status' => 'Estado',
+      ),
+      'title' => 'Turnos',
+    ),
   ),
-  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 
@@ -63,14 +111,7 @@ return array (
       array (
         'success' => 'Turno Registrado',
       ),
-      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al comercio antes',
-    ),
-  ),
-  'business' => 
-  array (
-    'msg' => 
-    array (
-      'please_select_a_business' => 'Seleccioná un comercio',
+      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
     ),
   ),
   'businesses' => 
@@ -79,10 +120,10 @@ return array (
     array (
       'btn' => 
       array (
-        'create' => 'Registrar comercio',
-        'manage' => 'Mis comercios',
+        'create' => 'Registrar prestador',
+        'manage' => 'Mis prestadores',
       ),
-      'title' => 'Comercios disponibles',
+      'title' => 'Prestadores disponibles',
     ),
     'suscriptions' => 
     array (
