@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use Flash;
 use App\Appointment;
+use App\Business;
 use App\BookingStrategy;
 use Session;
 use URL;
@@ -22,7 +23,7 @@ class BookingController extends Controller
 
     public function getBook()
     {
-        $business = \App\Business::findOrFail(Session::get('selected.business_id'));
+        $business = Business::findOrFail(Session::get('selected.business_id'));
         if (!\Auth::user()->suscribedTo($business)) {
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();
@@ -38,7 +39,7 @@ class BookingController extends Controller
         }
 
         $data = $request->all();
-        $business = \App\Business::findOrFail(Session::get('selected.business_id'));
+        $business = Business::findOrFail(Session::get('selected.business_id'));
         $data['start_at'] = $request->input('_date').' '.$request->input('_time');
         $data['contact_id'] = \Auth::user()->suscribedTo($business)->id;
         $booking = new BookingStrategy($business->strategy);
