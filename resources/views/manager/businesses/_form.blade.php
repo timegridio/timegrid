@@ -5,34 +5,39 @@
 <div class="row">
 	<div class="form-group col-sm-7">
 		{!! Form::label( trans('manager.businesses.form.name.label') ) !!}
-		{!! Form::text('name', null, 
-			array('required', 
-				  'id'=>'name', 
-				  'class'=>'form-control', 
+		{!! Form::text('name', null,
+			array('required',
+				  'id'=>'name',
+				  'class'=>'form-control',
 				  'placeholder'=> trans('manager.businesses.form.name.placeholder') )) !!}
 	</div>
 	<div class="form-group col-sm-5">
 		{!! Form::label( trans('manager.businesses.form.slug.label') ) !!}
-		{!! Form::text('slug', null, 
-			array('required', 
-				  'readonly'=>'true', 
-				  'id'=>'slug', 
-				  'class'=>'form-control', 
+		{!! Form::text('slug', null,
+			array('required',
+				  'readonly'=>'true',
+				  'id'=>'slug',
+				  'class'=>'form-control',
 				  'placeholder'=> trans('manager.businesses.form.slug.placeholder') )) !!}
 	</div>
 </div>
 <div class="row">
 	<div class="form-group col-sm-12">
 		{!! Form::label( trans('manager.businesses.form.description.label') ) !!}
-		{!! Form::textarea('description', null, 
-			array('required', 
-				  'class'=>'form-control', 
+		{!! Form::textarea('description', null,
+			array('required',
+				  'class'=>'form-control',
 				  'placeholder'=> trans('manager.businesses.form.description.placeholder') )) !!}
 	</div>
 </div>
 <div class="row">
 	<div class="form-group col-sm-6">
 		{!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'selectpicker'], ['customValue' => 'true']) !!}
+	</div>
+</div>
+<div class="row">
+	<div class="form-group col-sm-6">
+		{!! Form::select('strategy', ['dateslot' => trans('manager.business.form.strategy.dateslot'), 'timeslot' => trans('manager.business.form.strategy.timeslot')], 'dateslot', ['class'=>'selectpicker'] ) !!}
 	</div>
 </div>
 <div class="row">

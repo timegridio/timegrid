@@ -11,7 +11,7 @@ class Business extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['slug', 'name', 'timezone', 'description'];
+    protected $fillable = ['slug', 'name', 'description', 'timezone', 'strategy'];
 
     public function owners()
     {

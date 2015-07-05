@@ -66,8 +66,9 @@ class BusinessesController extends Controller
         $business->update([
             'name' => $request->get('name'),
             'slug' => $request->get('slug'),
+            'description' => $request->get('description'),
             'timezone' => $request->get('timezone'),
-            'description' => $request->get('description')
+            'strategy' => $request->get('strategy')
         ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));

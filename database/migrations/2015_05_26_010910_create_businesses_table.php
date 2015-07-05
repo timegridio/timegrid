@@ -19,6 +19,7 @@ class CreateBusinessesTable extends Migration {
 			$table->string('name');
 			$table->string('description');
 			$table->string('timezone');
+			$table->enum('strategy', ['dateslot', 'timeslot'])->default('timeslot'); /* Appointment Booking Strategy */
 			$table->softDeletes();
 			$table->timestamps();
 		});
