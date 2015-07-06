@@ -23,7 +23,8 @@ class CreateAppointmentsTable extends Migration {
 			$table->enum('status', ['R','C', 'A', 'S']); // Reserved, Confirmed, Annulated, Served
 			$table->timestamp('start_at')->index();
 			$table->integer('duration')->nullable();
-			$table->json('services')->nullable();
+			$table->integer('service_id')->unsigned()->nullable();
+			$table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
 			$table->string('comments')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

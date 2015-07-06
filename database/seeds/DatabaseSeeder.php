@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
         $this->call('BusinessesTableSeeder');
         $this->command->info('Seeded the Sample Businesses!');
 
+        $this->call('ServicesTableSeeder');
+        $this->command->info('Seeded the Sample Businesses Services!');
+
         $this->call('ContactsTableSeeder');
         $this->command->info('Seeded the Sample Contacts!');
 
