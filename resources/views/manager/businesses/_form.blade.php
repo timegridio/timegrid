@@ -37,7 +37,7 @@
 </div>
 <div class="row">
 	<div class="form-group col-sm-6">
-		{!! Form::select('strategy', ['dateslot' => trans('manager.business.form.strategy.dateslot'), 'timeslot' => trans('manager.business.form.strategy.timeslot')], 'dateslot', ['class'=>'selectpicker'] ) !!}
+		{!! Form::select('strategy', ['dateslot' => trans('manager.business.form.strategy.dateslot'), 'timeslot' => trans('manager.business.form.strategy.timeslot')], isset($business) ? $business->strategy : 'timeslot', ['class'=>'selectpicker'] ) !!}
 	</div>
 </div>
 <div class="row">

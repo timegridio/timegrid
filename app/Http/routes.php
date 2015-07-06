@@ -9,6 +9,20 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
+    
+    Route::group(['prefix' => 'services'], function () {
+        
+        Route::get('list/{business}', function ($business) {
+            return $business->services()->lists('name', 'id');
+        });
+        
+        Route::get('duration/{service}', function ($service) {
+            return $service->duration;
+        });
+    });
+});
+
 Route::get('home', ['as' => 'home', 'uses' => 'User\BusinessController@getList']);
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
