@@ -27,4 +27,9 @@ class Business extends Model
     {
         return $this->belongsToMany('App\Contact');
     }
+
+    public function services()
+    {
+        return $this->hasMany('App\Service');
+    }
 }
