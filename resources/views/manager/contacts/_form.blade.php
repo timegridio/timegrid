@@ -1,7 +1,7 @@
 @section('css')
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css">
-<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 @endsection
 
 <div class="container">
@@ -69,10 +69,7 @@
 </div>
 
 @section('footer_scripts')
-	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-	<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
-
-	<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
+	<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 
 	<script>
 	$(document).ready(function(){ 

@@ -1,5 +1,5 @@
 @section('css')
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 @endsection
 
 <div class="row">
@@ -50,7 +50,7 @@
 <script src="{{ asset('js/speakingurl.min.js') }}"></script>
 <script src="{{ asset('js/slugify.min.js') }}"></script>
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
 
 <script>
 jQuery(function($) {

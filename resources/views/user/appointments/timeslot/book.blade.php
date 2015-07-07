@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('css')
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/css/bootstrap-select.min.css">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+@parent
+<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 @endsection
 
 @section('content')
@@ -62,9 +62,7 @@
 @endsection
 
 @section('footer_scripts')
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <link rel="stylesheet" href="{{ asset('css/jquery-ui.css') }}">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.5/js/bootstrap-select.min.js"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
     <script>
     $(function() {
       /* $( "#date" ).datepicker( { dateFormat: 'yy-mm-dd'} ); */

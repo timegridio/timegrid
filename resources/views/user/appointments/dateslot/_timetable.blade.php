@@ -7,9 +7,9 @@
 
 <table id="timetable" class="table table-condensed">
 @foreach ($vacancies as $date)
-<tr class="date_{{ $date[0]->date }}">
+<tr class="daterow date_{{ $date[0]->date }}">
   <td class="dateslot success">
-    {!! Button::normal(Carbon::parse($date[0]->date)->formatLocalized('%A %d %B %Y'))->withIcon(Icon::calendar()) !!}
+    {!! Button::normal(Carbon::parse($date[0]->date)->formatLocalized('%A %d %B %Y'))->withIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
   </td>
     <td class="serviceslot" >
       @foreach ($date as $vacancy)
@@ -34,6 +34,10 @@ $(document).ready(function() {
         $(this).toggleClass('btn-success');
         $('tr:not(.date_'+$(this).data('date')+')').hide();
         $('#extra').show();
+    });
+    $('#timetable .btn.btn-date').click(function(e){
+        $('.daterow').show();
+        $('#extra').hide();
     });
     $('#date').click(function(e){
         $('#panel').show();
