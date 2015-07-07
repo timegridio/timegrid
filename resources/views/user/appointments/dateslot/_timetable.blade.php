@@ -1,19 +1,19 @@
 <div id="panel" class="panel panel-default">
   <!-- Default panel contents -->
-  <div class="panel-heading">Seleccione un turno disponible</div>
+  <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
   <div class="panel-body">
-    <p>Haga click en la fecha para seleccionarla</p>
+    <p>{{ trans('user.appointments.form.timetable.instructions') }}</p>
   </div>
 
 <table id="timetable" class="table table-condensed">
 @foreach ($vacancies as $date)
 <tr class="daterow date_{{ $date[0]->date }}">
   <td class="dateslot success">
-    {!! Button::normal(Carbon::parse($date[0]->date)->formatLocalized('%A %d %B %Y'))->withIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
+    {!! Button::normal(Carbon::parse($date[0]->date)->formatLocalized('%A %d %B %Y'))->prependIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
   </td>
     <td class="serviceslot" >
       @foreach ($date as $vacancy)
-        {!! Button::primary($vacancy->service->name)->withIcon(Icon::ok())->withAttributes(['class' => 'service service'.$vacancy->service_id, 'data-service' => $vacancy->service_id, 'data-date' => $vacancy->date]) !!}
+        {!! Button::primary($vacancy->service->name)->prependIcon(Icon::ok())->withAttributes(['class' => 'service service'.$vacancy->service_id, 'data-service' => $vacancy->service_id, 'data-date' => $vacancy->date]) !!}
       @endforeach
     </td>
   </tr>
