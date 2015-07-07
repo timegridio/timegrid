@@ -7,7 +7,7 @@ use Carbon\Carbon;
 
 class Appointment extends Model
 {
-    protected $fillable = ['contact_id', 'business_id', 'start_at', 'duration', 'comments'];
+    protected $fillable = ['contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
 
     protected $guarded = ['id', 'hash', 'status', 'finish_at'];
 
@@ -20,7 +20,7 @@ class Appointment extends Model
 
     public function save(array $options = array())
     {
-        $this->attributes['hash'] = md5($this->start_at.$this->contact_id.$this->business_id);
+        $this->attributes['hash'] = md5($this->start_at.$this->contact_id.$this->business_id.$this->service_id);
 
         parent::save();
     }
@@ -34,6 +34,12 @@ class Appointment extends Model
     {
         return $this->belongsTo('App\Business');
     }
+
+    public function service()
+    {
+        return $this->belongsTo('App\Service');
+    }
+
 
     public function getFinishAtAttribute()
     {
