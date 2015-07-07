@@ -32,4 +32,9 @@ class Business extends Model
     {
         return $this->hasMany('App\Service');
     }
+
+    public function vacancies()
+    {
+        return $this->hasMany('App\Vacancy');
+    }
 }

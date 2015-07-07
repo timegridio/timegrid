@@ -31,5 +31,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call('AppointmentsTableSeeder');
         $this->command->info('Seeded the Sample Appointments!');
+
+        $this->call('VacanciesTableSeeder');
+        $this->command->info('Seeded the Sample Vacancies!');
     }
 }
