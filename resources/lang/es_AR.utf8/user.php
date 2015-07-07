@@ -1,11 +1,88 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
+ Generated via "php artisan localization:missing" at 2015/07/07 19:25:42 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/businesses/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/timeslot/book.blade.php
+  'appointments' => 
+  array (
+    'form' => 
+    array (
+      'msg' => 
+      array (
+        'please_select_a_service' => 'Selecciona un servicio',
+      ),
+      'service' => 
+      array (
+        'label' => 'Servicio',
+      ),
+      'timetable' => 
+      array (
+        'instructions' => 'Selecciona un servicio para reservar turno',
+        'title' => 'Reserva un Turno',
+      ),
+      'comments' => 
+      array (
+        'label' => 'Comentarios',
+      ),
+      'date' => 
+      array (
+        'label' => 'Fecha',
+      ),
+      'duration' => 
+      array (
+        'label' => 'Duración',
+      ),
+      'time' => 
+      array (
+        'label' => 'Hora',
+      ),
+      'business' => 
+      array (
+        'label' => 'Comercio',
+      ),
+      'contact_id' => 
+      array (
+        'label' => 'Contacto',
+      ),
+    ),
+    'btn' => 
+    array (
+      'book' => 'Reservar Turno',
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'business' => 'Prestador',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'duration' => 'Duración',
+        'finish_time' => 'Finaliza',
+        'service' => 'Servicio',
+        'start_time' => 'Comienza',
+        'status' => 'Estado',
+      ),
+      'title' => 'Turnos',
+    ),
+  ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/book.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/_timetable.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/_timetable.blade.php
+  //==================================== Translations ====================================//
+  'booking' => 
+  array (
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => 'Turno Registrado',
+      ),
+      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
+    ),
+  ),
   'business' => 
   array (
     'btn' => 
@@ -17,7 +94,30 @@ return array (
       'please_select_a_business' => 'Seleccioná un prestador',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/create.blade.php
+  'businesses' => 
+  array (
+    'index' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Registrar prestador',
+        'manage' => 'Mis prestadores',
+      ),
+      'title' => 'Prestadores disponibles',
+    ),
+    'suscriptions' => 
+    array (
+      'title' => 'Suscripciones',
+    ),
+    'show' => 
+    array (
+      'btn' => 
+      array (
+        'book' => 'Reservar Turno',
+        'change' => 'Cambiar',
+      ),
+    ),
+  ),
   'contacts' => 
   array (
     'btn' => 
@@ -44,98 +144,6 @@ return array (
       'update' => 
       array (
         'success' => 'Actualizado',
-      ),
-    ),
-  ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/edit.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/contacts/edit.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/User/BusinessContactController.php
-  //==================================== Translations ====================================//
-  'appointments' => 
-  array (
-    'btn' => 
-    array (
-      'book' => 'Reservar Turno',
-    ),
-    'form' => 
-    array (
-      'comments' => 
-      array (
-        'label' => 'Comentarios',
-      ),
-      'date' => 
-      array (
-        'label' => 'Fecha',
-      ),
-      'duration' => 
-      array (
-        'label' => 'Duración',
-      ),
-      'time' => 
-      array (
-        'label' => 'Hora',
-      ),
-      'business' => 
-      array (
-        'label' => 'Comercio',
-      ),
-      'contact_id' => 
-      array (
-        'label' => 'Contacto',
-      ),
-    ),
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'business' => 'Prestador',
-        'calendar' => 'Fecha',
-        'code' => 'Código',
-        'duration' => 'Duración',
-        'finish_time' => 'Finaliza',
-        'start_time' => 'Comienza',
-        'status' => 'Estado',
-        'service' => 'Servicio',
-      ),
-      'title' => 'Turnos',
-    ),
-  ),
-  'booking' => 
-  array (
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'success' => 'Turno Registrado',
-      ),
-      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
-    ),
-  ),
-  'businesses' => 
-  array (
-    'index' => 
-    array (
-      'btn' => 
-      array (
-        'create' => 'Registrar prestador',
-        'manage' => 'Mis prestadores',
-      ),
-      'title' => 'Prestadores disponibles',
-    ),
-    'suscriptions' => 
-    array (
-      'title' => 'Suscripciones',
-    ),
-    'show' => 
-    array (
-      'btn' => 
-      array (
-        'book' => 'Reservar Turno',
-        'change' => 'Cambiar',
       ),
     ),
   ),

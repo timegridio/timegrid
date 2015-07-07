@@ -1,9 +1,23 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
+ Generated via "php artisan localization:missing" at 2015/07/07 19:25:42 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
+  'business' => 
+  array (
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
+    ),
+  ),
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
   //==================================== Translations ====================================//
   'businesses' => 
   array (

@@ -1,11 +1,10 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/05 01:12:50 
+ Generated via "php artisan localization:missing" at 2015/07/07 19:25:42 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/show.blade.php
+  //==================================== Translations ====================================//
   'general' => 
   array (
     'btn' => 
@@ -13,7 +12,6 @@ return array (
       'confirm_deletion' => 'general.btn.confirm_deletion',
     ),
   ),
-  //==================================== Translations ====================================//
   'home' => 
   array (
     'btn' => 
