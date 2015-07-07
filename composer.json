@@ -22,7 +22,8 @@
 		"stevebauman/location": "1.1.*",
 		"guzzlehttp/guzzle": "~6.0",
 		"torann/geoip": "dev-master",
-		"camroncade/timezone": "0.1"
+		"camroncade/timezone": "0.1",
+		"twitter/typeahead.js": "^0.11.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
