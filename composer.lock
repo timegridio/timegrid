@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "49daf90d094817b75da74d59638a7dde",
+    "hash": "1cccd491d0eb2e58b0498ce1fa6ff3d7",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -111,6 +111,42 @@
                 "wkhtmltopdf"
             ],
             "time": "2015-06-04 13:43:34"
+        },
+        {
+            "name": "bassjobsen/bootstrap-3-typeahead",
+            "version": "v3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bassjobsen/Bootstrap-3-Typeahead.git",
+                "reference": "c65c829fe8411f6eadb88415d09c1e85bb4603d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bassjobsen/Bootstrap-3-Typeahead/zipball/c65c829fe8411f6eadb88415d09c1e85bb4603d0",
+                "reference": "c65c829fe8411f6eadb88415d09c1e85bb4603d0",
+                "shasum": ""
+            },
+            "type": "component",
+            "extra": {
+                "component": {
+                    "files": [
+                        "bootstrap3-typeahead.js",
+                        "bootstrap3-typeahead.min.js"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Bass Jobsen",
+                    "email": "bass@w3masters.nl"
+                }
+            ],
+            "description": "Bootstrap 3 Typeahead",
+            "time": "2015-04-05 22:20:53"
         },
         {
             "name": "camroncade/timezone",
