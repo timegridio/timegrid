@@ -92,13 +92,14 @@ return array (
     array (
       'th' => 
       array (
-        'business' => 'Comercio',
+        'business' => 'Prestador',
         'calendar' => 'Fecha',
         'code' => 'Código',
         'duration' => 'Duración',
         'finish_time' => 'Finaliza',
         'start_time' => 'Comienza',
         'status' => 'Estado',
+        'service' => 'Servicio',
       ),
       'title' => 'Turnos',
     ),
