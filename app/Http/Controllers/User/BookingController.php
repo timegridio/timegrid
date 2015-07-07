@@ -28,7 +28,9 @@ class BookingController extends Controller
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();
         }
-        return view('user.appointments.'.$business->strategy.'.book');
+        setlocale(LC_ALL, 'es_AR.utf8');
+        \Carbon\Carbon::setLocale('es');
+        return view('user.appointments.'.$business->strategy.'.book', compact('business'));
     }
 
     public function postStore(Request $request)
