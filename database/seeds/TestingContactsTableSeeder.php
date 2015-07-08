@@ -9,7 +9,7 @@ class TestingContactsTableSeeder extends Seeder
     {
         DB::table('contacts')->delete();
 
-        $business = \App\Business::where(['slug' => 'sample-biz'])->first();
+        $business = \App\Business::where(['slug' => 'hgnc'])->first();
 
         $contact = \App\Contact::create(['firstname' => 'Ariel', 'lastname' => 'Vallese', 'nin' => 'YA4128062', 'birthdate' => '1985-01-16', 'mobile' => '651464218', 'mobile_country' => 'ES', 'notes' => 'alariva', 'gender' => 'M']);
         $contact->businesses()->attach($business);
