@@ -168,6 +168,8 @@ return [
         'Torann\GeoIP\GeoIPServiceProvider',
         'Camroncade\Timezone\TimezoneServiceProvider',
 
+        'alariva\tidiochat\TidioChatServiceProvider',
+
     ],
 
     /*
@@ -257,6 +259,7 @@ return [
         'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
         'Carbon' => 'Carbon\Carbon',
 
+        'TidioChat'    => 'alariva\tidiochat\TidioChatFacade',
     ],
 
 ];
