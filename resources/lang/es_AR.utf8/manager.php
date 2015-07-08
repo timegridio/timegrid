@@ -1,11 +1,10 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/07 19:25:42 
+ Generated via "php artisan localization:missing" at 2015/07/08 03:43:37 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
+  //==================================== Translations ====================================//
   'business' => 
   array (
     'form' => 
@@ -17,8 +16,6 @@ return array (
       ),
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  //==================================== Translations ====================================//
   'businesses' => 
   array (
     'btn' => 
@@ -67,6 +64,7 @@ return array (
         'register' => 'Registrar un prestador',
       ),
       'help' => 'Desde aquí puedes administrar todos los prestadores',
+      'register_business_help' => 'businesses.index.register_business_help',
       'title' => 'Mis Prestadores',
     ),
     'msg' => 

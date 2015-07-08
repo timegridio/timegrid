@@ -1,27 +1,18 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/07 19:25:42 
+ Generated via "php artisan localization:missing" at 2015/07/08 03:43:37 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/timeslot/book.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/book.blade.php
   'appointments' => 
   array (
     'form' => 
     array (
-      'msg' => 
+      'btn' => 
       array (
-        'please_select_a_service' => 'Selecciona un servicio',
-      ),
-      'service' => 
-      array (
-        'label' => 'Servicio',
-      ),
-      'timetable' => 
-      array (
-        'instructions' => 'Selecciona un servicio para reservar turno',
-        'title' => 'Reserva un Turno',
+        'submit' => 'Confirmar',
       ),
       'comments' => 
       array (
@@ -35,9 +26,26 @@ return array (
       array (
         'label' => 'Duración',
       ),
+      'msg' => 
+      array (
+        'please_select_a_service' => 'Selecciona un servicio',
+      ),
+      'service' => 
+      array (
+        'label' => 'Servicio',
+      ),
       'time' => 
       array (
         'label' => 'Hora',
+      ),
+      'timetable' => 
+      array (
+        'instructions' => 'Selecciona un servicio para reservar turno',
+        'msg' => 
+        array (
+          'no_vacancies' => 'No hay disponibilidades para esta fecha',
+        ),
+        'title' => 'Reserva un Turno',
       ),
       'business' => 
       array (
@@ -68,9 +76,6 @@ return array (
       'title' => 'Turnos',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/book.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/_timetable.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/_timetable.blade.php
   //==================================== Translations ====================================//
   'booking' => 
   array (
@@ -102,6 +107,7 @@ return array (
       array (
         'create' => 'Registrar prestador',
         'manage' => 'Mis prestadores',
+        'power_create' => 'businesses.index.btn.power_create',
       ),
       'title' => 'Prestadores disponibles',
     ),
