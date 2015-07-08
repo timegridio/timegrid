@@ -5,7 +5,7 @@
 {!! Form::hidden('business_id', Session::get('selected.business_id'), array('required') ) !!}
 <div class="container">
     <div class="row">
-      @include('user.appointments.dateslot._timetable', ['vacancies' => $business->vacancies->groupBy('date')])
+      @include('user.appointments.dateslot._timetable', ['dates' => $business->availability(9)])
     </div>
 </div>
 
@@ -40,7 +40,7 @@
     </div>
     <div class="row">
         <div class="form-group col-sm-11">
-            {!! Button::primary(trans('manager.contacts.btn.store'))->submit() !!}
+            {!! Button::primary(trans('user.appointments.form.btn.submit'))->submit() !!}
         </div>
     </div>
 </div>

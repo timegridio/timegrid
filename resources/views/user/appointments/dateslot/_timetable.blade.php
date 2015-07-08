@@ -5,18 +5,30 @@
     <p>{{ trans('user.appointments.form.timetable.instructions') }}</p>
   </div>
 
-<table id="timetable" class="table table-condensed">
-@foreach ($vacancies as $date)
-<tr class="daterow date_{{ $date[0]->date }}">
+<table id="timetable" class="table table-condensed table-hover">
+@foreach ($dates as $date => $vacancies)
+@if (!empty($vacancies))
+<tr class="daterow date_{{ $date }}">
   <td class="dateslot success">
-    {!! Button::normal(Carbon::parse($date[0]->date)->formatLocalized('%A %d %B %Y'))->prependIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
+    {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))->block()->prependIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
   </td>
     <td class="serviceslot" >
-      @foreach ($date as $vacancy)
+      @foreach ($vacancies as $vacancy)
         {!! Button::primary($vacancy->service->name)->prependIcon(Icon::ok())->withAttributes(['class' => 'service service'.$vacancy->service_id, 'data-service' => $vacancy->service_id, 'data-date' => $vacancy->date]) !!}
       @endforeach
     </td>
   </tr>
+@else
+<tr class="daterow">
+  <td class="dateslot disable">
+    {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))->block()->disable()->prependIcon(Icon::calendar())->withAttributes(['class' => 'btn-date']) !!}
+  </td>
+    <td class="serviceslot" >
+        <p class="hidden-xs">{!! Icon::remove() !!}&nbsp;&nbsp;{{ trans('user.appointments.form.timetable.msg.no_vacancies') }}</p>
+        <p class="hidden-lg hidden-md hidden-sm">{!! Icon::remove() !!}&nbsp;&nbsp;{{ trans('N/D') }}</p>
+    </td>
+  </tr>
+@endif
 @endforeach
 </table>
 </div>

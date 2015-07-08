@@ -37,4 +37,19 @@ class Business extends Model
     {
         return $this->hasMany('App\Vacancy');
     }
+
+    public function availability($days = 10)
+    {
+        $dates = [];
+        for ($i=0; $i < $days; $i++) {
+            $dates[date('Y-m-d', strtotime("today +$i days"))] = [];
+        }
+        $vacancies = $this->vacancies;
+        foreach ($vacancies as $key => $vacancy) {
+            if (array_key_exists($vacancy->date, $dates)) {
+                $dates[$vacancy->date][] = $vacancy;
+            }
+        }
+        return $dates;
+    }
 }
