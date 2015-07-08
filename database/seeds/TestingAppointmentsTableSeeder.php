@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Laracasts\TestDummy\Factory as TestDummy;
 
-class AppointmentsTableSeeder extends Seeder
+class TestingAppointmentsTableSeeder extends Seeder
 {
     public function run()
     {

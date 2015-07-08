@@ -16,23 +16,5 @@ class DatabaseSeeder extends Seeder
 
         $this->call('CountriesSeeder');
         $this->command->info('Seeded the Param Countries!');
-
-        $this->call('UsersTableSeeder');
-        $this->command->info('Seeded the Sample Users!');
-    
-        $this->call('BusinessesTableSeeder');
-        $this->command->info('Seeded the Sample Businesses!');
-
-        $this->call('ServicesTableSeeder');
-        $this->command->info('Seeded the Sample Businesses Services!');
-
-        $this->call('ContactsTableSeeder');
-        $this->command->info('Seeded the Sample Contacts!');
-
-        $this->call('AppointmentsTableSeeder');
-        $this->command->info('Seeded the Sample Appointments!');
-
-        $this->call('VacanciesTableSeeder');
-        $this->command->info('Seeded the Sample Vacancies!');
     }
 }
