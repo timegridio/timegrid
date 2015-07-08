@@ -24,6 +24,8 @@ class CreateVacanciesTable extends Migration
             $table->foreign('service_id')->references('id')->on('services');
             $table->integer('capacity')->unsigned()->default(1);
             $table->timestamps();
+
+            $table->unique(['date', 'business_id', 'service_id']);
         });
     }
 
