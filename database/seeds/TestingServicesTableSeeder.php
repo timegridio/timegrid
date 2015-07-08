@@ -2,14 +2,18 @@
 
 use Illuminate\Database\Seeder;
 use Laracasts\TestDummy\Factory as TestDummy;
+use App\Business;
+use App\Service;
 
 class TestingServicesTableSeeder extends Seeder
 {
     public function run()
     {
         DB::table('services')->delete();
-        $business = \App\Business::where(['slug' => 'sample-biz'])->first();
-        \App\Service::create(['name' => 'Masaje', 'business_id' => $business->id, 'description' => 'Masajes', 'duration' => 30 ]);
-        \App\Service::create(['name' => 'Crema', 'business_id' => $business->id, 'description' => 'Cremas', 'duration' => 20 ]);
+        $business = Business::where(['slug' => 'hgnc'])->first();
+
+        Service::create(['business_id'=> $business->id, 'name' => 'Instalación', 'description' => 'Instalación de equipo GNC']);
+        Service::create(['business_id'=> $business->id, 'name' => 'Regulación', 'description' => 'Regulación']);
+        Service::create(['business_id'=> $business->id, 'name' => 'Mecánica General', 'description' => 'Mecánica General']);
     }
 }
