@@ -64,6 +64,18 @@ return [
 			'strict'    => false,
 		],
 
+		'testing' => [
+			'driver'    => 'mysql',
+			'host'      => env('DB_HOST', 'localhost'),
+			'database'  => env('DB_DATABASE', 'xb3testing'),
+			'username'  => env('DB_USERNAME', 'xb3testing'),
+			'password'  => env('DB_PASSWORD', 'xb3testing'),
+			'charset'   => 'utf8',
+			'collation' => 'utf8_unicode_ci',
+			'prefix'    => '',
+			'strict'    => false,
+		],
+
 		'pgsql' => [
 			'driver'   => 'pgsql',
 			'host'     => env('DB_HOST', 'localhost'),
