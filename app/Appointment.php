@@ -40,7 +40,6 @@ class Appointment extends Model
         return $this->belongsTo('App\Service');
     }
 
-
     public function getFinishAtAttribute()
     {
         if (is_numeric($this->duration)) {
@@ -76,6 +75,11 @@ class Appointment extends Model
         return $label;
     }
 
+    public function getDateAttribute()
+    {
+        return $this->start_at->timezone('UTC')->toDateString();
+    }
+
     public function setStartAtAttribute($datetime)
     {
         $this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
@@ -99,5 +103,20 @@ class Appointment extends Model
     public function scopeOfBusiness($query, Business $business)
     {
         return $query->where('business_id', '=', $business->id);
+    }
+
+    public function scopeOfDate($query, Carbon $date)
+    {
+        return $query->whereRaw('date(`start_at`) = ?', [$date->timezone('UTC')->toDateString()]);
+    }
+
+    public function scopeFuture($query, $tillDate = false)
+    {
+        return $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
+    }
+
+    public function scopeTillDate($query, Carbon $date)
+    {
+        return $query->where('start_at', '<=', $date->timezone('UTC'));
     }
 }

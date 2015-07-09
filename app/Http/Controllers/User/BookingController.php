@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Flash;
 use App\Appointment;
 use App\Business;
+use App\Service;
 use App\BookingStrategy;
+use App\ConciergeStrategy as Concierge;
+use Carbon;
 use Session;
 use URL;
 
@@ -28,7 +31,9 @@ class BookingController extends Controller
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();
         }
-        return view('user.appointments.'.$business->strategy.'.book', compact('business'));
+
+        $availability = Concierge::getVacancies($business, Carbon::now(), Service::find(7));
+        return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
     public function postStore(Request $request)

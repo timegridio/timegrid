@@ -5,7 +5,7 @@
 {!! Form::hidden('business_id', Session::get('selected.business_id'), array('required') ) !!}
 <div class="container">
     <div class="row">
-      @include('user.appointments.dateslot._timetable', ['dates' => $business->availability(9)])
+      @include('user.appointments.dateslot._timetable', ['dates' => $availability])
     </div>
 </div>
 

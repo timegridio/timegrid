@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
@@ -28,8 +29,26 @@ class Vacancy extends Model
         return $query->where('date', '=', $date->toDateString());
     }
 
-    public function scopeForService($query, $serviceId)
+    public function scopeForService($query, Service $service)
     {
-        return $query->where('service_id', '=', $serviceId);
+        return $query->where('service_id', '=', $service->id);
+    }
+
+    public function isFull(Collection $appointments)
+    {
+        $slots = $this->capacity;
+        foreach ($appointments as $appointment) {
+            if ($this->holdsAppointment($appointment)) {
+                $slots--;
+            }
+        }
+        return $slots < 1;
+    }
+
+    public function holdsAppointment(Appointment $appointment)
+    {
+        return (($this->date == $appointment->date) &&
+               ($this->service_id == $appointment->service_id) &&
+               ($this->business_id == $appointment->business_id));
     }
 }

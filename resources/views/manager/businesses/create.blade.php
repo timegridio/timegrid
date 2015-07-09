@@ -21,3 +21,8 @@
 	</div>
 </div>
 @endsection
+
+@section('footer_scripts')
+@parent
+{!! TidioChat::js() !!}
+@endsection

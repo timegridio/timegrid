@@ -47,6 +47,7 @@
 </div>
 
 @section('footer_scripts')
+@parent
 <script src="{{ asset('js/speakingurl.min.js') }}"></script>
 <script src="{{ asset('js/slugify.min.js') }}"></script>
 
