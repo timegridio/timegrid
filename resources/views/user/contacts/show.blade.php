@@ -41,7 +41,7 @@
 
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h3 class="panel-title">{{ $contact->fullname }} ({{ trans('app.gender.'.$contact->gender) }} / {{ $contact->age }})</h3>
+							<h3 class="panel-title">{{ $contact->fullname }} ({{ trans('app.gender.'.$contact->gender) }}{{ $contact->age > 0 ? ' / ' . $contact->age : '' }})</h3>
 						</div>
 
 						<div class="panel-body">
@@ -63,14 +63,18 @@
 												<td>{{ $contact->email }}</td>
 										</tr>
 										@endif
+										@if ($contact->nin)
 										<tr>
 												<td>{{ trans('manager.contacts.label.nin') }}</td>
 												<td>{{ $contact->nin }}</td>
 										</tr>
+										@endif
+										@if ($contact->birthdate)
 										<tr>
 												<td>{{ trans('manager.contacts.label.birthdate') }}</td>
 												<td>{{ $contact->birthdate ? $contact->birthdate->toDateString() : '' }}</td>
 										</tr>
+										@endif
 										@if ($contact->mobile)
 										<tr>
 												<td>{{ trans('manager.contacts.label.mobile') }}</td>

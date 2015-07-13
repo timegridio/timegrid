@@ -41,7 +41,7 @@
 
 					<div class="panel panel-info">
 						<div class="panel-heading">
-							<h3 class="panel-title">{{ $contact->fullname }} ({{ trans('app.gender.'.$contact->gender) }} / {{ $contact->age }})</h3>
+							<h3 class="panel-title">{{ $contact->fullname }} ({{ trans('app.gender.'.$contact->gender) }}{{ $contact->age > 0 ? ' / ' . $contact->age : '' }})</h3>
 						</div>
 
 						<div class="panel-body">
