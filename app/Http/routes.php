@@ -45,6 +45,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function () {
     Route::resource('business', 'BusinessesController');
     Route::resource('business.contact', 'BusinessContactController');
+    Route::resource('business.service', 'BusinessServiceController');
 });
 
 Route::get('root', [

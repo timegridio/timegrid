@@ -14,6 +14,7 @@
 				<div class="panel-footer">
 					{!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.business.edit', $business) ) !!}
 					{!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
+					{!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
 				</div>
 			</div>
 			@include('manager.businesses._contacts')
