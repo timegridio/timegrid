@@ -45,7 +45,7 @@ class BusinessServiceController extends Controller
         $service->save();
 
         Flash::success(trans('manager.service.msg.store.success'));
-        return Redirect::route('manager.business.service.show', [$business, $service]);
+        return Redirect::route('manager.business.service.index', [$business]);
     }
 
     /**
@@ -95,7 +95,7 @@ class BusinessServiceController extends Controller
      */
     public function destroy(Business $business, Service $service)
     {
-        $service->delete();
+        $service->forceDelete();
 
         Flash::success( trans('manager.services.msg.destroy.success') );
         return Redirect::route('manager.business.service.index', $business);

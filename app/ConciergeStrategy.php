@@ -13,7 +13,7 @@ use App\Vacancy;
 
 class ConciergeStrategy
 {
-    public static function getVacancies(Business $business, Carbon $date, Service $service, $limit = 7)
+    public static function getVacancies(Business $business, Carbon $date, $limit = 7)
     {
         $appointments = $business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
         $vacancies = self::removeBooked($business->vacancies, $appointments);
