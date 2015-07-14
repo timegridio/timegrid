@@ -32,9 +32,8 @@
     <div class="row">
         <div class="form-group col-sm-11">
             {!! Form::label( trans('user.appointments.form.comments.label') ) !!}
-            {!! Form::text('comments', 'test',
-                array('required',
-                      'class'=>'form-control',
+            {!! Form::text('comments', '',
+                array('class'=>'form-control',
                       'placeholder'=> trans('user.appointments.form.comments.label') )) !!}
         </div>
     </div>
