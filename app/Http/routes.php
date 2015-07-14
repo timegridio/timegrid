@@ -46,6 +46,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
     Route::resource('business', 'BusinessesController');
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
+    Route::resource('business.vacancy', 'BusinessVacancyController');
 });
 
 Route::get('root', [

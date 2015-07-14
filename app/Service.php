@@ -21,4 +21,9 @@ class Service extends Model
 
         parent::save();
     }
+
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', '=', $slug)->get();
+    }
 }

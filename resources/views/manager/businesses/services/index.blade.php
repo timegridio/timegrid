@@ -29,6 +29,7 @@
 
                     <div class="panel-footer">
                         {!! Button::normal()->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) ) !!}
+                        {!! Button::normal(trans('manager.businesses.btn.return'))->asLinkTo(URL::previous()) !!}
                     </div>
                 </div>
             </div>

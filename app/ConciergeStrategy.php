@@ -29,7 +29,7 @@ class ConciergeStrategy
         }
         foreach ($vacancies as $key => $vacancy) {
             if (array_key_exists($vacancy->date, $dates)) {
-                $dates[$vacancy->date][] = $vacancy;
+                $dates[$vacancy->date][$vacancy->service->slug] = $vacancy;
             }
         }
         return $dates;
