@@ -10,27 +10,21 @@
 </div>
 
 <div id="extra" class="container hidden">
+{!! Form::hidden('_date', null,
+    array('required',
+          'class'=>'form-control',
+          'id'=>'date',
+          'min'=> date('Y-m-d'),
+          'placeholder'=> trans('user.appointments.form.date.label') )) !!}
+
+{!! Form::hidden('service_id', '',
+    array('required',
+          'id'=>'service',
+          'class'=>'form-control',
+          'placeholder'=> trans('user.appointments.form.service.label') )) !!}
+
     <div class="row">
-        <div class="form-group col-sm-4">
-            {!! Form::hidden('_date', null,
-                array('required',
-                      'class'=>'form-control',
-                      'id'=>'date',
-                      'min'=> date('Y-m-d'),
-                      'placeholder'=> trans('user.appointments.form.date.label') )) !!}
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-sm-11">
-            {!! Form::hidden('service_id', '',
-                array('required',
-                      'id'=>'service',
-                      'class'=>'form-control',
-                      'placeholder'=> trans('user.appointments.form.service.label') )) !!}
-        </div>
-    </div>
-    <div class="row">
-        <div class="form-group col-sm-11">
+        <div class="form-group col-sm-12">
             {!! Form::label( trans('user.appointments.form.comments.label') ) !!}
             {!! Form::text('comments', '',
                 array('class'=>'form-control',
@@ -38,8 +32,8 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-sm-11">
-            {!! Button::primary(trans('user.appointments.form.btn.submit'))->submit() !!}
+        <div class="form-group col-sm-12">
+            {!! Button::primary(trans('user.appointments.form.btn.submit'))->block()->submit() !!}
         </div>
     </div>
 </div>
