@@ -64,8 +64,8 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('{search}', function ($search) {
-    return Redirect::route('user.businesses.select', $search);
-})->where('search', '.*');
+# Route::get('{search}', function ($search) {
+#     return Redirect::route('user.businesses.select', $search);
+# })->where('search', '.*');
 
 Route::get('/', 'WelcomeController@index');
