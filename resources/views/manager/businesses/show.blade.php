@@ -1,5 +1,17 @@
 @extends('app')
 
+@section('css')
+@parent
+<style>
+.bizurl {
+	font-family: monospace;
+	background: #ECECEC;
+	padding: 10px 8px;
+	margin: 0px 0px 20px 0px;
+}
+</style>
+@endsection
+
 @section('content')
 <div class="container">
 	<div class="row">
@@ -8,6 +20,7 @@
 				<div class="panel-heading">{{ $business->name }}</div>
 
 				<div class="panel-body">
+					<div class="bizurl">{{ URL::to($business->slug) }}</div>
 					<p>{{ $business->description }}</p>
 				</div>
 
@@ -16,6 +29,7 @@
 					{!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
 					{!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
 					{!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
+					{!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
 				</div>
 			</div>
 			@include('manager.businesses._contacts')
