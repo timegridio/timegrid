@@ -42,13 +42,11 @@ class BusinessesController extends Controller
 
         if (\Auth::user()->isOwner($existing_business)) {
             $existing_business->restore();
-            
             Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-            return Redirect::route('manager.business.index');
         } else {
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-            return Redirect::route('manager.business.index');
         }
+        return Redirect::route('manager.business.index');
     }
 
     public function show(Business $business, BusinessFormRequest $request)
