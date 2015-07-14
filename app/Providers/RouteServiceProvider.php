@@ -2,6 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use App\Business;
 
 class RouteServiceProvider extends ServiceProvider {
 
@@ -29,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider {
 		$router->model('service',  'App\Service');
 		$router->bind('business_slug', function($business_slug)
 		{
-			return \App\Business::where('slug', $business_slug)->first();
+			return Business::where('slug', $business_slug)->first();
 		});
 	}
 
