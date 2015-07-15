@@ -119,4 +119,20 @@ class Appointment extends Model
     {
         return $query->where('start_at', '<=', $date->timezone('UTC'));
     }
+
+    public function doAnnulate()
+    {
+        if ($this->status == self::STATUS_RESERVED) {
+            $this->status = self::STATUS_ANNULATED;
+            $this->save();
+        }
+    }
+
+    public function doServe()
+    {
+        if ($this->status == self::STATUS_CONFIRMED) {
+            $this->status = self::STATUS_SERVED;
+            $this->save();
+        }
+    }
 }

@@ -43,11 +43,18 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 });
 
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function () {
+    #Route::get('{business}/appointment/{appointment}/annulate', ['as' => 'manager.business.agenda.annulate', 'uses' => 'BusinessAgendaController@postAnnulate']);
+    #Route::get('{business}/agenda',      ['as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
+    Route::controller('appointment', 'BusinessAgendaController', [
+        'postAction' => 'manager.business.agenda.action',
+    ]);
+    Route::controller('agenda/{business}', 'BusinessAgendaController', [
+        'getIndex' => 'manager.business.agenda.index',
+    ]);
     Route::resource('business', 'BusinessesController');
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
     Route::resource('business.vacancy', 'BusinessVacancyController');
-    Route::get('{business}/agenda',      ['as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
 });
 
 Route::get('root', [
