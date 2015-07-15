@@ -41,12 +41,17 @@ class BusinessAgendaController extends Controller
             case 'annulate':
                 $appointment->doAnnulate();
                 break;
-            
+            case 'confirm':
+                $appointment->doConfirm();
+                break;
+            case 'serve':
+                $appointment->doServe();
+                break;
             default:
                 # code...
                 break;
         }
-        return serialize($request->all());
+        return 'OK';
     }
 
     /**

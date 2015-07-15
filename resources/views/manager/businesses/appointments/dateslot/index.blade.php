@@ -23,14 +23,7 @@
                             </thead>
                             <tbody>
                             @foreach ($appointments as $appointment)
-                                <tr>
-                                    <td><code>{{ $appointment->code }}</code></td>
-                                    <td>{{ $appointment->status }}</td>
-                                    <td>{{ $appointment->start_at->timezone($appointment->tz)->toDateString() }}</td>
-                                    <td title="{{ $appointment->tz }}">{{ $appointment->start_at->timezone($appointment->tz)->toTimeString() }}</td>
-                                    <td>{{ $appointment->service ? $appointment->service->name : '' }}</td>
-                                    <td>{!! Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $appointment->business->id, 'data-appointment' => $appointment->id]) !!}
-                                </tr>
+                                {!! $appointment->widget()->fullRow() !!}
                             @endforeach
                             </tbody>
                         </table>
@@ -56,13 +49,9 @@ $(document).ready(function(){
 
     event.preventDefault();
 
-    var formData = new FormData();
     var business = $(this).data('business');
     var appointment = $(this).data('appointment');
     var action = $(this).data('action');
-    // formData.append('business_id', $(this).data('business'));
-    // formData.append('appointment_id', $(this).data('appointment'));
-    formData.append('_token', token.val());
 
     console.log(form.serialize());
 
@@ -74,11 +63,8 @@ $(document).ready(function(){
                 'X-CSRF-TOKEN': token.val()
             },
             data: { business: business, appointment: appointment, action: action },
-            // error: function (data) {
-            //     alert('Error');
-            // },
             success: function (data) {
-                // alert('Success');
+                $(this).parent('tr').hide();
             }
         });
     });

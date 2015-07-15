@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\Widgets\AppointmentWidget;
 
 class Appointment extends Model
 {
@@ -12,6 +13,8 @@ class Appointment extends Model
     protected $guarded = ['id', 'hash', 'status', 'finish_at'];
 
     protected $dates = ['start_at', 'finish_at'];
+
+    protected $widget = null;
 
     const STATUS_RESERVED  = 'R';
     const STATUS_CONFIRMED = 'C';
@@ -50,7 +53,7 @@ class Appointment extends Model
 
     public function getCodeAttribute()
     {
-        return strtoupper(substr($this->hash, 0, 6));
+        return $this->hash;
     }
 
     public function getTZAttribute()
@@ -120,6 +123,14 @@ class Appointment extends Model
         return $query->where('start_at', '<=', $date->timezone('UTC'));
     }
 
+    public function doConfirm()
+    {
+        if ($this->status == self::STATUS_RESERVED) {
+            $this->status = self::STATUS_CONFIRMED;
+            $this->save();
+        }
+    }
+
     public function doAnnulate()
     {
         if ($this->status == self::STATUS_RESERVED) {
@@ -134,5 +145,11 @@ class Appointment extends Model
             $this->status = self::STATUS_SERVED;
             $this->save();
         }
+    }
+
+    public function widget()
+    {
+        if($this->widget === null) $this->widget = new AppointmentWidget($this);
+        return $this->widget;
     }
 }
