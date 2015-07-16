@@ -51,4 +51,12 @@ class Vacancy extends Model
                ($this->service_id == $appointment->service_id) &&
                ($this->business_id == $appointment->business_id));
     }
+
+    public function holdsAnyAppointment(Collection $appointments)
+    {
+        foreach ($appointments as $appointment) {
+            if ($this->holdsAppointment($appointment)) return true;
+        }
+        return false;
+    }
 }
