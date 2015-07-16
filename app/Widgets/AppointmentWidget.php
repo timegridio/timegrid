@@ -67,9 +67,9 @@ class AppointmentWidget
 
     public function code($length = 6)
     {
-        $code = $fullcode = substr($this->appointment->code, 0, $length);
+        $code = substr($this->appointment->code, 0, $length);
         if($this->appointment->status == Appointment::STATUS_ANNULATED) $code = '<s>'.$fullcode.'</s>';
-        return '<code class="text-uppercase" title="'.$fullcode.'">'.$code.'</code>';
+        return '<code class="text-uppercase" title="'.$this->appointment->code.'">'.$code.'</code>';
     }
 
     public function dateLabel()
