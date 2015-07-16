@@ -73,7 +73,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function linkToContacts()
     {
-        $contacts = \App\Contact::where(['email' => $this->email])->get();
+        if(trim($this->email) == '') return false;
+
+        $contacts = \App\Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
 
         foreach ($contacts as $contact) {
             $contact->user()->associate($this)->save();
