@@ -79,7 +79,7 @@ class AppointmentWidget
 
     public function contactName()
     {
-        return $this->appointment->contact->fullname;
+        return link_to( route('manager.business.contact.show', [$this->appointment->business->id, $this->appointment->contact->id]), $this->appointment->contact->fullname);
     }
 
     public function diffForHumans()
