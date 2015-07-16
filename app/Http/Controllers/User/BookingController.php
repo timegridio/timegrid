@@ -20,7 +20,7 @@ class BookingController extends Controller
 {
     public function getIndex()
     {
-        $appointments = \Auth::user()->appointments;
+        $appointments = \Auth::user()->appointments()->orderBy('start_at')->get();
         return view('user.appointments.index', compact('appointments'));
     }
 
