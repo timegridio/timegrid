@@ -2,8 +2,6 @@
 
 @section('content')
 {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['manager.business.agenda.action']]) !!}
-{{-- {!! Form::hidden('business_id', null, array('required') ) !!} --}}
-{{-- {!! Form::hidden('appointment_id', null, array('required') ) !!} --}}
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
