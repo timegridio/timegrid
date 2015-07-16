@@ -9,7 +9,7 @@
         <div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
 
 				<div class="panel-body">
-          <table class="table table-condensed">
+          <table class="table table-condensed table-hover">
             <thead>
                 <tr>
                     <th><span class="hidden-md">{!! Icon::barcode() !!}</span>    <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.code') }}</span></th>
@@ -25,9 +25,9 @@
             <tbody>
             @foreach ($appointments as $appointment)
               <tr>
-                <td><code>{{ $appointment->code }}</code></td>
-                <td>{{ $appointment->status }}</td>
-                <td>{{ $appointment->start_at->timezone($appointment->tz)->toDateString() }}</td>
+                <td>{!! $appointment->widget()->code() !!}</td>
+                <td>{!! $appointment->widget()->statusLabel() !!}</td>
+                <td>{!! $appointment->widget()->dateLabel() !!}</td>
                 <td title="{{ $appointment->tz }}">{{ $appointment->start_at->timezone($appointment->tz)->toTimeString() }}</td>
                 <td title="{{ $appointment->tz }}">{{ $appointment->finish_at->timezone($appointment->tz)->toTimeString() }}</td>
                 <td>{{ $appointment->duration }}</td>
