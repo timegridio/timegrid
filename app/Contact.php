@@ -118,6 +118,11 @@ class Contact extends Model
         $this->attributes['email'] = trim($email) == '' ? null : $email;
     }
 
+    public function setNinAttribute($nin)
+    {
+        $this->attributes['nin'] = trim($nin) == '' ? null : $nin;
+    }
+
     public function linkToUser($force_relink = false)
     {
         if (trim($this->email) == '' || $this->user_id !== null && $force_relink == false) {
