@@ -24,12 +24,13 @@ class BusinessContactController extends Controller
 
     public function store(Business $business, ContactFormRequest $request)
     {
-        $existing_contacts = Contact::where(['business_id' => $business->id])->whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
-
-        foreach ($existing_contacts as $existing_contact) {
-            if ($existing_contact->isSuscribedTo($business)) {
-                Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-                return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
+        if (trim($request->input('nin'))) {
+            $existing_contacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
+            foreach ($existing_contacts as $existing_contact) {
+                if ($existing_contact->isSuscribedTo($business)) {
+                    Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+                    return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
+                }
             }
         }
 
@@ -72,7 +73,7 @@ class BusinessContactController extends Controller
 
     public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        $contact->delete();
+        $contact->businesses()->detach($business->id);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return Redirect::route('manager.business.show', $business);
