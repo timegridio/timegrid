@@ -100,7 +100,9 @@ class Appointment extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('status', '=', Self::STATUS_RESERVED)->orWhere('status', '=', Self::STATUS_CONFIRMED);
+        return $query->where(function($query){
+            $query->where('status', '=', Self::STATUS_RESERVED)->orWhere('status', '=', Self::STATUS_CONFIRMED);
+        });
     }
 
     public function scopeAnnulated($query)
