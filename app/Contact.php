@@ -123,7 +123,7 @@ class Contact extends Model
 
     public function linkToUser($force_relink = false)
     {
-        if ($this->user_id !== null && $force_relink == false) {
+        if (trim($this->email) == '' || $this->user_id !== null && $force_relink == false) {
             return $this;
         }
 
