@@ -115,10 +115,7 @@ class Contact extends Model
 
     public function setEmailAttribute($email)
     {
-        if (trim($email) == '') {
-            $this->attributes['email'] = null;
-        }
-        $this->attributes['email'] = $email;
+        $this->attributes['email'] = trim($email) == '' ? null : $email;
     }
 
     public function linkToUser($force_relink = false)
