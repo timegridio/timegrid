@@ -17,6 +17,7 @@ class ConciergeStrategy
     {
         $appointments = $business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
         $vacancies = self::removeBooked($business->vacancies, $appointments);
+        $vacancies = self::removeSelfBooked($vacancies, \Auth::user()->appointments);
         $availability = self::generateAvailability($vacancies, $limit);
         return $availability;
     }
@@ -39,6 +40,16 @@ class ConciergeStrategy
     {
         $vacancies = $vacancies->reject(function ($vacancy) use ($appointments) {
             if ($vacancy->isFull($appointments)) {
+                return true;
+            }
+        });
+        return $vacancies;
+    }
+
+    public static function removeSelfBooked(Collection $vacancies, Collection $appointments)
+    {
+        $vacancies = $vacancies->reject(function ($vacancy) use ($appointments) {
+            if ($vacancy->holdsAnyAppointment($appointments)) {
                 return true;
             }
         });
