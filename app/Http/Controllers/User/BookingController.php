@@ -32,7 +32,7 @@ class BookingController extends Controller
             return Redirect::back();
         }
 
-        $availability = Concierge::getVacancies($business, Carbon::now());
+        $availability = Concierge::getVacancies($business, Carbon::now(), \Auth::user());
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 

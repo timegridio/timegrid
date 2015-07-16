@@ -13,11 +13,11 @@ use App\Vacancy;
 
 class ConciergeStrategy
 {
-    public static function getVacancies(Business $business, Carbon $date, $limit = 7)
+    public static function getVacancies(Business $business, Carbon $date, User $user, $limit = 7)
     {
         $appointments = $business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
         $vacancies = self::removeBooked($business->vacancies, $appointments);
-        $vacancies = self::removeSelfBooked($vacancies, \Auth::user()->appointments);
+        $vacancies = self::removeSelfBooked($vacancies, $user->appointments);
         $availability = self::generateAvailability($vacancies, $limit);
         return $availability;
     }
