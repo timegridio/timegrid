@@ -14,6 +14,7 @@
                             <thead>
                                 <tr>
                                     <th><span class="hidden-md">{!! Icon::barcode() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.code') }}</span></th>
+                                    <th><span class="hidden-md">{!! Icon::user() !!}</span> <span class="">{{ trans('user.appointments.index.th.contact') }}</span></th>
                                     <th><span class="hidden-md">{!! Icon::asterisk() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.status') }}</span></th>
                                     <th><span class="hidden-md">{!! Icon::calendar() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.calendar') }}</span></th>
                                     <th><span class="hidden-md">{!! Icon::time() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.start_time') }}</span></th>
@@ -41,33 +42,51 @@
 <script>
 $(document).ready(function(){
 
-    var form = $('#postAppointmentStatus');
-    var button = $('.action');
-    var token = $('input[name=_token]');
+function prepareEvents(){
 
-    button.click(function (event){
+        console.log('prepareEvents()');
 
-    event.preventDefault();
+        var form = $('#postAppointmentStatus');
+        var button = $('.action');
+        var buttons = $('.actiongroup');
+        var token = $('input[name=_token]');
 
-    var business = $(this).data('business');
-    var appointment = $(this).data('appointment');
-    var action = $(this).data('action');
+        button.click(function (event){
 
-    console.log(form.serialize());
+        event.preventDefault();
 
-        $.ajax({
-            url: form.attr('action'),
-            method: 'post',
-            dataType: 'json',
-            headers: {
-                'X-CSRF-TOKEN': token.val()
-            },
-            data: { business: business, appointment: appointment, action: action },
-            success: function (data) {
-                $(this).parent('tr').hide();
-            }
+        var business = $(this).data('business');
+        var appointment = $(this).data('appointment');
+        var action = $(this).data('action');
+        var code = $(this).data('code');
+        var row = $('#'+code);
+
+        $(this).parent().hide();
+
+            $.ajax({
+                url: form.attr('action'),
+                method: 'post',
+                dataType: 'json',
+                headers: {
+                    'X-CSRF-TOKEN': token.val()
+                },
+                data: { business: business, appointment: appointment, action: action }
+            }).done(function (data) {
+                    console.log('AJAX Done');
+                    $('#'+code).replaceWith(data.htmlrow);
+            }).fail(function (data) {
+                    console.log('AJAX Fail');
+            }).always(function (data) {
+                    $(this).parent().show();
+                    prepareEvents();
+                    console.log('AJAX Finish');
+                    console.log(data);
+            });
         });
-    });
+    }
+
+prepareEvents();
+
 });
 </script>
 @endsection

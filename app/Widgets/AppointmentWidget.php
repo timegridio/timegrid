@@ -40,22 +40,29 @@ class AppointmentWidget
 
     public function actionButtons()
     {
+        $out = '<div class="btn-group">';
         switch ($this->appointment->status) {
             case Appointment::STATUS_RESERVED:
-                return Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id]) .
-                       Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id]);
+                $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+                if(!$this->appointment->isDue())
+                {
+                    $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);  
+                } 
+                else
+                {
+                    $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+                }
                 break;
             case Appointment::STATUS_CONFIRMED:
-                return Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id]);
+                if($this->appointment->isDue()) $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
                 break;
             case Appointment::STATUS_ANNULATED:
-                return '';
                 break;
-            
             default:
-                
                 break;
         }
+        $out .= '</div>';
+        return $out;
     }
 
     public function code($length = 6)
@@ -65,14 +72,20 @@ class AppointmentWidget
 
     public function dateLabel()
     {
-        $class = $this->appointment->start_at->isToday() ? 'bg-success' : '';
-        return "<span class=\"$class\">".$this->appointment->start_at->timezone($this->appointment->tz)->toDateString().'</span>';
+        return $this->appointment->start_at->timezone($this->appointment->tz)->toDateString();
+    }
+
+    public function contactName()
+    {
+        return $this->appointment->contact->fullname;
     }
 
     public function fullrow()
     {
-        $out  = '<tr>';
+        $class = $this->appointment->start_at->isToday() ? 'bg-success' : '';
+        $out  = '<tr id="'.$this->appointment->code.'" class="'.$class.'">';
         $out .= '<td>'. $this->code(4) .'</td>';
+        $out .= '<td>'. $this->contactName() .'</td>';
         $out .= '<td>'. $this->statusLabel() .'</td>';
         $out .= '<td>'. $this->dateLabel() .'</td>';
         $out .= "<td title=\"{$this->appointment->tz}\">".$this->appointment->start_at->timezone($this->appointment->tz)->toTimeString().'</td>';

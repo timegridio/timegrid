@@ -51,7 +51,7 @@ class BusinessAgendaController extends Controller
                 # code...
                 break;
         }
-        return 'OK';
+        return response()->json(['code' => 'OK', 'status' => $appointment->status, 'htmlrow' => $appointment->widget()->fullrow() ]);
     }
 
     /**
