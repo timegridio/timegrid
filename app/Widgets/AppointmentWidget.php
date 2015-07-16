@@ -6,6 +6,7 @@ use Button;
 use Icon;
 use App\Appointment;
 use Carbon\Carbon;
+use Panel;
 
 class AppointmentWidget
 {
@@ -44,17 +45,16 @@ class AppointmentWidget
         switch ($this->appointment->status) {
             case Appointment::STATUS_RESERVED:
                 $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
-                if(!$this->appointment->isDue())
-                {
-                    $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);  
-                } 
-                else
-                {
+                if (!$this->appointment->isDue()) {
+                    $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+                } else {
                     $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
                 }
                 break;
             case Appointment::STATUS_CONFIRMED:
-                if($this->appointment->isDue()) $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+                if ($this->appointment->isDue()) {
+                    $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+                }
                 break;
             case Appointment::STATUS_ANNULATED:
                 break;
@@ -68,7 +68,9 @@ class AppointmentWidget
     public function code($length = 6)
     {
         $code = substr($this->appointment->code, 0, $length);
-        if($this->appointment->status == Appointment::STATUS_ANNULATED) $code = '<s>'.$code.'</s>';
+        if ($this->appointment->status == Appointment::STATUS_ANNULATED) {
+            $code = '<s>'.$code.'</s>';
+        }
         return '<code class="text-uppercase" title="'.$this->appointment->code.'">'.$code.'</code>';
     }
 
@@ -79,7 +81,7 @@ class AppointmentWidget
 
     public function contactName()
     {
-        return link_to( route('manager.business.contact.show', [$this->appointment->business->id, $this->appointment->contact->id]), $this->appointment->contact->fullname);
+        return link_to(route('manager.business.contact.show', [$this->appointment->business->id, $this->appointment->contact->id]), $this->appointment->contact->fullname);
     }
 
     public function diffForHumans()
@@ -105,5 +107,48 @@ class AppointmentWidget
         $out .= "<td class=\"{$highlight}\">". $this->diffForHumans() .'</td>';
         $out .= '</tr>';
         return $out;
+    }
+
+    public function panel()
+    {
+        switch ($this->appointment->status) {
+            case Appointment::STATUS_ANNULATED:
+                $panel = Panel::danger();
+                break;
+            case Appointment::STATUS_CONFIRMED:
+                $panel = Panel::success();
+                break;
+            case Appointment::STATUS_RESERVED:
+                $panel = Panel::warning();
+                break;
+            case Appointment::STATUS_SERVED:
+            default:
+                $panel = Panel::normal();
+                break;
+        }
+
+        $header = $this->statusLabel();
+        $footer = Icon::barcode() . '&nbsp;' . $this->code();
+
+        $body  = '<ul class="list-group">';
+        $body .= '<li class="list-group-item">';
+        $body .= Icon::home(). '&nbsp;' . $this->appointment->business->name;
+        $body .= '</li>';
+        $body .= '<li class="list-group-item">';
+        $body .= Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString();
+        $body .= '</li>';
+        $body .= '<li class="list-group-item">';
+        $body .= '<span title="'.$this->appointment->tz.'">';
+        $body .= Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString() . '&nbsp;' . trans('appointments.text.to') . '&nbsp;' . $this->appointment->finish_at->timezone($this->appointment->tz)->toTimeString();
+        $body .= '</span>';
+        $body .= '</li>';
+        $body .= '<li class="list-group-item">';
+        $body .= Icon::hourglass() . '&nbsp;' . $this->appointment->duration . '&nbsp;' . trans('appointments.text.minutes');
+        $body .= '</li>';
+        $body .= '</ul>';
+        
+        $body .= '<p>'. $this->appointment->comments .'</p>';
+
+        return $panel->withHeader($header)->withBody($body)->withFooter($footer);
     }
 }
