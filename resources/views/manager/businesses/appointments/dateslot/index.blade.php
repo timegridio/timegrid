@@ -94,7 +94,12 @@ prepareEvents();
 
     $('#filter').keyup(function () {
 
-        var rex = new RegExp($(this).val(), 'i');
+        var search = $(this).val();
+
+        /* Enable multifield search */
+        search = search.replace(/\ /g, '\.\*');
+        
+        var rex = new RegExp(search, 'i');
         $('.searchable tr').hide();
         $('.searchable tr').filter(function () {
             return rex.test($(this).text());
