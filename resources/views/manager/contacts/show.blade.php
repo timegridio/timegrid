@@ -100,7 +100,7 @@
 					</div>
 
 				@if($contact->hasAppointment())
-						@include('manager.contacts._appointment', ['appointments' => $contact->appointments()->ofBusiness($business)->Active()->get()] )
+						@include('manager.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business)->Active()->get()] )
 				@endif
 
 				</div>
