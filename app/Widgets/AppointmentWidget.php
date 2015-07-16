@@ -68,7 +68,7 @@ class AppointmentWidget
     public function code($length = 6)
     {
         $code = substr($this->appointment->code, 0, $length);
-        if($this->appointment->status == Appointment::STATUS_ANNULATED) $code = '<s>'.$fullcode.'</s>';
+        if($this->appointment->status == Appointment::STATUS_ANNULATED) $code = '<s>'.$code.'</s>';
         return '<code class="text-uppercase" title="'.$this->appointment->code.'">'.$code.'</code>';
     }
 
