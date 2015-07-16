@@ -23,7 +23,7 @@ class Appointment extends Model
 
     public function save(array $options = array())
     {
-        $this->attributes['hash'] = md5($this->start_at.$this->contact_id.$this->business_id.$this->service_id);
+        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
 
         parent::save();
     }
