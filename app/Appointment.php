@@ -88,6 +88,11 @@ class Appointment extends Model
         $this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
     }
 
+    public function isDue()
+    {
+        return $this->start_at->isPast();
+    }
+
     public function scopeServed($query)
     {
         return $query->where('status', '=', Self::STATUS_SERVED);
@@ -141,7 +146,8 @@ class Appointment extends Model
 
     public function doServe()
     {
-        if ($this->status == self::STATUS_CONFIRMED) {
+        if ($this->status == self::STATUS_CONFIRMED || 
+            $this->status == self::STATUS_RESERVED) {
             $this->status = self::STATUS_SERVED;
             $this->save();
         }
