@@ -67,7 +67,9 @@ class AppointmentWidget
 
     public function code($length = 6)
     {
-        return '<code class="text-uppercase" title="'.substr($this->appointment->code, 0, 8).'">'.substr($this->appointment->code, 0, $length).'</code>';
+        $code = $fullcode = substr($this->appointment->code, 0, $length);
+        if($this->appointment->status == Appointment::STATUS_ANNULATED) $code = '<s>'.$fullcode.'</s>';
+        return '<code class="text-uppercase" title="'.$fullcode.'">'.$code.'</code>';
     }
 
     public function dateLabel()
@@ -80,10 +82,19 @@ class AppointmentWidget
         return $this->appointment->contact->fullname;
     }
 
+    public function diffForHumans()
+    {
+        return $this->appointment->start_at->timezone($this->appointment->business->timezone)->diffForHumans();
+    }
+
     public function fullrow()
     {
-        $class = $this->appointment->start_at->isToday() ? 'bg-success' : '';
-        $out  = '<tr id="'.$this->appointment->code.'" class="'.$class.'">';
+        $class = $this->appointment->status == Appointment::STATUS_RESERVED  ? 'bg-warning' : '';
+        $class = $this->appointment->status == Appointment::STATUS_CONFIRMED ? 'bg-success' : $class;
+        $class = $this->appointment->status == Appointment::STATUS_ANNULATED ? 'bg-danger'  : $class;
+        $highlight = $this->appointment->start_at->isToday() ? 'today' : '';
+
+        $out  = "<tr id=\"{$this->appointment->code}\" class=\"{$class}\">";
         $out .= '<td>'. $this->code(4) .'</td>';
         $out .= '<td>'. $this->contactName() .'</td>';
         $out .= '<td>'. $this->statusLabel() .'</td>';
@@ -91,6 +102,7 @@ class AppointmentWidget
         $out .= "<td title=\"{$this->appointment->tz}\">".$this->appointment->start_at->timezone($this->appointment->tz)->toTimeString().'</td>';
         $out .= '<td>'. ($this->appointment->service ? $this->appointment->service->name : '') .'</td>';
         $out .= '<td>'. $this->actionButtons() .'</td>';
+        $out .= "<td class=\"{$highlight}\">". $this->diffForHumans() .'</td>';
         $out .= '</tr>';
         return $out;
     }
