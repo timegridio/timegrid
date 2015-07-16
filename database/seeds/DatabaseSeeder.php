@@ -16,5 +16,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call('CountriesSeeder');
         $this->command->info('Seeded the Param Countries!');
+
+        $this->call('RolesTableSeeder');
+        $this->command->info('Seeded the Param Roles!');
     }
 }
