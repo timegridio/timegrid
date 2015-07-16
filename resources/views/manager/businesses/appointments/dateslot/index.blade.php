@@ -20,16 +20,19 @@
                                     <th><span class="hidden-md">{!! Icon::time() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.start_time') }}</span></th>
                                     <th><span class="hidden-md">{!! Icon::briefcase() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.service') }}</span></th>
                                     <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="searchable">
                             @foreach ($appointments as $appointment)
                                 {!! $appointment->widget()->fullRow() !!}
                             @endforeach
                             </tbody>
                         </table>
                     </div>
-                <div class="panel-footer"></div>
+                <div class="panel-footer">
+                    <div class="input-group"> <span class="input-group-addon">Filtrar</span><input id="filter" type="text" class="form-control" placeholder="buscar..."></div>
+                </div>
             </div>
         </div>
     </div>
@@ -86,6 +89,20 @@ function prepareEvents(){
     }
 
 prepareEvents();
+
+(function ($) {
+
+    $('#filter').keyup(function () {
+
+        var rex = new RegExp($(this).val(), 'i');
+        $('.searchable tr').hide();
+        $('.searchable tr').filter(function () {
+            return rex.test($(this).text());
+        }).show();
+
+    })
+
+}(jQuery));
 
 });
 </script>

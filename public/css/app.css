@@ -16,3 +16,8 @@ body {
   height: 60px;
   background-color: #f5f5f5;
 }
+
+td.today {
+  border-right: 2px solid red;
+  background-color: #FFFC51;
+}
