@@ -80,6 +80,7 @@ $(document).ready(function(){
 
 @section('content')
 <div class="container">
+    {!! $business->contacts()->paginate(300)->render() !!}
     <div class="panel panel-primary filterable">
         <div class="panel-heading">
             <h3 class="panel-title">{{ trans('manager.contacts.title') }}</h3>
@@ -87,27 +88,28 @@ $(document).ready(function(){
                 <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> {{ trans('manager.contacts.list.btn.filter') }}</button>
             </div>
         </div>
-        <table class="table">
+        <table class="table table-condensed table-hover table-striped">
             <thead>
                 <tr class="filters">
-                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.firstname') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.lastname') }}" disabled></th>
-                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.username') }}" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.firstname') }}" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.email') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.mobile') }}" disabled></th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($business->contacts as $contact)          
+                @foreach ($business->contacts()->orderBy('lastname', 'ASC')->simplePaginate(300) as $contact)
                     <tr>
-                        <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                         <td>{{ $contact->lastname }}</td>
-                        <td>{{ $contact->username }}</td>
+                        <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
+                        <td>{{ $contact->email }}</td>
                         <td>{{ $contact->mobile }}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-{!! Button::primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.business.contact.create', $business) ) !!}
+{!! Button::primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.business.contact.create', $business) )->block() !!}
 </div>
+
 @endsection
