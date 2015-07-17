@@ -96,6 +96,7 @@
 							</div>
 						</div>
 								 <div class="panel-footer">
+								 				{!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
 												{!! Button::primary()->withIcon(Icon::link()) !!}
 												<span class="pull-right">
 														{!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) ) !!}

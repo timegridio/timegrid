@@ -95,6 +95,7 @@ $(document).ready(function(){
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.firstname') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.email') }}" disabled></th>
                     <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.mobile') }}" disabled></th>
+                    <th><input type="text" class="form-control" placeholder="{{ trans('manager.contacts.list.header.quality') }}" disabled></th>
                 </tr>
             </thead>
             <tbody>
@@ -104,6 +105,7 @@ $(document).ready(function(){
                         <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->mobile }}</td>
+                        <td>{!! $contact->quality == 100 ? ProgressBar::success($contact->quality) : ProgressBar::normal($contact->quality) !!}</td>
                     </tr>
                 @endforeach
             </tbody>
