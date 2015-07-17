@@ -45,7 +45,9 @@
 						<li><a class="navbar-brand" href="{{ route('user.businesses.home') }}">{{ trans('app.nav.home') }}</a></li>
 					@endif
 
-					@include('manager/_navmenu')
+					@if (Auth::user()->hasBusiness())
+						@include('manager/_navmenu')
+					@endif
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
