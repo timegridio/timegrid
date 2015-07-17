@@ -40,7 +40,7 @@
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					@if (!Auth::guest() && Auth::user()->isRoot())
-						<li><a class="navbar-brand" href="{{ route('root') }}">Root Dashboard</a></li>
+						<li><a class="navbar-brand" href="{{ route('root.dashboard') }}">Root Dashboard</a></li>
 					@else
 						<li><a class="navbar-brand" href="{{ route('user.businesses.home') }}">{{ trans('app.nav.home') }}</a></li>
 					@endif
