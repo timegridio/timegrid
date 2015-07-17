@@ -20,6 +20,22 @@
 
 		<div class="panel-body">
 
+			@if ($business->services()->count() == 0)
+			<div class="row">
+				<div class="col-md-12">
+					{!! Alert::warning(Button::withIcon(Icon::tag())->warning()->asLinkTo( route('manager.business.service.create', $business)) . '&nbsp;' . trans('manager.businesses.dashboard.alert.no_services_set')) !!}
+				</div>
+			</div>
+			@endif
+
+			@if ($business->vacancies()->future()->count() == 0)
+			<div class="row">
+				<div class="col-md-12">
+					{!! Alert::warning(Button::withIcon(Icon::time())->warning()->asLinkTo( route('manager.business.vacancy.create', $business)) . '&nbsp;' . trans('manager.businesses.dashboard.alert.no_vacancies_set')) !!}
+				</div>
+			</div>
+			@endif
+
 			<div class="row">
 			  <div class="col-md-6"><blockquote><p>{{ $business->description }}</p></blockquote></div>
 			  <div class="col-md-6"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
@@ -91,7 +107,7 @@
  
   var laravel = {
 	initialize: function() {
-	  this.methodLinks = $('a[data-method]'); 
+	  this.methodLinks = $('a[data-method]');
 	  this.registerEvents();
 	},
  
@@ -128,13 +144,13 @@
 	},
  
 	createForm: function(link) {
-	  var form = 
+	  var form =
 	  $('<form>', {
 		'method': 'POST',
 		'action': link.attr('href')
 	  });
  
-	  var token = 
+	  var token =
 	  $('<input>', {
 		'type': 'hidden',
 		'name': '_token',
