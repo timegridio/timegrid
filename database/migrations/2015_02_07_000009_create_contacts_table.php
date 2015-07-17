@@ -28,7 +28,6 @@ class CreateContactsTable extends Migration {
 			$table->char('mobile', 15)->nullable();
 			$table->char('mobile_country', 2)->nullable();
 			$table->string('email')->nullable();
-			$table->string('notes')->nullable();
 			$table->timestamps();
 			$table->softDeletes();
 		});
