@@ -79,9 +79,9 @@
 					{!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
 					{!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
 					{!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
+					{!! Button::withIcon(Icon::user())->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
 				</div>
 			</div>
-			@include('manager.businesses._contacts')
 		</div>
 	</div>
 </div>
