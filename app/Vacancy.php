@@ -29,6 +29,11 @@ class Vacancy extends Model
         return $query->where('date', '=', $date->toDateString());
     }
 
+    public function scopeFuture($query)
+    {
+        return $query->where('date', '>', Carbon::now());
+    }
+
     public function scopeForService($query, Service $service)
     {
         return $query->where('service_id', '=', $service->id);
