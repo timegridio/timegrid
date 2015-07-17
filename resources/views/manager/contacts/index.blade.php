@@ -105,7 +105,7 @@ $(document).ready(function(){
                         <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->mobile }}</td>
-                        <td>{!! $contact->quality == 100 ? ProgressBar::success($contact->quality) : ProgressBar::normal($contact->quality) !!}</td>
+                        <td>{!! $contact->quality == 100 ? ProgressBar::success($contact->quality) : ($contact->quality < 25 ? ProgressBar::danger($contact->quality) : ProgressBar::normal($contact->quality) ) !!}</td>
                     </tr>
                 @endforeach
             </tbody>
