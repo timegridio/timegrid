@@ -12,9 +12,9 @@ use Request;
 
 class BusinessContactController extends Controller
 {
-    public function index()
+    public function index(Business $business, ContactFormRequest $request)
     {
-        //
+        return view('manager.contacts.index', compact('business'));
     }
 
     public function create(Business $business, ContactFormRequest $request)
