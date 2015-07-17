@@ -14,76 +14,74 @@
 
 @section('content')
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">{{ $business->name }}</div>
 
-				<div class="panel-body">
+	<div class="panel panel-default">
+		<div class="panel-heading">{{ $business->name }}</div>
 
-					<div class="row">
-					  <div class="col-md-6"><blockquote><p>{{ $business->description }}</p></blockquote></div>
-					  <div class="col-md-6"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
-					</div>
+		<div class="panel-body">
 
-					<div class="row">
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-success">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::now())->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
-							</div>
-					  </div>
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-danger">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_annulated') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::now())->annulated()->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
-							</div>
-					  </div>
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-warning">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::tomorrow())->active()->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_tomorrow') }}</div>
-							</div>
-					  </div>
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-success">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->active()->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
-							</div>
-					  </div>
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-info">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_served') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->served()->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
-							</div>
-					  </div>
-					  <div class="col-md-2">
-							<div class="panel panel-default panel-info">
-							  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
-							  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->get()->count() }}</h1></div>
-							  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
-							</div>
-					  </div>
-					</div>
-
-				</div>
-
-				<div class="panel-footer">
-					{!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.business.edit', $business) ) !!}
-					{!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
-					{!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
-					{!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
-					{!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
-					{!! Button::withIcon(Icon::user())->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
-				</div>
+			<div class="row">
+			  <div class="col-md-6"><blockquote><p>{{ $business->description }}</p></blockquote></div>
+			  <div class="col-md-6"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
 			</div>
+
+			<div class="row">
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-success">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::now())->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
+					</div>
+			  </div>
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-danger">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_annulated') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::now())->annulated()->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
+					</div>
+			  </div>
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-warning">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->ofDate(Carbon::tomorrow())->active()->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_tomorrow') }}</div>
+					</div>
+			  </div>
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-success">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->active()->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+					</div>
+			  </div>
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-info">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_served') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->served()->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+					</div>
+			  </div>
+			  <div class="col-md-2">
+					<div class="panel panel-default panel-info">
+					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->get()->count() }}</h1></div>
+					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+					</div>
+			  </div>
+			</div>
+
+		</div>
+
+		<div class="panel-footer">
+			{!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.business.edit', $business) ) !!}
+			{!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
+			{!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
+			{!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
+			{!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
+			{!! Button::withIcon(Icon::user())->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
 		</div>
 	</div>
+
 </div>
 @endsection
 
