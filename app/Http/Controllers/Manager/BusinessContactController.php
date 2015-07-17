@@ -19,7 +19,7 @@ class BusinessContactController extends Controller
 
     public function create(Business $business, ContactFormRequest $request)
     {
-        return view('manager.contacts.create', compact('headerlang', 'business'));
+        return view('manager.contacts.create', compact('business'));
     }
 
     public function store(Business $business, ContactFormRequest $request)
@@ -34,8 +34,8 @@ class BusinessContactController extends Controller
             }
         }
 
-        $contact = Contact::create(Request::all());
-        $business->contacts()->attach($contact);
+        $contact = Contact::create($request->all());
+        $business->contacts()->attach($contact, ['notes' => $request->only('notes')]);
         $business->save();
 
         Flash::success(trans('manager.contacts.msg.store.success'));

@@ -29,7 +29,7 @@ class BusinessContactController extends Controller
             return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
         }
 
-        return view('user.contacts.create', compact('headerlang', 'business'));
+        return view('user.contacts.create', compact('business'));
     }
 
     public function store(Business $business, AlterContactRequest $request)
