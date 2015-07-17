@@ -34,9 +34,11 @@ class BusinessContactController extends Controller
             }
         }
 
-        $contact = Contact::create($request->all());
-        $business->contacts()->attach($contact, ['notes' => $request->only('notes')]);
+        $contact = Contact::create($request->except('notes', '_token'));
+        $business->contacts()->attach($contact);
         $business->save();
+
+        $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.store.success'));
         return Redirect::route('manager.business.contact.show', [$business, $contact]);
@@ -64,8 +66,9 @@ class BusinessContactController extends Controller
             'birthdate'       => $request->get('birthdate'),
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country'),
-            'notes'           => $request->get('notes')
         ]);
+
+        $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.update.success'));
         return Redirect::route('manager.business.contact.show', [$business, $contact]);
