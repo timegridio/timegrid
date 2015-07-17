@@ -27,6 +27,11 @@ class Contact extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function business(Business $business)
+    {
+        return $this->belongsToMany('App\Business')->withPivot('notes')->where('business_id', $business->id)->withTimestamps()->first();
+    }
+
     public function businesses()
     {
         return $this->belongsToMany('App\Business');
