@@ -42,6 +42,13 @@ class Contact extends Model
         return $this->hasMany('App\Appointment');
     }
 
+    public function nextAppointment(Business $business = null)
+    {
+        $appointments = $this->appointments()->orderBy('start_at')->active()->future();
+        if($business === null) $appointments->where('business_id', $business->id);
+        return $appointments->first();
+    }
+
     public function appointment()
     {
         return $this->appointments->first();
