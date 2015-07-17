@@ -52,13 +52,13 @@
 					  'placeholder'=> trans('manager.contacts.form.mobile.label') )) !!}
 		</div>
 	</div>
-{{-- 	<div class="row">
+	<div class="row">
 		<div class="form-group col-xs-10">
-			{!! Form::textarea('notes', null, 
+			{!! Form::textarea('notes', isset($contact) ? $contact->business($business)->pivot->notes : null, 
 				array('class'=>'form-control', 
 					  'placeholder'=> trans('manager.contacts.form.notes.label') )) !!}
 		</div>
-	</div> --}}
+	</div>
 	<div class="row">
 		<div class="notes form-group col-xs-12">
 			{!! Button::primary($submitLabel)->block()->submit() !!}
