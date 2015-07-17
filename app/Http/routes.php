@@ -57,12 +57,18 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
     Route::resource('business.vacancy', 'BusinessVacancyController');
 });
 
-Route::get('root', [
-    'as'            => 'root',
-    'uses'          => 'RootController@index',
-    'middleware'    => ['auth', 'acl'],
-    'is'            => 'root']
-);
+Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
+    Log::warning("[!] ROOT DASHBOARD ACCESS ATTEMPT");
+    Route::controller('dashboard', 'RootController', [
+        'getIndex' => 'root.dashboard',
+    ]);
+    Route::get('sudo/{userId}', function ($userId) {
+        Auth::loginUsingId($userId);
+        Log::warning("[!] ROOT SUDO userId:$userId");
+        Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
+        return Redirect::route('user.businesses.home');
+    })->where('userId', '\d*');
+});
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 

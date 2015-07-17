@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class RootController extends Controller
 {
-    public function index()
+    public function getIndex()
     {
         $users = \App\User::all();
         return view('root.dashboard', compact('users'));
