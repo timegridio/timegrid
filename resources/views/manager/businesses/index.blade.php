@@ -31,7 +31,7 @@
 						</div>
 					@else
 						{!! Alert::info(trans('manager.businesses.index.register_business_help')) !!}
-						<div class="text-center">{!! Button::success(trans('user.businesses.index.btn.power_create'))->large()->asLinkTo( route('manager.business.create') ) !!}</div>
+						<div class="text-center">{!! Button::success(trans('user.businesses.index.btn.power_create'))->withIcon(Icon::ok())->large()->asLinkTo( route('manager.business.create') ) !!}</div>
 					@endif
 				</div>
 			</div>
