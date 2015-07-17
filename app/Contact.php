@@ -162,4 +162,18 @@ class Contact extends Model
     {
         return $this->businesses->contains($business);
     }
+
+    public function getQualityAttribute()
+    {
+        $quality  = 0;
+        $quality += $this->firstname ? 1 : 0;
+        $quality += $this->lastname ? 1 : 0;
+        $quality += $this->nin ? 5 : 0;
+        $quality += $this->birthdate ? 2 : 0;
+        $quality += $this->mobile ? 4 : 0;
+        $quality += $this->email ? 4 : 0;
+        $quality += $this->postal_address ? 3 : 0;
+        $total    = 20;
+        return $quality/$total*100;
+    }
 }
