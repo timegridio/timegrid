@@ -81,10 +81,6 @@
 												<td>{{ trans('manager.contacts.label.member_since') }}</td>
 												<td>{{ $contact->business($business)->pivot->created_at->diffForHumans() }}</td>
 										</tr>
-										<tr>
-												<td>{{ trans('manager.contacts.label.next_appointment') }}</td>
-												<td>{{ $contact->nextAppointment($business)->start_at->diffForHumans() }}</td>
-										</tr>
 										@if ($contact->mobile)
 										<tr>
 												<td>{{ trans('manager.contacts.label.mobile') }}</td>
