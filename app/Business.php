@@ -25,7 +25,7 @@ class Business extends Model
 
     public function contacts()
     {
-        return $this->belongsToMany('App\Contact');
+        return $this->belongsToMany('App\Contact')->withPivot('notes')->withTimestamps();
     }
 
     public function services()
