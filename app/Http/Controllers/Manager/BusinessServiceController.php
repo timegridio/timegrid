@@ -40,7 +40,7 @@ class BusinessServiceController extends Controller
      */
     public function store(Business $business, Request $request)
     {
-        $service = Service::firstOrNew(Request::except('_token'));
+        $service = Service::firstOrNew($request->except('_token'));
         $service->business()->associate($business->id);
         $service->save();
 
