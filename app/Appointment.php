@@ -133,7 +133,7 @@ class Appointment extends Model
         return $query->whereRaw('date(`start_at`) = ?', [$date->timezone('UTC')->toDateString()]);
     }
 
-    public function scopeFuture($query, $tillDate = false)
+    public function scopeFuture($query)
     {
         return $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
     }
