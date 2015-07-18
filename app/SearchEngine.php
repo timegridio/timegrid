@@ -15,20 +15,29 @@ class SearchEngine
 
     protected $scope = [];
 
-    public function __construct($expression)
+    protected $criteria = '';
+
+    public function __construct($criteria)
     {
         $this->scope['businessesIds'] = \Auth::user()->businesses->transform(function($item, $key){ return $item->id; });
-        
-        $this->search($expression);
+        $this->criteria = $criteria;
     }
 
-    public function search($expression)
+    public function setBusinessScope(Array $scope)
     {
-        if (strlen($expression) < 3) return false;
+        $this->scope['businessesIds'] = $scope;
+        return $this;
+    }
 
-        $this->getAppointments($expression);
-        $this->getContacts($expression);
-        $this->getServices($expression);
+    public function run()
+    {
+        if (strlen($this->criteria) < 3) return false;
+
+        $this->getAppointments($this->criteria);
+        $this->getContacts($this->criteria);
+        $this->getServices($this->criteria);
+
+        return $this;
     }
 
     public function results()
