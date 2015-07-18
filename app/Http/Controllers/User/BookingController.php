@@ -54,9 +54,9 @@ class BookingController extends Controller
         return Redirect::route('user.booking.list')->with('message', trans('user.booking.msg.store.success'));
     }
 
-    public function getShow($id)
+    public function getShow(Business $business, Appointment $appointment)
     {
-        //
+        return view('user.appointments.'.$business->strategy.'.show', compact('appointment'));
     }
 
     public function edit($id)
