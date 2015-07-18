@@ -12,16 +12,21 @@
 				<div class="panel-body">
 					@if(\Auth::user()->hasBusiness())
 						{!! Alert::info(trans('manager.businesses.index.help')) !!}
-	
-						<table class="table table-condensed">
+							
 						@foreach ($businesses as $business)
-							<tr>
-								<td>{!! Button::primary($business->slug)->asLinkTo( route('manager.business.show', ['business' => $business]) ) !!}</td>
-								<td>{{ $business->name }}</td>
-								<td>{{ $business->description }}</td>
-							</tr>
+                            <div class="row">
+                            <div class="col-md-12">
+                                <div class="media">
+                                  <div class="media-left media-top hidden-xs hidden-sm">
+                                    <a href="{{route('manager.business.show', ['business' => $business])}}">{!! $business->facebookPicture('normal') !!}</a>
+                                  </div>
+                                  <div class="media-body">
+                                    <blockquote>{!! Button::normal($business->name)->asLinkTo( route('manager.business.show', ['business' => $business]) ) !!} {{ str_limit($business->description, 50) }}</blockquote>
+                                  </div>
+                                </div>
+                            </div>
+                            </div>
 						@endforeach
-						</table>
 
 					@else
 						{!! Alert::info(trans('manager.businesses.index.register_business_help')) !!}
