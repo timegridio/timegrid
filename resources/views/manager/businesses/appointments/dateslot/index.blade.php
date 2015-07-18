@@ -67,10 +67,10 @@ function prepareEvents(){
                 headers: {
                     'X-CSRF-TOKEN': token.val()
                 },
-                data: { business: business, appointment: appointment, action: action }
+                data: { business: business, appointment: appointment, action: action, widget:'row' }
             }).done(function (data) {
                     console.log('AJAX Done');
-                    $('#'+code).replaceWith(data.htmlrow);
+                    $('#'+code).replaceWith(data.html);
             }).fail(function (data) {
                     console.log('AJAX Fail');
             }).always(function (data) {
