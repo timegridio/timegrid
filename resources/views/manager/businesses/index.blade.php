@@ -23,12 +23,6 @@
 						@endforeach
 						</table>
 
-						<div class="panel-footer">
-							{!! DropdownButton::normal(trans('app.home.btn.actions'))->withContents([
-										['url' => route('manager.business.index'),  'label' => trans('manager.businesses.index.btn.manage')],
-										['url' => route('manager.business.create'), 'label' => trans('manager.businesses.index.btn.register')],
-							]) !!}
-						</div>
 					@else
 						{!! Alert::info(trans('manager.businesses.index.register_business_help')) !!}
 						<div class="text-center">{!! Button::success(trans('user.businesses.index.btn.power_create'))->withIcon(Icon::ok())->large()->asLinkTo( route('manager.business.create') ) !!}</div>
