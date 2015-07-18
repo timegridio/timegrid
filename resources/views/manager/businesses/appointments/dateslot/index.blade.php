@@ -3,35 +3,31 @@
 @section('content')
 {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['manager.business.agenda.action']]) !!}
 <div class="container">
-    <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
-                    <div class="panel-body">
-                        <table class="table table-condensed table-hover">
-                            <thead>
-                                <tr>
-                                    <th><span class="hidden-md">{!! Icon::barcode() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.code') }}</span></th>
-                                    <th><span class="hidden-md">{!! Icon::user() !!}</span> <span class="">{{ trans('user.appointments.index.th.contact') }}</span></th>
-                                    <th><span class="hidden-md">{!! Icon::asterisk() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.status') }}</span></th>
-                                    <th><span class="hidden-md">{!! Icon::calendar() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.calendar') }}</span></th>
-                                    <th><span class="hidden-md">{!! Icon::time() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.start_time') }}</span></th>
-                                    <th><span class="hidden-md">{!! Icon::briefcase() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.service') }}</span></th>
-                                    <th></th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody class="searchable">
-                            @foreach ($appointments as $appointment)
-                                {!! $appointment->widget()->fullRow() !!}
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                <div class="panel-footer">
-                    <div class="input-group"> <span class="input-group-addon">Filtrar</span><input id="filter" type="text" class="form-control" placeholder="buscar..."></div>
-                </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
+            <div class="panel-body">
+                <table class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th><span class="hidden-md">{!! Icon::barcode() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.code') }}</span></th>
+                            <th><span class="hidden-md">{!! Icon::user() !!}</span> <span class="">{{ trans('user.appointments.index.th.contact') }}</span></th>
+                            <th><span class="hidden-md">{!! Icon::asterisk() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.status') }}</span></th>
+                            <th><span class="hidden-md">{!! Icon::calendar() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.calendar') }}</span></th>
+                            <th><span class="hidden-md">{!! Icon::time() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.start_time') }}</span></th>
+                            <th><span class="hidden-md">{!! Icon::briefcase() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.service') }}</span></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody class="searchable">
+                    @foreach ($appointments as $appointment)
+                        {!! $appointment->widget()->row() !!}
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
+        <div class="panel-footer">
+            <div class="input-group"> <span class="input-group-addon">{{ trans('app.filter') }}</span><input id="filter" type="text" class="form-control" placeholder=""></div>
         </div>
     </div>
 </div>
