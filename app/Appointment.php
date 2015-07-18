@@ -103,11 +103,19 @@ class Appointment extends Model
         return $query->where('status', '=', Self::STATUS_SERVED);
     }
 
-    public function scopeActive($query)
+    public function scopePending($query)
     {
         return $query->where(function($query){
-            $query->where('status', '=', Self::STATUS_RESERVED)->orWhere('status', '=', Self::STATUS_CONFIRMED);
+            $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
+        })->orWhere(function($query){
+            $query->where('start_at', '<',  Carbon::parse('today midnight')->timezone('UTC'))
+                  ->whereNotIn('status', [Self::STATUS_SERVED, Self::STATUS_ANNULATED]);
         });
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED]);
     }
 
     public function scopeAnnulated($query)
