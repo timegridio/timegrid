@@ -206,6 +206,6 @@ class AppointmentWidget
         
         $body .= '<p>'. $this->appointment->comments .'</p>';
 
-        return $panel->withHeader($header)->withBody($body)->withFooter($footer);
+        return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
     }
 }
