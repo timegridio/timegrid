@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Form::open(array('route' => 'user.booking.store', 'class' => 'form')) !!}
-{!! Form::hidden('business_id', Session::get('selected.business_id'), array('required') ) !!}
+{!! Form::hidden('business_id', Session::get('selected.business')->id, array('required') ) !!}
 <div class="container">
     <div class="row">
       @include('user.appointments.dateslot._timetable', ['dates' => $availability])
