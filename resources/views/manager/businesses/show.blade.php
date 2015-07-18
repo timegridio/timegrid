@@ -37,8 +37,9 @@
 			@endif
 
 			<div class="row">
-			  <div class="col-md-6"><blockquote><p>{{ $business->description }}</p></blockquote></div>
-			  <div class="col-md-6"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
+			  <div class="col-md-4"><blockquote><p>{{ str_limit($business->description, 30) }}</div>
+			  <div class="col-md-4"><blockquote><p>{!! Icon::globe() !!}&nbsp;{{ $business->timezone }}</p></blockquote></div>
+			  <div class="col-md-4"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
 			</div>
 
 			<div class="row">
@@ -82,6 +83,27 @@
 					  <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
 					  <div class="panel-body"><h1 class="text-center">{{ $business->bookings()->get()->count() }}</h1></div>
 					  <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+					</div>
+			  </div>
+			</div>
+
+			<div class="row">
+			  <div class="col-md-4">
+					<div class="panel panel-default">
+					  <div class="panel-heading">{{ trans('Contactos Registrados') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->count() }}</h1></div>
+					</div>
+			  </div>
+			  <div class="col-md-4">
+					<div class="panel panel-default">
+					  <div class="panel-heading">{{ trans('Usuarios Activos') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->whereNotNull('user_id')->count() }}</h1></div>
+					</div>
+			  </div>
+			  <div class="col-md-4">
+					<div class="panel panel-default">
+					  <div class="panel-heading">{{ trans('Usuarios con DNI') }}</div>
+					  <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->whereNotNull('nin')->count() }}</h1></div>
 					</div>
 			  </div>
 			</div>
