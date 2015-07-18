@@ -7,7 +7,7 @@
 
 @section('content')
 {!! Form::open(array('route' => 'user.booking.store', 'class' => 'form')) !!}
-{!! Form::hidden('business_id', Session::get('selected.business_id'), array('required', 'id' => 'business_id') ) !!}
+{!! Form::hidden('business_id', Session::get('selected.business')->id, array('required', 'id' => 'business_id') ) !!}
 <div class="container">
     <div class="row">
         <div class="form-group col-sm-4">
