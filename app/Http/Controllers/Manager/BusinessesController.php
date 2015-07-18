@@ -8,6 +8,7 @@ use App\Business;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use App\Http\Requests\BusinessFormRequest;
+use Session;
 use Request;
 use Flash;
 use GeoIP;
@@ -51,6 +52,7 @@ class BusinessesController extends Controller
 
     public function show(Business $business, BusinessFormRequest $request)
     {
+        Session::set('selected.business', $business);
         return view('manager.businesses.show', compact('business'));
     }
 

@@ -54,6 +54,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
     ]);
     Route::post('search', function () {
         $search = new App\SearchEngine(Request::input('criteria'));
+        $search->setBusinessScope([Session::get('selected.business')->id])->run();
         return view('manager.search.index')->with(['results' => $search->results()]);
     });
     Route::resource('business', 'BusinessesController');
