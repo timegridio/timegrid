@@ -208,4 +208,34 @@ class AppointmentWidget
 
         return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
     }
+
+    public function mini($title = '')
+    {
+        $header = '';
+        switch ($this->appointment->status) {
+            case Appointment::STATUS_ANNULATED:
+                $panel = Panel::danger();
+                $header .= Icon::alert() . '&nbsp;&nbsp;' . trans('appointments.status.annulated');
+                break;
+            case Appointment::STATUS_CONFIRMED:
+                $header = $title . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->diffForHumans();
+                $panel = Panel::success();
+                break;
+            case Appointment::STATUS_RESERVED:
+                $header = $title . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->diffForHumans();
+                $panel = Panel::warning();
+                break;
+            case Appointment::STATUS_SERVED:
+            default:
+                $panel = Panel::normal();
+                break;
+        }
+
+        $body   = Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString();
+        $body  .= '&nbsp;&nbsp;' . Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString();
+        $body  .= '&nbsp;&nbsp;' . Icon::user() . '&nbsp;' . $this->appointment->contact->fullname;
+        $footer = Icon::barcode() . '&nbsp;' . $this->code() . '&nbsp;&nbsp;' . $this->statusLabel();
+
+        return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
+    }
 }
