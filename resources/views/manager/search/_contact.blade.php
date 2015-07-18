@@ -1,0 +1,1 @@
+<li class="list-group-item">{!! $contact->fullname !!} {!! $contact->nin !!}</li>

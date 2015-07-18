@@ -52,6 +52,10 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
     Route::controller('agenda/{business}', 'BusinessAgendaController', [
         'getIndex' => 'manager.business.agenda.index',
     ]);
+    Route::post('search', function () {
+        $search = new App\SearchEngine(Request::input('criteria'));
+        return view('manager.search.index')->with(['results' => $search->results()]);
+    });
     Route::resource('business', 'BusinessesController');
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
