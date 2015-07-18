@@ -18,7 +18,7 @@ class AppointmentWidget
     {
         $this->appointment = $appointment;
 
-        $this->fields = ['code', 'contact', 'status', 'date', 'start_at', 'service', 'action', 'diffForHumans'];
+        $this->fields = ['code', 'contact', 'status', 'date', 'start_at', 'service', 'action', 'business', 'diffForHumans'];
     }
 
     public function only(Array $options)
@@ -122,6 +122,7 @@ class AppointmentWidget
         $cols['start_at']      = "<td title=\"{$this->appointment->tz}\">".$this->appointment->start_at->timezone($this->appointment->tz)->toTimeString().'</td>';
         $cols['service']       = '<td>'. ($this->appointment->service ? $this->appointment->service->name : '') .'</td>';
         $cols['action']        = '<td>'. $this->actionButtons() .'</td>';
+        $cols['business']      = "<td>". $this->appointment->business->name .'</td>';
         $cols['diffForHumans'] = "<td class=\"{$highlight}\">". $this->diffForHumans() .'</td>';
 
         foreach ($this->fields as $field) {
