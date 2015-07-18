@@ -6,7 +6,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
             <div class="panel-body">
-                <table class="table table-condensed table-hover">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th><span class="hidden-md">{!! Icon::barcode() !!}</span> <span class="hidden-xs hidden-sm">{{ trans('user.appointments.index.th.code') }}</span></th>
