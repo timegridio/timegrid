@@ -20,7 +20,7 @@ class BusinessAgendaController extends Controller
      */
     public function getIndex(Business $business)
     {
-        $appointments = $business->bookings()->orderBy('start_at')->get();
+        $appointments = $business->bookings()->pending()->orderBy('start_at')->get();
         return view('manager.businesses.appointments.'.$business->strategy.'.index', compact('appointments'));
     }
 
