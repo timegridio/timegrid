@@ -1,5 +1,5 @@
-@if(Session::get('selected.business_id'))
-    <li><a href="{{ route('manager.business.show', Session::get('selected.business_id')) }}">{!! Icon::home() !!} {{ trans('app.nav.manager.business.dashboard') }}</a></li>
+@if($business = Session::get('selected.business'))
+    <li><a href="{{ route('manager.business.show', $business->id) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
 @endif
 
 <li class="dropdown">
