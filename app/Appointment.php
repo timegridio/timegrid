@@ -8,9 +8,9 @@ use App\Widgets\AppointmentWidget;
 
 class Appointment extends Model
 {
-    protected $fillable = ['contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
+    protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
 
-    protected $guarded = ['id', 'hash', 'status', 'finish_at'];
+    protected $guarded = ['id', 'hash', 'status', 'finish_at', 'issuer_id'];
 
     protected $dates = ['start_at', 'finish_at'];
 
@@ -26,6 +26,11 @@ class Appointment extends Model
         $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
 
         parent::save();
+    }
+
+    public function issuer()
+    {
+        return $this->belongsTo('App\User');
     }
 
     public function contact()
