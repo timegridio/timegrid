@@ -73,7 +73,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     public function linkToContacts()
     {
-        if(trim($this->email) == '') return false;
+        if (trim($this->email) == '') {
+            return false;
+        }
 
         $contacts = \App\Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
 
