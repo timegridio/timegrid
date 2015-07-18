@@ -15,6 +15,8 @@ class CreateAppointmentsTable extends Migration {
 		Schema::create('appointments', function(Blueprint $table)
 		{
 			$table->increments('id');
+			$table->integer('issuer_id')->unsigned()->nullable();
+			$table->foreign('issuer_id')->references('id')->on('users')->onDelete('cascade');
 			$table->integer('contact_id')->unsigned();
 			$table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
 			$table->integer('business_id')->unsigned();
