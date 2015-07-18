@@ -63,7 +63,6 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
 });
 
 Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
-    Log::warning("[!] ROOT DASHBOARD ACCESS ATTEMPT");
     Route::controller('dashboard', 'RootController', [
         'getIndex' => 'root.dashboard',
     ]);
