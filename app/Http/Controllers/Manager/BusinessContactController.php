@@ -46,7 +46,6 @@ class BusinessContactController extends Controller
 
     public function show(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        # $business = $this->business;
         return view('manager.contacts.show', compact('business', 'contact'));
     }
 
