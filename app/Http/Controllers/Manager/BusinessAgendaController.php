@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Redirect;
 use Log;
+use App\Http\Requests\AlterAppointmentRequest;
 use App\Business;
 use App\Appointment;
 
@@ -28,7 +29,7 @@ class BusinessAgendaController extends Controller
      *
      * @return Response
      */
-    public function postAction(Request $request)
+    public function postAction(AlterAppointmentRequest $request)
     {
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
