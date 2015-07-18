@@ -11,7 +11,7 @@ class Business extends Model
 
     protected $dates = ['deleted_at'];
 
-    protected $fillable = ['slug', 'name', 'description', 'timezone', 'strategy'];
+    protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy'];
 
     public function owners()
     {
@@ -42,4 +42,38 @@ class Business extends Model
     {
         return $this->hasMany('App\Appointment');
     }
+
+    // public function setPostalAddressAttribute($string)
+    // {
+    //     preg_match_all('/(?<street>[\w\d\ ]+)(\,(?<city>[\w\d\ ]+))?(\,(?<country>[\w\d\ ]+))?/', $string, $matches);
+    //     $this->attributes['postal_address'] = json_encode($matches);
+    // }
+
+    // public function getPostalAddressAttribute()
+    // {
+    //     if(empty(trim($this->attributes['postal_address']))) return [];
+    //     $address = json_decode($this->attributes['postal_address']);
+    //     return $address->street[0] . ', ' . $address->city[0] . ', ' . $address->country[0];
+    // }
+
+    public function staticMap($zoom = 15)
+    {
+        $data = array('center'         => $this->postal_address,
+                      'zoom'           => intval($zoom),
+                      'scale'          =>'2',
+                      'size'           =>'180x100',
+                      'maptype'        =>'roadmap',
+                      'format'         =>'gif',
+                      'visual_refresh' =>'true');
+
+        $src = 'http://maps.googleapis.com/maps/api/staticmap?' . http_build_query($data, '', '&amp;');
+        return "<img calss=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
+    }
+
+    public function facebookPicture($type = 'normal')
+    {
+        $src = "https://graph.facebook.com/{$this->social_facebook}/picture?type=$type";
+        return "<img calss=\"img-thumbnail media-object\" src=\"$src\"/>";
+    }
+    
 }

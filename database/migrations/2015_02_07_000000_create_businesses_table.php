@@ -18,6 +18,9 @@ class CreateBusinessesTable extends Migration {
 			$table->string('slug')->unique();
 			$table->string('name');
 			$table->string('description');
+			$table->string('postal_address')->nullable();
+			$table->string('phone')->nullable();
+			$table->string('social_facebook')->nullable();
 			$table->string('timezone');
 			$table->enum('strategy', ['dateslot', 'timeslot'])->default('timeslot'); /* Appointment Booking Strategy */
 			$table->softDeletes();

@@ -22,6 +22,21 @@
 	</div>
 </div>
 <div class="row">
+	<div class="form-group col-sm-7">
+		{!! Form::label( trans('manager.businesses.form.postal_address.label') ) !!}
+		{!! Form::text('postal_address', null,
+			array('id'=>'name',
+				  'class'=>'form-control',
+				  'placeholder'=> trans('manager.businesses.form.postal_address.placeholder') )) !!}
+	</div>
+	<div class="form-group col-sm-5">
+		{!! Form::label( trans('manager.businesses.form.phone.label') ) !!}
+		{!! Form::text('phone', null,
+			array('class'=>'form-control',
+				  'placeholder'=> trans('manager.businesses.form.phone.placeholder') )) !!}
+	</div>
+</div>
+<div class="row">
 	<div class="form-group col-sm-12">
 		{!! Form::label( trans('manager.businesses.form.description.label') ) !!}
 		{!! Form::textarea('description', null,
