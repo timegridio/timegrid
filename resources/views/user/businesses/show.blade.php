@@ -27,6 +27,9 @@
                                   <div class="media-body">
                                     <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
+                                    @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->pending()->future()->first())
+                                        {!! $appointment->widget()->mini(trans('Te esperamos')) !!}
+                                    @endif
                                   </div>
                                 </div>
                             </div>
@@ -52,13 +55,15 @@
 						
 						</li>
 
-						<li class="list-group-item">
-							@if (\Auth::user()->suscribedTo($business) !== null)
-								{!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book'))->withIcon(Icon::calendar())->block() !!}
-							@else
-								{!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
-							@endif
-						</li>
+                        @if (!$appointment)
+                        <li class="list-group-item">
+                            @if (\Auth::user()->suscribedTo($business) !== null)
+                                    {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book'))->withIcon(Icon::calendar())->block() !!}
+                            @else
+                                {!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
+                            @endif
+                        </li>
+                        @endif
 					</ul>
 
 				
