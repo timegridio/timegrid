@@ -18,9 +18,14 @@ class Business extends Model
         return $this->belongsToMany(config('auth.model'))->withTimestamps();
     }
 
+    // public function owner()
+    // {
+        // return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
+    // }
+
     public function owner()
     {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
+        return $this->belongsToMany('App\User')->withTimestamps()->first();
     }
 
     public function contacts()
