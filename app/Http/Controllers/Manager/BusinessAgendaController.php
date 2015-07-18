@@ -33,6 +33,7 @@ class BusinessAgendaController extends Controller
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
         $action = $request->input('action');
+        $widget = $request->input('widget');
         Log::info("postAction.request:[action:$action, business:$businessId, appointment:$appointmentId]");
 
         $appointment = Appointment::find($appointmentId);
@@ -51,8 +52,19 @@ class BusinessAgendaController extends Controller
                 # code...
                 break;
         }
-        Log::info("postAction.response:[newStatus:{$appointment->status}, htmlrow:{$appointment->widget()->fullrow()}]");
-        return response()->json(['code' => 'OK', 'status' => $appointment->status, 'htmlrow' => $appointment->widget()->fullrow() ]);
+
+        switch ($widget) {
+            case 'row':
+                $html = $appointment->widget()->row();
+                break;
+            case 'panel':
+            default:
+                $html = $appointment->widget()->panel();
+                break;
+        }
+
+        Log::info("postAction.response:[appointment:{$appointment->toJson()}]");
+        return response()->json(['code' => 'OK', 'html' => $html.'']);
     }
 
     /**
