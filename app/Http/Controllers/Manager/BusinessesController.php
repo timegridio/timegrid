@@ -68,6 +68,8 @@ class BusinessesController extends Controller
             'slug' => $request->get('slug'),
             'description' => $request->get('description'),
             'timezone' => $request->get('timezone'),
+            'postal_address' => $request->get('postal_address'),
+            'phone' => $request->get('phone'),
             'strategy' => $request->get('strategy')
         ]);
 
