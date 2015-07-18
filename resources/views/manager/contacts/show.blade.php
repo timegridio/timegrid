@@ -48,15 +48,9 @@
 							<div class="row">
 								<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://lorempixel.com/g/100/100/people" class="img-circle"> </div>
 								
-								<div class=" col-md-9 col-lg-9 "> 
+								<div class=" col-md-9 col-lg-9 ">
 									<table class="table table-user-information">
 										<tbody>
-										@if ($contact->username)
-										<tr>
-												<td>{{ trans('manager.contacts.label.username') }}</td>
-												<td>{{ $contact->username }}</td>
-										</tr>
-										@endif
 										@if ($contact->email)
 										<tr>
 												<td>{{ trans('manager.contacts.label.email') }}</td>
@@ -97,7 +91,13 @@
 						</div>
 								 <div class="panel-footer">
 								 				{!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
-												{!! Button::primary()->withIcon(Icon::link()) !!}
+												
+												@if ($contact->username)
+													{!! Button::success($contact->username)->withIcon(Icon::ok_circle()) !!}
+												@else
+													{!! Button::warning()->withIcon(Icon::remove_circle()) !!}
+												@endif
+
 												<span class="pull-right">
 														{!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) ) !!}
 														{!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
@@ -194,13 +194,13 @@ $(document).ready(function() {
 		},
  
 		createForm: function(link) {
-			var form = 
+			var form =
 			$('<form>', {
 				'method': 'POST',
 				'action': link.attr('href')
 			});
  
-			var token = 
+			var token =
 			$('<input>', {
 				'type': 'hidden',
 				'name': '_token',
