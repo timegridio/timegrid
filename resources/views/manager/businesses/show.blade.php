@@ -120,6 +120,20 @@
 		</div>
 	</div>
 
+	<div class="row">
+	<div class="col-md-12">
+	{!! Accordion::named("meta")->withContents([
+			[
+			    'title' => trans('manager.businesses.dashboard.meta.title_registered_since'),
+			    'contents' => $business->created_at->diffForHumans(),
+			],
+			[
+			    'title' => trans('manager.businesses.dashboard.meta.title_owner'),
+			    'contents' => $business->owner()->email,
+			],
+		]) !!}
+	</div>
+	</div>
 </div>
 @endsection
 
