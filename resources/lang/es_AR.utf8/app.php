@@ -1,22 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/08 03:43:37 
+ Generated via "php artisan localization:missing" at 2015/07/18 21:59:15 
 *************************************************************************/
 
 return array (
   //==================================== Translations ====================================//
+  'filter' => 'filter',
   'general' => 
   array (
     'btn' => 
     array (
-      'confirm_deletion' => 'general.btn.confirm_deletion',
-    ),
-  ),
-  'home' => 
-  array (
-    'btn' => 
-    array (
-      'actions' => 'Acciones',
+      'confirm_deletion' => 'Eliminar?',
     ),
   ),
   'label' => 
@@ -64,5 +58,12 @@ return array (
   array (
     'F' => 'Femenino',
     'M' => 'Masculino',
+  ),
+  'home' => 
+  array (
+    'btn' => 
+    array (
+      'actions' => 'Acciones',
+    ),
   ),
 );

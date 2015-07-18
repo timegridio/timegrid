@@ -1,13 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/08 03:43:37 
+ Generated via "php artisan localization:missing" at 2015/07/18 21:59:15 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/appointments/dateslot/book.blade.php
+  //==================================== Translations ====================================//
   'appointments' => 
   array (
+    'btn' => 
+    array (
+      'book' => 'Reservar Turno',
+    ),
     'form' => 
     array (
       'btn' => 
@@ -56,10 +59,6 @@ return array (
         'label' => 'Contacto',
       ),
     ),
-    'btn' => 
-    array (
-      'book' => 'Reservar Turno',
-    ),
     'index' => 
     array (
       'th' => 
@@ -67,6 +66,7 @@ return array (
         'business' => 'Prestador',
         'calendar' => 'Fecha',
         'code' => 'Código',
+        'contact' => 'Cliente',
         'duration' => 'Duración',
         'finish_time' => 'Finaliza',
         'service' => 'Servicio',
@@ -76,7 +76,6 @@ return array (
       'title' => 'Turnos',
     ),
   ),
-  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 
@@ -107,7 +106,7 @@ return array (
       array (
         'create' => 'Registrar prestador',
         'manage' => 'Mis prestadores',
-        'power_create' => 'businesses.index.btn.power_create',
+        'power_create' => 'Registrá tu comercio ahora',
       ),
       'title' => 'Prestadores disponibles',
     ),

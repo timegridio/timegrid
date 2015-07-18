@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/08 03:43:37 
+ Generated via "php artisan localization:missing" at 2015/07/18 21:59:15 
 *************************************************************************/
 
 return array (
@@ -15,11 +15,22 @@ return array (
         'timeslot' => 'Por fecha y horario',
       ),
     ),
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
   ),
   'businesses' => 
   array (
     'btn' => 
     array (
+      'return' => 'Volver',
       'store' => 'Registrar',
       'update' => 'Actualizar',
     ),
@@ -33,6 +44,31 @@ return array (
     'create' => 
     array (
       'title' => 'Registrar un prestador',
+    ),
+    'dashboard' => 
+    array (
+      'alert' => 
+      array (
+        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
+        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
+      ),
+      'meta' => 
+      array (
+        'title_owner' => 'Propietario',
+        'title_registered_since' => 'Registrado desde',
+      ),
+      'panel' => 
+      array (
+        'title_appointments_active' => 'Activos',
+        'title_appointments_annulated' => 'Anulados',
+        'title_appointments_served' => 'Atendidos',
+        'title_appointments_today' => 'Hoy',
+        'title_appointments_tomorrow' => 'Mañana',
+        'title_appointments_total' => 'Total',
+        'title_contacts_active' => 'Contactos Activos',
+        'title_contacts_registered' => 'Contactos Registrados',
+        'title_contacts_with_nin' => 'Contactos con DNI',
+      ),
     ),
     'edit' => 
     array (
@@ -50,6 +86,16 @@ return array (
         'label' => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
       ),
+      'phone' => 
+      array (
+        'label' => 'Teléfono',
+        'placeholder' => 'tel sin espacios ni guiones',
+      ),
+      'postal_address' => 
+      array (
+        'label' => 'Dirección Postal',
+        'placeholder' => 'altura calle, barrio, ciudad, país',
+      ),
       'slug' => 
       array (
         'label' => 'Nombre Corto',
@@ -58,14 +104,14 @@ return array (
     ),
     'index' => 
     array (
+      'help' => 'Desde aquí puedes administrar todos los prestadores',
+      'register_business_help' => 'Si eres prestador y quieres dar turnos online, es tu oportunidad!',
+      'title' => 'Mis Prestadores',
       'btn' => 
       array (
         'manage' => 'Administrar prestadores',
         'register' => 'Registrar un prestador',
       ),
-      'help' => 'Desde aquí puedes administrar todos los prestadores',
-      'register_business_help' => 'businesses.index.register_business_help',
-      'title' => 'Mis Prestadores',
     ),
     'msg' => 
     array (
@@ -82,6 +128,13 @@ return array (
       'update' => 
       array (
         'success' => 'Datos del prestador actualizados',
+      ),
+    ),
+    'vacancies' => 
+    array (
+      'btn' => 
+      array (
+        'update' => 'Actualizar Disponibilidad',
       ),
     ),
     'show' => 
@@ -107,6 +160,10 @@ return array (
       array (
         'label' => 'Nacimiento',
         'placeholder' => 'fecha de nacimiento',
+      ),
+      'description' => 
+      array (
+        'label' => 'Descripción',
       ),
       'email' => 
       array (
@@ -155,11 +212,13 @@ return array (
     array (
       'birthdate' => 'Nacimiento',
       'email' => 'Email',
+      'member_since' => 'Suscripto desde',
       'mobile' => 'Móvil',
       'nin' => 'DNI',
       'notes' => 'Notas',
       'username' => 'Usuario',
       'gender' => 'Sexo',
+      'next_appointment' => 'Próximo Turno',
     ),
     'list' => 
     array (
@@ -169,9 +228,11 @@ return array (
       ),
       'header' => 
       array (
+        'email' => 'Email',
         'firstname' => 'Nombre',
         'lastname' => 'Apellido',
         'mobile' => 'Móvil',
+        'quality' => 'Puntaje',
         'username' => 'Usuario',
         'gender' => 'Sexo',
       ),
@@ -197,6 +258,77 @@ return array (
       ),
     ),
     'title' => 'Mis Clientes',
+  ),
+  'service' => 
+  array (
+    'btn' => 
+    array (
+      'delete' => 'Eliminar',
+      'update' => 'Actualizar',
+    ),
+    'form' => 
+    array (
+      'name' => 
+      array (
+        'label' => 'Servicios',
+      ),
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => 'Servicio Guardado!',
+      ),
+    ),
+  ),
+  'services' => 
+  array (
+    'btn' => 
+    array (
+      'store' => 'Guardar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Nuevo Servicio',
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'duration' => 'Duración',
+        'name' => 'Nombre',
+        'slug' => 'Alias',
+      ),
+      'title' => 'Servicios',
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => 'Servicio Eliminado!',
+      ),
+    ),
+  ),
+  'vacancies' => 
+  array (
+    'edit' => 
+    array (
+      'title' => 'Disponibilidades',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => 'Disponibilidades registradas!',
+      ),
+    ),
+    'table' => 
+    array (
+      'th' => 
+      array (
+        'date' => 'Fecha',
+      ),
+    ),
   ),
   //================================== Obsolete strings ==================================//
 );
