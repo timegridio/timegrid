@@ -78,7 +78,7 @@ class Business extends Model
     public function facebookPicture($type = 'normal')
     {
         $src = "https://graph.facebook.com/{$this->social_facebook}/picture?type=$type";
-        return "<img calss=\"img-thumbnail media-object\" src=\"$src\"/>";
+        return $this->social_facebook ? "<img calss=\"img-thumbnail media-object\" src=\"$src\"/>" : "<img calss=\"img-thumbnail media-object\" src=\"//placehold.it/100x100\"/>";
     }
     
 }
