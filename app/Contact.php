@@ -82,17 +82,17 @@ class Contact extends Model
 
     public function setMobileAttribute($mobile)
     {
-        $this->attributes['mobile'] = trim($mobile) !== '' ?: null;
+        $this->attributes['mobile'] = trim($mobile) ?: null;
     }
 
     public function setMobileCountryAttribute($country)
     {
-        $this->attributes['mobile_country'] = trim($country) !== '' ?: null;
+        $this->attributes['mobile_country'] = trim($country) ?: null;
     }
 
     public function setBirthdateAttribute($birthdate)
     {
-        $this->attributes['birthdate'] = $birthdate == '' ? null : Carbon::parse($birthdate);
+        $this->attributes['birthdate'] = trim($birthdate) ? Carbon::parse($birthdate) : null;
     }
 
     public function getAgeAttribute($semantic = false)
@@ -120,12 +120,12 @@ class Contact extends Model
 
     public function setEmailAttribute($email)
     {
-        $this->attributes['email'] = trim($email) != '' ?: null;
+        $this->attributes['email'] = trim($email) ?: null;
     }
 
     public function setNinAttribute($nin)
     {
-        $this->attributes['nin'] = trim($nin) != '' ?: null;
+        $this->attributes['nin'] = trim($nin) ?: null;
     }
 
     public function linkToUser($force_relink = false)
