@@ -187,8 +187,8 @@ $(document).ready(function(){
 
 // Instance the tour
 var tour = new Tour({
-  duration: 10000,
-  delay: 10000,
+  duration: 6500,
+  delay: 1000,
   steps: [
   {
     element: "#plan1",
