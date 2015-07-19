@@ -196,11 +196,9 @@ class AppointmentWidget
         $body .= '</li>';
         $body .= '<li class="list-group-item">';
         $body .= '<span title="'.$this->appointment->tz.'">';
-        $body .= Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString() . '&nbsp;' . trans('appointments.text.to') . '&nbsp;' . $this->appointment->finish_at->timezone($this->appointment->tz)->toTimeString();
+        #$body .= Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString() . '&nbsp;' . trans('appointments.text.to') . '&nbsp;' . $this->appointment->finish_at->timezone($this->appointment->tz)->toTimeString();
+        $body .= Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString();
         $body .= '</span>';
-        $body .= '</li>';
-        $body .= '<li class="list-group-item">';
-        $body .= Icon::hourglass() . '&nbsp;' . $this->appointment->duration . '&nbsp;' . trans('appointments.text.minutes');
         $body .= '</li>';
         $body .= '</ul>';
         
