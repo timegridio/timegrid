@@ -187,36 +187,45 @@ $(document).ready(function(){
 
 // Instance the tour
 var tour = new Tour({
+  duration: true,
+  delay: 10,
+  template: "<div class='popover tour'>
+    <div class='arrow'></div>
+    <h3 class='popover-title'></h3>
+    <div class='popover-content'></div>
+    <div class='popover-navigation'>
+        <button class='btn btn-default' data-role='prev'>« Atras</button>
+        <span data-role='separator'>|</span>
+        <button class='btn btn-default' data-role='next'>Siguiente »</button>
+    </div>
+    <button class='btn btn-default' data-role='end'>Ok!</button>
+    </nav>
+  </div>",
   steps: [
   {
     element: "#plan1",
     title: "Si recién empezás",
-    content: "El plan ideal para prestadores con turnos dispersos",
-    duration: 10
+    content: "El plan ideal para prestadores con turnos dispersos"
   },
   {
     element: "#p1_contacts",
     title: "Contactos",
-    content: "Te dejamos registrar hasta 200 contactos en tu agenda. Así tenés organizada tu cartera de clientes con todos los datos que necesitás. Necesitás más?",
-    duration: 10
+    content: "Te dejamos registrar hasta 200 contactos en tu agenda. Así tenés organizada tu cartera de clientes con todos los datos que necesitás. Necesitás más?"
   },
   {
     element: "#p1_services",
     title: "Servicios",
-    content: "Podés registrar hasta 3 servicios que des. Tus clientes van a poder reservarte por alguno de ellos, tener pre-indicaciones y ahorrar tiempo el día de la visita!",
-    duration: 10
+    content: "Podés registrar hasta 3 servicios que des. Tus clientes van a poder reservarte por alguno de ellos, tener pre-indicaciones y ahorrar tiempo el día de la visita!"
   },
   {
     element: "#p1_appointments",
     title: "Turnos",
-    content: "No tengas miedo: entregá reservá los turnos que necesites. Tu agenda estará siempre organizada y al día. Tu tiempo vale!",
-    duration: 10
+    content: "No tengas miedo: entregá reservá los turnos que necesites. Tu agenda estará siempre organizada y al día. Tu tiempo vale!"
   },
   {
     element: "#plan2",
     title: "Negocios",
-    content: "El plan que necesita tu comercio para administrar tanta demanda!",
-    duration: 10
+    content: "El plan que necesita tu comercio para administrar tanta demanda!"
   }
 ]});
 
