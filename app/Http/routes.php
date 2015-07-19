@@ -40,6 +40,8 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
         Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
     });
 
+    Route::get('wizard',      ['as' => 'user.wizard', 'uses' => 'WizardController@getIndex']);
+
     Route::resource('business.contact', 'BusinessContactController');
 });
 
