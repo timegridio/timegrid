@@ -192,7 +192,7 @@ class AppointmentWidget
         $body .= Icon::home(). '&nbsp;' . $this->appointment->business->name;
         $body .= '</li>';
         $body .= '<li class="list-group-item">';
-        $body .= Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString();
+        $body .= Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString() . '&nbsp;&nbsp;' . '<span class="text-muted"><small>' . $this->appointment->start_at->diffForHumans() . '</small></span>';
         $body .= '</li>';
         $body .= '<li class="list-group-item">';
         $body .= '<span title="'.$this->appointment->tz.'">';
