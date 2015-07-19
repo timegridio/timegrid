@@ -8,11 +8,6 @@ use App\Http\Controllers\Controller;
 
 class WizardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
     public function getIndex()
     {
         return view('wizard');
@@ -21,5 +16,10 @@ class WizardController extends Controller
     public function getPricing()
     {
         return view('manager.pricing');
+    }
+
+    public function getTerms()
+    {
+        return view('manager.terms');
     }
 }
