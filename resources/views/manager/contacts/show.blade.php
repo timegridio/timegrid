@@ -61,16 +61,16 @@
 												<td>{{ trans('manager.contacts.label.nin') }}</td>
 												<td>{{ $contact->nin }}</td>
 										</tr>
+										@if ($contact->birthdate)
 										<tr>
 												<td>{{ trans('manager.contacts.label.birthdate') }}</td>
-												<td>{{ $contact->birthdate ? $contact->birthdate->toDateString() : '' }}</td>
-										</tr>
-										@if ($notes = $contact->business($business)->pivot->notes)
-										<tr>
-												<td>{{ trans('manager.contacts.label.notes') }}</td>
-												<td>{{ $notes }}</td>
+												<td>{{ $contact->birthdate->toDateString() }}</td>
 										</tr>
 										@endif
+										<tr>
+												<td>{{ trans('manager.contacts.label.notes') }}</td>
+												<td>{{ $contact->business($business)->pivot->notes or '' }}</td>
+										</tr>
 										<tr>
 												<td>{{ trans('manager.contacts.label.member_since') }}</td>
 												<td>{{ $contact->business($business)->pivot->created_at->diffForHumans() }}</td>
