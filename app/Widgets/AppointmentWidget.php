@@ -232,7 +232,7 @@ class AppointmentWidget
         $body   = Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString();
         $body  .= '&nbsp;&nbsp;' . Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString();
         $body  .= '&nbsp;&nbsp;' . Icon::user() . '&nbsp;' . $this->appointment->contact->fullname;
-        $footer = Icon::barcode() . '&nbsp;' . $this->code() . '&nbsp;&nbsp;' . $this->statusLabel();
+        $footer = Icon::barcode() . '&nbsp;' . $this->code(4) . '&nbsp;&nbsp;' . $this->statusLabel();
 
         return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
     }
