@@ -12,7 +12,7 @@ class WizardController extends Controller
 {
     public function getWelcome()
     {
-        if (!Session::get('oldvisitor')) {
+        if (!Session::get('oldvisitor', false)) {
             Session::set('oldvisitor', true);
             return view('wizard');
         } else {

@@ -10,9 +10,9 @@ class BusinessController extends Controller
 {
     public function getHome()
     {
-        if (!Session::get('selected.business')) {
-            return Redirect::route('wizard.welcome');
-        }
+        // if (!Session::get('selected.business')) {
+        //     return Redirect::route('wizard.welcome');
+        // }
         $business = Business::find(Session::get('selected.business')->id);
         if (empty($business)) {
             Flash::warning(trans('user.business.msg.please_select_a_business'));
