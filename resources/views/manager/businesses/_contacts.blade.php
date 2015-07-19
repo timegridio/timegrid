@@ -95,14 +95,14 @@ $(document).ready(function(){
                 </tr>
             </thead>
             <tbody>
-				@foreach ($business->contacts as $contact)			
-					<tr>
-						<td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
-						<td>{{ $contact->lastname }}</td>
-						<td>{{ $contact->username }}</td>
+                @foreach ($business->contacts as $contact)          
+                    <tr>
+                        <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
+                        <td>{{ $contact->lastname }}</td>
+                        <td>{{ $contact->username }}</td>
                         <td>{{ $contact->mobile }}</td>
-					</tr>
-				@endforeach
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
