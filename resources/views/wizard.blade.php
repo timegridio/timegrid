@@ -11,7 +11,7 @@
                         
                         {!! Panel::normal()->withHeader('<strong>Prestadores</strong> Quiero dar turnos por internet')->withBody(
                             Thumbnail::image('//lorempixel.com/350/150/business/7')->caption('Si <strong>tenés un negocio o sos prestador</strong>, acá podés dar de alta tu comercio y empezar a dar turnos por internet.').
-                            Button::success('Soy prestador!')->large()->block()->asLinkTo(route('manager.business.index'))
+                            Button::success('Soy prestador!')->large()->block()->asLinkTo(route('wizard.pricing'))
                         ) !!}
 
                 </div>

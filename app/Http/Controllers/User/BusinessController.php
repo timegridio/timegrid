@@ -11,7 +11,7 @@ class BusinessController extends Controller
     public function getHome()
     {
         if (!Session::get('selected.business')) {
-            return Redirect::route('user.wizard');
+            return Redirect::route('wizard.welcome');
         }
         $business = Business::find(Session::get('selected.business')->id);
         if (empty($business)) {

@@ -17,4 +17,9 @@ class WizardController extends Controller
     {
         return view('wizard');
     }
+
+    public function getPricing()
+    {
+        return view('manager.pricing');
+    }
 }
