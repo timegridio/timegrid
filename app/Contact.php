@@ -77,17 +77,17 @@ class Contact extends Model
 
     public function getUsernameAttribute()
     {
-        return ($this->user !== null) ? $this->user->email : null;
+        return ($this->user !== null) ?: null;
     }
 
     public function setMobileAttribute($mobile)
     {
-        $this->attributes['mobile'] = trim($mobile) !== '' ? $mobile : null;
+        $this->attributes['mobile'] = trim($mobile) !== '' ?: null;
     }
 
     public function setMobileCountryAttribute($country)
     {
-        $this->attributes['mobile_country'] = trim($country) !== '' ? $country : null;
+        $this->attributes['mobile_country'] = trim($country) !== '' ?: null;
     }
 
     public function setBirthdateAttribute($birthdate)
@@ -120,12 +120,12 @@ class Contact extends Model
 
     public function setEmailAttribute($email)
     {
-        $this->attributes['email'] = trim($email) == '' ? null : $email;
+        $this->attributes['email'] = trim($email) != '' ?: null;
     }
 
     public function setNinAttribute($nin)
     {
-        $this->attributes['nin'] = trim($nin) == '' ? null : $nin;
+        $this->attributes['nin'] = trim($nin) != '' ?: null;
     }
 
     public function linkToUser($force_relink = false)
