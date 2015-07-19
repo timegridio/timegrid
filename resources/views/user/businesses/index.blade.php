@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
-				<div class="panel-heading">{{ trans('user.businesses.index.title') }}</div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ trans('user.businesses.index.title') }}</div>
 
-				<div class="panel-body">
+        <div class="panel-body">
 
             @foreach ($businesses as $business)
                             <div class="row">
@@ -25,19 +25,19 @@
                             </div>
             @endforeach
 
-				</div>
+        </div>
 
-				<div class="panel-footer">
+        <div class="panel-footer">
           @if(\Auth::user()->hasBusiness())
             {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo( route('manager.business.index') ) !!}
           @else
             {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.business.create') ) !!}
           @endif
-				</div>
+        </div>
 
-			</div>
-		</div>
-	</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 @endsection

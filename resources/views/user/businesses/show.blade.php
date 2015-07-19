@@ -2,22 +2,22 @@
 
 @section('content')
 <div class="container">
-	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
-			<div class="panel panel-default">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
 
-				<div class="panel-heading">
-					@if(\Auth::user()->isOwner($business))
-						<h1>{!! Icon::star() !!} {!! link_to(route('manager.business.show', $business), $business->name) !!}</h1>
-					@else
-						<h1>{{ $business->name }}</h1>
-					@endif
-				</div>
+                <div class="panel-heading">
+                    @if(\Auth::user()->isOwner($business))
+                        <h1>{!! Icon::star() !!} {!! link_to(route('manager.business.show', $business), $business->name) !!}</h1>
+                    @else
+                        <h1>{{ $business->name }}</h1>
+                    @endif
+                </div>
 
-					<ul class="list-group">
-						<li class="list-group-item">
-						
-						<div class="row">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                        
+                        <div class="row">
 
                             <div class="col-md-7">
                                 <div class="media">
@@ -51,9 +51,9 @@
                             </div>
                             </div>
 
-						</div>
-						
-						</li>
+                        </div>
+                        
+                        </li>
 
                         @if (!$appointment)
                         <li class="list-group-item">
@@ -64,11 +64,11 @@
                             @endif
                         </li>
                         @endif
-					</ul>
+                    </ul>
 
-				
-			</div>
-		</div>
-	</div>
+                
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
