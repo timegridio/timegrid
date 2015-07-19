@@ -1,14 +1,14 @@
 <html>
-	<head>
-		<title>Laravel</title>
-		
-<!--		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+    <head>
+        <title>Laravel</title>
+        
+<!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
-		<link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
 
-	</head>
-	<body>
+    </head>
+    <body>
 
    <!-- Page Content -->
     <div class="container">
@@ -78,5 +78,5 @@
         </div>
         <!-- /.row -->
 
-	</body>
+    </body>
 </html>
