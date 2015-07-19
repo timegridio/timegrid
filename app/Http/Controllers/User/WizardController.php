@@ -10,7 +10,7 @@ use Redirect;
 
 class WizardController extends Controller
 {
-    public function getIndex()
+    public function getWelcome()
     {
         if (!Session::get('oldvisitor')) {
             Session::set('oldvisitor', true);

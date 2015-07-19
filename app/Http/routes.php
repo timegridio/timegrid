@@ -23,7 +23,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
     });
 });
 
-Route::get('home', ['as' => 'home', 'uses' => 'User\BusinessController@getList']);
+Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getIndex']);
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'booking'], function () {
@@ -41,9 +41,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
     });
 
     Route::controller('wizard', 'WizardController', [
-        'getIndex'   => 'wizard.welcome',
+        'getWelcome' => 'wizard.welcome',
         'getPricing' => 'wizard.pricing',
-        'getTerms' => 'wizard.terms',
+        'getTerms'   => 'wizard.terms',
     ]);
 
     Route::resource('business.contact', 'BusinessContactController');
