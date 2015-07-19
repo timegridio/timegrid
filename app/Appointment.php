@@ -68,19 +68,13 @@ class Appointment extends Model
 
     public function getStatusLabelAttribute()
     {
-        switch ($this->status) {
-            case Self::STATUS_RESERVED:  $label = 'reserved';
-                break;
-            case Self::STATUS_CONFIRMED: $label = 'confirmed';
-                break;
-            case Self::STATUS_ANNULATED: $label = 'annulated';
-                break;
-            case Self::STATUS_SERVED:    $label = 'served';
-                break;
-            default: $label = '?';
-                break;
-        }
-        return $label;
+        $labels = [ Self::STATUS_RESERVED  => 'reserved',
+                    Self::STATUS_CONFIRMED => 'confirmed',
+                    Self::STATUS_ANNULATED => 'annulated',
+                    Self::STATUS_SERVED    => 'served',
+                ];
+
+        return array_key_exists($this->status, $labels) ? $labels[$this->status] : '';
     }
 
     public function getDateAttribute()
@@ -111,6 +105,11 @@ class Appointment extends Model
     public function isDue()
     {
         return $this->start_at->isPast();
+    }
+
+    public function scopeUnServed($query)
+    {
+        return $query->where('status', '<>', Self::STATUS_SERVED);
     }
 
     public function scopeServed($query)
