@@ -187,20 +187,8 @@ $(document).ready(function(){
 
 // Instance the tour
 var tour = new Tour({
-  duration: true,
-  delay: 10,
-  template: "<div class='popover tour'>
-    <div class='arrow'></div>
-    <h3 class='popover-title'></h3>
-    <div class='popover-content'></div>
-    <div class='popover-navigation'>
-        <button class='btn btn-default' data-role='prev'>« Atras</button>
-        <span data-role='separator'>|</span>
-        <button class='btn btn-default' data-role='next'>Siguiente »</button>
-    </div>
-    <button class='btn btn-default' data-role='end'>Ok!</button>
-    </nav>
-  </div>",
+  duration: 10000,
+  delay: 10000,
   steps: [
   {
     element: "#plan1",
