@@ -202,7 +202,7 @@ class AppointmentWidget
         $body .= '</li>';
         $body .= '</ul>';
         
-        $body .= '<p>'. $this->appointment->comments .'</p>';
+        if ($this->appointment->comments) $body .= '<p>'. $this->appointment->comments .'</p>';
 
         return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
     }
