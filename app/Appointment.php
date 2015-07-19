@@ -93,6 +93,21 @@ class Appointment extends Model
         $this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
     }
 
+    public function isActive()
+    {
+        return $this->status == Self::STATUS_CONFIRMED || $this->status == Self::STATUS_RESERVED;
+    }
+
+    public function isPending()
+    {
+        return $this->isActive() && $this->isFuture();
+    }
+
+    public function isFuture()
+    {
+        return !$this->isDue();
+    }
+
     public function isDue()
     {
         return $this->start_at->isPast();
@@ -103,14 +118,9 @@ class Appointment extends Model
         return $query->where('status', '=', Self::STATUS_SERVED);
     }
 
-    public function scopePending($query)
+    public function scopeOldest($query)
     {
-        return $query->where(function($query){
-            $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
-        })->orWhere(function($query){
-            $query->where('start_at', '<',  Carbon::parse('today midnight')->timezone('UTC'))
-                  ->whereNotIn('status', [Self::STATUS_SERVED, Self::STATUS_ANNULATED]);
-        });
+        return $query->orderBy('start_at', 'ASC');
     }
 
     public function scopeActive($query)
