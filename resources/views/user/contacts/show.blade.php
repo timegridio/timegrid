@@ -102,7 +102,7 @@
                     </div>
 
                 @if($contact->hasAppointment())
-                        @include('user.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business)->Active()->get()] )
+                        @include('user.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business)->future()->get()] )
                 @endif
 
                 </div>

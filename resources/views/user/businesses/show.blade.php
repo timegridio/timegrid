@@ -27,7 +27,7 @@
                                   <div class="media-body">
                                     <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
-                                    @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->pending()->future()->first())
+                                    @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
                                         {!! $appointment->widget()->mini(trans('Te esperamos')) !!}
                                     @endif
                                   </div>
@@ -55,7 +55,7 @@
                         
                         </li>
 
-                        @if (!$appointment)
+                        @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
                             @if (\Auth::user()->suscribedTo($business) !== null)
                                     {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book'))->withIcon(Icon::calendar())->block() !!}
