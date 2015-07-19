@@ -77,7 +77,7 @@ class Contact extends Model
 
     public function getUsernameAttribute()
     {
-        return ($this->user !== null) ?: null;
+        return ($this->user) ? $this->user->email : null;
     }
 
     public function setMobileAttribute($mobile)
