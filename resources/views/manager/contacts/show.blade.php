@@ -41,7 +41,7 @@
 
                     <div class="panel panel-info">
                         <div class="panel-heading">
-                            <h3 class="panel-title">{{ $contact->fullname }} ({{ trans('app.gender.'.$contact->gender) }}{{ $contact->age > 0 ? ' / ' . $contact->age : '' }})</h3>
+                            <h3 class="panel-title">{{ $contact->fullname }}</h3>
                         </div>
 
                         <div class="panel-body">
@@ -102,8 +102,8 @@
                                                 @endif
 
                                                 <span class="pull-right">
-                                                        {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) ) !!}
-                                                        {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
+                                                        {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) )->withAttributes(['data-for' => 'edit', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.edit')]) !!}
+                                                        {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-for' => 'delete', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=> trans('manager.contacts.btn.confirm_delete')])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
                                                 </span>
                                  </div>
                         
@@ -128,7 +128,7 @@ $(document).ready(function() {
         //Click dropdown
         panelsButton.click(function() {
                 //get data-for attribute
-                var dataFor = $(this).attr('data-for');
+                var dataFor = $(this).data('for');
                 var idFor = $(dataFor);
 
                 //current button
@@ -146,13 +146,7 @@ $(document).ready(function() {
                 })
         });
 
-
         $('[data-toggle="tooltip"]').tooltip();
-
-        $('button').click(function(e) {
-                e.preventDefault();
-                alert("This is a demo.\n :-)");
-        });
 });
 
 (function() {
@@ -223,6 +217,10 @@ $(document).ready(function() {
     };
  
     laravel.initialize();
+
+$("img").error(function(){
+        $(this).hide();
+});
  
 })();
 </script>
