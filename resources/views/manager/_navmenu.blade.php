@@ -12,6 +12,6 @@
 
 {!! Form::open(['method' => 'post', 'url' => '/manager/search/', 'class' => 'navbar-form navbar-left', 'role' => 'search']) !!}
 <div class="form-group">
-  <input name="criteria" type="text" class="form-control" placeholder="...">
+  <input name="criteria" type="text" class="form-control" placeholder="{{trans('app.search')}}">
 </div>
 {!! Form::close() !!}
