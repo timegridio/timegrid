@@ -8,7 +8,7 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'name' => 'name',
   //==================================== Translations ====================================//
-  'filter' => 'filter',
+  'filter' => 'Filtrar',
   'general' => 
   array (
     'btn' => 
