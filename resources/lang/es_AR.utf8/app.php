@@ -13,7 +13,7 @@ return array (
   array (
     'btn' => 
     array (
-      'confirm_deletion' => 'Eliminar?',
+      'confirm_deletion' => '¿Eliminar?',
     ),
   ),
   'label' => 
