@@ -8,6 +8,7 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'name' => 'timegrid',
   //==================================== Translations ====================================//
+  'search' => 'Buscar',
   'filter' => 'Filtrar',
   'general' => 
   array (
