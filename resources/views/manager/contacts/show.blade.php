@@ -47,7 +47,9 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-md-3 col-lg-3 " align="center">
-                                    <img alt="{{$contact->fullname}}" src="{{ Gravatar::get($contact->email) }}" class="img-circle">
+                                    @if($contact->email)
+                                        <img alt="{{$contact->fullname}}" src="{{ Gravatar::get($contact->email) }}" class="img-circle">
+                                    @endif
                                     <p>&nbsp;</p><small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
                                 </div>
                                 
@@ -56,34 +58,34 @@
                                         <tbody>
                                         @if ($contact->email)
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.email') }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.email') }}</label></td>
                                                 <td>{{ $contact->email }}</td>
                                         </tr>
                                         @endif
                                         @if ($contact->nin)
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.nin') }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.nin') }}</label></td>
                                                 <td>{{ $contact->nin }}</td>
                                         </tr>
                                         @endif
                                         @if ($contact->birthdate)
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.birthdate') }}</td>
-                                                <td>{{ $contact->birthdate->toDateString() }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.birthdate') }}</label></td>
+                                                <td>{{ $contact->birthdate->formatLocalized('%d %B %Y') }}</td>
                                         </tr>
                                         @endif
                                         @if ($contact->mobile)
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.mobile') }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.mobile') }}</label></td>
                                                 <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
                                         </tr>
                                         @endif
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.member_since') }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
                                                 <td>{{ $contact->business($business)->pivot->created_at->diffForHumans() }}</td>
                                         </tr>
                                         <tr>
-                                                <td>{{ trans('manager.contacts.label.notes') }}</td>
+                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.notes') }}</label></td>
                                                 <td>{{ $contact->business($business)->pivot->notes or '' }}</td>
                                         </tr>
                                          
