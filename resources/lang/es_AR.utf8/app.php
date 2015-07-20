@@ -1,9 +1,12 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/20 18:03:51 
+ Generated via "php artisan localization:missing" at 2015/07/20 19:18:40 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
+  'name' => 'name',
   //==================================== Translations ====================================//
   'filter' => 'filter',
   'general' => 

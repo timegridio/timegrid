@@ -1,14 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/20 18:03:51 
+ Generated via "php artisan localization:missing" at 2015/07/20 19:18:40 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/login.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
   'btn' => 
   array (
+    'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
     'not_registered' => '¿ Aún no tenés usuario ? Registrate acá',
+    'forgot' => '¿ Olvidaste tu contraseña ? Blanqueala aquí',
   ),
   //==================================== Translations ====================================//
   'login' => 
@@ -32,9 +34,9 @@ return array (
       'submit' => 'Registrame',
     ),
     'email' => 'Email',
-    'password' => 'Password',
-    'password_confirmation' => 'Confirmación de Password',
-    'title' => 'Registro',
+    'password' => 'Contraseña',
+    'password_confirmation' => 'Confirmación de contraseña',
+    'title' => 'Hola! Estás por registrar tu usuario',
     'msg' => 
     array (
       'errors' => 'Errores',
@@ -49,5 +51,6 @@ return array (
     ),
     'title' => 'Blanqueo de contraseña',
   ),
-  //================================== Obsolete strings ==================================//
+  'failed' => 'No reconocemos estos datos. ¿Olvidaste tu contraseña?',
+  'throttle' => 'Demasiados intentos! Por favor intentá nuevamente dentro de :seconds segundos.',
 );
