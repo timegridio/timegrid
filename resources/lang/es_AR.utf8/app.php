@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/20 15:35:35 
+ Generated via "php artisan localization:missing" at 2015/07/20 17:33:34 
 *************************************************************************/
 
 return array (
@@ -45,15 +45,6 @@ return array (
     ),
     'wizard' => 'Asistente',
   ),
-  'welcome' => 
-  array (
-    'btn' => 
-    array (
-      'enter' => 'Entrar',
-    ),
-    'description' => 'Entrar al sistema',
-    'title' => 'Bienvenido!',
-  ),
   //================================== Obsolete strings ==================================//
   'gender' => 
   array (
@@ -66,5 +57,14 @@ return array (
     array (
       'actions' => 'Acciones',
     ),
+  ),
+  'welcome' => 
+  array (
+    'btn' => 
+    array (
+      'enter' => 'Entrar',
+    ),
+    'description' => 'Entrar al sistema',
+    'title' => 'Bienvenido!',
   ),
 );
