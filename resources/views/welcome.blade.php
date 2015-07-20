@@ -28,7 +28,7 @@
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.1.title')}}</h3>
-                        <p>{{trans('welcome.feature.1.title')}}</p>
+                        <p>{{trans('welcome.feature.1.content')}}</p>
                         <p>
                             <a href="#" class="btn btn-primary">{{trans('welcome.feature.1.btn.action')}}</a> <a href="#" class="btn btn-default">{{trans('welcome.feature.1.btn.info')}}</a>
                         </p>
@@ -41,7 +41,7 @@
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.2.title')}}</h3>
-                        <p>{{trans('welcome.feature.2.title')}}</p>
+                        <p>{{trans('welcome.feature.2.content')}}</p>
                         <p>
                             <a href="#" class="btn btn-primary">{{trans('welcome.feature.2.btn.action')}}</a> <a href="#" class="btn btn-default">{{trans('welcome.feature.2.btn.info')}}</a>
                         </p>
@@ -54,7 +54,7 @@
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.3.title')}}</h3>
-                        <p>{{trans('welcome.feature.3.title')}}</p>
+                        <p>{{trans('welcome.feature.3.content')}}</p>
                         <p>
                             <a href="#" class="btn btn-primary">{{trans('welcome.feature.3.btn.action')}}</a> <a href="#" class="btn btn-default">{{trans('welcome.feature.3.btn.info')}}</a>
                         </p>
@@ -67,7 +67,7 @@
                     <img src="http://placehold.it/800x500" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.4.title')}}</h3>
-                        <p>{{trans('welcome.feature.4.title')}}</p>
+                        <p>{{trans('welcome.feature.4.content')}}</p>
                         <p>
                             <a href="#" class="btn btn-primary">{{trans('welcome.feature.4.btn.action')}}</a> <a href="#" class="btn btn-default">{{trans('welcome.feature.4.btn.info')}}</a>
                         </p>
