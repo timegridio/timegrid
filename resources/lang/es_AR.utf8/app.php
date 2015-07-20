@@ -6,7 +6,7 @@
 return array (
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
-  'name' => 'name',
+  'name' => 'timegrid',
   //==================================== Translations ====================================//
   'filter' => 'Filtrar',
   'general' => 
