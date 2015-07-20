@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'support@xbooking.com.ar', 'name' => 'XBooking'],
+	'from' => ['address' => 'support@timegrid.io', 'name' => 'timegrid'],
 
 	/*
 	|--------------------------------------------------------------------------
