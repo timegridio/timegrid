@@ -46,7 +46,10 @@
 
                         <div class="panel-body">
                             <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="http://lorempixel.com/g/100/100/people" class="img-circle"> </div>
+                                <div class="col-md-3 col-lg-3 " align="center">
+                                    <img alt="{{$contact->fullname}}" src="{{ Gravatar::get($contact->email) }}" class="img-circle">
+                                    <p>&nbsp;</p><small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
+                                </div>
                                 
                                 <div class=" col-md-9 col-lg-9 ">
                                     <table class="table table-user-information">
