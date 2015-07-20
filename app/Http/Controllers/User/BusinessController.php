@@ -12,10 +12,8 @@ class BusinessController extends Controller
 {
     public function getHome()
     {
-        if ($businessId = Session::get('selected.business')) {
-            $business = Business::find($businessId);
-        }
-        if (empty($business)) {
+        $business = Session::get('selected.business');
+        if (empty($business) || !$business->exists) {
             Flash::warning(trans('user.business.msg.please_select_a_business'));
             return Redirect::route('user.businesses.list');
         }
