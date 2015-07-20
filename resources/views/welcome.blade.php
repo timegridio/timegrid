@@ -17,7 +17,7 @@
         <header class="jumbotron hero-spacer">
             <h1>{{ trans('welcome.jumbotron.title') }}</h1>
             <p>{{ trans('welcome.jumbotron.description') }}</p>
-            <div class="row">{!! Button::primary(trans('welcome.jumbotron.btn'))->asLinkTo( route('user.businesses.home') ) !!}
+            <div class="row">{!! Button::primary(trans('welcome.jumbotron.btn'))->asLinkTo( route('wizard.welcome') ) !!}
         </header>
 
         <!-- Page Features -->
