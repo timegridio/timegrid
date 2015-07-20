@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('auth.login.title') }}</div>
                 <div class="panel-body">
@@ -16,6 +16,8 @@
                                 @endforeach
                             </ul>
                         </div>
+
+                        {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/auth/register')) !!}<p>&nbsp;</p>
                     @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
