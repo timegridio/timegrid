@@ -15,7 +15,7 @@ return array (
   array (
     'alert' => 
     array (
-      'message' => 'Algunos datos no son los que esperamos!',
+      'message' => '¿Puedo ayudarte?',
       'whoops' => 'Whoops!',
     ),
     'email' => 'Email',

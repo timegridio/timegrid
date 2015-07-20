@@ -20,7 +20,7 @@ return array (
     ),
     2 => 
     array (
-      'content' => '¿Te gustaría figurar en una guía que consulten miles de potenciales clientes? Estás en el lugar indicado.',
+      'content' => '¿Te gustaría figurar en una guía que consulten miles de potenciales clientes? Estás en el sitio indicado.',
       'btn' => 
       array (
         'action' => 'Ver cómo',
