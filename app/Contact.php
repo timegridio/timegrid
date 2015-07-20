@@ -95,27 +95,21 @@ class Contact extends Model
         $this->attributes['birthdate'] = trim($birthdate) ? Carbon::parse($birthdate) : null;
     }
 
-    public function getAgeAttribute($semantic = false)
+    public function getAgeAttribute()
     {
+        if ($this->birthdate == null) {
+            return null;
+        }
+        
         $reference = new \DateTime;
         $born = new \DateTime($this->birthdate);
 
         if ($this->birthdate > $reference) {
-            return '';
+            return null;
         }
 
         $diff = $reference->diff($born);
-
-        if ($semantic) {
-            $age = ($d = $diff->d) ? ' and '.$d.' '.str_plural('day', $d) : '';
-            $age = ($m = $diff->m) ? ($age ? ', ' : ' and ').$m.' '.str_plural('month', $m).$age : $age;
-            $age = ($y = $diff->y) ? $y.' '.str_plural('year', $y).$age  : $age;
-
-            // trim redundant ',' or 'and' parts
-            return ($s = trim(trim($age, ', '), ' and ')) ? $s.' old' : 'newborn';
-        } else {
-            return $diff->y;
-        }
+        return $diff->y;
     }
 
     public function setEmailAttribute($email)
