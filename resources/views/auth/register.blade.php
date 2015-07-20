@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     @if (count($errors) > 0)
                         <div class="alert alert-danger">
-                            <strong>Whoops!</strong> {{ trans('auth.register.msg.errors') }}<br><br>
+                            <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
                             <ul>
                                 @foreach ($errors->all() as $error)
                                     <li>{{ $error }}</li>
