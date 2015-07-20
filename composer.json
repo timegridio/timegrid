@@ -25,7 +25,8 @@
 		"camroncade/timezone": "0.1",
 		"twitter/typeahead.js": "^0.11.1",
 		"bassjobsen/bootstrap-3-typeahead": "^3.1",
-		"sorich87/bootstrap-tour": "^0.10.2"
+		"sorich87/bootstrap-tour": "^0.10.2",
+		"creativeorange/gravatar": "~1.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",

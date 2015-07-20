@@ -167,6 +167,7 @@ return [
         'Stevebauman\Location\LocationServiceProvider',
         'Torann\GeoIP\GeoIPServiceProvider',
         'Camroncade\Timezone\TimezoneServiceProvider',
+        'Creativeorange\Gravatar\GravatarServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
@@ -258,6 +259,8 @@ return [
         'Location' => 'Stevebauman\Location\Facades\Location',
         'GeoIP' => 'Torann\GeoIP\GeoIPFacade',
         'Carbon' => 'Carbon\Carbon',
+
+        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
 
         'TidioChat'    => 'alariva\tidiochat\TidioChatFacade',
     ],
