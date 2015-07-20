@@ -1,4 +1,6 @@
-<?php namespace App\Http\Controllers\User;
+<?php
+
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Session;
@@ -10,10 +12,9 @@ class BusinessController extends Controller
 {
     public function getHome()
     {
-        // if (!Session::get('selected.business')) {
-        //     return Redirect::route('wizard.welcome');
-        // }
-        $business = Business::find(Session::get('selected.business')->id);
+        if ($businessId = Session::get('selected.business')) {
+            $business = Business::find($businessId);
+        }
         if (empty($business)) {
             Flash::warning(trans('user.business.msg.please_select_a_business'));
             return Redirect::route('user.businesses.list');
