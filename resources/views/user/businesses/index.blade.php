@@ -18,7 +18,7 @@
                                     <a href="{{route('user.businesses.select', ['business_slug' => $business->slug])}}">{!! $business->facebookPicture('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
-                                    <blockquote>{!! Button::primary($business->name)->asLinkTo( route('user.businesses.select', ['business_slug' => $business->slug]) ) !!} {{ str_limit($business->description, 100) }}</blockquote>
+                                    <a href="{{route('user.businesses.select', ['business_slug' => $business->slug])}}"><blockquote>{{ str_limit($business->name, 50) }}</blockquote></a>
                                   </div>
                                 </div>
                             </div>
