@@ -1,14 +1,24 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/19 15:10:39 
+ Generated via "php artisan localization:missing" at 2015/07/20 15:35:35 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/user/_navmenu.blade.php
+  //==================================== Translations ====================================//
+  'filter' => 'filter',
+  'general' => 
+  array (
+    'btn' => 
+    array (
+      'confirm_deletion' => 'Eliminar?',
+    ),
+  ),
+  'label' => 
+  array (
+    'select_timezone' => 'Zona horaria',
+  ),
   'nav' => 
   array (
-    'wizard' => 'Asistente',
     'home' => 'Inicio',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
@@ -33,19 +43,7 @@ return array (
         'selector' => 'Seleccionar',
       ),
     ),
-  ),
-  //==================================== Translations ====================================//
-  'filter' => 'filter',
-  'general' => 
-  array (
-    'btn' => 
-    array (
-      'confirm_deletion' => 'Eliminar?',
-    ),
-  ),
-  'label' => 
-  array (
-    'select_timezone' => 'Zona horaria',
+    'wizard' => 'Asistente',
   ),
   'welcome' => 
   array (
