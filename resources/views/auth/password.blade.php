@@ -22,6 +22,10 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @if ($errors->first('email') == trans('passwords.user'))
+                            {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/auth/register')) !!}
+                        @endif
+                        <p>&nbsp;</p>
                     @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">

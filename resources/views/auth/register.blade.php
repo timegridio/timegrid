@@ -16,6 +16,13 @@
                                 @endforeach
                             </ul>
                         </div>
+                        @if ($errors->has('email'))
+                            {!! Button::success(trans('auth.btn.already_registered'))->block()->asLinkTo(url('/auth/login')) !!}
+                        @endif
+                        @if ($errors->has('password'))
+                            {!! Button::warning(trans('auth.btn.forgot'))->block()->asLinkTo(url('/password/email')) !!}
+                        @endif
+                        <p>&nbsp;</p>
                     @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}">
