@@ -8,7 +8,7 @@ return array (
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'jumbotron' => 
   array (
-    'btn' => 'Empecemos',
+    'btn' => [ 'begin' => 'Empecemos', 'login' => 'Iniciar Sesión' ],
     'description' => 'La secretaria de turnos. Inteligente.',
     'title' => 'timegrid',
   ),
