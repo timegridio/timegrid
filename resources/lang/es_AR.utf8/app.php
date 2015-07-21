@@ -1,14 +1,10 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/20 19:18:40 
+ Generated via "php artisan localization:missing" at 2015/07/21 11:12:47 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
-  'name' => 'timegrid',
   //==================================== Translations ====================================//
-  'search' => 'Buscar',
   'filter' => 'Filtrar',
   'general' => 
   array (
@@ -21,6 +17,7 @@ return array (
   array (
     'select_timezone' => 'Zona horaria',
   ),
+  'name' => 'timegrid',
   'nav' => 
   array (
     'home' => 'Inicio',
@@ -40,15 +37,16 @@ return array (
     array (
       'business' => 
       array (
-        'home' => 'Inicio',
         'menu' => 'Prestadores',
         'my_appointments' => 'Mis turnos',
         'my_suscriptions' => 'Favoritos',
         'selector' => 'Buscar',
+        'home' => 'Inicio',
       ),
     ),
     'wizard' => 'Asistente',
   ),
+  'search' => 'Buscar',
   //================================== Obsolete strings ==================================//
   'gender' => 
   array (
