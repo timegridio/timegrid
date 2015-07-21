@@ -21,3 +21,8 @@ td.today {
   border-right: 2px solid red;
   background-color: #FFFC51;
 }
+
+.appointmentinfo.annulated
+{
+  text-decoration: line-through;
+}
