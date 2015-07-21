@@ -23,7 +23,7 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
     });
 });
 
-Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWelcome']);
+Route::get('home', ['as' => 'home', 'uses' => 'User\BusinessController@getList']);
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'booking'], function () {
@@ -34,7 +34,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
     });
 
     Route::group(['prefix' => 'businesses'], function () {
-        Route::get('home',                   ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
+        Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
         Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect']);
         Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
         Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
@@ -50,8 +50,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 });
 
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function () {
-    #Route::get('{business}/appointment/{appointment}/annulate', ['as' => 'manager.business.agenda.annulate', 'uses' => 'BusinessAgendaController@postAnnulate']);
-    #Route::get('{business}/agenda',      ['as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
+
     Route::controller('appointment', 'BusinessAgendaController', [
         'postAction' => 'manager.business.agenda.action',
     ]);
@@ -88,8 +87,8 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-# Route::get('{search}', function ($search) {
-#     return Redirect::route('user.businesses.select', $search);
-# })->where('search', '.*');
+Route::get('{business_slug}', function ($business_slug) {
+    return Redirect::route('user.businesses.home', $business_slug->id);
+})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
 
 Route::get('/', 'WelcomeController@index');

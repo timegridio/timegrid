@@ -10,13 +10,8 @@ use Flash;
 
 class BusinessController extends Controller
 {
-    public function getHome()
+    public function getHome(Business $business)
     {
-        $business = Session::get('selected.business');
-        if (empty($business) || !$business->exists) {
-            Flash::warning(trans('user.business.msg.please_select_a_business'));
-            return Redirect::route('user.businesses.list');
-        }
         return view('user.businesses.show', compact('business'));
     }
 
@@ -29,7 +24,7 @@ class BusinessController extends Controller
     public function getSelect(Business $business)
     {
         Session::set('selected.business', $business);
-        return Redirect::route('user.businesses.home');
+        return $this->getHome($business);
     }
 
     public function getSuscriptions()
