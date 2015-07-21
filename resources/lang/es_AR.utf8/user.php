@@ -10,6 +10,7 @@ return array (
     'btn' => 
     array (
       'book' => 'Reservar Turno',
+      'book_in_biz' => 'Reservar Turno en :biz',
     ),
     'form' => 
     array (
