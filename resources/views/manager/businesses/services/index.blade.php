@@ -12,24 +12,24 @@
                 <div class="panel-body">
                     <table class="table table-condensed">
                         <tr>
-                            <th></th>
                             <th>{{ trans('manager.services.index.th.name') }}</th>
                             <th>{{ trans('manager.services.index.th.slug') }}</th>
-                            <th>{{ trans('manager.services.index.th.duration') }}</th>
                         </tr>
                     @foreach ($services as $service)
                         <tr>
-                            <td>{!! Button::normal()->withIcon(Icon::edit())->asLinkTo( route('manager.business.service.edit', [$business->id, $service->id]) ) !!}</td>
-                            <td title="{{ $service->description }}">{!! Button::normal($service->name)->asLinkTo( route('manager.business.service.show', [$business->id, $service->id]) ) !!}</td>
+                            <td title="{{ $service->description }}">
+                            <div class="btn-group">
+                                {!! Button::normal()->withIcon(Icon::edit())->asLinkTo( route('manager.business.service.edit', [$business->id, $service->id]) ) !!}
+                                {!! Button::normal($service->name)->asLinkTo( route('manager.business.service.show', [$business->id, $service->id]) ) !!}
+                            </div>
+                            </td>
                             <td>{{ $service->slug }}</td>
-                            <td>{{ $service->duration }}</td>
                         </tr>
                     @endforeach
                     </table>
 
                     <div class="panel-footer">
-                        {!! Button::normal()->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) ) !!}
-                        {!! Button::normal(trans('manager.businesses.btn.return'))->asLinkTo(URL::previous()) !!}
+                        {!! Button::primary(trans('manager.services.btn.create'))->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) )->block() !!}
                     </div>
                 </div>
             </div>
