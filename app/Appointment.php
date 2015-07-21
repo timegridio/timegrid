@@ -21,10 +21,14 @@ class Appointment extends Model
     const STATUS_ANNULATED = 'A';
     const STATUS_SERVED    = 'S';
 
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id); 
+    }
+
     public function save(array $options = array())
     {
-        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
-
         parent::save();
     }
 
@@ -46,6 +50,11 @@ class Appointment extends Model
     public function service()
     {
         return $this->belongsTo('App\Service');
+    }
+
+    public function duplicates()
+    {
+        return !self::where('hash', $this->hash)->get()->isEmpty();
     }
 
     public function getFinishAtAttribute()
