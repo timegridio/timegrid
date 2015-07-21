@@ -83,7 +83,8 @@ return array (
     array (
       'store' => 
       array (
-        'success' => 'Turno Registrado',
+        'success' => '¡Tomá nota! Reservamos tu turno bajo el código :code',
+        'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
       ),
       'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
     ),
