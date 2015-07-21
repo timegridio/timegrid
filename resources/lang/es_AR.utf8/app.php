@@ -17,7 +17,7 @@ return array (
   array (
     'select_timezone' => 'Zona horaria',
   ),
-  'name' => 'timegrid',
+  'name' => 'timegrid.io',
   'nav' => 
   array (
     'home' => 'Inicio',

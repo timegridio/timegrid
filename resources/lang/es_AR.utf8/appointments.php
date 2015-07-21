@@ -11,7 +11,9 @@ return array (
     'to' => 'a',
     'duration' => 'duración',
   ),
-  //================================== Obsolete strings ==================================//
+  'alert' => [
+    'annulated' => '¡Atención! Turno ANULADO',
+  ],
   'status' => 
   array (
     'annulated' => 'Anulado',
