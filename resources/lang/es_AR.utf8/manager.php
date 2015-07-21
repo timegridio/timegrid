@@ -153,11 +153,11 @@ return array (
   array (
     'btn' => 
     array (
-      'confirm_delete' => 'contacts.btn.confirm_delete',
+      'confirm_delete' => '¿Seguro querés eliminar el contacto?',
       'delete' => 'Eliminar',
-      'edit' => 'contacts.btn.edit',
+      'edit' => 'Editar',
       'store' => 'Guardar',
-      'update' => 'Actualizar Contacto',
+      'update' => 'Actualizar',
     ),
     'create' => 
     array (
@@ -239,7 +239,7 @@ return array (
       array (
         'email' => 'Email',
         'firstname' => 'Nombre',
-        'lastname' => 'Apellido',
+        'lastname' => 'Apellidos',
         'mobile' => 'Móvil',
         'quality' => 'Puntaje',
         'username' => 'Usuario',
@@ -247,18 +247,18 @@ return array (
       ),
       'msg' => 
       array (
-        'filter_no_results' => 'Sin resultados',
+        'filter_no_results' => 'Nada por aquí',
       ),
     ),
     'msg' => 
     array (
       'destroy' => 
       array (
-        'success' => 'Eliminado',
+        'success' => '¡Contacto eliminado!',
       ),
       'store' => 
       array (
-        'success' => 'Registrado Ok!',
+        'success' => '¡Contacto registrado Ok!',
         'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
       ),
       'update' => 
@@ -279,14 +279,14 @@ return array (
     array (
       'name' => 
       array (
-        'label' => 'Servicios',
+        'label' => 'Nombre del servicio',
       ),
     ),
     'msg' => 
     array (
       'store' => 
       array (
-        'success' => 'Servicio Guardado!',
+        'success' => '¡Servicio Guardado!',
       ),
     ),
   ),
@@ -298,7 +298,7 @@ return array (
     ),
     'create' => 
     array (
-      'title' => 'Nuevo Servicio',
+      'title' => 'Agregar un servicio',
     ),
     'index' => 
     array (
@@ -314,7 +314,7 @@ return array (
     array (
       'destroy' => 
       array (
-        'success' => 'Servicio Eliminado!',
+        'success' => '¡Servicio eliminado!',
       ),
     ),
   ),
