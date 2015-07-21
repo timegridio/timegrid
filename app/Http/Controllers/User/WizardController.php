@@ -12,12 +12,7 @@ class WizardController extends Controller
 {
     public function getWelcome()
     {
-        if (!Session::get('oldvisitor', false)) {
-            Session::set('oldvisitor', true);
-            return view('wizard');
-        } else {
-            return Redirect::route('user.businesses.list');
-        }
+        return view('wizard');
     }
 
     public function getPricing()
