@@ -1,3 +1,3 @@
 @foreach ($appointments as $appointment)
-    {!! $appointment->widget()->panel() !!}
+    {!! $appointment->widget()->actions()->panel() !!}
 @endforeach
