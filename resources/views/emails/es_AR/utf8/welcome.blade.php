@@ -18,7 +18,7 @@
         <tr>
           <td class="container-padding content" align="left" style="padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff">
             <br>
-<div class="title" style="font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">Bienvenido a {{trans('app.name')}}</div>
+<div class="title" style="font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, te damos la bienvenida a {{trans('app.name')}}</div>
 <br>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
@@ -40,7 +40,7 @@
         <td class="col" valign="top" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333;width:100%">
           <strong>¿Quienes somos?</strong>
           <br><br>
-          {{trans('app.name')}} es la central de turnos que se administra sóla. Acabás de registrarte y por eso queremos darte la bienvenida.
+          <strong>{{trans('app.name')}}</strong> es la central de turnos online que se administra sóla. Acabás de registrarte y por eso queremos darte la bienvenida.
           <br><br>
         </td>
       </tr>
@@ -76,18 +76,22 @@
     <li>
       <strong>¿Es gratis?</strong><br>
       <strong>Sí!</strong> Pedir y dar turnos es gratis. Si sos prestador y necesitás más potencia también tenemos un plan especial para tu negocio.<br>
+      <br>
     </li>
     <li>
       <strong>¿Puedo empezar a pedir turnos?</strong><br>
       <strong>Sí!</strong> Pedir turnos es muy fácil. Buscás el prestador que te guste en nuestro directorio, lo hacés favorito, y ya podés pedirle turnos!<br>
+      <br>
     </li>
     <li>
       <strong>¿Tengo que registrarme de nuevo por cada prestador?</strong><br>
       <strong>No!</strong> Ya te registraste! El mismo usuario te servirá para todos nuestros prestadores afiliados.<br>
+      <br>
     </li>
     <li>
       <strong>¿Alguna recomendación?</strong><br>
       <strong>Sí!</strong> Los prestadores hacen lo mejor por darte el mejor servicio. Reservar y anular turnos ahora es bien fácil. Respetá los turnos y si no podés asistir, cancelalo a tiempo.<br>
+      <br>
     </li>
   </ol>
 
