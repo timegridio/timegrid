@@ -9,14 +9,11 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::model(new App\Business, ['route' => ['manager.business.store']]) !!}
+                {!! Form::model(new App\Business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
                 {!! Form::close() !!}
             </div>
 
-            <div class="panel-footer">
-                
-            </div>
         </div>
     </div>
 </div>

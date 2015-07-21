@@ -9,7 +9,7 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::model($business, ['method' => 'put', 'route' => ['manager.business.update', $business->id]]) !!}
+                {!! Form::model($business, ['method' => 'put', 'route' => ['manager.business.update', $business->id], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.update')])
                 {!! Form::close() !!}
             </div>
