@@ -48,10 +48,15 @@ class BookingController extends Controller
         $data['start_at'] = $request->input('_date').' '.$request->input('_time');
         $data['contact_id'] = \Auth::user()->suscribedTo($business)->id;
         $booking = new BookingStrategy($business->strategy);
-        $booking->makeReservation($business, $data);
-
-        Flash::success(trans('user.booking.msg.store.success'));
-        return Redirect::route('user.booking.list')->with('message', trans('user.booking.msg.store.success'));
+        
+        $appointment = $booking->makeReservation($business, $data);
+        if ($appointment->duplicates()) {
+            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => substr($appointment->code, 0, 4)]));
+        } else {
+            $appointment->save();
+            Flash::success(trans('user.booking.msg.store.success', ['code' => substr($appointment->code, 0, 4)]));
+        }
+        return Redirect::route('user.booking.list');
     }
 
     public function getShow(Business $business, Appointment $appointment)

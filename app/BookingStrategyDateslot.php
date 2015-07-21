@@ -14,7 +14,6 @@ class BookingStrategyDateslot implements BookingStrategyInterface
         $data['business_id'] = $business->id;
         $data['start_at'] = Carbon::parse($data['_date'] . ' 08:00 AM', $business->tz)->timezone('UTC')->toDateTimeString();
         $data['duration'] = 0;
-        $appointment = new Appointment($data);
-        return $appointment->save();
+        return new Appointment($data);
     }
 }
