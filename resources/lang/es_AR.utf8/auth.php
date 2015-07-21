@@ -1,27 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/21 11:12:47 
+ Generated via "php artisan localization:missing" at 2015/07/21 13:28:55 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/auth/register.blade.php
-  'register' => 
-  array (
-    'btn' => 
-    array (
-      'submit' => 'Registrame',
-    ),
-    'name' => 'Tu nombre',
-    'email' => 'Tu Email',
-    'password' => 'Una Contraseña',
-    'password_confirmation' => 'La misma contraseña',
-    'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
-    'msg' => 
-    array (
-      'errors' => 'Errores',
-    ),
-  ),
   //==================================== Translations ====================================//
   'btn' => 
   array (
@@ -42,6 +24,22 @@ return array (
     'password' => 'Contraseña',
     'remember_me' => 'Recordarme',
     'title' => 'Inicio de Sesión',
+  ),
+  'register' => 
+  array (
+    'btn' => 
+    array (
+      'submit' => 'Registrame',
+    ),
+    'email' => 'Tu Email',
+    'name' => 'Tu nombre',
+    'password' => 'Una Contraseña',
+    'password_confirmation' => 'La misma contraseña',
+    'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
+    'msg' => 
+    array (
+      'errors' => 'Errores',
+    ),
   ),
   'reset' => 
   array (

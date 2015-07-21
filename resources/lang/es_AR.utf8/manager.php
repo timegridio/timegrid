@@ -1,18 +1,161 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/21 11:12:47 
+ Generated via "php artisan localization:missing" at 2015/07/21 13:28:55 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
+  'businesses' => 
+  array (
+    'form' => 
+    array (
+      'timezone' => 
+      array (
+        'label' => 'Zona Horaria',
+      ),
+      'description' => 
+      array (
+        'label' => 'Descripción',
+        'placeholder' => 'Describe al prestador',
+      ),
+      'name' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'Nombre completo del prestador',
+      ),
+      'phone' => 
+      array (
+        'label' => 'Teléfono de Contacto',
+        'placeholder' => 'teléfono en formato internacional',
+        'hint' => 'ej: 00pp9aaxxxxxxxx',
+      ),
+      'postal_address' => 
+      array (
+        'label' => 'Dirección Postal',
+        'placeholder' => 'altura calle, barrio, ciudad, país',
+      ),
+      'slug' => 
+      array (
+        'label' => 'Alias',
+        'placeholder' => 'así será el link en la web',
+      ),
+    ),
+    'btn' => 
+    array (
+      'return' => 'Volver',
+      'store' => 'Registrar',
+      'update' => 'Actualizar',
+    ),
+    'contacts' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Crear',
+      ),
+    ),
+    'create' => 
+    array (
+      'title' => 'Registrar un prestador',
+    ),
+    'dashboard' => 
+    array (
+      'alert' => 
+      array (
+        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
+        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
+      ),
+      'meta' => 
+      array (
+        'title_owner' => 'Propietario',
+        'title_registered_since' => 'Registrado desde',
+      ),
+      'panel' => 
+      array (
+        'title_appointments_active' => 'Activos',
+        'title_appointments_annulated' => 'Anulados',
+        'title_appointments_served' => 'Atendidos',
+        'title_appointments_today' => 'Hoy',
+        'title_appointments_tomorrow' => 'Mañana',
+        'title_appointments_total' => 'Total',
+        'title_contacts_active' => 'Contactos Activos',
+        'title_contacts_registered' => 'Contactos Registrados',
+        'title_contacts_with_nin' => 'Contactos con DNI',
+      ),
+    ),
+    'edit' => 
+    array (
+      'title' => 'Edición de datos del prestador',
+    ),
+    'index' => 
+    array (
+      'help' => 'Desde aquí puedes administrar todos los prestadores',
+      'register_business_help' => 'Si eres prestador y quieres dar turnos online, es tu oportunidad!',
+      'title' => 'Mis Prestadores',
+      'btn' => 
+      array (
+        'manage' => 'Administrar prestadores',
+        'register' => 'Registrar un prestador',
+      ),
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => 'Prestador removido',
+      ),
+      'store' => 
+      array (
+        'business_already_exists' => 'El prestador ya está registrado',
+        'restored_trashed' => 'Prestador restaurado',
+        'success' => 'Prestador registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Datos del prestador actualizados',
+      ),
+    ),
+    'vacancies' => 
+    array (
+      'btn' => 
+      array (
+        'update' => 'Actualizar Disponibilidad',
+      ),
+    ),
+    'show' => 
+    array (
+      'title' => 'Prestador',
+    ),
+  ),
+  //==================================== Translations ====================================//
+  'business' => 
+  array (
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
+    ),
+  ),
   'contacts' => 
   array (
     'btn' => 
     array (
       'confirm_delete' => 'contacts.btn.confirm_delete',
-      'edit' => 'contacts.btn.edit',
       'delete' => 'Eliminar',
+      'edit' => 'contacts.btn.edit',
       'store' => 'Guardar',
       'update' => 'Actualizar Contacto',
     ),
@@ -124,145 +267,6 @@ return array (
       ),
     ),
     'title' => 'Mis Clientes',
-  ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/show.blade.php
-  //==================================== Translations ====================================//
-  'business' => 
-  array (
-    'form' => 
-    array (
-      'strategy' => 
-      array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
-      ),
-    ),
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
-          'success' => 'Servicio Actualizado!',
-        ),
-      ),
-    ),
-  ),
-  'businesses' => 
-  array (
-    'btn' => 
-    array (
-      'return' => 'Volver',
-      'store' => 'Registrar',
-      'update' => 'Actualizar',
-    ),
-    'contacts' => 
-    array (
-      'btn' => 
-      array (
-        'create' => 'Crear',
-      ),
-    ),
-    'create' => 
-    array (
-      'title' => 'Registrar un prestador',
-    ),
-    'dashboard' => 
-    array (
-      'alert' => 
-      array (
-        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
-        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
-      ),
-      'meta' => 
-      array (
-        'title_owner' => 'Propietario',
-        'title_registered_since' => 'Registrado desde',
-      ),
-      'panel' => 
-      array (
-        'title_appointments_active' => 'Activos',
-        'title_appointments_annulated' => 'Anulados',
-        'title_appointments_served' => 'Atendidos',
-        'title_appointments_today' => 'Hoy',
-        'title_appointments_tomorrow' => 'Mañana',
-        'title_appointments_total' => 'Total',
-        'title_contacts_active' => 'Contactos Activos',
-        'title_contacts_registered' => 'Contactos Registrados',
-        'title_contacts_with_nin' => 'Contactos con DNI',
-      ),
-    ),
-    'edit' => 
-    array (
-      'title' => 'Edición de datos del prestador',
-    ),
-    'form' => 
-    array (
-      'description' => 
-      array (
-        'label' => 'Descripción',
-        'placeholder' => 'Describe al prestador',
-      ),
-      'name' => 
-      array (
-        'label' => 'Nombre',
-        'placeholder' => 'Nombre completo del prestador',
-      ),
-      'phone' => 
-      array (
-        'label' => 'Teléfono',
-        'placeholder' => 'tel sin espacios ni guiones',
-      ),
-      'postal_address' => 
-      array (
-        'label' => 'Dirección Postal',
-        'placeholder' => 'altura calle, barrio, ciudad, país',
-      ),
-      'slug' => 
-      array (
-        'label' => 'Nombre Corto',
-        'placeholder' => 'Nombre corto',
-      ),
-    ),
-    'index' => 
-    array (
-      'help' => 'Desde aquí puedes administrar todos los prestadores',
-      'register_business_help' => 'Si eres prestador y quieres dar turnos online, es tu oportunidad!',
-      'title' => 'Mis Prestadores',
-      'btn' => 
-      array (
-        'manage' => 'Administrar prestadores',
-        'register' => 'Registrar un prestador',
-      ),
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => 'Prestador removido',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'El prestador ya está registrado',
-        'restored_trashed' => 'Prestador restaurado',
-        'success' => 'Prestador registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Datos del prestador actualizados',
-      ),
-    ),
-    'vacancies' => 
-    array (
-      'btn' => 
-      array (
-        'update' => 'Actualizar Disponibilidad',
-      ),
-    ),
-    'show' => 
-    array (
-      'title' => 'Prestador',
-    ),
   ),
   'service' => 
   array (
