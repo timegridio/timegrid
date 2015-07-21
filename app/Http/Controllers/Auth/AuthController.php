@@ -60,6 +60,7 @@ class AuthController extends Controller
     {
         Log::info("Register new user: <{$data['email']}>");
         $user = User::create([
+            'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
