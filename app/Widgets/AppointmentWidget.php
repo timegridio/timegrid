@@ -14,6 +14,8 @@ class AppointmentWidget
 
     protected $fields = [];
 
+    protected $options = ['display_actions' => false];
+
     public function __construct(Appointment $appointment)
     {
         $this->appointment = $appointment;
@@ -53,6 +55,12 @@ class AppointmentWidget
                 break;
         }
         return '<span class="label label-'.$class.'">'.trans('appointments.status.'.$this->appointment->statusLabel).'</span>';
+    }
+
+    public function actions($enable = true)
+    {
+        $this->options['display_actions'] = $enable;
+        return $this;
     }
 
     public function actionButtons()
@@ -169,11 +177,13 @@ class AppointmentWidget
     {
         $header = $this->statusLabel();
         $footer = Icon::barcode() . '&nbsp;' . $this->code();
+        $class = '';
 
         switch ($this->appointment->status) {
             case Appointment::STATUS_ANNULATED:
                 $panel = Panel::danger();
                 $header .= '&nbsp;&nbsp;' . trans('appointments.alert.annulated');
+                $class = 'annulated';
                 break;
             case Appointment::STATUS_CONFIRMED:
                 $panel = Panel::success();
@@ -187,7 +197,7 @@ class AppointmentWidget
                 break;
         }
 
-        $body  = '<ul class="list-group">';
+        $body  = "<ul class=\"list-group appointmentinfo $class\">";
         $body .= '<li class="list-group-item">';
         $body .= Icon::home(). '&nbsp;' . $this->appointment->business->name;
         $body .= '</li>';
@@ -200,6 +210,13 @@ class AppointmentWidget
         $body .= Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString();
         $body .= '</span>';
         $body .= '</li>';
+
+        if($this->options['display_actions'] && $this->appointment->isActive())
+        {
+            $body .= '<li class="list-group-item">';
+            $body .= $this->actionButtons();
+            $body .= '</li>';
+        }
         $body .= '</ul>';
         
         if ($this->appointment->comments) $body .= '<p>'. $this->appointment->comments .'</p>';
