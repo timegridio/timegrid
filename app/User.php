@@ -34,6 +34,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     protected $hidden = ['password', 'remember_token'];
 
+    public function setNameAttribute($string)
+    {
+        $this->attributes['name'] = ucwords(strtolower($string));
+    }
+
     public function businesses()
     {
         return $this->belongsToMany('App\Business')->withTimestamps();
