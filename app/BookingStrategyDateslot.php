@@ -12,7 +12,7 @@ class BookingStrategyDateslot implements BookingStrategyInterface
     {
         $data['issuer_id'] = \Auth::user()->id;
         $data['business_id'] = $business->id;
-        $data['start_at'] = Carbon::parse($data['_date'] . ' 08:00 AM', $business->tz)->timezone('UTC')->toDateTimeString();
+        $data['start_at'] = Carbon::parse($data['_date'] . $business->pref('start_at'), $business->tz)->timezone('UTC')->toDateTimeString();
         $data['duration'] = 0;
         return new Appointment($data);
     }
