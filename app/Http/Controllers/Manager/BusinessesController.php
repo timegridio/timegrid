@@ -18,6 +18,10 @@ class BusinessesController extends Controller
     public function index()
     {
         $businesses = \Auth::user()->businesses;
+        if ($businesses->count()==1) {
+            $business = $businesses->first();
+            return view('manager.businesses.show', compact('business'));
+        }
         return view('manager.businesses.index', compact('businesses'));
     }
 
