@@ -1,51 +1,69 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/21 13:28:55 
+ Generated via "php artisan localization:missing" at 2015/07/22 15:53:12 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_form.blade.php
-  'businesses' => 
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/services/index.blade.php
+  'services' => 
   array (
-    'form' => 
-    array (
-      'timezone' => 
-      array (
-        'label' => 'Zona Horaria',
-      ),
-      'description' => 
-      array (
-        'label' => 'Descripción',
-        'placeholder' => 'Describe al prestador',
-      ),
-      'name' => 
-      array (
-        'label' => 'Nombre',
-        'placeholder' => 'Nombre completo del prestador',
-      ),
-      'phone' => 
-      array (
-        'label' => 'Teléfono de Contacto',
-        'placeholder' => 'teléfono en formato internacional',
-        'hint' => 'ej: 00pp9aaxxxxxxxx',
-      ),
-      'postal_address' => 
-      array (
-        'label' => 'Dirección Postal',
-        'placeholder' => 'altura calle, barrio, ciudad, país',
-      ),
-      'slug' => 
-      array (
-        'label' => 'Alias',
-        'placeholder' => 'así será el link en la web',
-      ),
-    ),
     'btn' => 
     array (
-      'return' => 'Volver',
+      'create' => 'Agregar un servicio',
+      'store' => 'Guardar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Agregar un servicio',
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'name' => 'Nombre',
+        'duration' => 'Duración',
+        'slug' => 'Alias',
+      ),
+      'title' => 'Servicios',
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => '¡Servicio eliminado!',
+      ),
+    ),
+  ),
+  //==================================== Translations ====================================//
+  'business' => 
+  array (
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
+    ),
+  ),
+  'businesses' => 
+  array (
+    'btn' => 
+    array (
       'store' => 'Registrar',
       'update' => 'Actualizar',
+      'return' => 'Volver',
     ),
     'contacts' => 
     array (
@@ -87,6 +105,39 @@ return array (
     array (
       'title' => 'Edición de datos del prestador',
     ),
+    'form' => 
+    array (
+      'description' => 
+      array (
+        'label' => 'Descripción',
+        'placeholder' => 'Describe al prestador',
+      ),
+      'name' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'Nombre completo del prestador',
+      ),
+      'phone' => 
+      array (
+        'label' => 'Teléfono de Contacto',
+        'placeholder' => 'teléfono en formato internacional',
+        'hint' => 'ej: 00pp9aaxxxxxxxx',
+      ),
+      'postal_address' => 
+      array (
+        'label' => 'Dirección Postal',
+        'placeholder' => 'altura calle, barrio, ciudad, país',
+      ),
+      'slug' => 
+      array (
+        'label' => 'Alias',
+        'placeholder' => 'así será el link en la web',
+      ),
+      'timezone' => 
+      array (
+        'label' => 'Zona Horaria',
+      ),
+    ),
     'index' => 
     array (
       'help' => 'Desde aquí puedes administrar todos los prestadores',
@@ -125,28 +176,6 @@ return array (
     'show' => 
     array (
       'title' => 'Prestador',
-    ),
-  ),
-  //==================================== Translations ====================================//
-  'business' => 
-  array (
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
-          'success' => 'Servicio Actualizado!',
-        ),
-      ),
-    ),
-    'form' => 
-    array (
-      'strategy' => 
-      array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
-      ),
     ),
   ),
   'contacts' => 
@@ -287,34 +316,6 @@ return array (
       'store' => 
       array (
         'success' => '¡Servicio Guardado!',
-      ),
-    ),
-  ),
-  'services' => 
-  array (
-    'btn' => 
-    array (
-      'store' => 'Guardar',
-    ),
-    'create' => 
-    array (
-      'title' => 'Agregar un servicio',
-    ),
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'duration' => 'Duración',
-        'name' => 'Nombre',
-        'slug' => 'Alias',
-      ),
-      'title' => 'Servicios',
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => '¡Servicio eliminado!',
       ),
     ),
   ),

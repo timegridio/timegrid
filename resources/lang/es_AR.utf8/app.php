@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/21 13:28:55 
+ Generated via "php artisan localization:missing" at 2015/07/22 15:53:12 
 *************************************************************************/
 
 return array (
@@ -20,7 +20,6 @@ return array (
   'name' => 'timegrid.io',
   'nav' => 
   array (
-    'home' => 'Inicio',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
     'manager' => 
@@ -45,6 +44,7 @@ return array (
       ),
     ),
     'wizard' => 'Asistente',
+    'home' => 'Inicio',
   ),
   'search' => 'Buscar',
   //================================== Obsolete strings ==================================//

@@ -6,13 +6,13 @@
 return array (
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/xb3/xbooking/resources/views/wizard.blade.php
-  'alert' => '¡Muy bien!',
+  'alert' => '¡Muy bien! Contanos qué te gustaría hacer',
   // Defined in file /home/alariva/xb3/xbooking/resources/views/wizard.blade.php
   'business' => 
   array (
     'btn' => 'Quiero dar turnos',
     'header' => 'Soy prestador',
-    'caption' => '¿Tenés un comercio y querés dar turnos? Registrá tu local y empezá a dar turnos a tus clientes hoy mismo.',
+    'caption' => '¿Tenés un comercio y querés dar turnos? Registrá tu local y empezá a dar turnos hoy mismo.',
   ),
   // Defined in file /home/alariva/xb3/xbooking/resources/views/wizard.blade.php
   // Defined in file /home/alariva/xb3/xbooking/resources/views/wizard.blade.php
