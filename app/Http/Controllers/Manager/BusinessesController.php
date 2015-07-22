@@ -38,7 +38,7 @@ class BusinessesController extends Controller
             \Auth::user()->save();
             
             Flash::success(trans('manager.businesses.msg.store.success'));
-            return Redirect::route('manager.business.index');
+            return Redirect::route('manager.business.service.create', $business);
         }
 
         if (\Auth::user()->isOwner($existing_business)) {
