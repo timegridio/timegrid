@@ -76,6 +76,11 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
         return $this->businesses->count() > 0;
     }
 
+    public function hasContacts()
+    {
+        return $this->contacts->count() > 0;
+    }
+
     public function linkToContacts()
     {
         if (trim($this->email) == '') {
