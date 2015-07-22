@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Business extends Model
 {
     use SoftDeletes;
+    use Traits\Preferenceable;
 
     protected $dates = ['deleted_at'];
 
@@ -80,5 +81,4 @@ class Business extends Model
         $src = "https://graph.facebook.com/{$this->social_facebook}/picture?type=$type";
         return $this->social_facebook ? "<img calss=\"img-thumbnail media-object\" src=\"$src\"/>" : "<img calss=\"img-thumbnail media-object\" src=\"//placehold.it/100x100\"/>";
     }
-    
 }

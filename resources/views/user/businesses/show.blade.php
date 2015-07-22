@@ -28,7 +28,7 @@
                                     <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
                                     @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
-                                        {!! $appointment->widget()->mini(trans('Te esperamos')) !!}
+                                        {!! $appointment->widget()->mini('') !!}  {{-- Fixme trans() missing --}}
                                     @endif
                                   </div>
                                 </div>
@@ -39,15 +39,21 @@
                                 <div class="row hidden-xs">
                                     <blockquote>{!! Icon::globe() !!}&nbsp;{{ $business->timezone }}</blockquote>
                                 </div>
+                                @if ($business->pref('show_phone'))
                                 <div class="row">
                                     <blockquote>{!! Icon::phone() !!}&nbsp;{{ $business->phone }}</blockquote>
                                 </div>
+                                @endif
+                                @if ($business->pref('show_map'))
                                 <div class="row">
                                     {!! $business->staticMap(11) !!}
                                 </div>
+                                @endif
+                                @if ($business->pref('show_postal_address'))
                                 <div class="row">
                                     <blockquote>{!! Icon::home() !!}&nbsp;{{ $business->postal_address }}</blockquote>
                                 </div>
+                                @endif
                             </div>
                             </div>
 
