@@ -40,9 +40,9 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     @if (!Auth::guest() && Auth::user()->isRoot())
-                        <li><a class="navbar-brand" href="{{ route('root.dashboard') }}">Root Dashboard</a></li>
+                        <li><a class="navbar-brand" href="{{ route('root.dashboard') }}">{{ trans('app.name') }}</a></li>
                     @else
-                        <li><a class="navbar-brand" href="{{ route('user.businesses.home') }}">{{ trans('app.nav.home') }}</a></li>
+                        <li><a class="navbar-brand" href="{{ url('/') }}">{{ trans('app.name') }}</a></li>
                     @endif
 
                     @if (!empty(Auth::user()) && Auth::user()->hasBusiness())
