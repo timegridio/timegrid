@@ -15,6 +15,8 @@ use App\ConciergeStrategy as Concierge;
 use Carbon;
 use Session;
 use URL;
+use Event;
+use App\Events\NewBooking;
 
 class BookingController extends Controller
 {
@@ -54,6 +56,7 @@ class BookingController extends Controller
             Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => substr($appointment->code, 0, 4)]));
         } else {
             $appointment->save();
+            Event::fire(new NewBooking(\Auth::user(), $appointment));
             Flash::success(trans('user.booking.msg.store.success', ['code' => substr($appointment->code, 0, 4)]));
         }
         return Redirect::route('user.booking.list');

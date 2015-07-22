@@ -17,6 +17,9 @@ class EventServiceProvider extends ServiceProvider
             'App\Handlers\Events\LinkUserToExistingContacts',
             'App\Handlers\Events\SendMailUserWelcome',
         ],
+        'App\Events\NewBooking' => [
+            'App\Handlers\Events\SendBookingNotification',
+        ],
     ];
 
     /**
