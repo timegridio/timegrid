@@ -1,5 +1,5 @@
 {{-- Language Switcher --}}
-<li class="dropdown">
+<li id="navLang" class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Config::get('languages')[App::getLocale()] }} <b class="caret"></b></a>
     <ul class="dropdown-menu">
         @foreach (Config::get('languages') as $lang => $language)
