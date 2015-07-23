@@ -1,40 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/22 15:53:12 
+ Generated via "php artisan localization:missing" at 2015/07/23 18:26:13 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/services/index.blade.php
-  'services' => 
-  array (
-    'btn' => 
-    array (
-      'create' => 'Agregar un servicio',
-      'store' => 'Guardar',
-    ),
-    'create' => 
-    array (
-      'title' => 'Agregar un servicio',
-    ),
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'name' => 'Nombre',
-        'duration' => 'Duración',
-        'slug' => 'Alias',
-      ),
-      'title' => 'Servicios',
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => '¡Servicio eliminado!',
-      ),
-    ),
-  ),
   //==================================== Translations ====================================//
   'business' => 
   array (
@@ -83,11 +52,6 @@ return array (
         'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
         'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
       ),
-      'meta' => 
-      array (
-        'title_owner' => 'Propietario',
-        'title_registered_since' => 'Registrado desde',
-      ),
       'panel' => 
       array (
         'title_appointments_active' => 'Activos',
@@ -99,6 +63,11 @@ return array (
         'title_contacts_active' => 'Usuarios Suscriptos',
         'title_contacts_registered' => 'Contactos Registrados',
         'title_contacts_with_nin' => 'Contactos con DNI',
+      ),
+      'meta' => 
+      array (
+        'title_owner' => 'Propietario',
+        'title_registered_since' => 'Registrado desde',
       ),
     ),
     'edit' => 
@@ -316,6 +285,35 @@ return array (
       'store' => 
       array (
         'success' => '¡Servicio Guardado!',
+      ),
+    ),
+  ),
+  'services' => 
+  array (
+    'btn' => 
+    array (
+      'create' => 'Agregar un servicio',
+      'store' => 'Guardar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Agregar un servicio',
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'name' => 'Nombre',
+        'duration' => 'Duración',
+        'slug' => 'Alias',
+      ),
+      'title' => 'Servicios',
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => '¡Servicio eliminado!',
       ),
     ),
   ),
