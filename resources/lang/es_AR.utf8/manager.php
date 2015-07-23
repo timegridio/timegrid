@@ -69,7 +69,7 @@ return array (
     array (
       'btn' => 
       array (
-        'create' => 'Crear',
+        'create' => 'Agregar un contacto',
       ),
     ),
     'create' => 
