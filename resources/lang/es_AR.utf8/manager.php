@@ -96,7 +96,7 @@ return array (
         'title_appointments_today' => 'Hoy',
         'title_appointments_tomorrow' => 'Mañana',
         'title_appointments_total' => 'Total',
-        'title_contacts_active' => 'Contactos Activos',
+        'title_contacts_active' => 'Usuarios Suscriptos',
         'title_contacts_registered' => 'Contactos Registrados',
         'title_contacts_with_nin' => 'Contactos con DNI',
       ),
