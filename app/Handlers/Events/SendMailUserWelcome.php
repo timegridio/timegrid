@@ -33,7 +33,7 @@ class SendMailUserWelcome
         Log::info('Handle NewRegisteredUser.SendMailUserWelcome()');
         $locale = App::getLocale();
         Mail::send("emails.{$locale}.welcome", ['user' => $event->user], function ($m) use ($event) {
-            $m->to('alariva@gmail.com', $event->user->email)->subject(trans('emails.welcome.subject'));
+            $m->to($event->user->email, $event->user->name)->subject(trans('emails.welcome.subject'));
         });
     }
 }
