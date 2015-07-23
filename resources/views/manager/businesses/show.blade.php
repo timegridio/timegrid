@@ -16,7 +16,16 @@
 <div class="container">
 
     <div class="panel panel-default">
-        <div class="panel-heading">{{ $business->name }}</div>
+        <div class="panel-heading">
+          <span class="btn-group"> 
+            {!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
+            {!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.business.edit', $business) ) !!}
+            {!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
+            {!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
+            {!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
+            {!! Button::withIcon(Icon::user())->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
+          </span>
+        </div>
 
         <div class="panel-body">
 
@@ -36,11 +45,11 @@
             </div>
             @endif
 
-            <div class="row">
+{{--             <div class="row">
               <div class="col-md-4"><blockquote><p>{{ str_limit($business->description, 30) }}</div>
               <div class="col-md-4"><blockquote><p>{!! Icon::globe() !!}&nbsp;{{ $business->timezone }}</p></blockquote></div>
               <div class="col-md-4"><div class="bizurl">{{ URL::to($business->slug) }}</div></div>
-            </div>
+            </div> --}}
 
             <div class="row">
               <div class="col-md-2">
@@ -91,48 +100,25 @@
               <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_registered') }}</div>
-                      <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->count() }}</h1></div>
+                      <div class="panel-body"><h2 class="text-center">{{ $business->contacts()->count() }}</h2></div>
                     </div>
               </div>
               <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_active') }}</div>
-                      <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->whereNotNull('user_id')->count() }}</h1></div>
+                      <div class="panel-body"><h2 class="text-center">{{ $business->contacts()->whereNotNull('user_id')->count() }}</h2></div>
                     </div>
               </div>
               <div class="col-md-4">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_with_nin') }}</div>
-                      <div class="panel-body"><h1 class="text-center">{{ $business->contacts()->whereNotNull('nin')->count() }}</h1></div>
+                      <div class="panel-body"><h2 class="text-center">{{ $business->contacts()->whereNotNull('nin')->count() }}</h2></div>
                     </div>
               </div>
             </div>
 
         </div>
-
-        <div class="panel-footer">
-            {!! Button::withIcon(Icon::edit())->primary()->asLinkTo( route('manager.business.edit', $business) ) !!}
-            {!! Button::withIcon(Icon::trash())->danger()->withAttributes(['data-method' => 'DELETE', 'data-confirm' => trans('app.general.btn.confirm_deletion')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
-            {!! Button::withIcon(Icon::tag())->normal()->asLinkTo( route('manager.business.service.index', $business) ) !!}
-            {!! Button::withIcon(Icon::time())->normal()->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
-            {!! Button::withIcon(Icon::calendar())->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
-            {!! Button::withIcon(Icon::user())->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
-        </div>
-    </div>
-
-    <div class="row">
-    <div class="col-md-12">
-    {!! Accordion::named("meta")->withContents([
-            [
-                'title' => trans('manager.businesses.dashboard.meta.title_registered_since'),
-                'contents' => $business->created_at->diffForHumans(),
-            ],
-            [
-                'title' => trans('manager.businesses.dashboard.meta.title_owner'),
-                'contents' => $business->owner()->email,
-            ],
-        ]) !!}
-    </div>
+        <div class="panel-footer">{{ $business->name }}</div>
     </div>
 </div>
 @endsection
