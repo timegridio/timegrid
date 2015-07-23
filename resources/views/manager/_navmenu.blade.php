@@ -1,5 +1,5 @@
 @if($business = Session::get('selected.business'))
-    <li><a href="{{ route('manager.business.show', $business->id) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
+    <li id="navHome"><a href="{{ route('manager.business.show', $business->id) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
 @endif
 
 <li class="dropdown">
@@ -12,6 +12,6 @@
 
 {!! Form::open(['method' => 'post', 'url' => '/manager/search/', 'class' => 'navbar-form navbar-left', 'role' => 'search']) !!}
 <div class="form-group">
-  <input name="criteria" type="text" class="form-control" placeholder="{{trans('app.search')}}">
+  <input id="search" name="criteria" type="text" class="form-control" placeholder="{{trans('app.search')}}">
 </div>
 {!! Form::close() !!}
