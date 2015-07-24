@@ -15,6 +15,8 @@ class CreateBusinessesTable extends Migration {
         Schema::create('businesses', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->integer('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->string('slug')->unique();
             $table->string('name');
             $table->string('description');

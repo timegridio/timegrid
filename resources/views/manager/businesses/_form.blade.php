@@ -35,12 +35,19 @@
     </div>
 </div>
 <div class="row">
-    <div class="form-group col-sm-4">
+    <div class="form-group col-sm-6">
         {!! Form::label( trans('manager.businesses.form.timezone.label') ) !!}<br>
         {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'selectpicker', 'required'], ['customValue' => 'true']) !!}
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-sm-5">
+    <div class="form-group col-sm-6">
+        {!! Form::label( trans('manager.businesses.form.category.label') ) !!}<br>
+        {!! Form::select('category', $categories, null, ['name' => 'category', 'class' => 'selectpicker', 'required']) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+<div class="row">    
+    <div class="form-group col-sm-6">
         {!! Form::label( trans('manager.businesses.form.postal_address.label') ) !!}
         {!! Form::text('postal_address', null,
             array('id'=>'name',
@@ -49,7 +56,7 @@
                   'placeholder'=> trans('manager.businesses.form.postal_address.placeholder') )) !!}
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-sm-3">
+    <div class="form-group col-sm-6">
         {!! Form::label( trans('manager.businesses.form.phone.label') ) !!}
         {!! Form::text('phone', null,
             array('class'=>'form-control',

@@ -14,6 +14,11 @@ class Business extends Model
 
     protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy'];
 
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
     public function owners()
     {
         return $this->belongsToMany(config('auth.model'))->withTimestamps();

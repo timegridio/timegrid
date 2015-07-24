@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Business;
+use App\Category;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use App\Http\Requests\BusinessFormRequest;
@@ -29,7 +30,8 @@ class BusinessesController extends Controller
     {
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
-        return view('manager.businesses.create', compact('timezone'));
+        $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
+        return view('manager.businesses.create', compact('timezone', 'categories'));
     }
 
     public function store(BusinessFormRequest $request)
@@ -37,7 +39,11 @@ class BusinessesController extends Controller
         $existing_business = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
         if ($existing_business === null) {
-            $business = Business::create(Request::all());
+            $business = new Business(Request::all());
+            $category = Category::find(Request::get('category'));
+            $business->strategy = $category->strategy;
+            $business->category()->associate($category);
+            $business->save();
             \Auth::user()->businesses()->attach($business);
             \Auth::user()->save();
             

@@ -198,6 +198,10 @@
 var tourDashboard = new Tour({
   duration: 10000,
   delay: 100,
+  template: "@include('tour._template')",
+  onEnd: function(tourDashboard){
+    $('#btnServices').addClass('blink').addClass('btn-success');
+  },
   steps: [
   {
     element: "#general",
@@ -327,7 +331,7 @@ var tourDashboard = new Tour({
     title: "{{trans('tour.dashboard.enjoy.title')}}",
     content: "{{trans('tour.dashboard.enjoy.content')}}",
     orphan: true,
-    duration: 20000
+    duration: 20000,
   },
 ]});
 
