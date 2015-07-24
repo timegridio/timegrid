@@ -26,11 +26,15 @@
                     @endforeach
                     </table>
 
-                    <div class="panel-footer">
-                        {!! Button::primary(trans('manager.services.btn.create'))->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) )->block() !!}
-                    </div>
+                {!! Button::primary(trans('manager.services.btn.create'))->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) )->block() !!}
+
                 </div>
+            
             </div>
+            @if ($business->services()->count())
+                {!! Alert::success(trans('manager.services.create.alert.got_to_vacancies')) !!}
+                {!! Button::normal(trans('manager.services.create.btn.got_to_vacancies'))->withIcon(Icon::time())->block()->asLinkTo(route('manager.business.vacancy.create', $business->id)) !!}
+            @endif
         </div>
     </div>
 </div>
