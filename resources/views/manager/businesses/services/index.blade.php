@@ -32,8 +32,8 @@
             
             </div>
             @if ($business->services()->count())
-                {!! Alert::success(trans('manager.services.create.alert.got_to_vacancies')) !!}
-                {!! Button::normal(trans('manager.services.create.btn.got_to_vacancies'))->withIcon(Icon::time())->block()->asLinkTo(route('manager.business.vacancy.create', $business->id)) !!}
+                {!! Alert::success(trans('manager.services.create.alert.go_to_vacancies')) !!}
+                {!! Button::success(trans('manager.services.create.btn.go_to_vacancies'))->withIcon(Icon::time())->large()->block()->asLinkTo(route('manager.business.vacancy.create', $business->id)) !!}
             @endif
         </div>
     </div>
