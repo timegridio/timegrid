@@ -57,7 +57,23 @@
                     </form>
                 </div>
             </div>
+            {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => 'hidden'])->block()->asLinkTo(url('/auth/register')) !!}
         </div>
     </div>
 </div>
+@endsection
+
+@section('footer_scripts')
+@parent
+<script type="text/javascript">
+$(document).ready(function(){
+    $('#btnNotRegistered').hide();
+    var timer;
+    clearTimeout(timer);
+    timer = setTimeout(function (event) {
+        console.log('Search keypress');
+        $('#btnNotRegistered').removeClass('hidden').show('slow');
+    }, 10000);
+});
+</script>
 @endsection
