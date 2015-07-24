@@ -196,15 +196,15 @@
 
  // Instance the tour
 var tourDashboard = new Tour({
-  duration: 4500,
-  delay: 150,
+  duration: 10000,
+  delay: 100,
   steps: [
   {
     element: "#general",
     title: "{{trans('tour.dashboard.panel.title')}}",
     content: "{{trans('tour.dashboard.panel.content')}}",
     orphan: true,
-    duration: 12000
+    duration: 18000
   },
   {
     element: "#btnEdit",
@@ -295,7 +295,7 @@ var tourDashboard = new Tour({
     title: "{{trans('tour.dashboard.search.title')}}",
     content: "{{trans('tour.dashboard.search.content')}}",
     placement: "bottom",
-    duration: 8000
+    duration: 12000
   },
   {
     element: "#navHome",
@@ -308,7 +308,7 @@ var tourDashboard = new Tour({
     title: "{{trans('tour.dashboard.lang.title')}}",
     content: "{{trans('tour.dashboard.lang.content')}}",
     placement: "bottom",
-    duration: 7000
+    duration: 12000
   },
   {
     element: "#navProfile",
@@ -327,7 +327,7 @@ var tourDashboard = new Tour({
     title: "{{trans('tour.dashboard.enjoy.title')}}",
     content: "{{trans('tour.dashboard.enjoy.content')}}",
     orphan: true,
-    duration: 12000
+    duration: 20000
   },
 ]});
 
@@ -336,7 +336,6 @@ tourDashboard.init();
 
 // Start the tour
 tourDashboard.start();
-
 
 })();
 </script>
