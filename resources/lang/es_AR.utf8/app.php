@@ -1,9 +1,18 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/24 14:48:58 
+ Generated via "php artisan localization:missing" at 2015/07/24 17:46:11 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/Manager/BusinessesController.php
+  'business' => 
+  array (
+    'category' => 
+    array (
+      'garage' => 'Taller Mecánico',
+    ),
+  ),
   //==================================== Translations ====================================//
   'filter' => 'Filtrar',
   'general' => 

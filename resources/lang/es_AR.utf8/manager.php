@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/24 14:48:58 
+ Generated via "php artisan localization:missing" at 2015/07/24 17:46:11 
 *************************************************************************/
 
 return array (
@@ -76,6 +76,10 @@ return array (
     ),
     'form' => 
     array (
+      'category' => 
+      array (
+        'label' => 'Rubro Comercial',
+      ),
       'description' => 
       array (
         'label' => 'Descripción',
