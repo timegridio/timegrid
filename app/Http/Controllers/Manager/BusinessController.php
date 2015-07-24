@@ -14,7 +14,7 @@ use Request;
 use Flash;
 use GeoIP;
 
-class BusinessesController extends Controller
+class BusinessController extends Controller
 {
     public function index()
     {

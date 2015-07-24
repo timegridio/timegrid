@@ -62,7 +62,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
         $search->setBusinessScope([Session::get('selected.business')->id])->run();
         return view('manager.search.index')->with(['results' => $search->results()]);
     });
-    Route::resource('business', 'BusinessesController');
+    Route::resource('business', 'BusinessController');
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
     Route::resource('business.vacancy', 'BusinessVacancyController');
