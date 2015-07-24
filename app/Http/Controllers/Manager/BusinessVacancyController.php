@@ -43,6 +43,7 @@ class BusinessVacancyController extends Controller
     public function store(Business $business, Request $request)
     {
         $dates = $request->get('vacancy');
+        $success = false;
         foreach ($dates as $date => $vacancy) {
             foreach ($vacancy as $serviceId => $capacity) {
                 switch (trim($capacity)) {
@@ -51,12 +52,17 @@ class BusinessVacancyController extends Controller
                         break;
                     default:
                         $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id, 'service_id' => $serviceId, 'date' => $date], ['capacity' => intval($capacity)]);
+                        $success = true;
                         break;
                 }
             }
         }
+        if (!$success) {
+            Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
+            return Redirect::back();
+        }
         Flash::success(trans('manager.vacancies.msg.store.success'));
-        return Redirect::route('manager.business.vacancy.create', [$business]);
+        return Redirect::route('manager.business.show', [$business]);
     }
 
     /**
