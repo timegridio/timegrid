@@ -13,7 +13,6 @@
                         @include('manager.businesses.services._form',['submitLabel' => trans('manager.services.btn.store')])
                     {!! Form::close() !!}
                 </div>
-
             </div>
     </div>
 </div>

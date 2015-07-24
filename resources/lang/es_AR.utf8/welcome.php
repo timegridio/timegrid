@@ -9,8 +9,8 @@ return array (
   'jumbotron' => 
   array (
     'btn' => [ 'begin' => 'Empecemos', 'login' => 'Iniciar Sesión' ],
-    'description' => 'La secretaria de turnos. Inteligente.',
-    'title' => 'timegrid',
+    'description' => 'La secretaria de turnos para profesionales exitosos.',
+    'title' => 'timegrid.io',
   ),
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   //==================================== Translations ====================================//
