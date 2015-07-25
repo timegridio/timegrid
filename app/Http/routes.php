@@ -66,6 +66,8 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
     Route::get('business/{business}/preferences',  ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@getPreferences']);
     Route::post('business/{business}/preferences', ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@postPreferences']);
     Route::resource('business', 'BusinessController');
+    Route::get('business/{business}/contact/import',   ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@getImport']);
+    Route::post('business/{business}/contact/import',  ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@postImport']);
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
     Route::resource('business.vacancy', 'BusinessVacancyController');
