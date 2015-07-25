@@ -16,11 +16,17 @@ return array (
   //================================== Obsolete strings ==================================//
   'App\\Business' => 
   array (
-    'appointment_annullation_pre_hs' => 
+    'appointment_annulation_pre_hs' => 
     array (
       'format' => 'cantidad de horas',
       'help' => '¿ Cuántas horas de antelación para anular un turno ?',
       'label' => 'Política de Anulación de Turnos',
+    ),
+    'appointment_take_today' => 
+    array (
+      'format' => 'si/no',
+      'help' => '¿ Permitir reservas para el mismo día que se está reservando ?',
+      'label' => 'Tomar reservas para el mismo día',
     ),
     'show_map' => 
     array (

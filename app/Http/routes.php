@@ -62,6 +62,9 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
         $search->setBusinessScope([Session::get('selected.business')->id])->run();
         return view('manager.search.index')->with(['results' => $search->results()]);
     });
+    
+    Route::get('business/{business}/preferences',  ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@getPreferences']);
+    Route::post('business/{business}/preferences', ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@postPreferences']);
     Route::resource('business', 'BusinessController');
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
