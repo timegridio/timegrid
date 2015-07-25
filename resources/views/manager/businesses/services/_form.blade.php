@@ -18,6 +18,15 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="form-group">
+            {!! Form::textarea('prerequisites', null,
+                array('class'=>'form-control',
+                      'placeholder'=> trans('manager.contacts.form.prerequisites.label') )) !!}
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
             {!! Button::primary($submitLabel)->large()->block()->submit() !!}
         </div>
     </div>

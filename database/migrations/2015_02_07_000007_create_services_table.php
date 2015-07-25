@@ -21,6 +21,7 @@ class CreateServicesTable extends Migration
             $table->string('name');
             $table->integer('duration')->unsigned()->default(60);
             $table->string('description');
+            $table->string('prerequisites')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

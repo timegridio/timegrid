@@ -2,13 +2,16 @@
   <!-- Default panel contents -->
   <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
   <div class="panel-body">
-    <p>{{ trans('user.appointments.form.timetable.instructions') }}</p>
+    {!! Alert::info(trans('user.appointments.form.timetable.instructions')) !!}
 
     <div class="row">
         <div class="form-group col-sm-12">
         @foreach ($business->services as $service)
           @if($service->description)
-            <div class="well service-description" id="service-description-{{$service->id}}"><strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}</div>
+            <div class="well service-description hidden" id="service-description-{{$service->id}}"><strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}</div>
+          @endif
+          @if($service->prerequisites)
+          {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('Atención!'))->withBody("<pre>{$service->prerequisites}</pre>")->withAttributes(['class' => 'service-prerequisites hidden', 'id' => "service-prerequisites-{$service->id}"]) !!}
           @endif
         @endforeach
         </div>
@@ -52,8 +55,10 @@ $(document).ready(function() {
     $('#timetable .btn.service').click(function(e){
         var service = $(this).data('service');
         console.log('Press ' + service);
+        $('.service-prerequisites').hide();
+        $('#service-prerequisites-'+service).removeClass('hidden').show();
         $('.service-description').hide();
-        $('#service-description-'+service).show();
+        $('#service-description-'+service).removeClass('hidden').show();
         $('.service').removeClass('btn-success');
         $('#date').val( $(this).data('date') );
         $('#service').val( $(this).data('service') );
