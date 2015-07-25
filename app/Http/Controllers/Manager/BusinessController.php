@@ -70,7 +70,9 @@ class BusinessController extends Controller
     {
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
-        return view('manager.businesses.edit', compact('business', 'timezone'));
+        $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
+        $category = $business->category_id;
+        return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
     public function update(Business $business, BusinessFormRequest $request)

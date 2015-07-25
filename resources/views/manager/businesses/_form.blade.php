@@ -42,7 +42,7 @@
     </div>
     <div class="form-group col-sm-6">
         {!! Form::label( trans('manager.businesses.form.category.label') ) !!}<br>
-        {!! Form::select('category', $categories, null, ['name' => 'category', 'class' => 'selectpicker', 'required']) !!}
+        {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'selectpicker', 'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
