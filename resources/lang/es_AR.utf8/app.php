@@ -1,24 +1,15 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 04:50:03 
+ Generated via "php artisan localization:missing" at 2015/07/25 13:13:16 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_notifications.blade.php
-  'notifications' => 
-  array (
-    'title' => 'Recientemente',
-  ),
   //==================================== Translations ====================================//
-  'filter' => 'Filtrar',
-  'general' => 
+  'btn' => 
   array (
-    'btn' => 
-    array (
-      'confirm_deletion' => '¿Eliminar?',
-    ),
+    'update' => 'Actualizar',
   ),
+  'filter' => 'Filtrar',
   'label' => 
   array (
     'select_timezone' => 'Zona horaria',
@@ -52,6 +43,10 @@ return array (
     'wizard' => 'Asistente',
     'home' => 'Inicio',
   ),
+  'notifications' => 
+  array (
+    'title' => 'Recientemente',
+  ),
   'search' => 'Buscar',
   //================================== Obsolete strings ==================================//
   'business' => 
@@ -65,6 +60,13 @@ return array (
   array (
     'F' => 'Femenino',
     'M' => 'Masculino',
+  ),
+  'general' => 
+  array (
+    'btn' => 
+    array (
+      'confirm_deletion' => '¿Eliminar?',
+    ),
   ),
   'home' => 
   array (

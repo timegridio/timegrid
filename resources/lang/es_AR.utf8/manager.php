@@ -1,137 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 04:50:03 
+ Generated via "php artisan localization:missing" at 2015/07/25 13:13:16 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/services/_form.blade.php
-  'contacts' => 
-  array (
-    'form' => 
-    array (
-      'prerequisites' => 
-      array (
-        'label' => 'contacts.form.prerequisites.label',
-      ),
-      'birthdate' => 
-      array (
-        'label' => 'Nacimiento',
-        'placeholder' => 'fecha de nacimiento',
-      ),
-      'description' => 
-      array (
-        'label' => 'Descripción',
-      ),
-      'email' => 
-      array (
-        'label' => 'Email',
-        'placeholder' => 'email@ejemplo.com',
-      ),
-      'firstname' => 
-      array (
-        'label' => 'Nombre',
-        'placeholder' => 'primer nombre',
-      ),
-      'gender' => 
-      array (
-        'female' => 
-        array (
-          'label' => 'Femenino',
-        ),
-        'male' => 
-        array (
-          'label' => 'Masculino',
-        ),
-        'label' => 'Sexo',
-      ),
-      'lastname' => 
-      array (
-        'label' => 'Apellido',
-        'placeholder' => 'apellido',
-      ),
-      'mobile' => 
-      array (
-        'label' => 'Móvil',
-        'placeholder' => 'número de móvil completo',
-      ),
-      'nin' => 
-      array (
-        'label' => 'DNI',
-        'placeholder' => 'número de identificación nacional',
-      ),
-      'notes' => 
-      array (
-        'label' => 'Notas',
-        'placeholder' => 'notas',
-      ),
-    ),
-    'btn' => 
-    array (
-      'confirm_delete' => '¿Seguro querés eliminar el contacto?',
-      'delete' => 'Eliminar',
-      'edit' => 'Editar',
-      'store' => 'Guardar',
-      'update' => 'Actualizar',
-    ),
-    'create' => 
-    array (
-      'title' => 'Contactos',
-    ),
-    'label' => 
-    array (
-      'birthdate' => 'Nacimiento',
-      'email' => 'Email',
-      'member_since' => 'Suscripto desde',
-      'mobile' => 'Móvil',
-      'nin' => 'DNI',
-      'notes' => 'Notas',
-      'gender' => 'Sexo',
-      'next_appointment' => 'Próximo Turno',
-      'username' => 'Usuario',
-    ),
-    'list' => 
-    array (
-      'btn' => 
-      array (
-        'filter' => 'Filtro',
-      ),
-      'header' => 
-      array (
-        'email' => 'Email',
-        'firstname' => 'Nombre',
-        'lastname' => 'Apellidos',
-        'mobile' => 'Móvil',
-        'quality' => 'Puntaje',
-        'username' => 'Usuario',
-        'gender' => 'Sexo',
-      ),
-      'msg' => 
-      array (
-        'filter_no_results' => 'Nada por aquí',
-      ),
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => '¡Contacto eliminado!',
-      ),
-      'store' => 
-      array (
-        'success' => '¡Contacto registrado Ok!',
-        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Actualizado Ok',
-      ),
-    ),
-    'title' => 'Mis Clientes',
-  ),
   //==================================== Translations ====================================//
   'business' => 
   array (
+    'alert' => 
+    array (
+      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
+    ),
     'service' => 
     array (
       'msg' => 
@@ -155,6 +34,7 @@ return array (
   array (
     'btn' => 
     array (
+      'deactivate' => 'Desactivar este prestador',
       'store' => 'Registrar',
       'update' => 'Actualizar',
       'return' => 'Volver',
@@ -253,6 +133,10 @@ return array (
       array (
         'success' => 'Prestador removido',
       ),
+      'preferences' => 
+      array (
+        'success' => 'Actualizaste las preferencias Ok',
+      ),
       'store' => 
       array (
         'business_already_exists' => 'El prestador ya está registrado',
@@ -263,6 +147,10 @@ return array (
       array (
         'success' => 'Datos del prestador actualizados',
       ),
+    ),
+    'preferences' => 
+    array (
+      'title' => 'Preferencias del prestador',
     ),
     'vacancies' => 
     array (
@@ -275,6 +163,129 @@ return array (
     array (
       'title' => 'Prestador',
     ),
+  ),
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'confirm_delete' => '¿Seguro querés eliminar el contacto?',
+      'delete' => 'Eliminar',
+      'edit' => 'Editar',
+      'store' => 'Guardar',
+      'update' => 'Actualizar',
+    ),
+    'create' => 
+    array (
+      'title' => 'Contactos',
+    ),
+    'form' => 
+    array (
+      'birthdate' => 
+      array (
+        'label' => 'Nacimiento',
+        'placeholder' => 'fecha de nacimiento',
+      ),
+      'description' => 
+      array (
+        'label' => 'Descripción',
+      ),
+      'email' => 
+      array (
+        'label' => 'Email',
+        'placeholder' => 'email@ejemplo.com',
+      ),
+      'firstname' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'primer nombre',
+      ),
+      'gender' => 
+      array (
+        'female' => 
+        array (
+          'label' => 'Femenino',
+        ),
+        'male' => 
+        array (
+          'label' => 'Masculino',
+        ),
+        'label' => 'Sexo',
+      ),
+      'lastname' => 
+      array (
+        'label' => 'Apellido',
+        'placeholder' => 'apellido',
+      ),
+      'mobile' => 
+      array (
+        'label' => 'Móvil',
+        'placeholder' => 'número de móvil completo',
+      ),
+      'nin' => 
+      array (
+        'label' => 'DNI',
+        'placeholder' => 'número de identificación nacional',
+      ),
+      'notes' => 
+      array (
+        'label' => 'Notas',
+        'placeholder' => 'notas',
+      ),
+      'prerequisites' => 
+      array (
+        'label' => 'contacts.form.prerequisites.label',
+      ),
+    ),
+    'label' => 
+    array (
+      'birthdate' => 'Nacimiento',
+      'email' => 'Email',
+      'member_since' => 'Suscripto desde',
+      'mobile' => 'Móvil',
+      'nin' => 'DNI',
+      'notes' => 'Notas',
+      'gender' => 'Sexo',
+      'next_appointment' => 'Próximo Turno',
+      'username' => 'Usuario',
+    ),
+    'list' => 
+    array (
+      'btn' => 
+      array (
+        'filter' => 'Filtro',
+      ),
+      'header' => 
+      array (
+        'email' => 'Email',
+        'firstname' => 'Nombre',
+        'lastname' => 'Apellidos',
+        'mobile' => 'Móvil',
+        'quality' => 'Puntaje',
+        'username' => 'Usuario',
+        'gender' => 'Sexo',
+      ),
+      'msg' => 
+      array (
+        'filter_no_results' => 'Nada por aquí',
+      ),
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => '¡Contacto eliminado!',
+      ),
+      'store' => 
+      array (
+        'success' => '¡Contacto registrado Ok!',
+        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Actualizado Ok',
+      ),
+    ),
+    'title' => 'Mis Clientes',
   ),
   'service' => 
   array (
