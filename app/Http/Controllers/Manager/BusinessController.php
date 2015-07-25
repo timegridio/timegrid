@@ -21,7 +21,7 @@ class BusinessController extends Controller
         $businesses = \Auth::user()->businesses;
         if ($businesses->count()==1) {
             $business = $businesses->first();
-            return view('manager.businesses.show', compact('business'));
+            return Redirect::route('manager.business.show', $business);
         }
         return view('manager.businesses.index', compact('businesses'));
     }
