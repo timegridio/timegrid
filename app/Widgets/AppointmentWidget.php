@@ -89,9 +89,9 @@ class AppointmentWidget
         return $out;
     }
 
-    public function code($length = 6)
+    public function code()
     {
-        $code = substr($this->appointment->code, 0, $length);
+        $code = $this->appointment->code;
         if ($this->appointment->status == Appointment::STATUS_ANNULATED) {
             $code = '<s>'.$code.'</s>';
         }
@@ -123,7 +123,7 @@ class AppointmentWidget
         $out  = "<tr id=\"{$this->appointment->code}\" class=\"{$class}\">";
         
         $cols = [];
-        $cols['code']          = '<td>'. $this->code(4) .'</td>';
+        $cols['code']          = '<td>'. $this->code() .'</td>';
         $cols['contact']       = '<td>'. $this->contactName() .'</td>';
         $cols['status']        = '<td>'. $this->statusLabel() .'</td>';
         $cols['date']          = '<td>'. $this->dateLabel() .'</td>';
@@ -249,7 +249,7 @@ class AppointmentWidget
         $body   = Icon::calendar() . '&nbsp;' . $this->appointment->start_at->toDateString();
         $body  .= '&nbsp;&nbsp;' . Icon::time() . '&nbsp;' . $this->appointment->start_at->timezone($this->appointment->tz)->toTimeString();
         $body  .= '&nbsp;&nbsp;' . Icon::user() . '&nbsp;' . $this->appointment->contact->fullname;
-        $footer = Icon::barcode() . '&nbsp;' . $this->code(4) . '&nbsp;&nbsp;' . $this->statusLabel();
+        $footer = Icon::barcode() . '&nbsp;' . $this->code() . '&nbsp;&nbsp;' . $this->statusLabel();
 
         return $panel->withAttributes(['id' => $this->appointment->code])->withHeader($header)->withBody($body)->withFooter($footer);
     }

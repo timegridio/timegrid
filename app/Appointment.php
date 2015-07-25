@@ -67,7 +67,7 @@ class Appointment extends Model
 
     public function getCodeAttribute()
     {
-        return $this->hash;
+        return substr($this->hash, 0, $this->business->pref('appointment_code_length'));
     }
 
     public function getTZAttribute()

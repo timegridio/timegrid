@@ -9,5 +9,6 @@ return [
         'show_phone'                    => ['type' => 'bool',   'value' => false],
         'appointment_annulation_pre_hs' => ['type' => 'int',    'value' => '48'],
         'appointment_take_today'        => ['type' => 'bool',   'value' => false],
+        'appointment_code_length'       => ['type' => 'int',    'value' => 4],
     ]
 ];
