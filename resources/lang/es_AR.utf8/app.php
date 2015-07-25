@@ -1,17 +1,14 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/24 17:46:11 
+ Generated via "php artisan localization:missing" at 2015/07/25 04:50:03 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/Manager/BusinessesController.php
-  'business' => 
+  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/_notifications.blade.php
+  'notifications' => 
   array (
-    'category' => 
-    array (
-      'garage' => 'Taller Mecánico',
-    ),
+    'title' => 'Recientemente',
   ),
   //==================================== Translations ====================================//
   'filter' => 'Filtrar',
@@ -57,6 +54,13 @@ return array (
   ),
   'search' => 'Buscar',
   //================================== Obsolete strings ==================================//
+  'business' => 
+  array (
+    'category' => 
+    array (
+      'garage' => 'Taller Mecánico',
+    ),
+  ),
   'gender' => 
   array (
     'F' => 'Femenino',
