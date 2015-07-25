@@ -168,6 +168,7 @@ return [
         'Torann\GeoIP\GeoIPServiceProvider',
         'Camroncade\Timezone\TimezoneServiceProvider',
         'Creativeorange\Gravatar\GravatarServiceProvider',
+        'Fenos\Notifynder\NotifynderServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
@@ -253,6 +254,7 @@ return [
         'Table'          => 'Bootstrapper\Facades\Table',
         'Thumbnail'      => 'Bootstrapper\Facades\Thumbnail',
 
+        'Notifynder' => 'Fenos\Notifynder\Facades\Notifynder',
         'Flash'    => 'Laracasts\Flash\Flash',
         'Countries' => 'Webpatser\Countries\CountriesFacade',
 
