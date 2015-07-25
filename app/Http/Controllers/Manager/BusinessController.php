@@ -9,6 +9,8 @@ use App\Category;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Contracts\Auth\Authenticatable as User;
 use App\Http\Requests\BusinessFormRequest;
+use App\Http\Requests\BusinessPreferencesFormRequest;
+use Notifynder;
 use Session;
 use Request;
 use Flash;
@@ -46,7 +48,15 @@ class BusinessController extends Controller
             $business->save();
             \Auth::user()->businesses()->attach($business);
             \Auth::user()->save();
-            
+
+            $business_name = $business->name;
+            Notifynder::category('user.registeredBusiness')
+                       ->from('App\User', \Auth::user()->id)
+                       ->to('App\Business', $business->id)
+                       ->url('http://localhost')
+                       ->extra(compact('business_name'))
+                       ->send();
+
             Flash::success(trans('manager.businesses.msg.store.success'));
             return Redirect::route('manager.business.service.create', $business);
         }
@@ -99,5 +109,35 @@ class BusinessController extends Controller
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
         return \Redirect::route('manager.business.index');
+    }
+
+    public function getPreferences(Business $business, BusinessPreferencesFormRequest $request)
+    {
+        $parameters = \Config::get('preferences.App\Business');
+        $preferences = $business->preferences;
+        return view('manager.businesses.preferences.edit', compact('business', 'preferences', 'parameters'));
+    }
+
+    public function postPreferences(Business $business, BusinessPreferencesFormRequest $request)
+    {
+        $parameters = \Config::get('preferences.App\Business');
+        $parameters_keys = array_flip(array_keys($parameters));
+        $preferences = $request->all();
+        $preferences = array_intersect_key($preferences, $parameters_keys);
+        
+        foreach ($preferences as $key => $value) {
+            $business->pref($key, $value, $parameters[$key]['type']);
+        }
+
+        $business_name = $business->name;
+        Notifynder::category('user.updatedBusinessPreferences')
+                   ->from('App\User', \Auth::user()->id)
+                   ->to('App\Business', $business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('business_name'))
+                   ->send();
+
+        Flash::success(trans('manager.businesses.msg.preferences.success'));
+        return \Redirect::route('manager.business.show', $business);
     }
 }
