@@ -8,6 +8,7 @@ return [
     'suscribedBusiness' => ':user se suscribió a :business_name',
     'registeredBusiness' => ':user registró el alta :business_name. ¡Bravo!',
     'updatedBusinessPreferences' => ':user ajustó las preferencias de :business_name',
+    'importedContacts' => ':user importó :count contactos',
   ],
   'appointment' => [
     'reserve' => ':user reservó el turno :code del día :date',
