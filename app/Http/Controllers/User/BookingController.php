@@ -12,6 +12,7 @@ use App\Business;
 use App\Service;
 use App\BookingStrategy;
 use App\ConciergeStrategy as Concierge;
+use Notifynder;
 use Carbon;
 use Session;
 use URL;
@@ -29,6 +30,13 @@ class BookingController extends Controller
     public function getBook()
     {
         $business = Business::findOrFail(Session::get('selected.business')->id);
+
+        Notifynder::category('user.checkingVacancies')
+                   ->from('App\User', \Auth::user()->id)
+                   ->to('App\Business', $business->id)
+                   ->url('http://localhost')
+                   ->send();
+
         if (!\Auth::user()->suscribedTo($business)) {
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();

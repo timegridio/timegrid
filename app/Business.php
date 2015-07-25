@@ -4,11 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Fenos\Notifynder\Notifable;
 
 class Business extends Model
 {
     use SoftDeletes;
     use Traits\Preferenceable;
+    use Notifable;
 
     protected $dates = ['deleted_at'];
 

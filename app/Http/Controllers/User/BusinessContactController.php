@@ -7,6 +7,7 @@ use App\Http\Requests\ViewContactRequest;
 use App\Business;
 use App\Contact;
 use Illuminate\Support\Facades\Redirect;
+use Notifynder;
 use Flash;
 use Session;
 use Request;
@@ -34,6 +35,14 @@ class BusinessContactController extends Controller
 
     public function store(Business $business, AlterContactRequest $request)
     {
+        $business_name = $business->name;
+        Notifynder::category('user.suscribedBusiness')
+                   ->from('App\User', \Auth::user()->id)
+                   ->to('App\Business', $business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('business_name'))
+                   ->send();
+
         $existing_contacts = Contact::whereNull('user_id')->whereNotNull('email')->where('email', '<>', '')->where(['email' => $request->input('email')])->get();
 
         foreach ($existing_contacts as $existing_contact) {

@@ -5,6 +5,7 @@ namespace App\Handlers\Events;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Events\NewBooking;
+use Notifynder;
 use Log;
 use Mail;
 use App;
@@ -31,6 +32,15 @@ class SendBookingNotification
     {
         Log::info('Handle NewBooking.SendBookingNotification()');
         $locale = App::getLocale();
+
+        $business_name = $event->appointment->business->name;
+        Notifynder::category('user.booked')
+                   ->from('App\User', $event->user->id)
+                   ->to('App\Business', $event->appointment->business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('business_name'))
+                   ->send();
+
         Mail::send("emails.{$locale}.appointments._new", ['user' => $event->user, 'appointment' => $event->appointment], function ($m) use ($event) {
             $m->to($event->user->email, $event->user->name)->subject(trans('emails.appointment.reserved.subject'));
         });

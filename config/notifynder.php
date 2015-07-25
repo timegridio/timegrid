@@ -19,7 +19,7 @@ return [
      * Do you want have notifynder that work polymorphically?
      * just swap the value to true and you will able to use it!
      */
-    'polymorphic' => false,
+    'polymorphic' => true,
 
     /**
      * If you need to extend the model class of
