@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Notifynder;
 use Redirect;
 use Log;
 use App\Http\Requests\AlterAppointmentRequest;
@@ -63,6 +64,15 @@ class BusinessAgendaController extends Controller
                 $html = $appointment->widget()->panel();
                 break;
         }
+
+        $date = $appointment->start_at->toDateString();
+        $code = substr($appointment->code, 0, 4);
+        Notifynder::category('appointment.'.$action)
+                   ->from('App\User', \Auth::user()->id)
+                   ->to('App\Business', $appointment->business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('code', 'action', 'date'))
+                   ->send();
 
         Log::info("postAction.response:[appointment:{$appointment->toJson()}]");
         return response()->json(['code' => 'OK', 'html' => $html.'']);
