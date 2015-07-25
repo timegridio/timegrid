@@ -63,7 +63,9 @@ class BusinessController extends Controller
     public function show(Business $business, BusinessFormRequest $request)
     {
         Session::set('selected.business', $business);
-        return view('manager.businesses.show', compact('business'));
+        $notifications = $business->getNotificationsNotRead(100);
+        $business->readAllNotifications();
+        return view('manager.businesses.show', compact('business', 'notifications'));
     }
 
     public function edit(Business $business, BusinessFormRequest $request)

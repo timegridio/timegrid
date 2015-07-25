@@ -122,7 +122,7 @@
         <div class="panel-footer">{{ $business->name }}</div>
     </div>
 
-    @include('manager.businesses._notifications', ['notifications' => $business->getNotifications() ])
+    @include('manager.businesses._notifications', ['notifications' => $notifications ])
 </div>
 @endsection
 
