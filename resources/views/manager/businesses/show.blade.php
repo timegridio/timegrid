@@ -1,8 +1,9 @@
 @extends('app')
 
 @section('css')
+<link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
 @parent
-<style>
+<style type="text/css">
 .bizurl {
     font-family: monospace;
     background: #ECECEC;
@@ -120,11 +121,14 @@
         </div>
         <div class="panel-footer">{{ $business->name }}</div>
     </div>
+
+    @include('manager.businesses._notifications', ['notifications' => $business->getNotifications() ])
 </div>
 @endsection
 
 @section('footer_scripts')
 @parent
+<script src="{{ asset('js/jquery.bootstrap.newsbox.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-tour.min.js') }}"></script>
 <script type="text/javascript">
 (function() {
@@ -341,7 +345,22 @@ tourDashboard.init();
 // Start the tour
 tourDashboard.start();
 
+$(".demo").bootstrapNews({
+newsPerPage: 4,
+navigation: true,
+autoplay: true,
+direction:'up', // up or down
+animationSpeed: 'normal',
+newsTickerInterval: 4000, //4 secs
+pauseOnHover: true,
+onStop: null,
+onPause: null,
+onReset: null,
+onPrev: null,
+onNext: null,
+onToDo: null
+});
+
 })();
 </script>
 @endsection
-
