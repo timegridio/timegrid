@@ -34,7 +34,7 @@ class SendBookingNotification
         $locale = App::getLocale();
 
         $business_name = $event->appointment->business->name;
-        Notifynder::category('user.booked')
+        Notifynder::category('appointment.reserve')
                    ->from('App\User', $event->user->id)
                    ->to('App\Business', $event->appointment->business->id)
                    ->url('http://localhost')
