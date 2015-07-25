@@ -19,21 +19,31 @@
           <td class="container-padding content" align="left" style="padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff">
             <br>
 
-<div class="title" style="font-family:Helvetica, Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">El comprobante de tu reserva</div>
-<br>
+<div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, aquí los datos de tu reserva:</div>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
-  
-  <br>
-
-  {{ $user->name }}, Aquí los datos de tu reserva:<br>
-  <br>
-  {{ $appointment->date }}<br>
-  {{ $appointment->start_at }}<br>
-  {{ $appointment->code }}<br>
-  {{ $appointment->service->name }}<br>
-  {{ $appointment->business->name }}<br>
-  <br><br>
+<pre>
+----------------------------------------------
+Prestador: {{ $appointment->business->name }}
+Cuándo:    {{ $appointment->start_at->timezone($appointment->tz) }}
+Código:    {{ $appointment->code }}
+@if($appointment->business->pref('show_postal_address'))
+  Dónde:   {{ $appointment->business->postal_address }}
+@endif
+@if($appointment->business->pref('show_phone'))
+    Tel:   {{ $appointment->business->phone }}
+@endif
+Servicio:  {{ $appointment->service->name }}
+@if($appointment->service->prerequisites)
+Importante:
+{{ $appointment->service->prerequisites }}
+@endif
+@if ($appointment->comments)
+Notas Para el Prestador: {{ $appointment->comments }}
+@endif
+----------------------------------------------
+</pre>
+<br>
 </div>
 
           </td>
