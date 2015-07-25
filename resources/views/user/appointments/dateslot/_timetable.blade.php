@@ -3,6 +3,17 @@
   <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
   <div class="panel-body">
     <p>{{ trans('user.appointments.form.timetable.instructions') }}</p>
+
+    <div class="row">
+        <div class="form-group col-sm-12">
+        @foreach ($business->services as $service)
+          @if($service->description)
+            <div class="well service-description" id="service-description-{{$service->id}}"><strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}</div>
+          @endif
+        @endforeach
+        </div>
+    </div>
+
   </div>
 
 <table id="timetable" class="table table-condensed table-hover">
@@ -39,7 +50,10 @@
 $(document).ready(function() {
     $('#extra').removeClass('hidden').hide();
     $('#timetable .btn.service').click(function(e){
-        console.log('Press '+$(this).data('service'));
+        var service = $(this).data('service');
+        console.log('Press ' + service);
+        $('.service-description').hide();
+        $('#service-description-'+service).show();
         $('.service').removeClass('btn-success');
         $('#date').val( $(this).data('date') );
         $('#service').val( $(this).data('service') );
