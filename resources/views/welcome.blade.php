@@ -1,8 +1,10 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <title>{{trans('app.name')}}</title>
         
 <!--        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"> -->
+        <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
         <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
         <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
 
@@ -15,7 +17,7 @@
 
         <!-- Jumbotron Header -->
         <header class="jumbotron hero-spacer">
-            <h1>{{ trans('welcome.jumbotron.title') }}</h1>
+            <h1><img src="{{ asset('img/timegrid-logo.png') }}" /> {{ trans('welcome.jumbotron.title') }}</h1>
             <p>{{ trans('welcome.jumbotron.description') }}</p>
             <div class="row">
                 {!! Button::primary(trans('welcome.jumbotron.btn.begin'))->asLinkTo( url('auth/register') ) !!}
