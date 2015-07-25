@@ -98,23 +98,22 @@
             </div>
 
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-2">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_registered') }}</div>
                       <div class="panel-body" id="indicator7"><h2 class="text-center">{{ $business->contacts()->count() }}</h2></div>
+                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_contacts_total') }}</div>
                     </div>
               </div>
-              <div class="col-md-4">
+              <div class="col-md-2">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_active') }}</div>
                       <div class="panel-body" id="indicator8"><h2 class="text-center">{{ $business->contacts()->whereNotNull('user_id')->count() }}</h2></div>
+                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_contacts_total') }}</div>
                     </div>
               </div>
-              <div class="col-md-4">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_with_nin') }}</div>
-                      <div class="panel-body" id="indicator9"><h2 class="text-center">{{ $business->contacts()->whereNotNull('nin')->count() }}</h2></div>
-                    </div>
+              <div class="col-md-8">
+                  @include('manager.businesses._notifications', ['notifications' => $notifications ])
               </div>
             </div>
 
@@ -122,7 +121,6 @@
         <div class="panel-footer">{{ $business->name }}</div>
     </div>
 
-    @include('manager.businesses._notifications', ['notifications' => $notifications ])
 </div>
 @endsection
 
