@@ -106,6 +106,11 @@ class Appointment extends Model
         $this->attributes['start_at'] = $datetime;
     }
 
+    public function setCommentsAttribute($comments)
+    {
+        $this->attributes['comments'] = $comments ?: null;
+    }
+
     public function isActive()
     {
         return $this->status == Self::STATUS_CONFIRMED || $this->status == Self::STATUS_RESERVED;
