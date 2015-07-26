@@ -24,7 +24,7 @@ class CreateBusinessesTable extends Migration {
             $table->string('phone')->nullable();
             $table->string('social_facebook')->nullable();
             $table->string('timezone');
-            $table->enum('strategy', ['dateslot', 'timeslot'])->default('timeslot'); /* Appointment Booking Strategy */
+            $table->string('strategy', 15)->default('timeslot'); /* Appointment Booking Strategy */
             $table->softDeletes();
             $table->timestamps();
         });
