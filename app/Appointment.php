@@ -4,11 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
-use App\Widgets\AppointmentWidget;
+use App\Presenters\AppointmentPresenter;
 
-# use App\User;
-
-class Appointment extends Model
+class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 {
     protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
 
@@ -30,6 +28,16 @@ class Appointment extends Model
     {
         parent::__construct($attributes);
         $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
+    }
+
+    /**
+     * Return a created presenter.
+     *
+     * @return Robbo\Presenter\Presenter
+     */
+    public function getPresenter()
+    {
+        return new AppointmentPresenter($this);
     }
 
     public function save(array $options = array())
@@ -73,11 +81,6 @@ class Appointment extends Model
             return $this->start_at->addMinutes($this->duration);
         }
         return $this->start_at;
-    }
-
-    public function getCodeAttribute()
-    {
-        return substr($this->hash, 0, $this->business->pref('appointment_code_length'));
     }
 
     public function getTZAttribute()
@@ -219,13 +222,5 @@ class Appointment extends Model
     {
         return ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_USER) ||
                ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_MANAGER);
-    }
-
-    public function widget()
-    {
-        if ($this->widget === null) {
-            $this->widget = new AppointmentWidget($this);
-        }
-        return $this->widget;
     }
 }

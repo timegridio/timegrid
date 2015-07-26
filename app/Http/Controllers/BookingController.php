@@ -16,6 +16,7 @@ use Session;
 use URL;
 use Event;
 use Log;
+use Widget;
 
 class BookingController extends Controller
 {
@@ -49,11 +50,11 @@ class BookingController extends Controller
 
         switch ($widget) {
             case 'row':
-                $html = $appointment->widget()->row();
+                $html = Widget::AppointmentsTableRow(['appointment' => $appointment->getPresenter(), 'user' => \Auth::user()]);
                 break;
             case 'panel':
             default:
-                $html = $appointment->widget()->panel();
+                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]);
                 break;
         }
 

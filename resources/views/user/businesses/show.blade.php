@@ -28,7 +28,7 @@
                                     <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
                                     @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
-                                        {!! $appointment->widget()->mini('') !!}  {{-- Fixme trans() missing --}}
+                                        {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
                                     @endif
                                   </div>
                                 </div>
