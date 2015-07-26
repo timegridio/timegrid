@@ -17,7 +17,7 @@ use Session;
 use Event;
 use App\Events\NewBooking;
 
-class BookingController extends Controller
+class AgendaController extends Controller
 {
     public function getIndex()
     {

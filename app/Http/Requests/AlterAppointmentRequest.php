@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
+use Auth;
 use App\Business;
 use App\Appointment;
-use Route;
 
 class AlterAppointmentRequest extends Request
 {
@@ -18,14 +18,14 @@ class AlterAppointmentRequest extends Request
     {
         $appointmentId = $this->get('appointment');
         $businessId = $this->get('business');
-        $user = \Auth::user();
+        $issuer = Auth::user();
 
         $business = Business::find($businessId);
         $appointment = Appointment::find($appointmentId);
 
-        $result = ($appointment->issuer->id == $user->id) || $user->isOwner($business);
-        \Log::info("Authorize AlterAppointmentRequest for user:{$user->id} appointment:$appointmentId business:$businessId result:$result");
-        return $result;
+        $authorize = ($appointment->issuer->id == $issuer->id) || $issuer->isOwner($business);
+        \Log::info("Authorize AlterAppointmentRequest for issuer:{$issuer->id} appointment:$appointmentId business:$businessId authorize:$authorize");
+        return $authorize;
     }
 
     /**

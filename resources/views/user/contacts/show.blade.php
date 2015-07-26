@@ -106,7 +106,6 @@
                                                         {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('user.business.contact.edit', [$business, $contact]) ) !!}
                                                 </span>
                                  </div>
-                        
                     </div>
 
                 @if($contact->hasAppointment())

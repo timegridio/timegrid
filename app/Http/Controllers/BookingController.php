@@ -28,7 +28,7 @@ class BookingController extends Controller
         $action = $request->input('action');
         $widget = $request->input('widget');
 
-        Log::info("AJAX postAction.request:[action:$action, business:$businessId, appointment:$appointmentId]");
+        Log::info("AJAX postAction.request:[issuer:$issuer->email, action:$action, business:$businessId, appointment:$appointmentId]");
 
         $appointment = Appointment::find($appointmentId);
 

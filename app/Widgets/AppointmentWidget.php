@@ -14,6 +14,8 @@ class AppointmentWidget
 
     protected $fields = [];
 
+    protected $profile = null;
+
     protected $options = ['display_actions' => false];
 
     public function __construct(Appointment $appointment)
@@ -21,6 +23,18 @@ class AppointmentWidget
         $this->appointment = $appointment;
 
         $this->fields = ['code', 'contact', 'status', 'date', 'start_at', 'service', 'action', 'business', 'diffForHumans'];
+    }
+
+    public function forManager()
+    {
+        $this->profile(Appointment::PROFILE_MANAGER);
+        return $this;
+    }
+
+    public function profile($profile = Appointment::PROFILE_USER)
+    {
+        $this->profile = $profile;
+        return $this;
     }
 
     public function only(Array $options)
@@ -65,26 +79,38 @@ class AppointmentWidget
 
     public function actionButtons()
     {
+        return $this->profile == Appointment::PROFILE_MANAGER ? $this->managerActionButtons() : $this->userActionButtons();
+    }
+
+    public function managerActionButtons()
+    {
         $out = '<div class="btn-group">';
-        switch ($this->appointment->status) {
-            case Appointment::STATUS_RESERVED:
-                $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
-                if (!$this->appointment->isDue()) {
-                    $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
-                } else {
-                    $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
-                }
-                break;
-            case Appointment::STATUS_CONFIRMED:
-                if ($this->appointment->isDue()) {
-                    $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn-xs', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
-                }
-                break;
-            case Appointment::STATUS_ANNULATED:
-                break;
-            default:
-                break;
+
+        if ($this->appointment->isAnnulable()) {
+            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
         }
+        if ($this->appointment->isConfirmable() && $this->appointment->needConfirmationOf(Appointment::PROFILE_MANAGER)) {
+            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+        }
+        if ($this->appointment->isServeable()) {
+            $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn', 'type' => 'button', 'data-action' => 'serve', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+        }
+
+        $out .= '</div>';
+        return $out;
+    }
+
+    public function userActionButtons()
+    {
+        $out = '<div class="btn-group">';
+
+        if ($this->appointment->isAnnulable()) {
+            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['class' => 'action btn', 'type' => 'button', 'data-action' => 'annulate', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+        }
+        if ($this->appointment->isConfirmable() && $this->appointment->needConfirmationOf(Appointment::PROFILE_USER)) {
+            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['class' => 'action btn', 'type' => 'button', 'data-action' => 'confirm', 'data-business' => $this->appointment->business->id, 'data-appointment' => $this->appointment->id, 'data-code' => $this->appointment->code]);
+        }
+        
         $out .= '</div>';
         return $out;
     }
@@ -138,38 +164,6 @@ class AppointmentWidget
         }
 
         $out .= '</tr>';
-        return $out;
-    }
-
-    public function table()
-    {
-        $out  = '<table class="table table-condensed table-hover">';
-        $out .= $this->thead();
-        $out .= '<tbody class="searchable">';
-        foreach ($this->appointments as $appointment){
-            $out .= $this->row();
-        }
-        $out .= '</tbody></table>';
-        return $out;
-    }
-
-    public function thead()
-    {
-        $cols = [];
-        $cols['code']          = '<th><span class="hidden-md">'. Icon::barcode() .'</span> <span class="hidden-xs hidden-sm">'. trans('user.appointments.index.th.code') . '</span></th>';
-        $cols['contact']       = '<th><span class="hidden-md">'. Icon::user() .'</span> <span class="">'. trans('user.appointments.index.th.contact') . '</span></th>';
-        $cols['status']        = '<th><span class="hidden-md">'. Icon::asterisk() .'</span> <span class="hidden-xs hidden-sm">'. trans('user.appointments.index.th.status') . '</span></th>';
-        $cols['date']          = '<th><span class="hidden-md">'. Icon::calendar() .'</span> <span class="hidden-xs hidden-sm">'. trans('user.appointments.index.th.calendar') . '</span></th>';
-        $cols['start_at']      = '<th><span class="hidden-md">'. Icon::time() .'</span> <span class="hidden-xs hidden-sm">'. trans('user.appointments.index.th.start_time') . '</span></th>';
-        $cols['service']       = '<th><span class="hidden-md">'. Icon::briefcase() .'</span> <span class="hidden-xs hidden-sm">'. trans('user.appointments.index.th.service') . '</span></th>';
-        $cols['action']        = '<th></th>';
-        $cols['diffForHumans'] = '<th></th>';
-        
-        $out = '<thead><tr>';
-        foreach ($this->fields as $field) {
-            $out .= $cols[$field];
-        }
-        $out .= '</tr></thead>';
         return $out;
     }
 

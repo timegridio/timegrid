@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Widgets\AppointmentWidget;
 
+# use App\User;
+
 class Appointment extends Model
 {
     protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
@@ -21,10 +23,13 @@ class Appointment extends Model
     const STATUS_ANNULATED = 'A';
     const STATUS_SERVED    = 'S';
 
+    const PROFILE_USER    = 'user';
+    const PROFILE_MANAGER = 'manager';
+
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id); 
+        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
     }
 
     public function save(array $options = array())
@@ -40,6 +45,11 @@ class Appointment extends Model
     public function contact()
     {
         return $this->belongsTo('App\Contact');
+    }
+
+    public function user()
+    {
+        return $this->contact->first()->user->first();
     }
 
     public function business()
@@ -163,7 +173,7 @@ class Appointment extends Model
 
     public function doConfirm()
     {
-        if ($this->status == self::STATUS_RESERVED) {
+        if ($this->isConfirmable()) {
             $this->status = self::STATUS_CONFIRMED;
             $this->save();
         }
@@ -171,7 +181,7 @@ class Appointment extends Model
 
     public function doAnnulate()
     {
-        if ($this->status == self::STATUS_RESERVED) {
+        if ($this->isAnnulable()) {
             $this->status = self::STATUS_ANNULATED;
             $this->save();
         }
@@ -179,16 +189,38 @@ class Appointment extends Model
 
     public function doServe()
     {
-        if ($this->status == self::STATUS_CONFIRMED || 
-            $this->status == self::STATUS_RESERVED) {
+        if ($this->isServeable()) {
             $this->status = self::STATUS_SERVED;
             $this->save();
         }
     }
 
+    public function isServeable()
+    {
+        return ($this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED) && $this->isDue();
+    }
+
+    public function isConfirmable()
+    {
+        return ($this->status == self::STATUS_RESERVED && $this->isFuture());
+    }
+
+    public function isAnnulable()
+    {
+        return ($this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED);
+    }
+
+    public function needConfirmationOf($profile)
+    {
+        return ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_USER) ||
+               ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_MANAGER);
+    }
+
     public function widget()
     {
-        if($this->widget === null) $this->widget = new AppointmentWidget($this);
+        if ($this->widget === null) {
+            $this->widget = new AppointmentWidget($this);
+        }
         return $this->widget;
     }
 }

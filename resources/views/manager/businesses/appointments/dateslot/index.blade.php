@@ -22,7 +22,7 @@
                     </thead>
                     <tbody class="searchable">
                     @foreach ($appointments as $appointment)
-                        {!! $appointment->widget()->row() !!}
+                        {!! $appointment->widget()->forManager()->row() !!}
                     @endforeach
                     </tbody>
                 </table>
