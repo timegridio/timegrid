@@ -10,7 +10,7 @@
                 <div class="col-md-5">
                         
                         {!! Panel::normal()->withHeader(trans('wizard.business.header'))->withBody(
-                            Thumbnail::image('//lorempixel.com/350/150/business/7')->caption(trans('wizard.business.caption')).
+                            Thumbnail::image(asset('img/wizard/panel-business.png'))->caption(trans('wizard.business.caption')).
                             Button::success(trans('wizard.business.btn'))->large()->block()->asLinkTo(route('wizard.pricing'))
                         ) !!}
 
@@ -18,7 +18,7 @@
                 <div class="col-md-5">
     
                     {!! Panel::normal()->withHeader(trans('wizard.user.header'))->withBody(
-                        Thumbnail::image('//lorempixel.com/350/150/people/1')->caption(trans('wizard.user.caption')).
+                        Thumbnail::image(asset('img/wizard/panel-user.png'))->caption(trans('wizard.user.caption')).
                         Button::primary(trans('wizard.user.btn'))->large()->block()->asLinkTo(route('user.businesses.list'))
                         ) !!}
 
