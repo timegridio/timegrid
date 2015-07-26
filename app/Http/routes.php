@@ -31,10 +31,10 @@ Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getHome']);
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'booking'], function () {
-        Route::get('book',      ['as' => 'user.booking.book', 'uses' => 'BookingController@getBook']);
-        Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'BookingController@getIndex']);
-        Route::get('show/{business}/{appointment}', ['as' => 'user.booking.show', 'uses' => 'BookingController@getShow']);
-        Route::post('store',    ['as' => 'user.booking.store', 'uses' => 'BookingController@postStore']);
+        Route::get('book',      ['as' => 'user.booking.book', 'uses' => 'AgendaController@getBook']);
+        Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'AgendaController@getIndex']);
+        Route::get('show/{business}/{appointment}', ['as' => 'user.booking.show', 'uses' => 'AgendaController@getShow']);
+        Route::post('store',    ['as' => 'user.booking.store', 'uses' => 'AgendaController@postStore']);
     });
 
     Route::group(['prefix' => 'businesses'], function () {

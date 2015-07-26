@@ -20,7 +20,7 @@ use Log;
 class BookingController extends Controller
 {
  
-   public function postAction(Request $request)
+   public function postAction(AlterAppointmentRequest $request)
     {
         $issuer = Auth::user();
         $businessId = $request->input('business');
