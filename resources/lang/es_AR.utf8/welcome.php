@@ -9,7 +9,7 @@ return array (
   'jumbotron' => 
   array (
     'btn' => [ 'begin' => 'Empecemos', 'login' => 'Iniciar Sesión' ],
-    'description' => 'La secretaria de turnos para profesionales exitosos.',
+    'description' => 'La agenda de turnos para profesionales exitosos.',
     'title' => 'timegrid.io',
   ),
   // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
@@ -23,8 +23,8 @@ return array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => '¿Cuantas veces tu cliente faltó a su turno? Aumentá la asistencia fácilmente. ¡Tu tiempo vale!',
-      'title' => 'Optimizá tu agenda',
+      'content' => 'Asigna los turnos por vos para que puedas dedicarte a lo que importa. Tu tiempo vale.',
+      'title' => 'Optimiza',
     ),
     2 => 
     array (
@@ -33,8 +33,8 @@ return array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => '¿Te gustaría figurar en una guía que consulten miles de potenciales clientes? Estás en el sitio indicado.',
-      'title' => 'Fidelizá clientes',
+      'content' => 'Mantiene a todos tus contactos organizados para que tu cartera de clientes esté siempre vigente.',
+      'title' => 'Fideliza',
     ),
     3 => 
     array (
@@ -43,8 +43,8 @@ return array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => '¿Querés dar un servicio profesional y sin vueltas? ¡Ellos merecen la mejor atención!',
-      'title' => 'Sé profesional',
+      'content' => 'Le da a tus clientes el servicio que merecen, porque realmente lo merecen.',
+      'title' => 'Profesionaliza',
     ),
     4 => 
     array (
@@ -53,8 +53,8 @@ return array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => '¿Te preocupa dejar tu agenda en el aire? No te preocupes, ella sabe administrarse sola.',
-      'title' => 'Tomate vacaciones',
+      'content' => 'Es hora de aprovechar el tiempo ahorrado y tomar unas buenas vacaciones.',
+      'title' => 'Libera',
     ),
   ),
   //================================== Obsolete strings ==================================//
