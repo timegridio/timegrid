@@ -127,9 +127,6 @@ body{
                         <strong>ilimitadas</strong> alertas por email
                     </li>
                     <li>
-                        <strong>1000</strong> alertas por SMS por mes
-                    </li>
-                    <li>
                         <strong>reportes</strong> gráficos
                     </li>
                     <li class="plan-action">
@@ -145,7 +142,7 @@ body{
             <div class="row well" style="background-color:#fff" id="payment">
 
               <ul class="list-inline">
-                <li><img src="http://megaicons.net/static/img/icons_sizes/19/129/256/paypal-icon.png" alt="cobrar con PayPal" height="60"></li>
+                <li><img src="{!! asset('img/payment/logos/paypal-logo.png') !!}" alt="Cobrar con PayPal" height="60"></li>
                 <li><img src="{!! asset('img/payment/logos/logo_r1_c1.gif') !!}" alt="Saldo CuentaDigital" width="108" height="25"></li>
                 <li><img src="{!! asset('img/payment/logos/logo_r1_c11.gif') !!}" alt="VoucherDigital" width="68" height="25"></li>
                 <li><img src="{!! asset('img/payment/logos/logo_r1_c20.gif') !!}" alt="PagoFacil Pago Facil" width="30" height="25"></li>
