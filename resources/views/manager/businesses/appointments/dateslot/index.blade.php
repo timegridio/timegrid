@@ -1,7 +1,8 @@
 @extends('app')
 
 @section('content')
-{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['manager.business.agenda.action']]) !!}
+{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
+{!! Form::hidden('business', $business->id) !!}
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">{{ trans('user.appointments.index.title') }}</div>
@@ -52,7 +53,7 @@ function prepareEvents(){
 
         event.preventDefault();
 
-        var business = $(this).data('business');
+        var business = $('input[name=business]').val();
         var appointment = $(this).data('appointment');
         var action = $(this).data('action');
         var code = $(this).data('code');
@@ -84,8 +85,6 @@ function prepareEvents(){
 
 prepareEvents();
 
-(function ($) {
-
     $('#filter').keyup(function () {
 
         var search = $(this).val();
@@ -100,8 +99,6 @@ prepareEvents();
         }).show();
 
     })
-
-}(jQuery));
 
 });
 </script>

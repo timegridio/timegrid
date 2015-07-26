@@ -10,7 +10,11 @@
 |
 */
 Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
-    
+
+    Route::controller('booking', 'BookingController', [
+        'postAction' => 'api.booking.action',
+    ]);
+
     Route::group(['prefix' => 'services'], function () {
         
         Route::get('list/{business}', function ($business) {
@@ -32,9 +36,6 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
         Route::get('show/{business}/{appointment}', ['as' => 'user.booking.show', 'uses' => 'BookingController@getShow']);
         Route::post('store',    ['as' => 'user.booking.store', 'uses' => 'BookingController@postStore']);
     });
-    Route::controller('appointment', 'BookingController', [
-        'postAction' => 'user.business.agenda.action',
-    ]);
 
     Route::group(['prefix' => 'businesses'], function () {
         Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
