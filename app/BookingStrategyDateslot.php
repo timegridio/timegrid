@@ -8,11 +8,11 @@ use Carbon\Carbon;
 
 class BookingStrategyDateslot implements BookingStrategyInterface
 {
-    public function makeReservation(Business $business, $data)
+    public function makeReservation(User $issuer, Business $business, $data)
     {
-        $data['issuer_id'] = \Auth::user()->id;
+        $data['issuer_id'] = $issuer->id;
         $data['business_id'] = $business->id;
-        $data['start_at'] = Carbon::parse($data['_date'] . $business->pref('start_at'), $business->tz)->timezone('UTC')->toDateTimeString();
+        $data['start_at'] = Carbon::parse($data['_date'] . $business->pref('start_at'), $business->timezone)->timezone('UTC');
         $data['duration'] = 0;
         return new Appointment($data);
     }

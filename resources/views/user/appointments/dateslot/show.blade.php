@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['manager.business.agenda.action']]) !!}
+{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['user.business.agenda.action']]) !!}
 <div class="container">
     {!! $appointment->widget()->panel() !!}
     {!! $appointment->widget()->actionButtons() !!}

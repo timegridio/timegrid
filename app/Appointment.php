@@ -10,7 +10,7 @@ class Appointment extends Model
 {
     protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
 
-    protected $guarded = ['id', 'hash', 'status', 'finish_at', 'issuer_id'];
+    protected $guarded = ['id', 'hash', 'status', 'finish_at'];
 
     protected $dates = ['start_at', 'finish_at'];
 
@@ -91,9 +91,9 @@ class Appointment extends Model
         return $this->start_at->timezone('UTC')->toDateString();
     }
 
-    public function setStartAtAttribute($datetime)
+    public function setStartAtAttribute(Carbon $datetime)
     {
-        $this->attributes['start_at'] = Carbon::parse($datetime, $this->tz)->timezone('UTC');
+        $this->attributes['start_at'] = $datetime;
     }
 
     public function isActive()

@@ -18,13 +18,13 @@ class BookingStrategy
         }
     }
 
-    public function makeReservation(Business $business, $data)
+    public function makeReservation(User $issuer, Business $business, $data)
     {
-        return $this->strategy->makeReservation($business, $data);
+        return $this->strategy->makeReservation($issuer, $business, $data);
     }
 }
 
 interface BookingStrategyInterface
 {
-    public function makeReservation(Business $business, $data);
+    public function makeReservation(User $issuer, Business $business, $data);
 }

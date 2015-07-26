@@ -32,7 +32,7 @@ class BusinessAgendaController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
-        $businessId = $request->input('business');
+        $businessId = $request->input('businessId');
         $appointmentId = $request->input('appointment');
         $action = $request->input('action');
         $widget = $request->input('widget');

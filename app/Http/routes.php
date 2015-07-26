@@ -32,6 +32,9 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
         Route::get('show/{business}/{appointment}', ['as' => 'user.booking.show', 'uses' => 'BookingController@getShow']);
         Route::post('store',    ['as' => 'user.booking.store', 'uses' => 'BookingController@postStore']);
     });
+    Route::controller('appointment', 'BookingController', [
+        'postAction' => 'user.business.agenda.action',
+    ]);
 
     Route::group(['prefix' => 'businesses'], function () {
         Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
