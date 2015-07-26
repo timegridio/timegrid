@@ -76,7 +76,7 @@
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                @if (env('APP_ENV') == 'local')
+                                @if (env('APP_ENV') != 'local')
                                     {!! app('captcha')->display() !!}
                                 @endif
                                 <button type="submit" class="btn btn-primary" id="submit">
