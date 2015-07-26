@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d016804830cefc85d5b7c1b07c38ae35",
+    "hash": "39013d0f8211009048c4884c83f7c42a",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -192,6 +192,52 @@
             ],
             "description": "Bootstrap 3 Typeahead",
             "time": "2015-04-05 22:20:53"
+        },
+        {
+            "name": "caffeinated/widgets",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caffeinated/widgets.git",
+                "reference": "27753973dc55ac39ed2da2c7c39a40ecf4d317ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caffeinated/widgets/zipball/27753973dc55ac39ed2da2c7c39a40ecf4d317ac",
+                "reference": "27753973dc55ac39ed2da2c7c39a40ecf4d317ac",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "5.1.*",
+                "illuminate/support": "5.1.*",
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "caffeinated/sapling": "Laravel 5 Twig integration package"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Caffeinated\\Widgets\\": "src/Caffeinated/Widgets/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shea Lewis",
+                    "email": "shea.lewis89@gmail.com"
+                }
+            ],
+            "description": "Laravel 5 Widgets",
+            "keywords": [
+                "caffeinated",
+                "laravel",
+                "widgets"
+            ],
+            "time": "2015-06-28 07:36:37"
         },
         {
             "name": "camroncade/timezone",

@@ -170,6 +170,7 @@ return [
         'Creativeorange\Gravatar\GravatarServiceProvider',
         'Fenos\Notifynder\NotifynderServiceProvider',
         'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
+        'Caffeinated\Widgets\WidgetsServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
@@ -264,6 +265,7 @@ return [
         'Carbon' => 'Carbon\Carbon',
 
         'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
+        'Widget' => 'Caffeinated\Widgets\Facades\Widget',
 
         'TidioChat'    => 'alariva\tidiochat\TidioChatFacade',
     ],

@@ -29,7 +29,8 @@
 		"creativeorange/gravatar": "~1.0",
 		"fenos/notifynder": "3.*",
 		"anhskohbo/no-captcha": "2.*",
-		"robclancy/presenter": "1.3.*"
+		"robclancy/presenter": "1.3.*",
+		"caffeinated/widgets": "~2.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
