@@ -169,6 +169,7 @@ return [
         'Camroncade\Timezone\TimezoneServiceProvider',
         'Creativeorange\Gravatar\GravatarServiceProvider',
         'Fenos\Notifynder\NotifynderServiceProvider',
+        'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
