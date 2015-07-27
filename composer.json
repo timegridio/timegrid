@@ -1,7 +1,7 @@
 {
-	"name": "laravel/laravel",
-	"description": "The Laravel Framework.",
-	"keywords": ["framework", "laravel"],
+	"name": "alariva/timegrid.io",
+	"description": "The booking agenda for successful professionals.",
+	"keywords": ["appointments", "reservations", "booking", "agenda", "community"],
 	"license": "MIT",
 	"type": "project",
 	"require": {
