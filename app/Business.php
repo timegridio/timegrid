@@ -9,61 +9,97 @@ use Fenos\Notifynder\Notifable;
 class Business extends Model
 {
     use SoftDeletes;
-    use Traits\Preferenceable;
     use Notifable;
+    use Traits\Preferenceable;
 
-    protected $dates = ['deleted_at'];
-
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy'];
 
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['deleted_at'];
+
+    ///////////////////
+    // Relationships //
+    ///////////////////
+
+    /**
+     * belongs to Category
+     * @return Illuminate\Database\Query Relationship Business Category query
+     */
     public function category()
     {
         return $this->belongsTo('App\Category')->remember(120);
     }
 
-    public function owners()
-    {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
-    }
-
-    public function owner()
-    {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
-    }
-
+    /**
+     * holds Contacts
+     * @return Illuminate\Database\Query Relationship Business held Contacts query
+     */
     public function contacts()
     {
         return $this->belongsToMany('App\Contact')->with('user')->withPivot('notes')->withTimestamps();
     }
 
+    /**
+     * provides Services
+     * @return Illuminate\Database\Query Relationship Business provided Services query
+     */
     public function services()
     {
         return $this->hasMany('App\Service');
     }
 
+    /**
+     * publishes Vacancies
+     * @return Illuminate\Database\Query Relationship Business published Vacancies query
+     */
     public function vacancies()
     {
         return $this->hasMany('App\Vacancy');
     }
 
+    /**
+     * holds Appointments booking
+     * @return Illuminate\Database\Query Relationship Business holds Appointments query
+     */
     public function bookings()
     {
         return $this->hasMany('App\Appointment');
     }
 
-    // public function setPostalAddressAttribute($string)
-    // {
-    //     preg_match_all('/(?<street>[\w\d\ ]+)(\,(?<city>[\w\d\ ]+))?(\,(?<country>[\w\d\ ]+))?/', $string, $matches);
-    //     $this->attributes['postal_address'] = json_encode($matches);
-    // }
+    /**
+     * belongs to Users
+     * @return Illuminate\Database\Query Relationship Business belongs to User (owners) query
+     */
+    public function owners()
+    {
+        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
+    }
 
-    // public function getPostalAddressAttribute()
-    // {
-    //     if(empty(trim($this->attributes['postal_address']))) return [];
-    //     $address = json_decode($this->attributes['postal_address']);
-    //     return $address->street[0] . ', ' . $address->city[0] . ', ' . $address->country[0];
-    // }
+    /**
+     * belongs to User
+     * @return App\User Relationship Business belongs to User (owner)
+     */
+    public function owner()
+    {
+        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
+    }
 
+    /**
+     * TODO: Move to Presenter
+     * 
+     * get Google Static Map img
+     * @param  integer $zoom Zoom Level
+     * @return string        HTML code to render img with map
+     */
     public function staticMap($zoom = 15)
     {
         $data = array('center'         => $this->postal_address,
@@ -78,6 +114,13 @@ class Business extends Model
         return "<img calss=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
     }
 
+    /**
+     * TODO: Move to Presenter
+     * 
+     * get Facebook Profile Public Picture
+     * @param  string $type Type of picture to print
+     * @return string       HTML code to render img with facebook picture
+     */
     public function facebookPicture($type = 'normal')
     {
         $src = "https://graph.facebook.com/{$this->social_facebook}/picture?type=$type";
