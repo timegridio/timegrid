@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+#use Illuminate\Database\Eloquent\Model;
 
 class Preference extends Model
 {
@@ -38,7 +38,7 @@ class Preference extends Model
 
     public function scopeForKey($query, $key)
     {
-        return $query->where('key', $key);
+        return $query->where('key', $key)->remember(120);
     }
 
     public function value()
