@@ -60,7 +60,7 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
-        Log::info("Register new user: <{$data['email']}>");
+        Log::info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
