@@ -29,12 +29,20 @@
                 font-size: 72px;
                 margin-bottom: 40px;
             }
+            
+            .brand {
+                font-weight: bold;
+                font-size: 24px;
+                margin-bottom: 40px;
+            }
         </style>
     </head>
     <body>
         <div class="container">
             <div class="content">
                 <div class="title">Be right back.</div>
+                <div class="title">Enseguida volvemos.</div>
+                <div class="brand">timegrid.io</div>
             </div>
         </div>
     </body>
