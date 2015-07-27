@@ -40,6 +40,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * owns Business
+     * 
      * @return Illuminate\Database\Query Relationship Business belongs to User query
      */
     public function businesses()
@@ -50,7 +51,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     /**
      * has Contacts
      *
-     * Contacts are the different profiles for different Businesses the User may have
+     *      Contacts are the different profiles for different Businesses the User may have
      * 
      * @return Illuminate\Database\Query Relationship User has Contacts query
      */
@@ -79,6 +80,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * TODO: Rename to isOwnerOf()
      * 
      * is Owner of Business
+     * 
      * @param  Business $business Business to inquiry against
      * @return boolean            The User is Owner of the inquired Business
      */
@@ -89,6 +91,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * has Business
+     * 
      * @return boolean The User is Owner of at least one Business
      */
     public function hasBusiness()
@@ -98,6 +101,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * has Contacts
+     * 
      * @return boolean The User has at least one Contact profile set
      */
     public function hasContacts()
@@ -111,6 +115,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 
     /**
      * set Name
+     * 
      * @param string $string The first name of the User
      */
     public function setNameAttribute($name)
@@ -122,6 +127,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * TODO: Rename to getContactSuscribedTo()
      * 
      * Get Suscribed Contact to Business
+     * 
      * @param  Business $business Business of inquiry
      * @return Contact            User profile Contact suscribed to the inquired Business
      */
@@ -138,6 +144,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      *       Should return the Contact Collection that were associated
      * 
      * Link to Contacts
+     * 
      * @return boolean The User was linked to at least one Contact
      */
     public function linkToContacts()

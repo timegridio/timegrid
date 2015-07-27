@@ -34,6 +34,7 @@ class Vacancy extends Model
 
     /**
      * belongs to Business
+     * 
      * @return Illuminate\Database\Query Relationship Vacancy belongs to Business query
      */
     public function business()
@@ -43,6 +44,7 @@ class Vacancy extends Model
 
     /**
      * for Service
+     * 
      * @return Illuminate\Database\Query Relationship Vacancy is for providing Service query
      */
     public function service()
@@ -56,6 +58,7 @@ class Vacancy extends Model
 
     /**
      * Scope For Date
+     * 
      * @param  Illuminate\Database\Query $query
      * @param  Carbon $date  Date of inquiry
      * @return Illuminate\Database\Query Scoped query
@@ -67,6 +70,7 @@ class Vacancy extends Model
 
     /**
      * Scope only Future
+     * 
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -77,6 +81,7 @@ class Vacancy extends Model
 
     /**
      * Scope For Service
+     * 
      * @param  Illuminate\Database\Query $query
      * @param  Service $service Inquired Service to filter
      * @return Illuminate\Database\Query Scoped query
@@ -92,6 +97,7 @@ class Vacancy extends Model
 
     /**
      * is Full
+     * 
      * @param  Collection $appointments Appointments to check Vacancy against
      * @return boolean                  Vacancy is fully booked
      */
@@ -110,6 +116,7 @@ class Vacancy extends Model
      * TODO: Rename to isHoldingAppointment()
      *
      * holds Appointment
+     * 
      * @param  Appointment $appointment Appointment to check agains
      * @return boolean                  Appointment is held by the Vacancy
      */
@@ -126,6 +133,7 @@ class Vacancy extends Model
      * TODO: Rename to isHoldingAnyAppointment()
      *
      * holds Any Appointment
+     * 
      * @param  Collection $appointments Appointments to check agains
      * @return boolean                  The Vacancy holds at least one of the inquired Appointments
      */
