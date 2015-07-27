@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+# use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use App\Presenters\AppointmentPresenter;
 

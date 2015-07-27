@@ -18,17 +18,17 @@ class Business extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Category')->remember(120);
     }
 
     public function owners()
     {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps();
+        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
     }
 
     public function owner()
     {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
+        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
     }
 
     // public function owner()
@@ -43,17 +43,17 @@ class Business extends Model
 
     public function services()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasMany('App\Service')->remember(120);
     }
 
     public function vacancies()
     {
-        return $this->hasMany('App\Vacancy');
+        return $this->hasMany('App\Vacancy')->remember(120);
     }
 
     public function bookings()
     {
-        return $this->hasMany('App\Appointment');
+        return $this->hasMany('App\Appointment')->remember(1);
     }
 
     // public function setPostalAddressAttribute($string)
