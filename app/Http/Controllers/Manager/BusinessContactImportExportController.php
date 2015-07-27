@@ -2,25 +2,38 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Requests;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
+use App\Http\Requests;
 use App\Business;
 use App\Contact;
 use Notifynder;
-use Illuminate\Support\Facades\Redirect;
-use Flash;
-use Session;
 use Request;
+use Session;
+use Flash;
 
 class BusinessContactImportExportController extends Controller
 {
-
+    /**
+     * get Import form
+     *
+     * @param  Business $business Business to import Contacts to
+     * @param  Request  $request
+     * @return Response           Rendered Import form view
+     */
     public function getImport(Business $business, Request $request)
     {
         return view('manager.contacts.import', compact('business'));
     }
 
+    /**
+     * post Import
+     *
+     * @param  Business $business Business to import Contacts to
+     * @param  Request  $request  Submitted form data
+     * @return Response           Redirect to Business addressbook
+     */
     public function postImport(Business $business, Request $request)
     {
         $csv = $this->csvToArray(Request::get('data'));
@@ -30,7 +43,7 @@ class BusinessContactImportExportController extends Controller
             unset($import['notes']);
             $contact = Contact::create($import);
             $business->contacts()->attach($contact, ['notes' => $notes]);
-            $business->save();                
+            $business->save();
         }
 
         $count = count($csv);
@@ -45,13 +58,24 @@ class BusinessContactImportExportController extends Controller
         return Redirect::route('manager.business.contact.index', [$business]);
     }
 
+    /**
+     * TODO: Should probably be moved as helper
+     *
+     * csvToArray
+     *
+     *      Converts submitted CSV string data into an Array
+     *
+     * @param  string $data      CSV string of Contacts
+     * @param  string $delimiter CSV field delimiter character
+     * @return array             Converted CSV into Array
+     */
     private function csvToArray($data='', $delimiter=',')
-    {        
+    {
         $rows = array_map('str_getcsv', explode("\n", $data));
         $header = array_shift($rows);
         $csv = array();
         foreach ($rows as $row) {
-          $csv[] = array_combine($header, $row);
+            $csv[] = array_combine($header, $row);
         }
         return $csv;
     }

@@ -3,16 +3,20 @@
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Redirect;
-use Flash;
+use App\Http\Requests;
+use App\ConciergeStrategy as Concierge;
 use App\Business;
 use App\Vacancy;
-use App\ConciergeStrategy as Concierge;
+use Redirect;
+use Flash;
 
 class BusinessVacancyController extends Controller
 {
+    /**
+     * TODO: This should probably not be a resource Controller
+     */
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +24,7 @@ class BusinessVacancyController extends Controller
      */
     public function index()
     {
-        //
+        // TODO: Provide elegant Vacancy display
     }
 
     /**
@@ -73,7 +77,7 @@ class BusinessVacancyController extends Controller
      */
     public function show($id)
     {
-        //
+        // TODO: Provide elegant display of individual Vacancy
     }
 
     /**
@@ -84,6 +88,7 @@ class BusinessVacancyController extends Controller
      */
     public function edit(Business $business)
     {
+        //
     }
 
     /**

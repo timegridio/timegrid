@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Notifynder;
-use Session;
-use Redirect;
 use App\Business;
+use Notifynder;
+use Redirect;
+use Session;
 use Flash;
 
 class BusinessController extends Controller
 {
+    /**
+     * get Home
+     *
+     * @param  Business $business Business to display
+     * @return Response           Rendered view for desired Business
+     */
     public function getHome(Business $business)
     {
         $business_name = $business->name;
@@ -24,18 +30,41 @@ class BusinessController extends Controller
         return view('user.businesses.show', compact('business'));
     }
 
+    /**
+     * get List
+     *
+     * @return Response Rendered view of all existing Businesses
+     */
     public function getList()
     {
         $businesses = Business::all();
         return view('user.businesses.index', compact('businesses'));
     }
 
+    /**
+     * TODO: Selecting Business by Session should probably be deprecated
+     *
+     * get Select
+     *
+     * @param  Business $business Business to be selected
+     * @return Response           Response provided by getHome()
+     */
     public function getSelect(Business $business)
     {
         Session::set('selected.business', $business);
         return $this->getHome($business);
     }
 
+    /**
+     * TODO: Should be named getProfiles
+     *
+     * get Suscriptions
+     *
+     *      Gets the User profile Contacts that MAY BE suscribed to Businesses
+     *
+     * @return Response Rendered view of the Contacts linked to the
+     *                  requesting User
+     */
     public function getSuscriptions()
     {
         $contacts = \Auth::user()->contacts;

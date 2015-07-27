@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Redirect;
-use Flash;
+use App\Http\Requests;
 use App\Business;
 use App\Service;
+use Redirect;
+use Flash;
 
 class BusinessServiceController extends Controller
 {
@@ -98,7 +98,7 @@ class BusinessServiceController extends Controller
     {
         $service->forceDelete();
 
-        Flash::success( trans('manager.services.msg.destroy.success') );
+        Flash::success(trans('manager.services.msg.destroy.success'));
         return Redirect::route('manager.business.service.index', $business);
     }
 }

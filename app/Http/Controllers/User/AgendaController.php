@@ -2,29 +2,39 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
-use Flash;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use App\Events\NewBooking;
+use App\ConciergeStrategy as Concierge;
+use App\BookingStrategy;
 use App\Appointment;
 use App\Business;
-use App\BookingStrategy;
-use App\ConciergeStrategy as Concierge;
 use Notifynder;
-use Carbon;
 use Session;
+use Carbon;
+use Flash;
 use Event;
-use App\Events\NewBooking;
 
 class AgendaController extends Controller
 {
+    /**
+     * get Index
+     *
+     * @return Response Rendered list view for User Appointments
+     */
     public function getIndex()
     {
         $appointments = \Auth::user()->appointments()->orderBy('start_at')->get();
         return view('user.appointments.index', compact('appointments'));
     }
 
+    /**
+     * get Book
+     *
+     * @return Response Rendered view of Appointment booking form
+     */
     public function getBook()
     {
         $business = Business::findOrFail(Session::get('selected.business')->id);
@@ -44,11 +54,17 @@ class AgendaController extends Controller
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
+    /**
+     * poset Store
+     * 
+     * @param  Request $request Input data of booking form
+     * @return Response         Redirect to Appointments listing
+     */
     public function postStore(Request $request)
     {
         $issuer = \Auth::user();
         $businessId = $request->input('businessId');
-        
+
         // if (!$issuer->contacts) {
         //     Flash::error(trans('user.booking.msg.you_are_not_suscribed_to_business'));
         //     return Redirect::back();
@@ -71,6 +87,16 @@ class AgendaController extends Controller
         return Redirect::route('user.booking.list');
     }
 
+    /**
+     * TODO: Business is not actually needed as Strategy can be retrieved from
+     *       Appointment relationship.
+     *
+     * get Show
+     *
+     * @param  Business    $business    Business of the desired Appointment
+     * @param  Appointment $appointment Appointment to show
+     * @return Response                 Rendered view for desired Appointment
+     */
     public function getShow(Business $business, Appointment $appointment)
     {
         return view('user.appointments.'.$business->strategy.'.show', compact('appointment'));

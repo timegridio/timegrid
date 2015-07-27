@@ -2,26 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Http\Requests\AlterAppointmentRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Appointment;
 use App\Business;
-use Auth;
 use Notifynder;
-use Carbon;
 use Session;
-use URL;
-use Event;
-use Log;
+use Carbon;
 use Widget;
+use Event;
+use Auth;
+use URL;
+use Log;
 
 class BookingController extends Controller
 {
- 
-   public function postAction(AlterAppointmentRequest $request)
+    /**
+     * post Action for booking
+     * 
+     * @param  AlterAppointmentRequest $request
+     * @return JSON                    Action result object
+     */
+    public function postAction(AlterAppointmentRequest $request)
     {
         $issuer = Auth::user();
         $businessId = $request->input('business');
@@ -44,7 +49,7 @@ class BookingController extends Controller
                 $appointment->doServe();
                 break;
             default:
-                # code...
+                # Ignore Invalid Action
                 break;
         }
 
@@ -58,6 +63,7 @@ class BookingController extends Controller
                 break;
         }
 
+        // TODO: It is probably possible to move Notifynder to a more proper place
         $date = $appointment->start_at->toDateString();
         $code = substr($appointment->code, 0, 4);
         Notifynder::category('appointment.'.$action)
