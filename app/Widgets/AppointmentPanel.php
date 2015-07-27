@@ -40,7 +40,7 @@ class AppointmentPanel extends Widget
     public function panel(AppointmentPresenter $appointment)
     {
         $header = $appointment->status();
-        $footer = Icon::barcode() . '&nbsp;' . $appointment->code();
+        $footer = Icon::barcode() . '&nbsp;<code>' . $appointment->code() .'</code>';
 
         $panel = $this->getPanelWithStatus();
         $body  = $this->buildBody($appointment);
