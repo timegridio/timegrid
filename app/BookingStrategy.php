@@ -15,6 +15,9 @@ class BookingStrategy
         switch ($strategyId) {
             case 'timeslot': $this->strategy = new BookingStrategyTimeslot(); break;
             case 'dateslot': $this->strategy = new BookingStrategyDateslot(); break;
+            default:
+                Log::warning("BookingStrategy: __construct: Illegal strategy:{$this->strategy}");
+            break;
         }
     }
 
