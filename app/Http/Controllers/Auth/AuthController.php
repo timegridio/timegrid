@@ -1,13 +1,15 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
+
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use Illuminate\Validation\ValidationServiceProvider;
 use App\Http\Controllers\Controller;
+use App\Events\NewRegisteredUser;
 use App\User;
 use Validator;
-use Log;
 use Event;
-use App\Events\NewRegisteredUser;
+use Log;
 
 class AuthController extends Controller
 {
