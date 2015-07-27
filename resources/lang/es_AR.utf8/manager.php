@@ -147,7 +147,7 @@ return array (
   array (
     'btn' => 
     array (
-      'import' => 'contacts.btn.import',
+      'import' => 'Importar Contactos',
       'confirm_delete' => '¿Seguro querés eliminar el contacto?',
       'delete' => 'Eliminar',
       'edit' => 'Editar',
@@ -213,18 +213,18 @@ return array (
       ),
       'prerequisites' => 
       array (
-        'label' => 'contacts.form.prerequisites.label',
+        'label' => 'Prerequisitos',
       ),
     ),
     'import' => 
     array (
-      'title' => 'contacts.import.title',
+      'title' => 'Importar contactos',
     ),
     'msg' => 
     array (
       'import' => 
       array (
-        'success' => 'contacts.msg.import.success',
+        'success' => ':count Contactos importados',
       ),
       'destroy' => 
       array (
