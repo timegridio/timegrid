@@ -1,9 +1,9 @@
-<?php namespace App\Http\Controllers\Auth;
+<?php
 
-use App\Http\Controllers\Controller;
-# use Illuminate\Contracts\Auth\Guard;
-# use Illuminate\Contracts\Auth\PasswordBroker;
+namespace App\Http\Controllers\Auth;
+
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Http\Controllers\Controller;
 
 class PasswordController extends Controller
 {
