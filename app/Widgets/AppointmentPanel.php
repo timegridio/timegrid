@@ -4,12 +4,12 @@ namespace App\Widgets;
 
 use Caffeinated\Widgets\Widget;
 use App\Presenters\AppointmentPresenter;
+use App\Appointment;
+use App\User;
 use Carbon\Carbon;
 use Panel;
 use Button;
 use Icon;
-use App\Appointment;
-use App\User;
 
 class AppointmentPanel extends Widget
 {
@@ -82,7 +82,7 @@ class AppointmentPanel extends Widget
         return $body;
     }
 
-    public function statusToClass() 
+    public function statusToClass()
     {
         switch ($this->appointment->status) {
             case Appointment::STATUS_ANNULATED:
