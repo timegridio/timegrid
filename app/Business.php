@@ -38,17 +38,17 @@ class Business extends Model
 
     public function services()
     {
-        return $this->hasMany('App\Service')->remember(120);
+        return $this->hasMany('App\Service');
     }
 
     public function vacancies()
     {
-        return $this->hasMany('App\Vacancy')->remember(120);
+        return $this->hasMany('App\Vacancy');
     }
 
     public function bookings()
     {
-        return $this->hasMany('App\Appointment')->remember(1);
+        return $this->hasMany('App\Appointment');
     }
 
     // public function setPostalAddressAttribute($string)
