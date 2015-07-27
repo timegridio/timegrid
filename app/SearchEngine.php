@@ -11,6 +11,10 @@ use App\Appointment;
 
 class SearchEngine
 {
+    /**
+     * TODO: Check if there is a suitable package for seaching among Models
+     */
+
     protected $results = [];
 
     protected $scope = [];
