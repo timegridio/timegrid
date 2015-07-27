@@ -15,6 +15,7 @@ use Request;
 use Session;
 use Flash;
 use GeoIP;
+use Log;
 
 class BusinessController extends Controller
 {
@@ -25,8 +26,10 @@ class BusinessController extends Controller
      */
     public function index()
     {
+        Log::info('Manager\BusinessController: index');
         $businesses = \Auth::user()->businesses;
         if ($businesses->count()==1) {
+            Log::info('Manager\BusinessController: index: Only one business to show');
             $business = $businesses->first();
             return Redirect::route('manager.business.show', $business);
         }
@@ -40,8 +43,11 @@ class BusinessController extends Controller
      */
     public function create()
     {
+        Log::info('Manager\BusinessController: create');
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
+        Log::info("Manager\BusinessController: create: location:$location timezone:$timezone");
+
         $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
         return view('manager.businesses.create', compact('timezone', 'categories'));
     }
@@ -54,9 +60,11 @@ class BusinessController extends Controller
      */
     public function store(BusinessFormRequest $request)
     {
+        Log::info('Manager\BusinessController: store');
         $existing_business = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
         if ($existing_business === null) {
+
             $business = new Business(Request::all());
             $category = Category::find(Request::get('category'));
             $business->strategy = $category->strategy;
@@ -77,10 +85,13 @@ class BusinessController extends Controller
             return Redirect::route('manager.business.service.create', $business);
         }
 
+        Log::info("Manager\BusinessController: store: [ADVICE] Found existing businessId:{$existing_business->id}");
         if (\Auth::user()->isOwner($existing_business)) {
+            Log::info("Manager\BusinessController: store: [ADVICE] Restoring owned businessId:{$existing_business->id}");
             $existing_business->restore();
             Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
         } else {
+            Log::info("Manager\BusinessController: store: [ADVICE] Business already taken businessId:{$existing_business->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
         }
         return Redirect::route('manager.business.index');
@@ -95,6 +106,8 @@ class BusinessController extends Controller
      */
     public function show(Business $business, BusinessFormRequest $request)
     {
+        Log::info("Manager\BusinessController: show: businessId:{$business->id}");
+
         Session::set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
         $business->readAllNotifications();
@@ -110,10 +123,12 @@ class BusinessController extends Controller
      */
     public function edit(Business $business, BusinessFormRequest $request)
     {
+        Log::info("Manager\BusinessController: edit: businessId:{$business->id}");
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
         $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
         $category = $business->category_id;
+        Log::info("Manager\BusinessController: edit: businessId:{$business->id} location:$location timezone:$timezone category:$category");
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
@@ -126,6 +141,7 @@ class BusinessController extends Controller
      */
     public function update(Business $business, BusinessFormRequest $request)
     {
+        Log::info("Manager\BusinessController: update: businessId:{$business->id}");
         $business->update([
             'name' => $request->get('name'),
             'slug' => $request->get('slug'),
@@ -149,6 +165,7 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business, BusinessFormRequest $request)
     {
+        Log::info("Manager\BusinessController: destroy: businessId:{$business->id}");
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
@@ -182,12 +199,14 @@ class BusinessController extends Controller
      */
     public function postPreferences(Business $business, BusinessPreferencesFormRequest $request)
     {
+        Log::info("Manager\BusinessController: postPreferences: businessId:{$business->id}");
         $parameters = \Config::get('preferences.App\Business');
         $parameters_keys = array_flip(array_keys($parameters));
         $preferences = $request->all();
         $preferences = array_intersect_key($preferences, $parameters_keys);
         
         foreach ($preferences as $key => $value) {
+            Log::info("Manager\BusinessController: postPreferences: businessId:{$business->id} key:$key value:$value type:{$parameters[$key]['type']}");
             $business->pref($key, $value, $parameters[$key]['type']);
         }
 

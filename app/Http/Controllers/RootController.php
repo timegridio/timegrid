@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Requests;
+use Log;
 
 class RootController extends Controller
 {
@@ -15,6 +16,7 @@ class RootController extends Controller
      */
     public function getIndex()
     {
+        Log::warning('ROOT INDEX');
         $users = \App\User::all();
         return view('root.dashboard', compact('users'));
     }

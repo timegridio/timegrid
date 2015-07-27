@@ -19,7 +19,9 @@ class LanguageController extends Controller
      */
     public function switchLang($lang)
     {
+        Log::info("Language switch Request to $lang");
         if (array_key_exists($lang, Config::get('languages'))) {
+            Log::info('Language Switched');
             Session::set('applocale', $lang);
         }
         return Redirect::back();

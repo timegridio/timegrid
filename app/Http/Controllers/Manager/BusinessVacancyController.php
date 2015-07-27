@@ -10,6 +10,7 @@ use App\Business;
 use App\Vacancy;
 use Redirect;
 use Flash;
+use Log;
 
 class BusinessVacancyController extends Controller
 {
@@ -34,6 +35,8 @@ class BusinessVacancyController extends Controller
      */
     public function create(Business $business)
     {
+        Log::info("BusinessServiceController: create: businessId:{$business->id}");
+
         $dates = Concierge::generateAvailability($business->vacancies);
         $services = $business->services;
         return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'));
@@ -46,6 +49,7 @@ class BusinessVacancyController extends Controller
      */
     public function store(Business $business, Request $request)
     {
+        Log::info("BusinessServiceController: store: businessId:{$business->id}");
         $dates = $request->get('vacancy');
         $success = false;
         foreach ($dates as $date => $vacancy) {
@@ -53,6 +57,7 @@ class BusinessVacancyController extends Controller
                 switch (trim($capacity)) {
                     case '':
                         // Dont update, leave as is
+                        Log::info("BusinessServiceController: store: [ADVICE] Blank vacancy capacity value businessId:{$business->id}");
                         break;
                     default:
                         $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id, 'service_id' => $serviceId, 'date' => $date], ['capacity' => intval($capacity)]);
@@ -62,6 +67,7 @@ class BusinessVacancyController extends Controller
             }
         }
         if (!$success) {
+            Log::info("BusinessServiceController: store: [ADVICE] Nothing to update businessId:{$business->id}");
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
             return Redirect::back();
         }

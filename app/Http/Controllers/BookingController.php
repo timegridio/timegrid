@@ -28,6 +28,7 @@ class BookingController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
+        Log::info('BookingController: postAction');
         $issuer = Auth::user();
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
@@ -50,6 +51,7 @@ class BookingController extends Controller
                 break;
             default:
                 # Ignore Invalid Action
+                Log::warning('Invalid Action request');
                 break;
         }
 
@@ -74,6 +76,6 @@ class BookingController extends Controller
                    ->send();
 
         Log::info("postAction.response:[appointment:{$appointment->toJson()}]");
-        return response()->json(['code' => 'OK', 'html' => $html.'']);
+        return response()->json(['code' => 'OK', 'html' => $html.'']); // TODO: Safe to remove .''
     }
 }

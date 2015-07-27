@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Log;
+
 class WelcomeController extends Controller
 {
     /*
@@ -32,6 +34,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
+        Log::info('Welcome hit');
         return view('welcome');
     }
 }

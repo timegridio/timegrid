@@ -12,6 +12,7 @@ use Notifynder;
 use Request;
 use Session;
 use Flash;
+use Log;
 
 class BusinessContactImportExportController extends Controller
 {
@@ -24,6 +25,7 @@ class BusinessContactImportExportController extends Controller
      */
     public function getImport(Business $business, Request $request)
     {
+        Log::info("BusinessContactImportExportController: getImport: businessId:{$business->id}");
         return view('manager.contacts.import', compact('business'));
     }
 
@@ -36,6 +38,7 @@ class BusinessContactImportExportController extends Controller
      */
     public function postImport(Business $business, Request $request)
     {
+        Log::info("BusinessContactImportExportController: postImport: businessId:{$business->id}");
         $csv = $this->csvToArray(Request::get('data'));
         
         foreach ($csv as $key => $import) {
@@ -47,6 +50,8 @@ class BusinessContactImportExportController extends Controller
         }
 
         $count = count($csv);
+        Log::info("BusinessContactImportExportController: Imported $count contacts to businessId:{$business->id}");
+
         Notifynder::category('user.importedContacts')
                    ->from('App\User', \Auth::user()->id)
                    ->to('App\Business', $business->id)
@@ -71,6 +76,8 @@ class BusinessContactImportExportController extends Controller
      */
     private function csvToArray($data='', $delimiter=',')
     {
+        Log::info("BusinessContactImportExportController: csvToArray");
+
         $rows = array_map('str_getcsv', explode("\n", $data));
         $header = array_shift($rows);
         $csv = array();
