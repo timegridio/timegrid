@@ -8,7 +8,7 @@ return array (
   // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/create.blade.php
   'register' => 
   array (
-    'need_help' => 'register.need_help',
+    'need_help' => '¿Necesitas ayuda?',
     'btn' => 
     array (
       'submit' => 'Registrame',

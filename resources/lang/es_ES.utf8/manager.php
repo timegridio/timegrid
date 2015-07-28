@@ -12,7 +12,7 @@ return array (
     array (
       'create' => 
       array (
-        'success' => 'businesses.msg.create.success',
+        'success' => '¡Olé! Vamos a registrarte con el plan :plan',
       ),
       'destroy' => 
       array (
