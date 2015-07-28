@@ -6,7 +6,7 @@
 <ul class="demo">
 
     @foreach ($notifications as $notification)
-        @include('manager.businesses._notification', ['notification' => $notification])
+        @include('manager.businesses._notification', ['notification' => $notification->toArray()])
     @endforeach
 
 </ul>
