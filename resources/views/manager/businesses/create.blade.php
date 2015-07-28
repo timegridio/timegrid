@@ -18,3 +18,23 @@
     </div>
 </div>
 @endsection
+
+@section('footer_scripts')
+@parent
+<script type="text/javascript">
+$(document).ready(function(){
+
+    var count = 0;
+    $('button[type=submit]').click(function(){
+        count++;
+        if(count == 5) {
+            var script = document.createElement( 'script' );
+            script.type = 'text/javascript';
+            script.src = '{{ TidioChat::src() }}';
+            $("body").append( script );
+            alert('{!! trans('auth.register.need_help') !!}');
+        }
+    });
+});
+</script>
+@endsection

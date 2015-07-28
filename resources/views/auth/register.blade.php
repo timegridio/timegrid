@@ -97,17 +97,30 @@
 <script src="{{asset('js/bootstrap-validator.min.js')}}"></script>
 @parent
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#registration').validator({
-            feedback: {
-              success: 'glyphicon-ok',
-              error: 'glyphicon-remove'
-            },
-            errors: {
-              match: '{{trans('validation.custom.password.confirmed')}}',
-              minlength: '{{trans('validation.custom.name.min')}}'
-            }
-        });
+$(document).ready(function(){
+    
+    var count = 0;
+    $('#submit').click(function(){
+        count++;
+        if(count == 5) {
+            var script = document.createElement( 'script' );
+            script.type = 'text/javascript';
+            script.src = '{{ TidioChat::src() }}';
+            $("body").append( script );
+            alert('{!! trans('auth.register.need_help') !!}');
+        }
     });
+
+    $('#registration').validator({
+        feedback: {
+          success: 'glyphicon-ok',
+          error: 'glyphicon-remove'
+        },
+        errors: {
+          match: '{{trans('validation.custom.password.confirmed')}}',
+          minlength: '{{trans('validation.custom.name.min')}}'
+        }
+    });
+});
 </script>
 @endsection
