@@ -61,6 +61,10 @@
                         
                         </li>
 
+                        <li class="list-group-item">
+                            {{ trans_choice('user.business.suscriptions_count', $business->suscriptionsCount) }}
+                        </li>
+
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
                             @if (\Auth::user()->suscribedTo($business) !== null)
@@ -71,7 +75,6 @@
                         </li>
                         @endif
                     </ul>
-
                 
             </div>
         </div>
