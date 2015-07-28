@@ -43,13 +43,16 @@ class BusinessController extends Controller
      */
     public function create()
     {
-        Log::info('Manager\BusinessController: create');
+        $plan = Request::query('plan') ?: 'free';
+        Log::info("Manager\BusinessController: create: plan:$plan");
+        Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
+
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
         Log::info("Manager\BusinessController: create: timezone:$timezone location:".serialize($location));
 
         $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
-        return view('manager.businesses.create', compact('timezone', 'categories'));
+        return view('manager.businesses.create', compact('timezone', 'categories', 'plan'));
     }
 
     /**
