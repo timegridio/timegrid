@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-12 col-md-offset-0">
+        <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
 
                 <div class="panel-heading">
@@ -21,27 +21,7 @@
                         </li>
 
                         <li class="list-group-item">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        {!! Icon::globe() !!}&nbsp;{{ $business->timezone }}
-                                    </div>
-                                    <div class="col-md-4">
-                                    @if ($business->pref('show_phone') && $business->phone)
-                                        {!! Icon::phone() !!}&nbsp;{{ $business->phone }}
-                                    @endif
-                                    </div>
-                                    <div class="col-md-4">
-                                    @if ($business->pref('show_postal_address') && $business->postal_address)
-                                        {!! Icon::home() !!}&nbsp;{{ $business->postal_address }}
-                                    @endif
-                                    </div>
-                                </div>
-                        </li>
-
-                        <li class="list-group-item">
-                        
-                        <div class="row">
-
+                            <div class="row">
                             <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
@@ -50,24 +30,44 @@
                                   <div class="media-body">
                                     <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
-                                    @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
-                                        {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
-                                    @endif
                                   </div>
                                 </div>
                             </div>
+                            </div>
+                        </li>
 
-                            @if ($business->pref('show_map'))
+                        @if ($business->phone || $business->postal_address)
+                        <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                    @if ($business->pref('show_phone') && $business->phone)
+                                        {!! Icon::phone() !!}&nbsp;{{ $business->phone }}
+                                    @endif
+                                    </div>
+                                    <div class="col-md-8">
+                                    @if ($business->pref('show_postal_address') && $business->postal_address)
+                                        {!! Icon::home() !!}&nbsp;{{ $business->postal_address }}
+                                    @endif
+                                    </div>
+                                </div>
+                        </li>
+                        @endif
+
+                        @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
+                        <li class="list-group-item" title="{{$business->timezone}}">
+                            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
+                        </li>
+                        @endif
+
+                        @if ($business->pref('show_map') && $business->postal_address)
+                        <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-12 text-center">
                                     {!! $business->staticMap(11) !!}
                                 </div>
                             </div>
-                            @endif
-
-                        </div>
-
                         </li>
+                        @endif
 
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
@@ -78,6 +78,7 @@
                             @endif
                         </li>
                         @endif
+
                     </ul>
                 
             </div>
