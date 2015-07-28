@@ -54,7 +54,7 @@ return [
 	|
 	*/
 
-	'from' => ['address' => 'support@timegrid.io', 'name' => 'timegrid'],
+	'from' => ['address' => env('MAIL_FROM_ADDRESS', ''), 'name' => env('MAIL_FROM_NAME', '')],
 
 	/*
 	|--------------------------------------------------------------------------
