@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 16:10:47 
+ Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
 *************************************************************************/
 
 return array (
@@ -33,10 +33,10 @@ return array (
     ),
     'email' => 'Tu Email',
     'name' => 'Tu nombre',
+    'need_help' => '¿ Necesitás ayuda ?',
     'password' => 'Una Contraseña',
     'password_confirmation' => 'La misma contraseña',
     'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
-    'need_help' => '¿ Necesitás ayuda ?',
     'msg' => 
     array (
       'errors' => 'Errores',

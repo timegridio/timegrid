@@ -1,44 +1,36 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 16:10:47 
+ Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/index.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/app/Http/Controllers/Manager/BusinessController.php
   'businesses' => 
   array (
-    'contacts' => 
+    'msg' => 
     array (
-      'btn' => 
+      'create' => 
       array (
-        'import' => 'Importar contactos',
-        'create' => 'Agregar un contacto',
+        'success' => '¡Muy bien! Vamos a registrarte con el plan :plan',
       ),
-    ),
-    'dashboard' => 
-    array (
-      'panel' => 
+      'destroy' => 
       array (
-        'title_contacts_total' => 'Totales',
-        'title_appointments_active' => 'Activos',
-        'title_appointments_annulated' => 'Anulados',
-        'title_appointments_served' => 'Atendidos',
-        'title_appointments_today' => 'Hoy',
-        'title_appointments_tomorrow' => 'Mañana',
-        'title_appointments_total' => 'Total',
-        'title_contacts_active' => 'Suscriptos',
-        'title_contacts_registered' => 'Registrados',
+        'success' => 'Prestador removido',
       ),
-      'alert' => 
+      'preferences' => 
       array (
-        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
-        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
+        'success' => 'Actualizaste las preferencias Ok',
       ),
-      'meta' => 
+      'store' => 
       array (
-        'title_owner' => 'Propietario',
-        'title_registered_since' => 'Registrado desde',
+        'business_already_exists' => 'El prestador ya está registrado',
+        'restored_trashed' => 'Prestador restaurado',
+        'success' => 'Prestador registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Datos del prestador actualizados',
       ),
     ),
     'btn' => 
@@ -48,9 +40,42 @@ return array (
       'update' => 'Actualizar',
       'return' => 'Volver',
     ),
+    'contacts' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Agregar un contacto',
+        'import' => 'Importar contactos',
+      ),
+    ),
     'create' => 
     array (
       'title' => 'Registrar un prestador',
+    ),
+    'dashboard' => 
+    array (
+      'alert' => 
+      array (
+        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
+        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
+      ),
+      'panel' => 
+      array (
+        'title_appointments_active' => 'Activos',
+        'title_appointments_annulated' => 'Anulados',
+        'title_appointments_served' => 'Atendidos',
+        'title_appointments_today' => 'Hoy',
+        'title_appointments_tomorrow' => 'Mañana',
+        'title_appointments_total' => 'Total',
+        'title_contacts_active' => 'Suscriptos',
+        'title_contacts_registered' => 'Registrados',
+        'title_contacts_total' => 'Totales',
+      ),
+      'meta' => 
+      array (
+        'title_owner' => 'Propietario',
+        'title_registered_since' => 'Registrado desde',
+      ),
     ),
     'edit' => 
     array (
@@ -104,27 +129,6 @@ return array (
         'register' => 'Registrar un prestador',
       ),
     ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => 'Prestador removido',
-      ),
-      'preferences' => 
-      array (
-        'success' => 'Actualizaste las preferencias Ok',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'El prestador ya está registrado',
-        'restored_trashed' => 'Prestador restaurado',
-        'success' => 'Prestador registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Datos del prestador actualizados',
-      ),
-    ),
     'preferences' => 
     array (
       'title' => 'Preferencias del prestador',
@@ -141,29 +145,57 @@ return array (
       'title' => 'Prestador',
     ),
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/import.blade.php
+  //==================================== Translations ====================================//
+  'business' => 
+  array (
+    'alert' => 
+    array (
+      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
+    ),
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
+    ),
+  ),
   'contacts' => 
   array (
     'btn' => 
     array (
-      'import' => 'Importar Contactos',
       'confirm_delete' => '¿Seguro querés eliminar el contacto?',
       'delete' => 'Eliminar',
       'edit' => 'Editar',
+      'import' => 'Importar Contactos',
       'store' => 'Guardar',
       'update' => 'Actualizar',
     ),
+    'create' => 
+    array (
+      'title' => 'Contactos',
+    ),
     'form' => 
     array (
-      'data' => 
-      array (
-        'label' => 'datos en formato CSV',
-      ),
       'birthdate' => 
       array (
         'label' => 'Nacimiento',
         'placeholder' => 'fecha de nacimiento',
+      ),
+      'data' => 
+      array (
+        'label' => 'datos en formato CSV',
       ),
       'description' => 
       array (
@@ -220,30 +252,6 @@ return array (
     array (
       'title' => 'Importar contactos',
     ),
-    'msg' => 
-    array (
-      'import' => 
-      array (
-        'success' => ':count Contactos importados',
-      ),
-      'destroy' => 
-      array (
-        'success' => '¡Contacto eliminado!',
-      ),
-      'store' => 
-      array (
-        'success' => '¡Contacto registrado Ok!',
-        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Actualizado Ok',
-      ),
-    ),
-    'create' => 
-    array (
-      'title' => 'Contactos',
-    ),
     'label' => 
     array (
       'birthdate' => 'Nacimiento',
@@ -277,36 +285,27 @@ return array (
         'filter_no_results' => 'Nada por aquí',
       ),
     ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => '¡Contacto eliminado!',
+      ),
+      'import' => 
+      array (
+        'success' => ':count Contactos importados',
+      ),
+      'store' => 
+      array (
+        'success' => '¡Contacto registrado Ok!',
+        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Actualizado Ok',
+      ),
+    ),
     'title' => 'Mis Clientes',
-  ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/import.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/manager/contacts/import.blade.php
-  // Defined in file /home/alariva/xb3/xbooking/app/Http/Controllers/Manager/BusinessContactImportExportController.php
-  //==================================== Translations ====================================//
-  'business' => 
-  array (
-    'alert' => 
-    array (
-      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
-    ),
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
-          'success' => 'Servicio Actualizado!',
-        ),
-      ),
-    ),
-    'form' => 
-    array (
-      'strategy' => 
-      array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
-      ),
-    ),
   ),
   'service' => 
   array (

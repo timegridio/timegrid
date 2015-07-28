@@ -1,12 +1,30 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 16:10:47 
+ Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
 *************************************************************************/
 
 return array (
-  //==================================== Translations ====================================//
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/appointments/dateslot/widgets/table.blade.php
   'appointments' => 
   array (
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'remaining' => 'appointments.index.th.remaining',
+        'business' => 'Prestador',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'contact' => 'Cliente',
+        'duration' => 'Duración',
+        'finish_time' => 'Finaliza',
+        'service' => 'Servicio',
+        'start_time' => 'Comienza',
+        'status' => 'Estado',
+      ),
+      'title' => 'Turnos',
+    ),
     'btn' => 
     array (
       'book' => 'Reservar Turno',
@@ -60,23 +78,8 @@ return array (
         'label' => 'Contacto',
       ),
     ),
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'business' => 'Prestador',
-        'calendar' => 'Fecha',
-        'code' => 'Código',
-        'contact' => 'Cliente',
-        'duration' => 'Duración',
-        'finish_time' => 'Finaliza',
-        'service' => 'Servicio',
-        'start_time' => 'Comienza',
-        'status' => 'Estado',
-      ),
-      'title' => 'Turnos',
-    ),
   ),
+  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 

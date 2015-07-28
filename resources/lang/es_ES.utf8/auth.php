@@ -1,9 +1,28 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/25 16:10:47 
+ Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/create.blade.php
+  'register' => 
+  array (
+    'need_help' => 'register.need_help',
+    'btn' => 
+    array (
+      'submit' => 'Registrame',
+    ),
+    'email' => 'Tu Email',
+    'name' => 'Tu nombre',
+    'password' => 'Una Contraseña',
+    'password_confirmation' => 'La misma contraseña',
+    'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
+    'msg' => 
+    array (
+      'errors' => 'Errores',
+    ),
+  ),
   //==================================== Translations ====================================//
   'btn' => 
   array (
@@ -24,22 +43,6 @@ return array (
     'password' => 'Contraseña',
     'remember_me' => 'Recordarme',
     'title' => 'Inicio de Sesión',
-  ),
-  'register' => 
-  array (
-    'btn' => 
-    array (
-      'submit' => 'Registrame',
-    ),
-    'email' => 'Tu Email',
-    'name' => 'Tu nombre',
-    'password' => 'Una Contraseña',
-    'password_confirmation' => 'La misma contraseña',
-    'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
-    'msg' => 
-    array (
-      'errors' => 'Errores',
-    ),
   ),
   'reset' => 
   array (
