@@ -41,8 +41,11 @@ class SendBookingNotification
                    ->send();
 
         $locale = App::getLocale();
-        Mail::send("emails.{$locale}.appointments._new", ['user' => $event->user, 'appointment' => $event->appointment->getPresenter()], function ($m) use ($event) {
+        Mail::send("emails.{$locale}.appointments.user._new", ['user' => $event->user, 'appointment' => $event->appointment->getPresenter()], function ($m) use ($event) {
             $m->to($event->user->email, $event->user->name)->subject(trans('emails.appointment.reserved.subject'));
+        });
+        Mail::send("emails.{$locale}.appointments.manager._new", ['user' => $event->appointment->business->owner(), 'appointment' => $event->appointment->getPresenter()], function ($m) use ($event) {
+            $m->to($event->appointment->business->owner()->email, $event->appointment->business->owner()->name)->subject(trans('emails.appointment.manager.reserved.subject'));
         });
     }
 }
