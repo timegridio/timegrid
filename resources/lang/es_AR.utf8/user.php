@@ -102,6 +102,7 @@ return array (
     array (
       'please_select_a_business' => 'Seleccioná un prestador',
     ),
+    'suscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
   ),
   'businesses' => 
   array (
