@@ -55,14 +55,20 @@ class BookingController extends Controller
                 break;
         }
 
+        /**
+         * Widgets MUST be rendered before being returned on Response
+         * as they need to be interpreted as HTML
+         * 
+         */
+
         $appointmentPresenter = $appointment->getPresenter();
         switch ($widget) {
             case 'row':
-                $html = Widget::AppointmentsTableRow(['appointment' => $appointmentPresenter, 'user' => \Auth::user()]);
+                $html = Widget::AppointmentsTableRow(['appointment' => $appointmentPresenter, 'user' => \Auth::user()])->render();
                 break;
             case 'panel':
             default:
-                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]);
+                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()])->render();
                 break;
         }
 
