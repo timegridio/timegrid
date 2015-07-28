@@ -101,6 +101,34 @@ class Business extends Model
     }
 
     /**
+     * Get the real Users suscriptions count
+     * 
+     * @return Illuminate\Database\Query Relationship
+     */
+    public function suscriptionsCount()
+    {
+        return $this->belongsToMany('App\Contact')->selectRaw('id, count(*) as aggregate')->whereNotNull('user_id')->groupBy('business_id');
+    }
+
+    /**
+     * get SuscriptionsCount Attribute
+     *
+     * @return integer Count of Contacts with real User held by this Business
+     */
+    public function getSuscriptionsCountAttribute()
+    {
+        // if relation is not loaded already, let's do it first
+        if (! array_key_exists('suscriptionsCount', $this->relations)) {
+            $this->load('suscriptionsCount');
+        }
+
+        $related = $this->getRelation('suscriptionsCount');
+
+        // then return the count directly
+        return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
+    }
+
+    /**
      * TODO: Move to Presenter
      * 
      * get Google Static Map img
