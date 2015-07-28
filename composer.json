@@ -37,7 +37,7 @@
 		"phpunit/phpunit": "~4.0",
 		"phpspec/phpspec": "~2.1",
 		"laracasts/generators": "^1.1",
-		"alariva/tidiochat": "^1.0",
+		"alariva/tidiochat": "^1.1",
 		"potsky/laravel-localization-helpers" : "~1.1"
 	},
 	"autoload": {

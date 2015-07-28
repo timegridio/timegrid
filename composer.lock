@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "350da7f7be239ff1b40952616eb533be",
+    "hash": "73fac5544d048256a4774167f9fe1364",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -3519,16 +3519,16 @@
     "packages-dev": [
         {
             "name": "alariva/tidiochat",
-            "version": "1.1.0",
+            "version": "1.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/alariva/tidiochat-laravel-5-package.git",
-                "reference": "24b3230d4440d88bf9c719e9bdd1a499881aeda5"
+                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alariva/tidiochat-laravel-5-package/zipball/24b3230d4440d88bf9c719e9bdd1a499881aeda5",
-                "reference": "24b3230d4440d88bf9c719e9bdd1a499881aeda5",
+                "url": "https://api.github.com/repos/alariva/tidiochat-laravel-5-package/zipball/0f7a67353cada5e531ae8fbbd2ffee267337cb11",
+                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11",
                 "shasum": ""
             },
             "require": {
@@ -3557,7 +3557,7 @@
             ],
             "description": "A minimal package for integrating TidioChat.com to your webapp",
             "homepage": "http://xbooking.com.ar/",
-            "time": "2015-07-08 22:01:41"
+            "time": "2015-07-28 01:01:24"
         },
         {
             "name": "doctrine/instantiator",
