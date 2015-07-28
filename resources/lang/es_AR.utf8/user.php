@@ -1,30 +1,12 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
+ Generated via "php artisan localization:missing" at 2015/07/28 22:17:55 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/appointments/dateslot/widgets/table.blade.php
+  //==================================== Translations ====================================//
   'appointments' => 
   array (
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'remaining' => 'appointments.index.th.remaining',
-        'business' => 'Prestador',
-        'calendar' => 'Fecha',
-        'code' => 'Código',
-        'contact' => 'Cliente',
-        'duration' => 'Duración',
-        'finish_time' => 'Finaliza',
-        'service' => 'Servicio',
-        'start_time' => 'Comienza',
-        'status' => 'Estado',
-      ),
-      'title' => 'Turnos',
-    ),
     'btn' => 
     array (
       'book' => 'Reservar Turno',
@@ -78,8 +60,24 @@ return array (
         'label' => 'Contacto',
       ),
     ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'business' => 'Prestador',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'contact' => 'Cliente',
+        'duration' => 'Duración',
+        'finish_time' => 'Finaliza',
+        'remaining' => 'appointments.index.th.remaining',
+        'service' => 'Servicio',
+        'start_time' => 'Comienza',
+        'status' => 'Estado',
+      ),
+      'title' => 'Turnos',
+    ),
   ),
-  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 
@@ -98,11 +96,11 @@ return array (
     array (
       'suscribe' => 'Suscribir',
     ),
+    'suscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
     'msg' => 
     array (
       'please_select_a_business' => 'Seleccioná un prestador',
     ),
-    'suscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
   ),
   'businesses' => 
   array (
