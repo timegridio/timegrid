@@ -61,6 +61,18 @@ class AppointmentPanel extends Widget
         $body .= '<li class="list-group-item">';
         $body .= Icon::home(). '&nbsp;' . $appointment->business->name;
         $body .= '</li>';
+        if($appointment->business->postal_address)
+        {
+            $body .= '<li class="list-group-item">';
+            $body .= Icon::map_marker(). '&nbsp;' . $appointment->business->postal_address;
+            $body .= '</li>';
+        }
+        if($appointment->business->phone)
+        {
+            $body .= '<li class="list-group-item">';
+            $body .= Icon::phone(). '&nbsp;' . $appointment->business->phone;
+            $body .= '</li>';
+        }
         $body .= '<li class="list-group-item">';
         $body .= Icon::calendar() . '&nbsp;' . $appointment->date() . '&nbsp;&nbsp;' . '<span class="text-muted"><small>' . $appointment->start_at->diffForHumans() . '</small></span>';
         $body .= '</li>';
@@ -71,6 +83,12 @@ class AppointmentPanel extends Widget
         $body .= '<li class="list-group-item">';
         $body .= Icon::tag(). '&nbsp;' . $appointment->service->name;
         $body .= '</li>';
+        if($appointment->service->prerequisites)
+        {
+            $body .= '<li class="list-group-item">';
+            $body .= Icon::alert(). '&nbsp;' . $appointment->service->prerequisites;
+            $body .= '</li>';
+        }
         $body .= '</li>';
         
         $body .= '</ul>';
@@ -117,31 +135,31 @@ class AppointmentPanel extends Widget
     public function managerActionButtons($appointment)
     {
         $commonAttributes = $this->getBtnCommonAttributes($appointment);
-        $out = '<div class="btn-group">';
+        $out = '<span class="btn-group">';
         if ($appointment->isAnnulable()) {
-            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes)->block();
+            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
         }
         if ($appointment->isConfirmable() && $appointment->needConfirmationOf(Appointment::PROFILE_MANAGER)) {
-            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes)->block();
+            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
         }
         if ($appointment->isServeable()) {
-            $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['data-action' => 'serve'] + $commonAttributes)->block();
+            $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['data-action' => 'serve'] + $commonAttributes);
         }
-        $out .= '</div>';
+        $out .= '</span>';
         return $out;
     }
 
     public function userActionButtons($appointment)
     {
         $commonAttributes = $this->getBtnCommonAttributes($appointment);
-        $out = '<div class="btn-group">';
+        $out = '<span class="btn-group">';
         if ($appointment->isAnnulable()) {
-            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes)->block();
+            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
         }
         if ($appointment->isConfirmable() && $appointment->needConfirmationOf(Appointment::PROFILE_USER)) {
-            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes)->block();
+            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
         }
-        $out .= '</div>';
+        $out .= '</span>';
         return $out;
     }
 }
