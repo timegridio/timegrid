@@ -32,7 +32,7 @@ class Business extends Model
 
     /**
      * belongs to Category
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business Category query
      */
     public function category()
@@ -42,7 +42,7 @@ class Business extends Model
 
     /**
      * holds Contacts
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business held Contacts query
      */
     public function contacts()
@@ -52,7 +52,7 @@ class Business extends Model
 
     /**
      * provides Services
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business provided Services query
      */
     public function services()
@@ -62,7 +62,7 @@ class Business extends Model
 
     /**
      * publishes Vacancies
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business published Vacancies query
      */
     public function vacancies()
@@ -72,7 +72,7 @@ class Business extends Model
 
     /**
      * holds Appointments booking
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business holds Appointments query
      */
     public function bookings()
@@ -82,7 +82,7 @@ class Business extends Model
 
     /**
      * belongs to Users
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business belongs to User (owners) query
      */
     public function owners()
@@ -92,7 +92,7 @@ class Business extends Model
 
     /**
      * belongs to User
-     * 
+     *
      * @return App\User Relationship Business belongs to User (owner)
      */
     public function owner()
@@ -102,7 +102,7 @@ class Business extends Model
 
     /**
      * Get the real Users suscriptions count
-     * 
+     *
      * @return Illuminate\Database\Query Relationship
      */
     public function suscriptionsCount()
@@ -156,9 +156,9 @@ class Business extends Model
 
     /**
      * TODO: Move to Presenter
-     * 
+     *
      * get Google Static Map img
-     * 
+     *
      * @param  integer $zoom Zoom Level
      * @return string        HTML code to render img with map
      */
@@ -178,9 +178,9 @@ class Business extends Model
 
     /**
      * TODO: Move to Presenter
-     * 
+     *
      * get Facebook Profile Public Picture
-     * 
+     *
      * @param  string $type Type of picture to print
      * @return string       HTML code to render img with facebook picture
      */
