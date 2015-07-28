@@ -128,6 +128,32 @@ class Business extends Model
         return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
     }
 
+    //////////////
+    // Mutators //
+    //////////////
+
+    /**
+     * set Phone
+     *
+     * Expected phone number is international format numeric only
+     *
+     * @param string $phone Phone number
+     */
+    public function setPhoneAttribute($phone)
+    {
+        $this->attributes['phone'] = trim($phone) ?: null;
+    }
+
+    /**
+     * set Postal Address
+     *
+     * @param string $postal_address Postal address
+     */
+    public function setPostalAddressAttribute($postal_address)
+    {
+        $this->attributes['postal_address'] = trim($postal_address) ?: null;
+    }
+
     /**
      * TODO: Move to Presenter
      * 
