@@ -131,7 +131,7 @@ class BusinessController extends Controller
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
         $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
         $category = $business->category_id;
-        Log::info("Manager\BusinessController: edit: businessId:{$business->id} location:$location timezone:$timezone category:$category");
+        Log::info("Manager\BusinessController: edit: businessId:{$business->id} timezone:$timezone category:$category location:".serialize($location));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
