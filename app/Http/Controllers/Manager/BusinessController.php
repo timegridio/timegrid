@@ -46,7 +46,7 @@ class BusinessController extends Controller
         Log::info('Manager\BusinessController: create');
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
-        Log::info("Manager\BusinessController: create: location:$location timezone:$timezone");
+        Log::info("Manager\BusinessController: create: timezone:$timezone location:".serialize($location));
 
         $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
         return view('manager.businesses.create', compact('timezone', 'categories'));
