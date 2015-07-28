@@ -28,6 +28,16 @@ body{
   font-size: 2em;
   border-top: 0;
 }
+.flat .plan li.plan-hint {
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  border-top: 0;
+  color: #9a9a9a;
+  background-color: #fafafa;
+  border: 0;
+  border-top: 1px dashed #9a9a9a;
+  border-bottom: 1px dashed #9a9a9a;
+}
 .flat .plan li.plan-name {
   font-family: 'Lato', sans-serif;
   border-radius: 6px 6px 0 0;
@@ -83,25 +93,28 @@ body{
             <div class="col-lg-4 col-md-4 col-xs-6">
                 <ul class="plan plan1 featured" id="plan1">
                     <li class="plan-name">
-                        Individual
+                        {{trans('pricing.plan.free.name')}}
+                    </li>
+                    <li class="plan-hint">
+                        {{trans('pricing.plan.free.hint')}}
                     </li>
                     <li class="plan-price">
-                        <big><span class="label label-success"><strong>GRATIS</strong></span></big>
+                        <big><span class="label label-success"><strong>{{trans('pricing.free')}}</strong></span></big>
                     </li>
                     <li id="p1_contacts">
-                        <strong>200</strong> contactos en agenda
+                        <strong>200</strong> {{trans('pricing.plan.feature.contacts')}}
                     </li>
                     <li id="p1_services">
-                        <strong>3</strong> servicios registrables
+                        <strong>3</strong> {{trans('pricing.plan.feature.services')}}
                     </li>
                     <li id="p1_appointments">
-                        <strong>ilimitados</strong> turnos por mes
+                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.appointments')}}
                     </li>
                     <li id="p1_alerts_email">
-                        <strong>ilimitadas</strong> alertas por email
+                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.create') }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;Empezar</a>
+                        <a href="{{ route('manager.business.create', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;Empezar</a>
                     </li>
                 </ul>
             </div>
@@ -109,28 +122,32 @@ body{
             <div class="col-lg-4 col-md-4 col-xs-6">
                 <ul class="plan plan2" id="plan2">
                     <li class="plan-name">
-                        Corporativo
+                        {{trans('pricing.plan.starter.name')}}
+                    </li>
+                    <li class="plan-hint">
+                        {{trans('pricing.plan.starter.hint')}}
                     </li>
                     <li class="plan-price">
-                        <strong>&euro; 10</strong> / mes
+                        {{-- Important to use unescaped for currency as might have html entities --}}
+                        <strong>{!! trans('pricing.currency') !!} 10</strong> / {{trans('pricing.month')}}
                     </li>
                     <li>
-                        <strong>2000</strong> contactos en agenda
+                        <strong>2000</strong> {{trans('pricing.plan.feature.contacts')}}
                     </li>
                     <li>
-                        <strong>ilimitados</strong> servicios registrables
+                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.services')}}
                     </li>
                     <li>
-                        <strong>ilimitados</strong> turnos por mes
+                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.appointments')}}
                     </li>
                     <li>
-                        <strong>ilimitadas</strong> alertas por email
+                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
                     </li>
                     <li>
-                        <strong>reportes</strong> gráficos
+                        {!! Icon::signal() !!}&nbsp;&nbsp;{{trans('pricing.plan.feature.reports')}}
                     </li>
                     <li class="plan-action">
-                     <a href="{{ route('manager.business.create') }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;Contratar</a>
+                     <a href="{{ route('manager.business.create', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{trans('pricing.plan.starter.submit')}}</a>
                  </li>
                 </ul>
             </div>
