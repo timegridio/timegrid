@@ -14,7 +14,7 @@
         @import url(http://fonts.googleapis.com/css?family=Arvo);
         h1 {font-family: 'Montserrat', sans-serif;}
         .jumbotron {
-            color:#fff; 
+            color:#fff;
             background-color: #367FA9;
         }
         img {
@@ -32,6 +32,13 @@
             -o-filter:      grayscale(0%);
         }
         #inspire {font-family: 'Arvo', serif;}
+        .panel{
+            -o-transition:color .2s ease-out, background 1s ease-in;
+            -ms-transition:color .2s ease-out, background 1s ease-in;
+            -moz-transition:color .2s ease-out, background 1s ease-in;
+            -webkit-transition:color .2s ease-out, background 1s ease-in;
+            transition:color .2s ease-out, background 1s ease-in;
+        }
         #optimize:hover{background-color: #FFD8CC;}
         #contact:hover{background-color: #FFF0CC;}
         #do:hover{background-color: #E4FFCC;}
@@ -63,7 +70,7 @@
         <div class="row">
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail" id="optimize">
+                <div class="thumbnail panel" id="optimize">
                     <img src="{{asset('img/jumbo/optimize.png')}}" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.1.title')}}</h3>
@@ -77,7 +84,7 @@
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail" id="contact">
+                <div class="thumbnail panel" id="contact">
                     <img src="{{asset('img/jumbo/contact.png')}}" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.2.title')}}</h3>
@@ -91,7 +98,7 @@
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail" id="do">
+                <div class="thumbnail panel" id="do">
                     <img src="{{asset('img/jumbo/do.png')}}" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.3.title')}}</h3>
@@ -105,7 +112,7 @@
             </div>
 
             <div class="col-md-3 col-sm-6 hero-feature">
-                <div class="thumbnail" id="love">
+                <div class="thumbnail panel" id="love">
                     <img src="{{asset('img/jumbo/love.png')}}" alt="">
                     <div class="caption">
                         <h3>{{trans('welcome.feature.4.title')}}</h3>
