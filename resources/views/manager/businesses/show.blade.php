@@ -19,12 +19,16 @@
     <div class="panel panel-default" id="dashboard">
         <div class="panel-heading">
           <span class="btn-group"> 
-            {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences'])->asLinkTo( route('manager.business.preferences', $business) ) !!}
-            {!! Button::withIcon(Icon::edit())->primary()->withAttributes(['id' => 'btnEdit'])->asLinkTo( route('manager.business.edit', $business) ) !!}
-            {!! Button::withIcon(Icon::tag())->normal()->withAttributes(['id' => 'btnServices'])->asLinkTo( route('manager.business.service.index', $business) ) !!}
-            {!! Button::withIcon(Icon::time())->normal()->withAttributes(['id' => 'btnVacancies'])->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
-            {!! Button::withIcon(Icon::calendar())->withAttributes(['id' => 'btnAgenda'])->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
-            {!! Button::withIcon(Icon::user())->withAttributes(['id' => 'btnContacts'])->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
+            {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences', 'title' => trans('manager.business.btn.tooltip.preferences')])->asLinkTo( route('manager.business.preferences', $business) ) !!}
+            {!! Button::withIcon(Icon::edit())->primary()->withAttributes(['id' => 'btnEdit', 'title' => trans('manager.business.btn.tooltip.edit')])->asLinkTo( route('manager.business.edit', $business) ) !!}
+          </span>
+          <span class="btn-group"> 
+            {!! Button::withIcon(Icon::tag())->normal()->withAttributes(['id' => 'btnServices', 'title' => trans('manager.business.btn.tooltip.services')])->asLinkTo( route('manager.business.service.index', $business) ) !!}
+            {!! Button::withIcon(Icon::time())->normal()->withAttributes(['id' => 'btnVacancies', 'title' => trans('manager.business.btn.tooltip.vacancies')])->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
+            {!! Button::withIcon(Icon::calendar())->withAttributes(['id' => 'btnAgenda', 'title' => trans('manager.business.btn.tooltip.agenda')])->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
+          </span>
+          <span class="btn-group"> 
+            {!! Button::withIcon(Icon::user())->withAttributes(['id' => 'btnContacts', 'title' => trans('manager.business.btn.tooltip.contacts')])->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
           </span>
         </div>
 
@@ -131,13 +135,31 @@
 <script type="text/javascript">
 (function() {
 
+@if ($business->vacancies()->future()->count() == 0)
+    $('#btnVacancies').tooltipster({
+          animation: 'fade',
+          delay: 200,
+          theme: 'tooltipster-timegrid',
+          touchDevices: true,
+          content: $('<strong>{!! trans('manager.business.hint.out_of_vacancies') !!}</strong>')
+    }).tooltipster('show');
+@endif
+
  // Instance the tour
 var tourDashboard = new Tour({
   duration: 10000,
   delay: 100,
   template: "@include('tour._template')",
   onEnd: function(tourDashboard){
-    $('#btnServices').addClass('blink').addClass('btn-success');
+
+    $('#btnVacancies').tooltipster({
+          animation: 'fade',
+          delay: 200,
+          theme: 'tooltipster-timegrid',
+          touchDevices: true,
+          content: $('<strong>{!! trans('manager.business.hint.set_services') !!}</strong>')
+    }).tooltipster('show');
+
   },
   steps: [
   {

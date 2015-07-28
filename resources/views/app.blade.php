@@ -10,6 +10,9 @@
     <!-- Latest compiled and minified CSS -->
 <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tooltipster/themes/tooltipster-timegrid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tooltipster/tooltipster.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     @yield('css')
@@ -86,7 +89,13 @@
     <!-- Latest compiled and minified JavaScript -->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
+        });
+    </script>
     @yield('footer_scripts')
 </body>
 </html>
