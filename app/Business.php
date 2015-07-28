@@ -17,7 +17,7 @@ class Business extends Model
      *
      * @var array
      */
-    protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy'];
+    protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy', 'plan'];
 
     /**
      * The attributes that should be mutated to dates.
