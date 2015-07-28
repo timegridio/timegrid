@@ -25,15 +25,15 @@
 <pre>
 ----------------------------------------------
 Prestador: {{ $appointment->business->name }}
-Cuándo:    {{ $appointment->start_at->timezone($appointment->tz) }}
-Código:    {{ $appointment->code }}
+   Cuándo: {{ $appointment->start_at->timezone($appointment->tz) }}
+   Código: {{ $appointment->code() }}
 @if($appointment->business->pref('show_postal_address'))
-  Dónde:   {{ $appointment->business->postal_address }}
+    Dónde: {{ $appointment->business->postal_address }}
 @endif
 @if($appointment->business->pref('show_phone'))
-    Tel:   {{ $appointment->business->phone }}
+      Tel: {{ $appointment->business->phone }}
 @endif
-Servicio:  {{ $appointment->service->name }}
+ Servicio: {{ $appointment->service->name }}
 @if($appointment->service->prerequisites)
 Importante:
 {{ $appointment->service->prerequisites }}
