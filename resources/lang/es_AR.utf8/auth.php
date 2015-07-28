@@ -36,6 +36,7 @@ return array (
     'password' => 'Una Contraseña',
     'password_confirmation' => 'La misma contraseña',
     'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
+    'need_help' => '¿ Necesitás ayuda ?',
     'msg' => 
     array (
       'errors' => 'Errores',
