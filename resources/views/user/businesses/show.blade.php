@@ -3,23 +3,46 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 col-md-offset-0">
             <div class="panel panel-default">
 
                 <div class="panel-heading">
                     @if(\Auth::user()->isOwner($business))
-                        <h1>{!! Icon::star() !!} {!! link_to(route('manager.business.show', $business), $business->name) !!}</h1>
+                        {!! Icon::star() !!} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
-                        <h1>{{ $business->name }}</h1>
+                        {{ $business->name }}
                     @endif
                 </div>
 
                     <ul class="list-group">
+
+                        <li class="list-group-item">
+                            {{ trans_choice('user.business.suscriptions_count', $business->suscriptionsCount) }}
+                        </li>
+
+                        <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        {!! Icon::globe() !!}&nbsp;{{ $business->timezone }}
+                                    </div>
+                                    <div class="col-md-4">
+                                    @if ($business->pref('show_phone') && $business->phone)
+                                        {!! Icon::phone() !!}&nbsp;{{ $business->phone }}
+                                    @endif
+                                    </div>
+                                    <div class="col-md-4">
+                                    @if ($business->pref('show_postal_address') && $business->postal_address)
+                                        {!! Icon::home() !!}&nbsp;{{ $business->postal_address }}
+                                    @endif
+                                    </div>
+                                </div>
+                        </li>
+
                         <li class="list-group-item">
                         
                         <div class="row">
 
-                            <div class="col-md-7">
+                            <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
                                     <a href="#">{!! $business->facebookPicture('normal') !!}</a>
@@ -34,35 +57,16 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5">
-                            <div class="col-md-12">
-                                <div class="row hidden-xs">
-                                    <blockquote>{!! Icon::globe() !!}&nbsp;{{ $business->timezone }}</blockquote>
-                                </div>
-                                @if ($business->pref('show_phone'))
-                                <div class="row">
-                                    <blockquote>{!! Icon::phone() !!}&nbsp;{{ $business->phone }}</blockquote>
-                                </div>
-                                @endif
-                                @if ($business->pref('show_map'))
-                                <div class="row">
+                            @if ($business->pref('show_map'))
+                            <div class="row">
+                                <div class="col-md-12 text-center">
                                     {!! $business->staticMap(11) !!}
                                 </div>
-                                @endif
-                                @if ($business->pref('show_postal_address'))
-                                <div class="row">
-                                    <blockquote>{!! Icon::home() !!}&nbsp;{{ $business->postal_address }}</blockquote>
-                                </div>
-                                @endif
                             </div>
-                            </div>
+                            @endif
 
                         </div>
-                        
-                        </li>
 
-                        <li class="list-group-item">
-                            {{ trans_choice('user.business.suscriptions_count', $business->suscriptionsCount) }}
                         </li>
 
                         @if (!($appointment and $appointment->isActive()))
