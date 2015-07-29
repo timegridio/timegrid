@@ -8,7 +8,7 @@ return array (
   // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
   'links' => 
   array (
-    'manual' => 'http://doc.es.timegrid.io/',
+    'manual' => 'http://docs.timegrid.io/es/',
   ),
   // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
   'nav' => 
