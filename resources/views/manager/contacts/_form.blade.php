@@ -46,8 +46,7 @@
     </div>
     <div class="row">
         <div class="form-group col-xs-4">
-        {{-- Location::get()->countryCode ---}}
-            {!! Form::select('mobile_country', Location::lists(), isset($contact) ? old('mobile_country', $contact->mobile_country ) : 'es', ['class'=>'selectpicker'] ) !!}
+            {!! Form::select('mobile_country', Location::lists(), isset($contact) ? old('mobile_country', $contact->mobile_country ) : Location::get()->countryCode, ['class'=>'selectpicker'] ) !!}
         </div>
         <div class="form-group col-xs-8">
             {!! Form::text('mobile', null, 
