@@ -2,13 +2,13 @@
     "folders":
     [
         {
-            "path": "app",
+            "path": ".",
             "name": "Application",
             "follow_symlinks": true,
             "file_exclude_patterns": ["*.png", "artisan", "*.gif", "*.jpg"]
         },
         {
-            "path": "doc",
+            "path": "../doc",
             "name": "Documentation"
         }
     ],
@@ -20,7 +20,7 @@
     [
         {
             "name": "List",
-            "shell_cmd": "ls -l"
+            "shell_cmd": "ls -la"
         },
         {
             "name": "Push",
