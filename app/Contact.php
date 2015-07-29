@@ -221,7 +221,7 @@ class Contact extends Model
      */
     public function setBirthdateAttribute($birthdate)
     {
-        $this->attributes['birthdate'] = trim($birthdate) ? Carbon::parse($birthdate) : null;
+        $this->attributes['birthdate'] = trim($birthdate) ? Carbon::createFromFormat(trans('app.dateformat.carbon'), $birthdate) : null;
     }
 
     /**
