@@ -67,6 +67,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(Auth::user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ Auth::user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/auth/logout') }}">{{ trans('app.nav.logout') }}</a></li>
+                                <li><a href="{!! trans('app.links.manual') !!}">{{ trans('app.nav.manual') }}</a></li>
                             </ul>
                         </li>
                     @endif
