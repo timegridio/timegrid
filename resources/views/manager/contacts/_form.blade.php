@@ -55,9 +55,10 @@
         </div>
     </div>
     <div class="row">
-        <div class="form-group col-xs-10">
+        <div class="form-group col-xs-12">
             {!! Form::textarea('notes', isset($contact) ? $contact->business($business)->pivot->notes : null, 
-                array('class'=>'form-control', 
+                array('class'=>'form-control',
+                      'rows'=>'4',
                       'placeholder'=> trans('manager.contacts.form.notes.label') )) !!}
         </div>
     </div>
@@ -86,10 +87,10 @@
     });
 
       $("#birthdate").datetimepicker( { viewMode: 'years', locale: '{{Session::get('language')}}', format: '{!! trans('app.dateformat.datetimepicker') !!}' } );
-      $('option[value="M"]').data("icon", "ion-male");
-      $('option[value="F"]').data("icon", "ion-female");
       $('selectpicker').addClass('dropupAuto');
       $('selectpicker').selectpicker();
+      /* $('option[value="M"]').data("icon", "ion-male"); */
+      /* $('option[value="F"]').data("icon", "ion-female"); */
     });
     </script>
 @endsection
