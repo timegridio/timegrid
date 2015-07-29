@@ -1,21 +1,19 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/28 22:17:55 
+ Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
 *************************************************************************/
 
 return array (
-  //==================================== Translations ====================================//
-  'btn' => 
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
+  'links' => 
   array (
-    'update' => 'Actualizar',
+    'manual' => 'http://doc.es.timegrid.io/',
   ),
-  'label' => 
-  array (
-    'select_timezone' => 'Zona horaria',
-  ),
-  'name' => 'timegrid.io',
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
   'nav' => 
   array (
+    'manual' => 'Manual de usuario',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
     'manager' => 
@@ -42,6 +40,16 @@ return array (
     'wizard' => 'Asistente',
     'home' => 'Inicio',
   ),
+  //==================================== Translations ====================================//
+  'btn' => 
+  array (
+    'update' => 'Actualizar',
+  ),
+  'label' => 
+  array (
+    'select_timezone' => 'Zona horaria',
+  ),
+  'name' => 'timegrid.io',
   'notifications' => 
   array (
     'title' => 'Recientemente',

@@ -1,38 +1,63 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/28 01:49:10 
+ Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/app/Http/Controllers/Manager/BusinessController.php
-  'businesses' => 
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  'business' => 
   array (
-    'msg' => 
+    'alert' => 
     array (
-      'create' => 
+      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
+    ),
+    'btn' => 
+    array (
+      'tooltip' => 
       array (
-        'success' => '¡Olé! Vamos a registrarte con el plan :plan',
-      ),
-      'destroy' => 
-      array (
-        'success' => 'Prestador removido',
-      ),
-      'preferences' => 
-      array (
-        'success' => 'Actualizaste las preferencias Ok',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'El prestador ya está registrado',
-        'restored_trashed' => 'Prestador restaurado',
-        'success' => 'Prestador registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Datos del prestador actualizados',
+        'agenda' => 'Agenda de Turnos',
+        'contacts' => 'Lista de Contactos',
+        'edit' => 'Editar datos del Prestador',
+        'preferences' => 'Cambiar Preferencias',
+        'services' => 'Gestionar Servicios',
+        'vacancies' => 'Publicar Disponibilidad',
       ),
     ),
+    'hint' => 
+    array (
+      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
+      'set_services' => 'Agregá los servicios que brindás',
+    ),
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
+    ),
+  ),
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  //==================================== Translations ====================================//
+  'businesses' => 
+  array (
     'btn' => 
     array (
       'deactivate' => 'Desactivar este prestador',
@@ -129,6 +154,31 @@ return array (
         'register' => 'Registrar un prestador',
       ),
     ),
+    'msg' => 
+    array (
+      'create' => 
+      array (
+        'success' => '¡Olé! Vamos a registrarte con el plan :plan',
+      ),
+      'destroy' => 
+      array (
+        'success' => 'Prestador removido',
+      ),
+      'preferences' => 
+      array (
+        'success' => 'Actualizaste las preferencias Ok',
+      ),
+      'store' => 
+      array (
+        'business_already_exists' => 'El prestador ya está registrado',
+        'restored_trashed' => 'Prestador restaurado',
+        'success' => 'Prestador registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Datos del prestador actualizados',
+      ),
+    ),
     'preferences' => 
     array (
       'title' => 'Preferencias del prestador',
@@ -143,32 +193,6 @@ return array (
     'show' => 
     array (
       'title' => 'Prestador',
-    ),
-  ),
-  //==================================== Translations ====================================//
-  'business' => 
-  array (
-    'alert' => 
-    array (
-      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
-    ),
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
-          'success' => 'Servicio Actualizado!',
-        ),
-      ),
-    ),
-    'form' => 
-    array (
-      'strategy' => 
-      array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
-      ),
     ),
   ),
   'contacts' => 

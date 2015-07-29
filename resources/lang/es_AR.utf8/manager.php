@@ -1,18 +1,12 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/28 22:17:55 
+ Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
+  //==================================== Translations ====================================//
   'business' => 
   array (
-    'hint' => 
-    array (
-      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
-      'set_services' => 'Agregá los servicios que brindás',
-    ),
     'alert' => 
     array (
       'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
@@ -28,6 +22,11 @@ return array (
         'services' => 'Gestionar Servicios',
         'vacancies' => 'Publicar Disponibilidad',
       ),
+    ),
+    'hint' => 
+    array (
+      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
+      'set_services' => 'Agregá los servicios que brindás',
     ),
     'service' => 
     array (
@@ -48,8 +47,6 @@ return array (
       ),
     ),
   ),
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  //==================================== Translations ====================================//
   'businesses' => 
   array (
     'btn' => 
