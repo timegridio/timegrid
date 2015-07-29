@@ -1,0 +1,34 @@
+{
+    "folders":
+    [
+        {
+            "path": "app",
+            "name": "Application",
+            "follow_symlinks": true,
+            "file_exclude_patterns": ["*.png", "artisan", "*.gif", "*.jpg"]
+        },
+        {
+            "path": "doc",
+            "name": "Documentation"
+        }
+    ],
+    "settings":
+    {
+        "tab_size": 4
+    },
+    "build_systems":
+    [
+        {
+            "name": "List",
+            "shell_cmd": "ls -l"
+        },
+        {
+            "name": "Push",
+            "shell_cmd": "git push"
+        },
+        {
+            "name": "gitg",
+            "shell_cmd": "gitg"
+        }
+    ]
+}
