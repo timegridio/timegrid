@@ -6,11 +6,8 @@
 return array (
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'links' => 
-  array (
-    'manual' => 'http://docs.timegrid.io/es/',
-  ),
   // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
+  'dateformat' => ['carbon' => 'd/m/Y', 'datetimepicker' => 'DD/MM/YYYY'],
   'nav' => 
   array (
     'manual' => 'Manual de usuario',
