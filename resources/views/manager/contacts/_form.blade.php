@@ -78,10 +78,10 @@
     $(document).ready(function(){ 
 
     $('input#firstname').focusout(function(){
-      $(this).genderApi({key: 'lHwtKcppJnkxVaKxUd'}).on('gender-found', function(e, result) {
-            if (result.accuracy >= 60) {
-                if (result.gender == 'female') { $('gender').value('F'); };
-                console.log('Gender found: ' + result.gender);
+      $(this).genderApi({key: '{{ env('GENDERAPI_KEY') }}'}).on('gender-found', function(e, result) {
+            if (result.accuracy >= 55) {
+                if (result.gender == 'female') {  $('#gender').selectpicker('val', 'F'); };
+                console.log('Gender found: ' + result.gender + ' Accuracy:' + result.accuracy + ' Duration:' + result.duration);
             }
         });
     });
