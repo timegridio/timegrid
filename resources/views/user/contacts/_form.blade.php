@@ -2,6 +2,7 @@
 <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}">
 @endsection
 
     <div class="row">
@@ -35,7 +36,7 @@
             {!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
         </div>
         <div class="form-group col-xs-8">
-            {!! Form::date('birthdate', isset($contact) ? old('birthdate', $contact->birthdate ? $contact->birthdate->toDateString() : null) : null, 
+            {!! Form::text('birthdate', isset($contact) ? old('birthdate', $contact->birthdate ? $contact->birthdate->toDateString() : null) : null, 
                 array('class'=>'form-control',
                       'id'=>'birthdate',
                       'placeholder'=> trans('manager.contacts.form.birthdate.label'),
@@ -67,10 +68,11 @@
 
 @section('footer_scripts')
     <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
 
     <script>
     $(document).ready(function(){ 
-      $("#birthdate").datepicker( { dateFormat: 'yy-mm-dd'} );
+      $("#birthdate").datetimepicker( { viewMode: 'years', locale: '{{Session::get('language')}}', format: '{!! trans('app.dateformat.datetimepicker') !!}' } );
       $('option[value="M"]').data("icon", "ion-male");
       $('option[value="F"]').data("icon", "ion-female");
       $('selectpicker').addClass('dropupAuto');
