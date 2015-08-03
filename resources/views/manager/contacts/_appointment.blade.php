@@ -1,3 +1,3 @@
 @foreach ($appointments as $appointment)
-    {!! $appointment->widget()->panel() !!}
+    {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
 @endforeach
