@@ -3,11 +3,11 @@
 namespace App;
 
 use App\Presenters\BusinessPresenter;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Fenos\Notifynder\Notifable;
 
-class Business extends Model
+class Business extends EloquentModel
 {
     use SoftDeletes;
     use Notifable;
