@@ -58,6 +58,7 @@ return array (
     'category' => 
     array (
       'garage' => 'Taller Mecánico',
+      'doctor' => 'Médico',
     ),
   ),
   'filter' => 'Filtrar',
