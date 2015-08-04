@@ -2,8 +2,6 @@
 
 namespace App;
 
-#use Illuminate\Database\Eloquent\Model;
-
 class Preference extends Model
 {
     protected $fillable = ['key', 'value', 'type'];
@@ -38,7 +36,7 @@ class Preference extends Model
 
     public function scopeForKey($query, $key)
     {
-        return $query->where('key', $key)->remember(120);
+        return $query->where('key', $key)->remember(1);
     }
 
     public function value()
