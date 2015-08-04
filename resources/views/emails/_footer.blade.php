@@ -1,8 +1,8 @@
-  <br><br>
-  {{ trans('app.name') }}
-  <br><br>
+<br>
 
-  <span class="ios-footer"></span>
-  <a href="http://www.timegrid.io" style="color:#aaaaaa">timegrid.io</a><br>
-
+<span class="ios-footer">
+  Enviado con &hearts; desde <a href="http://www.timegrid.io" style="color:#aaaaaa">{{ trans('app.name') }}</a>
   <br>
+</span>
+
+<br><br>

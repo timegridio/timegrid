@@ -12,7 +12,7 @@
       <table border="0" width="600" cellpadding="0" cellspacing="0" class="container" style="width:600px;max-width:600px">
         <tr>
           <td class="container-padding header" align="left" style="font-family:Helvetica, Arial, sans-serif;font-size:24px;font-weight:bold;padding-bottom:12px;color:#DF4726;padding-left:24px;padding-right:24px">
-            {{trans('app.name')}}
+            {{ $appointment->business->name }}&nbsp;<small style="color:#969696"> vía {{trans('app.name')}}</small>
           </td>
         </tr>
         <tr>
@@ -22,26 +22,28 @@
 <div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, aquí los datos de tu reserva:</div>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
+
 <pre>
-----------------------------------------------
 Prestador: {{ $appointment->business->name }}
    Cuándo: {{ $appointment->start_at->timezone($appointment->tz) }}
    Código: {{ $appointment->code() }}
-@if($appointment->business->pref('show_postal_address'))
+@if($appointment->business->postal_address && $appointment->business->pref('show_postal_address'))
     Dónde: {{ $appointment->business->postal_address }}
 @endif
-@if($appointment->business->pref('show_phone'))
+@if($appointment->business->phone && $appointment->business->pref('show_phone'))
       Tel: {{ $appointment->business->phone }}
 @endif
  Servicio: {{ $appointment->service->name }}
+
 @if($appointment->service->prerequisites)
 Importante:
 {{ $appointment->service->prerequisites }}
 @endif
+
 @if ($appointment->comments)
-Notas Para el Prestador: {{ $appointment->comments }}
+Notas Para el Prestador:
+{{ $appointment->comments }}
 @endif
-----------------------------------------------
 </pre>
 <br>
 </div>
