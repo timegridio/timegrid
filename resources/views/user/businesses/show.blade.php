@@ -21,6 +21,10 @@
                         </li>
 
                         <li class="list-group-item">
+                            {!! $business->getPresenter()->getIndustryIcon() !!}
+                        </li>
+
+                        <li class="list-group-item">
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="media">
