@@ -59,6 +59,7 @@ return array (
     array (
       'garage' => 'Taller Mecánico',
       'doctor' => 'Médico',
+      'photography' => 'Fotografía',
     ),
   ),
   'filter' => 'Filtrar',
