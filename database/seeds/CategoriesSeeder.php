@@ -14,5 +14,6 @@ class CategoriesSeeder extends Seeder
     {
         Category::updateOrCreate(['slug' => 'garage'], ['strategy' => 'dateslot', 'name' => 'Garage',  'description' => 'Vehicle repair and services']);
         Category::updateOrCreate(['slug' => 'doctor'], ['strategy' => 'dateslot', 'name' => 'Doctor',  'description' => 'Clinical Doctor']);
+        Category::updateOrCreate(['slug' => 'photography'], ['strategy' => 'dateslot', 'name' => 'Photographer',  'description' => 'Photographer']);
     }
 }
