@@ -119,6 +119,6 @@ return [
 	|
 	*/
 
-	'pretend' => env('APP_ENV', 'local') == 'local',
+	'pretend' => env('MAIL_PRETEND', true),
 
 ];
