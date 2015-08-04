@@ -13,5 +13,6 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         Category::updateOrCreate(['slug' => 'garage'], ['strategy' => 'dateslot', 'name' => 'Garage',  'description' => 'Vehicle repair and services']);
+        Category::updateOrCreate(['slug' => 'doctor'], ['strategy' => 'dateslot', 'name' => 'Doctor',  'description' => 'Clinical Doctor']);
     }
 }
