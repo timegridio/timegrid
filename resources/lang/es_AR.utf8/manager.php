@@ -115,9 +115,9 @@ return array (
       ),
       'phone' => 
       array (
-        'label' => 'Teléfono de Contacto',
-        'placeholder' => 'teléfono en formato internacional',
-        'hint' => 'ej: 00pp9aaxxxxxxxx',
+        'label' => 'Móvil',
+        'placeholder' => 'tu móvil de contacto',
+        'hint' => 'sin espacios ni guiones',
       ),
       'postal_address' => 
       array (
