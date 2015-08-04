@@ -31,11 +31,11 @@ class ContactFormRequest extends Request
      */
     public function rules()
     {
-        $rules = [    'firstname' => 'required|min:3',
+        $rules = [  'firstname' => 'required|min:3',
                     'lastname' => 'required|min:3',
                     'gender' => 'required|max:1',
-                    'mobile' => 'phone',
-                    'mobile_country' => 'required_with:mobile|size:2' /* FIXME: LENGHT MUST BE EXACT 2 */
+                    #'mobile' => 'phone',
+                    #'mobile_country' => 'required_with:mobile|size:2' /* FIXME: LENGHT MUST BE EXACT 2 */
                 ];
 
         switch ($this->method()) {

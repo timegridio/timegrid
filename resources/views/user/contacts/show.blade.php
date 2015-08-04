@@ -79,7 +79,7 @@
                                         @if ($contact->mobile)
                                         <tr>
                                                 <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.mobile') }}</label></td>
-                                                <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
+                                                <td>{{ (trim($contact->mobile) != '') ? $contact->mobile : '' }}</td>
                                         </tr>
                                         @endif
                                         <tr>
