@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Presenters\BusinessPresenter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Fenos\Notifynder\Notifable;
@@ -128,6 +129,20 @@ class Business extends Model
         return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
     }
 
+    ///////////////
+    // Presenter //
+    ///////////////
+
+    /**
+     * Return a created presenter.
+     *
+     * @return Robbo\Presenter\Presenter
+     */
+    public function getPresenter()
+    {
+        return new BusinessPresenter($this);
+    }
+
     //////////////
     // Mutators //
     //////////////
@@ -155,38 +170,12 @@ class Business extends Model
     }
 
     /**
-     * TODO: Move to Presenter
+     * set Social Facebook
      *
-     * get Google Static Map img
-     *
-     * @param  integer $zoom Zoom Level
-     * @return string        HTML code to render img with map
+     * @param string $social_facebook Facebook User URL
      */
-    public function staticMap($zoom = 15)
+    public function setSocialFacebookAttribute($social_facebook)
     {
-        $data = array('center'         => $this->postal_address,
-                      'zoom'           => intval($zoom),
-                      'scale'          =>'2',
-                      'size'           =>'180x100',
-                      'maptype'        =>'roadmap',
-                      'format'         =>'gif',
-                      'visual_refresh' =>'true');
-
-        $src = 'http://maps.googleapis.com/maps/api/staticmap?' . http_build_query($data, '', '&amp;');
-        return "<img calss=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
-    }
-
-    /**
-     * TODO: Move to Presenter
-     *
-     * get Facebook Profile Public Picture
-     *
-     * @param  string $type Type of picture to print
-     * @return string       HTML code to render img with facebook picture
-     */
-    public function facebookPicture($type = 'normal')
-    {
-        $src = "https://graph.facebook.com/{$this->social_facebook}/picture?type=$type";
-        return $this->social_facebook ? "<img calss=\"img-thumbnail media-object\" src=\"$src\"/>" : "<img calss=\"img-thumbnail media-object\" src=\"//placehold.it/100x100\"/>";
+        $this->attributes['social_facebook'] = trim($social_facebook) ?: null;
     }
 }

@@ -15,7 +15,7 @@
                             <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="{{route('user.businesses.select', ['business_slug' => $business->slug])}}">{!! $business->facebookPicture('normal') !!}</a>
+                                    <a href="{{route('user.businesses.select', ['business_slug' => $business->slug])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
                                     <a href="{{route('user.businesses.select', ['business_slug' => $business->slug])}}"><blockquote>{{ str_limit($business->name, 50) }}</blockquote></a>

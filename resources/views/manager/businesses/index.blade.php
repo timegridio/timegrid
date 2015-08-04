@@ -18,7 +18,7 @@
                             <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="{{route('manager.business.show', ['business' => $business])}}">{!! $business->facebookPicture('normal') !!}</a>
+                                    <a href="{{route('manager.business.show', ['business' => $business])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
                                     <blockquote>{!! Button::normal($business->name)->asLinkTo( route('manager.business.show', ['business' => $business]) ) !!} {{ str_limit($business->description, 50) }}</blockquote>

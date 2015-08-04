@@ -124,6 +124,11 @@ return array (
         'label' => 'Dirección Postal',
         'placeholder' => 'altura calle, barrio, ciudad, país',
       ),
+      'social_facebook' => 
+      array (
+        'label' => 'Dirección de Facebook',
+        'placeholder' => 'https://www.facebook.com/timegrid.io',
+      ),
       'slug' => 
       array (
         'label' => 'Alias',

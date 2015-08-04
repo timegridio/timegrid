@@ -25,7 +25,7 @@
                             <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="#">{!! $business->facebookPicture('normal') !!}</a>
+                                    <a href="#">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
                                     <h4 class="media-heading">{{ $business->name }}</h4>
@@ -63,7 +63,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    {!! $business->staticMap(11) !!}
+                                    {!! $business->getPresenter()->getStaticMap(11) !!}
                                 </div>
                             </div>
                         </li>

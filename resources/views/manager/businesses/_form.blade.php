@@ -65,6 +65,15 @@
         <div class="help-block with-errors"></div>
     </div>
 </div>
+<div class="row">
+    <div class="form-group col-sm-12">
+        {!! Form::label( trans('manager.businesses.form.social_facebook.label') ) !!}
+        {!! Form::text('social_facebook', null,
+            array('class'=>'form-control',
+                  'placeholder'=> trans('manager.businesses.form.social_facebook.placeholder') )) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
 {!! Form::hidden('strategy', 'dateslot') !!}
 <div class="row">
     <div class="form-group col-md-12">
