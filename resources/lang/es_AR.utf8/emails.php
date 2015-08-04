@@ -1,21 +1,19 @@
 <?php
 
 return [
-    ['user']    => [
-                    'welcome' => [
+    ['user' => [ 'welcome' => [
                                     'subject' => 'Bienvenido a timegrid.io',
                                  ],
-                    'appointment' => [
-                                    'reserved' => [
+                    'appointment' => [ 'reserved' => [
                                                     'subject' => 'Información de tu reserva'
                                                   ],
                                  ],
                     ],
-    ['manager'] => [
-                    'appointment' => [
-                                    'reserved' => [
+    ],
+    ['manager' => [ 'appointment' => [ 'reserved' => [
                                                     'subject' => 'Te hicieron una reserva'
                                                   ],
                                  ],
                     ]
+    ]
 ];
