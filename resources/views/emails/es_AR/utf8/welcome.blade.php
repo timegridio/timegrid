@@ -22,7 +22,7 @@
 <br>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
-  La secretaria de turnos online. Inteligente.
+  La agenda de turnos para profesionales exitosos.
   <br><br>
 </div>
 
@@ -40,7 +40,7 @@
         <td class="col" valign="top" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333;width:100%">
           <strong>¿Quienes somos?</strong>
           <br><br>
-          <strong>{{trans('app.name')}}</strong> es la central de turnos online que se administra sóla. Acabás de registrarte y por eso queremos darte la bienvenida.
+          <strong>{{trans('app.name')}}</strong> es la agenda de turnos online que se administra sóla. Acabás de registrarte y por eso queremos darte la bienvenida.
           <br><br>
         </td>
       </tr>
@@ -95,7 +95,9 @@
     </li>
   </ol>
 
-  Disfrutá tu tiempo ahorrado con un paseo al parque! :)
+  Disfrutá tu tiempo ahorrado con un paseo al parque! :)<br><br>
+
+  <a href="{!! route('user.businesses.home') !!}" style="color:#aaaaaa">Ir a timegrid.io</a><br>
 </div>
 
 <br>
