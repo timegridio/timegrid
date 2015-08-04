@@ -127,33 +127,33 @@ return array (
   array (
     'step1' => 
     array (
-      'content' => 'pricing.step1.content',
-      'title' => 'pricing.step1.title',
+      'title' => 'Plan Free',
+      'content' => 'El plan ideal para profesionales independientes.',
     ),
     'step2' => 
     array (
-      'content' => 'pricing.step2.content',
-      'title' => 'pricing.step2.title',
+      'title' => 'Agenda de Contactos',
+      'content' => 'Hasta 200 contactos en agenda.',
     ),
     'step3' => 
     array (
-      'content' => 'pricing.step3.content',
-      'title' => 'pricing.step3.title',
+      'content' => 'Servicios',
+      'title' => 'Podés publicar hasta 3 servicios.',
     ),
     'step4' => 
     array (
-      'content' => 'pricing.step4.content',
-      'title' => 'pricing.step4.title',
+      'content' => 'Turnos',
+      'title' => 'Ilimitados turnos por mes.',
     ),
     'step5' => 
     array (
-      'content' => 'pricing.step5.content',
-      'title' => 'pricing.step5.title',
+      'content' => 'Plan Starter',
+      'title' => 'Ideal para tu negocio en crecimiento.',
     ),
     'step6' => 
     array (
-      'content' => 'pricing.step6.content',
-      'title' => 'pricing.step6.title',
+      'content' => 'Formas de Pago',
+      'title' => 'Aceptamos la forma de pago que más cómodo te resulte, por ejemplo PayPal, PagoFácil y RapiPago.',
     ),
   ),
 );

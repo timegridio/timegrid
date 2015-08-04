@@ -129,7 +129,7 @@ body{
                     </li>
                     <li class="plan-price">
                         {{-- Important to use unescaped for currency as might have html entities --}}
-                        <strong>{!! trans('pricing.currency') !!} 10</strong> / {{trans('pricing.month')}}
+                        <strong>{!! trans('pricing.currency_price') !!}</strong> / {{trans('pricing.month')}}
                     </li>
                     <li>
                         <strong>2000</strong> {{trans('pricing.plan.feature.contacts')}}
@@ -224,11 +224,6 @@ var tour = new Tour({
     element: "#p1_appointments",
     title: "{{trans('tour.pricing.step4.title')}}",
     content: "{{trans('tour.pricing.step4.content')}}"
-  },
-  {
-    element: "#p1_alerts_email",
-    title: "{{trans('tour.pricing.step5.title')}}",
-    content: "{{trans('tour.pricing.step5.content')}}"
   },
   {
     element: "#plan2",
