@@ -1,6 +1,7 @@
 <?php
 
 return [
+  'phone' => 'El móvil debe estar en formato internacional sin código de pais, sin espacios ni guiones: Ej. 1132125991',
   'custom' => [
     'name' => [
         'min' => 'Dinos tu nombre completo',
