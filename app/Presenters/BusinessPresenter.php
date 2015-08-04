@@ -49,6 +49,17 @@ class BusinessPresenter extends \Robbo\Presenter\Presenter
                       'visual_refresh' =>'true');
 
         $src = 'http://maps.googleapis.com/maps/api/staticmap?' . http_build_query($data, '', '&amp;');
-        return "<img calss=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
+        return "<img class=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
+    }
+
+    /**
+     * get Industry Icon
+     *
+     * @return string        HTML code to render img with icon
+     */
+    public function getIndustryIcon()
+    {
+        $src = asset('/img/industries/'.$this->category()->first()->slug.'.png');
+        return "<img class=\"img-responsive center-block\" src=\"$src\"/>";
     }
 }
