@@ -17,9 +17,9 @@
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="DB_HOST" value="localhost"/>
-        <env name="DB_DATABASE" value="xb3testing"/>
-        <env name="DB_USERNAME" value="xb3testing"/>
-        <env name="DB_PASSWORD" value="xb3testing"/>
+        <env name="DB_DATABASE" value="test.timegrid"/>
+        <env name="DB_USERNAME" value="test.timegrid"/>
+        <env name="DB_PASSWORD" value="test.timegrid"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
