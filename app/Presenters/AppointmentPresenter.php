@@ -21,7 +21,7 @@ class AppointmentPresenter extends \Robbo\Presenter\Presenter
         return trans('appointments.status.'.$this->statusLabel);
     }
 
-    public function statusToClass() 
+    public function statusToClass()
     {
         switch ($this->status) {
             case Appointment::STATUS_ANNULATED:

@@ -83,7 +83,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Issuer
-     * 
+     *
      * @return Collection $user User who has created the appointment
      */
     public function issuer()
@@ -93,7 +93,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Contact
-     * 
+     *
      * @return Collection $contact Contact for whom the appointment is made
      */
     public function contact()
@@ -103,7 +103,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Business
-     * 
+     *
      * @return Collection $business Business for which the appointment is made
      */
     public function business()
@@ -113,7 +113,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Service
-     * 
+     *
      * @return Collection $service Service for which the contact is set for appointment
      */
     public function service()
@@ -127,7 +127,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * User
-     * 
+     *
      * @return [type] [description]
      */
     public function user()
@@ -137,7 +137,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Duplicates
-     * 
+     *
      * @return boolean Determines if the new Appointment will hash crash with an existing Appointment
      */
     public function duplicates()
@@ -151,7 +151,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * FinishAt
-     * 
+     *
      * @return Carbon Calculates the start_at time plus duration in minutes
      */
     public function getFinishAtAttribute()
@@ -164,7 +164,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * TimeZone
-     * 
+     *
      * @return string The TimeZone set for Business
      */
     public function getTZAttribute()
@@ -174,7 +174,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Get the human readable status name
-     * 
+     *
      * @return string The name of the current Appointment status
      */
     public function getStatusLabelAttribute()
@@ -190,7 +190,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Date
-     * 
+     *
      * @return string Formatted Date string from the start_at attribute in UTC
      */
     public function getDateAttribute()
@@ -204,7 +204,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Set start_at attribute
-     * 
+     *
      * @param Carbon $datetime The Appointment starting datetime
      */
     public function setStartAtAttribute(Carbon $datetime)
@@ -214,7 +214,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Set Comments
-     * 
+     *
      * @param string $comments User comments for the Business owner on the Appointment
      */
     public function setCommentsAttribute($comments)
@@ -246,7 +246,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Active
-     * 
+     *
      * @return boolean Determination if the Appointment is in an active status
      */
     public function isActive()
@@ -256,7 +256,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Pending
-     * 
+     *
      * @return boolean is Active AND is Future
      */
     public function isPending()
@@ -266,7 +266,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Future
-     * 
+     *
      * @return boolean The start_at datetime is future from the current system datetime
      */
     public function isFuture()
@@ -276,7 +276,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Due
-     * 
+     *
      * @return boolean The start_at datetime is past from the current system datetime
      */
     public function isDue()
@@ -294,7 +294,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope to Served Appointments
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -305,7 +305,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope to Annulated Appointments
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -320,7 +320,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope to not Served Appointments
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -331,7 +331,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope to Active Appointments
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -346,7 +346,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Oldest first
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query Scoped query
      */
@@ -357,7 +357,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Of Business
-     * 
+     *
      * @param  Illuminate\Database\Query   $query
      * @param  Business $business An inquired business to validate against
      * @return Illuminate\Database\Query The appointments belonging to the inquired Business as holder
@@ -369,7 +369,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Of Date
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @param  Carbon $date  An inquired date to validate against
      * @return Illuminate\Database\Query    The scoped appointments for the inquired date
@@ -381,7 +381,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope only future appointments
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @return Illuminate\Database\Query The appointments scoped for future date
      */
@@ -392,7 +392,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Scope only till date
-     * 
+     *
      * @param  Illuminate\Database\Query $query
      * @param  Carbon $date  Inquired range end date
      * @return Illuminate\Database\Query Scoped appointments up to the inquired date
@@ -408,7 +408,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Serveable
-     * 
+     *
      * @return boolean The Serve action can be performed
      */
     public function isServeable()
@@ -418,7 +418,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Confirmable
-     * 
+     *
      * @return boolean The Confirm action can be performed
      */
     public function isConfirmable()
@@ -428,7 +428,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * is Annulable
-     * 
+     *
      * @return boolean The Annulate action can be performed
      */
     public function isAnnulable()
@@ -442,7 +442,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Check and perform Confirm action
-     * 
+     *
      * @return Appointment The changed Appointment
      */
     public function doConfirm()
@@ -456,7 +456,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Check and perform Annulate action
-     * 
+     *
      * @return Appointment The changed Appointment
      */
     public function doAnnulate()
@@ -470,7 +470,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Check and perform Serve action
-     * 
+     *
      * @return Appointment The changed Appointment
      */
     public function doServe()
@@ -484,7 +484,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
 
     /**
      * Need confirmation of
-     * 
+     *
      * @param  string $profile Name of the current User profile [user|manager]
      * @return boolean         The Appointment needs to be confirmed by the inquired User profile
      */
