@@ -64,12 +64,12 @@ return [
 			'strict'    => false,
 		],
 
-		'testing' => [
+		'mysql_testing' => [
 			'driver'    => 'mysql',
-			'host'      => env('DB_HOST', 'localhost'),
-			'database'  => env('DB_DATABASE', 'xb3testing'),
-			'username'  => env('DB_USERNAME', 'xb3testing'),
-			'password'  => env('DB_PASSWORD', 'xb3testing'),
+			'host'      => env('TEST_DB_HOST', 'localhost'),
+			'database'  => env('TEST_DB_DATABASE', 'test.timegrid'),
+			'username'  => env('TEST_DB_USERNAME', 'test.timegrid'),
+			'password'  => env('TEST_DB_PASSWORD', 'test.timegrid'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
