@@ -105,13 +105,13 @@ return array (
       ),
       'description' => 
       array (
-        'label' => 'Descripción',
-        'placeholder' => 'Describe al prestador',
+        'label' => 'Describite',
+        'placeholder' => 'Describí tu prestación a rasgos generales',
       ),
       'name' => 
       array (
         'label' => 'Nombre',
-        'placeholder' => 'Nombre completo del prestador',
+        'placeholder' => 'Nombre comercial',
       ),
       'phone' => 
       array (
