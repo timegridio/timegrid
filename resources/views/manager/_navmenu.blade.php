@@ -1,4 +1,4 @@
-@if(Session::get('selected.business') && Auth::user()->isOwner(Session::get('selected.business')))
+@if(($business = Session::get('selected.business')) && Auth::user()->isOwner($business))
     <li id="navHome"><a href="{{ route('manager.business.show', $business->id) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
 @endif
 
