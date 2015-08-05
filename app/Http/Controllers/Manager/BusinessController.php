@@ -152,6 +152,7 @@ class BusinessController extends Controller
             'timezone' => $request->get('timezone'),
             'postal_address' => $request->get('postal_address'),
             'phone' => $request->get('phone'),
+            'social_facebook' => $request->get('social_facebook'),
             'strategy' => $request->get('strategy')
         ]);
 
