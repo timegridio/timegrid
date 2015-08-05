@@ -84,7 +84,7 @@ return array (
         'contact' => 'Cliente',
         'duration' => 'Duración',
         'finish_time' => 'Finaliza',
-        'remaining' => 'appointments.index.th.remaining',
+        'remaining' => 'Dentro de',
         'service' => 'Servicio',
         'start_time' => 'Comienza',
         'status' => 'Estado',
