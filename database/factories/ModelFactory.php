@@ -1,6 +1,8 @@
 <?php // app/database/factories/ModelFactory.php
 
+
 $factory->define('App\Business', function () {
+    $faker = Faker\Factory::create();
     return [
         'name' => 'HGNC',
         'slug' => 'hgnc',
@@ -16,6 +18,7 @@ $factory->define('App\Business', function () {
 });
 
 $factory->define('App\Service', function () {
+    $faker = Faker\Factory::create();
     return [
         'name' => 'Instalación',
         'description' => $faker->paragraph,
