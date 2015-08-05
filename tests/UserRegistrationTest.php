@@ -8,6 +8,8 @@ class UserRegistrationTest extends TestCase
 
     public function testUserRegistrationWithSuccess()
     {
+        $this->expectsEvents(App\Events\NewRegisteredUser::class);
+
         $this->visit('/')
              ->click('Empecemos')
              ->see('Registrame')
