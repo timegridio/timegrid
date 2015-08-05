@@ -49,7 +49,7 @@
                         <li><a class="navbar-brand" href="{{ url('/') }}">{{ trans('app.name') }}</a></li>
                     @endif
 
-                    @if (!empty(Auth::user()) && Auth::user()->hasBusiness())
+                    @if (!empty(Auth::user()))
                         @include('manager/_navmenu')
                     @endif
                 </ul>
