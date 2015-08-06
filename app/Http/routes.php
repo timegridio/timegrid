@@ -85,7 +85,7 @@ Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'
         Auth::loginUsingId($userId);
         Log::warning("[!] ROOT SUDO userId:$userId");
         Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
-        return Redirect::route('user.businesses.home');
+        return Redirect::route('user.businesses.list');
     })->where('userId', '\d*');
 });
 
