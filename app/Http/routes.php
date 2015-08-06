@@ -39,7 +39,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
 
     Route::group(['prefix' => 'businesses'], function () {
         Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
-        Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect']);
+        #Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect']);
         Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
         Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
     });
@@ -96,8 +96,13 @@ Route::controllers([
     'password' => 'Auth\PasswordController',
 ]);
 
-Route::get('{business_slug}', function ($business_slug) {
-    return Redirect::route('user.businesses.home', $business_slug->id);
-})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
-
 Route::get('/', 'WelcomeController@index');
+
+Route::get('{business_slug}', function ($business_slug) {
+    if ($business_slug->isEmpty()) {
+        Flash::warning(trans('user.businesses.list.alert.not_found'));
+        return Redirect::route('user.businesses.list');
+    } else {
+        return Redirect::route('user.businesses.home', $business_slug->first()->id);
+    }
+})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */

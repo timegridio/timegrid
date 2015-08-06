@@ -30,7 +30,7 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('service',     'App\Service');
         $router->model('appointment', 'App\Appointment');
         $router->bind('business_slug', function ($business_slug) {
-            return Business::where('slug', $business_slug)->first();
+            return Business::where('slug', $business_slug)->get();
         });
     }
 
