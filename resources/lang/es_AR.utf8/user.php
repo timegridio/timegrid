@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/08/06 15:40:10 
 *************************************************************************/
 
 return array (
@@ -104,6 +104,7 @@ return array (
   ),
   'businesses' => 
   array (
+    'list' => [ 'alert' => [ 'not_found' => 'No encontramos prestador con esa dirección, seleccionalo de la lista' ] ],
     'index' => 
     array (
       'btn' => 
