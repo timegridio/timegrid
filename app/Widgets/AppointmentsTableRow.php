@@ -24,7 +24,7 @@ class AppointmentsTableRow extends Widget
     {
         $this->user = $user;
 
-        $this->appointment = $appointment;
+        $this->appointment = $appointment->getPresenter();
     }
 
     public function handle()
