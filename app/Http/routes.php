@@ -30,8 +30,6 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
 
-    Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getHome']);
-
     Route::group(['prefix' => 'booking'], function () {
         Route::get('book',      ['as' => 'user.booking.book', 'uses' => 'AgendaController@getBook']);
         Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'AgendaController@getIndex']);
@@ -97,6 +95,8 @@ Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getHome']);
 
 Route::get('/', 'WelcomeController@index');
 
