@@ -490,7 +490,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
      */
     public function needConfirmationOf($profile)
     {
-        return ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_USER) ||
-               ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_MANAGER);
+        return ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_USER) ||
+               ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_MANAGER);
     }
 }
