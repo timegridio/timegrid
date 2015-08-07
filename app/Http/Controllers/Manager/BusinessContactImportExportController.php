@@ -42,6 +42,13 @@ class BusinessContactImportExportController extends Controller
         $csv = $this->csvToArray(Request::get('data'));
         
         foreach ($csv as $key => $import) {
+            $import = array_map(function ($item) { return $item == 'NULL' ? null : $item; }, $import);
+
+            if ($import['birthdate'] !== null) {
+                $date = \DateTime::createFromFormat('Ymd', $import['birthdate']);
+                $import['birthdate'] = $date->format('m/d/Y');
+            }
+
             $notes = $import['notes'];
             unset($import['notes']);
             $contact = Contact::create($import);
