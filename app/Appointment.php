@@ -132,7 +132,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
      */
     public function user()
     {
-        return $this->contact->first()->user->first();
+        return $this->contact->first()->user()->first();
     }
 
     /**
