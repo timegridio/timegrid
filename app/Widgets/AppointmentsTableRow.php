@@ -16,7 +16,7 @@ class AppointmentsTableRow extends Widget
 
     protected $user;
 
-    protected $appointments;
+    protected $appointment;
 
     protected $class;
 
@@ -24,7 +24,7 @@ class AppointmentsTableRow extends Widget
     {
         $this->user = $user;
 
-        $this->appointment = $appointment->getPresenter();
+        $this->appointment = $appointment;
     }
 
     public function handle()
@@ -33,7 +33,7 @@ class AppointmentsTableRow extends Widget
 
         $this->class = $this->appointment->getPresenter()->statusToClass();
 
-        return view("{$this->profile}.businesses.appointments.{$this->appointment->business->strategy}.widgets.tableRow", ['appointment' => $this->appointment, 'class' => $this->class, 'actionButtons' => $this->actionButtons($this->appointment->getPresenter())])->render();
+        return view("{$this->profile}.businesses.appointments.{$this->appointment->business->strategy}.widgets.tableRow", ['appointment' => $this->appointment->getPresenter(), 'class' => $this->class, 'actionButtons' => $this->actionButtons($this->appointment->getPresenter())]);
     }
 
     private function getProfile()
@@ -49,7 +49,7 @@ class AppointmentsTableRow extends Widget
 
     private function getBtnCommonAttributes($appointment)
     {
-        return ['class' => 'action btn', 'type' => 'button', 'data-business' => $appointment->business->id, 'data-appointment' => $appointment->id, 'data-code' => $appointment->code()];
+        return ['class' => 'action btn', 'type' => 'button', 'data-business' => $appointment->business->id, 'data-appointment' => $appointment->id, 'data-code' => $appointment->getPresenter()->code()];
     }
 
     public function managerActionButtons($appointment)

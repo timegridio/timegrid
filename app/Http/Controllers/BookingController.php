@@ -60,7 +60,6 @@ class BookingController extends Controller
          * as they need to be interpreted as HTML
          * 
          */
-
         switch ($widget) {
             case 'row':
                 $html = Widget::AppointmentsTableRow(['appointment' => $appointment, 'user' => \Auth::user()])->render();
@@ -71,9 +70,10 @@ class BookingController extends Controller
                 break;
         }
 
+        $appointmentPresenter = $appointment->getPresenter();
         // TODO: It is probably possible to move Notifynder to a more proper place
         $date = $appointment->start_at->toDateString();
-        $code = $appointment->getPresenter()->code();
+        $code = $appointmentPresenter->code();
         Notifynder::category('appointment.'.$action)
                    ->from('App\User', \Auth::user()->id)
                    ->to('App\Business', $appointment->business->id)
