@@ -52,9 +52,9 @@ return [
      * The drivers you want to use to grab location if the selected driver is unavailable (in order)
      */
     'selected_driver_fallbacks' => [
+            'MaxMind',
             'IpInfo',
             'GeoPlugin',
-            'MaxMind',
     ],
 
     /*
