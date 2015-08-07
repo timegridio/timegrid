@@ -171,6 +171,7 @@ return [
         'Fenos\Notifynder\NotifynderServiceProvider',
         'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
         'Caffeinated\Widgets\WidgetsServiceProvider',
+        'Ipunkt\LaravelAnalytics\AnalyticsServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
@@ -266,6 +267,7 @@ return [
 
         'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
         'Widget' => 'Caffeinated\Widgets\Facades\Widget',
+        'Analytics' => 'Ipunkt\LaravelAnalytics\AnalyticsFacade',
 
         'TidioChat'    => 'alariva\tidiochat\TidioChatFacade',
     ],
