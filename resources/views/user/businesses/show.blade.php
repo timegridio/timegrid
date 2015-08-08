@@ -80,7 +80,7 @@
                             @if (\Auth::user()->suscribedTo($business) === null)
                                 {!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
-                                {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book'))->withIcon(Icon::calendar())->block() !!}
+                                {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
                             @endif
                         </li>
                         @endif

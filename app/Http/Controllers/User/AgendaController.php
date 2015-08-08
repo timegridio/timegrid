@@ -12,7 +12,6 @@ use App\BookingStrategy;
 use App\Appointment;
 use App\Business;
 use Notifynder;
-use Session;
 use Carbon;
 use Flash;
 use Event;
@@ -37,10 +36,10 @@ class AgendaController extends Controller
      *
      * @return Response Rendered view of Appointment booking form
      */
-    public function getBook()
+    public function getBook(Business $business)
     {
         Log::info('AgendaController: getBook');
-        $business = Business::findOrFail(Session::get('selected.business')->id);
+        $business = Business::findOrFail($business->id);
 
         Notifynder::category('user.checkingVacancies')
                    ->from('App\User', \Auth::user()->id)
