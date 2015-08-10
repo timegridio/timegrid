@@ -1,1 +1,0 @@
-{{ $appointment->start_at }}
