@@ -9,6 +9,7 @@
 {!! Form::close() !!}
 @endsection
 
+{{-- ToDo: Reusable code with app/resources/views/user/appointments/dateslot/show.blade.php --}}
 @section('footer_scripts')
 @parent
 <script>

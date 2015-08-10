@@ -11,11 +11,11 @@
 {!! Form::close() !!}
 @endsection
 
+{{-- ToDo: Reusable code with app/resources/views/manager/businesses/appointments/dateslot/index.blade.php --}}
 @section('footer_scripts')
 @parent
 <script>
 $(document).ready(function(){
-
 function prepareEvents(){
 
         console.log('prepareEvents()');
