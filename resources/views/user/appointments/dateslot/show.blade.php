@@ -31,7 +31,6 @@ function prepareEvents(){
         var appointment = $(this).data('appointment');
         var action = $(this).data('action');
         var code = $(this).data('code');
-        var panel = $('#'+code);
 
         $(this).parent().hide();
 
