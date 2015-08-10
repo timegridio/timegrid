@@ -1,16 +1,34 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/08/10 14:35:44 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'dateformat' => ['carbon' => 'd/m/Y', 'datetimepicker' => 'DD/MM/YYYY'],
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/_footer.blade.php
+  'footer' => 
+  array (
+    'demo' => 'Recordá que ésta es una demo de prueba.',
+    'local' => 'Ambiente local.',
+  ),
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/_footer.blade.php
+  //==================================== Translations ====================================//
+  'btn' => 
+  array (
+    'update' => 'Actualizar',
+  ),
+  'dateformat' => 
+  array (
+    'datetimepicker' => 'DD/MM/YYYY',
+    'carbon' => 'd/m/Y',
+  ),
+  'label' => 
+  array (
+    'select_timezone' => 'Zona horaria',
+  ),
+  'name' => 'timegrid.io',
   'nav' => 
   array (
-    'manual' => 'Manual de usuario',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
     'manager' => 
@@ -22,6 +40,7 @@ return array (
         'register' => 'Registrar Prestador',
       ),
     ),
+    'manual' => 'Manual de usuario',
     'register' => 'Registrarme',
     'user' => 
     array (
@@ -37,16 +56,6 @@ return array (
     'wizard' => 'Asistente',
     'home' => 'Inicio',
   ),
-  //==================================== Translations ====================================//
-  'btn' => 
-  array (
-    'update' => 'Actualizar',
-  ),
-  'label' => 
-  array (
-    'select_timezone' => 'Zona horaria',
-  ),
-  'name' => 'timegrid.io',
   'notifications' => 
   array (
     'title' => 'Recientemente',
@@ -57,8 +66,8 @@ return array (
   array (
     'category' => 
     array (
-      'garage' => 'Taller Mecánico',
       'doctor' => 'Médico',
+      'garage' => 'Taller Mecánico',
       'photography' => 'Fotografía',
     ),
   ),
