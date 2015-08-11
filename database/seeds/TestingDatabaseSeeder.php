@@ -14,8 +14,8 @@ class TestingDatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-        $this->call('CountriesSeeder');
-        $this->command->info('Seeded the Param Countries!');
+        #$this->call('CountriesSeeder');
+        #$this->command->info('Seeded the Param Countries!');
 
         $this->call('TestingUsersTableSeeder');
         $this->command->info('Seeded the Sample Users!');
@@ -23,16 +23,16 @@ class TestingDatabaseSeeder extends Seeder
         $this->call('TestingBusinessesTableSeeder');
         $this->command->info('Seeded the Sample Businesses!');
 
-        $this->call('TestingServicesTableSeeder');
-        $this->command->info('Seeded the Sample Businesses Services!');
+        #$this->call('TestingServicesTableSeeder');
+        #$this->command->info('Seeded the Sample Businesses Services!');
 
-        $this->call('TestingContactsTableSeeder');
-        $this->command->info('Seeded the Sample Contacts!');
+        #$this->call('TestingContactsTableSeeder');
+        #$this->command->info('Seeded the Sample Contacts!');
 
-        $this->call('TestingAppointmentsTableSeeder');
-        $this->command->info('Seeded the Sample Appointments!');
+        #$this->call('TestingAppointmentsTableSeeder');
+        #$this->command->info('Seeded the Sample Appointments!');
 
-        $this->call('TestingVacanciesTableSeeder');
-        $this->command->info('Seeded the Sample Vacancies!');
+        #$this->call('TestingVacanciesTableSeeder');
+        #$this->command->info('Seeded the Sample Vacancies!');
     }
 }

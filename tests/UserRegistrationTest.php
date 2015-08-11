@@ -14,7 +14,7 @@ class UserRegistrationTest extends TestCase
              ->click('Empecemos')
              ->see('Registrame')
              ->type('ariel', 'name')
-             ->type('alariva@gmail.com', 'email')
+             ->type('test@test.com', 'email')
              ->type('123123', 'password')
              ->type('123123', 'password_confirmation')
              ->press('Registrame')
