@@ -5,7 +5,8 @@
             "path": ".",
             "name": "Application",
             "follow_symlinks": true,
-            "file_exclude_patterns": ["*.png", "artisan", "*.gif", "*.jpg"]
+            "file_exclude_patterns": ["*.png", "artisan", "*.gif", "*.jpg"],
+            "folder_exclude_patterns": ["node_modules", "storage", "public/fonts"]
         },
         {
             "path": "../doc",
