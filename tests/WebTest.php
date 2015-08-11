@@ -14,12 +14,4 @@ class WebTest extends PHPUnit_Extensions_Selenium2TestCase
         # $this->waitForPageToLoad(4000);
         $this->assertEquals('timegrid.io', $this->title());
     }
-
-    public function testEntrar()
-    {
-        $this->url('/');
-        $this->click('Entrar');
-        $this->assertEquals('timegrid.io', $this->title());
-    }
-
 }
