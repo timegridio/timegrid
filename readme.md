@@ -1,6 +1,6 @@
 ## Timegrid
 
-Timegrid is an web application for online reservation of services for business.
+Timegrid is a web application for online reservation of services for business.
 
 It is currently in **beta** stage willing to add some missing functions in the short terms.
 
@@ -38,9 +38,13 @@ To be available soon.
 <a name="step1"></a>
 ### Step 1: Get the code - Clone the repository
 
-    git clone https://github.com/alariva/timegrid.git
+    $ git clone https://github.com/alariva/timegrid.git
+    
+If you want to stand on the latest beta-stable version:
 
-    cd timegrid
+    $ cd timegrid
+
+    $ git checkout tags/v3.4.1-beta
 
 -----
 <a name="step2"></a>
