@@ -1,23 +1,38 @@
-## Laravel PHP Framework
+## Timegrid
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+Timegrid is an web application for online reservation of services for business.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+It is currently in **beta** stage willing to add some missing functions in the short terms.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+It is made under the **Laravel 5** framework for **PHP**.
+
+## Features
+
+These are the current features so far:
+
+  * User SignUp process (with email notification)
+  * Business registration
+  * Business Contacts registration
+  * Business Services registration
+  * Business Services Availability management (basic)
+  * Service Reservation (with email notification)
+  * Search engine (basic)
 
 ## Official Documentation
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+To be available soon.
+
+## Online Demo
+
+[Demo](http://demo.timegrid.io/)
 
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Thank you for considering contributing to Timegrid.
+
+Please see CONTRIBUTING doc for further details.
+You are welcome to join the core development team and enhance the development process apart from just code :)
 
 ### License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
