@@ -91,6 +91,9 @@ Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
+get('auth/login', 'Auth\AuthController@login');
+get('auth/logout', 'Auth\AuthController@logout');
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
@@ -108,3 +111,5 @@ Route::get('{business_slug}', function ($business_slug) {
         return Redirect::route('user.businesses.home', $business_slug->first()->id);
     }
 })->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
+
+// Login a user with GitHub (or any provider).
