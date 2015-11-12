@@ -2,71 +2,43 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Validation\ValidationServiceProvider;
-use App\Http\Controllers\Controller;
-use App\Events\NewRegisteredUser;
-use App\User;
-use Validator;
-use Event;
-use Log;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
+use App\AuthenticateUser;
+use App\AuthenticateUserListener;
 
-class AuthController extends Controller
+class AuthController extends Controller implements AuthenticateUserListener
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Registration & Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users, as well as the
-    | authentication of existing users. By default, this controller uses
-    | a simple trait to add these behaviors. Why don't you explore it?
-    |
-    */
-
-    use AuthenticatesAndRegistersUsers;
-
     /**
-     * Create a new authentication controller instance.
-     *
-     * @param  \Illuminate\Contracts\Auth\Guard  $auth
-     * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-     * @return void
+     * @param AuthenticateUser $authenticateUser
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function __construct()
+    public function login(AuthenticateUser $authenticateUser, Request $request)
     {
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $hasCode = $request->has('code');
+        return $authenticateUser->execute($hasCode, $this);
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Logout the user
+     * 
+     * @return \Illuminate\Routing\Redirector
      */
-    public function validator(array $data)
+    public function logout()
     {
-        return Validator::make($data, [
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
+        \Auth::logout();
+        return redirect('/');
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * When a user has successfully been logged in...
      *
-     * @param  array  $data
-     * @return User
+     * @param $user
+     * @return \Illuminate\Routing\Redirector
      */
-    public function create(array $data)
+    public function userHasLoggedIn($user)
     {
-        Log::info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-        Event::fire(new NewRegisteredUser($user));
-        return $user;
+        return redirect('/');
     }
 }

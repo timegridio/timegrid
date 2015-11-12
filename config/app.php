@@ -175,6 +175,7 @@ return [
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -270,6 +271,8 @@ return [
         'Analytics' => 'Ipunkt\LaravelAnalytics\AnalyticsFacade',
 
         'TidioChat'    => 'alariva\tidiochat\TidioChatFacade',
+
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];
