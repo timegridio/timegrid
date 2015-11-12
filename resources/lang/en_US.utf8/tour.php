@@ -19,141 +19,141 @@ return array (
   array (
     'agenda' => 
     array (
-      'content' => 'Aquí se presentan todos los turnos pendientes en forma de lista.',
-      'title' => 'Agenda',
+      'content' => 'See your appointments in schedule format.',
+      'title' => 'Schedule',
     ),
     'contacts' => 
     array (
-      'content' => 'Es tu cartera de clientes listados por nombre y apellido.',
-      'title' => 'Contactos',
+      'content' => 'This is your contact list.',
+      'title' => 'Contacts',
     ),
     'delete' => 
     array (
-      'content' => 'Por último: Este botón desactiva el comercio. No te preocupes, necesita doble confirmación para que sea efectiva.',
-      'title' => 'Desactivar el comercio',
+      'content' => 'Delete your business',
+      'title' => 'Deactivate business',
     ),
     'edit' => 
     array (
-      'content' => 'Aquí podrás cambiar los datos de tu comercio como nombre, descripción, y medios de contacto.',
-      'title' => 'Editar',
+      'content' => 'Here you can change your business profile.',
+      'title' => 'Edit',
     ),
     'enjoy' => 
     array (
-      'content' => 'Ya podés empezar a trabajar. Empezá a planificar tus vacaciones con el tiempo ahorrado. ¡A disfrutar!',
-      'title' => '¡Listo!',
+      'content' => 'You are ready to start working!',
+      'title' => 'All done!',
     ),
     'home' => 
     array (
-      'content' => 'Podrás venir al panel de control con este acceso directo.',
-      'title' => 'Inicio',
+      'content' => 'This is a shortcut to your dashboard.',
+      'title' => 'Dashboard',
     ),
     'indicator1' => 
     array (
-      'content' => 'Este indicador es la cantidad de turnos activos para atender hoy.',
-      'title' => 'Turnos activos para hoy',
+      'content' => 'This is the number of active appointments to serve today.',
+      'title' => 'Active appointments for today',
     ),
     'indicator2' => 
     array (
-      'content' => 'Son los turnos que estaban reservados para hoy, pero que se encuentran anulados.',
-      'title' => 'Turnos anulados para hoy',
+      'content' => 'Appointments that were for today but got annulated.',
+      'title' => 'Annulated appointments for today',
     ),
     'indicator3' => 
     array (
-      'content' => 'Son los turnos pendientes para mañana.',
-      'title' => 'Turnos activos para mañana',
+      'content' => 'These are pending appointments for tomorrow.',
+      'title' => 'Active appointments for tomorrow',
     ),
     'indicator4' => 
     array (
-      'content' => 'Es la cantidad de turnos activos de hoy en adelante.',
-      'title' => 'Turnos activos en total',
+      'content' => 'Total amount of active appointments from now on.',
+      'title' => 'Total active appointments',
     ),
     'indicator5' => 
     array (
-      'content' => 'Es la cantidad de turnos que atendiste históricamente.',
-      'title' => 'Turnos atendidos en total',
+      'content' => 'Total served appointments in history.',
+      'title' => 'Total served appointments',
     ),
     'indicator6' => 
     array (
-      'content' => 'Es la cantidad de turnos totales, en cualquier estado, que se registraron históricamente.',
-      'title' => 'Turnos totales',
+      'content' => 'Total amount of handled appointments in any status.',
+      'title' => 'Total appointments',
     ),
     'indicator7' => 
     array (
-      'content' => 'Es la cantidad de contactos que dispone tu cartera de clientes.',
-      'title' => 'Contactos Registrados',
+      'content' => 'Total registered contacts.',
+      'title' => 'Registered Contacts',
     ),
     'indicator8' => 
     array (
-      'content' => 'Es la cantidad de usuarios que pueden iniciar sesión y pedir turnos a tu comercio.',
-      'title' => 'Usuarios Suscriptos',
+      'content' => 'Total suscribed real users that can make reservations to your business.',
+      'title' => 'Suscribed businesses',
     ),
     'indicator9' => 
     array (
-      'content' => 'Es la cantidad de contactos de los cuales conoces su DNI.',
-      'title' => 'Contactos con DNI',
+      'content' => 'Amount of contacts that provided national ID number.',
+      'title' => 'Contacts with ID',
     ),
     'lang' => 
     array (
-      'content' => '¿Hablas otro idioma? ¡Estamos trabajando para agregar cada vez más idiomas! Do you speak english? We are working hard to add more and more languages!',
-      'title' => 'Idioma/Language',
+      'content' => 'Speak another language? Switch here!',
+      'title' => 'Language/Idioma',
     ),
     'panel' => 
     array (
-      'content' => 'Bienvenido a tu panel de control. Aquí tendrás una vista de halcón de lo relevante a los turnos y tu cartera de clientes. Veamos cómo se administra...',
-      'title' => 'Tu panel de control',
+      'content' => 'Welcome to your dashboard. Here you will have a qick insights view about the reservations of your business',
+      'title' => 'Your dashboard',
     ),
     'profile' => 
     array (
-      'content' => 'De aquí cierras tu sesión',
-      'title' => 'Mi cuenta',
+      'content' => 'Close your session',
+      'title' => 'Your session',
     ),
     'search' => 
     array (
-      'content' => 'Queremos que ganes tiempo. Por eso el buscador será tu principal aliado. No dudes en escribir nombres de personas, códigos de turno o nombres de servicios para encontrar lo que buscas.',
-      'title' => 'Potente Buscador',
+      'content' => 'The search bar is your friend in order to quickly get to the contact, appointment, business or service you need.',
+      'title' => 'Lookup',
     ),
     'services' => 
     array (
-      'content' => 'Aquí administrarás el catálogo de servicio que prestás.',
-      'title' => 'Servicios',
+      'content' => 'Manage from here all the services you provide.',
+      'title' => 'Services',
     ),
     'vacancies' => 
     array (
-      'content' => 'Aquí podrás publicar tu disponibilidad y empezar a dar turnos, ¡muy importante!',
-      'title' => 'Disponibilidad',
+      'content' => 'Manage your availability for providing each of the services',
+      'title' => 'Availability',
     ),
   ),
   'pricing' => 
   array (
     'step1' => 
     array (
-      'title' => 'Plan Free',
-      'content' => 'El plan ideal para profesionales independientes.',
+      'title' => 'Free',
+      'content' => 'Ideal plan for freelance professionals.',
     ),
     'step2' => 
     array (
-      'title' => 'Agenda de Contactos',
-      'content' => 'Hasta 200 contactos en agenda.',
+      'title' => 'Contact list',
+      'content' => 'Up to 200 contacts.',
     ),
     'step3' => 
     array (
-      'content' => 'Servicios',
-      'title' => 'Podés publicar hasta 3 servicios.',
+      'content' => 'Services',
+      'title' => 'Up to 3 services.',
     ),
     'step4' => 
     array (
-      'content' => 'Turnos',
-      'title' => 'Ilimitados turnos por mes.',
+      'content' => 'Appointments',
+      'title' => 'Unlimited monthly appointments.',
     ),
     'step5' => 
     array (
-      'content' => 'Plan Starter',
-      'title' => 'Ideal para tu negocio en crecimiento.',
+      'content' => 'Starter',
+      'title' => 'Ideal for growing businesses.',
     ),
     'step6' => 
     array (
-      'content' => 'Formas de Pago',
-      'title' => 'Aceptamos la forma de pago que más cómodo te resulte, por ejemplo PayPal, PagoFácil y RapiPago.',
+      'content' => 'Payment Methods',
+      'title' => 'We accept a wide range of payment methods.',
     ),
   ),
 );

@@ -1,20 +1,20 @@
 <?php
 
 return [
-  'phone' => 'El móvil debe estar en formato internacional sin código de pais, sin espacios ni guiones: Ej. 1132125991',
+  'phone' => 'The mobile number must be in international format.',
   'custom' => [
     'name' => [
-        'min' => 'Dinos tu nombre completo',
+        'min' => 'Tell us your full name',
     ],
     'email' => [
-        'email' => 'Tu dirección de email sería algo como tunombre@ejemplo.com',
-        'required' => 'Por favor ingresá tu email',
-        'unique' => '¡Parece que ya te registraste!',
+        'email' => 'Give us a valid email address',
+        'required' => 'Please give us your email address',
+        'unique' => 'Seems you are already registered!',
     ],
     'password' => [
-        'required' => 'Ingresá tu contraseña',
-        'confirmed' => 'La contraseña confirmada no coincide, ¡intentá de nuevo!',
-        'min' => 'La contraseña debe tener al menos :min caracteres',
+        'required' => 'Set a password',
+        'confirmed' => 'Please confirm your password correctly',
+        'min' => 'Password must be at least :min characters long',
     ],
   ],
 ];

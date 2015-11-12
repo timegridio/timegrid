@@ -9,24 +9,24 @@ return array (
   array (
     'alert' => 
     array (
-      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
+      'deactivate_confirm' => 'Advice! Deactivating the business is IRREVERSIBLE. Are you sure?',
     ),
     'btn' => 
     array (
       'tooltip' => 
       array (
-        'agenda' => 'Agenda de Turnos',
-        'contacts' => 'Lista de Contactos',
-        'edit' => 'Editar datos del Prestador',
-        'preferences' => 'Cambiar Preferencias',
-        'services' => 'Gestionar Servicios',
-        'vacancies' => 'Publicar Disponibilidad',
+        'agenda' => 'Reservations schedule',
+        'contacts' => 'Contact list',
+        'edit' => 'Edit business profile',
+        'preferences' => 'Change preferences',
+        'services' => 'Manage services',
+        'vacancies' => 'Publish availability',
       ),
     ),
     'hint' => 
     array (
-      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
-      'set_services' => 'Agregá los servicios que brindás',
+      'out_of_vacancies' => 'Publish your availability<br><br>For clients to begin taking reservations you need to publish your availability.',
+      'set_services' => 'Add the services you provide',
     ),
     'service' => 
     array (
@@ -34,7 +34,7 @@ return array (
       array (
         'update' => 
         array (
-          'success' => 'Servicio Actualizado!',
+          'success' => 'Service updated!',
         ),
       ),
     ),
@@ -42,8 +42,8 @@ return array (
     array (
       'strategy' => 
       array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
+        'dateslot' => 'By date',
+        'timeslot' => 'By date and time',
       ),
     ),
   ),
@@ -51,301 +51,301 @@ return array (
   array (
     'btn' => 
     array (
-      'deactivate' => 'Desactivar este prestador',
-      'store' => 'Registrar',
-      'update' => 'Actualizar',
-      'return' => 'Volver',
+      'deactivate' => 'Deactivate this business',
+      'store' => 'Register',
+      'update' => 'Update',
+      'return' => 'Back',
     ),
     'contacts' => 
     array (
       'btn' => 
       array (
-        'create' => 'Agregar un contacto',
-        'import' => 'Importar contactos',
+        'create' => 'Add a contact',
+        'import' => 'Import contacts',
       ),
     ),
     'create' => 
     array (
-      'title' => 'Registrar un prestador',
+      'title' => 'Register a business',
     ),
     'dashboard' => 
     array (
       'alert' => 
       array (
-        'no_services_set' => 'Aún no tienes servicios cargados! Hazlo aquí!',
-        'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
+        'no_services_set' => 'There are still no services added. Add them from here!',
+        'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
       ),
       'panel' => 
       array (
-        'title_appointments_active' => 'Activos',
-        'title_appointments_annulated' => 'Anulados',
-        'title_appointments_served' => 'Atendidos',
-        'title_appointments_today' => 'Hoy',
-        'title_appointments_tomorrow' => 'Mañana',
+        'title_appointments_active' => 'Active',
+        'title_appointments_annulated' => 'Annulated',
+        'title_appointments_served' => 'Served',
+        'title_appointments_today' => 'Today',
+        'title_appointments_tomorrow' => 'Tomorrow',
         'title_appointments_total' => 'Total',
-        'title_contacts_active' => 'Suscriptos',
-        'title_contacts_registered' => 'Registrados',
-        'title_contacts_total' => 'Totales',
+        'title_contacts_active' => 'Suscribed',
+        'title_contacts_registered' => 'Registered',
+        'title_contacts_total' => 'Total',
       ),
       'meta' => 
       array (
-        'title_owner' => 'Propietario',
-        'title_registered_since' => 'Registrado desde',
+        'title_owner' => 'Owner',
+        'title_registered_since' => 'Registered since',
       ),
     ),
     'edit' => 
     array (
-      'title' => 'Edición de datos del prestador',
+      'title' => 'Business profile edit',
     ),
     'form' => 
     array (
       'category' => 
       array (
-        'label' => 'Rubro Comercial',
+        'label' => 'Industry',
       ),
       'description' => 
       array (
-        'label' => 'Describite',
-        'placeholder' => 'Describí tu prestación a rasgos generales',
+        'label' => 'Describe yourself',
+        'placeholder' => 'Describe your business and the services you provide',
       ),
       'name' => 
       array (
-        'label' => 'Nombre',
-        'placeholder' => 'Nombre comercial',
+        'label' => 'Name',
+        'placeholder' => 'Commercial name',
       ),
       'phone' => 
       array (
-        'label' => 'Móvil',
-        'placeholder' => 'tu móvil de contacto',
-        'hint' => 'sin espacios ni guiones',
+        'label' => 'Mobile',
+        'placeholder' => 'your mobile number',
+        'hint' => 'no spaces or dashes',
       ),
       'postal_address' => 
       array (
-        'label' => 'Dirección Postal',
-        'placeholder' => 'altura calle, barrio, ciudad, país',
+        'label' => 'Postal Code',
+        'placeholder' => 'street name and number, area, city, country',
       ),
       'social_facebook' => 
       array (
-        'label' => 'Dirección de Facebook',
+        'label' => 'Facebook URL',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ),
       'slug' => 
       array (
         'label' => 'Alias',
-        'placeholder' => 'así será el link en la web',
+        'placeholder' => 'this will be your timegrid URL',
       ),
       'timezone' => 
       array (
-        'label' => 'Zona Horaria',
+        'label' => 'TimeZone',
       ),
     ),
     'index' => 
     array (
-      'help' => 'Desde aquí puedes administrar todos los prestadores',
-      'register_business_help' => 'Si eres prestador y quieres dar turnos online, es tu oportunidad!',
-      'title' => 'Mis Prestadores',
+      'help' => 'From here you can manage all your businesses',
+      'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
+      'title' => 'My businesses',
       'btn' => 
       array (
-        'manage' => 'Administrar prestadores',
-        'register' => 'Registrar un prestador',
+        'manage' => 'Manage businesses',
+        'register' => 'Register a business',
       ),
     ),
     'msg' => 
     array (
       'create' => 
       array (
-        'success' => '¡Muy bien! Vamos a registrarte con el plan :plan',
+        'success' => 'Well done! You chose :plan',
       ),
       'destroy' => 
       array (
-        'success' => 'Prestador removido',
+        'success' => 'Business removed',
       ),
       'preferences' => 
       array (
-        'success' => 'Actualizaste las preferencias Ok',
+        'success' => 'Successfully updated preferences!',
       ),
       'store' => 
       array (
-        'business_already_exists' => 'El prestador ya está registrado',
-        'restored_trashed' => 'Prestador restaurado',
-        'success' => 'Prestador registrado',
+        'business_already_exists' => 'The business is already registered',
+        'restored_trashed' => 'Business restored',
+        'success' => 'Business successfully registered',
       ),
       'update' => 
       array (
-        'success' => 'Datos del prestador actualizados',
+        'success' => 'Updated business data',
       ),
     ),
     'preferences' => 
     array (
-      'title' => 'Preferencias del prestador',
+      'title' => 'Business preferences',
     ),
     'vacancies' => 
     array (
       'btn' => 
       array (
-        'update' => 'Actualizar Disponibilidad',
+        'update' => 'Update availability',
       ),
     ),
     'show' => 
     array (
-      'title' => 'Prestador',
+      'title' => 'Business',
     ),
   ),
   'contacts' => 
   array (
     'btn' => 
     array (
-      'confirm_delete' => '¿Seguro querés eliminar el contacto?',
-      'delete' => 'Eliminar',
-      'edit' => 'Editar',
-      'import' => 'Importar Contactos',
-      'store' => 'Guardar',
-      'update' => 'Actualizar',
+      'confirm_delete' => 'Sure to delete contact?',
+      'delete' => 'Delete',
+      'edit' => 'Edit',
+      'import' => 'Import contacts',
+      'store' => 'Save',
+      'update' => 'Update',
     ),
     'create' => 
     array (
-      'title' => 'Contactos',
+      'title' => 'Contacts',
     ),
     'form' => 
     array (
       'birthdate' => 
       array (
-        'label' => 'Nacimiento',
-        'placeholder' => 'fecha de nacimiento',
+        'label' => 'Birthdate',
+        'placeholder' => 'birthdate',
       ),
       'data' => 
       array (
-        'label' => 'datos en formato CSV',
+        'label' => 'CSV data',
       ),
       'description' => 
       array (
-        'label' => 'Descripción',
+        'label' => 'Description',
       ),
       'email' => 
       array (
         'label' => 'Email',
-        'placeholder' => 'email@ejemplo.com',
+        'placeholder' => 'email@example.com',
       ),
       'firstname' => 
       array (
-        'label' => 'Nombre',
-        'placeholder' => 'primer nombre',
+        'label' => 'Name',
+        'placeholder' => 'first name',
       ),
       'gender' => 
       array (
         'female' => 
         array (
-          'label' => 'Femenino',
+          'label' => 'Female',
         ),
         'male' => 
         array (
-          'label' => 'Masculino',
+          'label' => 'Male',
         ),
-        'label' => 'Sexo',
+        'label' => 'Gender',
       ),
       'lastname' => 
       array (
-        'label' => 'Apellido',
-        'placeholder' => 'apellido',
+        'label' => 'Last name',
+        'placeholder' => 'last name',
       ),
       'mobile' => 
       array (
-        'label' => 'Móvil',
-        'placeholder' => 'número de móvil completo',
+        'label' => 'Mobile',
+        'placeholder' => 'complete mobile number',
       ),
       'nin' => 
       array (
-        'label' => 'DNI',
-        'placeholder' => 'número de identificación nacional',
+        'label' => 'ID',
+        'placeholder' => 'national identification number',
       ),
       'notes' => 
       array (
-        'label' => 'Notas',
-        'placeholder' => 'notas',
+        'label' => 'Notes',
+        'placeholder' => 'notes',
       ),
       'prerequisites' => 
       array (
-        'label' => 'Prerequisitos',
+        'label' => 'Prerequisites',
       ),
     ),
     'import' => 
     array (
-      'title' => 'Importar contactos',
+      'title' => 'Import contacts',
     ),
     'label' => 
     array (
-      'birthdate' => 'Nacimiento',
+      'birthdate' => 'Birthdate',
       'email' => 'Email',
-      'member_since' => 'Suscripto desde',
-      'mobile' => 'Móvil',
-      'nin' => 'DNI',
-      'notes' => 'Notas',
-      'gender' => 'Sexo',
-      'next_appointment' => 'Próximo Turno',
-      'username' => 'Usuario',
+      'member_since' => 'Suscribed since',
+      'mobile' => 'Mobile',
+      'nin' => 'ID',
+      'notes' => 'Notes',
+      'gender' => 'Gender',
+      'next_appointment' => 'Next Appointment',
+      'username' => 'Username',
     ),
     'list' => 
     array (
       'btn' => 
       array (
-        'filter' => 'Filtro',
+        'filter' => 'Filter',
       ),
       'header' => 
       array (
         'email' => 'Email',
-        'firstname' => 'Nombre',
-        'lastname' => 'Apellidos',
-        'mobile' => 'Móvil',
-        'quality' => 'Puntaje',
-        'username' => 'Usuario',
-        'gender' => 'Sexo',
+        'firstname' => 'Name',
+        'lastname' => 'Lastname',
+        'mobile' => 'Mobile',
+        'quality' => 'Score',
+        'username' => 'Username',
+        'gender' => 'Gender',
       ),
       'msg' => 
       array (
-        'filter_no_results' => 'Nada por aquí',
+        'filter_no_results' => 'Nothing here',
       ),
     ),
     'msg' => 
     array (
       'destroy' => 
       array (
-        'success' => '¡Contacto eliminado!',
+        'success' => 'Contact deleted!',
       ),
       'import' => 
       array (
-        'success' => ':count Contactos importados',
+        'success' => ':count imported contacts',
       ),
       'store' => 
       array (
-        'success' => '¡Contacto registrado Ok!',
-        'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
+        'success' => 'Contact registered successfully!',
+        'warning_showing_existing_contact' => 'Advice: We found this existing contact',
       ),
       'update' => 
       array (
-        'success' => 'Actualizado Ok',
+        'success' => 'Updated successfully',
       ),
     ),
-    'title' => 'Mis Clientes',
+    'title' => 'My customers',
   ),
   'service' => 
   array (
     'btn' => 
     array (
-      'delete' => 'Eliminar',
-      'update' => 'Actualizar',
+      'delete' => 'Delete',
+      'update' => 'Update',
     ),
     'form' => 
     array (
       'name' => 
       array (
-        'label' => 'Nombre del servicio',
+        'label' => 'Service name',
       ),
     ),
     'msg' => 
     array (
       'store' => 
       array (
-        'success' => '¡Servicio Guardado!',
+        'success' => 'Service stored successfully!',
       ),
     ),
   ),
@@ -353,36 +353,36 @@ return array (
   array (
     'btn' => 
     array (
-      'create' => 'Agregar un servicio',
-      'store' => 'Guardar',
+      'create' => 'Add a service',
+      'store' => 'Save',
     ),
     'create' => 
     array (
       'alert' => 
       array (
-        'go_to_vacancies' => '¡Muy bien! Ya podés indicar tu disponibilidad y hacerla visible a tus clientes',
+        'go_to_vacancies' => 'Well done! Now you can publish your availability.',
       ),
       'btn' => 
       array (
-        'go_to_vacancies' => 'Publicar disponibilidad',
+        'go_to_vacancies' => 'Set and publish my availability',
       ),
-      'title' => 'Agregar un servicio',
+      'title' => 'Add a service',
     ),
     'index' => 
     array (
       'th' => 
       array (
-        'name' => 'Nombre',
-        'duration' => 'Duración',
+        'name' => 'Name',
+        'duration' => 'Duration',
         'slug' => 'Alias',
       ),
-      'title' => 'Servicios',
+      'title' => 'Services',
     ),
     'msg' => 
     array (
       'destroy' => 
       array (
-        'success' => '¡Servicio eliminado!',
+        'success' => 'Service deleted!',
       ),
     ),
   ),
@@ -390,21 +390,21 @@ return array (
   array (
     'edit' => 
     array (
-      'title' => 'Disponibilidades',
+      'title' => 'Availability',
     ),
     'msg' => 
     array (
       'store' => 
       array (
-        'nothing_changed' => 'Debés completar tu disponibilidad para alguna fecha',
-        'success' => 'Disponibilidades registradas!',
+        'nothing_changed' => 'You must indicate your availability at least for one date',
+        'success' => 'Availability registered successfully!',
       ),
     ),
     'table' => 
     array (
       'th' => 
       array (
-        'date' => 'Fecha',
+        'date' => 'Date',
       ),
     ),
   ),
