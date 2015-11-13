@@ -110,7 +110,9 @@ Thank you for considering contributing to Timegrid.
 Please see CONTRIBUTING doc for further details.
 You are welcome to join the core development team and enhance the development process apart from just code :)
 
-[Join the development board in Trello](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+[Join the Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+
+[Join the Slack for technical discussion](https://timegrid.slack.com/home)
 
 ### License
 
