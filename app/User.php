@@ -146,7 +146,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      */
     public static function firstByEmailOrCreate(array $attributes)
     {
-        if (! is_null($instance = static::where($attributes['email'])->first())) {
+        if (! is_null($instance = static::where('email', $attributes['email'])->first())) {
             return $instance;
         }
 
