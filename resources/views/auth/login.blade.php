@@ -58,6 +58,7 @@
                 </div>
             </div>
             {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => 'hidden'])->block()->asLinkTo(url('/auth/register')) !!}
+            @include('auth/social')
         </div>
     </div>
 </div>

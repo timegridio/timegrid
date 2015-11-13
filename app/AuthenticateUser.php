@@ -40,13 +40,13 @@ class AuthenticateUser
      * @param AuthenticateUserListener $listener
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function execute($hasCode, AuthenticateUserListener $listener)
+    public function execute($provider, $hasCode, AuthenticateUserListener $listener)
     {
         if (! $hasCode) {
-            return $this->getAuthorizationFirst();
+            return $this->getAuthorizationFirst($provider);
         }
 
-        $user = $this->users->findByUsernameOrCreate($this->getGithubUser());
+        $user = $this->users->findByUsernameOrCreate($this->getUser($provider));
 
         $this->auth->login($user, true);
 
@@ -56,16 +56,16 @@ class AuthenticateUser
     /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    private function getAuthorizationFirst()
+    private function getAuthorizationFirst($provider)
     {
-        return $this->socialite->driver('github')->redirect();
+        return $this->socialite->driver($provider)->redirect();
     }
 
     /**
      * @return \Laravel\Socialite\Contracts\User
      */
-    private function getGithubUser()
+    private function getUser($provider)
     {
-        return $this->socialite->driver('github')->user();
+        return $this->socialite->driver($provider)->user();
     }
 }
