@@ -139,6 +139,21 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
+     * Get the first record matching the email or create it.
+     *
+     * @param  array  $attributes
+     * @return static
+     */
+    public static function firstByEmailOrCreate(array $attributes)
+    {
+        if (! is_null($instance = static::where($attributes['email'])->first())) {
+            return $instance;
+        }
+
+        return static::create($attributes);
+    }
+
+    /**
      * TODO: Review the logic of this method.
      *       The method may return true even when no Contacts were found
      *       Should return the Contact Collection that were associated
