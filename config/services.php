@@ -37,7 +37,7 @@ return [
     'github' => [
         'client_id' => getenv('GITHUB_CLIENT_ID'),
         'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/social/login/github'
+        'redirect' => 'http://demo.timegrid.io/social/login/github'
     ],
 
     'facebook' => [
