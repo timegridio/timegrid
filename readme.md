@@ -1,12 +1,25 @@
-[![Join the chat at https://gitter.im/alariva/timegridDevelopment](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alariva/timegridDevelopment?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+<a href="http://www.timegrid.io/">
+    <img src="http://i.imgur.com/905Lv7L.png" alt="timegrid.io logo"
+         title="timegrid.io" align="right" />
+</a>
 
-## Timegrid
+timegrid
+============
+
+[![Join the chat at https://gitter.im/alariva/timegridDevelopment](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alariva/timegridDevelopment?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![ES User Manual](https://readthedocs.org/projects/manual-de-usuario-de-timegridio/badge/?version=latest)](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/?badge=latest)
 
 Timegrid is a web application for online reservation of services for business.
 
 It is currently in **beta** stage willing to add some missing functions in the short terms.
 
 It is made under the **Laravel 5** framework for **PHP**.
+
+![Screenshot](http://i.imgur.com/aiG7jlx.png)
+
+## Live Demo
+
+You can try the *beta stage* working [live demo](http://demo.timegrid.io/)
 
 ## Features
 
@@ -23,10 +36,6 @@ These are the current features so far:
 ## Official Documentation
 
 To be available soon.
-
-## Online Demo
-
-[Demo](http://demo.timegrid.io/)
 
 -----
 ## How to install:
