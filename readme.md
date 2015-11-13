@@ -109,6 +109,8 @@ Thank you for considering contributing to Timegrid.
 Please see CONTRIBUTING doc for further details.
 You are welcome to join the core development team and enhance the development process apart from just code :)
 
+[Join the development board in Trello](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+
 ### License
 
 Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
