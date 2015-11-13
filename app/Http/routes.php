@@ -91,13 +91,13 @@ Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'
 
 Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
 
-get('auth/login', 'Auth\AuthController@login');
-get('auth/logout', 'Auth\AuthController@logout');
-
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
+
+Route::get('social/login/redirect/{provider}', ['uses' => 'Auth\OAuthController@redirectToProvider', 'as' => 'social.login']);
+Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
 
 Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getHome']);
 

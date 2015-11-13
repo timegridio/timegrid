@@ -37,7 +37,19 @@ return [
     'github' => [
         'client_id' => getenv('GITHUB_CLIENT_ID'),
         'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
-        'redirect' => 'http://localhost:8000/auth/login'
+        'redirect' => 'http://localhost:8000/social/login/github'
+    ],
+
+    'facebook' => [
+        'client_id' => getenv('FACEBOOK_CLIENT_ID'),
+        'client_secret' => getenv('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => 'http://demo.timegrid.io/social/login/facebook'
+    ],
+
+    'google' => [
+        'client_id' => getenv('GOOGLE_CLIENT_ID'),
+        'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
+        'redirect' => 'http://demo.timegrid.io/social/login/google'
     ]
 
 ];
