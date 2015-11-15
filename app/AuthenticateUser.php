@@ -47,7 +47,9 @@ class AuthenticateUser
         }
 
         $user = $this->users->findOrCreate($this->getUser($provider));
-
+        if ($user === null) {
+            return $this->getAuthorizationFirst($provider);
+        }
         $this->auth->login($user, true);
 
         return $listener->userHasLoggedIn($user);

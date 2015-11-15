@@ -36,6 +36,6 @@ class OAuthController extends Controller implements AuthenticateUserListener
 
     public function userHasLoggedIn($user)
     {
-        return true;
+        return redirect('/');
     }
 }
