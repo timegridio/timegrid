@@ -142,9 +142,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
      * Get the first record matching the email or create it.
      *
      * @param  array  $attributes
-     * @return static
+     * @return self
      */
-    public static function firstByEmailOrCreate(array $attributes)
+    public static function firstOrCreate(array $attributes)
     {
         if (! is_null($instance = static::where('email', $attributes['email'])->first())) {
             return $instance;

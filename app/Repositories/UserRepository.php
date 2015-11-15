@@ -10,9 +10,14 @@ class UserRepository
      * @param $userData
      * @return static
      */
-    public function findByEmailOrCreate($userData)
+    public function findOrCreate($userData)
     {
-        return User::firstByEmailOrCreate([
+        $user = User::where('email', '=', $userData->email);
+        if ($user !== null) {
+            return $user;
+        }
+
+        return User::create([
             'name'     => $userData->nickname,
             'email'    => $userData->email,
         ]);

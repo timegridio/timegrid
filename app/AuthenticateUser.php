@@ -46,7 +46,7 @@ class AuthenticateUser
             return $this->getAuthorizationFirst($provider);
         }
 
-        $user = $this->users->findByEmailOrCreate($this->getUser($provider));
+        $user = $this->users->findOrCreate($this->getUser($provider));
 
         $this->auth->login($user, true);
 
