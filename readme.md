@@ -122,6 +122,10 @@ You are welcome to join the core development team and enhance the development pr
 
 [Dev Newsletter](http://eepurl.com/bF_ARX)
 
+## Special Thanks
+
+  * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez)
+
 ### License
 
 Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
