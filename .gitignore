@@ -2,5 +2,6 @@
 /node_modules
 /tests/logs
 .env
+.env.testing
 *.sublime-workspace
 .wakatime-project
