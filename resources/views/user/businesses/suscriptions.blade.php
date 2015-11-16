@@ -28,7 +28,7 @@
 	                    @endforeach
 	                    </table>
                     @else
-                    	No subscriptions.
+                    	No subscriptions available.
                     @endif
                 </div>
 
