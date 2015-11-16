@@ -114,7 +114,7 @@ body{
                         <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.create', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;Empezar</a>
+                        <a href="{{ route('manager.business.create', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{trans('pricing.plan.free.submit')}}</a>
                     </li>
                 </ul>
             </div>

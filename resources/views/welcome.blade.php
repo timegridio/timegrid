@@ -59,10 +59,12 @@
             </h1>
             <p class="hidden-xs" id="inspire">{{ trans('welcome.jumbotron.description') }}</p>
             <div class="row">
-                <span class="btn-group">
+            	<div class="col-xs-12">
+            		<span class="btn-group">
                     {!! Button::success(trans('welcome.jumbotron.btn.begin'))->asLinkTo( url('auth/register') ) !!}
                     {!! Button::normal(trans('welcome.jumbotron.btn.login'))->asLinkTo( url('auth/login') ) !!}
-                </span>
+                	</span>
+            	</div>
             </div>
         </header>
 
