@@ -116,7 +116,7 @@ You are welcome to join the core development team and enhance the development pr
 
 [Join the Slack for technical discussion](https://timegrid.slack.com/home)
 
-[Stay up-to-date with Twitter](https://github.com/alariva/timegrid/)
+[Stay up-to-date with Twitter](https://twitter.com/timegrid_io/)
 
 [Stay up-to-date with Facebook](https://www.facebook.com/timegrid.io/)
 
