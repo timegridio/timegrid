@@ -1,5 +1,6 @@
 /vendor
 /node_modules
+/tests/logs
 .env
 *.sublime-workspace
 .wakatime-project
