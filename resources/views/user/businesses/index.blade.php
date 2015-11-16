@@ -9,7 +9,7 @@
         <div class="panel-heading">{{ trans('user.businesses.index.title') }}</div>
 
         <div class="panel-body">
-
+			@if (!$businesses->isEmpty())
             @foreach ($businesses as $business)
                             <div class="row">
                             <div class="col-md-12">
@@ -24,6 +24,9 @@
                             </div>
                             </div>
             @endforeach
+            @else
+            	No businesses available.
+            @endif
 
         </div>
 
