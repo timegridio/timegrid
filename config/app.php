@@ -169,12 +169,12 @@ return [
         'Camroncade\Timezone\TimezoneServiceProvider',
         'Creativeorange\Gravatar\GravatarServiceProvider',
         'Fenos\Notifynder\NotifynderServiceProvider',
-        'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
         'Caffeinated\Widgets\WidgetsServiceProvider',
         'Ipunkt\LaravelAnalytics\AnalyticsServiceProvider',
 
         'alariva\tidiochat\TidioChatServiceProvider',
 
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
