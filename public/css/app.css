@@ -4365,14 +4365,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-form {
-  margin-left: -15px;
-  margin-right: -15px;
+  margin: 3.5px -15px;
   padding: 10px 15px;
   border-top: 1px solid transparent;
   border-bottom: 1px solid transparent;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-top: 3.5px;
-  margin-bottom: 3.5px;
 }
 @media (min-width: 768px) {
   .navbar-form .form-group {
@@ -4425,6 +4422,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 @media (max-width: 767px) {
+  .navbar-form {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
   .navbar-form .form-group {
     margin-bottom: 5px;
   }
