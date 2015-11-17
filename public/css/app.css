@@ -4422,6 +4422,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 @media (max-width: 767px) {
+  .navbar-form {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
   .navbar-form .form-group {
     margin-bottom: 5px;
   }
