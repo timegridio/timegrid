@@ -105,6 +105,12 @@ Type on web browser:
 
 You can now register as new user and login.
 
+## Troubleshooting
+
+I'd like to [hear your feedback](https://timegrid.slack.com/messages/general/).
+
+Let me know if you are facing any inconvenients to install, as I'm working on bringing a more comprehensive installation guide assessing common problems.
+
 ## Contributing
 
 Thank you for considering contributing to Timegrid.
