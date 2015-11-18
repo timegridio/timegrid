@@ -79,6 +79,12 @@ After that, copy .env.example and rename it as .env and put connection and chang
 <a name="step4"></a>
 ### Step 4: Configure
 
+**Copy** the **.env.example** file to **.env**
+
+    cp .env.example .env
+
+**Edit** all the Primary section parameters (for *local/test/development environment*)
+
 **Change** the storage path in **.env** file to a writeable location
 
     STORAGE_PATH=/home/username/timegrid/storage
