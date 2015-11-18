@@ -53,13 +53,13 @@ To be available soon.
 <a name="step1"></a>
 ### Step 1: Get the code - Clone the repository
 
-    $ git clone https://github.com/alariva/timegrid.git
+    git clone https://github.com/alariva/timegrid.git
     
 If you want to stand on the latest beta-stable version:
 
-    $ cd timegrid
+    cd timegrid
 
-    $ git checkout tags/v3.4.1-beta
+    git checkout tags/v3.4.1-beta
 
 -----
 <a name="step2"></a>
@@ -90,8 +90,12 @@ Migrate database schema
 Populate database:
 
     php artisan db:seed
+    
+Update [geoip](https://github.com/Torann/laravel-geoip) database:
 
-Run the server:
+    php artisan geoip:update
+
+You should be ready to go, now run the server:
 
     php artisan serve
 
