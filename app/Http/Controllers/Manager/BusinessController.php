@@ -51,7 +51,10 @@ class BusinessController extends Controller
         $timezone = $location['timezone'];
         Log::info("Manager\BusinessController: create: timezone:$timezone location:".serialize($location));
 
-        $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
+        $categories = Category::lists('slug', 'id')->transform(
+                                    function ($item, $key) {
+                                        return trans('app.business.category.'.$item); 
+                                    });
         return view('manager.businesses.create', compact('timezone', 'categories', 'plan'));
     }
 
@@ -64,10 +67,9 @@ class BusinessController extends Controller
     public function store(BusinessFormRequest $request)
     {
         Log::info('Manager\BusinessController: store');
-        $existing_business = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
+        $existingBusiness = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
-        if ($existing_business === null) {
-
+        if ($existingBusiness === null) {
             $business = new Business(Request::all());
             $category = Category::find(Request::get('category'));
             $business->strategy = $category->strategy;
@@ -88,13 +90,13 @@ class BusinessController extends Controller
             return Redirect::route('manager.business.service.create', $business);
         }
 
-        Log::info("Manager\BusinessController: store: [ADVICE] Found existing businessId:{$existing_business->id}");
-        if (\Auth::user()->isOwner($existing_business)) {
-            Log::info("Manager\BusinessController: store: [ADVICE] Restoring owned businessId:{$existing_business->id}");
-            $existing_business->restore();
+        Log::info("Manager\BusinessController: store: [ADVICE] Found existing businessId:{$existingBusiness->id}");
+        if (\Auth::user()->isOwner($existingBusiness)) {
+            Log::info("Manager\BusinessController: store: [ADVICE] Restoring owned businessId:{$existingBusiness->id}");
+            $existingBusiness->restore();
             Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
         } else {
-            Log::info("Manager\BusinessController: store: [ADVICE] Business already taken businessId:{$existing_business->id}");
+            Log::info("Manager\BusinessController: store: [ADVICE] Business already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
         }
         return Redirect::route('manager.business.index');
@@ -129,7 +131,10 @@ class BusinessController extends Controller
         Log::info("Manager\BusinessController: edit: businessId:{$business->id}");
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
-        $categories = Category::lists('slug', 'id')->transform(function ($item, $key) { return trans('app.business.category.'.$item); });
+        $categories = Category::lists('slug', 'id')->transform(
+                                        function ($item, $key) {
+                                            return trans('app.business.category.'.$item);
+                                        });
         $category = $business->category_id;
         Log::info("Manager\BusinessController: edit: businessId:{$business->id} timezone:$timezone category:$category location:".serialize($location));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
@@ -205,21 +210,21 @@ class BusinessController extends Controller
     {
         Log::info("Manager\BusinessController: postPreferences: businessId:{$business->id}");
         $parameters = \Config::get('preferences.App\Business');
-        $parameters_keys = array_flip(array_keys($parameters));
+        $parametersKeys = array_flip(array_keys($parameters));
         $preferences = $request->all();
-        $preferences = array_intersect_key($preferences, $parameters_keys);
+        $preferences = array_intersect_key($preferences, $parametersKeys);
         
         foreach ($preferences as $key => $value) {
             Log::info("Manager\BusinessController: postPreferences: businessId:{$business->id} key:$key value:$value type:{$parameters[$key]['type']}");
             $business->pref($key, $value, $parameters[$key]['type']);
         }
 
-        $business_name = $business->name;
+        $businessName = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
                    ->from('App\User', \Auth::user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
-                   ->extra(compact('business_name'))
+                   ->extra(compact('businessName'))
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));
