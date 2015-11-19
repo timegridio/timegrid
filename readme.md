@@ -84,6 +84,10 @@ After that, copy .env.example and rename it as .env and put connection and chang
 
     cp .env.example .env
 
+Set the application key
+
+    php artisan key:generate
+
 **Edit** all the Primary section parameters (for *local/test/development environment*)
 
 **Change** the storage path in **.env** file to a writeable location
