@@ -15,7 +15,7 @@ return array (
     ),
     'btn' => 
     array (
-      'store' => 'Store',
+      'store' => 'Save',
       'update' => 'Update',
     ),
     'msg' => 
