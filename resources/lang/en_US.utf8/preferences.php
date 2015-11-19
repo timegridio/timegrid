@@ -22,6 +22,12 @@ return array (
       'help' => 'How many hours in advance for annulating appointment ?',
       'label' => 'Appointment annulation policy',
     ),
+    'appointment_code_length' => 
+    array (
+      'format' => '1234',
+      'help' => 'How long should the appointment code be ?',
+      'label' => 'Appointment Code Length',
+    ),
     'appointment_take_today' => 
     array (
       'format' => 'yes/no',
