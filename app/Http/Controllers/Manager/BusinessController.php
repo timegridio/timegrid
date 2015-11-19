@@ -79,12 +79,12 @@ class BusinessController extends Controller
             \Auth::user()->businesses()->attach($business);
             \Auth::user()->save();
 
-            $business_name = $business->name;
+            $businessName = $business->name;
             Notifynder::category('user.registeredBusiness')
                        ->from('App\User', \Auth::user()->id)
                        ->to('App\Business', $business->id)
                        ->url('http://localhost')
-                       ->extra(compact('business_name'))
+                       ->extra(compact('businessName'))
                        ->send();
 
             Flash::success(trans('manager.businesses.msg.store.success'));
