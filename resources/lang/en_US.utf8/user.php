@@ -1,44 +1,17 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/11/19 19:25:07 
+ Generated via "php artisan localization:missing" at 2015/11/19 19:57:47 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/contacts/create.blade.php
-  'contacts' => 
-  array (
-    'create' => 
-    array (
-      'help' => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
-      'title' => 'My profile',
-    ),
-    'btn' => 
-    array (
-      'store' => 'Save',
-      'update' => 'Update',
-    ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'associated_existing_contact' => 'Your profile was attached to an existing one',
-        'success' => 'Successfully saved',
-        'warning' => 
-        array (
-          'already_registered' => 'This profile was already registered',
-          'showing_existing_contact' => 'Your profile was attached to an existing one',
-        ),
-      ),
-      'update' => 
-      array (
-        'success' => 'Updated successfully',
-      ),
-    ),
-  ),
-  //==================================== Translations ====================================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/appointments/index.blade.php
   'appointments' => 
   array (
+    'alert' => 
+    array (
+      'empty_list' => 'You have no ongoing reservations by now.',
+    ),
     'btn' => 
     array (
       'book' => 'Book appointment',
@@ -110,6 +83,7 @@ return array (
       'title' => 'Appointments',
     ),
   ),
+  //==================================== Translations ====================================//
   'booking' => 
   array (
     'msg' => 
@@ -163,6 +137,36 @@ return array (
       array (
         'book' => 'Reserve appointment',
         'change' => 'Change',
+      ),
+    ),
+  ),
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'store' => 'Save',
+      'update' => 'Update',
+    ),
+    'create' => 
+    array (
+      'help' => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
+      'title' => 'My profile',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'associated_existing_contact' => 'Your profile was attached to an existing one',
+        'success' => 'Successfully saved',
+        'warning' => 
+        array (
+          'already_registered' => 'This profile was already registered',
+          'showing_existing_contact' => 'Your profile was attached to an existing one',
+        ),
+      ),
+      'update' => 
+      array (
+        'success' => 'Updated successfully',
       ),
     ),
   ),

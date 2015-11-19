@@ -5,9 +5,15 @@
     
     <div class="col-md-4 col-md-offset-4">
     {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
-    @foreach ($appointments as $appointment)
-        {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
-    @endforeach
+    @if ($appointments->count())
+        @foreach ($appointments as $appointment)
+            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
+        @endforeach
+    @else
+        <div class="row">
+            {!! Alert::info(trans('user.appointments.alert.empty_list')) !!}
+        </div>
+    @endif
     {!! Form::close() !!}
     </div>
     
