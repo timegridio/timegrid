@@ -3,7 +3,11 @@
 @section('content')
 <div class="container">
     <div class="row">
+            
+            {!! Alert::info(trans('user.contacts.create.help')) !!}
+
             <div class="panel panel-default">
+
                 <div class="panel-heading">{{ trans('user.contacts.create.title') }}</div>
 
                 <div class="panel-body">

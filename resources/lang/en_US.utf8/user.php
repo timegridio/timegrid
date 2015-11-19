@@ -1,9 +1,41 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/08/06 15:40:10 
+ Generated via "php artisan localization:missing" at 2015/11/19 19:25:07 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/contacts/create.blade.php
+  'contacts' => 
+  array (
+    'create' => 
+    array (
+      'help' => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
+      'title' => 'My profile',
+    ),
+    'btn' => 
+    array (
+      'store' => 'Store',
+      'update' => 'Update',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'associated_existing_contact' => 'Your profile was attached to an existing one',
+        'success' => 'Successfully saved',
+        'warning' => 
+        array (
+          'already_registered' => 'This profile was already registered',
+          'showing_existing_contact' => 'Your profile was attached to an existing one',
+        ),
+      ),
+      'update' => 
+      array (
+        'success' => 'Updated successfully',
+      ),
+    ),
+  ),
   //==================================== Translations ====================================//
   'appointments' => 
   array (
@@ -104,7 +136,6 @@ return array (
   ),
   'businesses' => 
   array (
-    'list' => [ 'alert' => [ 'not_found' => 'We cant find that business, please choose one from the list' ] ],
     'index' => 
     array (
       'btn' => 
@@ -119,41 +150,19 @@ return array (
     array (
       'title' => 'Suscriptions',
     ),
+    'list' => 
+    array (
+      'alert' => 
+      array (
+        'not_found' => 'We cant find that business, please choose one from the list',
+      ),
+    ),
     'show' => 
     array (
       'btn' => 
       array (
         'book' => 'Reserve appointment',
         'change' => 'Change',
-      ),
-    ),
-  ),
-  'contacts' => 
-  array (
-    'btn' => 
-    array (
-      'store' => 'Store',
-      'update' => 'Update',
-    ),
-    'create' => 
-    array (
-      'title' => 'My profile',
-    ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'associated_existing_contact' => 'Your profile was attached to an existing one',
-        'success' => 'Successfully saved',
-        'warning' => 
-        array (
-          'already_registered' => 'This profile was already registered',
-          'showing_existing_contact' => 'Your profile was attached to an existing one',
-        ),
-      ),
-      'update' => 
-      array (
-        'success' => 'Updated successfully',
       ),
     ),
   ),
