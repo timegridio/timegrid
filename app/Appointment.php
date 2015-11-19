@@ -74,7 +74,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
      */
     public function save(array $options = array())
     {
-        return parent::save();
+        return parent::save($options);
     }
 
     ///////////////////

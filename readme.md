@@ -11,6 +11,7 @@ timegrid
 [![Join the chat at https://gitter.im/alariva/timegridDevelopment](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alariva/timegridDevelopment?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![ES User Manual](https://readthedocs.org/projects/manual-de-usuario-de-timegridio/badge/?version=latest&style=flat-square)](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/?badge=latest)
 [![Version Stage](https://img.shields.io/badge/dev--beta-3.4.x-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Project Status](https://stillmaintained.com/alariva/timegrid.png)](https://stillmaintained.com/alariva/timegrid)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
 Timegrid is a web application for online reservation of services for business.
@@ -53,13 +54,13 @@ To be available soon.
 <a name="step1"></a>
 ### Step 1: Get the code - Clone the repository
 
-    $ git clone https://github.com/alariva/timegrid.git
+    git clone https://github.com/alariva/timegrid.git
     
 If you want to stand on the latest beta-stable version:
 
-    $ cd timegrid
+    cd timegrid
 
-    $ git checkout tags/v3.4.1-beta
+    git checkout tags/v3.4.2-beta
 
 -----
 <a name="step2"></a>
@@ -79,6 +80,12 @@ After that, copy .env.example and rename it as .env and put connection and chang
 <a name="step4"></a>
 ### Step 4: Configure
 
+**Copy** the **.env.example** file to **.env**
+
+    cp .env.example .env
+
+**Edit** all the Primary section parameters (for *local/test/development environment*)
+
 **Change** the storage path in **.env** file to a writeable location
 
     STORAGE_PATH=/home/username/timegrid/storage
@@ -90,8 +97,12 @@ Migrate database schema
 Populate database:
 
     php artisan db:seed
+    
+Update [geoip](https://github.com/Torann/laravel-geoip) database:
 
-Run the server:
+    php artisan geoip:update
+
+You should be ready to go, now run the server:
 
     php artisan serve
 

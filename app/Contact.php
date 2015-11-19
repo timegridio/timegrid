@@ -36,7 +36,7 @@ class Contact extends Model
         if (array_key_exists('email', $changed)) {
             $this->linkToUser(true);
         }
-        return parent::save();
+        return parent::save($options);
     }
 
     //////////////////
