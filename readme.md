@@ -78,7 +78,7 @@ After that, copy .env.example and rename it as .env and put connection and chang
 
 -----
 <a name="step4"></a>
-### Step 4: Configure
+### Step 4: Configure environment
 
 **Copy** the **.env.example** file to **.env**
 
@@ -94,7 +94,11 @@ Set the application key
 
     STORAGE_PATH=/home/username/timegrid/storage
 
-Migrate database schema
+For **local** environment you will need to comment out APP_DOMAIN, to keep it *null*
+
+    #APP_DOMAIN=
+
+Back to your console, migrate database schema
 
     php artisan migrate
 
