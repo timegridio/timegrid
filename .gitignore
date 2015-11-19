@@ -1,6 +1,7 @@
 /vendor
 /node_modules
 /tests/logs
+/build
 .env
 .env.testing
 *.sublime-workspace
