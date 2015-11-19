@@ -41,7 +41,7 @@ class BusinessContactImportExportController extends Controller
         Log::info("BusinessContactImportExportController: postImport: businessId:{$business->id}");
         $csv = $this->csvToArray(Request::get('data'));
         
-        foreach ($csv as $key => $import) {
+        foreach ($csv as $import) {
             $import = array_map(function ($item) { return $item == 'NULL' ? null : $item; }, $import);
 
             if ($import['birthdate'] !== null) {
@@ -78,10 +78,9 @@ class BusinessContactImportExportController extends Controller
      *      Converts submitted CSV string data into an Array
      *
      * @param  string $data      CSV string of Contacts
-     * @param  string $delimiter CSV field delimiter character
      * @return array             Converted CSV into Array
      */
-    private function csvToArray($data='', $delimiter=',')
+    private function csvToArray($data='')
     {
         Log::info("BusinessContactImportExportController: csvToArray");
 
