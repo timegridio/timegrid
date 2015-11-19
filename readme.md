@@ -118,7 +118,9 @@ Type on web browser:
 <a name="step5"></a>
 ### Step 5: Start Page
 
-You can now register as new user and login.
+Congrats! You can now register as new user and log-in.
+
+![timegrid Login Screen](http://i.imgur.com/jM8pbGq.png)
 
 ## Troubleshooting
 
