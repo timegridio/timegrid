@@ -58,8 +58,8 @@ class AgendaController extends Controller
     }
 
     /**
-     * poset Store
-     * 
+     * post Store
+     *
      * @param  Request $request Input data of booking form
      * @return Response         Redirect to Appointments listing
      */
