@@ -13,7 +13,6 @@
 		"patricktalmadge/bootstrapper": "~5",
 		"barryvdh/laravel-snappy": "0.2.x",
 		"laracasts/flash": "~1.3",
-		"caouecs/laravel4-lang": "~2.0",
 		"guzzlehttp/guzzle": "~5.0",
 		"kodeine/laravel-acl": "~1.0@dev",
 		"pid/speakingurl": "^0.11.0",
@@ -44,7 +43,8 @@
 		"laracasts/generators": "^1.1",
 		"alariva/tidiochat": "^1.1",
 		"potsky/laravel-localization-helpers" : "~1.1",
-		"laracasts/integrated": "^0.15.6"
+		"laracasts/integrated": "^0.15.6",
+		"caouecs/laravel4-lang": "~2.0"
 	},
 	"autoload": {
 		"classmap": [

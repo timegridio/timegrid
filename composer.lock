@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ed37d540b448609cfb676f6c752e70ca",
-    "content-hash": "cbdcdf83347d1427e21ce2e60bbb249a",
+    "hash": "33c4434aaf2dbead027b12227401ac50",
+    "content-hash": "9ab3672850e548b70618ef04f866fd42",
     "packages": [
         {
             "name": "anhskohbo/no-captcha",
@@ -280,46 +280,6 @@
             "description": "Helps manage timezones in Laravel. Includes <select> form builder for timezones.",
             "homepage": "http://www.camroncade.com/managing-timezones-with-laravel/",
             "time": "2015-05-20 20:32:03"
-        },
-        {
-            "name": "caouecs/laravel4-lang",
-            "version": "2.0.27",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "d1f04be081e6315368b05e8cdc53b924e82e774f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/d1f04be081e6315368b05e8cdc53b924e82e774f",
-                "reference": "d1f04be081e6315368b05e8cdc53b924e82e774f",
-                "shasum": ""
-            },
-            "require-dev": {
-                "fabpot/php-cs-fixer": "^1.10"
-            },
-            "suggest": {
-                "overtrue/laravel-lang": "Command to add languages in your project"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "caouecs",
-                    "email": "caouecs@caouecs.net"
-                }
-            ],
-            "description": "Languages for Laravel",
-            "keywords": [
-                "lang",
-                "languages",
-                "laravel",
-                "lpm"
-            ],
-            "time": "2015-11-03 17:08:53"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -3857,6 +3817,46 @@
             "description": "A minimal package for integrating TidioChat.com to your webapp",
             "homepage": "http://xbooking.com.ar/",
             "time": "2015-07-28 01:01:24"
+        },
+        {
+            "name": "caouecs/laravel4-lang",
+            "version": "2.0.27",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "reference": "d1f04be081e6315368b05e8cdc53b924e82e774f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/d1f04be081e6315368b05e8cdc53b924e82e774f",
+                "reference": "d1f04be081e6315368b05e8cdc53b924e82e774f",
+                "shasum": ""
+            },
+            "require-dev": {
+                "fabpot/php-cs-fixer": "^1.10"
+            },
+            "suggest": {
+                "overtrue/laravel-lang": "Command to add languages in your project"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "caouecs",
+                    "email": "caouecs@caouecs.net"
+                }
+            ],
+            "description": "Languages for Laravel",
+            "keywords": [
+                "lang",
+                "languages",
+                "laravel",
+                "lpm"
+            ],
+            "time": "2015-11-03 17:08:53"
         },
         {
             "name": "codeclimate/php-test-reporter",
