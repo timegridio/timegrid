@@ -2,6 +2,7 @@
 
 return [
   'phone' => 'The mobile number must be in international format.',
+  'required' => 'Did not complete a required field.',
   'custom' => [
     'name' => [
         'min' => 'Tell us your full name',
