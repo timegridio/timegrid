@@ -150,6 +150,7 @@ return array (
     ),
     'create' => 
     array (
+        'help' => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
     ),
     'msg' => 
