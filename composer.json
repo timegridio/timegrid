@@ -31,7 +31,8 @@
 		"caffeinated/widgets": "~2.0",
 		"watson/rememberable": "^1.0",
 		"ipunkt/laravel-analytics": "~1.1",
-		"laravel/socialite": "^2.0"
+		"laravel/socialite": "^2.0",
+		"alariva/tidiochat": "^1.1"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~4.0",
@@ -41,7 +42,6 @@
 		"mockery/mockery": "0.9.*",
 		"phpspec/phpspec": "~2.1",
 		"laracasts/generators": "^1.1",
-		"alariva/tidiochat": "^1.1",
 		"potsky/laravel-localization-helpers" : "~1.1",
 		"laracasts/integrated": "^0.15.6",
 		"caouecs/laravel4-lang": "~2.0"

@@ -4,9 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33c4434aaf2dbead027b12227401ac50",
-    "content-hash": "9ab3672850e548b70618ef04f866fd42",
+    "hash": "6c5a289c2dec2203ff308bfaf7c6cd6d",
+    "content-hash": "4a8ca441cfa5ce1d5187bfae83c3d95c",
     "packages": [
+        {
+            "name": "alariva/tidiochat",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alariva/tidiochat-laravel-5-package.git",
+                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alariva/tidiochat-laravel-5-package/zipball/0f7a67353cada5e531ae8fbbd2ffee267337cb11",
+                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.0",
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "alariva\\tidiochat\\": "src\\"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Vallese",
+                    "email": "alariva@gmail.com"
+                }
+            ],
+            "description": "A minimal package for integrating TidioChat.com to your webapp",
+            "homepage": "http://xbooking.com.ar/",
+            "time": "2015-07-28 01:01:24"
+        },
         {
             "name": "anhskohbo/no-captcha",
             "version": "2.0.7",
@@ -3776,48 +3818,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "alariva/tidiochat",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/alariva/tidiochat-laravel-5-package.git",
-                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/alariva/tidiochat-laravel-5-package/zipball/0f7a67353cada5e531ae8fbbd2ffee267337cb11",
-                "reference": "0f7a67353cada5e531ae8fbbd2ffee267337cb11",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "alariva\\tidiochat\\": "src\\"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ariel Vallese",
-                    "email": "alariva@gmail.com"
-                }
-            ],
-            "description": "A minimal package for integrating TidioChat.com to your webapp",
-            "homepage": "http://xbooking.com.ar/",
-            "time": "2015-07-28 01:01:24"
-        },
         {
             "name": "caouecs/laravel4-lang",
             "version": "2.0.27",
