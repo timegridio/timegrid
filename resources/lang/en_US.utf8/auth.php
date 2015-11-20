@@ -1,20 +1,20 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/07/29 12:57:57
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'btn' => 
-  array (
+  'btn' =>
+  array(
     'already_registered' => 'Already registered ? Login',
     'forgot' => 'Forgot password ? Reset',
     'not_registered' => 'Not registered yet ? SignUp',
   ),
-  'login' => 
-  array (
-    'alert' => 
-    array (
+  'login' =>
+  array(
+    'alert' =>
+    array(
       'message' => 'May I help ?',
       'whoops' => 'Whoops!',
     ),
@@ -25,10 +25,10 @@ return array (
     'remember_me' => 'Remember me',
     'title' => 'Login',
   ),
-  'register' => 
-  array (
-    'btn' => 
-    array (
+  'register' =>
+  array(
+    'btn' =>
+    array(
       'submit' => 'Register',
     ),
     'email' => 'Your Email',
@@ -37,15 +37,15 @@ return array (
     'password' => 'A password',
     'password_confirmation' => 'Repeat password',
     'title' => 'Hi! We are going to build your profile in timegrid.io',
-    'msg' => 
-    array (
+    'msg' =>
+    array(
       'errors' => 'Errors',
     ),
   ),
-  'reset' => 
-  array (
-    'btn' => 
-    array (
+  'reset' =>
+  array(
+    'btn' =>
+    array(
       'reset' => 'Reset password',
       'send_link' => 'Send me the reset link',
     ),
