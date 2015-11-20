@@ -13,6 +13,15 @@ use App\Vacancy;
 
 class ConciergeStrategy
 {
+    public static function isAvailable(Business $business, Carbon $date, User $user, $limit = 7)
+    {
+        $vacancies = self::getVacancies($business, $date, $user, $limit);
+        foreach ($vacancies as $date) {
+            if (count($date) > 0) return true;
+        }
+        return false;
+    }
+
     public static function getVacancies(Business $business, Carbon $date, User $user, $limit = 7)
     {
         $appointments = $business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();

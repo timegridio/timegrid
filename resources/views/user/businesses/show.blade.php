@@ -80,7 +80,11 @@
                             @if (\Auth::user()->suscribedTo($business) === null)
                                 {!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
-                                {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
+                                @if($available)
+                                    {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
+                                @else
+                                    <div class="alert alert-warning">{{ trans('user.appointments.alert.no_vacancies') }}</div>
+                                @endif
                             @endif
                         </li>
                         @endif
