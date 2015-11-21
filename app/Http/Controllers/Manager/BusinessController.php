@@ -97,7 +97,8 @@ class BusinessController extends Controller
             $existingBusiness->restore();
             Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
         } else {
-            Log::info("Manager\BusinessController: store: [ADVICE] Business already taken businessId:{$existingBusiness->id}");
+            Log::info("Manager\BusinessController: store: "
+                    . "[ADVICE] Business already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
         }
         return Redirect::route('manager.business.index');
