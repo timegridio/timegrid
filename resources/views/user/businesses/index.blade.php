@@ -11,18 +11,9 @@
         <div class="panel-body">
 			@if (!$businesses->isEmpty())
             @foreach ($businesses as $business)
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="media">
-                                  <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="{{route('user.businesses.home', ['business' => $business->id])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
-                                  </div>
-                                  <div class="media-body">
-                                    <a href="{{route('user.businesses.home', ['business' => $business->id])}}"><blockquote>{{ str_limit($business->name, 50) }}</blockquote></a>
-                                  </div>
-                                </div>
-                            </div>
-                            </div>
+              <div class="row">
+                @include('user.businesses._row', $business)
+              </div>
             @endforeach
             @else
             	No businesses available.
