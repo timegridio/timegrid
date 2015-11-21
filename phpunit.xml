@@ -24,4 +24,13 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
+    <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">app/</directory>
+        <exclude>
+          <directory suffix=".php">vendor/</directory>
+          <directory suffix=".js">vendor/</directory>
+        </exclude>
+      </whitelist>
+    </filter>
 </phpunit>
