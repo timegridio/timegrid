@@ -17,7 +17,9 @@ class ConciergeStrategy
     {
         $vacancies = self::getVacancies($business, $date, $user, $limit);
         foreach ($vacancies as $date) {
-            if (count($date) > 0) return true;
+            if (count($date) > 0) {
+                return true;
+            }
         }
         return false;
     }
@@ -38,7 +40,7 @@ class ConciergeStrategy
         for ($i=0; $i < $days; $i++) {
             $dates[date('Y-m-d', strtotime("$starting +$i days"))] = [];
         }
-        foreach ($vacancies as $key => $vacancy) {
+        foreach ($vacancies as $vacancy) {
             if (array_key_exists($vacancy->date, $dates)) {
                 $dates[$vacancy->date][$vacancy->service->slug] = $vacancy;
             }
