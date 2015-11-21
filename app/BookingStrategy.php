@@ -9,6 +9,8 @@ class BookingStrategy
 {
     protected $log;
 
+    protected $strategy = null;
+
     public function __construct($strategyId)
     {
         $this->log = app()->make('log');
