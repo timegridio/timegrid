@@ -39,7 +39,7 @@ class Service extends Model
     {
         $this->attributes['slug'] = str_slug($this->attributes['name']);
 
-        return parent::save();
+        return parent::save($options);
     }
 
     ////////////
