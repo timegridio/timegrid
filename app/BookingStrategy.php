@@ -2,17 +2,18 @@
 
 namespace App;
 
-use Carbon\Carbon;
 use App\BookingStrategyTimeslot;
 use App\BookingStrategyDateslot;
-use Log;
 
 class BookingStrategy
 {
-    private $strategy = null;
+    protected $log;
 
     public function __construct($strategyId)
     {
+        $this->log = app()->make('log');
+
+        $this->log->info("BookingStrategy: Using {$strategyId}");
         switch ($strategyId) {
             case 'timeslot':
                 $this->strategy = new BookingStrategyTimeslot();
@@ -21,7 +22,7 @@ class BookingStrategy
                 $this->strategy = new BookingStrategyDateslot();
             break;
             default:
-                Log::warning("BookingStrategy: __construct: Illegal strategy:{$this->strategy}");
+                $this->log->warning("BookingStrategy: __construct: Illegal strategy:{$strategyId}");
             break;
         }
     }
