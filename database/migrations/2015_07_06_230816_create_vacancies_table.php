@@ -12,8 +12,7 @@ class CreateVacanciesTable extends Migration
      */
     public function up()
     {
-        Schema::create('vacancies', function(Blueprint $table)
-        {
+        Schema::create('vacancies', function (Blueprint $table) {
             $table->increments('id');
             $table->date('date');
             $table->timestamp('start_at')->nullable()->index();

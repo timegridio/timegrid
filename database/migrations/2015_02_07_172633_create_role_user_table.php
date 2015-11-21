@@ -5,7 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateRoleUserTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -32,5 +31,4 @@ class CreateRoleUserTable extends Migration
     {
         Schema::drop('role_user');
     }
-
 }

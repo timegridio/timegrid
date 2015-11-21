@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class AddExpireTimeColumnToNotificationTable extends Migration
 {
-
     /**
      * Run the migrations.
      *

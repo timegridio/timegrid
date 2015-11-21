@@ -12,8 +12,7 @@ class CreatePreferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('preferences', function(Blueprint $table)
-        {
+        Schema::create('preferences', function (Blueprint $table) {
             $table->increments('id');
             $table->string('key');
             $table->string('value');

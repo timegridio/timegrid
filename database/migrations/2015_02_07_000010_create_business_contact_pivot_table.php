@@ -12,7 +12,7 @@ class CreateBusinessContactPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('business_contact', function(Blueprint $table) {
+        Schema::create('business_contact', function (Blueprint $table) {
             $table->integer('business_id')->unsigned()->index();
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->integer('contact_id')->unsigned()->index();

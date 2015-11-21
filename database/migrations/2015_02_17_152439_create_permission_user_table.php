@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePermissionUserTable extends Migration {
-
+class CreatePermissionUserTable extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -31,5 +31,4 @@ class CreatePermissionUserTable extends Migration {
     {
         Schema::drop('permission_user');
     }
-
 }

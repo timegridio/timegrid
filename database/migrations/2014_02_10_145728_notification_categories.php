@@ -5,7 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class NotificationCategories extends Migration
 {
-
     /**
      * Run the migrations.
      *

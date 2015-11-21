@@ -3,8 +3,8 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContactsTable extends Migration {
-
+class CreateContactsTable extends Migration
+{
     /**
      * Run the migrations.
      *
@@ -12,13 +12,12 @@ class CreateContactsTable extends Migration {
      */
     public function up()
     {
-        Schema::create('contacts', function(Blueprint $table)
-        {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('nin')->nullable()->index();
-            $table->enum('gender', ['M','F']);
+            $table->enum('gender', ['M', 'F']);
             $table->string('firstname');
             $table->string('lastname');
             $table->string('occupation')->nullable();
@@ -42,5 +41,4 @@ class CreateContactsTable extends Migration {
     {
         Schema::drop('contacts');
     }
-
 }
