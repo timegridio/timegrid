@@ -27,9 +27,11 @@
     <filter>
       <whitelist processUncoveredFilesFromWhitelist="true">
         <directory suffix=".php">app/</directory>
+        <directory suffix=".php">database/migrations/</directory>
+        <directory suffix=".php">bootstrap/</directory>
+        <directory suffix=".php">config/</directory>
         <exclude>
-          <directory suffix=".php">vendor/</directory>
-          <directory suffix=".js">vendor/</directory>
+          <directory suffix=".js">public/</directory>
         </exclude>
       </whitelist>
     </filter>
