@@ -9,22 +9,34 @@ class BusinessUnitTest extends TestCase
     use DatabaseTransactions;
 
    /**
-     * @covers            \App\Business::create
+     * @covers            \App\Business::__construct
      */
-    public function testCreatedBusinessGetsStoredInDatabase()
+    public function testCreateBusiness()
+    {
+        $business = factory(Business::class)->create();
+
+        return $business;
+    }
+
+   /**
+     * @covers            \App\Business::__construct
+     * @covers            \App\Business::save
+     */
+    public function testCreateAndSeeBusinessStoredInDatabase()
     {
         $business = factory(Business::class)->create();
 
         $this->seeInDatabase('businesses', ['slug' => $business->slug]);
+
+        return $business;
     }
 
    /**
      * @covers            \App\Business::getPresenter
+     * @depends           testCreateBusiness
      */
-    public function testBusinessGetPresenter()
+    public function testBusinessGetPresenter(Business $business)
     {
-        $business = factory(Business::class)->create();
-
         $businessPresenter = $business->getPresenter();
 
         $this->assertInstanceOf(BusinessPresenter::class, $businessPresenter);
@@ -32,11 +44,10 @@ class BusinessUnitTest extends TestCase
 
    /**
      * @covers            \App\Business::setPhoneAttribute
+     * @depends           testCreateBusiness
      */
-    public function testSetEmptyPhoneAttributeGetsNull()
+    public function testSetEmptyPhoneAttributeGetsNull(Business $business)
     {
-        $business = factory(Business::class)->create();
-
         $business->phone = '';
 
         $this->assertNull($business->phone);
@@ -44,11 +55,10 @@ class BusinessUnitTest extends TestCase
 
    /**
      * @covers            \App\Business::setPostalAddressAttribute
+     * @depends           testCreateBusiness
      */
-    public function testSetEmptyPostalAddressAttributeGetsNull()
+    public function testSetEmptyPostalAddressAttributeGetsNull(Business $business)
     {
-        $business = factory(Business::class)->create();
-
         $business->postal_address = '';
 
         $this->assertNull($business->postal_address);
