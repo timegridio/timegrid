@@ -1,0 +1,10 @@
+languages:
+   Ruby: false
+   JavaScript: true
+   Python: false
+   PHP: true
+exclude_paths:
+- "test/*"
+- "vendor/*"
+- "public/*"
+- "build/*"
