@@ -8,7 +8,7 @@ use Carbon\Carbon;
 
 class BookingStrategyTimeslot implements BookingStrategyInterface
 {
-    public function makeReservation(Business $business, $data)
+    public function makeReservation(User $issuer, Business $business, $data)
     {
         $data['business_id'] = $business->id;
         $appointment = new Appointment($data);
