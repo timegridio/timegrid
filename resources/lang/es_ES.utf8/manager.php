@@ -234,6 +234,7 @@ return array (
       array (
         'label' => 'Nombre',
         'placeholder' => 'primer nombre',
+        'validation' => 'Se requiere su primer nombre',
       ),
       'gender' => 
       array (
@@ -251,6 +252,7 @@ return array (
       array (
         'label' => 'Apellido',
         'placeholder' => 'apellido',
+        'validation' => 'Se requiere su apellido',
       ),
       'mobile' => 
       array (
