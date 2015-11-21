@@ -16,13 +16,15 @@
             {!! Form::text('firstname', \Auth::user()->name,
                 array('required',
                       'class'=>'form-control',
-                      'placeholder'=> trans('manager.contacts.form.firstname.label') )) !!}
+                      'placeholder'=> trans('manager.contacts.form.firstname.label'),
+                      'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.firstname.validation').'" )' )) !!}
         </div>
         <div class="form-group col-xs-8">
             {!! Form::text('lastname', null,
                 array('required',
                       'class'=>'form-control',
-                      'placeholder'=> trans('manager.contacts.form.lastname.label') )) !!}
+                      'placeholder'=> trans('manager.contacts.form.lastname.label'),
+                      'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.lastname.validation').'" )' )) !!}
         </div>
     </div>
     <div class="row">
