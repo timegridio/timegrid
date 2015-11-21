@@ -399,6 +399,10 @@ return array (
         'nothing_changed' => 'Debés completar tu disponibilidad para alguna fecha',
         'success' => 'Disponibilidades registradas!',
       ),
+      'edit' =>
+      array(
+        'no_services' => 'No hay servicios registrados. Favor de registrar servicios para tu negocio.',
+      ),
     ),
     'table' => 
     array (

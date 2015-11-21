@@ -399,6 +399,10 @@ return array(
         'nothing_changed' => 'You must indicate your availability at least for one date',
         'success' => 'Availability registered successfully!',
       ),
+      'edit' =>
+      array(
+        'no_services' => 'No services registered. Please register services for your business.',
+      ),
     ),
     'table' =>
     array(

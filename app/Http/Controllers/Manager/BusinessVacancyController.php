@@ -39,6 +39,10 @@ class BusinessVacancyController extends Controller
 
         $dates = Concierge::generateAvailability($business->vacancies);
         $services = $business->services;
+        if ($services->isEmpty()) {
+            return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'))
+                ->withErrors(array("msg" => trans('manager.vacancies.msg.edit.no_services') ));
+        }
         return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'));
     }
 

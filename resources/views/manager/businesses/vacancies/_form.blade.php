@@ -18,9 +18,10 @@
     </tr>
 @endforeach
 </table>  
-
+@if (!$services->isEmpty())
 <div class="row">
     <div class="form-group col-sm-12">
         {!! Button::primary(trans('manager.businesses.btn.update'))->block()->large()->submit() !!}
     </div>
 </div>
+@endif
