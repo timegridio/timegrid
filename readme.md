@@ -40,7 +40,12 @@ These are the current features so far:
 
 ## Official Documentation
 
-To be available soon.
+A lot of work is taking place here, and counting, please be patient :)
+
+  * [English - User Manual](http://timegrid-user-manual.readthedocs.org/en/latest/README/)
+  * [Español - Manual de Usuario](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/)
+
+You are welcome to contribute.
 
 -----
 ## How to install:
