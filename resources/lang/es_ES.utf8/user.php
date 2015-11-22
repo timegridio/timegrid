@@ -132,6 +132,7 @@ return array (
         'power_create' => 'Registrá tu comercio ahora',
       ),
       'title' => 'Prestadores disponibles',
+      'none_found' => 'No hay suscripciones disponibles.',
     ),
     'suscriptions' => 
     array (

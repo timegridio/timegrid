@@ -121,6 +121,7 @@ return array(
     'suscriptions' =>
     array(
       'title' => 'Suscriptions',
+      'none_found' => 'No subscriptions available.',
     ),
     'list' =>
     array(

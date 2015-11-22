@@ -28,7 +28,7 @@
 	                    @endforeach
 	                    </table>
                     @else
-                    	No subscriptions available.
+                    	{{ trans('user.businesses.suscriptions.none_found') }}
                     @endif
                 </div>
 

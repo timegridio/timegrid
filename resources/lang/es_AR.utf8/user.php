@@ -123,6 +123,7 @@ return array (
     'suscriptions' => 
     array (
       'title' => 'Suscripciones',
+      'none_found' => 'No hay suscripciones disponibles.',
     ),
     'list' =>
     array(
