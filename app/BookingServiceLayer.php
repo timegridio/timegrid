@@ -5,7 +5,7 @@ namespace App;
 use App\BookingStrategyTimeslot;
 use App\BookingStrategyDateslot;
 
-class BookingStrategy
+class BookingServiceLayer
 {
     protected $log;
 
