@@ -6,7 +6,6 @@
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.1.*",
-		"barryvdh/laravel-debugbar": "^2.0",
 		"intervention/image": "^2.2",
 		"intervention/imagecache": "^2.2",
 		"laravelcollective/html": "~5.0",
@@ -35,6 +34,7 @@
 		"alariva/tidiochat": "^1.1"
 	},
 	"require-dev": {
+		"barryvdh/laravel-debugbar": "^2.0",
 		"phpunit/phpunit": "~4.0",
 		"phpunit/phpunit-selenium": ">=1.2",
 		"codeclimate/php-test-reporter": "dev-master",
