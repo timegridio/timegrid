@@ -9,7 +9,7 @@ return array(
     'alert' =>
     array(
       'empty_list' => 'You have no ongoing reservations by now.',
-      'no_vacancies' => 'Sorry, the business cannot take any reservations by now.',
+      'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
     ),
     'btn' =>
     array(

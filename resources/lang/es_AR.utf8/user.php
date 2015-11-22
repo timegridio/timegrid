@@ -7,6 +7,11 @@ return array (
   //==================================== Translations ====================================//
   'appointments' => 
   array (
+    'alert' =>
+    array(
+      'empty_list' => 'No tienes reserves en curso ahora.',
+      'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
+    ),
     'btn' => 
     array (
       'book' => 'Reservar Turno',

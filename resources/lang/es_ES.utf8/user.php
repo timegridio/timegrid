@@ -8,6 +8,11 @@ return array (
   // Defined in file /home/alariva/timegrid.io/app/resources/views/user/businesses/show.blade.php
   'business' => 
   array (
+    'alert' =>
+    array(
+      'empty_list' => 'No tienes reserves en curso ahora.',
+      'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
+    ),
     'suscriptions_count' => 'business.suscriptions_count',
     'btn' => 
     array (
