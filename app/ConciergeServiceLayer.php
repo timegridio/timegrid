@@ -2,16 +2,15 @@
 
 namespace App;
 
-use Carbon\Carbon;
-use App\User;
+use App\VacancyChecker;
 use App\Business;
-use App\Contact;
-use App\Service;
 
 class ConciergeServiceLayer
 {
-    public static function requestBooking(User $user, Business $business, Service $service, Carbon $date)
+    public function getVacancies(Business $business)
     {
-        $bookingServiceLayer = new BookingServiceLayer($business->strategy);
+        $vacancyChecker = new VacancyChecker($business);
+
+        return $vacancyChecker->getVacancies();
     }
 }

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * ToDo: To be refactored
+ */
+
 namespace App;
 
 use App\BookingStrategyTimeslot;

@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * ToDo: To be refactored, replaced by ConciergeServiceLayer
+ */
+
 namespace App;
 
 use Illuminate\Support\Collection;
