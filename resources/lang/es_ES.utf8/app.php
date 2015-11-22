@@ -52,14 +52,16 @@ return array (
     'title' => 'Recientemente',
   ),
   'search' => 'Buscar',
-  //================================== Obsolete strings ==================================//
   'business' => 
   array (
     'category' => 
     array (
+      'doctor' => 'Médico',
       'garage' => 'Taller Mecánico',
+      'photography' => 'Fotografía',
     ),
   ),
+  //================================== Obsolete strings ==================================//
   'filter' => 'Filtrar',
   'gender' => 
   array (

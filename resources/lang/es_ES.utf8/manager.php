@@ -121,6 +121,7 @@ return array (
       array (
         'label' => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
+        'validation' => 'Se requiere nombre',
       ),
       'phone' => 
       array (
@@ -137,6 +138,7 @@ return array (
       array (
         'label' => 'Alias',
         'placeholder' => 'así será el link en la web',
+        'validation' => 'Se requiere un alias',
       ),
       'timezone' => 
       array (
@@ -234,6 +236,7 @@ return array (
       array (
         'label' => 'Nombre',
         'placeholder' => 'primer nombre',
+        'validation' => 'Se requiere su primer nombre',
       ),
       'gender' => 
       array (
@@ -251,6 +254,7 @@ return array (
       array (
         'label' => 'Apellido',
         'placeholder' => 'apellido',
+        'validation' => 'Se requiere su apellido',
       ),
       'mobile' => 
       array (

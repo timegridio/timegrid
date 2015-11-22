@@ -9,7 +9,7 @@ return array(
     'alert' =>
     array(
       'empty_list' => 'You have no ongoing reservations by now.',
-      'no_vacancies' => 'Sorry, the business cannot take any reservations by now.',
+      'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
     ),
     'btn' =>
     array(
@@ -121,6 +121,7 @@ return array(
     'suscriptions' =>
     array(
       'title' => 'Suscriptions',
+      'none_found' => 'No subscriptions available.',
     ),
     'list' =>
     array(
@@ -128,6 +129,7 @@ return array(
       array(
         'not_found' => 'We cant find that business, please choose one from the list',
       ),
+      'no_businesses' => 'No businesses available.',
     ),
     'show' =>
     array(

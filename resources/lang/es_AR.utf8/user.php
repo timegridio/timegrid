@@ -7,6 +7,11 @@ return array (
   //==================================== Translations ====================================//
   'appointments' => 
   array (
+    'alert' =>
+    array(
+      'empty_list' => 'No tienes reserves en curso ahora.',
+      'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
+    ),
     'btn' => 
     array (
       'book' => 'Reservar Turno',
@@ -118,6 +123,15 @@ return array (
     'suscriptions' => 
     array (
       'title' => 'Suscripciones',
+      'none_found' => 'No hay suscripciones disponibles.',
+    ),
+    'list' =>
+    array(
+      'alert' =>
+      array(
+        'not_found' => 'No podemos encontrar ese prestador, favor de escoger uno de la lista',
+      ),
+      'no_businesses' => 'No se econtraron prestadores.',
     ),
     'show' => 
     array (
@@ -137,6 +151,7 @@ return array (
     ),
     'create' => 
     array (
+        'help' => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
     ),
     'msg' => 
