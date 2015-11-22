@@ -128,6 +128,7 @@ return array(
       array(
         'not_found' => 'We cant find that business, please choose one from the list',
       ),
+      'no_businesses' => 'No businesses available.',
     ),
     'show' =>
     array(

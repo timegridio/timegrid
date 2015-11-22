@@ -124,6 +124,14 @@ return array (
     array (
       'title' => 'Suscripciones',
     ),
+    'list' =>
+    array(
+      'alert' =>
+      array(
+        'not_found' => 'No podemos encontrar ese prestador, favor de escoger uno de la lista',
+      ),
+      'no_businesses' => 'No se econtraron prestadores.',
+    ),
     'show' => 
     array (
       'btn' => 
