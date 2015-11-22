@@ -111,6 +111,7 @@ return array(
       array(
         'label' => 'Nombre',
         'placeholder' => 'Nombre comercial',
+        'validation' => 'Se requiere nombre',
       ),
       'phone' =>
       array(
@@ -132,6 +133,7 @@ return array(
       array(
         'label' => 'Alias',
         'placeholder' => 'así será el link en la web',
+        'validation' => 'Se requiere un alias',
       ),
       'timezone' =>
       array(
