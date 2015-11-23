@@ -26,6 +26,8 @@ It is made under the **Laravel 5** framework for **PHP**.
 
 You can try the *beta stage* working [live demo](http://demo.timegrid.io/)
 
+> Hold on tight! It's a bumpy ride for all of us!
+
 ## Features
 
 These are the current features so far:
