@@ -2,15 +2,15 @@
 
 namespace App;
 
-use App\VacancyChecker;
+use App\VacancyFacade;
 use App\Business;
 
 class ConciergeServiceLayer
 {
     public function getVacancies(Business $business)
     {
-        $vacancyChecker = new VacancyChecker($business);
+        $vacancyFacade = new VacancyFacade($business);
 
-        return $vacancyChecker->getVacancies();
+        return $vacancyFacade->getVacancies();
     }
 }

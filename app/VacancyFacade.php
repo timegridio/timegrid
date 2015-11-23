@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use App\Business;
 
-class VacancyChecker
+class VacancyFacade
 {
     protected $business;
 
