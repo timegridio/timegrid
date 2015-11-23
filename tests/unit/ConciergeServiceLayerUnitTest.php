@@ -1,6 +1,8 @@
 <?php
 
 use App\Business;
+use App\Service;
+use App\Vacancy;
 use App\ConciergeServiceLayer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -8,13 +10,28 @@ class ConciergeServiceLayerUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /* ToDo: Work in progress here
-        Need to mock several Businesses with vacancies set
-    */
+    protected $business;
+
+    /**
+     * Test get vacancies from Concierge Service Layer
+     * @covers            \App\ConciergeServiceLayer::getVacancies
+     * @return bool Vacancy found
+     */
     public function testConciergeGetVacancies()
     {
+        /* Setup Stubs */
+        $business = factory(Business::class)->create();
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+        $vacancy = factory(Vacancy::class)->make();
+        $vacancy->business()->associate($business);
+        $vacancy->service()->associate($service);
+        $business->vacancies()->save($vacancy);
+
+        /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        return $concierge->getVacancies(new Business());
+        $vacancies = $concierge->getVacancies($business);
+        return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
     }
 }

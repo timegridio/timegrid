@@ -9,7 +9,5 @@ class ServiceUnitTest extends TestCase
     public function testServiceCreationWithSuccess()
     {
         $service = factory(App\Service::class)->make();
-
-          
     }
 }
