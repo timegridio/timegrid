@@ -1,15 +1,11 @@
 <?php
 
-/**
- * ToDo: To be refactored
- */
-
 namespace App;
 
-use App\BookingStrategyTimeslot;
-use App\BookingStrategyDateslot;
+use App\BookingTimeslotStrategy;
+use App\BookingDateslotStrategy;
 
-class BookingServiceLayer
+class BookingStrategy
 {
     protected $log;
 
@@ -22,10 +18,10 @@ class BookingServiceLayer
         $this->log->info("BookingStrategy: Using {$strategyId}");
         switch ($strategyId) {
             case 'timeslot':
-                $this->strategy = new BookingStrategyTimeslot();
+                $this->strategy = new BookingTimeslotStrategy();
             break;
             case 'dateslot':
-                $this->strategy = new BookingStrategyDateslot();
+                $this->strategy = new BookingDateslotStrategy();
             break;
             default:
                 $this->log->warning("BookingStrategy: __construct: Illegal strategy:{$strategyId}");
@@ -37,9 +33,4 @@ class BookingServiceLayer
     {
         return $this->strategy->makeReservation($issuer, $business, $data);
     }
-}
-
-interface BookingStrategyInterface
-{
-    public function makeReservation(User $issuer, Business $business, $data);
 }

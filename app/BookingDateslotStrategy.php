@@ -6,11 +6,12 @@
 
 namespace App;
 
+use App\BookingStrategyInterface;
 use App\Appointment;
 use App\Business;
 use Carbon\Carbon;
 
-class BookingStrategyDateslot implements BookingStrategyInterface
+class BookingDateslotStrategy implements BookingStrategyInterface
 {
     public function makeReservation(User $issuer, Business $business, $data)
     {
