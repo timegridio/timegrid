@@ -34,4 +34,25 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $vacancies = $concierge->getVacancies($business);
         return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
     }
+
+    /**
+     * Test get empty vacancies from Concierge Service Layer
+     * @covers            \App\ConciergeServiceLayer::getVacancies
+     * @return void
+     */
+    public function testConciergeGetEmptyVacancies()
+    {
+        /* Setup Stubs */
+        $business = factory(Business::class)->create();
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+
+        /* Perform Test */
+        $concierge = new ConciergeServiceLayer();
+
+        $vacancies = $concierge->getVacancies($business);
+        foreach ($vacancies as $vacancy) {
+            $this->assertContainsOnly([], $vacancy);
+        }
+    }
 }

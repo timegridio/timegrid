@@ -23,7 +23,8 @@ class VacancyFacade
     {
         $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
         $vacancies = $this->removeBookedVacancies($this->business->vacancies, $appointments);
-        #$vacancies = $this->removeSelfBooked($vacancies, $user->appointments);/* Self bookings should be included in the general appointments */
+         /* ToDo: Review, self bookings should be already filtered from the general appointments (above) */
+        # $vacancies = $this->removeSelfBooked($vacancies, $user->appointments);
         $starting = $this->business->pref('appointment_take_today') ? 'today' : 'tomorrow';
         $availability = $this->generateAvailability($vacancies, $starting, $limit);
         return $availability;
@@ -36,6 +37,17 @@ class VacancyFacade
         });
         return $vacancies;
     }
+
+/* Obsolete, for review */
+#    private function removeSelfBooked(Collection $vacancies, Collection $appointments)
+#    {
+#        $vacancies = $vacancies->reject(function ($vacancy) use ($appointments) {
+#        if ($vacancy->holdsAnyAppointment($appointments)) {
+#            return true;
+#        }
+#        });
+#        return $vacancies;
+#    }
 
     private function generateAvailability($vacancies, $starting = 'today', $days = 10)
     {
