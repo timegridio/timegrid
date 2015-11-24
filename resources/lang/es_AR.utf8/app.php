@@ -61,7 +61,6 @@ return array (
     'title' => 'Recientemente',
   ),
   'search' => 'Buscar',
-  //================================== Obsolete strings ==================================//
   'business' => 
   array (
     'category' => 
@@ -71,6 +70,7 @@ return array (
       'photography' => 'Fotografía',
     ),
   ),
+  //================================== Obsolete strings ==================================//
   'filter' => 'Filtrar',
   'gender' => 
   array (

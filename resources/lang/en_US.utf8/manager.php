@@ -112,6 +112,7 @@ return array(
       array(
         'label' => 'Name',
         'placeholder' => 'Commercial name',
+        'validation' => 'A name is required',
       ),
       'phone' =>
       array(
@@ -133,6 +134,7 @@ return array(
       array(
         'label' => 'Alias',
         'placeholder' => 'this will be your timegrid URL',
+        'validation' => 'An alias is required',
       ),
       'timezone' =>
       array(
@@ -230,6 +232,7 @@ return array(
       array(
         'label' => 'Name',
         'placeholder' => 'first name',
+        'validation' => 'Name is required'
       ),
       'gender' =>
       array(
@@ -247,6 +250,7 @@ return array(
       array(
         'label' => 'Last name',
         'placeholder' => 'last name',
+        'validation' => 'Last name is required',
       ),
       'mobile' =>
       array(

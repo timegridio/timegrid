@@ -16,7 +16,7 @@
               </div>
             @endforeach
             @else
-            	No businesses available.
+            	{{ trans('user.businesses.list.no_businesses') }}
             @endif
 
         </div>

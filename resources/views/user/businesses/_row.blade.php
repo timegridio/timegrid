@@ -22,7 +22,7 @@
             <p title="{{ $business->postal_address }}"><i class="glyphicon glyphicon-map-marker"></i>&nbsp;{{ $business->postal_address }}</p>
         @endif
         @if ( $business->category )
-            <p><i class="glyphicon glyphicon-home"></i>&nbsp;{{ $business->category->name }}</p>
+            <p><i class="glyphicon glyphicon-home"></i>&nbsp;{!! trans('app.business.category.'.strtolower($business->category->slug)) !!}</p>
         @endif
         @if ( $business->description )
             <p><i class="glyphicon glyphicon-info-sign"></i>&nbsp;{{ $business->description }}</p>

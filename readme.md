@@ -26,6 +26,8 @@ It is made under the **Laravel 5** framework for **PHP**.
 
 You can try the *beta stage* working [live demo](http://demo.timegrid.io/)
 
+> Hold on tight! It's a bumpy ride for all of us!
+
 ## Features
 
 These are the current features so far:
@@ -42,8 +44,8 @@ These are the current features so far:
 
 A lot of work is taking place here, and counting, please be patient :)
 
-  * [English - User Manual](http://timegrid-user-manual.readthedocs.org/en/latest/README/)
-  * [Español - Manual de Usuario](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/)
+  * [![English Documentation Status](https://readthedocs.org/projects/timegrid-user-manual/badge/?version=latest)](http://manual-de-usuario-de-timegridio.readthedocs.org/en/latest/?badge=latest) English
+  * [![Spanish Documentation Status](https://readthedocs.org/projects/manual-de-usuario-de-timegridio/badge/?version=latest)](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/?badge=latest) Español
 
 You are welcome to contribute.
 
