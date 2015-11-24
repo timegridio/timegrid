@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use App\BookingTimeslotStrategy;
 use App\BookingDateslotStrategy;
 
@@ -29,8 +30,8 @@ class BookingStrategy
         }
     }
 
-    public function makeReservation(User $issuer, Business $business, $data)
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
     {
-        return $this->strategy->makeReservation($issuer, $business, $data);
+        return $this->strategy->generateAppointment($issuer, $business, $contact, $service, $date);
     }
 }

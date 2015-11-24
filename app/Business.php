@@ -72,6 +72,7 @@ class Business extends EloquentModel
     }
 
     /**
+     * ToDo: Should be renamed to "appointments"
      * holds Appointments booking
      *
      * @return Illuminate\Database\Query Relationship Business holds Appointments query

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * ToDo: To be refactored
+ * ToDo: Work in progress
  */
 
 namespace App;
@@ -13,10 +13,8 @@ use Carbon\Carbon;
 
 class BookingTimeslotStrategy implements BookingStrategyInterface
 {
-    public function makeReservation(User $issuer, Business $business, $data)
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
     {
-        $data['business_id'] = $business->id;
-        $appointment = new Appointment($data);
-        return $appointment->save();
+        /* ToDo */
     }
 }

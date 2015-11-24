@@ -13,12 +13,16 @@ use Carbon\Carbon;
 
 class BookingDateslotStrategy implements BookingStrategyInterface
 {
-    public function makeReservation(User $issuer, Business $business, $data)
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
     {
-        $data['issuer_id'] = $issuer->id;
-        $data['business_id'] = $business->id;
-        $data['start_at'] = Carbon::parse($data['_date'] . $business->pref('start_at'), $business->timezone)->timezone('UTC');
-        $data['duration'] = 0;
-        return new Appointment($data);
+        $appointment = new Appointment();
+        $appointment->doReserve();
+        $appointment->setStartAtAttribute($date);
+        $appointment->business()->associate($business);
+        $appointment->issuer()->associate($issuer);
+        $appointment->contact()->associate($contact);
+        $appointment->service()->associate($service);
+
+        return $appointment;
     }
 }

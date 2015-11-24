@@ -2,15 +2,32 @@
 
 namespace App;
 
-use App\VacancyFacade;
+use App\AvailabilityServiceLayer;
 use App\Business;
+use Carbon\Carbon;
 
 class ConciergeServiceLayer
 {
     public function getVacancies(Business $business)
     {
-        $vacancyFacade = new VacancyFacade($business);
+        $availabilityServiceLayer = new AvailabilityServiceLayer($business);
 
-        return $vacancyFacade->getVacancies();
+        return $availabilityServiceLayer->getVacancies();
+    }
+
+    public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
+    {
+        $bookingStrategy = new BookingStrategy($business->strategy);
+
+        $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $date);
+        
+        $availabilityServiceLayer = new AvailabilityServiceLayer($business);
+
+        if($availabilityServiceLayer->isSlotAvailable($appointment))
+        {
+            $appointment->save();
+            return $appointment;
+        }
+        return false;
     }
 }

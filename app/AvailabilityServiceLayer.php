@@ -9,8 +9,10 @@ namespace App;
 use Illuminate\Support\Collection;
 use Carbon\Carbon;
 use App\Business;
+use App\Appointment;
+use App\Vacancy;
 
-class VacancyFacade
+class AvailabilityServiceLayer
 {
     protected $business;
 
@@ -61,5 +63,17 @@ class VacancyFacade
             }
         }
         return $dates;
+    }
+
+    public function isSlotAvailable(Appointment $appointment)
+    {
+        $vacancies = $appointment->business->vacancies()->forDate(Carbon::parse($appointment->date, $appointment->business->timezone))->forService($appointment->service)->get();
+        $vacancies = $this->removeBookedVacancies($vacancies, $appointment->business->bookings()->get());
+        foreach ($vacancies as $vacancy) {
+            if ($vacancy->holdsAppointment($appointment)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

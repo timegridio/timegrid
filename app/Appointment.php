@@ -53,6 +53,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     {
         parent::__construct($attributes);
 
+        $this->attributes['status'] = self::STATUS_RESERVED;
         $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
     }
 
@@ -439,6 +440,19 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     /////////////////////////
     // Hard Status Actions //
     /////////////////////////
+
+    /**
+     * Check and perform Confirm action
+     *
+     * @return Appointment The changed Appointment
+     */
+    public function doReserve()
+    {
+        if ($this->status === null) {
+            $this->status = self::STATUS_RESERVED;
+        }
+        return $this;
+    }
 
     /**
      * Check and perform Confirm action

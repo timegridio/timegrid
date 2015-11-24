@@ -2,7 +2,9 @@
 
 namespace App;
 
+use Carbon\Carbon;
+
 interface BookingStrategyInterface
 {
-    public function makeReservation(User $issuer, Business $business, $data);
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date);
 }
