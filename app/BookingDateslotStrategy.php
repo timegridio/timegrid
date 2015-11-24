@@ -22,6 +22,7 @@ class BookingDateslotStrategy implements BookingStrategyInterface
         $appointment->issuer()->associate($issuer);
         $appointment->contact()->associate($contact);
         $appointment->service()->associate($service);
+        $appointment->doHash();
 
         return $appointment;
     }

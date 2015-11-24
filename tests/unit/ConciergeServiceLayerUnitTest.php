@@ -92,6 +92,47 @@ class ConciergeServiceLayerUnitTest extends TestCase
     }
 
     /**
+     * Test Make Successful Reservation
+     * @covers            \App\ConciergeServiceLayer::makeReservation
+     */
+    public function testBlockOverbooking()
+    {
+        /* Setup Stubs */
+        $issuer = factory(User::class)->create();
+        
+        $business = factory(Business::class)->create();
+        $business->owners()->save($issuer);
+
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+
+        $vacancy = factory(Vacancy::class)->make();
+        $vacancy->capacity = 1;
+        $vacancy->service()->associate($service);
+        $business->vacancies()->save($vacancy);
+
+        $contact = factory(Contact::class)->create();
+        $business->contacts()->save($contact);
+
+        /* Perform Test */
+        $concierge = new ConciergeServiceLayer();
+
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
+
+        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
+
+        $this->assertInstanceOf('App\Appointment', $appointment);
+        $this->assertTrue($appointment->exists);
+
+        /* Try OverBook */
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone)->timezone('UTC');
+
+        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
+
+        $this->assertFalse($appointment);
+    }
+
+    /**
      * Test Attempt Bad Reservation
      * @covers            \App\ConciergeServiceLayer::makeReservation
      */

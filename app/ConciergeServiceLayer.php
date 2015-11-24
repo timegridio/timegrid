@@ -21,15 +21,27 @@ class ConciergeServiceLayer
 
         $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $date);
 
+        # $appointment->doHash();
+
+        if($appointment->duplicates())
+        {
+            return $appointment;
+        }
+
         $availabilityServiceLayer = new AvailabilityServiceLayer($business);
 
-        if($availabilityServiceLayer->isSlotAvailable($appointment))
+        $vacancy = $availabilityServiceLayer->getSlotFor($appointment);
+
+        if(null !== $vacancy)
         {
-            if(!$appointment->duplicates())
+            if($vacancy->hasRoom())
             {
+                $appointment->vacancy()->associate($vacancy);
                 $appointment->save();
+
+                #$vacancy->appointments()->save($appointment);
+                return $appointment;
             }
-            return $appointment;
         }
         return false;
     }

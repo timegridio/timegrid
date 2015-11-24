@@ -83,15 +83,17 @@ class AgendaController extends Controller
         if (false === $appointment) {
             Log::info('AgendaController: postStore: [ADVICE] Unable to book ');
             Flash::warning(trans('user.booking.msg.store.error'));
+            return Redirect::route('user.booking.list');
         }
-        else if (!$appointment->exists) {
-            $appointmentPresenter = $appointment->getPresenter();
-            Log::info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
-            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
-        } else {
+
+        $appointmentPresenter = $appointment->getPresenter();
+        if ($appointment->exists) {
             Log::info('AgendaController: postStore: Appointment saved successfully ');
             Event::fire(new NewBooking($issuer, $appointment));
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
+        } else {
+            Log::info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
+            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
         }
         return Redirect::route('user.booking.list');
     }

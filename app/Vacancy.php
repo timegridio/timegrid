@@ -136,6 +136,18 @@ class Vacancy extends Model
     }
 
     /**
+     * ToDo docblock
+     * 
+     * has Room
+     *
+     * @return boolean      Vacancy has room for a new appointment
+     */
+    public function hasRoom()
+    {
+        return $this->capacity > $this->appointments()->active()->count();
+    }
+
+    /**
      * TODO: Rename to isHoldingAppointment()
      *
      * holds Appointment

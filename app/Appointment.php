@@ -52,9 +52,6 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-
-        $this->attributes['status'] = self::STATUS_RESERVED;
-        $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
     }
 
     /**
@@ -132,7 +129,6 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
         return $this->belongsTo('App\Vacancy');
     }
 
-
     ///////////
     // Other //
     ///////////
@@ -160,6 +156,11 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     ///////////////
     // Accessors //
     ///////////////
+
+    public function getHashAttribute()
+    {
+        return $this->attributes['hash'];
+    }
 
     /**
      * FinishAt
@@ -213,6 +214,11 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     //////////////
     // Mutators //
     //////////////
+
+    public function doHash()
+    {
+        return $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
+    }
 
     /**
      * Set start_at attribute

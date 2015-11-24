@@ -77,4 +77,12 @@ class AvailabilityServiceLayer
         }
         return false;
     }
+
+    public function getSlotFor(Appointment $appointment)
+    {
+        $datetime = Carbon::parse($appointment->start_at);
+        return $appointment->business->vacancies()
+                                            ->forDateTime($datetime)
+                                            ->forService($appointment->service)->first();
+    }
 }
