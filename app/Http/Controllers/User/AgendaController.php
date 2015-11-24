@@ -71,9 +71,8 @@ class AgendaController extends Controller
     {
         Log::info('AgendaController: postStore');
         $issuer = \Auth::user();
-        $businessId = $request->input('businessId');
 
-        $business = Business::findOrFail($businessId);
+        $business = Business::findOrFail($request->input('businessId'));
         $contact = $issuer->suscribedTo($business);
         $service = Service::find($request->input('service_id'));
         $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
