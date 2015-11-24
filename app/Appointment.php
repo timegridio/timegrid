@@ -19,7 +19,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
      *
      * @var array
      */
-    protected $guarded = ['id', 'hash', 'status', 'finish_at'];
+    protected $guarded = ['id', 'hash', 'status', 'finish_at', 'vacancy_id'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -121,6 +121,17 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     {
         return $this->belongsTo('App\Service');
     }
+
+    /**
+     * Vacancy
+     *
+     * @return Collection $vacancy Vacancy that holds the appointment
+     */
+    public function vacancy()
+    {
+        return $this->belongsTo('App\Vacancy');
+    }
+
 
     ///////////
     // Other //
