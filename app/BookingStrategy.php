@@ -8,15 +8,11 @@ use App\BookingDateslotStrategy;
 
 class BookingStrategy
 {
-    protected $log;
-
     protected $strategy = null;
 
     public function __construct($strategyId)
     {
-        $this->log = app()->make('log');
-
-        $this->log->info("BookingStrategy: Using {$strategyId}");
+        info("BookingStrategy: Using {$strategyId}");
         switch ($strategyId) {
             case 'timeslot':
                 $this->strategy = new BookingTimeslotStrategy();
@@ -25,7 +21,7 @@ class BookingStrategy
                 $this->strategy = new BookingDateslotStrategy();
             break;
             default:
-                $this->log->warning("BookingStrategy: __construct: Illegal strategy:{$strategyId}");
+                logger("BookingStrategy: __construct: Illegal strategy:{$strategyId}");
             break;
         }
     }
