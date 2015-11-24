@@ -57,7 +57,7 @@ $factory->define('App\Vacancy', function () {
     return [
         'date' => date('Y-m-d', strtotime('today +2 days')),
         'start_at' => date('Y-m-d 08:00:00', strtotime('today +2 days')),
-        'finish_at' => date('Y-m-d 09:00:00', strtotime('today +2 days')),
+        'finish_at' => date('Y-m-d 22:00:00', strtotime('today +2 days')),
         'capacity' => 1
     ];
 });

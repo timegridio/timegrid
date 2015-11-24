@@ -7,10 +7,12 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Events\NewBooking;
-use App\ConciergeStrategy as Concierge;
-use App\BookingStrategy;
+use App\ConciergeServiceLayer;
+#use App\BookingStrategy;
+#use App\Contact;
 use App\Appointment;
 use App\Business;
+use App\Service;
 use Notifynder;
 use Carbon;
 use Flash;
@@ -53,7 +55,9 @@ class AgendaController extends Controller
             return Redirect::back();
         }
 
-        $availability = Concierge::getVacancies($business, Carbon::now(), \Auth::user());
+        $conciergeServiceLayer = new ConciergeServiceLayer();
+
+        $availability = $conciergeServiceLayer->getVacancies($business, Carbon::now(), \Auth::user());
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
@@ -69,24 +73,23 @@ class AgendaController extends Controller
         $issuer = \Auth::user();
         $businessId = $request->input('businessId');
 
-        // if (!$issuer->contacts) {
-        //     Flash::error(trans('user.booking.msg.you_are_not_suscribed_to_business'));
-        //     return Redirect::back();
-        // }
-
-        $data = $request->all();
         $business = Business::findOrFail($businessId);
-        $data['start_at'] = $request->input('_date').' '.$request->input('_time');
-        $data['contact_id'] = $issuer->suscribedTo($business)->id;
-        $booking = new BookingStrategy($business->strategy);
+        $contact = $issuer->suscribedTo($business);
+        $service = Service::find($request->input('service_id'));
+        $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
 
-        $appointment = $booking->makeReservation($issuer, $business, $data);
-        $appointmentPresenter = $appointment->getPresenter();
-        if ($appointment->duplicates()) {
+        $conciergeServiceLayer = new ConciergeServiceLayer();
+        $appointment = $conciergeServiceLayer->makeReservation($issuer, $business, $contact, $service, $date);
+
+        if (false === $appointment) {
+            Log::info('AgendaController: postStore: [ADVICE] Unable to book ');
+            Flash::warning(trans('user.booking.msg.store.error'));
+        }
+        else if (!$appointment->exists) {
+            $appointmentPresenter = $appointment->getPresenter();
             Log::info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
             Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
         } else {
-            $appointment->save();
             Log::info('AgendaController: postStore: Appointment saved successfully ');
             Event::fire(new NewBooking($issuer, $appointment));
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));

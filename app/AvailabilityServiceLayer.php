@@ -51,7 +51,7 @@ class AvailabilityServiceLayer
 #        return $vacancies;
 #    }
 
-    private function generateAvailability($vacancies, $starting = 'today', $days = 10)
+    public static function generateAvailability($vacancies, $starting = 'today', $days = 10)
     {
         $dates = [];
         for ($i=0; $i < $days; $i++) {
@@ -69,6 +69,7 @@ class AvailabilityServiceLayer
     {
         $vacancies = $appointment->business->vacancies()->forDate(Carbon::parse($appointment->date, $appointment->business->timezone))->forService($appointment->service)->get();
         $vacancies = $this->removeBookedVacancies($vacancies, $appointment->business->bookings()->get());
+
         foreach ($vacancies as $vacancy) {
             if ($vacancy->holdsAppointment($appointment)) {
                 return true;

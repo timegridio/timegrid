@@ -20,12 +20,15 @@ class ConciergeServiceLayer
         $bookingStrategy = new BookingStrategy($business->strategy);
 
         $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $date);
-        
+
         $availabilityServiceLayer = new AvailabilityServiceLayer($business);
 
         if($availabilityServiceLayer->isSlotAvailable($appointment))
         {
-            $appointment->save();
+            if(!$appointment->duplicates())
+            {
+                $appointment->save();
+            }
             return $appointment;
         }
         return false;

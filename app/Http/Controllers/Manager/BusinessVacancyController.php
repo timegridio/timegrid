@@ -1,16 +1,21 @@
 <?php
 
+/**
+ * ToDo: Refactor with service layers
+ */
+
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\ConciergeStrategy as Concierge;
+use App\AvailabilityServiceLayer;
 use App\Business;
 use App\Vacancy;
 use Redirect;
 use Flash;
 use Log;
+use Carbon\Carbon;
 
 class BusinessVacancyController extends Controller
 {
@@ -37,7 +42,7 @@ class BusinessVacancyController extends Controller
     {
         Log::info("BusinessServiceController: create: businessId:{$business->id}");
 
-        $dates = Concierge::generateAvailability($business->vacancies);
+        $dates = AvailabilityServiceLayer::generateAvailability($business->vacancies);
         $services = $business->services;
         if ($services->isEmpty()) {
             return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'))
@@ -64,7 +69,7 @@ class BusinessVacancyController extends Controller
                         Log::info("BusinessServiceController: store: [ADVICE] Blank vacancy capacity value businessId:{$business->id}");
                         break;
                     default:
-                        $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id, 'service_id' => $serviceId, 'date' => $date], ['capacity' => intval($capacity)]);
+                        $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id, 'service_id' => $serviceId, 'date' => $date], ['capacity' => intval($capacity), 'start_at' => Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone), 'finish_at' => Carbon::parse($date . ' 20:00:00')->timezone($business->timezone)]);
                         $success = true;
                         break;
                 }

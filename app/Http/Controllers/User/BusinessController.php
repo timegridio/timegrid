@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\ConciergeStrategy as Concierge;
+#use App\ConciergeStrategy as Concierge;
 use App\Business;
 use Carbon\Carbon;
 use Notifynder;
@@ -32,7 +32,8 @@ class BusinessController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        $available = Concierge::isAvailable($business, Carbon::now(), \Auth::user());
+        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), \Auth::user());
+        $available = true; /* ToDo */
 
         return view('user.businesses.show', compact('business', 'available'));
     }

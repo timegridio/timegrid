@@ -123,7 +123,8 @@ class Vacancy extends Model
     public function holdsAppointment(Appointment $appointment)
     {
         return ($appointment->isActive() &&
-                ($this->date == $appointment->date) &&
+                ($this->start_at <= $appointment->start_at) &&
+                ($this->finish_at >= $appointment->finish_at) &&
                 ($this->service_id == $appointment->service_id) &&
                 ($this->business_id == $appointment->business_id)
                );
