@@ -8,43 +8,60 @@ use Carbon\Carbon;
 
 class ConciergeServiceLayer
 {
+    /**
+     * get Vacancies
+     * 
+     * @param  Business $business For desired Business
+     * @param  User     $user     To present to User
+     * @param  integer  $limit    For a maximum of $limit days
+     * @return Array              Array of vacancies for each date
+     */
     public function getVacancies(Business $business, User $user, $limit = 7)
     {
-        $availabilityServiceLayer = new AvailabilityServiceLayer($business);
+        $availability = new AvailabilityServiceLayer($business);
 
-        return $availabilityServiceLayer->getVacanciesFor($user, $limit);
+        return $availability->getVacanciesFor($user, $limit);
     }
 
+    /**
+     * get Appointments For
+     *
+     * @param  User   $user This User
+     * @return Illuminate\Support\Collection       Collection of Appointments
+     */
     public function getAppointmentsFor(User $user)
     {
         return $user->appointments()->orderBy('start_at')->get();
     }
 
+    /**
+     * make Reservation
+     * @param  User     $issuer   Requested by User as issuer
+     * @param  Business $business For Business
+     * @param  Contact  $contact  On behalf of Contact
+     * @param  Service  $service  For Service
+     * @param  Carbon   $date     for Date
+     * @return Appointment|boolean             Generated Appointment or false
+     */
     public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
     {
         $bookingStrategy = new BookingStrategy($business->strategy);
 
         $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $date);
 
-        # $appointment->doHash();
-
-        if($appointment->duplicates())
-        {
+        if ($appointment->duplicates()) {
             return $appointment;
         }
 
-        $availabilityServiceLayer = new AvailabilityServiceLayer($business);
+        $availability = new AvailabilityServiceLayer($business);
 
-        $vacancy = $availabilityServiceLayer->getSlotFor($appointment);
+        $vacancy = $availability->getSlotFor($appointment);
 
-        if(null !== $vacancy)
-        {
-            if($vacancy->hasRoom())
-            {
+        if (null !== $vacancy) {
+            if ($vacancy->hasRoom()) {
                 $appointment->vacancy()->associate($vacancy);
                 $appointment->save();
 
-                #$vacancy->appointments()->save($appointment);
                 return $appointment;
             }
         }
