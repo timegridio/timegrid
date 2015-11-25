@@ -2,8 +2,10 @@
 
 namespace App;
 
+use App\Presenters\ContactPresenter;
 use Carbon\Carbon;
 use App\Business;
+use App\User;
 
 class Contact extends Model
 {
@@ -12,7 +14,8 @@ class Contact extends Model
      *
      * @var array
      */
-    protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes', 'gender', 'occupation', 'martial_status', 'postal_address'];
+    protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes',
+                            'gender', 'occupation', 'martial_status', 'postal_address'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -54,15 +57,20 @@ class Contact extends Model
     }
 
     /**
-     * TODO: Check usage of this method, might need to be deprecated
+     * ToDo: Check usage of this method, might need to be deprecated
      *       It is not safe to get just the first bussiness and there should be no need to use this
+     *       Responsibility might need to be moved.
      *
      * belongs to Business
+     *
      * @return Illuminate\Database\Query Relationship Contact is part of Business' addressbook query
      */
     public function business(Business $business)
     {
-        return $this->belongsToMany('App\Business')->withPivot('notes')->where('business_id', $business->id)->withTimestamps()->first();
+        return $this->belongsToMany('App\Business')->withPivot('notes')
+                                                    ->where('business_id', $business->id)
+                                                    ->withTimestamps()
+                                                    ->first();
     }
 
     /**
@@ -128,31 +136,20 @@ class Contact extends Model
      */
     public function getAppointmentsCountAttribute()
     {
-        // if relation is not loaded already, let's do it first
+        # If relation is not loaded already, let's do it first
         if (! array_key_exists('appointmentsCount', $this->relations)) {
             $this->load('appointmentsCount');
         }
      
         $related = $this->getRelation('appointmentsCount');
 
-        // then return the count directly
+        # Then return the count directly
         return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
     }
 
     ///////////////
     // Accessors //
     ///////////////
-
-    /**
-     * TODO: Move to Presenter
-     *
-     * get Full Name
-     * @return string Concatenated firstname and lastname
-     */
-    public function getFullnameAttribute()
-    {
-        return $this->firstname . ' ' . $this->lastname;
-    }
 
     /**
      * get Username of associated User
@@ -164,28 +161,18 @@ class Contact extends Model
         return ($this->user) ? $this->user->email : null;
     }
 
+    ///////////////
+    // Presenter //
+    ///////////////
+
     /**
-     * TODO: Probably needed to be moved to Presenter
+     * Return a created presenter.
      *
-     * get Age
-     *
-     * @return int Age in years
+     * @return Robbo\Presenter\Presenter
      */
-    public function getAgeAttribute()
+    public function getPresenter()
     {
-        if ($this->birthdate == null) {
-            return null;
-        }
-        
-        $reference = new \DateTime;
-        $born = new \DateTime($this->birthdate);
-
-        if ($this->birthdate > $reference) {
-            return null;
-        }
-
-        $diff = $reference->diff($born);
-        return $diff->y;
+        return new ContactPresenter($this);
     }
 
     //////////////
@@ -252,16 +239,16 @@ class Contact extends Model
      *
      * link to User
      *
-     * @param  boolean $force_relink Force relinking if already linked to a User
+     * @param  boolean $forceRelink Force relinking if already linked to a User
      * @return Contact               Current Contact already linked
      */
-    public function linkToUser($force_relink = false)
+    public function linkToUser($forceRelink = false)
     {
-        if (trim($this->email) == '' || $this->user_id !== null && $force_relink == false) {
+        if (trim($this->email) == '' || $this->user_id !== null && $forceRelink == false) {
             return $this;
         }
 
-        $user = \App\User::where(['email' => $this->email])->first();
+        $user = User::where(['email' => $this->email])->first();
 
         if ($user === null) {
             $this->unlinkUser();
@@ -313,7 +300,31 @@ class Contact extends Model
     }
 
     /**
-     * TODO: Check if needs to get moved to Presenter
+     * ToDo: Use Carbon instead of DateTime
+     * 
+     * get Age
+     *
+     * @return int Age in years
+     */
+    public function getAgeAttribute()
+    {
+        if ($this->birthdate == null) {
+            return null;
+        }
+        
+        $reference = new \DateTime;
+        $born = new \DateTime($this->birthdate);
+
+        if ($this->birthdate > $reference) {
+            return null;
+        }
+
+        $diff = $reference->diff($born);
+        return $diff->y;
+    }
+
+    /**
+     * TODO: Check if needs to get moved to Presenter or another responsibility class
      *
      * get Quality
      *
