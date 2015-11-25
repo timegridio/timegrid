@@ -54,7 +54,7 @@ class AvailabilityServiceLayer
     private function removeSelfBooked(Collection $vacancies, User $user)
     {
         $vacancies = $vacancies->reject(function ($vacancy) use ($user) {
-            return $vacancy->holdsAnyAppointmentFor($user);
+            return $vacancy->isHoldingAnyFor($user);
         });
         return $vacancies;
     }
@@ -79,7 +79,7 @@ class AvailabilityServiceLayer
         $vacancies = $this->removeBookedVacancies($vacancies, $appointment->business->bookings()->get());
 
         foreach ($vacancies as $vacancy) {
-            if ($vacancy->holdsAppointment($appointment)) {
+            if ($vacancy->isHolding($appointment)) {
                 return true;
             }
         }

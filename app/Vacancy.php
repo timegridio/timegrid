@@ -2,7 +2,6 @@
 
 namespace App;
 
-use Illuminate\Support\Collection;
 use Carbon\Carbon;
 
 class Vacancy extends Model
@@ -118,7 +117,13 @@ class Vacancy extends Model
     // Soft Attributes //
     /////////////////////
 
-    public function holdsAnyAppointmentFor(User $user)
+    /**
+     * is Holding Any Appointment for given User
+     *
+     * @param  User    $user User to check belonging Appointments
+     * @return boolean       Vacancy holds at least one Appointment of User
+     */
+    public function isHoldingAnyFor(User $user)
     {
         $appointments = $this->appointments()->get();
 
@@ -142,29 +147,20 @@ class Vacancy extends Model
     }
 
     /**
-     * ToDo: can be optimized to count by using scopes
-     *
      * getFreeSlotsCount
      *
      * @return boolean                  Count Capacity minus Used
      */
     public function getFreeSlotsCount()
     {
-        $used = 0;
-        foreach ($this->appointments() as $appointment) {
-            if ($appointment->isActive()) {
-                $used++;
-            }
-        }
-        return $this->capacity - $used;
+        $count = $this->appointments()->active()->count();
+        return $this->capacity - $count;
     }
 
     /**
-     * ToDo docblock
-     *
      * has Room
      *
-     * @return boolean      Vacancy has room for a new appointment
+     * @return boolean There is more capacity than used
      */
     public function hasRoom()
     {
@@ -172,14 +168,12 @@ class Vacancy extends Model
     }
 
     /**
-     * TODO: Rename to isHoldingAppointment()
+     * is holding given Appointment
      *
-     * holds Appointment
-     *
-     * @param  Appointment $appointment Appointment to check agains
+     * @param  Appointment $appointment Appointment to check against
      * @return boolean                  Appointment is held by the Vacancy
      */
-    public function holdsAppointment(Appointment $appointment)
+    public function isHolding(Appointment $appointment)
     {
         return ($appointment->isActive() &&
                 ($this->start_at <= $appointment->start_at) &&
@@ -190,17 +184,15 @@ class Vacancy extends Model
     }
 
     /**
-     * TODO: Rename to isHoldingAnyAppointment()
-     *
-     * holds Any Appointment
+     * holds Any of the given Appointments
      *
      * @param  Collection $appointments Appointments to check agains
      * @return boolean                  The Vacancy holds at least one of the inquired Appointments
      */
-    public function holdsAnyAppointment(Collection $appointments)
+    public function isHoldingAny(Collection $appointments)
     {
         foreach ($appointments as $appointment) {
-            if ($this->holdsAppointment($appointment)) {
+            if ($this->isHolding($appointment)) {
                 return true;
             }
         }
