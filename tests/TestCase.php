@@ -1,12 +1,9 @@
 <?php
 
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
-	use DatabaseTransactions;
-
     protected $baseUrl = 'http://localhost';
+ 
     /**
      * Creates the application.
      *
@@ -28,7 +25,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
     public function setupDatabase()
     {
-        # Artisan::call('migrate');
+        # Artisan::call('migrate:reset');
         # Artisan::call('db:seed', array('--class'=>'TestingDatabaseSeeder'));
     }
 
