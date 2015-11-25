@@ -8,9 +8,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Events\NewBooking;
 use App\ConciergeServiceLayer;
-#use App\BookingStrategy;
-#use App\Contact;
-use App\Appointment;
 use App\Business;
 use App\Service;
 use Notifynder;
@@ -34,7 +31,7 @@ class AgendaController extends Controller
     }
 
     /**
-     * get Book
+     * get Availability
      *
      * @return Response Rendered view of Appointment booking form
      */
@@ -64,7 +61,7 @@ class AgendaController extends Controller
      * @param  Request $request Input data of booking form
      * @return Response         Redirect to Appointments listing
      */
-    public function postStore(Request $request)
+    public function postStore(Request $request, ConciergeServiceLayer $concierge)
     {
         Log::info('AgendaController: postStore');
         $issuer = \Auth::user();
@@ -74,8 +71,8 @@ class AgendaController extends Controller
         $service = Service::find($request->input('service_id'));
         $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
 
-        $conciergeServiceLayer = new ConciergeServiceLayer();
-        $appointment = $conciergeServiceLayer->makeReservation($issuer, $business, $contact, $service, $date);
+        #$concierge = new ConciergeServiceLayer();
+        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
         if (false === $appointment) {
             Log::info('AgendaController: postStore: [ADVICE] Unable to book ');
