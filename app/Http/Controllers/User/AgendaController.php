@@ -71,7 +71,6 @@ class AgendaController extends Controller
         $service = Service::find($request->input('service_id'));
         $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
 
-        #$concierge = new ConciergeServiceLayer();
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
         if (false === $appointment) {
