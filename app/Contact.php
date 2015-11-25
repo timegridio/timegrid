@@ -296,7 +296,7 @@ class Contact extends Model
      */
     public function isProfileOf(User $user)
     {
-        return $this->user->id == $user->id;
+        return $this->user ? $this->user->id == $user->id : false;
     }
 
     /**
