@@ -38,10 +38,9 @@ class AgendaController extends Controller
      *
      * @return Response Rendered view of Appointment booking form
      */
-    public function getBook(Business $business)
+    public function getBook(Business $business, ConciergeServiceLayer $concierge)
     {
         Log::info('AgendaController: getBook');
-        $business = Business::findOrFail($business->id);
 
         Notifynder::category('user.checkingVacancies')
                    ->from('App\User', \Auth::user()->id)
@@ -55,9 +54,7 @@ class AgendaController extends Controller
             return Redirect::back();
         }
 
-        $conciergeServiceLayer = new ConciergeServiceLayer();
-
-        $availability = $conciergeServiceLayer->getVacancies($business, Carbon::now(), \Auth::user());
+        $availability = $concierge->getVacancies($business, Carbon::now(), \Auth::user());
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
