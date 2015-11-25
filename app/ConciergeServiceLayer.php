@@ -15,6 +15,11 @@ class ConciergeServiceLayer
         return $availabilityServiceLayer->getVacancies();
     }
 
+    public function getAppointmentsFor(User $user)
+    {
+        return $user->appointments()->orderBy('start_at')->get();
+    }
+
     public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
     {
         $bookingStrategy = new BookingStrategy($business->strategy);

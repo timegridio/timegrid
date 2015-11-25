@@ -23,10 +23,10 @@ class AgendaController extends Controller
      *
      * @return Response Rendered list view for User Appointments
      */
-    public function getIndex()
+    public function getIndex(ConciergeServiceLayer $concierge)
     {
         Log::info('AgendaController: getIndex');
-        $appointments = \Auth::user()->appointments()->orderBy('start_at')->get();
+        $appointments = $concierge->getAppointmentsFor(\Auth::user());
         return view('user.appointments.index', compact('appointments'));
     }
 
