@@ -1,8 +1,8 @@
 <?php
 
-use Laracasts\Integrated\Extensions\Selenium as IntegrationTest;
+# use Laracasts\Integrated\Extensions\Selenium as IntegrationTest;
 
-class ExampleTest extends IntegrationTest {
+class ExampleTest extends TestCase {
 
     protected $baseUrl = 'http://localhost:8000';
 

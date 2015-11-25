@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
@@ -14,19 +12,22 @@ class LanguageController extends Controller
 {
     /**
      * Switch Language
-     *
-     * @param  string $lang Locale full name
-     * @return Redirect     Redirect back to requesting URL
+     * @param  string  $lang    Language iso code
+     * @param  Session $session Session Facade
+     * @param  Log     $log     Log class
+     * @return Redirect         HTTP Redirect
      */
-    public function switchLang($lang)
+    public function switchLang($lang, Session $session, Log $log)
     {
-        Log::info("Language switch Request to $lang");
+        $log::info("Language switch Request to $lang");
+ 
         if (array_key_exists($lang, Config::get('languages'))) {
-            Log::info('Language Switched');
-            Session::set('applocale', $lang);
+            $log::info('Language Switched');
+            $session::set('applocale', $lang);
             $locale = \Locale::parseLocale($lang);
-            Session::set('language', $locale['language']);
+            $session::set('language', $locale['language']);
         }
+ 
         return Redirect::back();
     }
 }
