@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Manager;
 
 use Illuminate\Support\Facades\Redirect;
-use Illuminate\Contracts\Auth\Authenticatable as User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
 use App\Http\Requests\BusinessPreferencesFormRequest;
@@ -165,7 +164,7 @@ class BusinessController extends Controller
         ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
-        return \Redirect::route('manager.business.show', array($business->id));
+        return Redirect::route('manager.business.show', array($business->id));
     }
 
     /**
@@ -181,7 +180,7 @@ class BusinessController extends Controller
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
-        return \Redirect::route('manager.business.index');
+        return Redirect::route('manager.business.index');
     }
 
     //////////////////////////
@@ -218,7 +217,10 @@ class BusinessController extends Controller
         $preferences = array_intersect_key($preferences, $parametersKeys);
         
         foreach ($preferences as $key => $value) {
-            Log::info("Manager\BusinessController: postPreferences: businessId:{$business->id} key:$key value:$value type:{$parameters[$key]['type']}");
+            Log::info("Manager\BusinessController: " .
+                      "postPreferences: businessId:{$business->id} key:$key value:$value " .
+                      "type:{$parameters[$key]['type']}");
+
             $business->pref($key, $value, $parameters[$key]['type']);
         }
 
@@ -231,6 +233,6 @@ class BusinessController extends Controller
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));
-        return \Redirect::route('manager.business.show', $business);
+        return Redirect::route('manager.business.show', $business);
     }
 }
