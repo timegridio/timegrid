@@ -38,7 +38,7 @@ class AgendaController extends Controller
      *
      * @return Response Rendered view of Appointment booking form
      */
-    public function getBook(Business $business, ConciergeServiceLayer $concierge)
+    public function getAvailability(Business $business, ConciergeServiceLayer $concierge)
     {
         Log::info('AgendaController: getBook');
 
