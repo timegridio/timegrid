@@ -51,7 +51,7 @@ class AgendaController extends Controller
             return Redirect::back();
         }
 
-        $availability = $concierge->getVacancies($business, Carbon::now(), \Auth::user());
+        $availability = $concierge->getVacancies($business, \Auth::user(), 7);
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 

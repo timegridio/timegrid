@@ -23,6 +23,8 @@ class ConciergeServiceLayerUnitTest extends TestCase
     public function testConciergeGetVacancies()
     {
         /* Setup Stubs */
+        $user = factory(User::class)->create();
+
         $business = factory(Business::class)->create();
         $service = factory(Service::class)->make();
         $business->services()->save($service);
@@ -34,7 +36,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        $vacancies = $concierge->getVacancies($business);
+        $vacancies = $concierge->getVacancies($business, $user);
         return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
     }
 
@@ -45,6 +47,8 @@ class ConciergeServiceLayerUnitTest extends TestCase
     public function testConciergeGetEmptyVacancies()
     {
         /* Setup Stubs */
+        $user = factory(User::class)->create();
+
         $business = factory(Business::class)->create();
         $service = factory(Service::class)->make();
         $business->services()->save($service);
@@ -52,7 +56,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        $vacancies = $concierge->getVacancies($business);
+        $vacancies = $concierge->getVacancies($business, $user);
         foreach ($vacancies as $vacancy) {
             $this->assertContainsOnly([], $vacancy);
         }

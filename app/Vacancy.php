@@ -118,26 +118,50 @@ class Vacancy extends Model
     // Soft Attributes //
     /////////////////////
 
+    public function holdsAnyAppointmentFor(User $user)
+    {
+        $appointments = $this->appointments()->get();
+
+        foreach ($appointments as $appointment) {
+            $contact = $appointment->contact()->first();
+            if ($contact->isProfileOf($user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     /**
      * is Full
      *
-     * @param  Collection $appointments Appointments to check Vacancy against
      * @return boolean                  Vacancy is fully booked
      */
-    public function isFull(Collection $appointments)
+    public function isFull()
     {
-        $slots = $this->capacity;
-        foreach ($appointments as $appointment) {
-            if ($this->holdsAppointment($appointment)) {
-                $slots--;
+        return $this->getFreeSlotsCount() <= 0;
+    }
+
+    /**
+     * ToDo: can be optimized to count by using scopes
+     *
+     * getFreeSlotsCount
+     *
+     * @return boolean                  Count Capacity minus Used
+     */
+    public function getFreeSlotsCount()
+    {
+        $used = 0;
+        foreach ($this->appointments() as $appointment) {
+            if ($appointment->isActive()) {
+                $used++;
             }
         }
-        return $slots < 1;
+        return $this->capacity - $used;
     }
 
     /**
      * ToDo docblock
-     * 
+     *
      * has Room
      *
      * @return boolean      Vacancy has room for a new appointment

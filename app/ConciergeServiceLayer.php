@@ -8,11 +8,11 @@ use Carbon\Carbon;
 
 class ConciergeServiceLayer
 {
-    public function getVacancies(Business $business)
+    public function getVacancies(Business $business, User $user, $limit = 7)
     {
         $availabilityServiceLayer = new AvailabilityServiceLayer($business);
 
-        return $availabilityServiceLayer->getVacancies();
+        return $availabilityServiceLayer->getVacanciesFor($user, $limit);
     }
 
     public function getAppointmentsFor(User $user)

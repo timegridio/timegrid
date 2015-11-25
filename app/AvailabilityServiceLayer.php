@@ -21,35 +21,43 @@ class AvailabilityServiceLayer
         $this->business = $business;
     }
 
-    public function getVacancies($limit = 7)
+    public function getVacanciesFor($user, $limit = 7)
     {
         $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
-        $vacancies = $this->removeBookedVacancies($this->business->vacancies, $appointments);
-         /* ToDo: Review, self bookings should be already filtered from the general appointments (above) */
-        # $vacancies = $this->removeSelfBooked($vacancies, $user->appointments);
+
+        $vacancies = $this->getVacancies($limit);
+
+        $vacancies = $this->removeSelfBooked($vacancies, $user);
+
         $starting = $this->business->pref('appointment_take_today') ? 'today' : 'tomorrow';
         $availability = $this->generateAvailability($vacancies, $starting, $limit);
         return $availability;
     }
 
+    public function getVacancies($limit = 7)
+    {
+        $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
+
+        $vacancies = $this->removeBookedVacancies($this->business->vacancies, $appointments);
+
+        return $vacancies;
+    }
+
     private function removeBookedVacancies(Collection $vacancies, Collection $appointments)
     {
-        $vacancies = $vacancies->reject(function ($vacancy) use ($appointments) {
-            return $vacancy->isFull($appointments);
+        $vacancies = $vacancies->reject(function ($vacancy) {
+            return $vacancy->isFull();
         });
         return $vacancies;
     }
 
-/* Obsolete, for review */
-#    private function removeSelfBooked(Collection $vacancies, Collection $appointments)
-#    {
-#        $vacancies = $vacancies->reject(function ($vacancy) use ($appointments) {
-#        if ($vacancy->holdsAnyAppointment($appointments)) {
-#            return true;
-#        }
-#        });
-#        return $vacancies;
-#    }
+    private function removeSelfBooked(Collection $vacancies, User $user)
+    {
+        $vacancies = $vacancies->reject(function ($vacancy) use ($user) {
+            return $vacancy->holdsAnyAppointmentFor($user);
+        });
+        return $vacancies;
+    }
 
     public static function generateAvailability($vacancies, $starting = 'today', $days = 10)
     {

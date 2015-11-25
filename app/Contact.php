@@ -302,6 +302,17 @@ class Contact extends Model
     }
 
     /**
+     * is Profile of User
+     *
+     * @param  User $user         User of inquiry
+     * @return boolean            The Contact belongs to the inquired User
+     */
+    public function isProfileOf(User $user)
+    {
+        return $this->user->id == $user->id;
+    }
+
+    /**
      * TODO: Check if needs to get moved to Presenter
      *
      * get Quality
