@@ -61,3 +61,12 @@ $factory->define('App\Vacancy', function () {
         'capacity' => 1
     ];
 });
+
+$factory->define('App\Appointment', function () {
+    $faker = Faker\Factory::create();
+    return [
+        'start_at' => Carbon::parse(date('Y-m-d 08:00:00', strtotime('today +2 days'))),
+        'duration' => $faker->randomDigitNotNull,
+        'comments' => $faker->title
+    ];
+});
