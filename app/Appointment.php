@@ -215,9 +215,17 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
     // Mutators //
     //////////////
 
+    /**
+     * do Hash
+     *
+     * @return string MD5 hash for unique id
+     */
     public function doHash()
     {
-        return $this->attributes['hash'] = md5($this->start_at.'/'.$this->contact_id.'/'.$this->business_id.'/'.$this->service_id);
+        return $this->attributes['hash'] = md5($this->start_at . '/' .
+                                                $this->contact_id .'/' .
+                                                $this->business_id .'/'.
+                                                $this->service_id);
     }
 
     /**
