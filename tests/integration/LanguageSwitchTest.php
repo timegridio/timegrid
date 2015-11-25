@@ -7,7 +7,7 @@ class LanguageSwitchTest extends TestCase
 {
     /**
      * Test switch language to English
-     * @covers App\Http\Controllers\LanguageController::switchLang
+     * @covers \App\Http\Controllers\LanguageController::switchLang
      */
     public function testSwitchLanguageToEnglish()
     {
@@ -21,7 +21,7 @@ class LanguageSwitchTest extends TestCase
 
     /**
      * Test switch language to Spanish Spain
-     * @covers App\Http\Controllers\LanguageController::switchLang
+     * @covers \App\Http\Controllers\LanguageController::switchLang
      */
     public function testSwitchLanguageToSpanishSpain()
     {
@@ -35,7 +35,7 @@ class LanguageSwitchTest extends TestCase
 
     /**
      * Test switch language to Spanish Argentina
-     * @covers App\Http\Controllers\LanguageController::switchLang
+     * @covers \App\Http\Controllers\LanguageController::switchLang
      */
     public function testSwitchLanguageToSpanishArgentina()
     {
