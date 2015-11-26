@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "01ab301d0ca57680dcd22bb8663414a0",
-    "content-hash": "62d118274d6b3f21b8cbe4b79d2a910b",
+    "hash": "51857ab5c2e8627e80187d94ddb10b62",
+    "content-hash": "42402c3d21648ee769189e5d6d2a541a",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -2304,6 +2304,47 @@
                 "url"
             ],
             "time": "2014-08-09 23:24:27"
+        },
+        {
+            "name": "potsky/laravel-localization-helpers",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/laravel-localization-helpers.git",
+                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
+                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Potsky",
+                    "email": "potsky@me.com",
+                    "homepage": "http://www.potsky.com"
+                }
+            ],
+            "description": "An artisan command package for easy translation management",
+            "time": "2015-02-25 17:02:09"
         },
         {
             "name": "propaganistas/laravel-phone",
@@ -5062,47 +5103,6 @@
             "time": "2014-11-02 09:23:27"
         },
         {
-            "name": "potsky/laravel-localization-helpers",
-            "version": "v1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/potsky/laravel-localization-helpers.git",
-                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
-                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=4.1",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Potsky",
-                    "email": "potsky@me.com",
-                    "homepage": "http://www.potsky.com"
-                }
-            ],
-            "description": "An artisan command package for easy translation management",
-            "time": "2015-02-25 17:02:09"
-        },
-        {
             "name": "satooshi/php-coveralls",
             "version": "v0.6.1",
             "source": {
@@ -5800,8 +5800,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "kodeine/laravel-acl": 20,
-        "webpatser/laravel-countries": 20,
         "torann/geoip": 20,
+        "webpatser/laravel-countries": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,
