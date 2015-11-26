@@ -61,14 +61,12 @@ class AppointmentPanel extends Widget
         $body .= '<li class="list-group-item">';
         $body .= Icon::home(). '&nbsp;' . $appointment->business->name;
         $body .= '</li>';
-        if($appointment->business->postal_address)
-        {
+        if ($appointment->business->postal_address) {
             $body .= '<li class="list-group-item">';
             $body .= Icon::map_marker(). '&nbsp;' . $appointment->business->postal_address;
             $body .= '</li>';
         }
-        if($appointment->business->phone)
-        {
+        if ($appointment->business->phone) {
             $body .= '<li class="list-group-item">';
             $body .= Icon::phone(). '&nbsp;' . $appointment->business->phone;
             $body .= '</li>';
@@ -83,10 +81,14 @@ class AppointmentPanel extends Widget
         $body .= '<li class="list-group-item">';
         $body .= Icon::tag(). '&nbsp;' . $appointment->service->name;
         $body .= '</li>';
-        if($appointment->service->prerequisites)
-        {
+        if ($appointment->service->prerequisites) {
             $body .= '<li class="list-group-item">';
             $body .= Icon::alert(). '&nbsp;' . $appointment->service->prerequisites;
+            $body .= '</li>';
+        }
+        if ($appointment->comments) {
+            $body .= '<li class="list-group-item">';
+            $body .= Icon::pencil(). '&nbsp;' . $appointment->comments;
             $body .= '</li>';
         }
         $body .= '</li>';
@@ -94,10 +96,6 @@ class AppointmentPanel extends Widget
         $body .= '</ul>';
 
         $body .= $this->actionButtons($appointment);
-        
-        if ($appointment->comments) {
-            $body .= '<p>'. $appointment->comments .'</p>';
-        }
 
         return $body;
     }
