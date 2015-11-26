@@ -8,7 +8,7 @@ namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
+#use App\Http\Requests;
 use App\AvailabilityServiceLayer;
 use App\Business;
 use App\Vacancy;
@@ -22,16 +22,6 @@ class BusinessVacancyController extends Controller
     /**
      * TODO: This should probably not be a resource Controller
      */
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
-    {
-        // TODO: Provide elegant Vacancy display
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -67,64 +57,29 @@ class BusinessVacancyController extends Controller
                     case '':
                         // Dont update, leave as is
                         Log::info("BusinessServiceController: store: [ADVICE] Blank vacancy capacity value businessId:{$business->id}");
-                        break;
+                    break;
                     default:
-                        $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id, 'service_id' => $serviceId, 'date' => $date], ['capacity' => intval($capacity), 'start_at' => Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone), 'finish_at' => Carbon::parse($date . ' 20:00:00')->timezone($business->timezone)]);
+                        $start_at  = Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone);
+                        $finish_at = Carbon::parse($date . ' 20:00:00')->timezone($business->timezone);
+
+                        $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id,
+                                                            'service_id' => $serviceId,
+                                                            'date' => $date],
+                                                           ['capacity' => intval($capacity),
+                                                            'start_at' => $start_at,
+                                                            'finish_at' => $finish_at]
+                                                          );
                         $success = true;
-                        break;
+                    break;
                 }
             }
         }
-        if (!$success) {
-            Log::info("BusinessServiceController: store: [ADVICE] Nothing to update businessId:{$business->id}");
-            Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
-            return Redirect::back();
+        if ($success) {
+            Flash::success(trans('manager.vacancies.msg.store.success'));
+            return Redirect::route('manager.business.show', [$business]);
         }
-        Flash::success(trans('manager.vacancies.msg.store.success'));
-        return Redirect::route('manager.business.show', [$business]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        // TODO: Provide elegant display of individual Vacancy
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit(Business $business)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function update($id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
+        Log::info("BusinessServiceController: store: [ADVICE] Nothing to update businessId:{$business->id}");
+        Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
+        return Redirect::back();
     }
 }
