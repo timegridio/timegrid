@@ -40,14 +40,15 @@ class ConciergeServiceLayer
      * @param  Business $business For Business
      * @param  Contact  $contact  On behalf of Contact
      * @param  Service  $service  For Service
-     * @param  Carbon   $date     for Date
+     * @param  Carbon   $datetime     for Date and Time
+     * @param  string   $comments     optional issuer comments for the appointment
      * @return Appointment|boolean             Generated Appointment or false
      */
-    public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
+    public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null)
     {
         $bookingStrategy = new BookingStrategy($business->strategy);
 
-        $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $date);
+        $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $datetime, $comments);
 
         if ($appointment->duplicates()) {
             return $appointment;

@@ -13,7 +13,7 @@ use Carbon\Carbon;
 
 class BookingTimeslotStrategy implements BookingStrategyInterface
 {
-    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null)
     {
         /* ToDo */
     }

@@ -245,7 +245,7 @@ class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
      */
     public function setCommentsAttribute($comments)
     {
-        $this->attributes['comments'] = $comments ?: null;
+        $this->attributes['comments'] = trim($comments) ?: null;
     }
 
     ///////////////////////////

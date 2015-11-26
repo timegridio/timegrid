@@ -69,9 +69,10 @@ class AgendaController extends Controller
         $business = Business::findOrFail($request->input('businessId'));
         $contact = $issuer->getContactSuscribedTo($business);
         $service = Service::find($request->input('service_id'));
-        $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
+        $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
+        $comments = $request->input('comments');
 
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
+        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
             Log::info('AgendaController: postStore: [ADVICE] Unable to book ');

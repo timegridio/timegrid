@@ -26,8 +26,8 @@ class BookingStrategy
         }
     }
 
-    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $date)
+    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null)
     {
-        return $this->strategy->generateAppointment($issuer, $business, $contact, $service, $date);
+        return $this->strategy->generateAppointment($issuer, $business, $contact, $service, $datetime, $comments);
     }
 }
