@@ -1,8 +1,8 @@
 {
 	"name": "alariva/timegrid.io",
-	"description": "The booking agenda for successful professionals.",
+	"description": "Free, open-source, self-hosted online reservation platform based on the Laravel PHP Framework.",
 	"keywords": ["appointments", "reservations", "booking", "agenda", "community"],
-	"license": "MIT",
+	"license": "AGPL",
 	"type": "project",
 	"require": {
 		"laravel/framework": "5.1.*",
