@@ -148,7 +148,6 @@ return [
 
         'Collective\Html\HtmlServiceProvider',
 
-        'Barryvdh\Debugbar\ServiceProvider',
         'Barryvdh\Snappy\ServiceProvider',
 
         'Intervention\Image\ImageServiceProvider',
