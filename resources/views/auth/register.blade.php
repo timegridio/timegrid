@@ -69,7 +69,7 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon">{!! Icon::lock() !!}</span>
-                                    <input type="password" class="form-control" name="password_confirmation" data-match="#password" data-match-error="{{trans('validation.custom.password.confirmed')}}" required>
+                                    <input type="password" class="form-control" name="password_confirmation" data-match="#password" data-match-error="{{trans('validation.custom.password.confirm')}}" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
                                 <div class="help-block with-errors"></div>
@@ -119,8 +119,8 @@ $(document).ready(function(){
           error: 'glyphicon-remove'
         },
         errors: {
-          match: '{{trans('validation.custom.password.confirmed')}}',
-          minlength: '{{trans('validation.custom.name.min')}}'
+          match: '{{trans('validation.custom.password.confirm')}}',
+          minlength: '{{trans('validation.custom.password.min', ['min' => 6])}}'
         }
     });
 });

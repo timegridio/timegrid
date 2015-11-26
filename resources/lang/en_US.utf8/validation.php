@@ -85,8 +85,9 @@ return [
     |
     */
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'password' => [
+            'min' => 'The password must be at least :min characters long',
+            'confirm' => 'Please confirm your password correctly',
         ],
     ],
     /*
