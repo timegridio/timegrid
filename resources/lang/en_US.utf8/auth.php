@@ -1,10 +1,6 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57
-*************************************************************************/
 
 return array(
-  //==================================== Translations ====================================//
   'btn' =>
   array(
     'already_registered' => 'Already registered ? Login',
@@ -51,7 +47,6 @@ return array(
     ),
     'title' => 'Password reset',
   ),
-  //================================== Obsolete strings ==================================//
   'failed' => 'These credentials are invalid. Did you forget your password?',
   'throttle' => 'Too many attempts! Please try again within :seconds seconds.',
 );
