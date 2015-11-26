@@ -48,6 +48,7 @@
                                     <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
+                                <div class="help-block with-errors"></div>
                             </div>
                         </div>
 
@@ -56,9 +57,10 @@
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon">{!! Icon::lock() !!}</span>
-                                    <input type="password" class="form-control" name="password" id="password" data-minlength="6" placeholder="{{trans('validation.custom.password.min', ['min'=>'6'])}}" required>
+                                    <input type="password" class="form-control" name="password" id="password" data-minlength="6" placeholder="" required>
                                     <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
                                 </div>
+                                <div class="help-block with-errors"></div>
                             </div>
                         </div>
 
