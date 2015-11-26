@@ -77,7 +77,7 @@
 
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
-                            @if (\Auth::user()->suscribedTo($business) === null)
+                            @if (\Auth::user()->getContactSuscribedTo($business) === null)
                                 {!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
                                 @if($available)
