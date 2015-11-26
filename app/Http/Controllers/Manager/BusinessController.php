@@ -152,6 +152,10 @@ class BusinessController extends Controller
     public function update(Business $business, BusinessFormRequest $request)
     {
         Log::info("Manager\BusinessController: update: businessId:{$business->id}");
+
+        $category = Category::find(Request::get('category'));
+        $business->category()->associate($category);
+
         $business->update([
             'name' => $request->get('name'),
             'slug' => $request->get('slug'),
