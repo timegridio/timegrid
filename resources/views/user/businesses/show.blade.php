@@ -8,17 +8,13 @@
 
                 <div class="panel-heading">
                     @if(\Auth::user()->isOwner($business))
-                        {!! Icon::star() !!} {!! link_to(route('manager.business.show', $business), $business->name) !!}
+                        {!! Icon::star() !!}&nbsp;{{ $business->suscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
-                        {{ $business->name }}
+                        {!! Icon::star() !!}&nbsp;{{ $business->suscriptionsCount }} {{ $business->name }}
                     @endif
                 </div>
 
                     <ul class="list-group">
-
-                        <li class="list-group-item">
-                            {{ trans_choice('user.business.suscriptions_count', $business->suscriptionsCount) }}
-                        </li>
 
                         <li class="list-group-item">
                             {!! $business->getPresenter()->getIndustryIcon() !!}
