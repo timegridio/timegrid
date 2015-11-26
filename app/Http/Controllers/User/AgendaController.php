@@ -45,7 +45,7 @@ class AgendaController extends Controller
                    ->url('http://localhost')
                    ->send();
 
-        if (!\Auth::user()->suscribedTo($business)) {
+        if (!\Auth::user()->getContactSuscribedTo($business)) {
             Log::info('AgendaController: getIndex: [ADVICE] User not suscribed to Business');
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();
@@ -67,7 +67,7 @@ class AgendaController extends Controller
         $issuer = \Auth::user();
 
         $business = Business::findOrFail($request->input('businessId'));
-        $contact = $issuer->suscribedTo($business);
+        $contact = $issuer->getContactSuscribedTo($business);
         $service = Service::find($request->input('service_id'));
         $date = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
 

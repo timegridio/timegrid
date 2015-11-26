@@ -124,14 +124,12 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     }
 
     /**
-     * TODO: Rename to getContactSuscribedTo()
-     * 
      * Get Suscribed Contact to Business
      * 
      * @param  Business $business Business of inquiry
      * @return Contact            User profile Contact suscribed to the inquired Business
      */
-    public function suscribedTo(Business $business)
+    public function getContactSuscribedTo(Business $business)
     {
         return $this->contacts->filter(function ($contact) use ($business) {
             return $contact->isSuscribedTo($business);
