@@ -20,11 +20,15 @@ It is currently in **beta** stage willing to add some missing functions in the s
 
 It is made under the **Laravel 5** framework for **PHP**.
 
+## Screenshots
+
 ![Screenshot](http://i.imgur.com/aiG7jlx.png)
+
+[Like it?](https://github.com/alariva/timegrid/wiki/Screenshots)
 
 ## Live Demo
 
-You can try the *beta stage* working [live demo](http://demo.timegrid.io/)
+Want to see more action? You can try the *beta stage* [working live demo](http://demo.timegrid.io/)
 
 > Hold on tight! It's a bumpy ride for all of us!
 
