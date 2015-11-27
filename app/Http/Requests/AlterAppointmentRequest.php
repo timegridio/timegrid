@@ -24,7 +24,7 @@ class AlterAppointmentRequest extends Request
         $appointment = Appointment::find($appointmentId);
 
         $authorize = ($appointment->issuer->id == $issuer->id) || $issuer->isOwner($business);
-        \Log::info("Authorize AlterAppointmentRequest for issuer:{$issuer->id} appointment:$appointmentId business:$businessId authorize:$authorize");
+        # \Log::info("Authorize AlterAppointmentRequest for issuer:{$issuer->id} appointment:$appointmentId business:$businessId authorize:$authorize");
         return $authorize;
     }
 
