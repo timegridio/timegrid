@@ -9,4 +9,11 @@ use Illuminate\Foundation\Bus\DispatchesCommands;
 abstract class Controller extends BaseController
 {
     use DispatchesCommands, ValidatesRequests;
+
+    protected $log;
+
+    public function __construct()
+    {
+        $this->log = app('log');
+    }
 }
