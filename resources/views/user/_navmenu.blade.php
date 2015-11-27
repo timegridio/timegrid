@@ -6,7 +6,7 @@
         <li class="nav-divider"></li>
     @endif
         <li><a href="{{ route('user.businesses.list') }}">{{ trans('app.nav.user.business.selector') }}</a></li>
-        <li><a href="{{ route('user.businesses.suscriptions') }}">{{ trans('app.nav.user.business.my_suscriptions') }}</a></li>
+        <li><a href="{{ route('user.businesses.subscriptions') }}">{{ trans('app.nav.user.business.my_subscriptions') }}</a></li>
         <li class="nav-divider"></li>
         <li><a href="{{ route('user.booking.list') }}">{{ trans('app.nav.user.business.my_appointments') }}</a></li>
         <li class="nav-divider"></li>

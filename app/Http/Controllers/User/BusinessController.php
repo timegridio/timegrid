@@ -3,14 +3,20 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-#use App\ConciergeStrategy as Concierge;
 use App\Business;
 use Carbon\Carbon;
 use Notifynder;
 use Redirect;
 use Session;
 use Flash;
+use Auth;
 
+/**
+ * ToDo:
+ *     - Access Notifynder with constructor dependency injection
+ *     - Access Auth with constructor dependency injection
+ *     - Access Business with dependency injection of a BusinessRepository
+ */
 class BusinessController extends Controller
 {
     /**
@@ -25,13 +31,13 @@ class BusinessController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
-                   ->from('App\User', \Auth::user()->id)
+                   ->from('App\User', Auth::user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();
 
-        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), \Auth::user());
+        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), Auth::user());
         $available = true; /* ToDo */
 
         return view('user.businesses.show', compact('business', 'available'));
@@ -65,19 +71,19 @@ class BusinessController extends Controller
     }
 
     /**
-     * TODO: Should be named getProfiles
+     * TODO: Should be named getFavorites
      *
-     * get Suscriptions
+     * get Subscriptions
      *
      *      Gets the User profile Contacts that MAY BE suscribed to Businesses
      *
      * @return Response Rendered view of the Contacts linked to the
      *                  requesting User
      */
-    public function getSuscriptions()
+    public function getSubscriptions()
     {
-        $this->log->info('BusinessController: getSuscriptions');
-        $contacts = \Auth::user()->contacts;
-        return view('user.businesses.suscriptions', compact('contacts'));
+        $this->log->info('BusinessController: getSubscriptions');
+        $contacts = Auth::user()->contacts;
+        return view('user.businesses.subscriptions', compact('contacts'));
     }
 }

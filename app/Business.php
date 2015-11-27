@@ -103,28 +103,28 @@ class Business extends EloquentModel
     }
 
     /**
-     * Get the real Users suscriptions count
+     * Get the real Users subscriptions count
      *
      * @return Illuminate\Database\Query Relationship
      */
-    public function suscriptionsCount()
+    public function subscriptionsCount()
     {
         return $this->belongsToMany('App\Contact')->selectRaw('id, count(*) as aggregate')->whereNotNull('user_id')->groupBy('business_id');
     }
 
     /**
-     * get SuscriptionsCount Attribute
+     * get SubscriptionsCount Attribute
      *
      * @return integer Count of Contacts with real User held by this Business
      */
-    public function getSuscriptionsCountAttribute()
+    public function getSubscriptionsCountAttribute()
     {
         // if relation is not loaded already, let's do it first
-        if (! array_key_exists('suscriptionsCount', $this->relations)) {
-            $this->load('suscriptionsCount');
+        if (! array_key_exists('subscriptionsCount', $this->relations)) {
+            $this->load('subscriptionsCount');
         }
 
-        $related = $this->getRelation('suscriptionsCount');
+        $related = $this->getRelation('subscriptionsCount');
 
         // then return the count directly
         return ($related->count()>0) ? (int) $related->first()->aggregate : 0;

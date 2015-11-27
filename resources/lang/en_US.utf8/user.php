@@ -91,16 +91,16 @@ return array(
         'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
         'success' => 'Success! Your appointment was registered with code :code',
       ),
-      'you_are_not_suscribed_to_business' => 'To be able to do a reservation you must suscribe the business first',
+      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
     ),
   ),
   'business' =>
   array(
     'btn' =>
     array(
-      'suscribe' => 'Suscribe',
+      'subscribe' => '',
     ),
-    'suscriptions_count' => '{0} ¡Be the first to suscribe! |This business has :count suscribed user|This business has :count suscribed users',
+    'subscriptions_count' => '{0} ¡Be the first to subscribe! |This business has :count subscribed user|This business has :count subscribed users',
     'msg' =>
     array(
       'please_select_a_business' => 'Choose a business',
@@ -118,9 +118,9 @@ return array(
       ),
       'title' => 'Available businesses',
     ),
-    'suscriptions' =>
+    'subscriptions' =>
     array(
-      'title' => 'Suscriptions',
+      'title' => 'Subscriptions',
       'none_found' => 'No subscriptions available.',
     ),
     'list' =>

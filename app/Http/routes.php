@@ -40,7 +40,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
         Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
         #Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect']);
         Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
-        Route::get('suscriptions',           ['as' => 'user.businesses.suscriptions', 'uses' => 'BusinessController@getSuscriptions']);
+        Route::get('subscriptions',          ['as' => 'user.businesses.subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
     });
 
     Route::controller('wizard', 'WizardController', [
