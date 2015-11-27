@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
 use App\Http\Requests\BusinessPreferencesFormRequest;
-use App\Http\Requests;
 use App\Business;
 use App\Category;
 use Notifynder;
@@ -14,6 +13,7 @@ use Request;
 use Session;
 use Flash;
 use GeoIP;
+use Auth;
 
 class BusinessController extends Controller
 {
@@ -25,7 +25,7 @@ class BusinessController extends Controller
     public function index()
     {
         $this->log->info('Manager\BusinessController: index');
-        $businesses = \Auth::user()->businesses;
+        $businesses = Auth::user()->businesses;
         if ($businesses->count()==1) {
             $this->log->info('Manager\BusinessController: index: Only one business to show');
             $business = $businesses->first();
@@ -74,12 +74,12 @@ class BusinessController extends Controller
             $business->strategy = $category->strategy;
             $business->category()->associate($category);
             $business->save();
-            \Auth::user()->businesses()->attach($business);
-            \Auth::user()->save();
+            Auth::user()->businesses()->attach($business);
+            Auth::user()->save();
 
             $businessName = $business->name;
             Notifynder::category('user.registeredBusiness')
-                       ->from('App\User', \Auth::user()->id)
+                       ->from('App\User', Auth::user()->id)
                        ->to('App\Business', $business->id)
                        ->url('http://localhost')
                        ->extra(compact('businessName'))
@@ -90,7 +90,7 @@ class BusinessController extends Controller
         }
 
         $this->log->info("Manager\BusinessController: store: [ADVICE] Found existing businessId:{$existingBusiness->id}");
-        if (\Auth::user()->isOwner($existingBusiness)) {
+        if (Auth::user()->isOwner($existingBusiness)) {
             $this->log->info("Manager\BusinessController: store: [ADVICE] Restoring owned businessId:{$existingBusiness->id}");
             $existingBusiness->restore();
             Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
@@ -229,7 +229,7 @@ class BusinessController extends Controller
 
         $businessName = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
-                   ->from('App\User', \Auth::user()->id)
+                   ->from('App\User', Auth::user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))
