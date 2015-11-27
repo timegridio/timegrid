@@ -8,10 +8,10 @@ return array (
   // Defined in file /home/alariva/timegrid.io/app/resources/views/user/businesses/show.blade.php
   'business' => 
   array (
-    'suscriptions_count' => 'business.suscriptions_count',
+    'subscriptions_count' => 'business.subscriptions_count',
     'btn' => 
     array (
-      'suscribe' => 'Suscribir',
+      'subscribe' => 'Suscribir',
     ),
     'msg' => 
     array (
@@ -106,16 +106,16 @@ return array (
         'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
         'success' => '¡Tomá nota! Reservamos tu turno bajo el código :code',
       ),
-      'you_are_not_suscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
+      'you_are_not_subscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
     ),
   ),
   'business' => 
   array (
     'btn' => 
     array (
-      'suscribe' => 'Suscribir',
+      'subscribe' => 'Suscribir',
     ),
-    'suscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
+    'subscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
     'msg' => 
     array (
       'please_select_a_business' => 'Seleccioná un prestador',
@@ -133,7 +133,7 @@ return array (
       ),
       'title' => 'Prestadores disponibles',
     ),
-    'suscriptions' => 
+    'subscriptions' => 
     array (
       'title' => 'Suscripciones',
       'none_found' => 'No hay suscripciones disponibles.',

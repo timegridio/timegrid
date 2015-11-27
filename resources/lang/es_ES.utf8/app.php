@@ -29,7 +29,7 @@ return array (
       array (
         'menu' => 'Prestadores',
         'my_appointments' => 'Mis turnos',
-        'my_suscriptions' => 'Favoritos',
+        'my_subscriptions' => 'Favoritos',
         'selector' => 'Buscar',
         'home' => 'Inicio',
       ),

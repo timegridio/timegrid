@@ -29,7 +29,7 @@ class BusinessContactController extends Controller
         $this->log->info('BusinessContactController: create');
         $existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
 
-        if ($existing_contact !== null && !$existing_contact->isSuscribedTo($business)) {
+        if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
             $this->log->info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
             $business->contacts()->attach($existing_contact);
             $business->save();
@@ -53,7 +53,7 @@ class BusinessContactController extends Controller
         $this->log->info('BusinessContactController: store');
 
         $business_name = $business->name;
-        Notifynder::category('user.suscribedBusiness')
+        Notifynder::category('user.subscribedBusiness')
                    ->from('App\User', \Auth::user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
@@ -63,7 +63,7 @@ class BusinessContactController extends Controller
         $existing_contacts = Contact::whereNull('user_id')->whereNotNull('email')->where('email', '<>', '')->where(['email' => $request->input('email')])->get();
 
         foreach ($existing_contacts as $existing_contact) {
-            if ($existing_contact->isSuscribedTo($business)) {
+            if ($existing_contact->isSubscribedTo($business)) {
                 \Auth::user()->contacts()->save($existing_contact);
 
                 Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));

@@ -21,7 +21,7 @@ class ContactFormRequest extends Request
             return false;
         }
 
-        return $this->contact === null || $this->contact->isSuscribedTo($this->business);
+        return $this->contact === null || $this->contact->isSubscribedTo($this->business);
     }
 
     /**

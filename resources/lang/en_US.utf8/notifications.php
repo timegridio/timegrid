@@ -5,7 +5,7 @@ return [
     'checkingVacancies' => ':user checked your availability',
     'booked' => ':user reserved an appointment at :business_name',
     'visitedShowroom' => ':user seems interested in :business_name',
-    'suscribedBusiness' => ':user suscribed to :business_name',
+    'subscribedBusiness' => ':user subscribed to :business_name',
     'registeredBusiness' => ':user registered to :business_name. Congrats!',
     'updatedBusinessPreferences' => ':user changed preferences of :business_name',
     'importedContacts' => ':user imported :count contacts',

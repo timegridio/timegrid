@@ -79,8 +79,8 @@ return array(
     ),
     'indicator8' =>
     array(
-      'content' => 'Total suscribed real users that can make reservations to your business.',
-      'title' => 'Suscribed businesses',
+      'content' => 'Total subscribed real users that can make reservations to your business.',
+      'title' => 'Subscribed businesses',
     ),
     'indicator9' =>
     array(

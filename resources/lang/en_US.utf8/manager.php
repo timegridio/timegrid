@@ -83,7 +83,7 @@ return array(
         'title_appointments_today' => 'Today',
         'title_appointments_tomorrow' => 'Tomorrow',
         'title_appointments_total' => 'Total',
-        'title_contacts_active' => 'Suscribed',
+        'title_contacts_active' => 'Subscribed',
         'title_contacts_registered' => 'Registered',
         'title_contacts_total' => 'Total',
       ),
@@ -280,7 +280,7 @@ return array(
     array(
       'birthdate' => 'Birthdate',
       'email' => 'Email',
-      'member_since' => 'Suscribed since',
+      'member_since' => 'Subscribed since',
       'mobile' => 'Mobile',
       'nin' => 'ID',
       'notes' => 'Notes',

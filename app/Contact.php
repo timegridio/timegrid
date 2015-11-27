@@ -278,12 +278,12 @@ class Contact extends Model
     /////////////////////
 
     /**
-     * is Suscribed To Business
+     * is Subscribed To Business
      *
      * @param  Business $business Business of inquiry
      * @return boolean            The Contact belongs to the inquired Business' addressbook
      */
-    public function isSuscribedTo(Business $business)
+    public function isSubscribedTo(Business $business)
     {
         return $this->businesses->contains($business);
     }

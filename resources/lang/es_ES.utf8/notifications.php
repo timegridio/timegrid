@@ -5,7 +5,7 @@ return [
     'checkingVacancies' => ':user consultó la disponibilidad',
     'booked' => ':user reservó un turno en :business_name',
     'visitedShowroom' => ':user pareció interesarse en :business_name',
-    'suscribedBusiness' => ':user se suscribió a :business_name',
+    'subscribedBusiness' => ':user se suscribió a :business_name',
     'registeredBusiness' => ':user registró el alta :business_name. ¡Bravo!',
     'updatedBusinessPreferences' => ':user ajustó las preferencias de :business_name',
     'importedContacts' => ':user importó :count contactos',

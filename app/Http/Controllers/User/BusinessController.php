@@ -75,7 +75,7 @@ class BusinessController extends Controller
      *
      * get Subscriptions
      *
-     *      Gets the User profile Contacts that MAY BE suscribed to Businesses
+     *      Gets the User profile Contacts that MAY BE subscribed to Businesses
      *
      * @return Response Rendered view of the Contacts linked to the
      *                  requesting User

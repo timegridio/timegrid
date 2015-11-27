@@ -44,7 +44,7 @@ return array(
       array(
         'menu' => 'Businesses',
         'my_appointments' => 'My Reservations',
-        'my_suscriptions' => 'Favourites',
+        'my_subscriptions' => 'Favourites',
         'selector' => 'Browse',
         'home' => 'Home',
       ),

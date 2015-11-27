@@ -29,7 +29,7 @@ return array(
         'action' => 'See how',
         'info' => 'More info',
       ),
-      'content' => 'Keep all your contacts together and get new suscribers.',
+      'content' => 'Keep all your contacts together and get new subscribers.',
       'title' => 'Annuitize',
     ),
     3 =>

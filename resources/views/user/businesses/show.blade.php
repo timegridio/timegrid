@@ -8,9 +8,9 @@
 
                 <div class="panel-heading">
                     @if(\Auth::user()->isOwner($business))
-                        {!! Icon::star() !!}&nbsp;{{ $business->suscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
+                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
-                        {!! Icon::star() !!}&nbsp;{{ $business->suscriptionsCount }} {{ $business->name }}
+                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {{ $business->name }}
                     @endif
                 </div>
 
@@ -73,8 +73,8 @@
 
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
-                            @if (\Auth::user()->getContactSuscribedTo($business) === null)
-                                {!! Button::large()->primary(trans('user.business.btn.suscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
+                            @if (\Auth::user()->getContactSubscribedTo($business) === null)
+                                {!! Button::large()->primary(trans('user.business.btn.subscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
                                 @if($available)
                                     {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
