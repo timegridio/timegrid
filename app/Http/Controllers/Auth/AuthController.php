@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Validation\ValidationServiceProvider;
 use App\Http\Controllers\Controller;
 use App\Events\NewRegisteredUser;
 use App\User;
