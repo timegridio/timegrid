@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Redirect;
 
 class LanguageController extends Controller
 {
-
-
     /**
      * Switch Language
      * @param  string  $lang    Language iso code
