@@ -32,18 +32,4 @@ class LanguageSwitchTest extends TestCase
         $this->assertSessionHas('applocale', $applocale);
         $this->assertResponseStatus(302);
     }
-
-    /**
-     * Test switch language to Spanish Argentina
-     * @covers \App\Http\Controllers\LanguageController::switchLang
-     */
-    public function testSwitchLanguageToSpanishArgentina()
-    {
-        $applocale = 'es_AR.utf8';
-        $this->call('GET', "/lang/$applocale");
-
-        $this->assertSessionHas('language', 'es');
-        $this->assertSessionHas('applocale', $applocale);
-        $this->assertResponseStatus(302);
-    }
 }
