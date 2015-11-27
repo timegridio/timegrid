@@ -5,12 +5,15 @@ namespace App\Http\Controllers\Manager;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ContactFormRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use App\Business;
 use App\Contact;
-use Request;
-use Session;
 use Flash;
+
+/**
+ * ToDo:
+ *     - Use constructor dependency injection for Auth, Flash, Event
+ *     - Use constructor dependency injection for ConciergeServiceLayer
+ */
 
 class BusinessContactController extends Controller
 {
