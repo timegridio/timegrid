@@ -11,7 +11,6 @@ use App\Contact;
 use Request;
 use Session;
 use Flash;
-use Log;
 
 class BusinessContactController extends Controller
 {
@@ -24,7 +23,7 @@ class BusinessContactController extends Controller
      */
     public function index(Business $business, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: index: businessId:{$business->id}");
+        $this->log->info("BusinessContactController: index: businessId:{$business->id}");
 
         return view('manager.contacts.index', compact('business'));
     }
@@ -38,7 +37,7 @@ class BusinessContactController extends Controller
      */
     public function create(Business $business, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: create: businessId:{$business->id}");
+        $this->log->info("BusinessContactController: create: businessId:{$business->id}");
         return view('manager.contacts.create', compact('business'));
     }
 
@@ -51,13 +50,13 @@ class BusinessContactController extends Controller
      */
     public function store(Business $business, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: store: businessId:{$business->id}");
+        $this->log->info("BusinessContactController: store: businessId:{$business->id}");
         if (trim($request->input('nin'))) {
             $existing_contacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
             foreach ($existing_contacts as $existing_contact) {
-                Log::info("BusinessContactController: store: [ADVICE] Found existing contactId:{$existing_contact->id}");
+                $this->log->info("BusinessContactController: store: [ADVICE] Found existing contactId:{$existing_contact->id}");
                 if ($existing_contact->isSuscribedTo($business)) {
-                    Log::info("BusinessContactController: store: [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
+                    $this->log->info("BusinessContactController: store: [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
                     return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
                 }
@@ -67,7 +66,7 @@ class BusinessContactController extends Controller
         $contact = Contact::create($request->except('notes', '_token'));
         $business->contacts()->attach($contact);
         $business->save();
-        Log::info("BusinessContactController: store: Contact created contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: store: Contact created contactId:{$contact->id}");
 
         $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
@@ -85,7 +84,7 @@ class BusinessContactController extends Controller
      */
     public function show(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: show: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: show: businessId:{$business->id} contactId:{$contact->id}");
         return view('manager.contacts.show', compact('business', 'contact'));
     }
 
@@ -99,7 +98,7 @@ class BusinessContactController extends Controller
      */
     public function edit(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: edit: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: edit: businessId:{$business->id} contactId:{$contact->id}");
         return view('manager.contacts.edit', compact('business', 'contact'));
     }
 
@@ -113,7 +112,7 @@ class BusinessContactController extends Controller
      */
     public function update(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: update: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: update: businessId:{$business->id} contactId:{$contact->id}");
         $contact->update([
             'firstname'       => $request->get('firstname'),
             'lastname'        => $request->get('lastname'),
@@ -145,7 +144,7 @@ class BusinessContactController extends Controller
      */
     public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        Log::info("BusinessContactController: destroy: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: destroy: businessId:{$business->id} contactId:{$contact->id}");
         $contact->businesses()->detach($business->id);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));

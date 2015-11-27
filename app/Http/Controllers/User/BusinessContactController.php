@@ -13,7 +13,6 @@ use Notifynder;
 use Session;
 use Request;
 use Flash;
-use Log;
 
 class BusinessContactController extends Controller
 {
@@ -27,11 +26,11 @@ class BusinessContactController extends Controller
      */
     public function create(Business $business, AlterContactRequest $request)
     {
-        Log::info('BusinessContactController: create');
+        $this->log->info('BusinessContactController: create');
         $existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
 
         if ($existing_contact !== null && !$existing_contact->isSuscribedTo($business)) {
-            Log::info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
+            $this->log->info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
             $business->contacts()->attach($existing_contact);
             $business->save();
             Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
@@ -51,7 +50,7 @@ class BusinessContactController extends Controller
      */
     public function store(Business $business, AlterContactRequest $request)
     {
-        Log::info('BusinessContactController: store');
+        $this->log->info('BusinessContactController: store');
 
         $business_name = $business->name;
         Notifynder::category('user.suscribedBusiness')
@@ -96,7 +95,7 @@ class BusinessContactController extends Controller
      */
     public function show(Business $business, Contact $contact, ViewContactRequest $request)
     {
-        Log::info("BusinessContactController: show: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: show: businessId:{$business->id} contactId:{$contact->id}");
         return view('user.contacts.show', compact('business', 'contact'));
     }
 
@@ -110,7 +109,7 @@ class BusinessContactController extends Controller
      */
     public function edit(Business $business, Contact $contact, AlterContactRequest $request)
     {
-        Log::info("BusinessContactController: edit: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: edit: businessId:{$business->id} contactId:{$contact->id}");
         return view('user.contacts.edit', compact('business', 'contact'));
     }
 
@@ -124,7 +123,7 @@ class BusinessContactController extends Controller
      */
     public function update(Business $business, Contact $contact, AlterContactRequest $request)
     {
-        Log::info("BusinessContactController: update: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info("BusinessContactController: update: businessId:{$business->id} contactId:{$contact->id}");
         $update = [
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country')
@@ -133,15 +132,15 @@ class BusinessContactController extends Controller
         /* Only allow filling empty fields, not modification */
         if ($contact->birthdate === null && $request->get('birthdate')) {
             $update['birthdate'] = $request->get('birthdate');
-            Log::info("BusinessContactController: update: Updated birthdate:{$update['birthdate']}");
+            $this->log->info("BusinessContactController: update: Updated birthdate:{$update['birthdate']}");
         }
         if (trim($contact->nin) == '' && $request->get('nin')) {
             $update['nin'] = $request->get('nin');
-            Log::info("BusinessContactController: update: Updated nin:{$update['nin']}");
+            $this->log->info("BusinessContactController: update: Updated nin:{$update['nin']}");
         }
 
         $contact->update($update);
-        Log::info("BusinessContactController: update: Updated contact");
+        $this->log->info("BusinessContactController: update: Updated contact");
 
         Flash::success(trans('user.contacts.msg.update.success'));
         return Redirect::route('user.business.contact.show', [$business, $contact]);
@@ -160,7 +159,7 @@ class BusinessContactController extends Controller
     public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
     {
         $contact->delete();
-        Log::info("BusinessContactController: destroy: Deleted contact:{$contact->id}");
+        $this->log->info("BusinessContactController: destroy: Deleted contact:{$contact->id}");
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return Redirect::route('manager.business.show', $business);

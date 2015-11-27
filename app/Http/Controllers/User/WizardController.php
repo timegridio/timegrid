@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Redirect;
 use Auth;
-use Log;
 
 class WizardController extends Controller
 {
@@ -21,18 +20,18 @@ class WizardController extends Controller
      */
     public function getHome()
     {
-        Log::info('WizardController: getHome');
+        $this->log->info('WizardController: getHome');
 
         if (Auth::user()->hasBusiness()) {
-            Log::info('WizardController: getHome: User has Business');
+            $this->log->info('WizardController: getHome: User has Business');
             return Redirect::route('manager.business.index');
         } else {
-            Log::info('WizardController: getHome: User has Contacts');
+            $this->log->info('WizardController: getHome: User has Contacts');
             if (Auth::user()->hasContacts()) {
                 return Redirect::route('user.businesses.list');
             }
         }
-        Log::info('WizardController: getHome: Displaying Wizard');
+        $this->log->info('WizardController: getHome: Displaying Wizard');
         return view('wizard');
     }
 
@@ -43,7 +42,7 @@ class WizardController extends Controller
      */
     public function getWelcome()
     {
-        Log::info('WizardController: getWelcome');
+        $this->log->info('WizardController: getWelcome');
         return view('wizard');
     }
 
@@ -54,7 +53,7 @@ class WizardController extends Controller
      */
     public function getPricing()
     {
-        Log::info('WizardController: getPricing');
+        $this->log->info('WizardController: getPricing');
         return view('manager.pricing');
     }
 
@@ -65,7 +64,7 @@ class WizardController extends Controller
      */
     public function getTerms()
     {
-        Log::info('WizardController: getTerms');
+        $this->log->info('WizardController: getTerms');
         return view('manager.terms');
     }
 }

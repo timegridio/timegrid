@@ -14,7 +14,6 @@ use Notifynder;
 use Carbon;
 use Flash;
 use Event;
-use Log;
 
 class AgendaController extends Controller
 {
@@ -25,7 +24,7 @@ class AgendaController extends Controller
      */
     public function getIndex(ConciergeServiceLayer $concierge)
     {
-        Log::info('AgendaController: getIndex');
+        $this->log->info('AgendaController: getIndex');
         $appointments = $concierge->getAppointmentsFor(\Auth::user());
         return view('user.appointments.index', compact('appointments'));
     }
@@ -37,7 +36,7 @@ class AgendaController extends Controller
      */
     public function getAvailability(Business $business, ConciergeServiceLayer $concierge)
     {
-        Log::info('AgendaController: getBook');
+        $this->log->info('AgendaController: getBook');
 
         Notifynder::category('user.checkingVacancies')
                    ->from('App\User', \Auth::user()->id)
@@ -46,7 +45,7 @@ class AgendaController extends Controller
                    ->send();
 
         if (!\Auth::user()->getContactSuscribedTo($business)) {
-            Log::info('AgendaController: getIndex: [ADVICE] User not suscribed to Business');
+            $this->log->info('AgendaController: getIndex: [ADVICE] User not suscribed to Business');
             Flash::warning(trans('user.booking.msg.you_are_not_suscribed_to_business'));
             return Redirect::back();
         }
@@ -63,7 +62,7 @@ class AgendaController extends Controller
      */
     public function postStore(Request $request, ConciergeServiceLayer $concierge)
     {
-        Log::info('AgendaController: postStore');
+        $this->log->info('AgendaController: postStore');
         $issuer = \Auth::user();
 
         $business = Business::findOrFail($request->input('businessId'));
@@ -75,18 +74,18 @@ class AgendaController extends Controller
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
-            Log::info('AgendaController: postStore: [ADVICE] Unable to book ');
+            $this->log->info('AgendaController: postStore: [ADVICE] Unable to book ');
             Flash::warning(trans('user.booking.msg.store.error'));
             return Redirect::route('user.booking.list');
         }
 
         $appointmentPresenter = $appointment->getPresenter();
         if ($appointment->exists) {
-            Log::info('AgendaController: postStore: Appointment saved successfully ');
+            $this->log->info('AgendaController: postStore: Appointment saved successfully ');
             Event::fire(new NewBooking($issuer, $appointment));
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
         } else {
-            Log::info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
+            $this->log->info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
             Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
         }
         return Redirect::route('user.booking.list');
@@ -104,7 +103,7 @@ class AgendaController extends Controller
      */
     public function getShow(Business $business, Appointment $appointment)
     {
-        Log::info("AgendaController: getShow: businessId:{$business->id} appointmentId:{$appointment->id}");
+        $this->log->info("AgendaController: getShow: businessId:{$business->id} appointmentId:{$appointment->id}");
         return view('user.appointments.'.$business->strategy.'.show', compact('appointment'));
     }
 }

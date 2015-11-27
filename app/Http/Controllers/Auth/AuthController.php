@@ -9,7 +9,6 @@ use App\Events\NewRegisteredUser;
 use App\User;
 use Validator;
 use Event;
-use Log;
 
 class AuthController extends Controller
 {
@@ -65,7 +64,7 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
-        Log::info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
+        $this->log->info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],

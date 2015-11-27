@@ -9,7 +9,6 @@ use App\Business;
 use App\Service;
 use Redirect;
 use Flash;
-use Log;
 
 class BusinessServiceController extends Controller
 {
@@ -20,7 +19,7 @@ class BusinessServiceController extends Controller
      */
     public function index(Business $business)
     {
-        Log::info('BusinessServiceController: index');
+        $this->log->info('BusinessServiceController: index');
         $services = $business->services;
         return view('manager.businesses.services.index', compact('business', 'services'));
     }
@@ -32,7 +31,7 @@ class BusinessServiceController extends Controller
      */
     public function create(Business $business /* , ServiceFormRequest $request */)
     {
-        Log::info("BusinessServiceController: create: businessId:{$business->id}");
+        $this->log->info("BusinessServiceController: create: businessId:{$business->id}");
         return view('manager.businesses.services.create', compact('business'));
     }
 
@@ -43,11 +42,11 @@ class BusinessServiceController extends Controller
      */
     public function store(Business $business, Request $request)
     {
-        Log::info("BusinessServiceController: store: businessId:{$business->id}");
+        $this->log->info("BusinessServiceController: store: businessId:{$business->id}");
         $service = Service::firstOrNew($request->except('_token'));
         $service->business()->associate($business->id);
         $service->save();
-        Log::info("BusinessServiceController: create: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("BusinessServiceController: create: businessId:{$business->id} serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
         return Redirect::route('manager.business.service.index', [$business]);
@@ -61,7 +60,7 @@ class BusinessServiceController extends Controller
      */
     public function show(Business $business, Service $service)
     {
-        Log::info("BusinessServiceController: show: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("BusinessServiceController: show: businessId:{$business->id} serviceId:{$service->id}");
         return view('manager.businesses.services.show', compact('service'));
     }
 
@@ -73,7 +72,7 @@ class BusinessServiceController extends Controller
      */
     public function edit(Business $business, Service $service)
     {
-        Log::info("BusinessServiceController: edit: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("BusinessServiceController: edit: businessId:{$business->id} serviceId:{$service->id}");
         return view('manager.businesses.services.edit', compact('service'));
     }
 
@@ -85,7 +84,7 @@ class BusinessServiceController extends Controller
      */
     public function update(Business $business, Service $service, Request $request /*, ContactFormRequest $request */)
     {
-        Log::info("BusinessServiceController: update: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("BusinessServiceController: update: businessId:{$business->id} serviceId:{$service->id}");
         $service->update([
             'name'            => $request->get('name'),
             'description'     => $request->get('description'),
@@ -104,7 +103,7 @@ class BusinessServiceController extends Controller
      */
     public function destroy(Business $business, Service $service)
     {
-        Log::info("BusinessServiceController: destroy: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("BusinessServiceController: destroy: businessId:{$business->id} serviceId:{$service->id}");
         $service->forceDelete();
 
         Flash::success(trans('manager.services.msg.destroy.success'));

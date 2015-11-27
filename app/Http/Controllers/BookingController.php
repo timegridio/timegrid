@@ -16,7 +16,6 @@ use Widget;
 use Event;
 use Auth;
 use URL;
-use Log;
 
 class BookingController extends Controller
 {
@@ -28,14 +27,14 @@ class BookingController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
-        Log::info('BookingController: postAction');
+        $this->log->info('BookingController: postAction');
         $issuer = Auth::user();
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
         $action = $request->input('action');
         $widget = $request->input('widget');
 
-        Log::info("AJAX postAction.request:[issuer:$issuer->email, action:$action, business:$businessId, appointment:$appointmentId]");
+        $this->log->info("AJAX postAction.request:[issuer:$issuer->email, action:$action, business:$businessId, appointment:$appointmentId]");
 
         $appointment = Appointment::find($appointmentId);
 
@@ -51,7 +50,7 @@ class BookingController extends Controller
                 break;
             default:
                 # Ignore Invalid Action
-                Log::warning('Invalid Action request');
+                $this->log->warning('Invalid Action request');
                 break;
         }
 
@@ -81,7 +80,7 @@ class BookingController extends Controller
                    ->extra(compact('code', 'action', 'date'))
                    ->send();
 
-        Log::info("postAction.response:[appointment:{$appointment->toJson()}]");
+        $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
         return response()->json(['code' => 'OK', 'html' => $html]); // TODO: Safe to remove .''
     }
 }

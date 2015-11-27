@@ -10,7 +10,6 @@ use Notifynder;
 use Redirect;
 use Session;
 use Flash;
-use Log;
 
 class BusinessController extends Controller
 {
@@ -22,7 +21,7 @@ class BusinessController extends Controller
      */
     public function getHome(Business $business)
     {
-        Log::info("BusinessController: getHome: businessId:{$business->id} businessSlug:({$business->slug})");
+        $this->log->info("BusinessController: getHome: businessId:{$business->id} businessSlug:({$business->slug})");
 
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
@@ -45,7 +44,7 @@ class BusinessController extends Controller
      */
     public function getList()
     {
-        Log::info('BusinessController: getList');
+        $this->log->info('BusinessController: getList');
         $businesses = Business::all();
         return view('user.businesses.index', compact('businesses'));
     }
@@ -60,7 +59,7 @@ class BusinessController extends Controller
      */
     public function getSelect(Business $business)
     {
-        Log::info("BusinessController: getSelect businessId:{$business->id}");
+        $this->log->info("BusinessController: getSelect businessId:{$business->id}");
         Session::set('selected.business', $business);
         return $this->getHome($business);
     }
@@ -77,7 +76,7 @@ class BusinessController extends Controller
      */
     public function getSuscriptions()
     {
-        Log::info('BusinessController: getSuscriptions');
+        $this->log->info('BusinessController: getSuscriptions');
         $contacts = \Auth::user()->contacts;
         return view('user.businesses.suscriptions', compact('contacts'));
     }
