@@ -77,10 +77,6 @@
                     <div class="caption">
                         <h3>{{trans('welcome.feature.1.title')}}</h3>
                         <p>{{trans('welcome.feature.1.content')}}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">{{trans('welcome.feature.1.btn.action')}}</a>
-                            <a href="#" class="btn btn-default">{{trans('welcome.feature.1.btn.info')}}</a>
-                        </p>
                     </div>
                 </div>
             </div>
