@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
@@ -11,6 +10,7 @@ class LanguageController extends Controller
 {
     /**
      * Switch Language
+     *
      * @param  string  $lang    Language iso code
      * @param  Session $session Session Facade
      * @return Redirect         HTTP Redirect
