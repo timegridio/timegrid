@@ -4,14 +4,12 @@ namespace App\Http\Controllers\Manager;
 
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\ContactFormRequest;
-use App\Http\Requests;
 use App\Business;
 use App\Contact;
 use Notifynder;
 use Request;
-use Session;
 use Flash;
+use Auth;
 
 class BusinessContactImportExportController extends Controller
 {
@@ -59,7 +57,7 @@ class BusinessContactImportExportController extends Controller
         $this->log->info("BusinessContactImportExportController: Imported $count contacts to businessId:{$business->id}");
 
         Notifynder::category('user.importedContacts')
-                   ->from('App\User', \Auth::user()->id)
+                   ->from('App\User', Auth::user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('count'))
