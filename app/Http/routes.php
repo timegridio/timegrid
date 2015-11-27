@@ -1,14 +1,11 @@
 <?php
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
 */
+
 Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 
     Route::controller('booking', 'BookingController', [
@@ -27,20 +24,18 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
     });
 });
 
-
 Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'booking'], function () {
-        Route::get('book/{business}',      ['as' => 'user.booking.book', 'uses' => 'AgendaController@getAvailability']);
-        Route::get('bookings',  ['as' => 'user.booking.list', 'uses' => 'AgendaController@getIndex']);
-        Route::post('store',    ['as' => 'user.booking.store', 'uses' => 'AgendaController@postStore']);
+        Route::get('book/{business}', ['as' => 'user.booking.book', 'uses' => 'AgendaController@getAvailability']);
+        Route::get('bookings', ['as' => 'user.booking.list', 'uses' => 'AgendaController@getIndex']);
+        Route::post('store', ['as' => 'user.booking.store', 'uses' => 'AgendaController@postStore']);
     });
 
     Route::group(['prefix' => 'businesses'], function () {
-        Route::get('home/{business}',        ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
-        #Route::get('select/{business_slug}', ['as' => 'user.businesses.select', 'uses' => 'BusinessController@getSelect']);
-        Route::get('list',                   ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
-        Route::get('subscriptions',          ['as' => 'user.businesses.subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
+        Route::get('home/{business}', ['as' => 'user.businesses.home', 'uses' => 'BusinessController@getHome']);
+        Route::get('list', ['as' => 'user.businesses.list', 'uses' => 'BusinessController@getList']);
+        Route::get('subscriptions', ['as' => 'user.businesses.subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
     });
 
     Route::controller('wizard', 'WizardController', [
@@ -52,7 +47,7 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
     Route::resource('business.contact', 'BusinessContactController');
 });
 
-Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    => ['auth']], function () {
+Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => ['auth']], function () {
 
     Route::controller('appointment', 'BusinessAgendaController', [
         'postAction' => 'manager.business.agenda.action',
@@ -61,21 +56,19 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware'    =
         'getIndex' => 'manager.business.agenda.index',
     ]);
     Route::post('search', function () {
-        if(Session::get('selected.business'))
-        {
+        if (Session::get('selected.business')) {
             $search = new App\SearchEngine(Request::input('criteria'));
             $search->setBusinessScope([Session::get('selected.business')->id])->run();
             return view('manager.search.index')->with(['results' => $search->results()]);
         }
-        /* ToDo: Perform a generic search */
         return Redirect::route('user.businesses.list');
     });
-    
-    Route::get('business/{business}/preferences',  ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@getPreferences']);
+
+    Route::get('business/{business}/preferences', ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@getPreferences']);
     Route::post('business/{business}/preferences', ['as' => 'manager.business.preferences', 'uses' => 'BusinessController@postPreferences']);
     Route::resource('business', 'BusinessController');
-    Route::get('business/{business}/contact/import',   ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@getImport']);
-    Route::post('business/{business}/contact/import',  ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@postImport']);
+    Route::get('business/{business}/contact/import', ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@getImport']);
+    Route::post('business/{business}/contact/import', ['as' => 'manager.business.contact.import', 'uses' => 'BusinessContactImportExportController@postImport']);
     Route::resource('business.contact', 'BusinessContactController');
     Route::resource('business.service', 'BusinessServiceController');
     Route::resource('business.vacancy', 'BusinessVacancyController');
@@ -115,5 +108,3 @@ Route::get('{business_slug}', function ($business_slug) {
         return Redirect::route('user.businesses.home', $business_slug->first()->id);
     }
 })->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
-
-// Login a user with GitHub (or any provider).
