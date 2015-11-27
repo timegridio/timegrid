@@ -91,10 +91,6 @@
                     <div class="caption">
                         <h3>{{trans('welcome.feature.2.title')}}</h3>
                         <p>{{trans('welcome.feature.2.content')}}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">{{trans('welcome.feature.2.btn.action')}}</a>
-                            <a href="#" class="btn btn-default">{{trans('welcome.feature.2.btn.info')}}</a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -105,10 +101,6 @@
                     <div class="caption">
                         <h3>{{trans('welcome.feature.3.title')}}</h3>
                         <p>{{trans('welcome.feature.3.content')}}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">{{trans('welcome.feature.3.btn.action')}}</a>
-                            <a href="#" class="btn btn-default">{{trans('welcome.feature.3.btn.info')}}</a>
-                        </p>
                     </div>
                 </div>
             </div>
@@ -119,10 +111,6 @@
                     <div class="caption">
                         <h3>{{trans('welcome.feature.4.title')}}</h3>
                         <p>{{trans('welcome.feature.4.content')}}</p>
-                        <p>
-                            <a href="#" class="btn btn-primary">{{trans('welcome.feature.4.btn.action')}}</a>
-                            <a href="#" class="btn btn-default">{{trans('welcome.feature.4.btn.info')}}</a>
-                        </p>
                     </div>
                 </div>
             </div>
