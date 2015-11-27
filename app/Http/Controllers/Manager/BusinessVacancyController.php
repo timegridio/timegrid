@@ -8,7 +8,6 @@ namespace App\Http\Controllers\Manager;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-#use App\Http\Requests;
 use App\AvailabilityServiceLayer;
 use App\Business;
 use App\Vacancy;
