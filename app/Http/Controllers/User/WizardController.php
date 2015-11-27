@@ -2,21 +2,16 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Redirect;
 use Auth;
 
 class WizardController extends Controller
 {
     /**
-     * get Home
+     * get home page for old users and wizard for new users
      *
-     *      Checks if the user is already manager or user and returns appropiate
-     *      Redirect to their views or defaults to Wizard
-     *
-     * @return Response Rendered view of Wizard
+     * @return Response Rendered view of Wizard or Redirect
      */
     public function getHome()
     {
