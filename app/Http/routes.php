@@ -30,31 +30,40 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 // USER CONTEXT //
 //////////////////
 
-Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
 
-    Route::group(['prefix' => 'booking'], function () {
-        Route::get('book/{business}', ['as' => 'user.booking.book', 'uses' => 'AgendaController@getAvailability']);
-        Route::get('bookings', ['as' => 'user.booking.list', 'uses' => 'AgendaController@getIndex']);
-        Route::post('store', ['as' => 'user.booking.store', 'uses' => 'AgendaController@postStore']);
+    //////////////
+    // BOOKINGS //
+    //////////////
+    Route::group(['prefix' => 'booking', 'as' => 'booking.'], function () {
+
+        Route::post('store', ['as' => 'store', 'uses' => 'AgendaController@postStore']);
+        Route::get('bookings', ['as' => 'list', 'uses' => 'AgendaController@getIndex']);
+        Route::get('book/{business}', ['as' => 'book', 'uses' => 'AgendaController@getAvailability']);
     });
 
-    Route::group(['prefix' => 'businesses'], function () {
+    ////////////////
+    // BUSINESSES //
+    ////////////////
+    Route::group(['prefix' => 'businesses', 'as' => 'businesses.'], function () {
 
-        Route::get('home/{business}', ['as' => 'user.businesses.home',
-                                       'uses' => 'BusinessController@getHome']);
-        Route::get('list', ['as' => 'user.businesses.list',
-                            'uses' => 'BusinessController@getList']);
-        Route::get('subscriptions', ['as' => 'user.businesses.subscriptions',
-                                     'uses' => 'BusinessController@getSubscriptions']);
+        Route::get('home/{business}', ['as' => 'home', 'uses' => 'BusinessController@getHome']);
+        Route::get('list',            ['as' => 'list', 'uses' => 'BusinessController@getList']);
+        Route::get('subscriptions',   ['as' => 'subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
     });
 
     ////////////
     // WIZARD //
     ////////////
-    Route::get('terms',   ['as' => 'wizard.terms',   'uses' => 'WizardController@getTerms'  ]);
-    Route::get('wizard',  ['as' => 'wizard.welcome', 'uses' => 'WizardController@getWelcome']);
-    Route::get('pricing', ['as' => 'wizard.pricing', 'uses' => 'WizardController@getPricing']);
+    Route::group(['prefix' => 'wizard', 'as' => 'wizard.'], function () {
+        Route::get('terms',   ['as' => 'terms',   'uses' => 'WizardController@getTerms'  ]);
+        Route::get('wizard',  ['as' => 'welcome', 'uses' => 'WizardController@getWelcome']);
+        Route::get('pricing', ['as' => 'pricing', 'uses' => 'WizardController@getPricing']);
+    });
 
+    //////////////
+    // CONTACTS //
+    //////////////
     Route::resource('business.contact', 'BusinessContactController');
 });
 

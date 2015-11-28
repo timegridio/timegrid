@@ -10,6 +10,6 @@
         <li class="nav-divider"></li>
         <li><a href="{{ route('user.booking.list') }}">{{ trans('app.nav.user.business.my_appointments') }}</a></li>
         <li class="nav-divider"></li>
-        <li><a href="{{ route('wizard.welcome') }}">{{ trans('app.nav.wizard') }}</a></li>
+        <li><a href="{{ route('user.wizard.welcome') }}">{{ trans('app.nav.wizard') }}</a></li>
     </ul>
 </li>
