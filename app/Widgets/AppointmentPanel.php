@@ -2,15 +2,24 @@
 
 namespace App\Widgets;
 
-use Caffeinated\Widgets\Widget;
-use App\Presenters\AppointmentPresenter;
-use App\Appointment;
-use App\User;
-use Carbon\Carbon;
+use Icon;
 use Panel;
 use Button;
-use Icon;
+use App\User;
+use App\Appointment;
+use Caffeinated\Widgets\Widget;
+use App\Presenters\AppointmentPresenter;
 
+/**
+ * ToDo: Needs refactor
+ */
+
+/**
+ * AppointmentPanel Widget
+ *
+ * Builds an HTML Panel with Appointment details.
+ * The Panel should be able to be placed in almost any page.
+ */
 class AppointmentPanel extends Widget
 {
     protected $profile;
@@ -22,7 +31,6 @@ class AppointmentPanel extends Widget
     public function __construct(Appointment $appointment, User $user)
     {
         $this->user = $user;
-
         $this->appointment = $appointment;
     }
 
@@ -46,7 +54,10 @@ class AppointmentPanel extends Widget
         $panel = $this->getPanelWithStatus();
         $body  = $this->buildBody($appointment);
 
-        return $panel->withAttributes(['id' => $appointment->code()])->withHeader($header)->withBody($body)->withFooter($footer);
+        return $panel->withAttributes(['id' => $appointment->code()])
+                     ->withHeader($header)
+                     ->withBody($body)
+                     ->withFooter($footer);
     }
 
     public function getPanelWithStatus()
@@ -72,7 +83,10 @@ class AppointmentPanel extends Widget
             $body .= '</li>';
         }
         $body .= '<li class="list-group-item">';
-        $body .= Icon::calendar() . '&nbsp;' . $appointment->date() . '&nbsp;&nbsp;' . '<span class="text-muted"><small>' . $appointment->start_at->diffForHumans() . '</small></span>';
+        $body .= Icon::calendar() . '&nbsp;' . $appointment->date() . '&nbsp;&nbsp;' .
+                                    '<span class="text-muted"><small>' .
+                                    $appointment->start_at->diffForHumans() .
+                                    '</small></span>';
         $body .= '</li>';
         $body .= '<li class="list-group-item">';
         $body .= '<span title="'.$appointment->tz.'">';
@@ -105,17 +119,17 @@ class AppointmentPanel extends Widget
         switch ($this->appointment->status) {
             case Appointment::STATUS_ANNULATED:
                 return 'danger';
-                break;
+            break;
             case Appointment::STATUS_CONFIRMED:
                 return 'success';
-                break;
+            break;
             case Appointment::STATUS_RESERVED:
                 return 'warning';
-                break;
+            break;
             case Appointment::STATUS_SERVED:
             default:
                 return 'default';
-                break;
+            break;
         }
     }
 
@@ -127,7 +141,10 @@ class AppointmentPanel extends Widget
 
     private function getBtnCommonAttributes($appointment)
     {
-        return ['class' => 'action', 'data-business' => $appointment->business->id, 'data-appointment' => $appointment->id, 'data-code' => $appointment->code()];
+        return ['class' => 'action', 
+                'data-business' => $appointment->business->id,
+                'data-appointment' => $appointment->id,
+                'data-code' => $appointment->code()];
     }
 
     public function managerActionButtons($appointment)
@@ -135,13 +152,16 @@ class AppointmentPanel extends Widget
         $commonAttributes = $this->getBtnCommonAttributes($appointment);
         $out = '<span class="btn-group">';
         if ($appointment->isAnnulable()) {
-            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
+            $out .= Button::danger()->withIcon(Icon::remove())
+                                    ->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
         }
         if ($appointment->isConfirmable() && $appointment->needConfirmationOf(Appointment::PROFILE_MANAGER)) {
-            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
+            $out .= Button::success()->withIcon(Icon::ok())
+                                     ->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
         }
         if ($appointment->isServeable()) {
-            $out .= Button::normal()->withIcon(Icon::ok())->withAttributes(['data-action' => 'serve'] + $commonAttributes);
+            $out .= Button::normal()->withIcon(Icon::ok())
+                                    ->withAttributes(['data-action' => 'serve'] + $commonAttributes);
         }
         $out .= '</span>';
         return $out;
@@ -152,10 +172,12 @@ class AppointmentPanel extends Widget
         $commonAttributes = $this->getBtnCommonAttributes($appointment);
         $out = '<span class="btn-group">';
         if ($appointment->isAnnulable()) {
-            $out .= Button::danger()->withIcon(Icon::remove())->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
+            $out .= Button::danger()->withIcon(Icon::remove())
+                                    ->withAttributes(['data-action' => 'annulate'] + $commonAttributes);
         }
         if ($appointment->isConfirmable() && $appointment->needConfirmationOf(Appointment::PROFILE_USER)) {
-            $out .= Button::success()->withIcon(Icon::ok())->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
+            $out .= Button::success()->withIcon(Icon::ok())
+                                     ->withAttributes(['data-action' => 'confirm'] + $commonAttributes);
         }
         $out .= '</span>';
         return $out;
