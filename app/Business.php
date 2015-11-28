@@ -2,15 +2,15 @@
 
 namespace App;
 
-use App\Presenters\BusinessPresenter;
-use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Fenos\Notifynder\Notifable;
+use App\Presenters\BusinessPresenter;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Business extends EloquentModel
 {
-    use SoftDeletes;
     use Notifable;
+    use SoftDeletes;
     use Traits\Preferenceable;
 
     /**

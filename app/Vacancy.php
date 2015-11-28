@@ -120,6 +120,8 @@ class Vacancy extends Model
     /**
      * is Holding Any Appointment for given User
      *
+     * ToDo: Remove from here as needs knowledge from User
+     * 
      * @param  User    $user User to check belonging Appointments
      * @return boolean       Vacancy holds at least one Appointment of User
      */
@@ -170,6 +172,8 @@ class Vacancy extends Model
     /**
      * is holding given Appointment
      *
+     * ToDo: Remove from here as needs knowledge from Appointment
+     *
      * @param  Appointment $appointment Appointment to check against
      * @return boolean                  Appointment is held by the Vacancy
      */
@@ -185,7 +189,9 @@ class Vacancy extends Model
 
     /**
      * holds Any of the given Appointments
-     *
+     * 
+     * ToDo: Remove from here as needs knowledge from Appointment
+     * 
      * @param  Collection $appointments Appointments to check agains
      * @return boolean                  The Vacancy holds at least one of the inquired Appointments
      */

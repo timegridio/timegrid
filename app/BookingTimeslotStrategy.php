@@ -6,10 +6,10 @@
 
 namespace App;
 
-use App\BookingStrategyInterface;
-use App\Appointment;
 use App\Business;
 use Carbon\Carbon;
+use App\Appointment;
+use App\BookingStrategyInterface;
 
 class BookingTimeslotStrategy implements BookingStrategyInterface
 {

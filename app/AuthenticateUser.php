@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Contracts\Auth\Guard;
 use App\Repositories\UserRepository;
+use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 
 class AuthenticateUser

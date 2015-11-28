@@ -2,10 +2,10 @@
 
 namespace App;
 
-use App\Presenters\ContactPresenter;
-use Carbon\Carbon;
-use App\Business;
 use App\User;
+use App\Business;
+use Carbon\Carbon;
+use App\Presenters\ContactPresenter;
 
 class Contact extends Model
 {

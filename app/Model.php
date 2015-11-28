@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model as Eloquent;
 use Watson\Rememberable\Rememberable;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 
 abstract class Model extends Eloquent
 {

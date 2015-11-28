@@ -6,11 +6,11 @@
 
 namespace App;
 
-use Illuminate\Support\Collection;
-use Carbon\Carbon;
-use App\Business;
-use App\Appointment;
 use App\Vacancy;
+use App\Business;
+use Carbon\Carbon;
+use App\Appointment;
+use Illuminate\Support\Collection;
 
 class AvailabilityServiceLayer
 {

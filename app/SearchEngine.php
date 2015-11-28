@@ -2,10 +2,10 @@
 
 namespace App;
 
-use Auth;
 use App\Business;
 use App\Appointment;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class SearchEngine
 {

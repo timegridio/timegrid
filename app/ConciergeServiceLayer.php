@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\AvailabilityServiceLayer;
 use App\Business;
 use Carbon\Carbon;
+use App\AvailabilityServiceLayer;
 
 class ConciergeServiceLayer
 {
