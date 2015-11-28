@@ -2,13 +2,13 @@
 
 namespace App\Handlers\Events;
 
+use App\Events\NewBooking;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\NewBooking;
-use Notifynder;
-use Log;
-use Mail;
-use App;
 
 class SendBookingNotification
 {
