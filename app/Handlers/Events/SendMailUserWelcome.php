@@ -2,12 +2,12 @@
 
 namespace App\Handlers\Events;
 
+use App\Events\NewRegisteredUser;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\Events\NewRegisteredUser;
-use Log;
-use Mail;
-use App;
 
 class SendMailUserWelcome
 {
