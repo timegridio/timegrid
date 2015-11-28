@@ -16,10 +16,10 @@ class BusinessFormRequest extends Request
         switch ($this->method()) {
             case 'POST':
                 return true;
-                break;
+            break;
             default:
                 return $this->user()->id == $this->business->owner()->id;
-                break;
+            break;
         }
     }
 
@@ -41,10 +41,10 @@ class BusinessFormRequest extends Request
                       'timezone' => 'timezone',
                       'strategy' => 'required'
                     ];
-                break;
+            break;
             default:
                 return [];
-                break;
+            break;
         }
     }
 }
