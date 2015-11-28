@@ -16,10 +16,10 @@ class BusinessPreferencesFormRequest extends Request
         switch ($this->method()) {
             case 'POST':
                 return true;
-                break;
+            break;
             default:
                 return $this->user()->id == $this->business->owner()->id;
-                break;
+            break;
         }
     }
 
@@ -35,10 +35,10 @@ class BusinessPreferencesFormRequest extends Request
             case 'PUT':
             case 'POST':
                 return [];
-                break;
+            break;
             default:
                 return [];
-                break;
+            break;
         }
     }
 }
