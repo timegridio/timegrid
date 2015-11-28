@@ -48,11 +48,12 @@ Route::group(['prefix' => 'user', 'namespace' => 'User', 'middleware' => ['auth'
                                      'uses' => 'BusinessController@getSubscriptions']);
     });
 
-    Route::controller('wizard', 'WizardController', [
-        'getWelcome' => 'wizard.welcome',
-        'getPricing' => 'wizard.pricing',
-        'getTerms'   => 'wizard.terms',
-    ]);
+    ////////////
+    // WIZARD //
+    ////////////
+    Route::get('terms',   ['as' => 'wizard.terms',   'uses' => 'WizardController@getTerms'  ]);
+    Route::get('wizard',  ['as' => 'wizard.welcome', 'uses' => 'WizardController@getWelcome']);
+    Route::get('pricing', ['as' => 'wizard.pricing', 'uses' => 'WizardController@getPricing']);
 
     Route::resource('business.contact', 'BusinessContactController');
 });
