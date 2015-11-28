@@ -61,9 +61,15 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
         Route::get('pricing', ['as' => 'pricing', 'uses' => 'WizardController@getPricing']);
     });
 
-    //////////////
-    // CONTACTS //
-    //////////////
+});
+
+/////////////////////////////////////////////////////////////
+// USER RESOURCES                                          //
+// ToDo: Needs to get moved into group as explicit routing //
+/////////////////////////////////////////////////////////////
+
+Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
+
     Route::resource('business.contact', 'BusinessContactController');
 });
 
