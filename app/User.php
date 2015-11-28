@@ -2,12 +2,13 @@
 
 namespace App;
 
+use App\Contact;
+use Fenos\Notifynder\Notifable;
+use Kodeine\Acl\Traits\HasRole;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
-use Kodeine\Acl\Traits\HasRole;
-use Fenos\Notifynder\Notifable;
 
 class User extends Model implements AuthenticatableContract, CanResetPasswordContract
 {
@@ -166,7 +167,7 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
             return false;
         }
 
-        $contacts = \App\Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
+        $contacts = Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
 
         foreach ($contacts as $contact) {
             $contact->user()->associate($this)->save();
