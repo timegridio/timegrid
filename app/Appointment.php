@@ -4,8 +4,9 @@ namespace App;
 
 use Carbon\Carbon;
 use App\Presenters\AppointmentPresenter;
+use Robbo\Presenter\PresentableInterface;
 
-class Appointment extends Model implements \Robbo\Presenter\PresentableInterface
+class Appointment extends Model implements PresentableInterface
 {
     /**
      * The attributes that are mass assignable.
