@@ -27,7 +27,7 @@ class BusinessContactController extends Controller
     public function create(Business $business, AlterContactRequest $request)
     {
         $this->log->info('BusinessContactController: create');
-        $existing_contact = Contact::where(['email' => \Auth::user()->email])->get()->first();
+        $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
 
         if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
             $this->log->info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
@@ -54,7 +54,7 @@ class BusinessContactController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.subscribedBusiness')
-                   ->from('App\User', \Auth::user()->id)
+                   ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
@@ -64,7 +64,7 @@ class BusinessContactController extends Controller
 
         foreach ($existing_contacts as $existing_contact) {
             if ($existing_contact->isSubscribedTo($business)) {
-                \Auth::user()->contacts()->save($existing_contact);
+                auth()->user()->contacts()->save($existing_contact);
 
                 Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));
                 return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
@@ -76,7 +76,7 @@ class BusinessContactController extends Controller
         }
 
         $contact = Contact::create(Request::all());
-        $contact->user()->associate(\Auth::user()->id);
+        $contact->user()->associate(auth()->user()->id);
         $contact->save();
         $business->contacts()->attach($contact);
         $business->save();

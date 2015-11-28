@@ -119,7 +119,7 @@ Route::group(['prefix'=> 'root', 'as' => 'root.', 'namespace' => 'Root', 'middle
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
     Route::get('sudo/{userId}', function ($userId) {
-        Auth::loginUsingId($userId);
+        auth()->loginUsingId($userId);
         Log::warning("[!] ROOT SUDO userId:$userId");
         Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
         return Redirect::route('user.businesses.list');

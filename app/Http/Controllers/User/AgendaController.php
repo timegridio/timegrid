@@ -14,7 +14,6 @@ use Notifynder;
 use Carbon;
 use Flash;
 use Event;
-use Auth;
 
 /**
  * ToDo:
@@ -31,7 +30,7 @@ class AgendaController extends Controller
     public function getIndex(ConciergeServiceLayer $concierge)
     {
         $this->log->info('AgendaController: getIndex');
-        $appointments = $concierge->getAppointmentsFor(Auth::user());
+        $appointments = $concierge->getAppointmentsFor(auth()->user());
         return view('user.appointments.index', compact('appointments'));
     }
 
@@ -47,18 +46,18 @@ class AgendaController extends Controller
         $this->log->info('AgendaController: getBook');
 
         Notifynder::category('user.checkingVacancies')
-                   ->from('App\User', Auth::user()->id)
+                   ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->send();
 
-        if (!Auth::user()->getContactSubscribedTo($business)) {
+        if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('AgendaController: getIndex: [ADVICE] User not subscribed to Business');
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
             return Redirect::back();
         }
 
-        $availability = $concierge->getVacancies($business, Auth::user(), 7);
+        $availability = $concierge->getVacancies($business, auth()->user(), 7);
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
@@ -72,7 +71,7 @@ class AgendaController extends Controller
     public function postStore(Request $request, ConciergeServiceLayer $concierge)
     {
         $this->log->info('AgendaController: postStore');
-        $issuer = Auth::user();
+        $issuer = auth()->user();
 
         $business = Business::findOrFail($request->input('businessId'));
         $contact = $issuer->getContactSubscribedTo($business);

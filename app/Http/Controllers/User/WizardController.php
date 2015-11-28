@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 class WizardController extends Controller
@@ -17,12 +16,12 @@ class WizardController extends Controller
     {
         $this->log->info('WizardController: getHome');
 
-        if (Auth::user()->hasBusiness()) {
+        if (auth()->user()->hasBusiness()) {
             $this->log->info('WizardController: getHome: User has Business');
             return Redirect::route('manager.business.index');
         } else {
             $this->log->info('WizardController: getHome: User has Contacts');
-            if (Auth::user()->hasContacts()) {
+            if (auth()->user()->hasContacts()) {
                 return Redirect::route('user.businesses.list');
             }
         }

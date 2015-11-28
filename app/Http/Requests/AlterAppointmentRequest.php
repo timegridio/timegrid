@@ -18,7 +18,7 @@ class AlterAppointmentRequest extends Request
     {
         $appointmentId = $this->get('appointment');
         $businessId = $this->get('business');
-        $issuer = Auth::user();
+        $issuer = auth()->user();
 
         $business = Business::find($businessId);
         $appointment = Appointment::find($appointmentId);

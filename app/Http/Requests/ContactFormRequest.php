@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Auth;
 use App\Http\Requests\Request;
 
 class ContactFormRequest extends Request
@@ -14,7 +13,7 @@ class ContactFormRequest extends Request
      */
     public function authorize()
     {
-        if (!Auth::user()->isOwner($this->business)) {
+        if (!auth()->user()->isOwner($this->business)) {
             return false;
         }
 

@@ -9,7 +9,6 @@ use Notifynder;
 use Redirect;
 use Session;
 use Flash;
-use Auth;
 
 /**
  * ToDo:
@@ -31,13 +30,13 @@ class BusinessController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
-                   ->from('App\User', Auth::user()->id)
+                   ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();
 
-        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), Auth::user());
+        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), auth()->user());
         $available = true; /* ToDo */
 
         return view('user.businesses.show', compact('business', 'available'));
@@ -83,7 +82,7 @@ class BusinessController extends Controller
     public function getSubscriptions()
     {
         $this->log->info('BusinessController: getSubscriptions');
-        $contacts = Auth::user()->contacts;
+        $contacts = auth()->user()->contacts;
         return view('user.businesses.subscriptions', compact('contacts'));
     }
 }

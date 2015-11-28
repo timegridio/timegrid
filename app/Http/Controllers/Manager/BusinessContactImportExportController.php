@@ -9,7 +9,6 @@ use App\Contact;
 use Notifynder;
 use Request;
 use Flash;
-use Auth;
 
 class BusinessContactImportExportController extends Controller
 {
@@ -57,7 +56,7 @@ class BusinessContactImportExportController extends Controller
         $this->log->info("BusinessContactImportExportController: Imported $count contacts to businessId:{$business->id}");
 
         Notifynder::category('user.importedContacts')
-                   ->from('App\User', Auth::user()->id)
+                   ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('count'))

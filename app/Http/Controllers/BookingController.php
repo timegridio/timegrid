@@ -7,11 +7,10 @@ use App\Http\Controllers\Controller;
 use App\Appointment;
 use Notifynder;
 use Widget;
-use Auth;
 
 /**
  * ToDo:
- *     - Access Auth with constructor dependency injection
+ *     - Access auth()->ith constructor dependency injection
  *     - Access Appointments with Appointments repository injected dependency
  *     - Access Notifynder with constructor dependency
  *     - Move switches to proper responsibility class
@@ -28,7 +27,7 @@ class BookingController extends Controller
     public function postAction(AlterAppointmentRequest $request)
     {
         $this->log->info('BookingController: postAction');
-        $issuer = Auth::user();
+        $issuer = auth()->user();
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
         $action = $request->input('action');
@@ -61,11 +60,11 @@ class BookingController extends Controller
          */
         switch ($widget) {
             case 'row':
-                $html = Widget::AppointmentsTableRow(['appointment' => $appointment, 'user' => Auth::user()])->render();
+                $html = Widget::AppointmentsTableRow(['appointment' => $appointment, 'user' => auth()->user()])->render();
                 break;
             case 'panel':
             default:
-                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => Auth::user()])->render();
+                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => auth()->user()])->render();
                 break;
         }
 
@@ -74,7 +73,7 @@ class BookingController extends Controller
         $date = $appointment->start_at->toDateString();
         $code = $appointmentPresenter->code();
         Notifynder::category('appointment.'.$action)
-                   ->from('App\User', Auth::user()->id)
+                   ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('code', 'action', 'date'))
