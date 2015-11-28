@@ -2,18 +2,18 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Support\Facades\Redirect;
+use GeoIP;
+use App\Category;
+use App\Business;
+use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+use Fenos\Notifynder\Facades\Notifynder;
 use App\Http\Requests\BusinessFormRequest;
 use App\Http\Requests\BusinessPreferencesFormRequest;
-use App\Business;
-use App\Category;
-use Notifynder;
-use Request;
-use Session;
-use Flash;
-use GeoIP;
-use Auth;
 
 class BusinessController extends Controller
 {
