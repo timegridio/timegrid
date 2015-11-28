@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Redirect;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class WizardController extends Controller
 {
@@ -13,7 +13,7 @@ class WizardController extends Controller
      *
      * @return Response Rendered view of Wizard or Redirect
      */
-    public function getHome()
+    public function getWizard()
     {
         $this->log->info('WizardController: getHome');
 

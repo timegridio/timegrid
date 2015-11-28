@@ -133,7 +133,7 @@ Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallba
 // PRIVATE HOME / WIZARD //
 ///////////////////////////
 
-Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getHome']);
+Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWizard']);
 
 /////////////////
 // PUBLIC HOME //
