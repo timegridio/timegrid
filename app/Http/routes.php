@@ -110,9 +110,13 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => [
 // ROOT CONTEXT //
 //////////////////
 
-Route::group([ 'prefix'=> 'root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
+///////////////////////////////////////////////////////////
+// ToDo: Needs to be moved into a whole proper namespace //
+///////////////////////////////////////////////////////////
 
-    Route::controller('dashboard', 'RootController', ['getIndex' => 'root.dashboard']);
+Route::group(['prefix'=> 'root', 'as' => 'root.', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
+
+    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
     Route::get('sudo/{userId}', function ($userId) {
         Auth::loginUsingId($userId);
@@ -141,8 +145,8 @@ Route::controllers([
 // SOCIAL AUTH //
 /////////////////
 
-Route::get('social/login/redirect/{provider}', ['uses' => 'Auth\OAuthController@redirectToProvider',
-                                                'as' => 'social.login']);
+Route::get('social/login/redirect/{provider}', ['as' => 'social.login',
+                                                'uses' => 'Auth\OAuthController@redirectToProvider' ]);
 Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
 
 ///////////////////////////
