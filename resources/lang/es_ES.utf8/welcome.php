@@ -4,16 +4,12 @@
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
   'jumbotron' => 
   array (
     'btn' => [ 'begin' => 'Empecemos', 'login' => 'Iniciar Sesión' ],
     'description' => 'La agenda de turnos para profesionales exitosos.',
     'title' => 'timegrid.io',
   ),
-  // Defined in file /home/alariva/xb3/xbooking/resources/views/welcome.blade.php
-  //==================================== Translations ====================================//
   'feature' => 
   array (
     1 => 
@@ -57,5 +53,4 @@ return array (
       'title' => 'Libera',
     ),
   ),
-  //================================== Obsolete strings ==================================//
 );
