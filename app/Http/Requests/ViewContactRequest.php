@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use App\Http\Requests\Request;
-use App\Business;
-use App\Contact;
-use Route;
 
 class ViewContactRequest extends Request
 {
@@ -16,7 +14,7 @@ class ViewContactRequest extends Request
      */
     public function authorize()
     {
-        return \Auth::user()->contacts->contains($this->contact);
+        return Auth::user()->contacts->contains($this->contact);
     }
 
     /**
