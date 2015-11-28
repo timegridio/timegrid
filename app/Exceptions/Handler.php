@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Mail;
 
 class Handler extends ExceptionHandler
 {
