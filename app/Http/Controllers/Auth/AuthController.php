@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Http\Controllers\Controller;
 use App\Events\NewRegisteredUser;
+#use App\Traits\LogsMessages;
 use App\User;
 use Validator;
 use Event;
@@ -63,7 +64,7 @@ class AuthController extends Controller
      */
     public function create(array $data)
     {
-        $this->log->info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
+        # $this->log->info("AuthController: create: email:<{$data['email']}> name:<{$data['name']}>");
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
