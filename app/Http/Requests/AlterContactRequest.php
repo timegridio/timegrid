@@ -2,10 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use App\Http\Requests\Request;
-use App\Business;
-use App\Contact;
-use Route;
 
 class AlterContactRequest extends Request
 {
@@ -16,7 +14,7 @@ class AlterContactRequest extends Request
      */
     public function authorize()
     {
-        return $this->contact === null || \Auth::user()->contacts->contains($this->contact);
+        return $this->contact === null || Auth::user()->contacts->contains($this->contact);
     }
 
     /**
@@ -39,10 +37,10 @@ class AlterContactRequest extends Request
             case 'PUT':
             case 'POST':
                 return $rules;
-                break;
+            break;
             default:
                 return [];
-                break;
+            break;
         }
     }
 }
