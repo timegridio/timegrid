@@ -2,11 +2,8 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use App\Http\Requests\Request;
-use App\Contact;
-use App\Business;
-use Session;
-use Input;
 
 class ContactFormRequest extends Request
 {
@@ -17,7 +14,7 @@ class ContactFormRequest extends Request
      */
     public function authorize()
     {
-        if (! \Auth::user()->isOwner($this->business)) {
+        if (!Auth::user()->isOwner($this->business)) {
             return false;
         }
 
@@ -43,10 +40,10 @@ class ContactFormRequest extends Request
             case 'PUT':
             case 'POST':
                 return $rules;
-                break;
+            break;
             default:
                 return [];
-                break;
+            break;
         }
     }
 }
