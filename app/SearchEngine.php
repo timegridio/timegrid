@@ -2,12 +2,10 @@
 
 namespace App;
 
-use Illuminate\Support\Collection;
-use Carbon\Carbon;
-use App\User;
+use Auth;
 use App\Business;
-use App\Contact;
 use App\Appointment;
+use Illuminate\Support\Collection;
 
 class SearchEngine
 {
@@ -23,7 +21,7 @@ class SearchEngine
 
     public function __construct($criteria)
     {
-        $this->scope['businessesIds'] = \Auth::user()->businesses->transform(function($item, $key){ return $item->id; });
+        $this->scope['businessesIds'] = Auth::user()->businesses->transform(function($item, $key){ return $item->id; });
         $this->criteria = $criteria;
     }
 
