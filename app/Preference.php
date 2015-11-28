@@ -2,66 +2,112 @@
 
 namespace App;
 
+use Illuminate\Support\Facades\Config;
+
 class Preference extends Model
 {
+    /**
+     * [$fillable description]
+     * 
+     * @var [type]
+     */
     protected $fillable = ['key', 'value', 'type'];
 
+    /**
+     * [preferenceable description]
+     * 
+     * @return [type] [description]
+     */
     public function preferenceable()
     {
       return $this->morphTo();
     }
 
+    /**
+     * [__toString description]
+     * 
+     * @return string [description]
+     */
     public function __toString()
     {
         return $this->attributes['value'];
     }
 
+    /**
+     * [getDefault description]
+     * 
+     * @param  [type] $model [description]
+     * @param  [type] $key   [description]
+     * @return [type]        [description]
+     */
     public static function getDefault($model, $key)
     {
         $class = get_class($model);
-        $value = \Config::get("preferences.{$class}.{$key}.value");
-        $type = \Config::get("preferences.{$class}.{$key}.type");
+        $value = Config::get("preferences.{$class}.{$key}.value");
+        $type = Config::get("preferences.{$class}.{$key}.type");
         return new Preference(['key' => $key, 'value' => $value, 'type' => $type, 'preferenceable_type' => $class, 'preferenceable_id' => $model]);
     }
 
+    /**
+     * [question description]
+     * 
+     * @return [type] [description]
+     */
     public function question()
     {
         return trans("preferences.{$this->preferenceable_type}.question.{$this->key}");
     }
 
+    /**
+     * [help description]
+     * 
+     * @return [type] [description]
+     */
     public function help()
     {
         return trans("preferences.{$this->preferenceable_type}.help.{$this->key}");
     }
 
+    /**
+     * [scopeForKey description]
+     * 
+     * @param  [type] $query [description]
+     * @param  [type] $key   [description]
+     * @return [type]        [description]
+     */
     public function scopeForKey($query, $key)
     {
         return $query->where('key', $key)->remember(1);
     }
 
+    /**
+     * [value description]
+     * 
+     * @return [type] [description]
+     */
     public function value()
     {
         switch ($this->type) {
             case 'string':
                 return (string) $this->value;
-                break;
+            break;
             case 'bool':
                 return (bool) $this->value;
-                break;
+            break;
             case 'int':
                 return (int) $this->value;
-                break;
+            break;
             case 'float':
                 return (float) $this->value;
-                break;
+            break;
             case 'json':
                 return json_decode($this->value);
-                break;
+            break;
             case 'array':
                 return unserialize($this->value);
-                break;
+            break;
             default:
-                break;
+            break;
         }
         return $this->value;
     }
