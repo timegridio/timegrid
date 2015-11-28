@@ -114,7 +114,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => [
 // ToDo: Needs to be moved into a whole proper namespace //
 ///////////////////////////////////////////////////////////
 
-Route::group(['prefix'=> 'root', 'as' => 'root.', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
+Route::group(['prefix'=> 'root', 'as' => 'root.', 'namespace' => 'Root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
 
     Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
