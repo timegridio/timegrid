@@ -2,6 +2,8 @@
 
 namespace App\Traits;
 
+use App\Preference;
+
 trait Preferenceable
 {
     public function preferences()
@@ -12,10 +14,11 @@ trait Preferenceable
     public function pref($key, $value = null, $type = 'string')
     {
         if (isset($value)) {
-            $this->preferences()->updateOrCreate(['key' => $key], ['value' => $this->cast($value, $type), 'type' => $type]);
+            $this->preferences()->updateOrCreate(['key' => $key], ['value' => $this->cast($value, $type),
+                                                                   'type' => $type]);
             return $value;
         }
-        $default = \App\Preference::getDefault($this, $key);
+        $default = Preference::getDefault($this, $key);
         return($pref = $this->preferences()->forKey($key)->first()) ? $pref->value() : $default->value();
     }
 
@@ -24,19 +27,19 @@ trait Preferenceable
         switch ($type) {
             case 'bool':
                 return boolval($value);
-                break;
+            break;
             case 'int':
                 return intval($value);
-                break;
+            break;
             case 'float':
                 return floatval($value);
-                break;
+            break;
             case 'string':
                 return $value;
-                break;
+            break;
             default:
                 return $value;
-                break;
+            break;
         }
     }
 }
