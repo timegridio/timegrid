@@ -122,7 +122,7 @@ return array(
       ),
       'postal_address' =>
       array(
-        'label' => 'Postal Code',
+        'label' => 'Postal Address',
         'placeholder' => 'street name and number, area, city, country',
       ),
       'social_facebook' =>
