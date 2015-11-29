@@ -10,7 +10,6 @@ use App\Http\Requests;
 use App\Business;
 use App\Contact;
 use Notifynder;
-use Session;
 use Request;
 use Flash;
 

@@ -7,7 +7,6 @@ use App\Business;
 use Carbon\Carbon;
 use Notifynder;
 use Redirect;
-use Session;
 use Flash;
 
 /**
@@ -65,7 +64,7 @@ class BusinessController extends Controller
     public function getSelect(Business $business)
     {
         $this->log->info("BusinessController: getSelect businessId:{$business->id}");
-        Session::set('selected.business', $business);
+        session()->set('selected.business', $business);
         return $this->getHome($business);
     }
 

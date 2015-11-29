@@ -10,7 +10,6 @@ use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use Fenos\Notifynder\Facades\Notifynder;
 use App\Http\Requests\BusinessFormRequest;
@@ -127,7 +126,7 @@ class BusinessController extends Controller
             abort(403);
         }
 
-        Session::set('selected.business', $business);
+        session()->set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
         $business->readAllNotifications();
         return view('manager.businesses.show', compact('business', 'notifications'));
