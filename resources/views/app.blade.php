@@ -39,11 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @if (!Auth::guest() && Auth::user()->isRoot())
-                    <a class="navbar-brand" href="{{ route('root.dashboard') }}">{{ trans('app.name') }}</a>
-                @else
-                    <a class="navbar-brand" href="{{ url('/') }}">{{ trans('app.name') }}</a>
-                @endif
+                <a class="navbar-brand" href="{{ url('/') }}">{{ trans('app.name') }}</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

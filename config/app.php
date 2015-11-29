@@ -140,6 +140,7 @@ return [
         /*
          * Application Service Providers...
          */
+        'App\Providers\AuthServiceProvider',
         'App\Providers\AppServiceProvider',
         'App\Providers\BusServiceProvider',
         'App\Providers\ConfigServiceProvider',
@@ -156,7 +157,7 @@ return [
 
         'Laracasts\Flash\FlashServiceProvider',
 
-        'Kodeine\Acl\AclServiceProvider',
+        #'Kodeine\Acl\AclServiceProvider',
 
         'Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5',
 
@@ -222,6 +223,7 @@ return [
         'URL'       => 'Illuminate\Support\Facades\URL',
         'Validator' => 'Illuminate\Support\Facades\Validator',
         'View'      => 'Illuminate\Support\Facades\View',
+        'Gate'      => 'Illuminate\Support\Facades\Gate',
 
         'Form'      => 'Collective\Html\FormFacade',
         'Html'      => 'Collective\Html\HtmlFacade',
