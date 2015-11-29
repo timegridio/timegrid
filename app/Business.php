@@ -38,7 +38,9 @@ class Business extends EloquentModel
      */
     public function category()
     {
-        return $this->belongsTo('App\Category')->remember(120);
+        /* TODO: Use cache here? */
+        # return $this->belongsTo('App\Category')->remember(120);
+        return $this->belongsTo('App\Category');
     }
 
     /**
@@ -89,7 +91,9 @@ class Business extends EloquentModel
      */
     public function owners()
     {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
+        /* TODO: Use cache here? */
+        # return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
+        return $this->belongsToMany(config('auth.model'))->withTimestamps();
     }
 
     /**
@@ -99,7 +103,9 @@ class Business extends EloquentModel
      */
     public function owner()
     {
-        return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
+        /* TODO: Use cache here? */
+        # return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
+        return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
     }
 
     /**
