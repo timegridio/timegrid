@@ -93,9 +93,9 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => [
     });
 
     Route::get('business/{business}/preferences', ['as' => 'manager.business.preferences',
-                                                   'uses' => 'BusinessController@getPreferences']);
+                                                   'uses' => 'BusinessPreferencesController@getPreferences']);
     Route::post('business/{business}/preferences', ['as' => 'manager.business.preferences',
-                                                    'uses' => 'BusinessController@postPreferences']);
+                                                    'uses' => 'BusinessPreferencesController@postPreferences']);
     Route::resource('business', 'BusinessController');
     Route::get('business/{business}/contact/import', ['as' => 'manager.business.contact.import',
                                                       'uses' => 'BusinessContactImportExportController@getImport']);
