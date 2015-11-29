@@ -13,7 +13,7 @@ class AddVacancyIdColumnToAppointmentsTable extends Migration
     public function up()
     {
         Schema::table('appointments', function ($table) {
-            $table->integer('vacancy_id')->unsigned();
+            $table->integer('vacancy_id')->unsigned()->nullable();
             $table->foreign('vacancy_id')->references('id')->on('vacancies')->onDelete('cascade');
         });
     }
