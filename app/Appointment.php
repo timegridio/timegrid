@@ -5,8 +5,9 @@ namespace App;
 use Carbon\Carbon;
 use App\Presenters\AppointmentPresenter;
 use Robbo\Presenter\PresentableInterface;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Appointment extends Model implements PresentableInterface
+class Appointment extends EloquentModel implements PresentableInterface
 {
     /**
      * The attributes that are mass assignable.

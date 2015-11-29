@@ -2,9 +2,9 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Role extends Model
+class Role extends EloquentModel
 {
     /**
      * A role may be given various permissions.

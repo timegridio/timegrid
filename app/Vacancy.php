@@ -3,8 +3,9 @@
 namespace App;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Vacancy extends Model
+class Vacancy extends EloquentModel
 {
     /**
      * The attributes that are mass assignable.

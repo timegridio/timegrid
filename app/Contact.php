@@ -2,12 +2,13 @@
 
 namespace App;
 
-use App\User;
 use App\Business;
-use Carbon\Carbon;
 use App\Presenters\ContactPresenter;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Contact extends Model
+class Contact extends EloquentModel
 {
     /**
      * The attributes that are mass assignable.

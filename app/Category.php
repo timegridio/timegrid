@@ -2,7 +2,9 @@
 
 namespace App;
 
-class Category extends Model
+use Illuminate\Database\Eloquent\Model as EloquentModel;
+
+class Category extends EloquentModel
 {
     /**
      * The attributes that are mass assignable.

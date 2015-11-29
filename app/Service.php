@@ -2,7 +2,9 @@
 
 namespace App;
 
-class Service extends Model
+use Illuminate\Database\Eloquent\Model as EloquentModel;
+
+class Service extends EloquentModel
 {
     /**
      * The attributes that are mass assignable.

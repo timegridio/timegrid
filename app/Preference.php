@@ -3,8 +3,9 @@
 namespace App;
 
 use Illuminate\Support\Facades\Config;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Preference extends Model
+class Preference extends EloquentModel
 {
     /**
      * [$fillable description]
@@ -77,7 +78,7 @@ class Preference extends Model
      */
     public function scopeForKey($query, $key)
     {
-        return $query->where('key', $key)->remember(1);
+        return $query->where('key', $key);
     }
 
     /**
