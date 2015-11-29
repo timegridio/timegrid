@@ -150,7 +150,7 @@ Now you have two demo credentials to log in and play around.
     USER: demo@timegrid.io
     PASS: demomanager
 
-    USER: gues@example.org
+    USER: guest@example.org
     PASS: demoguest
 
 ## Troubleshooting
