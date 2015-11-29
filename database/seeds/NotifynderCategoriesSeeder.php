@@ -14,7 +14,7 @@ class NotifynderCategoriesSeeder extends Seeder
     {
         Notifynder::addCategory('user.visitedShowroom', '{from.username} visited showroom');
         Notifynder::addCategory('user.registeredBusiness', '{from.username} registered :business');
-        Notifynder::addCategory('user.suscribedBusiness', '{from.username} suscribed to business');
+        Notifynder::addCategory('user.subscribedBusiness', '{from.username} subscribed to business');
         Notifynder::addCategory('user.checkingVacancies', '{from.username} checks vacancies');
         Notifynder::addCategory('user.updatedBusinessPreferences', '{from.username} updated :business preferences');
         Notifynder::addCategory('user.importedContacts', '{from.username} imported :count contacts');
