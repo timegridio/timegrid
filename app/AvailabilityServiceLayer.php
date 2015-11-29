@@ -23,8 +23,6 @@ class AvailabilityServiceLayer
 
     public function getVacanciesFor($user, $limit = 7)
     {
-        # $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
-
         $vacancies = $this->getVacancies($limit);
 
         $vacancies = $this->removeSelfBooked($vacancies, $user);
@@ -75,7 +73,11 @@ class AvailabilityServiceLayer
 
     public function isSlotAvailable(Appointment $appointment)
     {
-        $vacancies = $appointment->business->vacancies()->forDate(Carbon::parse($appointment->date, $appointment->business->timezone))->forService($appointment->service)->get();
+        $targetDate = Carbon::parse($appointment->date, $appointment->business->timezone);
+        $vacancies = $appointment->business->vacancies()->forDate($targetDate)
+                                                        ->forService($appointment->service)
+                                                        ->get();
+
         $vacancies = $this->removeBookedVacancies($vacancies, $appointment->business->bookings()->get());
 
         foreach ($vacancies as $vacancy) {
@@ -88,9 +90,8 @@ class AvailabilityServiceLayer
 
     public function getSlotFor(Appointment $appointment)
     {
-        $datetime = Carbon::parse($appointment->start_at);
-        return $appointment->business->vacancies()
-                                            ->forDateTime($datetime)
-                                            ->forService($appointment->service)->first();
+        $targetDateTime = Carbon::parse($appointment->start_at);
+        return $appointment->business->vacancies()->forDateTime($targetDateTime)
+                                                  ->forService($appointment->service)->first();
     }
 }
