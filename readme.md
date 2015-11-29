@@ -18,7 +18,7 @@ Timegrid is a web application for online reservation of services for business.
 
 It is currently in **beta** stage willing to add some missing functions in the short terms.
 
-It is made under the **Laravel 5** framework for **PHP**.
+It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
 ## Screenshots
 
