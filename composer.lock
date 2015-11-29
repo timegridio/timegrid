@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "51857ab5c2e8627e80187d94ddb10b62",
-    "content-hash": "42402c3d21648ee769189e5d6d2a541a",
+    "hash": "e39684499e9ee1a24d0c3a86bba481f1",
+    "content-hash": "8fc8c28fc5bfeff2b550684887459ba4",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1423,56 +1423,6 @@
                 "wkhtmltopdf"
             ],
             "time": "2015-11-17 13:16:27"
-        },
-        {
-            "name": "kodeine/laravel-acl",
-            "version": "1.0.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kodeine/laravel-acl.git",
-                "reference": "b0caaaa2ec048a0d7d93d19f6b1d1269c1b1866e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kodeine/laravel-acl/zipball/b0caaaa2ec048a0d7d93d19f6b1d1269c1b1866e",
-                "reference": "b0caaaa2ec048a0d7d93d19f6b1d1269c1b1866e",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "4.2.x|~5.0",
-                "illuminate/support": "4.2.x|~5.0",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [],
-                "psr-0": {
-                    "Kodeine\\Acl\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ahsen M.",
-                    "homepage": "https://github.com/kodeine",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Light-weight role-based permissions for Laravel 5 built in Auth system.",
-            "keywords": [
-                "acl",
-                "auth",
-                "eloquent",
-                "kodeine",
-                "laravel",
-                "permissions",
-                "roles",
-                "security"
-            ],
-            "time": "2015-10-08 15:11:25"
         },
         {
             "name": "laracasts/flash",
@@ -5799,7 +5749,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kodeine/laravel-acl": 20,
         "torann/geoip": 20,
         "webpatser/laravel-countries": 20,
         "codeclimate/php-test-reporter": 20
