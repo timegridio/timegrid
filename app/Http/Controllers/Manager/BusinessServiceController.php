@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Business;
 use App\Service;
-use Redirect;
 use Flash;
 
 class BusinessServiceController extends Controller
@@ -48,7 +47,7 @@ class BusinessServiceController extends Controller
         $this->log->info("BusinessServiceController: create: businessId:{$business->id} serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
-        return Redirect::route('manager.business.service.index', [$business]);
+        return redirect()->route('manager.business.service.index', [$business]);
     }
 
     /**
@@ -91,7 +90,7 @@ class BusinessServiceController extends Controller
         ]);
 
         Flash::success(trans('manager.business.service.msg.update.success'));
-        return Redirect::route('manager.business.service.show', [$business, $service]);
+        return redirect()->route('manager.business.service.show', [$business, $service]);
     }
 
     /**
@@ -106,6 +105,6 @@ class BusinessServiceController extends Controller
         $service->forceDelete();
 
         Flash::success(trans('manager.services.msg.destroy.success'));
-        return Redirect::route('manager.business.service.index', $business);
+        return redirect()->route('manager.business.service.index', $business);
     }
 }

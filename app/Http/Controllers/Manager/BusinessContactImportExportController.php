@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Business;
 use App\Contact;
@@ -63,7 +62,7 @@ class BusinessContactImportExportController extends Controller
                    ->send();
 
         Flash::success(trans('manager.contacts.msg.import.success'));
-        return Redirect::route('manager.business.contact.index', [$business]);
+        return redirect()->route('manager.business.contact.index', [$business]);
     }
 
     /**

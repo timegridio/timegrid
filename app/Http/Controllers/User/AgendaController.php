@@ -9,7 +9,6 @@ use App\ConciergeServiceLayer;
 use App\Business;
 use App\Service;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redirect;
 use Notifynder;
 use Carbon;
 use Flash;
@@ -54,7 +53,7 @@ class AgendaController extends Controller
         if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('AgendaController: getIndex: [ADVICE] User not subscribed to Business');
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
-            return Redirect::back();
+            return redirect()->back();
         }
 
         $availability = $concierge->getVacancies($business, auth()->user(), 7);
@@ -84,7 +83,7 @@ class AgendaController extends Controller
         if (false === $appointment) {
             $this->log->info('AgendaController: postStore: [ADVICE] Unable to book ');
             Flash::warning(trans('user.booking.msg.store.error'));
-            return Redirect::route('user.booking.list');
+            return redirect()->route('user.booking.list');
         }
 
         $appointmentPresenter = $appointment->getPresenter();
@@ -96,6 +95,6 @@ class AgendaController extends Controller
             $this->log->info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
             Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
         }
-        return Redirect::route('user.booking.list');
+        return redirect()->route('user.booking.list');
     }
 }

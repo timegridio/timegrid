@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\User;
 
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\AlterContactRequest;
 use App\Http\Requests\ViewContactRequest;
 use App\Http\Controllers\Controller;
@@ -33,7 +32,7 @@ class BusinessContactController extends Controller
             $business->contacts()->attach($existing_contact);
             $business->save();
             Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
-            return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
+            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
         }
 
         return view('user.contacts.create', compact('business'));
@@ -66,12 +65,12 @@ class BusinessContactController extends Controller
                 auth()->user()->contacts()->save($existing_contact);
 
                 Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));
-                return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
+                return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
             }
             $business->contacts()->attach($existing_contact);
             $business->save();
             Flash::warning(trans('user.contacts.msg.store.warning.showing_existing_contact'));
-            return Redirect::route('user.business.contact.show', [$business, $existing_contact]);
+            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
         }
 
         $contact = Contact::create(Request::all());
@@ -81,7 +80,7 @@ class BusinessContactController extends Controller
         $business->save();
 
         Flash::success(trans('user.contacts.msg.store.success'));
-        return Redirect::route('user.business.contact.show', [$business, $contact]);
+        return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
 
     /**
@@ -142,7 +141,7 @@ class BusinessContactController extends Controller
         $this->log->info("BusinessContactController: update: Updated contact");
 
         Flash::success(trans('user.contacts.msg.update.success'));
-        return Redirect::route('user.business.contact.show', [$business, $contact]);
+        return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
 
     /**
@@ -161,6 +160,6 @@ class BusinessContactController extends Controller
         $this->log->info("BusinessContactController: destroy: Deleted contact:{$contact->id}");
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
-        return Redirect::route('manager.business.show', $business);
+        return redirect()->route('manager.business.show', $business);
     }
 }

@@ -30,7 +30,7 @@ class BusinessController extends Controller
         if ($businesses->count()==1) {
             $this->log->info('Manager\BusinessController: index: Only one business to show');
             $business = $businesses->first();
-            return Redirect::route('manager.business.show', $business);
+            return redirect()->route('manager.business.show', $business);
         }
 
         return view('manager.businesses.index', compact('businesses'));
@@ -80,13 +80,13 @@ class BusinessController extends Controller
                 $this->log->info("Manager\BusinessController@store: Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-                return Redirect::route('manager.business.service.create', $existingBusiness);
+                return redirect()->route('manager.business.service.create', $existingBusiness);
             }
             else
             {
                 $this->log->info("Manager\BusinessController@store: Already taken businessId:{$existingBusiness->id}");
                 Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-                return Redirect::route('manager.business.index');
+                return redirect()->route('manager.business.index');
             }
         }
 
@@ -108,7 +108,7 @@ class BusinessController extends Controller
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.store.success'));
-        return Redirect::route('manager.business.service.create', $business);
+        return redirect()->route('manager.business.service.create', $business);
     }
 
     /**
@@ -189,7 +189,7 @@ class BusinessController extends Controller
         ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
-        return Redirect::route('manager.business.show', array($business->id));
+        return redirect()->route('manager.business.show', array($business->id));
     }
 
     /**
@@ -210,7 +210,7 @@ class BusinessController extends Controller
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
-        return Redirect::route('manager.business.index');
+        return redirect()->route('manager.business.index');
     }
 
     ////////////////////////////////////////////////////
@@ -264,6 +264,6 @@ class BusinessController extends Controller
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));
-        return Redirect::route('manager.business.show', $business);
+        return redirect()->route('manager.business.show', $business);
     }
 }

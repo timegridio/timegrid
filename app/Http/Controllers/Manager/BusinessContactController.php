@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\ContactFormRequest;
 use App\Http\Controllers\Controller;
 use App\Business;
@@ -61,7 +60,7 @@ class BusinessContactController extends Controller
                 if ($existing_contact->isSubscribedTo($business)) {
                     $this->log->info("BusinessContactController: store: [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-                    return Redirect::route('manager.business.contact.show', [$business, $existing_contact]);
+                    return redirect()->route('manager.business.contact.show', [$business, $existing_contact]);
                 }
             }
         }
@@ -74,7 +73,7 @@ class BusinessContactController extends Controller
         $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.store.success'));
-        return Redirect::route('manager.business.contact.show', [$business, $contact]);
+        return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
     /**
@@ -130,7 +129,7 @@ class BusinessContactController extends Controller
         $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.update.success'));
-        return Redirect::route('manager.business.contact.show', [$business, $contact]);
+        return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
     /**
@@ -151,6 +150,6 @@ class BusinessContactController extends Controller
         $contact->businesses()->detach($business->id);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
-        return Redirect::route('manager.business.show', $business);
+        return redirect()->route('manager.business.show', $business);
     }
 }

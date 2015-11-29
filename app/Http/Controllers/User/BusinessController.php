@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Business;
 use Carbon\Carbon;
 use Notifynder;
-use Redirect;
 use Flash;
 
 /**

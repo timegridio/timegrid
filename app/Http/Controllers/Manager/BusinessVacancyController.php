@@ -74,10 +74,10 @@ class BusinessVacancyController extends Controller
         }
         if ($success) {
             Flash::success(trans('manager.vacancies.msg.store.success'));
-            return Redirect::route('manager.business.show', [$business]);
+            return redirect()->route('manager.business.show', [$business]);
         }
         $this->log->info("BusinessServiceController: store: [ADVICE] Nothing to update businessId:{$business->id}");
         Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
-        return Redirect::back();
+        return redirect()->back();
     }
 }
