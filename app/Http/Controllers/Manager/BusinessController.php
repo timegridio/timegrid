@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use Gate;
 use GeoIP;
 use App\Category;
 use App\Business;
@@ -113,6 +114,10 @@ class BusinessController extends Controller
     {
         $this->log->info("Manager\BusinessController: show: businessId:{$business->id}");
 
+        if (Gate::denies('show', $business)) {
+            abort(403);
+        }
+
         Session::set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
         $business->readAllNotifications();
@@ -126,9 +131,14 @@ class BusinessController extends Controller
      * @param  BusinessFormRequest $request  Business form Request
      * @return Response                      Rendered view of Business edit form
      */
-    public function edit(Business $business, BusinessFormRequest $request)
+    public function edit(Business $business)
     {
         $this->log->info("Manager\BusinessController: edit: businessId:{$business->id}");
+
+        if (Gate::denies('update', $business)) {
+            abort(403);
+        }
+
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
         $categories = Category::lists('slug', 'id')->transform(
@@ -151,6 +161,10 @@ class BusinessController extends Controller
     public function update(Business $business, BusinessFormRequest $request)
     {
         $this->log->info("Manager\BusinessController: update: businessId:{$business->id}");
+
+        if (Gate::denies('update', $business)) {
+            abort(403);
+        }
 
         $category = Category::find(Request::get('category'));
         $business->category()->associate($category);
@@ -180,15 +194,21 @@ class BusinessController extends Controller
     public function destroy(Business $business, BusinessFormRequest $request)
     {
         $this->log->info("Manager\BusinessController: destroy: businessId:{$business->id}");
+
+        if (Gate::denies('destroy', $business)) {
+            abort(403);
+        }
+
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
         return Redirect::route('manager.business.index');
     }
 
-    //////////////////////////
-    // Business Preferences //
-    //////////////////////////
+    ////////////////////////////////////////////////////
+    // Business Preferences                           //
+    // TODO: Should be moved into separate controller //
+    ////////////////////////////////////////////////////
 
     /**
      * get Preferences

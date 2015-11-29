@@ -13,14 +13,7 @@ class BusinessFormRequest extends Request
      */
     public function authorize()
     {
-        switch ($this->method()) {
-            case 'POST':
-                return true;
-            break;
-            default:
-                return $this->user()->id == $this->business->owner()->id;
-            break;
-        }
+      return true;
     }
 
     /**
