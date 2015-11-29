@@ -13,11 +13,7 @@ class ContactFormRequest extends Request
      */
     public function authorize()
     {
-        if (!auth()->user()->isOwner($this->business)) {
-            return false;
-        }
-
-        return $this->contact === null || $this->contact->isSubscribedTo($this->business);
+        return true;
     }
 
     /**

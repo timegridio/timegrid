@@ -67,4 +67,16 @@ class BusinessPolicy
     {
         return $user->isOwner($business);
     }
+
+    /**
+     * Determine if the given user can manage a business' contact.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Business  $business
+     * @return bool
+     */
+    public function manageContacts(User $user, Business $business)
+    {
+        return $user->isOwner($business);
+    }
 }
