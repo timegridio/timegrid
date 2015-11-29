@@ -68,8 +68,13 @@ $factory->define('App\Vacancy', function () {
 $factory->define('App\Appointment', function () {
     $faker = Faker\Factory::create();
     return [
+        'business_id' => factory(App\Business::class)->make()->id,
+        'contact_id' => factory(App\Contact::class)->make()->id,
+        'service_id' => factory(App\Service::class)->make()->id,
+        'vacancy_id' => null,
+        'status' => $faker->randomElement(['R', 'C', 'A', 'S']),
         'start_at' => Carbon::parse(date('Y-m-d 08:00:00', strtotime('today +2 days'))),
-        'duration' => $faker->randomDigitNotNull,
-        'comments' => $faker->title
+        'duration' => $faker->randomElement([15, 30, 60, 120]),
+        'comments' => $faker->sentence
     ];
 });
