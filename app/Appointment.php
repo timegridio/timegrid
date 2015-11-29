@@ -74,6 +74,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function save(array $options = array())
     {
+        $this->doHash();
         return parent::save($options);
     }
 
