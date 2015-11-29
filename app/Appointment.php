@@ -162,7 +162,7 @@ class Appointment extends EloquentModel implements PresentableInterface
 
     public function getHashAttribute()
     {
-        return $this->attributes['hash'];
+        return isset($this->attributes['hash']) ? $this->attributes['hash'] : $this->doHash();
     }
 
     /**
