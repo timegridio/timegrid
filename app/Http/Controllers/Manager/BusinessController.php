@@ -70,28 +70,30 @@ class BusinessController extends Controller
     {
         $this->log->info('Manager\BusinessController@store');
 
-        $existingBusiness = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
+        // Search Existing
+        $existingBusiness = Business::withTrashed()->where(['slug' => $request->input('slug')])->first();
 
-        if ($existingBusiness !== null)
-        {
+        // If found
+        if ($existingBusiness !== null) {
             $this->log->info("Manager\BusinessController@store: Found existing businessId:{$existingBusiness->id}");
-            if(auth()->user()->isOwner($existingBusiness))
-            {
+
+            // If owned, restore
+            if (auth()->user()->isOwner($existingBusiness)) {
                 $this->log->info("Manager\BusinessController@store: Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
                 return redirect()->route('manager.business.service.create', $existingBusiness);
             }
-            else
-            {
-                $this->log->info("Manager\BusinessController@store: Already taken businessId:{$existingBusiness->id}");
-                Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-                return redirect()->route('manager.business.index');
-            }
+
+            # If not owned, return message
+            $this->log->info("Manager\BusinessController@store: Already taken businessId:{$existingBusiness->id}");
+            Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+            return redirect()->route('manager.business.index');
         }
 
-        $business = new Business(Request::all());
-        $category = Category::find(Request::get('category'));
+        // Register new Business
+        $business = new Business($request->all());
+        $category = Category::find($request->get('category'));
         $business->strategy = $category->strategy;
         $business->category()->associate($category);
         $business->save();
@@ -99,6 +101,7 @@ class BusinessController extends Controller
         auth()->user()->businesses()->attach($business);
         auth()->user()->save();
 
+        // Generate local notification
         $business_name = $business->name;
         Notifynder::category('user.registeredBusiness')
                    ->from('App\User', auth()->user()->id)
@@ -107,6 +110,7 @@ class BusinessController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
+        // Redirect success
         Flash::success(trans('manager.businesses.msg.store.success'));
         return redirect()->route('manager.business.service.create', $business);
     }
@@ -118,7 +122,7 @@ class BusinessController extends Controller
      * @param  BusinessFormRequest $request  Business form Request
      * @return Response                      Rendered view for Business show
      */
-    public function show(Business $business, BusinessFormRequest $request)
+    public function show(Business $business)
     {
         $this->log->info("Manager\BusinessController: show: businessId:{$business->id}");
 
@@ -136,12 +140,11 @@ class BusinessController extends Controller
      * edit Business
      *
      * @param  Business            $business Business to edit
-     * @param  BusinessFormRequest $request  Business form Request
      * @return Response                      Rendered view of Business edit form
      */
     public function edit(Business $business)
     {
-        $this->log->info("Manager\BusinessController: edit: businessId:{$business->id}");
+        $this->log->info("Manager\BusinessController@edit: businessId:{$business->id}");
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -154,8 +157,10 @@ class BusinessController extends Controller
                 return trans('app.business.category.'.$item);
             }
         );
+        
         $category = $business->category_id;
-        $this->log->info("Manager\BusinessController: edit: businessId:{$business->id} timezone:$timezone category:$category location:".serialize($location));
+        $this->log->info("Manager\BusinessController@edit: businessId:{$business->id} timezone:$timezone" .
+                         "category:$category location:".serialize($location));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
@@ -196,10 +201,9 @@ class BusinessController extends Controller
      * destroy Business
      *
      * @param  Business            $business Business to destroy
-     * @param  BusinessFormRequest $request  Business form Request
      * @return Response                      Redirect to Businesses index
      */
-    public function destroy(Business $business, BusinessFormRequest $request)
+    public function destroy(Business $business)
     {
         $this->log->info("Manager\BusinessController: destroy: businessId:{$business->id}");
 
@@ -225,8 +229,12 @@ class BusinessController extends Controller
      * @param  BusinessPreferencesFormRequest $request  Request
      * @return Response                                 Rendered settings form
      */
-    public function getPreferences(Business $business, BusinessPreferencesFormRequest $request)
+    public function getPreferences(Business $business)
     {
+        if (Gate::denies('managePreferences', $business)) {
+            abort(403);
+        }
+
         $parameters = config()->get('preferences.App\Business');
         $preferences = $business->preferences;
         return view('manager.businesses.preferences.edit', compact('business', 'preferences', 'parameters'));
@@ -242,6 +250,11 @@ class BusinessController extends Controller
     public function postPreferences(Business $business, BusinessPreferencesFormRequest $request)
     {
         $this->log->info("Manager\BusinessController: postPreferences: businessId:{$business->id}");
+
+        if (Gate::denies('managePreferences', $business)) {
+            abort(403);
+        }
+
         $parameters = config()->get('preferences.App\Business');
         $parametersKeys = array_flip(array_keys($parameters));
         $preferences = $request->all();

@@ -55,4 +55,16 @@ class BusinessPolicy
     {
         return $user->isOwner($business);
     }
+
+    /**
+     * Determine if the given business can be configured by the user.
+     *
+     * @param  \App\User  $user
+     * @param  \App\Business  $business
+     * @return bool
+     */
+    public function managePreferences(User $user, Business $business)
+    {
+        return $user->isOwner($business);
+    }
 }
