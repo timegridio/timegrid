@@ -17,8 +17,15 @@ class AppointmentTest extends TestCase
     public function it_gets_the_contact_user_of_appointment()
     {
         $user = $this->makeUser();
+        $user->save();
+
         $contact = $this->makeContact($user);
-        $appointment = $this->makeAppointment($user, $contact);
+        $contact->save();
+
+        $business = $this->makeBusiness($user);
+        $business->save();
+
+        $appointment = $this->makeAppointment($business, $user, $contact);
 
         $this->assertEquals($user, $appointment->user());
     }
@@ -31,9 +38,33 @@ class AppointmentTest extends TestCase
     {
         $issuer = $this->makeUser();
         $contact = $this->makeContact();
-        $appointment = $this->makeAppointment($issuer, $contact);
+        $business = $this->makeBusiness($issuer);
+        $appointment = $this->makeAppointment($business, $issuer, $contact);
 
         $this->assertNull($appointment->user());
+    }
+
+    /**
+     * @covers \App\Appointment::duplicates
+     * @test
+     */
+    public function it_detects_a_duplicate_appointment()
+    {
+        $issuer = $this->makeUser();
+        $issuer->save();
+
+        $contact = $this->makeContact();
+        $contact->save();
+
+        $business = $this->makeBusiness($issuer);
+        $business->save();
+
+        $appointment = $this->makeAppointment($business, $issuer, $contact);
+        $appointment->save();
+
+        $appointmentDuplicate = $this->makeAppointment($business, $issuer, $contact);
+
+        $this->assertTrue($appointmentDuplicate->duplicates());
     }
 
     private function makeUser()
@@ -45,11 +76,12 @@ class AppointmentTest extends TestCase
         return $user;
     }
 
-    private function makeAppointment(User $issuer, Contact $contact)
+    private function makeAppointment(Business $business, User $issuer, Contact $contact)
     {
         $appointment = factory(Appointment::class)->make();
         $appointment->contact()->associate($contact);
         $appointment->issuer()->associate($issuer);
+        $appointment->business()->associate($business);
 
         return $appointment;
     }
@@ -62,5 +94,14 @@ class AppointmentTest extends TestCase
         }
 
         return $contact;
+    }
+
+    private function makeBusiness(User $owner)
+    {
+        $business = factory(Business::class)->make();
+        $business->save();
+        $business->owners()->attach($owner);
+
+        return $business;
     }
 }
