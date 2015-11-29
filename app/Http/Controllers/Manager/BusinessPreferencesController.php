@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Http\Request;
 
 use Gate;
 use App\Business;
 use App\Http\Requests;
 use Laracasts\Flash\Flash;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Fenos\Notifynder\Facades\Notifynder;
 
