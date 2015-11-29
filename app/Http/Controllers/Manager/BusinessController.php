@@ -27,11 +27,13 @@ class BusinessController extends Controller
     {
         $this->log->info('Manager\BusinessController: index');
         $businesses = auth()->user()->businesses;
+
         if ($businesses->count()==1) {
             $this->log->info('Manager\BusinessController: index: Only one business to show');
             $business = $businesses->first();
             return Redirect::route('manager.business.show', $business);
         }
+
         return view('manager.businesses.index', compact('businesses'));
     }
 
@@ -44,7 +46,6 @@ class BusinessController extends Controller
     {
         $plan = Request::query('plan') ?: 'free';
         $this->log->info("Manager\BusinessController: create: plan:$plan");
-        Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
 
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
@@ -55,6 +56,8 @@ class BusinessController extends Controller
                 return trans('app.business.category.'.$item);
             }
         );
+
+        Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
         return view('manager.businesses.create', compact('timezone', 'categories', 'plan'));
     }
 
@@ -66,41 +69,47 @@ class BusinessController extends Controller
      */
     public function store(BusinessFormRequest $request)
     {
-        $this->log->info('Manager\BusinessController: store');
+        $this->log->info('Manager\BusinessController@store');
+
         $existingBusiness = Business::withTrashed()->where(['slug' => Request::input('slug')])->first();
 
-        if ($existingBusiness === null) {
-            $business = new Business(Request::all());
-            $category = Category::find(Request::get('category'));
-            $business->strategy = $category->strategy;
-            $business->category()->associate($category);
-            $business->save();
-            auth()->user()->businesses()->attach($business);
-            auth()->user()->save();
-
-            $businessName = $business->name;
-            Notifynder::category('user.registeredBusiness')
-                       ->from('App\User', auth()->user()->id)
-                       ->to('App\Business', $business->id)
-                       ->url('http://localhost')
-                       ->extra(compact('businessName'))
-                       ->send();
-
-            Flash::success(trans('manager.businesses.msg.store.success'));
-            return Redirect::route('manager.business.service.create', $business);
+        if ($existingBusiness !== null)
+        {
+            $this->log->info("Manager\BusinessController@store: Found existing businessId:{$existingBusiness->id}");
+            if(auth()->user()->isOwner($existingBusiness))
+            {
+                $this->log->info("Manager\BusinessController@store: Restoring owned businessId:{$existingBusiness->id}");
+                $existingBusiness->restore();
+                Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
+                return Redirect::route('manager.business.service.create', $existingBusiness);
+            }
+            else
+            {
+                $this->log->info("Manager\BusinessController@store: Already taken businessId:{$existingBusiness->id}");
+                Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+                return Redirect::route('manager.business.index');
+            }
         }
 
-        $this->log->info("Manager\BusinessController: store: [ADVICE] Found existing businessId:{$existingBusiness->id}");
-        if (auth()->user()->isOwner($existingBusiness)) {
-            $this->log->info("Manager\BusinessController: store: [ADVICE] Restoring owned businessId:{$existingBusiness->id}");
-            $existingBusiness->restore();
-            Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-        } else {
-            $this->log->info("Manager\BusinessController: store: "
-                    . "[ADVICE] Business already taken businessId:{$existingBusiness->id}");
-            Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-        }
-        return Redirect::route('manager.business.index');
+        $business = new Business(Request::all());
+        $category = Category::find(Request::get('category'));
+        $business->strategy = $category->strategy;
+        $business->category()->associate($category);
+        $business->save();
+
+        auth()->user()->businesses()->attach($business);
+        auth()->user()->save();
+
+        $business_name = $business->name;
+        Notifynder::category('user.registeredBusiness')
+                   ->from('App\User', auth()->user()->id)
+                   ->to('App\Business', $business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('business_name'))
+                   ->send();
+
+        Flash::success(trans('manager.businesses.msg.store.success'));
+        return Redirect::route('manager.business.service.create', $business);
     }
 
     /**
@@ -247,12 +256,12 @@ class BusinessController extends Controller
             $business->pref($key, $value, $parameters[$key]['type']);
         }
 
-        $businessName = $business->name;
+        $business_name = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
                    ->from('App\User', auth()->user()->id)
                    ->to('App\Business', $business->id)
                    ->url('http://localhost')
-                   ->extra(compact('businessName'))
+                   ->extra(compact('business_name'))
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));
