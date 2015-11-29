@@ -34,6 +34,8 @@ class VacancyUnitTest extends TestCase
         $business->vacancies()->save($vacancy);
 
         $contact = factory(Contact::class)->create();
+        $contact->user()->associate($issuer);
+        $contact->save();
         $business->contacts()->save($contact);
 
         $appointment = factory(Appointment::class)->make();
@@ -65,10 +67,8 @@ class VacancyUnitTest extends TestCase
         $vacancy->service()->associate($service);
         $business->vacancies()->save($vacancy);
 
-        $contact = factory(Contact::class)->make();
-        $contact->email = 'otheruser@timegrid.io';
+        $contact = factory(Contact::class)->create();
         $business->contacts()->save($contact);
-        $contact->save();
 
         $appointment = factory(Appointment::class)->make();
         $appointment->business()->associate($business);

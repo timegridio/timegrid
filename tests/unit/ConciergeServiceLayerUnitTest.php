@@ -121,7 +121,8 @@ class ConciergeServiceLayerUnitTest extends TestCase
         /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
+        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
@@ -129,7 +130,8 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $this->assertTrue($appointment->exists);
 
         /* Try OverBook */
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone)->timezone('UTC');
+        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone)->timezone('UTC');
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone);
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
@@ -161,7 +163,8 @@ class ConciergeServiceLayerUnitTest extends TestCase
         /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone)->timezone('UTC');
+        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone)->timezone('UTC');
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone);
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
