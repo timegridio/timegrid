@@ -18,12 +18,13 @@ class WizardController extends Controller
         if (auth()->user()->hasBusiness()) {
             $this->log->info('WizardController: getHome: User has Business');
             return redirect()->route('manager.business.index');
-        } else {
-            $this->log->info('WizardController: getHome: User has Contacts');
-            if (auth()->user()->hasContacts()) {
-                return redirect()->route('user.businesses.list');
-            }
         }
+
+        if (auth()->user()->hasContacts()) {
+            $this->log->info('WizardController: getHome: User has Contacts');
+            return redirect()->route('user.businesses.list');
+        }
+
         $this->log->info('WizardController: getHome: Displaying Wizard');
         return view('wizard');
     }
