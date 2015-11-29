@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Config;
-
 class LanguageController extends Controller
 {
     /**
@@ -17,7 +15,7 @@ class LanguageController extends Controller
     {
         $this->log->info("Language switch Request to $lang");
  
-        if (array_key_exists($lang, Config::get('languages'))) {
+        if (array_key_exists($lang, config()->get('languages'))) {
             $this->log->info('Language Switched');
             session()->set('applocale', $lang);
             $locale = \Locale::parseLocale($lang);
