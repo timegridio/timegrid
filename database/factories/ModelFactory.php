@@ -3,8 +3,8 @@
 $factory->define('App\User', function () {
     $faker = Faker\Factory::create();
     return [
-        'name' => 'Ariel',
-        'email' => 'alariva@timegrid.io',
+        'name' => $faker->firstName,
+        'email' => $faker->safeEmail,
         'password' => bcrypt('stubpassword')
     ];
 });
@@ -12,52 +12,55 @@ $factory->define('App\User', function () {
 $factory->define('App\Contact', function () {
     $faker = Faker\Factory::create();
     return [
-        'firstname' => 'Ariel',
-        'lastname' => 'Vallese',
-        'nin' => '12345678',
-        'email' => 'alariva@timegrid.io',
-        'birthdate' => null,
+        'firstname' => $faker->firstName,
+        'lastname' => $faker->lastName,
+        'nin' => $faker->numberBetween(25000000, 50000000),
+        'email' => $faker->safeEmail,
+        'birthdate' => $faker->dateTimeThisCentury->format('m/d/Y'),
         'mobile' => null,
         'mobile_country' => null,
-        'gender' => 'M',
-        'occupation' => null,
+        'gender' => $faker->randomElement(['M', 'F']),
+        'occupation' => $faker->title,
         'martial_status' => null,
-        'postal_address' => null
+        'postal_address' => $faker->address
     ];
 });
 
 $factory->define('App\Business', function () {
     $faker = Faker\Factory::create();
+    $businessName = $faker->sentence(3);
+    $businessSlug = str_slug($businessName, '-');
     return [
-        'name' => 'HGNC',
-        'slug' => 'hgnc',
+        'name' => $faker->sentence(3),
+        'slug' => $businessSlug,
         'description' => $faker->paragraph,
-        'timezone' => 'America/Argentina/Buenos_Aires',
-        'postal_address' => '1234 Honorio Pueyrredon, Pilar, Buenos Aires, Argentina',
-        'phone' => '+542304443231',
+        'timezone' => $faker->timezone,
+        'postal_address' => $faker->address,
+        'phone' => null,
         'social_facebook' => 'https://www.facebook.com/example?fref=ts',
         'strategy' => 'dateslot',
         'plan' => 'free',
-        'category_id' => 1
+        'category_id' => $faker->randomElement([1, 2, 3])
     ];
 });
 
 $factory->define('App\Service', function () {
     $faker = Faker\Factory::create();
     return [
-        'name' => 'Instalación',
+        'name' => $faker->sentence(2),
         'description' => $faker->paragraph,
         'prerequisites' => $faker->paragraph,
-        'duration' => 60
+        'duration' => $faker->randomElement([15, 30, 60, 120])
     ];
 });
 
 $factory->define('App\Vacancy', function () {
     $faker = Faker\Factory::create();
+    $date = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d');
     return [
-        'date' => date('Y-m-d', strtotime('today +2 days')),
-        'start_at' => date('Y-m-d 08:00:00', strtotime('today +2 days')),
-        'finish_at' => date('Y-m-d 22:00:00', strtotime('today +2 days')),
+        'date' => date('Y-m-d', strtotime($date)),
+        'start_at' => date('Y-m-d 08:00:00', strtotime($date)),
+        'finish_at' => date('Y-m-d 22:00:00', strtotime($date)),
         'capacity' => 1
     ];
 });
