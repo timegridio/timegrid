@@ -61,6 +61,7 @@ You are welcome to contribute.
 * [Step 3: Create database](#step3)
 * [Step 4: Install](#step4)
 * [Step 5: Start Page](#step5)
+* [Optional: Populate DB with a Demo Fixture](#demosandbox)
 
 <a name="step1"></a>
 ### Step 1: Get the code - Clone the repository
@@ -136,6 +137,21 @@ Type on web browser:
 Congrats! You can now register as new user and log-in.
 
 ![timegrid Login Screen](http://i.imgur.com/jM8pbGq.png)
+
+<a name="demosandbox"></a>
+## Demo Sandbox Fixture
+
+If you want to try the application with a *Lorem Ipsum* database fixture.
+
+    php artisan db:seed --class=TestingDatabaseSeeder
+
+Now you have two demo credentials to log in and play around.
+
+    USER: demo@timegrid.io
+    PASS: demomanager
+
+    USER: gues@example.org
+    PASS: demoguest
 
 ## Troubleshooting
 
