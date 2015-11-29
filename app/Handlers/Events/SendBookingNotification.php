@@ -4,7 +4,6 @@ namespace App\Handlers\Events;
 
 use App\Events\NewBooking;
 use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Queue\InteractsWithQueue;
@@ -12,12 +11,6 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendBookingNotification
 {
-    /**
-     * Log facade
-     * @var log
-     */
-    protected $log;
-
     /**
      * Mail facade
      * @var mail
@@ -35,9 +28,8 @@ class SendBookingNotification
      *
      * @return void
      */
-    public function __construct(Log $log, Mail $mail, App $app)
+    public function __construct(Mail $mail, App $app)
     {
-        $this->log  = $log;
         $this->mail = $mail;
         $this->app  = $app;
     }
@@ -50,7 +42,7 @@ class SendBookingNotification
      */
     public function handle(NewBooking $event)
     {
-        $this->log->info('Handle NewBooking.SendBookingNotification()');
+        logger()->info('Handle NewBooking.SendBookingNotification()');
 
         $code = $event->appointment->getPresenter()->code();
         $date = $event->appointment->start_at->toDateString();

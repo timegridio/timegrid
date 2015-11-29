@@ -16,8 +16,8 @@ class LinkUserToExistingContacts
      */
     public function handle(NewRegisteredUser $event)
     {
-        # $this->log->info("Handle NewRegisteredUser.LinkUserToExistingContacts(): ".
-        #                  "Linking <{$event->user->email}> to contacts");
+        logger()->info("Handle NewRegisteredUser.LinkUserToExistingContacts(): ".
+                       "Linking <{$event->user->email}> to contacts");
         $event->user->linkToContacts();
     }
 }

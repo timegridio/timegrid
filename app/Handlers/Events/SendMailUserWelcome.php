@@ -4,19 +4,12 @@ namespace App\Handlers\Events;
 
 use App;
 use App\Events\NewRegisteredUser;
-use Illuminate\Contracts\Logging\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendMailUserWelcome
 {
-    /**
-     * Log facade
-     * @var log
-     */
-    protected $log;
-
     /**
      * Mail facade
      * @var mail
@@ -34,9 +27,8 @@ class SendMailUserWelcome
      *
      * @return void
      */
-    public function __construct(Log $log, Mail $mail, App $app)
+    public function __construct(Mail $mail, App $app)
     {
-        $this->log  = $log;
         $this->mail = $mail;
         $this->app  = $app;
     }
@@ -49,7 +41,7 @@ class SendMailUserWelcome
      */
     public function handle(NewRegisteredUser $event)
     {
-        $this->log->info('Handle NewRegisteredUser.SendMailUserWelcome()');
+        logger()->info('Handle NewRegisteredUser.SendMailUserWelcome()');
         $locale = $this->app->getLocale();
         $this->mail->send("emails.{$locale}.welcome", ['user' => $event->user], function ($m) use ($event) {
             $m->to($event->user->email, $event->user->name)->subject(trans('emails.user.welcome.subject'));
