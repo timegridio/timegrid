@@ -141,7 +141,7 @@ class Appointment extends Model implements PresentableInterface
      */
     public function user()
     {
-        return $this->contact->first()->user()->first();
+        return $this->contact->user;
     }
 
     /**
