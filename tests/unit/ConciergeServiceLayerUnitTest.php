@@ -87,7 +87,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         /* Perform Test */
         $concierge = new ConciergeServiceLayer();
 
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
+        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
