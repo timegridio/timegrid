@@ -227,7 +227,7 @@ class BusinessController extends Controller
      */
     public function getPreferences(Business $business, BusinessPreferencesFormRequest $request)
     {
-        $parameters = \Config::get('preferences.App\Business');
+        $parameters = config()->get('preferences.App\Business');
         $preferences = $business->preferences;
         return view('manager.businesses.preferences.edit', compact('business', 'preferences', 'parameters'));
     }
@@ -242,7 +242,7 @@ class BusinessController extends Controller
     public function postPreferences(Business $business, BusinessPreferencesFormRequest $request)
     {
         $this->log->info("Manager\BusinessController: postPreferences: businessId:{$business->id}");
-        $parameters = \Config::get('preferences.App\Business');
+        $parameters = config()->get('preferences.App\Business');
         $parametersKeys = array_flip(array_keys($parameters));
         $preferences = $request->all();
         $preferences = array_intersect_key($preferences, $parametersKeys);
