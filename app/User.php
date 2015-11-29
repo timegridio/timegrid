@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Contact;
+use App\Traits\HasRoles;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -14,7 +15,7 @@ use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, Notifable;
+    use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable;
 
     /**
      * The database table used by the model.
