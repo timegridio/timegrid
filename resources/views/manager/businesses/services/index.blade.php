@@ -10,10 +10,7 @@
                 <div class="panel-heading">{{ trans('manager.services.index.title') }}</div>
 
                 <div class="panel-body">
-                    <table class="table table-condensed">
-                        <tr>
-                            <th>{{ trans('manager.services.index.th.name') }}</th>
-                        </tr>
+                    <table class="table">
                     @foreach ($services as $service)
                         <tr>
                             <td title="{{ $service->description }}">
