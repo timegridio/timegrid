@@ -58,7 +58,7 @@ class BusinessVacancyController extends Controller
                     break;
                     default:
                         $start_at  = Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone);
-                        $finish_at = Carbon::parse($date . ' 20:00:00')->timezone($business->timezone);
+                        $finish_at = Carbon::parse($date . ' ' . $business->pref('finish_at', '20:00:00'))->timezone($business->timezone);
 
                         $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id,
                                                             'service_id' => $serviceId,
