@@ -1,73 +1,88 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/11/19 19:57:47
+ Generated via "php artisan localization:missing" at 2015/11/30 20:27:55 
 *************************************************************************/
 
-return array(
-  'appointments' =>
-  array(
-    'alert' =>
-    array(
+return array (
+  //============================== New strings to translate ==============================//
+  'booking' => 
+  array (
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'error' => 'Sorry, we could not allocate your reservation request.',
+        'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
+        'success' => 'Success! Your appointment was registered with code :code',
+      ),
+      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
+    ),
+  ),
+  //==================================== Translations ====================================//
+  'appointments' => 
+  array (
+    'alert' => 
+    array (
       'empty_list' => 'You have no ongoing reservations by now.',
       'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
     ),
-    'btn' =>
-    array(
+    'btn' => 
+    array (
       'book' => 'Book appointment',
       'book_in_biz' => 'Book appointment for :biz',
     ),
-    'form' =>
-    array(
-      'btn' =>
-      array(
+    'form' => 
+    array (
+      'btn' => 
+      array (
         'submit' => 'Confirm',
       ),
-      'comments' =>
-      array(
+      'comments' => 
+      array (
         'label' => 'Comments',
       ),
-      'date' =>
-      array(
+      'date' => 
+      array (
         'label' => 'Date',
       ),
-      'duration' =>
-      array(
+      'duration' => 
+      array (
         'label' => 'Duration',
       ),
-      'msg' =>
-      array(
+      'msg' => 
+      array (
         'please_select_a_service' => 'Select a service',
       ),
-      'service' =>
-      array(
+      'service' => 
+      array (
         'label' => 'Service',
       ),
-      'time' =>
-      array(
+      'time' => 
+      array (
         'label' => 'Hour',
       ),
-      'timetable' =>
-      array(
+      'timetable' => 
+      array (
         'instructions' => 'Select a service to reserve',
-        'msg' =>
-        array(
+        'msg' => 
+        array (
           'no_vacancies' => 'There is no availability for this date',
         ),
         'title' => 'Reserve appointment',
       ),
-      'business' =>
-      array(
+      'business' => 
+      array (
         'label' => 'Business',
       ),
-      'contact_id' =>
-      array(
+      'contact_id' => 
+      array (
         'label' => 'Contact',
       ),
     ),
-    'index' =>
-    array(
-      'th' =>
-      array(
+    'index' => 
+    array (
+      'th' => 
+      array (
         'business' => 'Business',
         'calendar' => 'Date',
         'code' => 'Code',
@@ -82,92 +97,81 @@ return array(
       'title' => 'Appointments',
     ),
   ),
-  'booking' =>
-  array(
-    'msg' =>
-    array(
-      'store' =>
-      array(
-        'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
-        'success' => 'Success! Your appointment was registered with code :code',
-      ),
-      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
-    ),
-  ),
-  'business' =>
-  array(
-    'btn' =>
-    array(
+  'business' => 
+  array (
+    'btn' => 
+    array (
       'subscribe' => 'Subscribe',
     ),
-    'subscriptions_count' => '{0} ¡Be the first to subscribe! |This business has :count subscribed user|This business has :count subscribed users',
-    'msg' =>
-    array(
+    'msg' => 
+    array (
       'please_select_a_business' => 'Choose a business',
     ),
+    'subscriptions_count' => '{0} ¡Be the first to subscribe! |This business has :count subscribed user|This business has :count subscribed users',
   ),
-  'businesses' =>
-  array(
-    'index' =>
-    array(
-      'btn' =>
-      array(
+  'businesses' => 
+  array (
+    'index' => 
+    array (
+      'btn' => 
+      array (
         'create' => 'Register business',
         'manage' => 'My businesses',
         'power_create' => 'Register now',
       ),
       'title' => 'Available businesses',
     ),
-    'subscriptions' =>
-    array(
-      'title' => 'Subscriptions',
-      'none_found' => 'No subscriptions available.',
-    ),
-    'list' =>
-    array(
-      'alert' =>
-      array(
+    'list' => 
+    array (
+      'no_businesses' => 'No businesses available.',
+      'alert' => 
+      array (
         'not_found' => 'We cant find that business, please choose one from the list',
       ),
-      'no_businesses' => 'No businesses available.',
     ),
-    'show' =>
-    array(
-      'btn' =>
-      array(
+    'subscriptions' => 
+    array (
+      'none_found' => 'No subscriptions available.',
+      'title' => 'Subscriptions',
+    ),
+    'show' => 
+    array (
+      'btn' => 
+      array (
         'book' => 'Reserve appointment',
         'change' => 'Change',
       ),
     ),
   ),
-  'contacts' =>
-  array(
-    'btn' =>
-    array(
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
       'store' => 'Save',
       'update' => 'Update',
     ),
-    'create' =>
-    array(
+    'create' => 
+    array (
       'help' => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
       'title' => 'My profile',
     ),
-    'msg' =>
-    array(
-      'store' =>
-      array(
+    'msg' => 
+    array (
+      'store' => 
+      array (
         'associated_existing_contact' => 'Your profile was attached to an existing one',
         'success' => 'Successfully saved',
-        'warning' =>
-        array(
+        'warning' => 
+        array (
           'already_registered' => 'This profile was already registered',
           'showing_existing_contact' => 'Your profile was attached to an existing one',
         ),
       ),
-      'update' =>
-      array(
+      'update' => 
+      array (
         'success' => 'Updated successfully',
       ),
     ),
   ),
+  //================================== Obsolete strings ==================================//
 );
