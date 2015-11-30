@@ -11,7 +11,7 @@
             <div class="well service-description hidden" id="service-description-{{$service->id}}"><strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}</div>
           @endif
           @if($service->prerequisites)
-          {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('Atención!'))->withBody("<pre>{$service->prerequisites}</pre>")->withAttributes(['class' => 'service-prerequisites hidden', 'id' => "service-prerequisites-{$service->id}"]) !!}
+          {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('app.label.attention'))->withBody("<pre>{$service->prerequisites}</pre>")->withAttributes(['class' => 'service-prerequisites hidden', 'id' => "service-prerequisites-{$service->id}"]) !!}
           @endif
         @endforeach
         </div>

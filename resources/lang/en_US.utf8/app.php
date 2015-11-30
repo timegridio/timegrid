@@ -21,6 +21,7 @@ return array(
   'label' =>
   array(
     'select_timezone' => 'TimeZone',
+    'attention' => 'Attention',
   ),
   'name' => 'timegrid.io',
   'nav' =>
