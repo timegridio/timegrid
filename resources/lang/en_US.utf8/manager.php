@@ -1,39 +1,16 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/11/30 17:23:49 
+ Generated via "php artisan localization:missing" at 2015/11/30 17:35:29 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
   'businesses' => 
   array (
-    'msg' => 
+    'preferences' => 
     array (
-      'index' => 
-      array (
-        'only_one_found' => 'You only have one business registered. Here your dashboard.',
-      ),
-      'create' => 
-      array (
-        'success' => 'Well done! You chose :plan',
-      ),
-      'destroy' => 
-      array (
-        'success' => 'Business removed',
-      ),
-      'preferences' => 
-      array (
-        'success' => 'Successfully updated preferences!',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'The business is already registered',
-        'restored_trashed' => 'Business restored',
-        'success' => 'Business successfully registered',
-      ),
-      'update' => 
-      array (
-        'success' => 'Updated business data',
-      ),
+      'instructions' => 'Here you can customize the business settings to your needs.',
+      'title' => 'Business preferences',
     ),
     'btn' => 
     array (
@@ -138,9 +115,34 @@ return array (
         'register' => 'Register a business',
       ),
     ),
-    'preferences' => 
+    'msg' => 
     array (
-      'title' => 'Business preferences',
+      'create' => 
+      array (
+        'success' => 'Well done! You chose :plan',
+      ),
+      'destroy' => 
+      array (
+        'success' => 'Business removed',
+      ),
+      'index' => 
+      array (
+        'only_one_found' => 'You only have one business registered. Here your dashboard.',
+      ),
+      'preferences' => 
+      array (
+        'success' => 'Successfully updated preferences!',
+      ),
+      'store' => 
+      array (
+        'business_already_exists' => 'The business is already registered',
+        'restored_trashed' => 'Business restored',
+        'success' => 'Business successfully registered',
+      ),
+      'update' => 
+      array (
+        'success' => 'Updated business data',
+      ),
     ),
     'vacancies' => 
     array (
@@ -152,6 +154,74 @@ return array (
     'show' => 
     array (
       'title' => 'Business',
+    ),
+  ),
+  'services' => 
+  array (
+    'create' => 
+    array (
+      'instructions' => 'Give a name to your service, a wide description to help your customers be familiar with it.'.
+                        'Add any instructions for your customers before they get to the appointment.',
+      'alert' => 
+      array (
+        'go_to_vacancies' => 'Well done! Now you can publish your availability.',
+      ),
+      'btn' => 
+      array (
+        'go_to_vacancies' => 'Set and publish my availability',
+      ),
+      'title' => 'Add a service',
+    ),
+    'index' => 
+    array (
+      'instructions' => 'Add as many services as you provide to configure availability for each of them.',
+      'title' => 'Services',
+      'th' => 
+      array (
+        'duration' => 'Duration',
+        'name' => 'Name',
+        'slug' => 'Alias',
+      ),
+    ),
+    'btn' => 
+    array (
+      'create' => 'Add a service',
+      'store' => 'Save',
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => 'Service deleted!',
+      ),
+    ),
+  ),
+  'vacancies' => 
+  array (
+    'edit' => 
+    array (
+      'instructions' => 'Enter the appointments capacity for each service on each day day. This is, how may '.
+                        'appointments can you handle per service per day?',
+      'title' => 'Availability',
+    ),
+    'msg' => 
+    array (
+      'edit' => 
+      array (
+        'no_services' => 'No services registered. Please register services for your business.',
+      ),
+      'store' => 
+      array (
+        'nothing_changed' => 'You must indicate your availability at least for one date',
+        'success' => 'Availability registered successfully!',
+      ),
+    ),
+    'table' => 
+    array (
+      'th' => 
+      array (
+        'date' => 'Date',
+      ),
     ),
   ),
   //==================================== Translations ====================================//
@@ -357,67 +427,5 @@ return array (
       ),
     ),
   ),
-  'services' => 
-  array (
-    'btn' => 
-    array (
-      'create' => 'Add a service',
-      'store' => 'Save',
-    ),
-    'create' => 
-    array (
-      'alert' => 
-      array (
-        'go_to_vacancies' => 'Well done! Now you can publish your availability.',
-      ),
-      'btn' => 
-      array (
-        'go_to_vacancies' => 'Set and publish my availability',
-      ),
-      'title' => 'Add a service',
-    ),
-    'index' => 
-    array (
-      'title' => 'Services',
-      'th' => 
-      array (
-        'duration' => 'Duration',
-        'name' => 'Name',
-        'slug' => 'Alias',
-      ),
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => 'Service deleted!',
-      ),
-    ),
-  ),
-  'vacancies' => 
-  array (
-    'edit' => 
-    array (
-      'title' => 'Availability',
-    ),
-    'msg' => 
-    array (
-      'edit' => 
-      array (
-        'no_services' => 'No services registered. Please register services for your business.',
-      ),
-      'store' => 
-      array (
-        'nothing_changed' => 'You must indicate your availability at least for one date',
-        'success' => 'Availability registered successfully!',
-      ),
-    ),
-    'table' => 
-    array (
-      'th' => 
-      array (
-        'date' => 'Date',
-      ),
-    ),
-  ),
+  //================================== Obsolete strings ==================================//
 );
