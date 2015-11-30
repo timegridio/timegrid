@@ -10,8 +10,9 @@ class BusinessUnitTest extends TestCase
 
    /**
      * @covers            \App\Business::__construct
+     * @test
      */
-    public function testCreateBusiness()
+    public function test_it_creates_a_business()
     {
         $business = factory(Business::class)->create();
 
@@ -21,22 +22,38 @@ class BusinessUnitTest extends TestCase
    /**
      * @covers            \App\Business::__construct
      * @covers            \App\Business::save
+     * @test
      */
-    public function testCreateAndSeeBusinessStoredInDatabase()
+    public function test_it_creates_a_business_that_appears_in_db()
     {
         $business = factory(Business::class)->create();
 
         $this->seeInDatabase('businesses', ['slug' => $business->slug]);
+    }
 
-        return $business;
+   /**
+     * @covers            \App\Business::__construct
+     * @covers            \App\Business::setSlugAttribute
+     * @covers            \App\Business::save
+     * @test@
+     */
+    public function test_it_generates_slug_from_name()
+    {
+        $business = factory(Business::class)->create();
+
+        $slug = str_slug($business->name);
+
+        $this->assertEquals($slug, $business->slug);
     }
 
    /**
      * @covers            \App\Business::getPresenter
-     * @depends           testCreateBusiness
+     * @test
      */
-    public function testBusinessGetPresenter(Business $business)
+    public function test_gets_business_presenter()
     {
+        $business = factory(Business::class)->create();
+
         $businessPresenter = $business->getPresenter();
 
         $this->assertInstanceOf(BusinessPresenter::class, $businessPresenter);
@@ -44,22 +61,22 @@ class BusinessUnitTest extends TestCase
 
    /**
      * @covers            \App\Business::setPhoneAttribute
-     * @depends           testCreateBusiness
+     * @test
      */
-    public function testSetEmptyPhoneAttributeGetsNull(Business $business)
+    public function test_sets_empty_phone_attribute()
     {
-        $business->phone = '';
+        $business = factory(Business::class)->make(['phone' => '']);
 
         $this->assertNull($business->phone);
     }
 
    /**
      * @covers            \App\Business::setPostalAddressAttribute
-     * @depends           testCreateBusiness
+     * @test
      */
-    public function testSetEmptyPostalAddressAttributeGetsNull(Business $business)
+    public function test_sets_empty_postal_address_attribute()
     {
-        $business->postal_address = '';
+        $business = factory(Business::class)->make(['postal_address' => '']);
 
         $this->assertNull($business->postal_address);
     }
