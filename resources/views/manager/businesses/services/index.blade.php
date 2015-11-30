@@ -5,6 +5,8 @@
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
 
+            {!! Alert::info(trans('manager.services.index.instructions')) !!}
+
             <div class="panel panel-default">
 
                 <div class="panel-heading">{{ trans('manager.services.index.title') }}</div>

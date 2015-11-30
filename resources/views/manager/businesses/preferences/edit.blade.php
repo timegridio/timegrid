@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
+
+    {!! Alert::info(trans('manager.businesses.preferences.instructions')) !!}
+
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('manager.businesses.preferences.title') }}</div>

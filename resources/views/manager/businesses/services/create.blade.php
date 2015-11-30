@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
+
+    {!! Alert::info(trans('manager.services.create.instructions')) !!}
+
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('manager.services.create.title') }}</div>
 
