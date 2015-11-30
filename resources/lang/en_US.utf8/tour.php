@@ -94,7 +94,7 @@ return array(
     ),
     'panel' =>
     array(
-      'content' => 'Welcome to your dashboard. Here you will have a qick insights view about the reservations of your business',
+      'content' => 'Welcome to your dashboard. Here you will have a quick insights view about the reservations of your business',
       'title' => 'Your dashboard',
     ),
     'profile' =>
