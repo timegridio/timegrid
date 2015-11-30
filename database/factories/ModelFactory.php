@@ -1,16 +1,22 @@
-<?php // app/database/factories/ModelFactory.php
+<?php
 
-$factory->define('App\User', function () {
-    $faker = Faker\Factory::create();
+//////////
+// User //
+//////////
+
+$factory->define('App\User', function (Faker\Generator $faker) {
     return [
         'name' => $faker->firstName,
         'email' => $faker->safeEmail,
-        'password' => bcrypt('stubpassword')
+        'password' => bcrypt('password')
     ];
 });
 
-$factory->define('App\Contact', function () {
-    $faker = Faker\Factory::create();
+/////////////
+// Contact //
+/////////////
+
+$factory->define('App\Contact', function (Faker\Generator $faker) {
     return [
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
@@ -26,13 +32,13 @@ $factory->define('App\Contact', function () {
     ];
 });
 
-$factory->define('App\Business', function () {
-    $faker = Faker\Factory::create();
-    $businessName = $faker->sentence(3);
-    $businessSlug = str_slug($businessName, '-');
+//////////////
+// Business //
+//////////////
+
+$factory->define('App\Business', function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(3),
-        'slug' => $businessSlug,
         'description' => $faker->paragraph,
         'timezone' => $faker->timezone,
         'postal_address' => $faker->address,
@@ -44,8 +50,11 @@ $factory->define('App\Business', function () {
     ];
 });
 
-$factory->define('App\Service', function () {
-    $faker = Faker\Factory::create();
+/////////////
+// Service //
+/////////////
+
+$factory->define('App\Service', function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(2),
         'description' => $faker->paragraph,
@@ -54,8 +63,11 @@ $factory->define('App\Service', function () {
     ];
 });
 
-$factory->define('App\Vacancy', function () {
-    $faker = Faker\Factory::create();
+/////////////
+// Vacancy //
+/////////////
+
+$factory->define('App\Vacancy', function (Faker\Generator $faker) {
     $date = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d');
     return [
         'date' => date('Y-m-d', strtotime($date)),
@@ -65,8 +77,11 @@ $factory->define('App\Vacancy', function () {
     ];
 });
 
-$factory->define('App\Appointment', function () {
-    $faker = Faker\Factory::create();
+/////////////////
+// Appointment //
+/////////////////
+
+$factory->define('App\Appointment', function (Faker\Generator $faker) {
     return [
         'business_id' => factory(App\Business::class)->make()->id,
         'contact_id' => factory(App\Contact::class)->make()->id,
