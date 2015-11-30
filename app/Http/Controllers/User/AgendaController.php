@@ -75,7 +75,7 @@ class AgendaController extends Controller
         $business = Business::findOrFail($request->input('businessId'));
         $contact = $issuer->getContactSubscribedTo($business);
         $service = Service::find($request->input('service_id'));
-        $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'));
+        $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'))->timezone($business->timezone);
         $comments = $request->input('comments');
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
