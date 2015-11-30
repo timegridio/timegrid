@@ -16,19 +16,17 @@ timegrid
 
 Timegrid is a web application for online reservation of services for business.
 
-It is currently in **beta** stage willing to add some missing functions in the short terms.
-
 It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
 ## Screenshots
 
 ![Screenshot](http://i.imgur.com/aiG7jlx.png)
 
-[Like it?](https://github.com/alariva/timegrid/wiki/Screenshots)
+[Wanna see more?](https://github.com/alariva/timegrid/wiki/Screenshots)
 
 ## Live Demo
 
-Want to see more action? You can try the *beta stage* [working live demo](http://demo.timegrid.io/)
+Want action? Try the *beta* [live demo](http://demo.timegrid.io/)
 
 > Hold on tight! It's a bumpy ride for all of us!
 
@@ -36,17 +34,15 @@ Want to see more action? You can try the *beta stage* [working live demo](http:/
 
 These are the current features so far:
 
-  * User SignUp process (with email notification)
-  * Business registration
-  * Business Contacts registration
-  * Business Services registration
-  * Business Services Availability management (basic)
-  * Service Reservation (with email notification)
-  * Search engine (basic)
+  * User regular and oAuth2 SignUp
+  * Business management
+    * Contact addressbook
+    * Services management
+    * Availability management
+  * Service Reservation
+  * Local Search
 
 ## Official Documentation
-
-A lot of work is taking place here, and counting, please be patient :)
 
   * [![English Documentation Status](https://readthedocs.org/projects/timegrid-user-manual/badge/?version=latest)](http://manual-de-usuario-de-timegridio.readthedocs.org/en/latest/?badge=latest) English
   * [![Spanish Documentation Status](https://readthedocs.org/projects/manual-de-usuario-de-timegridio/badge/?version=latest)](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/?badge=latest) Español
@@ -166,19 +162,15 @@ Thank you for considering contributing to Timegrid.
 Please see CONTRIBUTING doc for further details.
 You are welcome to join the core development team and enhance the development process apart from just code :)
 
-[Join the Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+[Slack for technical discussion](https://timegrid.slack.com/home)
 
-[Join the Slack for technical discussion](https://timegrid.slack.com/home)
-
-[Stay up-to-date with Twitter](https://twitter.com/timegrid_io/)
-
-[Stay up-to-date with Facebook](https://www.facebook.com/timegrid.io/)
+[Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
 [Dev Newsletter](http://eepurl.com/bF_ARX)
 
 ## Special Thanks
 
-  * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez)
+  * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
 
 ### License
 
