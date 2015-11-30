@@ -18,7 +18,7 @@ class Business extends EloquentModel
      *
      * @var array
      */
-    protected $fillable = ['slug', 'name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy', 'plan'];
+    protected $fillable = ['name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy', 'plan'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -26,6 +26,16 @@ class Business extends EloquentModel
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Create Business model
+     * @param array $attributes Attributes for filling the model
+     */
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setSlugAttribute();
+    }
 
     ///////////////////
     // Relationships //
@@ -137,6 +147,21 @@ class Business extends EloquentModel
     }
 
     ///////////////
+    // Overrides //
+    ///////////////
+
+    /**
+     * Save the model to the database.
+     *
+     * @param  array  $options
+     * @return bool
+     */
+    public function save(array $options = array())
+    {
+        return parent::save($options);
+    }
+
+    ///////////////
     // Presenter //
     ///////////////
 
@@ -153,6 +178,27 @@ class Business extends EloquentModel
     //////////////
     // Mutators //
     //////////////
+
+    /**
+     * set Slug
+     *
+     * @return string      Generated slug
+     */
+    public function setSlugAttribute()
+    {
+        return $this->attributes['slug'] = str_slug($this->name);
+    }
+
+    /**
+     * set name of the business
+     * 
+     * @param string $name Name of business
+     */
+    public function setNameAttribute($name)
+    {
+        $this->attributes['name'] = trim($name);
+        $this->setSlugAttribute();
+    }
 
     /**
      * set Phone
