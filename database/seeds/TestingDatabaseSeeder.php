@@ -18,15 +18,15 @@ class TestingDatabaseSeeder extends Seeder
     public function run()
     {
         // Create some example Businesses with example owners
-        $this->createBusinessOwnedBy($this->createRandomGuestUser());
-        $this->createBusinessOwnedBy($this->createRandomGuestUser());
-        $this->createBusinessOwnedBy($this->createRandomGuestUser());
+        $this->createBusinessOwnedBy($this->createRandomGuestUser(), 'Tomy\'s Garage');
+        $this->createBusinessOwnedBy($this->createRandomGuestUser(), 'Pluto Garage');
+        $this->createBusinessOwnedBy($this->createRandomGuestUser(), 'Jenny\'s');
 
         // Create a well known Demo Manager User
         $demoManagerUser = $this->createDemoManagerUser();
 
         // Create a Business managed by him
-        $business = $this->createBusinessOwnedBy($demoManagerUser);
+        $business = $this->createBusinessOwnedBy($demoManagerUser, 'Demo Venue');
 
         // Create a Demo Guest User
         $demoGuestUser = $this->createDemoGuestUser();
@@ -35,7 +35,7 @@ class TestingDatabaseSeeder extends Seeder
         $contact = $this->createDemoGuestUserContact($demoGuestUser);
 
         // Put the Contact into the Business addressbok
-        $this->makeUserGuestContactOf($contact, $business);
+        $this->putUserGuestContactOf($contact, $business);
 
         // Generate some addressbook info to fill
         $this->generateDemoAddressBook($business, 200);
@@ -57,10 +57,7 @@ class TestingDatabaseSeeder extends Seeder
     private function createDemoManagerUser()
     {
         // Create demo user (Business Manager)
-        $user = factory(User::class)->make();
-        $user->email = 'demo@timegrid.io';
-        $user->password = bcrypt('demomanager');
-        $user->save();
+        $user = factory(User::class)->create(['email' => 'demo@timegrid.io', 'password' => bcrypt('demomanager')]);
 
         return $user;
     }
@@ -68,10 +65,7 @@ class TestingDatabaseSeeder extends Seeder
     private function createDemoGuestUser()
     {
         // Create demo user (Business Guest)
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
-        $user->save();
+        $user = factory(User::class)->create(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
 
         return $user;
     }
@@ -79,17 +73,16 @@ class TestingDatabaseSeeder extends Seeder
     private function createRandomGuestUser()
     {
         // Create random guest user (Business Guest)
-        $user = factory(User::class)->make();
-        $user->save();
+        $user = factory(User::class)->create();
 
         return $user;
     }
 
-    private function createBusinessOwnedBy(User $user)
+    private function createBusinessOwnedBy(User $user, $name)
     {
         // Create demo Business
-        $business = factory(Business::class)->make();
-        $business->save();
+        $business = factory(Business::class)->create(['name' => $name]);
+
         $business->owners()->save($user);
 
         return $business;
@@ -102,12 +95,12 @@ class TestingDatabaseSeeder extends Seeder
         if ($user) {
             $contact->user()->associate($user);
         }
-        $contact->save();
+        # $contact->save();
 
         return $contact;
     }
 
-    private function makeUserGuestContactOf(Contact $contact, Business $business)
+    private function putUserGuestContactOf(Contact $contact, Business $business)
     {
         $business->contacts()->save($contact);
     }
@@ -142,7 +135,7 @@ class TestingDatabaseSeeder extends Seeder
         for($i = 0; $i<=$limit; $i++)
         {
             $contact = $this->createDemoGuestUserContact();
-            $this->makeUserGuestContactOf($contact, $business);
+            $this->putUserGuestContactOf($contact, $business);
         }
 
         return $this;
