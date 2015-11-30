@@ -162,6 +162,18 @@ class Contact extends EloquentModel
         return ($this->user) ? $this->user->email : null;
     }
 
+    /**
+     * get Fullname of associated User
+     *
+     * TODO: Move to presenter
+     * 
+     * @return string Contact firstname and lastname
+     */
+    public function getFullnameAttribute()
+    {
+        return ($this->lastname) ? $this->firstname . ' ' . $this->lastname : $this->firstname;
+    }
+
     ///////////////
     // Presenter //
     ///////////////
