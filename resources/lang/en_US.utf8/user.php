@@ -98,7 +98,7 @@ return array(
   array(
     'btn' =>
     array(
-      'subscribe' => '',
+      'subscribe' => 'Subscribe',
     ),
     'subscriptions_count' => '{0} ¡Be the first to subscribe! |This business has :count subscribed user|This business has :count subscribed users',
     'msg' =>
