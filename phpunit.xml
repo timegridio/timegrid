@@ -9,15 +9,33 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false">
+    <logging>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+    </logging>
     <testsuites>
         <testsuite name="Application Test Suite">
-            <directory>./tests/</directory>
+            <directory>./tests/unit/</directory>
         </testsuite>
     </testsuites>
     <php>
         <env name="APP_ENV" value="testing"/>
+        <env name="DB_HOST" value="localhost"/>
+        <env name="DB_DATABASE" value="test.timegrid"/>
+        <env name="DB_USERNAME" value="test.timegrid"/>
+        <env name="DB_PASSWORD" value="test.timegrid"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
+    <filter>
+      <whitelist processUncoveredFilesFromWhitelist="true">
+        <directory suffix=".php">app/</directory>
+        <directory suffix=".php">database/migrations/</directory>
+        <directory suffix=".php">bootstrap/</directory>
+        <directory suffix=".php">config/</directory>
+        <exclude>
+          <directory suffix=".js">public/</directory>
+        </exclude>
+      </whitelist>
+    </filter>
 </phpunit>

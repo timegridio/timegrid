@@ -1,0 +1,12 @@
+.tooltipster-timegrid {
+    border-radius: 5px; 
+    border: 1px solid #C70000;
+    background: #C70000;
+    color: #ffffff;
+}
+.tooltipster-timegrid .tooltipster-content {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 8px 10px;
+}
