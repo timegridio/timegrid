@@ -27,9 +27,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('contact',     'App\Models\Contact');
-        $router->model('business',    'App\Models\Business');
-        $router->model('service',     'App\Models\Service');
+        $router->model('contact', 'App\Models\Contact');
+        $router->model('business', 'App\Models\Business');
+        $router->model('service', 'App\Models\Service');
         $router->model('appointment', 'App\Models\Appointment');
         $router->bind('business_slug', function ($business_slug) {
             return Business::where('slug', $business_slug)->get();
