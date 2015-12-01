@@ -33,7 +33,12 @@ class BusinessController extends Controller
     {
         $this->log->info(__METHOD__);
         
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $businesses = Business::all();
+
         return view('guest.businesses.index', compact('businesses'));
     }
 }
