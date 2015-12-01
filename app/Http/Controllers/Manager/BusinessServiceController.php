@@ -28,7 +28,7 @@ class BusinessServiceController extends Controller
      *
      * @return Response
      */
-    public function create(Business $business /* , ServiceFormRequest $request */)
+    public function create(Business $business)
     {
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
@@ -46,10 +46,14 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $service = Service::firstOrNew($request->except('_token'));
         $service->business()->associate($business->id);
         $service->save();
-        $this->log->info("BusinessServiceController: create: businessId:{$business->id} serviceId:{$service->id}");
+        $this->log->info("  Stored serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
         return redirect()->route('manager.business.service.index', [$business]);
@@ -58,7 +62,8 @@ class BusinessServiceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Business  $business Business to show service of
+     * @param  Service   $service  Service to show
      * @return Response
      */
     public function show(Business $business, Service $service)
@@ -75,7 +80,8 @@ class BusinessServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  Business  $business Business to edit service of
+     * @param  Service   $service  Service to edit
      * @return Response
      */
     public function edit(Business $business, Service $service)
@@ -92,16 +98,21 @@ class BusinessServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  int  $id
+     * @param  Business  $business Business to update service of
+     * @param  Service   $service  Service to update
      * @return Response
      */
-    public function update(Business $business, Service $service, Request $request /*, ContactFormRequest $request */)
+    public function update(Business $business, Service $service, Request $request)
     {
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s serviceId:%s", 
                                     $business->id,
                                     $service->id
                                 ));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
 
         $service->update([
             'name'            => $request->get('name'),
@@ -116,7 +127,8 @@ class BusinessServiceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  Business  $business Business to destroy service of
+     * @param  Service   $service  Service to destroy
      * @return Response
      */
     public function destroy(Business $business, Service $service)
@@ -126,6 +138,10 @@ class BusinessServiceController extends Controller
                                     $business->id,
                                     $service->id
                                 ));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
 
         $service->forceDelete();
 
