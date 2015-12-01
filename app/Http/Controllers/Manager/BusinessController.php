@@ -57,8 +57,7 @@ class BusinessController extends Controller
         $categories = Category::lists('slug', 'id')->transform(
             function ($item, $key) {
                 return trans('app.business.category.'.$item);
-            }
-        );
+            });
 
         Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
         return view('manager.businesses.create', compact('timezone', 'categories', 'plan'));
@@ -108,11 +107,11 @@ class BusinessController extends Controller
         // Generate local notification
         $business_name = $business->name;
         Notifynder::category('user.registeredBusiness')
-                   ->from('App\Models\User', auth()->user()->id)
-                   ->to('App\Models\Business', $business->id)
-                   ->url('http://localhost')
-                   ->extra(compact('business_name'))
-                   ->send();
+        ->from('App\Models\User', auth()->user()->id)
+        ->to('App\Models\Business', $business->id)
+        ->url('http://localhost')
+        ->extra(compact('business_name'))
+        ->send();
 
         // Redirect success
         Flash::success(trans('manager.businesses.msg.store.success'));
@@ -129,9 +128,7 @@ class BusinessController extends Controller
     public function show(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('manage', $business)) {
             abort(403);
@@ -152,9 +149,7 @@ class BusinessController extends Controller
     public function edit(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -165,12 +160,11 @@ class BusinessController extends Controller
         $categories = Category::lists('slug', 'id')->transform(
             function ($item, $key) {
                 return trans('app.business.category.'.$item);
-            }
-        );
+            });
         
         $category = $business->category_id;
         $this->log->info("  businessId:{$business->id} timezone:$timezone" .
-                         "category:$category location:".serialize($location));
+           "category:$category location:".serialize($location));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
@@ -184,9 +178,7 @@ class BusinessController extends Controller
     public function update(Business $business, BusinessFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -204,7 +196,7 @@ class BusinessController extends Controller
             'phone' => $request->get('phone'),
             'social_facebook' => $request->get('social_facebook'),
             'strategy' => $request->get('strategy')
-        ]);
+            ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
         return redirect()->route('manager.business.show', array($business->id));
@@ -219,9 +211,7 @@ class BusinessController extends Controller
     public function destroy(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('destroy', $business)) {
             abort(403);
