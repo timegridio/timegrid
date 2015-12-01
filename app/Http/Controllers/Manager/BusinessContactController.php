@@ -9,11 +9,6 @@ use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 
-/**
- * ToDo:
- *     - Use constructor dependency injection for Flash
- */
-
 class BusinessContactController extends Controller
 {
     /**
@@ -25,9 +20,7 @@ class BusinessContactController extends Controller
     public function index(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -46,9 +39,7 @@ class BusinessContactController extends Controller
     public function create(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -67,18 +58,22 @@ class BusinessContactController extends Controller
     public function store(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
         }
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         if (trim($request->input('nin'))) {
             $existing_contacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
+            
             foreach ($existing_contacts as $existing_contact) {
                 $this->log->info("  [ADVICE] Found existing contactId:{$existing_contact->id}");
+                
                 if ($existing_contact->isSubscribedTo($business)) {
                     $this->log->info("  [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
@@ -163,6 +158,10 @@ class BusinessContactController extends Controller
             abort(403);
         }
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $contact->update([
             'firstname'       => $request->get('firstname'),
             'lastname'        => $request->get('lastname'),
@@ -194,6 +193,10 @@ class BusinessContactController extends Controller
                                     $business->id,
                                     $contact->id
                                 ));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
 
         $contact->businesses()->detach($business->id);
 
