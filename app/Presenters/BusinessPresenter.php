@@ -12,19 +12,15 @@ class BusinessPresenter extends \Robbo\Presenter\Presenter
      */
     public function getFacebookImg($type = 'square')
     {
-        if(!$this->social_facebook)
-        {
+        if (!$this->social_facebook) {
             return "<img class=\"img-thumbnail\" src=\"//placehold.it/100x100\"/>";
         }
         $r = parse_url($this->social_facebook);
-        if($r['path'] == '/profile.php')
-        {
+        if ($r['path'] == '/profile.php') {
             parse_str($r['query'], $parts);
             $UID = $parts['id'];
-        }
-        else
-        {
-            $UID = trim($r['path'],'/');
+        } else {
+            $UID = trim($r['path'], '/');
         }
         $url = "http://graph.facebook.com/$UID/picture?type=$type";
         return "<img class=\"img-thumbnail media-object\" src='$url' />";

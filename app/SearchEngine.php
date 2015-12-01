@@ -21,7 +21,7 @@ class SearchEngine
 
     public function __construct($criteria)
     {
-        $this->scope['businessesIds'] = Auth::user()->businesses->transform(function($item, $key){ return $item->id; });
+        $this->scope['businessesIds'] = Auth::user()->businesses->transform(function ($item, $key) { return $item->id; });
         $this->criteria = $criteria;
     }
 
@@ -33,7 +33,9 @@ class SearchEngine
 
     public function run()
     {
-        if (strlen($this->criteria) < 3) return false;
+        if (strlen($this->criteria) < 3) {
+            return false;
+        }
 
         $this->getAppointments($this->criteria);
         $this->getContacts($this->criteria);
@@ -61,7 +63,7 @@ class SearchEngine
     {
         $businesses = Business::whereIn('id', $this->scope['businessesIds'])->get();
         foreach ($businesses as $business) {
-            $collection = $business->contacts()->where(function($query) use($expression){
+            $collection = $business->contacts()->where(function ($query) use ($expression) {
                 $query->where('lastname', 'like', $expression.'%')
                       ->orWhere('firstname', 'like', $expression.'%')
                       ->orWhere('nin', $expression)

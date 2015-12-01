@@ -13,7 +13,7 @@ class ConciergeServiceLayer
 {
     /**
      * is available for at least one reservation
-     * 
+     *
      * @param  Business $business Inquiry business
      * @param  User     $user     Potential issuer of reservation
      * @param  integer  $limit    Quantiy of days from "today"
@@ -28,7 +28,7 @@ class ConciergeServiceLayer
 
     /**
      * get Vacancies
-     * 
+     *
      * @param  Business $business For desired Business
      * @param  User     $user     To present to User
      * @param  integer  $limit    For a maximum of $limit days

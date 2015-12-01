@@ -4,7 +4,6 @@ namespace App\Traits;
 
 trait HasRoles
 {
-
     /**
      * A user may have multiple roles.
      *
