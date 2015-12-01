@@ -48,16 +48,16 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middl
     Route::group(['prefix' => 'businesses', 'as' => 'businesses.'], function () {
 
         Route::get('home/{business}', ['as' => 'home', 'uses' => 'BusinessController@getHome']);
-        Route::get('list',            ['as' => 'list', 'uses' => 'BusinessController@getList']);
-        Route::get('subscriptions',   ['as' => 'subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
+        Route::get('list', ['as' => 'list', 'uses' => 'BusinessController@getList']);
+        Route::get('subscriptions', ['as' => 'subscriptions', 'uses' => 'BusinessController@getSubscriptions']);
     });
 
     ////////////
     // WIZARD //
     ////////////
     Route::group(['prefix' => 'wizard', 'as' => 'wizard.'], function () {
-        Route::get('terms',   ['as' => 'terms',   'uses' => 'WizardController@getTerms'  ]);
-        Route::get('wizard',  ['as' => 'welcome', 'uses' => 'WizardController@getWelcome']);
+        Route::get('terms', ['as' => 'terms',   'uses' => 'WizardController@getTerms']);
+        Route::get('wizard', ['as' => 'welcome', 'uses' => 'WizardController@getWelcome']);
         Route::get('pricing', ['as' => 'pricing', 'uses' => 'WizardController@getPricing']);
     });
 
@@ -92,17 +92,32 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => [
         return Redirect::route('user.businesses.list');
     });
 
-    Route::get('business/{business}/preferences', ['as' => 'manager.business.preferences',
-                                                   'uses' => 'BusinessPreferencesController@getPreferences']);
-    Route::post('business/{business}/preferences', ['as' => 'manager.business.preferences',
-                                                    'uses' => 'BusinessPreferencesController@postPreferences']);
+    Route::get('business/{business}/preferences', [
+        'as' => 'manager.business.preferences',
+        'uses' => 'BusinessPreferencesController@getPreferences'
+        ]);
+    
+    Route::post('business/{business}/preferences', [
+        'as' => 'manager.business.preferences',
+        'uses' => 'BusinessPreferencesController@postPreferences'
+        ]);
+    
     Route::resource('business', 'BusinessController');
-    Route::get('business/{business}/contact/import', ['as' => 'manager.business.contact.import',
-                                                      'uses' => 'BusinessContactImportExportController@getImport']);
-    Route::post('business/{business}/contact/import', ['as' => 'manager.business.contact.import',
-                                                       'uses' => 'BusinessContactImportExportController@postImport']);
+
+    Route::get('business/{business}/contact/import', [
+        'as' => 'manager.business.contact.import',
+        'uses' => 'BusinessContactImportExportController@getImport'
+        ]);
+    
+    Route::post('business/{business}/contact/import', [
+        'as' => 'manager.business.contact.import',
+        'uses' => 'BusinessContactImportExportController@postImport'
+        ]);
+    
     Route::resource('business.contact', 'BusinessContactController');
+    
     Route::resource('business.service', 'BusinessServiceController');
+    
     Route::resource('business.vacancy', 'BusinessVacancyController');
 });
 
@@ -112,21 +127,23 @@ Route::get('about/{business}', ['as' => 'guest.business.home', 'uses' => 'Guest\
 // ROOT CONTEXT //
 //////////////////
 
-///////////////////////////////////////////////////////////
-// ToDo: Needs to be moved into a whole proper namespace //
-///////////////////////////////////////////////////////////
+Route::group([
+    'prefix'=> 'root',
+    'as' => 'root.',
+    'namespace' => 'Root',
+    'middleware' => ['auth', 'acl'],
+    'is'=> 'root'],
+    function () {
 
-Route::group(['prefix'=> 'root', 'as' => 'root.', 'namespace' => 'Root', 'middleware' => ['auth', 'acl'], 'is'=> 'root'], function () {
+        Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
-    Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
-
-    Route::get('sudo/{userId}', function ($userId) {
-        auth()->loginUsingId($userId);
-        Log::warning("[!] ROOT SUDO userId:$userId");
-        Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
-        return Redirect::route('user.businesses.list');
-    })->where('userId', '\d*');
-});
+        Route::get('sudo/{userId}', function ($userId) {
+            auth()->loginUsingId($userId);
+            Log::warning("[!] ROOT SUDO userId:$userId");
+            Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
+            return Redirect::route('user.businesses.list');
+        })->where('userId', '\d*');
+    });
 
 ///////////////////////
 // LANGUAGE SWITCHER //
@@ -147,8 +164,11 @@ Route::controllers([
 // SOCIAL AUTH //
 /////////////////
 
-Route::get('social/login/redirect/{provider}', ['as' => 'social.login',
-                                                'uses' => 'Auth\OAuthController@redirectToProvider' ]);
+Route::get('social/login/redirect/{provider}', [
+    'as' => 'social.login',
+    'uses' => 'Auth\OAuthController@redirectToProvider'
+    ]);
+
 Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
 
 ///////////////////////////
