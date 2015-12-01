@@ -7,6 +7,7 @@ use App\Models\Vacancy;
 use App\Models\Business;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
 
 class TestingDatabaseSeeder extends Seeder
 {
@@ -54,6 +55,10 @@ class TestingDatabaseSeeder extends Seeder
         $this->publishVacanciesFor($business, $serviceC);
     }
 
+    /////////////////////////
+    // SAMPLE DATA HELPERS //
+    /////////////////////////
+
     private function createDemoManagerUser()
     {
         // Create demo user (Business Manager)
@@ -95,7 +100,6 @@ class TestingDatabaseSeeder extends Seeder
         if ($user) {
             $contact->user()->associate($user);
         }
-        # $contact->save();
 
         return $contact;
     }
@@ -122,7 +126,7 @@ class TestingDatabaseSeeder extends Seeder
         
         try {
             $vacancy->save();
-        } catch (\Illuminate\Database\QueryException $e) {
+        } catch (QueryException $e) {
             // We are Ok with getting some key collisions since
             // dates are generated randomly
         }
