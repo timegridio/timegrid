@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "440047f6b1ffc2c44a11341ac4f8d8b9",
-    "content-hash": "52c0981ac5e082eb0f1ddc3f2e3ff709",
+    "hash": "f0584105e3e257215bb0a38129b79cde",
+    "content-hash": "5610485e9c4790eb660a33feb9a7498b",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -2254,47 +2254,6 @@
                 "url"
             ],
             "time": "2014-08-09 23:24:27"
-        },
-        {
-            "name": "potsky/laravel-localization-helpers",
-            "version": "v1.3.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/potsky/laravel-localization-helpers.git",
-                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
-                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=4.1",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Potsky",
-                    "email": "potsky@me.com",
-                    "homepage": "http://www.potsky.com"
-                }
-            ],
-            "description": "An artisan command package for easy translation management",
-            "time": "2015-02-25 17:02:09"
         },
         {
             "name": "propaganistas/laravel-phone",
@@ -5003,6 +4962,47 @@
                 "xunit"
             ],
             "time": "2014-11-02 09:23:27"
+        },
+        {
+            "name": "potsky/laravel-localization-helpers",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/laravel-localization-helpers.git",
+                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
+                "reference": "e645cb86a8452a21cc09e0b951e6ca1dd7c8fc27",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=4.1",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Potsky",
+                    "email": "potsky@me.com",
+                    "homepage": "http://www.potsky.com"
+                }
+            ],
+            "description": "An artisan command package for easy translation management",
+            "time": "2015-02-25 17:02:09"
         },
         {
             "name": "satooshi/php-coveralls",

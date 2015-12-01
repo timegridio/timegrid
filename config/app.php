@@ -159,8 +159,6 @@ return [
 
         #Kodeine\Acl\AclServiceProvider::class,
 
-        Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProviderLaravel5::class,
-
         Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,
 
