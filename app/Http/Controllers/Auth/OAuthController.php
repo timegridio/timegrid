@@ -14,9 +14,6 @@ class OAuthController extends Controller implements AuthenticateUserListener
 {
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * [__construct description]
-     */
     public function __construct()
     {
         $this->redirectPath = route('home');
@@ -24,7 +21,7 @@ class OAuthController extends Controller implements AuthenticateUserListener
 
     /**
      * [redirectToProvider description]
-     * 
+     *
      * @param  [type] $provider [description]
      * @return [type]           [description]
      */
@@ -38,7 +35,7 @@ class OAuthController extends Controller implements AuthenticateUserListener
 
     /**
      * [handleProviderCallback description]
-     * 
+     *
      * @param  [type]           $provider         [description]
      * @param  AuthenticateUser $authenticateUser [description]
      * @param  Request          $request          [description]
@@ -52,7 +49,7 @@ class OAuthController extends Controller implements AuthenticateUserListener
 
     /**
      * [userHasLoggedIn description]
-     * 
+     *
      * @param  [type] $user [description]
      * @return [type]       [description]
      */
