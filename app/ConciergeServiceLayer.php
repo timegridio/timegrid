@@ -9,6 +9,21 @@ use App\AvailabilityServiceLayer;
 class ConciergeServiceLayer
 {
     /**
+     * is available for at least one reservation
+     * 
+     * @param  Business $business Inquiry business
+     * @param  User     $user     Potential issuer of reservation
+     * @param  integer  $limit    Quantiy of days from "today"
+     * @return boolean            There exist vacancies to reserve
+     */
+    public function isAvailable(Business $business, User $user, $limit = 7)
+    {
+        $availability = new AvailabilityServiceLayer($business);
+
+        return $availability->isAvailable($user, $limit);
+    }
+
+    /**
      * get Vacancies
      * 
      * @param  Business $business For desired Business

@@ -21,6 +21,14 @@ class AvailabilityServiceLayer
         $this->business = $business;
     }
 
+    public function isAvailable(User $user, $limit = 7)
+    {
+        $vacancies = $this->getVacancies($limit);
+        $vacancies = $this->removeSelfBooked($vacancies, $user);
+
+        return !$vacancies->isEmpty();
+    }
+
     public function getVacanciesFor($user, $limit = 7)
     {
         $vacancies = $this->getVacancies($limit);

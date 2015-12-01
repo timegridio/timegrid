@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
+use Flash;
 use App\Business;
 use Carbon\Carbon;
-use Notifynder;
-use Flash;
+use App\ConciergeServiceLayer;
+use App\Http\Controllers\Controller;
+use Fenos\Notifynder\Facades\Notifynder;
 
 /**
  * ToDo:
@@ -34,8 +35,9 @@ class BusinessController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        # $available = ConciergeServiceLayer::isAvailable($business, Carbon::now(), auth()->user());
-        $available = true; /* ToDo */
+        $concierge = new ConciergeServiceLayer();
+        $available = $concierge->isAvailable($business, auth()->user());
+        # $available = true; /* ToDo */
 
         return view('user.businesses.show', compact('business', 'available'));
     }
