@@ -104,7 +104,7 @@ class BusinessContactController extends Controller
     public function show(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+        $this->log->info(sprintf("  businessId:%s contactId:%s",
                                     $business->id,
                                     $contact->id
                                 ));
@@ -126,7 +126,7 @@ class BusinessContactController extends Controller
     public function edit(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+        $this->log->info(sprintf("  businessId:%s contactId:%s",
                                     $business->id,
                                     $contact->id
                                 ));
@@ -149,7 +149,7 @@ class BusinessContactController extends Controller
     public function update(Business $business, Contact $contact, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+        $this->log->info(sprintf("  businessId:%s contactId:%s",
                                     $business->id,
                                     $contact->id
                                 ));
@@ -189,20 +189,20 @@ class BusinessContactController extends Controller
     public function destroy(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+        $this->log->info(sprintf("  businessId:%s contactId:%s",
                                     $business->id,
                                     $contact->id
                                 ));
+
+        if (Gate::denies('manageContacts', $business)) {
+            abort(403);
+        }
 
         //////////////////
         // FOR REFACTOR //
         //////////////////
 
         $contact->businesses()->detach($business->id);
-
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return redirect()->route('manager.business.contact.index', $business);
