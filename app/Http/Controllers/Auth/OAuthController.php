@@ -17,6 +17,7 @@ class OAuthController extends Controller implements AuthenticateUserListener
     public function __construct()
     {
         $this->redirectPath = route('home');
+        parent::__construct();
     }
 
     /**
