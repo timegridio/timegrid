@@ -1,20 +1,16 @@
 <?php
 
-return array(
-
-
-    'pdf' => array(
+return [
+    'pdf' => [
         'enabled' => true,
         'binary' => '/usr/local/bin/wkhtmltopdf',
         'timeout' => false,
-        'options' => array(),
-    ),
-    'image' => array(
+        'options' => [],
+    ],
+    'image' => [
         'enabled' => true,
         'binary' => '/usr/local/bin/wkhtmltoimage',
         'timeout' => false,
-        'options' => array(),
-    ),
-
-
-);
+        'options' => [],
+    ],
+];
