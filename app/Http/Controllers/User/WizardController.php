@@ -4,6 +4,11 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 
+/*******************************************************************************
+ * The Wizard will present either a guided step-by-step configuration for
+ * businesses owners, or business directory listing for new users acting as
+ * customers. It will also send them to default views if they are regular users.
+ ******************************************************************************/
 class WizardController extends Controller
 {
     /**
@@ -16,21 +21,20 @@ class WizardController extends Controller
         $this->log->info(__METHOD__);
 
         if (auth()->user()->hasBusiness()) {
-            $this->log->info('WizardController: getHome: User has Business');
+            $this->log->info('  User has Business');
             return redirect()->route('manager.business.index');
         }
 
         if (auth()->user()->hasContacts()) {
-            $this->log->info('WizardController: getHome: User has Contacts');
+            $this->log->info('  User has Contacts');
             return redirect()->route('user.businesses.list');
         }
 
-        $this->log->info('WizardController: getHome: Displaying Wizard');
         return view('wizard');
     }
 
     /**
-     * get Welcome
+     * get Welcome page
      *
      * @return Response Rendered view for Wizard
      */
