@@ -29,7 +29,7 @@ class BusinessController extends Controller
         $businesses = auth()->user()->businesses;
 
         if ($businesses->count()==1) {
-            $this->log->info('Manager\BusinessController: index: Only one business to show');
+            $this->log->info('  Only one business to show');
             $business = $businesses->first();
             Flash::success(trans('manager.businesses.msg.index.only_one_found'));
             return redirect()->route('manager.business.show', $business);
@@ -48,11 +48,11 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
 
         $plan = Request::query('plan') ?: 'free';
-        $this->log->info("Manager\BusinessController: create: plan:$plan");
+        $this->log->info("  plan:$plan");
 
         $location = GeoIP::getLocation();
         $timezone = $location['timezone'];
-        $this->log->info("Manager\BusinessController: create: timezone:$timezone location:".serialize($location));
+        $this->log->info("  timezone:$timezone location:".serialize($location));
 
         $categories = Category::lists('slug', 'id')->transform(
             function ($item, $key) {
@@ -73,6 +73,10 @@ class BusinessController extends Controller
     {
         $this->log->info(__METHOD__);
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         // Search Existing
         $existingBusiness = Business::withTrashed()->where(['slug' => $request->input('slug')])->first();
 
@@ -84,11 +88,12 @@ class BusinessController extends Controller
             if (auth()->user()->isOwner($existingBusiness)) {
                 $this->log->info("  Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
+
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
                 return redirect()->route('manager.business.service.create', $existingBusiness);
             }
 
-            # If not owned, return message
+            // If not owned, return message
             $this->log->info("  Already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
             return redirect()->route('manager.business.index');
@@ -137,6 +142,7 @@ class BusinessController extends Controller
         session()->set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
         $business->readAllNotifications();
+
         return view('manager.businesses.show', compact('business', 'notifications'));
     }
 
@@ -155,6 +161,10 @@ class BusinessController extends Controller
             abort(403);
         }
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
         $categories = Category::lists('slug', 'id')->transform(
@@ -163,8 +173,12 @@ class BusinessController extends Controller
             });
         
         $category = $business->category_id;
-        $this->log->info("  businessId:{$business->id} timezone:$timezone" .
-           "category:$category location:".serialize($location));
+        $this->log->info(sprintf("  businessId:%s timezone:%s category:%s location:%s",
+                                    $business->id,
+                                    $timezone,
+                                    $category,
+                                    serialize($location))
+                        );
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
@@ -183,6 +197,10 @@ class BusinessController extends Controller
         if (Gate::denies('update', $business)) {
             abort(403);
         }
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
 
         $category = Category::find(Request::get('category'));
         $business->category()->associate($category);
@@ -216,6 +234,10 @@ class BusinessController extends Controller
         if (Gate::denies('destroy', $business)) {
             abort(403);
         }
+
+        //////////////////
+        // FOR REFACOTR //
+        //////////////////
 
         $business->delete();
 
