@@ -131,10 +131,9 @@ Route::group([
     'prefix'=> 'root',
     'as' => 'root.',
     'namespace' => 'Root',
-    'middleware' => ['auth', 'acl'],
-    'is'=> 'root'],
+    'middleware' => ['auth', 'role:root']
+    ],
     function () {
-
         Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
         Route::get('sudo/{userId}', function ($userId) {
