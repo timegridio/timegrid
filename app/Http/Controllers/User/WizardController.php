@@ -13,7 +13,7 @@ class WizardController extends Controller
      */
     public function getWizard()
     {
-        $this->log->info('WizardController: getHome');
+        $this->log->info(__METHOD__);
 
         if (auth()->user()->hasBusiness()) {
             $this->log->info('WizardController: getHome: User has Business');
@@ -36,7 +36,8 @@ class WizardController extends Controller
      */
     public function getWelcome()
     {
-        $this->log->info('WizardController: getWelcome');
+        $this->log->info(__METHOD__);
+
         return view('wizard');
     }
 
@@ -47,7 +48,8 @@ class WizardController extends Controller
      */
     public function getPricing()
     {
-        $this->log->info('WizardController: getPricing');
+        $this->log->info(__METHOD__);
+
         return view('manager.pricing');
     }
 
@@ -58,7 +60,8 @@ class WizardController extends Controller
      */
     public function getTerms()
     {
-        $this->log->info('WizardController: getTerms');
+        $this->log->info(__METHOD__);
+
         return view('manager.terms');
     }
 }

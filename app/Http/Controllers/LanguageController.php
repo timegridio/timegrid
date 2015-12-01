@@ -13,7 +13,7 @@ class LanguageController extends Controller
      */
     public function switchLang($lang)
     {
-        $this->log->info("Language switch Request to $lang");
+        $this->log->info(sprintf("%s: %s", __METHOD__, $lang));
  
         if (array_key_exists($lang, config()->get('languages'))) {
             $this->log->info('Language Switched');

@@ -23,7 +23,8 @@ class BusinessContactController extends Controller
      */
     public function create(Business $business)
     {
-        $this->log->info('BusinessContactController: create');
+        $this->log->info(__METHOD__);
+
         $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
 
         if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
@@ -47,7 +48,7 @@ class BusinessContactController extends Controller
      */
     public function store(Business $business, AlterContactRequest $request)
     {
-        $this->log->info('BusinessContactController: store');
+        $this->log->info(__METHOD__);
 
         $business_name = $business->name;
         Notifynder::category('user.subscribedBusiness')
@@ -92,7 +93,12 @@ class BusinessContactController extends Controller
      */
     public function show(Business $business, Contact $contact, ViewContactRequest $request)
     {
-        $this->log->info("BusinessContactController: show: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s",
+                                    $business->id,
+                                    $contact->id
+                                ));
+
         return view('user.contacts.show', compact('business', 'contact'));
     }
 

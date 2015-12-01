@@ -28,7 +28,8 @@ class AgendaController extends Controller
      */
     public function getIndex(ConciergeServiceLayer $concierge)
     {
-        $this->log->info('AgendaController: getIndex');
+        $this->log->info(__METHOD__);
+
         $appointments = $concierge->getAppointmentsFor(auth()->user());
         return view('user.appointments.index', compact('appointments'));
     }
@@ -42,7 +43,7 @@ class AgendaController extends Controller
      */
     public function getAvailability(Business $business, ConciergeServiceLayer $concierge)
     {
-        $this->log->info('AgendaController: getBook');
+        $this->log->info(__METHOD__);
 
         Notifynder::category('user.checkingVacancies')
                    ->from('App\Models\User', auth()->user()->id)
@@ -69,7 +70,8 @@ class AgendaController extends Controller
      */
     public function postStore(Request $request, ConciergeServiceLayer $concierge)
     {
-        $this->log->info('AgendaController: postStore');
+        $this->log->info(__METHOD__);
+        
         $issuer = auth()->user();
 
         $business = Business::findOrFail($request->input('businessId'));

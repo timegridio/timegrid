@@ -25,7 +25,11 @@ class BusinessController extends Controller
      */
     public function getHome(Business $business)
     {
-        $this->log->info("BusinessController: getHome: businessId:{$business->id} businessSlug:({$business->slug})");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s businessSlug:'%s'",
+                                    $business->id,
+                                    $business->slug
+                                ));
 
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
@@ -49,7 +53,8 @@ class BusinessController extends Controller
      */
     public function getList()
     {
-        $this->log->info('BusinessController: getList');
+        $this->log->info(__METHOD__);
+
         $businesses = Business::all();
         return view('user.businesses.index', compact('businesses'));
     }
@@ -64,7 +69,9 @@ class BusinessController extends Controller
      */
     public function getSelect(Business $business)
     {
-        $this->log->info("BusinessController: getSelect businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", $business->id));
+
         session()->set('selected.business', $business);
         return $this->getHome($business);
     }
@@ -81,7 +88,8 @@ class BusinessController extends Controller
      */
     public function getSubscriptions()
     {
-        $this->log->info('BusinessController: getSubscriptions');
+        $this->log->info(__METHOD__);
+
         $contacts = auth()->user()->contacts;
         return view('user.businesses.subscriptions', compact('contacts'));
     }

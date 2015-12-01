@@ -28,7 +28,8 @@ class BusinessVacancyController extends Controller
      */
     public function create(Business $business)
     {
-      $this->log->info("BusinessServiceController: create: businessId:{$business->id}");
+      $this->log->info(__METHOD__);
+      $this->log->info(sprintf("  businessId:%s", $business->id));
 
       $dates = AvailabilityServiceLayer::generateAvailability($business->vacancies);
       $services = $business->services;
@@ -46,7 +47,8 @@ class BusinessVacancyController extends Controller
      */
     public function store(Business $business, Request $request)
     {
-      $this->log->info("BusinessServiceController: store: businessId:{$business->id}");
+      $this->log->info(__METHOD__);
+      $this->log->info(sprintf("  businessId:%s", $business->id));
 
       $dates = $request->get('vacancy');
       $success = false;
@@ -57,21 +59,21 @@ class BusinessVacancyController extends Controller
           switch (trim($capacity)) {
             case '':
               // Dont update, leave as is
-              $this->log->info("BusinessServiceController: store: [ADVICE] Blank vacancy capacity value businessId:{$business->id}");
-              break;
+            $this->log->info("BusinessServiceController: store: [ADVICE] Blank vacancy capacity value businessId:{$business->id}");
+            break;
             default:
-              $start_at  = Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone);
-              $finish_at = Carbon::parse($date . ' ' . $business->pref('finish_at', '20:00:00'))->timezone($business->timezone);
-  
-              $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id,
-                'service_id' => $serviceId,
-                'date' => $date],
-                ['capacity' => intval($capacity),
-                'start_at' => $start_at,
-                'finish_at' => $finish_at]
-                );
-              $success = true;
-              break;
+            $start_at  = Carbon::parse($date . ' ' . $business->pref('start_at'))->timezone($business->timezone);
+            $finish_at = Carbon::parse($date . ' ' . $business->pref('finish_at', '20:00:00'))->timezone($business->timezone);
+
+            $vacancy = Vacancy::updateOrCreate(['business_id' => $business->id,
+              'service_id' => $serviceId,
+              'date' => $date],
+              ['capacity' => intval($capacity),
+              'start_at' => $start_at,
+              'finish_at' => $finish_at]
+              );
+            $success = true;
+            break;
           }
         }
       }

@@ -20,7 +20,11 @@ class BusinessContactImportExportController extends Controller
      */
     public function getImport(Business $business, Request $request)
     {
-        $this->log->info("BusinessContactImportExportController: getImport: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
+
         return view('manager.contacts.import', compact('business'));
     }
 
@@ -33,7 +37,11 @@ class BusinessContactImportExportController extends Controller
      */
     public function postImport(Business $business, Request $request)
     {
-        $this->log->info("BusinessContactImportExportController: postImport: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
+
         $csv = $this->csvToArray(Request::get('data'));
         
         foreach ($csv as $import) {
@@ -52,7 +60,7 @@ class BusinessContactImportExportController extends Controller
         }
 
         $count = count($csv);
-        $this->log->info("BusinessContactImportExportController: Imported $count contacts to businessId:{$business->id}");
+        $this->log->info("  Imported $count contacts to businessId:{$business->id}");
 
         Notifynder::category('user.importedContacts')
                    ->from('App\Models\User', auth()->user()->id)
@@ -77,7 +85,7 @@ class BusinessContactImportExportController extends Controller
      */
     private function csvToArray($data='')
     {
-        $this->log->info("BusinessContactImportExportController: csvToArray");
+        $this->log->info(__METHOD__);
 
         $rows = array_map('str_getcsv', explode("\n", $data));
         $header = array_shift($rows);

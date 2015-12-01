@@ -15,7 +15,11 @@ class BusinessController extends Controller
      */
     public function getHome(Business $business)
     {
-        $this->log->info("BusinessController@getHome: businessId:{$business->id} businessSlug:({$business->slug})");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s businessSlug:%s", 
+                                    $business->id,
+                                    $business->slug
+                                ));
 
         return view('guest.businesses.show', compact('business'));
     }
@@ -27,7 +31,7 @@ class BusinessController extends Controller
      */
     public function getList()
     {
-        $this->log->info('BusinessController@getList');
+        $this->log->info(__METHOD__);
         
         $businesses = Business::all();
         return view('guest.businesses.index', compact('businesses'));

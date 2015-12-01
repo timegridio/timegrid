@@ -24,7 +24,10 @@ class BusinessContactController extends Controller
      */
     public function index(Business $business)
     {
-        $this->log->info("BusinessContactController@index: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -42,7 +45,10 @@ class BusinessContactController extends Controller
      */
     public function create(Business $business, ContactFormRequest $request)
     {
-        $this->log->info("BusinessContactController@create: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -60,7 +66,10 @@ class BusinessContactController extends Controller
      */
     public function store(Business $business, ContactFormRequest $request)
     {
-        $this->log->info("BusinessContactController@store: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -69,9 +78,9 @@ class BusinessContactController extends Controller
         if (trim($request->input('nin'))) {
             $existing_contacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
             foreach ($existing_contacts as $existing_contact) {
-                $this->log->info("BusinessContactController: store: [ADVICE] Found existing contactId:{$existing_contact->id}");
+                $this->log->info("  [ADVICE] Found existing contactId:{$existing_contact->id}");
                 if ($existing_contact->isSubscribedTo($business)) {
-                    $this->log->info("BusinessContactController: store: [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
+                    $this->log->info("  [ADVICE] Existing contactId:{$existing_contact->id} is already linked to businessId:{$business->id}");
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
                     return redirect()->route('manager.business.contact.show', [$business, $existing_contact]);
                 }
@@ -81,7 +90,7 @@ class BusinessContactController extends Controller
         $contact = Contact::create($request->except('notes', '_token'));
         $business->contacts()->attach($contact);
         $business->save();
-        $this->log->info("BusinessContactController@store: Contact created contactId:{$contact->id}");
+        $this->log->info("  Contact created contactId:{$contact->id}");
 
         $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
 
@@ -99,7 +108,11 @@ class BusinessContactController extends Controller
      */
     public function show(Business $business, Contact $contact)
     {
-        $this->log->info("BusinessContactController@show: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+                                    $business->id,
+                                    $contact->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -117,7 +130,11 @@ class BusinessContactController extends Controller
      */
     public function edit(Business $business, Contact $contact)
     {
-        $this->log->info("BusinessContactController@edit: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+                                    $business->id,
+                                    $contact->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -136,7 +153,11 @@ class BusinessContactController extends Controller
      */
     public function update(Business $business, Contact $contact, ContactFormRequest $request)
     {
-        $this->log->info("BusinessContactController@update: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+                                    $business->id,
+                                    $contact->id
+                                ));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -168,7 +189,12 @@ class BusinessContactController extends Controller
      */
     public function destroy(Business $business, Contact $contact)
     {
-        $this->log->info("BusinessContactController@destroy: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", 
+                                    $business->id,
+                                    $contact->id
+                                ));
+
         $contact->businesses()->detach($business->id);
 
         if (Gate::denies('manageContacts', $business)) {

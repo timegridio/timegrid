@@ -15,7 +15,10 @@ class BusinessAgendaController extends Controller
      */
     public function getIndex(Business $business)
     {
-        $this->log->info("BusinessAgendaController: getIndex: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         $appointments = $business->bookings()->with('contact')->with('business')->with('service')->unserved()->orderBy('start_at')->get();
         return view('manager.businesses.appointments.'.$business->strategy.'.index', compact('business', 'appointments'));

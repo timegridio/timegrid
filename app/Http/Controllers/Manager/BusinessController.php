@@ -24,7 +24,8 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $this->log->info('Manager\BusinessController: index');
+        $this->log->info(__METHOD__);
+
         $businesses = auth()->user()->businesses;
 
         if ($businesses->count()==1) {
@@ -44,6 +45,8 @@ class BusinessController extends Controller
      */
     public function create()
     {
+        $this->log->info(__METHOD__);
+
         $plan = Request::query('plan') ?: 'free';
         $this->log->info("Manager\BusinessController: create: plan:$plan");
 
@@ -69,25 +72,25 @@ class BusinessController extends Controller
      */
     public function store(BusinessFormRequest $request)
     {
-        $this->log->info('Manager\BusinessController@store');
+        $this->log->info(__METHOD__);
 
         // Search Existing
         $existingBusiness = Business::withTrashed()->where(['slug' => $request->input('slug')])->first();
 
         // If found
         if ($existingBusiness !== null) {
-            $this->log->info("Manager\BusinessController@store: Found existing businessId:{$existingBusiness->id}");
+            $this->log->info("  Found existing businessId:{$existingBusiness->id}");
 
             // If owned, restore
             if (auth()->user()->isOwner($existingBusiness)) {
-                $this->log->info("Manager\BusinessController@store: Restoring owned businessId:{$existingBusiness->id}");
+                $this->log->info("  Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
                 return redirect()->route('manager.business.service.create', $existingBusiness);
             }
 
             # If not owned, return message
-            $this->log->info("Manager\BusinessController@store: Already taken businessId:{$existingBusiness->id}");
+            $this->log->info("  Already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
             return redirect()->route('manager.business.index');
         }
@@ -125,7 +128,10 @@ class BusinessController extends Controller
      */
     public function show(Business $business)
     {
-        $this->log->info("Manager\BusinessController: show: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('manage', $business)) {
             abort(403);
@@ -145,7 +151,10 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
-        $this->log->info("Manager\BusinessController@edit: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -160,7 +169,7 @@ class BusinessController extends Controller
         );
         
         $category = $business->category_id;
-        $this->log->info("Manager\BusinessController@edit: businessId:{$business->id} timezone:$timezone" .
+        $this->log->info("  businessId:{$business->id} timezone:$timezone" .
                          "category:$category location:".serialize($location));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
@@ -174,7 +183,10 @@ class BusinessController extends Controller
      */
     public function update(Business $business, BusinessFormRequest $request)
     {
-        $this->log->info("Manager\BusinessController: update: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -206,7 +218,10 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        $this->log->info("Manager\BusinessController: destroy: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('destroy', $business)) {
             abort(403);

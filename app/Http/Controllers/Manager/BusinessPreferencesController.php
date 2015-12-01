@@ -25,6 +25,11 @@ class BusinessPreferencesController extends Controller
      */
     public function getPreferences(Business $business)
     {
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
+
         if (Gate::denies('managePreferences', $business)) {
             abort(403);
         }
@@ -42,7 +47,10 @@ class BusinessPreferencesController extends Controller
      */
     public function postPreferences(Business $business, Request $request)
     {
-        $this->log->info("Manager\BusinessController: postPreferences: businessId:{$business->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s", 
+                                    $business->id
+                                ));
 
         if (Gate::denies('managePreferences', $business)) {
             abort(403);

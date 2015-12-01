@@ -33,7 +33,8 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        $this->log->info('Welcome hit');
+        $this->log->info(__METHOD__);
+
         return view('welcome');
     }
 }

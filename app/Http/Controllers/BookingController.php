@@ -26,7 +26,8 @@ class BookingController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
-        $this->log->info('BookingController: postAction');
+        $this->log->info(__METHOD__);
+
         $issuer = auth()->user();
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
