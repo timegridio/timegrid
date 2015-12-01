@@ -9,6 +9,12 @@ use App\Models\Contact;
 use App\Models\Business;
 use App\Http\Controllers\Controller;
 
+/*******************************************************************************
+ * The importer allows the business manager to import contacts from a CSV
+ * clipboard. The export function will be added in the future.
+ * This is a standalone controller and a better implementation of import export
+ * will be designed.
+ ******************************************************************************/
 class BusinessContactImportExportController extends Controller
 {
     /**
@@ -21,9 +27,7 @@ class BusinessContactImportExportController extends Controller
     public function getImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
 
         return view('manager.contacts.import', compact('business'));
     }
@@ -38,9 +42,11 @@ class BusinessContactImportExportController extends Controller
     public function postImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("  businessId:%s", $business->id));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
 
         $csv = $this->csvToArray(Request::get('data'));
         
@@ -60,7 +66,7 @@ class BusinessContactImportExportController extends Controller
         }
 
         $count = count($csv);
-        $this->log->info("  Imported $count contacts to businessId:{$business->id}");
+        $this->log->info("  Imported $count contacts");
 
         Notifynder::category('user.importedContacts')
                    ->from('App\Models\User', auth()->user()->id)
