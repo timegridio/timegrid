@@ -17,12 +17,11 @@ class BusinessContactController extends Controller
     /**
      * create Contact
      *
-     * @param  Business            $business Business that holds the addressbook
-     *                                       for Contact
-     * @param  AlterContactRequest $request  Request for Altering Contact
-     * @return Response                      Rendered form for Contact creation
+     * @param  Business  $business Business that holds the addressbook
+     *                             for Contact
+     * @return Response            Rendered form for Contact creation
      */
-    public function create(Business $business, AlterContactRequest $request)
+    public function create(Business $business)
     {
         $this->log->info('BusinessContactController: create');
         $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
