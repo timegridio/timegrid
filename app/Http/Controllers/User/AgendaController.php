@@ -17,20 +17,27 @@ use App\Http\Controllers\Controller;
 /**
  * ToDo:
  *     - Use constructor dependency injection for Auth, Flash, Event
- *     - Use constructor dependency injection for ConciergeServiceLayer
  */
 class AgendaController extends Controller
 {
+    private $concierge;
+
+    public function __construct(ConciergeServiceLayer $concierge)
+    {
+        $this->concierge = $concierge;
+        parent::__construct();
+    }
+
     /**
      * get Index
      *
      * @return Response Rendered list view for User Appointments
      */
-    public function getIndex(ConciergeServiceLayer $concierge)
+    public function getIndex()
     {
         $this->log->info(__METHOD__);
 
-        $appointments = $concierge->getAppointmentsFor(auth()->user());
+        $appointments = $this->concierge->getAppointmentsFor(auth()->user());
         return view('user.appointments.index', compact('appointments'));
     }
 
@@ -38,10 +45,9 @@ class AgendaController extends Controller
      * get Availability for Business
      *
      * @param  Business              $business  Business to query
-     * @param  ConciergeServiceLayer $concierge Concierge injection
      * @return Response Rendered view of Appointment booking form
      */
-    public function getAvailability(Business $business, ConciergeServiceLayer $concierge)
+    public function getAvailability(Business $business)
     {
         $this->log->info(__METHOD__);
 
@@ -57,7 +63,7 @@ class AgendaController extends Controller
             return redirect()->back();
         }
 
-        $availability = $concierge->getVacancies($business, auth()->user(), 7);
+        $availability = $this->concierge->getVacancies($business, auth()->user(), 7);
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
@@ -65,10 +71,9 @@ class AgendaController extends Controller
      * post Store
      *
      * @param  Request $request Input data of booking form
-     * @param  ConciergeServiceLayer $concierge Concierge injection
      * @return Response         Redirect to Appointments listing
      */
-    public function postStore(Request $request, ConciergeServiceLayer $concierge)
+    public function postStore(Request $request)
     {
         $this->log->info(__METHOD__);
         
@@ -80,7 +85,7 @@ class AgendaController extends Controller
         $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'))->timezone($business->timezone);
         $comments = $request->input('comments');
 
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
+        $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
             $this->log->info('AgendaController: postStore: [ADVICE] Unable to book ');
