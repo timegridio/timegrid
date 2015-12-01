@@ -95,9 +95,9 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s contactId:%s",
-                                    $business->id,
-                                    $contact->id
-                                ));
+            $business->id,
+            $contact->id
+            ));
 
         return view('user.contacts.show', compact('business', 'contact'));
     }
