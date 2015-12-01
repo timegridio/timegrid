@@ -6,7 +6,6 @@ use Event;
 use Flash;
 use Carbon;
 use Notifynder;
-use App\Http\Requests;
 use App\Models\Service;
 use App\Models\Business;
 use App\Events\NewBooking;
