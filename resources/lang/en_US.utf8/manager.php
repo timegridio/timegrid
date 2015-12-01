@@ -96,7 +96,7 @@ return [
       ],
       'social_facebook' =>
       [
-        'label' => 'Facebook URL',
+        'label' => 'Your Facebook Page URL',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ],
       'timezone' =>
