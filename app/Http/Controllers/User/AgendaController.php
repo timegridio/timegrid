@@ -58,7 +58,7 @@ class AgendaController extends Controller
                    ->send();
 
         if (!auth()->user()->getContactSubscribedTo($business)) {
-            $this->log->info('AgendaController: getIndex: [ADVICE] User not subscribed to Business');
+            $this->log->info('  [ADVICE] User not subscribed to Business');
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
             return redirect()->back();
         }
@@ -88,20 +88,21 @@ class AgendaController extends Controller
         $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
-            $this->log->info('AgendaController: postStore: [ADVICE] Unable to book ');
+            $this->log->info(' [ADVICE] Unable to book');
             Flash::warning(trans('user.booking.msg.store.error'));
             return redirect()->route('user.booking.list');
         }
 
         $appointmentPresenter = $appointment->getPresenter();
         if ($appointment->exists) {
-            $this->log->info('AgendaController: postStore: Appointment saved successfully ');
+            $this->log->info('  Appointment saved successfully');
             Event::fire(new NewBooking($issuer, $appointment));
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
-        } else {
-            $this->log->info('AgendaController: postStore: [ADVICE] Appointment is duplicated ');
-            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
+            return redirect()->route('user.booking.list');
         }
+
+        $this->log->info('  [ADVICE] Appointment is duplicated');
+        Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
         return redirect()->route('user.booking.list');
     }
 }
