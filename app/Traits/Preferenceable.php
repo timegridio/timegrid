@@ -27,19 +27,19 @@ trait Preferenceable
         switch ($type) {
             case 'bool':
                 return boolval($value);
-            break;
+                break;
             case 'int':
                 return intval($value);
-            break;
+                break;
             case 'float':
                 return floatval($value);
-            break;
+                break;
             case 'string':
                 return $value;
-            break;
+                break;
             default:
                 return $value;
-            break;
+                break;
         }
     }
 }

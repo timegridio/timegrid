@@ -35,10 +35,10 @@ class ContactFormRequest extends Request
             case 'PUT':
             case 'POST':
                 return $rules;
-            break;
+                break;
             default:
                 return [];
-            break;
+                break;
         }
     }
 }

@@ -119,17 +119,17 @@ class AppointmentPanel extends Widget
         switch ($this->appointment->status) {
             case Appointment::STATUS_ANNULATED:
                 return 'danger';
-            break;
+                break;
             case Appointment::STATUS_CONFIRMED:
                 return 'success';
-            break;
+                break;
             case Appointment::STATUS_RESERVED:
                 return 'warning';
-            break;
+                break;
             case Appointment::STATUS_SERVED:
             default:
                 return 'default';
-            break;
+                break;
         }
     }
 

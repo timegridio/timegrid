@@ -91,24 +91,24 @@ class Preference extends EloquentModel
         switch ($this->type) {
             case 'string':
                 return (string) $this->value;
-            break;
+                break;
             case 'bool':
                 return (bool) $this->value;
-            break;
+                break;
             case 'int':
                 return (int) $this->value;
-            break;
+                break;
             case 'float':
                 return (float) $this->value;
-            break;
+                break;
             case 'json':
                 return json_decode($this->value);
-            break;
+                break;
             case 'array':
                 return unserialize($this->value);
-            break;
+                break;
             default:
-            break;
+                break;
         }
         return $this->value;
     }

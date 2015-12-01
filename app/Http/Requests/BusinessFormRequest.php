@@ -34,10 +34,10 @@ class BusinessFormRequest extends Request
                       'timezone' => 'timezone',
                       'strategy' => 'required'
                     ];
-            break;
+                break;
             default:
                 return [];
-            break;
+                break;
         }
     }
 }
