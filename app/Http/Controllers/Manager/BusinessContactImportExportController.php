@@ -51,7 +51,9 @@ class BusinessContactImportExportController extends Controller
         $csv = $this->csvToArray(Request::get('data'));
         
         foreach ($csv as $import) {
-            $import = array_map(function ($item) { return $item == 'NULL' ? null : $item; }, $import);
+            $import = array_map(function ($item) {
+                return $item == 'NULL' ? null : $item;
+            }, $import);
 
             if ($import['birthdate'] !== null) {
                 $date = \DateTime::createFromFormat('Ymd', $import['birthdate']);
@@ -89,7 +91,7 @@ class BusinessContactImportExportController extends Controller
      * @param  string $data      CSV string of Contacts
      * @return array             Converted CSV into Array
      */
-    private function csvToArray($data='')
+    private function csvToArray($data = '')
     {
         $this->log->info(__METHOD__);
 
