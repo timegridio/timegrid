@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e39684499e9ee1a24d0c3a86bba481f1",
-    "content-hash": "8fc8c28fc5bfeff2b550684887459ba4",
+    "hash": "440047f6b1ffc2c44a11341ac4f8d8b9",
+    "content-hash": "52c0981ac5e082eb0f1ddc3f2e3ff709",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3632,54 +3632,6 @@
                 "environment"
             ],
             "time": "2015-05-30 15:59:26"
-        },
-        {
-            "name": "watson/rememberable",
-            "version": "1.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dwightwatson/rememberable.git",
-                "reference": "7225e6b3e510d36fb871a90e6439a5c1878d1f51"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dwightwatson/rememberable/zipball/7225e6b3e510d36fb871a90e6439a5c1878d1f51",
-                "reference": "7225e6b3e510d36fb871a90e6439a5c1878d1f51",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "~5.0",
-                "illuminate/support": "~5.0",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "0.9.*",
-                "phpunit/phpunit": "4.2.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Watson\\Rememberable\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dwight Watson",
-                    "email": "dwight@studiousapp.com"
-                }
-            ],
-            "description": "Query caching for Laravel 5",
-            "keywords": [
-                "caching",
-                "eloquent",
-                "laravel",
-                "remember"
-            ],
-            "time": "2015-10-15 04:31:53"
         },
         {
             "name": "webpatser/laravel-countries",

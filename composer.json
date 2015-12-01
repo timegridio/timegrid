@@ -30,7 +30,6 @@
 		"stevebauman/location": "1.1.*",
 		"torann/geoip": "dev-master",
 		"twitter/typeahead.js": "^0.11.1",
-		"watson/rememberable": "^1.0",
 		"webpatser/laravel-countries": "dev-master"
 	},
 	"require-dev": {
