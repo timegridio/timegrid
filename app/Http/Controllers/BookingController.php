@@ -28,13 +28,22 @@ class BookingController extends Controller
     {
         $this->log->info(__METHOD__);
 
+        //////////////////
+        // FOR REFACOTR //
+        //////////////////
+
         $issuer = auth()->user();
         $businessId = $request->input('business');
         $appointmentId = $request->input('appointment');
         $action = $request->input('action');
         $widget = $request->input('widget');
 
-        $this->log->info("AJAX postAction.request:[issuer:$issuer->email, action:$action, business:$businessId, appointment:$appointmentId]");
+        $this->log->info(sprintf("  AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]",
+                                    $issuer->email,
+                                    $action,
+                                    $businessId,
+                                    $appointmentId)
+                                );
 
         $appointment = Appointment::find($appointmentId);
 
@@ -49,15 +58,14 @@ class BookingController extends Controller
                 $appointment->doServe();
                 break;
             default:
-                # Ignore Invalid Action
-                $this->log->warning('Invalid Action request');
+                // Ignore Invalid Action
+                $this->log->warning('  Invalid Action request');
                 break;
         }
 
         /**
          * Widgets MUST be rendered before being returned on Response
          * as they need to be interpreted as HTML
-         *
          */
         switch ($widget) {
             case 'row':
@@ -70,7 +78,7 @@ class BookingController extends Controller
         }
 
         $appointmentPresenter = $appointment->getPresenter();
-        // TODO: It is probably possible to move Notifynder to a more proper place
+
         $date = $appointment->start_at->toDateString();
         $code = $appointmentPresenter->code();
         Notifynder::category('appointment.'.$action)
