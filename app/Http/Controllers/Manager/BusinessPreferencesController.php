@@ -12,11 +12,6 @@ use Fenos\Notifynder\Facades\Notifynder;
 
 class BusinessPreferencesController extends Controller
 {
-    ////////////////////////////////////////////////////
-    // Business Preferences                           //
-    // TODO: Should be moved into separate controller //
-    ////////////////////////////////////////////////////
-
     /**
      * get Preferences
      *
@@ -43,6 +38,7 @@ class BusinessPreferencesController extends Controller
      * post Preferences
      *
      * @param  Business    $business Business to update preferences
+     * @param  Request     $request
      * @return Response    Redirect
      */
     public function postPreferences(Business $business, Request $request)
@@ -56,15 +52,21 @@ class BusinessPreferencesController extends Controller
             abort(403);
         }
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $parameters = config()->get('preferences.App\Models\Business');
         $parametersKeys = array_flip(array_keys($parameters));
         $preferences = $request->all();
         $preferences = array_intersect_key($preferences, $parametersKeys);
         
         foreach ($preferences as $key => $value) {
-            $this->log->info("Manager\BusinessController: " .
-                      "postPreferences: businessId:{$business->id} key:$key value:$value " .
-                      "type:{$parameters[$key]['type']}");
+            $this->log->info(sprintf("  post: businessId:%s key:%s='%s' type:%s",
+                                        $business->id,
+                                        $key,
+                                        $value,
+                                        $parameters[$key]['type']));
 
             $business->pref($key, $value, $parameters[$key]['type']);
         }
