@@ -6,9 +6,11 @@
 
 namespace App;
 
-use App\Business;
 use Carbon\Carbon;
-use App\Appointment;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Business;
 use App\BookingStrategyInterface;
 
 class BookingTimeslotStrategy implements BookingStrategyInterface

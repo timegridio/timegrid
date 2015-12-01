@@ -1,6 +1,6 @@
 <?php
 
-use App\Business;
+use App\Models\Business;
 use App\Presenters\BusinessPresenter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -9,7 +9,7 @@ class BusinessUnitTest extends TestCase
     use DatabaseTransactions;
 
    /**
-     * @covers            \App\Business::__construct
+     * @covers            \App\Models\Business::__construct
      * @test
      */
     public function test_it_creates_a_business()
@@ -20,8 +20,8 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Business::__construct
-     * @covers            \App\Business::save
+     * @covers            \App\Models\Business::__construct
+     * @covers            \App\Models\Business::save
      * @test
      */
     public function test_it_creates_a_business_that_appears_in_db()
@@ -32,9 +32,9 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Business::__construct
-     * @covers            \App\Business::setSlugAttribute
-     * @covers            \App\Business::save
+     * @covers            \App\Models\Business::__construct
+     * @covers            \App\Models\Business::setSlugAttribute
+     * @covers            \App\Models\Business::save
      * @test@
      */
     public function test_it_generates_slug_from_name()
@@ -47,7 +47,7 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Business::getPresenter
+     * @covers            \App\Models\Business::getPresenter
      * @test
      */
     public function test_gets_business_presenter()
@@ -60,7 +60,7 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Business::setPhoneAttribute
+     * @covers            \App\Models\Business::setPhoneAttribute
      * @test
      */
     public function test_sets_empty_phone_attribute()
@@ -71,7 +71,7 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Business::setPostalAddressAttribute
+     * @covers            \App\Models\Business::setPostalAddressAttribute
      * @test
      */
     public function test_sets_empty_postal_address_attribute()

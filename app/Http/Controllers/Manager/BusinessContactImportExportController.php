@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
-use App\Business;
-use App\Contact;
-use Notifynder;
-use Request;
 use Flash;
+use Request;
+use Notifynder;
+use App\Models\Contact;
+use App\Models\Business;
+use App\Http\Controllers\Controller;
 
 class BusinessContactImportExportController extends Controller
 {
@@ -55,8 +55,8 @@ class BusinessContactImportExportController extends Controller
         $this->log->info("BusinessContactImportExportController: Imported $count contacts to businessId:{$business->id}");
 
         Notifynder::category('user.importedContacts')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('count'))
                    ->send();

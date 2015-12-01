@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use App\Http\Controllers\Controller;
-use App\Events\NewRegisteredUser;
-#use App\Traits\LogsMessages;
-use App\User;
-use Validator;
 use Event;
+use Validator;
+use App\Models\User;
+use App\Events\NewRegisteredUser;
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {

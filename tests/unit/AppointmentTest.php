@@ -1,9 +1,9 @@
 <?php
 
-use App\User;
-use App\Contact;
-use App\Business;
-use App\Appointment;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\Business;
+use App\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AppointmentTest extends TestCase
@@ -11,7 +11,7 @@ class AppointmentTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @covers \App\Appointment::user
+     * @covers \App\Models\Appointment::user
      * @test
      */
     public function it_gets_the_contact_user_of_appointment()
@@ -31,7 +31,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Appointment::user
+     * @covers \App\Models\Appointment::user
      * @test
      */
     public function it_gets_no_user_from_contact_of_appointment()
@@ -45,7 +45,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Appointment::duplicates
+     * @covers \App\Models\Appointment::duplicates
      * @test
      */
     public function it_detects_a_duplicate_appointment()

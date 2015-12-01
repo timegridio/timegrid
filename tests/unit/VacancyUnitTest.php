@@ -1,12 +1,12 @@
 <?php
 
-use App\User;
-use App\Business;
-use App\Contact;
-use App\Appointment;
-use App\Service;
-use App\Vacancy;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Vacancy;
+use App\Models\Business;
+use App\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VacancyUnitTest extends TestCase
@@ -16,7 +16,7 @@ class VacancyUnitTest extends TestCase
     protected $business;
 
     /**
-     * @covers            \App\Vacancy::isHoldingAnyFor
+     * @covers            \App\Models\Vacancy::isHoldingAnyFor
      */
     public function testIsHoldingAnyFor()
     {
@@ -50,7 +50,7 @@ class VacancyUnitTest extends TestCase
     }
 
     /**
-     * @covers            \App\Vacancy::isHoldingAnyFor
+     * @covers            \App\Models\Vacancy::isHoldingAnyFor
      */
     public function testIsNotHoldingAnyFor()
     {

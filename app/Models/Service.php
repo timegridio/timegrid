@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
@@ -26,7 +26,7 @@ class Service extends EloquentModel
      */
     public function business()
     {
-        return $this->belongsTo('App\Business');
+        return $this->belongsTo('App\Models\Business');
     }
 
     /**

@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Business;
-use App\Presenters\ContactPresenter;
-use App\User;
 use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Business;
+use App\Presenters\ContactPresenter;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Contact extends EloquentModel
@@ -54,7 +54,7 @@ class Contact extends EloquentModel
      */
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
@@ -68,10 +68,10 @@ class Contact extends EloquentModel
      */
     public function business(Business $business)
     {
-        return $this->belongsToMany('App\Business')->withPivot('notes')
-                                                    ->where('business_id', $business->id)
-                                                    ->withTimestamps()
-                                                    ->first();
+        return $this->belongsToMany('App\Models\Business')->withPivot('notes')
+                                                          ->where('business_id', $business->id)
+                                                          ->withTimestamps()
+                                                          ->first();
     }
 
     /**
@@ -81,7 +81,7 @@ class Contact extends EloquentModel
      */
     public function businesses()
     {
-        return $this->belongsToMany('App\Business');
+        return $this->belongsToMany('App\Models\Business');
     }
 
     /**
@@ -91,7 +91,7 @@ class Contact extends EloquentModel
      */
     public function appointments()
     {
-        return $this->hasMany('App\Appointment');
+        return $this->hasMany('App\Models\Appointment');
     }
 
     /**
@@ -127,7 +127,7 @@ class Contact extends EloquentModel
      */
     public function appointmentsCount()
     {
-        return $this->hasMany('App\Appointment')->selectRaw('contact_id, count(*) as aggregate')->groupBy('contact_id');
+        return $this->hasMany('App\Models\Appointment')->selectRaw('contact_id, count(*) as aggregate')->groupBy('contact_id');
     }
 
     /**

@@ -2,9 +2,9 @@
 
 namespace App\Events;
 
-use App\User;
-use App\Appointment;
+use App\Models\User;
 use App\Events\Event;
+use App\Models\Appointment;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 

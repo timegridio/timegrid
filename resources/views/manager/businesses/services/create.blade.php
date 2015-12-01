@@ -12,7 +12,7 @@
                 <div class="panel-body">
                     @include('_errors')
 
-                    {!! Form::model(new App\Service, ['route' => ['manager.business.service.store', $business]]) !!}
+                    {!! Form::model(new App\Models\Service, ['route' => ['manager.business.service.store', $business]]) !!}
                         @include('manager.businesses.services._form',['submitLabel' => trans('manager.services.btn.store')])
                     {!! Form::close() !!}
                 </div>

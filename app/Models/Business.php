@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Traits\Preferenceable;
 use Fenos\Notifynder\Notifable;
 use App\Presenters\BusinessPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,9 +10,7 @@ use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Business extends EloquentModel
 {
-    use Notifable;
-    use SoftDeletes;
-    use Traits\Preferenceable;
+    use Notifable, SoftDeletes, Preferenceable;
 
     /**
      * The attributes that are mass assignable.
@@ -50,7 +49,7 @@ class Business extends EloquentModel
     {
         /* TODO: Use cache here? */
         # return $this->belongsTo('App\Category')->remember(120);
-        return $this->belongsTo('App\Category');
+        return $this->belongsTo('App\Models\Category');
     }
 
     /**
@@ -60,7 +59,7 @@ class Business extends EloquentModel
      */
     public function contacts()
     {
-        return $this->belongsToMany('App\Contact')->with('user')->withPivot('notes')->withTimestamps();
+        return $this->belongsToMany('App\Models\Contact')->with('user')->withPivot('notes')->withTimestamps();
     }
 
     /**
@@ -70,7 +69,7 @@ class Business extends EloquentModel
      */
     public function services()
     {
-        return $this->hasMany('App\Service');
+        return $this->hasMany('App\Models\Service');
     }
 
     /**
@@ -80,7 +79,7 @@ class Business extends EloquentModel
      */
     public function vacancies()
     {
-        return $this->hasMany('App\Vacancy');
+        return $this->hasMany('App\Models\Vacancy');
     }
 
     /**
@@ -91,7 +90,7 @@ class Business extends EloquentModel
      */
     public function bookings()
     {
-        return $this->hasMany('App\Appointment');
+        return $this->hasMany('App\Models\Appointment');
     }
 
     /**
@@ -109,7 +108,7 @@ class Business extends EloquentModel
     /**
      * belongs to User
      *
-     * @return App\User Relationship Business belongs to User (owner)
+     * @return User Relationship Business belongs to User (owner)
      */
     public function owner()
     {
@@ -125,7 +124,7 @@ class Business extends EloquentModel
      */
     public function subscriptionsCount()
     {
-        return $this->belongsToMany('App\Contact')->selectRaw('id, count(*) as aggregate')->whereNotNull('user_id')->groupBy('business_id');
+        return $this->belongsToMany('App\Models\Contact')->selectRaw('id, count(*) as aggregate')->whereNotNull('user_id')->groupBy('business_id');
     }
 
     /**

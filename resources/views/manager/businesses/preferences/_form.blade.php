@@ -7,23 +7,23 @@
 @foreach ($parameters as $key => $value)
 <div class="row">
     @if ($value['type'] == 'bool')
-        {!! Form::label( trans('preferences.App\Business.'.$key.'.label') ) !!}
+        {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
         {!! Form::select($key, ['0' => trans('preferences.controls.select.no'), '1' => trans('preferences.controls.select.yes')], $business->pref($key),
-            array('class'=>'form-control', 'title'=> trans('preferences.App\Business.'.$key.'.help'))) !!}
+            array('class'=>'form-control', 'title'=> trans('preferences.App\Models\Business.'.$key.'.help'))) !!}
     @endif
     @if ($value['type'] == 'string')
-        {!! Form::label( trans('preferences.App\Business.'.$key.'.label') ) !!}
+        {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
         {!! Form::text($key, $business->pref($key),
             array('class'=>'form-control',
-                  'placeholder'=> trans('preferences.App\Business.'.$key.'.format'),
-                  'title'=> trans('preferences.App\Business.'.$key.'.help') )) !!}
+                  'placeholder'=> trans('preferences.App\Models\Business.'.$key.'.format'),
+                  'title'=> trans('preferences.App\Models\Business.'.$key.'.help') )) !!}
     @endif
     @if ($value['type'] == 'int')
-        {!! Form::label( trans('preferences.App\Business.'.$key.'.label') ) !!}
+        {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
         {!! Form::number($key, $business->pref($key),
             array('class'=>'form-control',
-                  'placeholder'=> trans('preferences.App\Business.'.$key.'.format'),
-                  'title'=> trans('preferences.App\Business.'.$key.'.help') )) !!}
+                  'placeholder'=> trans('preferences.App\Models\Business.'.$key.'.format'),
+                  'title'=> trans('preferences.App\Models\Business.'.$key.'.help') )) !!}
     @endif
         <div class="help-block with-errors"></div>
 </div>

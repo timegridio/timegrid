@@ -2,7 +2,7 @@
 
 namespace App\Presenters;
 
-use App\Appointment;
+use App\Models\Appointment;
 
 class AppointmentPresenter extends \Robbo\Presenter\Presenter
 {

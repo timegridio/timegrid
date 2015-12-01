@@ -4,7 +4,7 @@
 // User //
 //////////
 
-$factory->define('App\User', function (Faker\Generator $faker) {
+$factory->define('App\Models\User', function (Faker\Generator $faker) {
     return [
         'name' => $faker->firstName,
         'email' => $faker->safeEmail,
@@ -16,7 +16,7 @@ $factory->define('App\User', function (Faker\Generator $faker) {
 // Contact //
 /////////////
 
-$factory->define('App\Contact', function (Faker\Generator $faker) {
+$factory->define('App\Models\Contact', function (Faker\Generator $faker) {
     return [
         'firstname' => $faker->firstName,
         'lastname' => $faker->lastName,
@@ -36,7 +36,7 @@ $factory->define('App\Contact', function (Faker\Generator $faker) {
 // Business //
 //////////////
 
-$factory->define('App\Business', function (Faker\Generator $faker) {
+$factory->define('App\Models\Business', function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(3),
         'description' => $faker->paragraph,
@@ -54,7 +54,7 @@ $factory->define('App\Business', function (Faker\Generator $faker) {
 // Service //
 /////////////
 
-$factory->define('App\Service', function (Faker\Generator $faker) {
+$factory->define('App\Models\Service', function (Faker\Generator $faker) {
     return [
         'name' => $faker->sentence(2),
         'description' => $faker->paragraph,
@@ -67,12 +67,12 @@ $factory->define('App\Service', function (Faker\Generator $faker) {
 // Vacancy //
 /////////////
 
-$factory->define('App\Vacancy', function (Faker\Generator $faker) {
+$factory->define('App\Models\Vacancy', function (Faker\Generator $faker) {
     $date = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d');
     return [
         'date' => date('Y-m-d', strtotime($date)),
-        'start_at' => date('Y-m-d 08:00:00', strtotime($date)),
-        'finish_at' => date('Y-m-d 22:00:00', strtotime($date)),
+        'start_at' => date('Y-m-d 00:00:00', strtotime($date)),
+        'finish_at' => date('Y-m-d 23:00:00', strtotime($date)),
         'capacity' => 1
     ];
 });
@@ -81,11 +81,11 @@ $factory->define('App\Vacancy', function (Faker\Generator $faker) {
 // Appointment //
 /////////////////
 
-$factory->define('App\Appointment', function (Faker\Generator $faker) {
+$factory->define('App\Models\Appointment', function (Faker\Generator $faker) {
     return [
-        'business_id' => factory(App\Business::class)->make()->id,
-        'contact_id' => factory(App\Contact::class)->make()->id,
-        'service_id' => factory(App\Service::class)->make()->id,
+        'business_id' => factory(App\Models\Business::class)->make()->id,
+        'contact_id' => factory(App\Models\Contact::class)->make()->id,
+        'service_id' => factory(App\Models\Service::class)->make()->id,
         'vacancy_id' => null,
         'status' => $faker->randomElement(['R', 'C', 'A', 'S']),
         'start_at' => Carbon::parse(date('Y-m-d 08:00:00', strtotime('today +2 days'))),

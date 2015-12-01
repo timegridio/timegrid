@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\User;
 
 use Flash;
-use App\Business;
 use Carbon\Carbon;
+use App\Models\Business;
 use App\ConciergeServiceLayer;
 use App\Http\Controllers\Controller;
 use Fenos\Notifynder\Facades\Notifynder;
@@ -29,8 +29,8 @@ class BusinessController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();

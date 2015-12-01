@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-# use Validator;
-use App\Http\Controllers\Controller;
+use App\AuthenticateUser;
 use Illuminate\Http\Request;
+use App\AuthenticateUserListener;
+use App\Http\Controllers\Controller;
+use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use App\AuthenticateUser;
-use App\AuthenticateUserListener;
-//Add These three required namespace
-use Laravel\Socialite\Facades\Socialite;
-#use Illuminate\Support\Facades\Auth;
-#use App\User;
 
 class OAuthController extends Controller implements AuthenticateUserListener
 {

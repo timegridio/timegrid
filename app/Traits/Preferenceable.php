@@ -2,13 +2,13 @@
 
 namespace App\Traits;
 
-use App\Preference;
+use App\Models\Preference;
 
 trait Preferenceable
 {
     public function preferences()
     {
-        return $this->morphMany('App\Preference', 'preferenceable');
+        return $this->morphMany('App\Models\Preference', 'preferenceable');
     }
 
     public function pref($key, $value = null, $type = 'string')

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Root;
 
+use App\Models\User;
+use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 
 class RootController extends Controller
 {
@@ -16,7 +17,7 @@ class RootController extends Controller
     public function getIndex()
     {
         $this->log->warning('ROOT INDEX');
-        $users = \App\User::all();
+        $users = User::all();
         return view('root.dashboard', compact('users'));
     }
 }

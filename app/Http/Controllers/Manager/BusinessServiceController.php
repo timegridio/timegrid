@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Manager;
 
+use Flash;
+use App\Models\Service;
+use App\Models\Business;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Business;
-use App\Service;
-use Flash;
 
 class BusinessServiceController extends Controller
 {

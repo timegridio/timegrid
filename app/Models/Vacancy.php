@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
@@ -39,7 +39,7 @@ class Vacancy extends EloquentModel
      */
     public function business()
     {
-        return $this->belongsTo('App\Business');
+        return $this->belongsTo('App\Models\Business');
     }
 
     /**
@@ -49,7 +49,7 @@ class Vacancy extends EloquentModel
      */
     public function service()
     {
-        return $this->belongsTo('App\Service');
+        return $this->belongsTo('App\Models\Service');
     }
 
     /**
@@ -59,7 +59,7 @@ class Vacancy extends EloquentModel
      */
     public function appointments()
     {
-        return $this->hasMany('App\Appointment');
+        return $this->hasMany('App\Models\Appointment');
     }
 
     ////////////

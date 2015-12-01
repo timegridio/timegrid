@@ -1,11 +1,11 @@
 <?php
 
-use App\User;
-use App\Contact;
-use App\Business;
-use App\Service;
-use App\Vacancy;
-use App\Appointment;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Vacancy;
+use App\Models\Business;
+use App\Models\Appointment;
 use App\ConciergeServiceLayer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -91,7 +91,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
-        $this->assertInstanceOf('App\Appointment', $appointment);
+        $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertTrue($appointment->exists);
     }
 
@@ -126,7 +126,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
         $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
 
-        $this->assertInstanceOf('App\Appointment', $appointment);
+        $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertTrue($appointment->exists);
 
         /* Try OverBook */

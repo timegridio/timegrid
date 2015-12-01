@@ -25,8 +25,8 @@ class SendBookingNotification
         $business_name = $event->appointment->business->name;
         
         Notifynder::category('appointment.reserve')
-                   ->from('App\User', $event->user->id)
-                   ->to('App\Business', $event->appointment->business->id)
+                   ->from('App\Models\User', $event->user->id)
+                   ->to('App\Models\Business', $event->appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name', 'code', 'date'))
                    ->send();

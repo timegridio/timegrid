@@ -6,14 +6,14 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\AvailabilityServiceLayer;
-use App\Business;
-use App\Vacancy;
-use Redirect;
 use Flash;
+use Redirect;
 use Carbon\Carbon;
+use App\Models\Vacancy;
+use App\Models\Business;
+use Illuminate\Http\Request;
+use App\AvailabilityServiceLayer;
+use App\Http\Controllers\Controller;
 
 class BusinessVacancyController extends Controller
 {

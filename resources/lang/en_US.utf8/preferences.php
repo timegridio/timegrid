@@ -12,7 +12,7 @@ return array(
       'yes' => 'Yes',
     ),
   ),
-  'App\\Business' =>
+  'App\\Models\\Business' =>
   array(
     'appointment_annulation_pre_hs' =>
     array(

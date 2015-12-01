@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\AlterAppointmentRequest;
-use App\Http\Controllers\Controller;
-use App\Appointment;
-use Notifynder;
 use Widget;
+use Notifynder;
+use App\Models\Appointment;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\AlterAppointmentRequest;
 
 /**
  * ToDo:
@@ -73,8 +73,8 @@ class BookingController extends Controller
         $date = $appointment->start_at->toDateString();
         $code = $appointmentPresenter->code();
         Notifynder::category('appointment.'.$action)
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $appointment->business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('code', 'action', 'date'))
                    ->send();

@@ -4,8 +4,8 @@ namespace App\Widgets;
 
 use Icon;
 use Button;
-use App\User;
-use App\Appointment;
+use App\Models\User;
+use App\Models\Appointment;
 use Caffeinated\Widgets\Widget;
 
 /**

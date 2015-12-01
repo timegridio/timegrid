@@ -1,8 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
-use App\Contact;
+use App\Models\Contact;
 use App\Traits\HasRoles;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Auth\Authenticatable;
@@ -49,7 +49,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function businesses()
     {
-        return $this->belongsToMany('App\Business')->withTimestamps();
+        return $this->belongsToMany('App\Models\Business')->withTimestamps();
     }
 
     /**
@@ -61,7 +61,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function contacts()
     {
-        return $this->hasMany('App\Contact');
+        return $this->hasMany('App\Models\Contact');
     }
 
     /**
@@ -73,7 +73,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function appointments()
     {
-        return $this->hasManyThrough('App\Appointment', 'App\Contact');
+        return $this->hasManyThrough('App\Models\Appointment', 'App\Models\Contact');
     }
 
     /////////////////////

@@ -1,10 +1,10 @@
 <?php
 
-use App\User;
-use App\Contact;
-use App\Service;
-use App\Vacancy;
-use App\Business;
+use App\Models\User;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Vacancy;
+use App\Models\Business;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 

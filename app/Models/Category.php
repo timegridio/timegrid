@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
@@ -20,6 +20,6 @@ class Category extends EloquentModel
      */
     public function businesses()
     {
-        return $this->hasMany('App\Business')->withTimestamps();
+        return $this->hasMany('App\Models\Business')->withTimestamps();
     }
 }

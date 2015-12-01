@@ -2,8 +2,8 @@
 
 namespace App;
 
-use App\Business;
-use App\Appointment;
+use App\Models\Business;
+use App\Models\Appointment;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 

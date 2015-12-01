@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Manager;
 
 use Gate;
 use GeoIP;
-use App\Category;
-use App\Business;
+use App\Models\Category;
+use App\Models\Business;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -105,8 +105,8 @@ class BusinessController extends Controller
         // Generate local notification
         $business_name = $business->name;
         Notifynder::category('user.registeredBusiness')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();
@@ -127,7 +127,7 @@ class BusinessController extends Controller
     {
         $this->log->info("Manager\BusinessController: show: businessId:{$business->id}");
 
-        if (Gate::denies('show', $business)) {
+        if (Gate::denies('manage', $business)) {
             abort(403);
         }
 

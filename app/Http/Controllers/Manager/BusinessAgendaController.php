@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Models\Business;
 use App\Http\Controllers\Controller;
-use App\Business;
 
 class BusinessAgendaController extends Controller
 {

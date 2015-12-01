@@ -2,8 +2,8 @@
 
 namespace App\Widgets;
 
-use App\User;
-use App\Business;
+use App\Models\User;
+use App\Models\Business;
 use Caffeinated\Widgets\Widget;
 use Illuminate\Support\Collection;
 

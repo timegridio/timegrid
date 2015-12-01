@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use Gate;
-use App\Contact;
-use App\Business;
+use App\Models\Contact;
+use App\Models\Business;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;

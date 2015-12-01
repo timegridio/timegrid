@@ -13,7 +13,7 @@
                 <div class="panel-body">
                     @include('_errors')
 
-                    {!! Form::model(new App\Contact, ['route' => ['user.business.contact.store', $business]]) !!}
+                    {!! Form::model(new App\Models\Contact, ['route' => ['user.business.contact.store', $business]]) !!}
                         @include('user.contacts._form',['submitLabel' => trans('user.contacts.btn.store')])
                     {!! Form::close() !!}
                 </div>

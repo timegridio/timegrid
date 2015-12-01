@@ -2,8 +2,6 @@
 
 namespace App\Presenters;
 
-use App\Business;
-
 class BusinessPresenter extends \Robbo\Presenter\Presenter
 {
     /**

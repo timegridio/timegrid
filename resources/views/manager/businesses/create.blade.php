@@ -9,7 +9,7 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::model(new App\Business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
+                {!! Form::model(new App\Models\Business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
                 {!! Form::hidden('plan', $plan) !!}
                 @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
                 {!! Form::close() !!}

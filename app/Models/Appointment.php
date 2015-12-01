@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Carbon\Carbon;
 use App\Presenters\AppointmentPresenter;
@@ -89,7 +89,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function issuer()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
 
     /**
@@ -99,7 +99,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function contact()
     {
-        return $this->belongsTo('App\Contact');
+        return $this->belongsTo('App\Models\Contact');
     }
 
     /**
@@ -109,7 +109,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function business()
     {
-        return $this->belongsTo('App\Business');
+        return $this->belongsTo('App\Models\Business');
     }
 
     /**
@@ -119,7 +119,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function service()
     {
-        return $this->belongsTo('App\Service');
+        return $this->belongsTo('App\Models\Service');
     }
 
     /**
@@ -129,7 +129,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function vacancy()
     {
-        return $this->belongsTo('App\Vacancy');
+        return $this->belongsTo('App\Models\Vacancy');
     }
 
     ///////////

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Requests\AlterContactRequest;
-use App\Http\Requests\ViewContactRequest;
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Business;
-use App\Contact;
-use Notifynder;
-use Request;
 use Flash;
+use Request;
+use Notifynder;
+use App\Http\Requests;
+use App\Models\Contact;
+use App\Models\Business;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ViewContactRequest;
+use App\Http\Requests\AlterContactRequest;
 
 class BusinessContactController extends Controller
 {
@@ -51,8 +51,8 @@ class BusinessContactController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.subscribedBusiness')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();

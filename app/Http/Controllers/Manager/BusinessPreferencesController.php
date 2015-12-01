@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Manager;
 
-
 use Gate;
-use App\Business;
 use App\Http\Requests;
+use App\Models\Business;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -30,7 +29,7 @@ class BusinessPreferencesController extends Controller
             abort(403);
         }
 
-        $parameters = config()->get('preferences.App\Business');
+        $parameters = config()->get('preferences.App\Models\Business');
         $preferences = $business->preferences;
         return view('manager.businesses.preferences.edit', compact('business', 'preferences', 'parameters'));
     }
@@ -49,7 +48,7 @@ class BusinessPreferencesController extends Controller
             abort(403);
         }
 
-        $parameters = config()->get('preferences.App\Business');
+        $parameters = config()->get('preferences.App\Models\Business');
         $parametersKeys = array_flip(array_keys($parameters));
         $preferences = $request->all();
         $preferences = array_intersect_key($preferences, $parametersKeys);
@@ -64,8 +63,8 @@ class BusinessPreferencesController extends Controller
 
         $business_name = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('business_name'))
                    ->send();

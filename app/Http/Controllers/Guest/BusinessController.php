@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Guest;
 
-use App\Business;
+use App\Models\Business;
 use App\Http\Controllers\Controller;
 
 class BusinessController extends Controller

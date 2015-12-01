@@ -3,8 +3,8 @@
 namespace App\Http\Requests;
 
 use Auth;
-use App\Business;
-use App\Appointment;
+use App\Models\Business;
+use App\Models\Appointment;
 use App\Http\Requests\Request;
 
 class AlterAppointmentRequest extends Request

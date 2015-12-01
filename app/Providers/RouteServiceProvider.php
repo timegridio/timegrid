@@ -2,7 +2,7 @@
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Business;
+use App\Models\Business;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -25,10 +25,10 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('contact',     'App\Contact');
-        $router->model('business',    'App\Business');
-        $router->model('service',     'App\Service');
-        $router->model('appointment', 'App\Appointment');
+        $router->model('contact',     'App\Models\Contact');
+        $router->model('business',    'App\Models\Business');
+        $router->model('service',     'App\Models\Service');
+        $router->model('appointment', 'App\Models\Appointment');
         $router->bind('business_slug', function ($business_slug) {
             return Business::where('slug', $business_slug)->get();
         });

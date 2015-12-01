@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use App\Events\NewBooking;
-use App\ConciergeServiceLayer;
-use App\Business;
-use App\Service;
-use Illuminate\Http\Request;
-use Notifynder;
-use Carbon;
-use Flash;
 use Event;
+use Flash;
+use Carbon;
+use Notifynder;
+use App\Http\Requests;
+use App\Models\Service;
+use App\Models\Business;
+use App\Events\NewBooking;
+use Illuminate\Http\Request;
+use App\ConciergeServiceLayer;
+use App\Http\Controllers\Controller;
 
 /**
  * ToDo:
@@ -45,8 +45,8 @@ class AgendaController extends Controller
         $this->log->info('AgendaController: getBook');
 
         Notifynder::category('user.checkingVacancies')
-                   ->from('App\User', auth()->user()->id)
-                   ->to('App\Business', $business->id)
+                   ->from('App\Models\User', auth()->user()->id)
+                   ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->send();
 

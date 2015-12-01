@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Watson\Rememberable\Rememberable;
 use Illuminate\Database\Eloquent\Model as Eloquent;
