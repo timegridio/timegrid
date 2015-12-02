@@ -5,7 +5,7 @@
 {!! Form::hidden('business', $business->id) !!}
 <div class="container">
 
-    {!! Widget::AppointmentsTable(['appointments' => $appointments, 'user' => \Auth::user(), 'business' => $business]) !!}
+    {!! Widget::AppointmentsTable(['appointments' => $appointments, 'user' => auth()->user(), 'business' => $business]) !!}
 
 </div>
 {!! Form::close() !!}

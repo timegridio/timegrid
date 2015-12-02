@@ -7,7 +7,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    @if(\Auth::user()->isOwner($business))
+                    @if(auth()->user()->isOwner($business))
                         {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
                         {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {{ $business->name }}
@@ -53,10 +53,10 @@
                         </li>
                         @endif
 
-                        @if ($appointment = \Auth::user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
+                        @if ($appointment = auth()->user()->appointments()->where('business_id', $business->id)->oldest()->active()->future()->first())
                         {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
                         <li class="list-group-item" title="{{$business->timezone}}">
-                            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
+                            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => auth()->user()]) !!}
                         </li>
                         {!! Form::close() !!}
                         @endif
@@ -73,7 +73,7 @@
 
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
-                            @if (\Auth::user()->getContactSubscribedTo($business) === null)
+                            @if (auth()->user()->getContactSubscribedTo($business) === null)
                                 {!! Button::large()->primary(trans('user.business.btn.subscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
                                 @if($available)

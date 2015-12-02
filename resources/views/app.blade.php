@@ -44,7 +44,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    @if (!empty(Auth::user()))
+                    @if (!empty(auth()->user()))
                         @include('manager/_navmenu')
                     @endif
                 </ul>
@@ -54,12 +54,12 @@
 
                     @include('_navi18n')
 
-                    @if (Auth::guest())
+                    @if (auth()->guest())
                         <li><a href="{{ url('/auth/login') }}">{{ trans('app.nav.login') }}</a></li>
                         <li><a href="{{ url('/auth/register') }}">{{ trans('app.nav.register') }}</a></li>
                     @else
                         <li id="navProfile" class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(Auth::user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ auth()->user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu" role="menu">
                                 <li><a href="{{ url('/auth/logout') }}">{{ trans('app.nav.logout') }}</a></li>
                                 <li><a href="{!! env('DOCS_URL', 'http://docs.timegrid.io/') !!}{{Session::get('language')}}/">{{ trans('app.nav.manual') }}</a></li>

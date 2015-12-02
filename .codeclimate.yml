@@ -11,6 +11,9 @@ engines:
   phpmd:
     enabled: true
     # ... CONFIG CONTENT ...
+    exclude_fingerprints:
+    - 917f979f924dd2ad950a6ee160b2d2dc # Avoid unused parameters such as '$app' @bootstrap/ConfigureLogging
+    - d701d64656718f7fb1c2905c0bdaea28 # Avoid unused local variables such as '$table' @database/migrations
     checks:
       Naming/ShortMethodName:
         enabled: false

@@ -7,7 +7,7 @@
     {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
     @if ($appointments->count())
         @foreach ($appointments as $appointment)
-            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => \Auth::user()]) !!}
+            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => auth()->user()]) !!}
         @endforeach
     @else
         <div class="row">

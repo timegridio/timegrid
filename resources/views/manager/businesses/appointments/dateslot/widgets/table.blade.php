@@ -14,7 +14,7 @@
   </thead>
   <tbody class="searchable">
     @foreach ($appointments as $appointment)
-      {!! Widget::AppointmentsTableRow(['appointment' => $appointment->getPresenter(), 'user' => \Auth::user()]) !!}
+      {!! Widget::AppointmentsTableRow(['appointment' => $appointment->getPresenter(), 'user' => auth()->user()]) !!}
     @endforeach
   </tbody>
 </table>

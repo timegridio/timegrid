@@ -13,7 +13,7 @@
 {!! Form::hidden('mobile', '') !!}
     <div class="row">
         <div class="form-group col-xs-4">
-            {!! Form::text('firstname', \Auth::user()->name,
+            {!! Form::text('firstname', auth()->user()->name,
                 array('required',
                       'class'=>'form-control',
                       'placeholder'=> trans('manager.contacts.form.firstname.label'),
