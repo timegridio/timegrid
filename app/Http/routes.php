@@ -129,12 +129,7 @@ Route::group([
     function () {
         Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
-        Route::get('sudo/{userId}', function ($userId) {
-            auth()->loginUsingId($userId);
-            Log::warning("[!] ROOT SUDO userId:$userId");
-            Flash::warning('!!! ADVICE THIS FOR IS AUTHORIZED USE ONLY !!!');
-            return Redirect::route('user.businesses.list');
-        })->where('userId', '\d*');
+        Route::get('sudo/{userId}', ['as' => 'sudo', 'uses' => 'RootController@getSudo'])->where('userId', '\d*');
     });
 
 ///////////////////////
