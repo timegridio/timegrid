@@ -45,8 +45,6 @@ class VacancyService
 
     public function getVacancies($limit = 7)
     {
-        $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
-
         $vacancies = $this->removeBookedVacancies($this->business->vacancies);
 
         return $vacancies;
