@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Manager;
 
 use Gate;
 use GeoIP;
-use App\Models\Category;
+use App\SearchEngine;
 use App\Models\Business;
+use App\Models\Category;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 use Fenos\Notifynder\Facades\Notifynder;
 use App\Http\Requests\BusinessFormRequest;
 use App\Http\Requests\BusinessPreferencesFormRequest;
@@ -241,5 +243,25 @@ class BusinessController extends Controller
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
         return redirect()->route('manager.business.index');
+    }
+
+    /**
+     * search elements in a business
+     *
+     * TODO: Probably needs to get moved into a separate controller for searches
+     * 
+     * @param  Request $request Search criteria
+     * @return Response         View with results or redirect to default
+     */
+    public function postSearch()
+    {
+        if (! session()->get('selected.business')) {
+            return Redirect::route('user.businesses.list');
+        }
+
+        $search = new SearchEngine(Request::input('criteria'));
+        $search->setBusinessScope([session()->get('selected.business')->id])->run();
+
+        return view('manager.search.index')->with(['results' => $search->results()]);
     }
 }

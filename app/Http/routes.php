@@ -83,14 +83,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => [
     
     Route::controller('agenda/{business}', 'BusinessAgendaController', ['getIndex' => 'manager.business.agenda.index']);
 
-    Route::post('search', function () {
-        if (Session::get('selected.business')) {
-            $search = new App\SearchEngine(Request::input('criteria'));
-            $search->setBusinessScope([Session::get('selected.business')->id])->run();
-            return view('manager.search.index')->with(['results' => $search->results()]);
-        }
-        return Redirect::route('user.businesses.list');
-    });
+    Route::post('search', ['uses' => 'BusinessController@postSearch']);
 
     Route::get('business/{business}/preferences', [
         'as' => 'manager.business.preferences',
