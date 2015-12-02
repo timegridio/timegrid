@@ -8,9 +8,7 @@ use App\Models\Category;
 use App\Models\Business;
 use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Redirect;
 use Fenos\Notifynder\Facades\Notifynder;
 use App\Http\Requests\BusinessFormRequest;
 use App\Http\Requests\BusinessPreferencesFormRequest;
@@ -55,7 +53,7 @@ class BusinessController extends Controller
         $this->log->info("  timezone:$timezone location:".serialize($location));
 
         $categories = Category::lists('slug', 'id')->transform(
-            function ($item, $key) {
+            function ($item, $key = null) {
                 return trans('app.business.category.'.$item);
             });
 
@@ -168,17 +166,17 @@ class BusinessController extends Controller
         $location = GeoIP::getLocation();
         $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
         $categories = Category::lists('slug', 'id')->transform(
-            function ($item, $key) {
+            function ($item, $key = null) {
                 return trans('app.business.category.'.$item);
             });
         
         $category = $business->category_id;
         $this->log->info(sprintf("  businessId:%s timezone:%s category:%s location:%s",
-                                    $business->id,
-                                    $timezone,
-                                    $category,
-                                    serialize($location))
-                        );
+            $business->id,
+            $timezone,
+            $category,
+            serialize($location))
+        );
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
