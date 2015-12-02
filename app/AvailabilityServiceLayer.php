@@ -45,12 +45,12 @@ class AvailabilityServiceLayer
     {
         $appointments = $this->business->bookings()->future()->tillDate(Carbon::parse("today +$limit days"))->get();
 
-        $vacancies = $this->removeBookedVacancies($this->business->vacancies, $appointments);
+        $vacancies = $this->removeBookedVacancies($this->business->vacancies);
 
         return $vacancies;
     }
 
-    private function removeBookedVacancies(Collection $vacancies, Collection $appointments)
+    private function removeBookedVacancies(Collection $vacancies)
     {
         $vacancies = $vacancies->reject(function ($vacancy) {
             return $vacancy->isFull();
@@ -87,7 +87,7 @@ class AvailabilityServiceLayer
                                                         ->forService($appointment->service)
                                                         ->get();
 
-        $vacancies = $this->removeBookedVacancies($vacancies, $appointment->business->bookings()->get());
+        $vacancies = $this->removeBookedVacancies($vacancies);
 
         foreach ($vacancies as $vacancy) {
             if ($vacancy->isHolding($appointment)) {
