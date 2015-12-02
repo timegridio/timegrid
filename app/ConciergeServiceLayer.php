@@ -11,34 +11,36 @@ use App\AvailabilityServiceLayer;
 
 class ConciergeServiceLayer
 {
+    private $availabilityService;
+
+    public function __construct(AvailabilityServiceLayer $availabilityService)
+    {
+        $this->availabilityService = $availabilityService;
+    }
+
+
     /**
      * is available for at least one reservation
      *
-     * @param  Business $business Inquiry business
      * @param  User     $user     Potential issuer of reservation
      * @param  integer  $limit    Quantiy of days from "today"
      * @return boolean            There exist vacancies to reserve
      */
-    public function isAvailable(Business $business, User $user, $limit = 7)
+    public function isAvailable(User $user, $limit = 7)
     {
-        $availability = new AvailabilityServiceLayer($business);
-
-        return $availability->isAvailable($user, $limit);
+        return $this->availabilityService->isAvailable($user, $limit);
     }
 
     /**
      * get Vacancies
      *
-     * @param  Business $business For desired Business
      * @param  User     $user     To present to User
      * @param  integer  $limit    For a maximum of $limit days
      * @return Array              Array of vacancies for each date
      */
-    public function getVacancies(Business $business, User $user, $limit = 7)
+    public function getVacancies(User $user, $limit = 7)
     {
-        $availability = new AvailabilityServiceLayer($business);
-
-        return $availability->getVacanciesFor($user, $limit);
+        return $this->availabilityService->getVacanciesFor($user, $limit);
     }
 
     /**
@@ -72,9 +74,7 @@ class ConciergeServiceLayer
             return $appointment;
         }
 
-        $availability = new AvailabilityServiceLayer($business);
-
-        $vacancy = $availability->getSlotFor($appointment);
+        $vacancy = $this->availabilityService->getSlotFor($appointment->start_at, $appointment->service);
 
         if (null !== $vacancy) {
             if ($vacancy->hasRoom()) {

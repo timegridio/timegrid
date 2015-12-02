@@ -9,6 +9,7 @@ namespace App;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Vacancy;
+use App\Models\Service;
 use App\Models\Business;
 use App\Models\Appointment;
 use Illuminate\Support\Collection;
@@ -80,27 +81,28 @@ class AvailabilityServiceLayer
         return $dates;
     }
 
-    public function isSlotAvailable(Appointment $appointment)
+#    public function isSlotAvailable(Appointment $appointment)
+#    {
+#        $targetDate = Carbon::parse($appointment->date, $appointment->business->timezone);
+#        $vacancies = $appointment->business->vacancies()->forDate($targetDate)
+#                                                        ->forService($appointment->service)
+#                                                        ->get();
+#
+#        $vacancies = $this->removeBookedVacancies($vacancies);
+#
+#        foreach ($vacancies as $vacancy) {
+#            if ($vacancy->isHolding($appointment)) {
+#                return true;
+#            }
+#        }
+#        return false;
+#    }
+
+    public function getSlotFor(Carbon $targetDateTime, Service $service)
     {
-        $targetDate = Carbon::parse($appointment->date, $appointment->business->timezone);
-        $vacancies = $appointment->business->vacancies()->forDate($targetDate)
-                                                        ->forService($appointment->service)
-                                                        ->get();
-
-        $vacancies = $this->removeBookedVacancies($vacancies);
-
-        foreach ($vacancies as $vacancy) {
-            if ($vacancy->isHolding($appointment)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function getSlotFor(Appointment $appointment)
-    {
-        $targetDateTime = Carbon::parse($appointment->start_at);
-        return $appointment->business->vacancies()->forDateTime($targetDateTime)
-                                                  ->forService($appointment->service)->first();
+        # $targetDateTime = Carbon::parse($appointment->start_at);
+        return $this->business->vacancies()->forDateTime($targetDateTime)
+                                            ->forService($service)
+                                            ->first();
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
-use App\Models\User;
+use App\AvailabilityServiceLayer;
+use App\ConciergeServiceLayer;
+use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Vacancy;
-use App\Models\Business;
-use App\Models\Appointment;
-use App\ConciergeServiceLayer;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ConciergeServiceLayerUnitTest extends TestCase
@@ -34,9 +35,9 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->vacancies()->save($vacancy);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer();
+        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
 
-        $vacancies = $concierge->getVacancies($business, $user);
+        $vacancies = $concierge->getVacancies($user);
         return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
     }
 
@@ -54,9 +55,9 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->services()->save($service);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer();
+        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
 
-        $vacancies = $concierge->getVacancies($business, $user);
+        $vacancies = $concierge->getVacancies($user);
         foreach ($vacancies as $vacancy) {
             $this->assertContainsOnly([], $vacancy);
         }
@@ -85,7 +86,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer();
+        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
 
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
 
@@ -119,7 +120,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer();
+        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
 
         #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
@@ -161,7 +162,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer();
+        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
 
         #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone)->timezone('UTC');
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone);
