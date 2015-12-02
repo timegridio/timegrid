@@ -14,7 +14,6 @@ before_script:
   - php artisan migrate
   - php artisan db:seed
   - php artisan geoip:update
-  - php artisan serve
 
 script:
   - vendor/bin/phpunit
