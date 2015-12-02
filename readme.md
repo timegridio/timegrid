@@ -15,6 +15,12 @@ timegrid
 
 Timegrid is a web application for online reservation of services for business.
 
+**The problem**
+Small and medium scale business wish to provide online service booking for their customers, but the toos out there are either *too expensive* or *too complex* for their needs.
+
+**The Solution**
+Timegrid is a world-wide platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Useful, Simple, Fast.
+
 It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
 ## Screenshots
