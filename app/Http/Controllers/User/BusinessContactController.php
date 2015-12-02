@@ -25,15 +25,15 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
-
-        if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
-            $this->log->info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
-            $business->contacts()->attach($existing_contact);
-            $business->save();
-            Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
-            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
-        }
+#        $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
+#
+#        if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
+#            $this->log->info("BusinessContactController: create: [ADVICE] Found existing contact contactId:{$existing_contact->id}");
+#            $business->contacts()->attach($existing_contact);
+#            $business->save();
+#            Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
+#            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
+#        }
 
         return view('user.contacts.create', compact('business'));
     }
