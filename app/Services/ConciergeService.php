@@ -8,7 +8,6 @@ use App\Models\Service;
 use App\Models\Contact;
 use App\Models\Business;
 use App\BookingStrategy;
-#use App\Services\VacancyService;
 
 /*******************************************************************************
  * Concierge Service Layer
@@ -16,16 +15,36 @@ use App\BookingStrategy;
  ******************************************************************************/
 class ConciergeService
 {
-    private $availabilityService;
+    /**
+     * [$vacancyService description]
+     * 
+     * @var [type]
+     */
+    private $vacancyService;
 
-    public function __construct(VacancyService $availabilityService = null)
+    /**
+     * [__construct description]
+     * 
+     * @param VacancyService|null $vacancyService [description]
+     */
+    public function __construct(VacancyService $vacancyService = null)
     {
-        $this->availabilityService = $availabilityService;
+        $this->vacancyService = $vacancyService;
     }
 
-    public function setAvailabilityService(VacancyService $availabilityService)
+    /**
+     * [setVacancyService description]
+     * 
+     * @param VacancyService $vacancyService [description]
+     */
+    public function setVacancyService(VacancyService $vacancyService)
     {
-        $this->availabilityService = $availabilityService;
+        $this->vacancyService = $vacancyService;
+    }
+
+    public function setBusiness(Business $business)
+    {
+        $this->vacancyService->setBusiness($business);
     }
 
     /**
@@ -37,7 +56,7 @@ class ConciergeService
      */
     public function isAvailable(User $user, $limit = 7)
     {
-        return $this->availabilityService->isAvailable($user, $limit);
+        return $this->vacancyService->isAvailable($user, $limit);
     }
 
     /**
@@ -49,7 +68,7 @@ class ConciergeService
      */
     public function getVacancies(User $user, $limit = 7, $includeToday = false)
     {
-        return $this->availabilityService->getVacanciesFor($user, $limit, $includeToday);
+        return $this->vacancyService->getVacanciesFor($user, $limit, $includeToday);
     }
 
     /**
@@ -65,6 +84,7 @@ class ConciergeService
 
     /**
      * make Reservation
+     * 
      * @param  User     $issuer   Requested by User as issuer
      * @param  Business $business For Business
      * @param  Contact  $contact  On behalf of Contact
@@ -75,15 +95,28 @@ class ConciergeService
      */
     public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null)
     {
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
+        $this->setBusiness($business);
+
         $bookingStrategy = new BookingStrategy($business->strategy);
 
-        $appointment = $bookingStrategy->generateAppointment($issuer, $business, $contact, $service, $datetime, $comments);
+        $appointment = $bookingStrategy->generateAppointment(
+            $issuer,
+            $business,
+            $contact,
+            $service,
+            $datetime,
+            $comments
+            );
 
         if ($appointment->duplicates()) {
             return $appointment;
         }
 
-        $vacancy = $this->availabilityService->getSlotFor($appointment->start_at, $appointment->service);
+        $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);
 
         if (null !== $vacancy) {
             if ($vacancy->hasRoom()) {

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\User;
 use Flash;
 use Carbon\Carbon;
 use App\Models\Business;
-use App\AvailabilityServiceLayer;
+use App\Services\VacancyService;
 use App\Services\ConciergeService;
 use App\Http\Controllers\Controller;
 use Fenos\Notifynder\Facades\Notifynder;
@@ -32,6 +32,10 @@ class BusinessController extends Controller
                                     $business->slug
                                 ));
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $business_name = $business->name;
         Notifynder::category('user.visitedShowroom')
                    ->from('App\Models\User', auth()->user()->id)
@@ -40,9 +44,8 @@ class BusinessController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new VacancyService($business));
         $available = $concierge->isAvailable(auth()->user());
-        # $available = true; /* ToDo */
 
         return view('user.businesses.show', compact('business', 'available'));
     }

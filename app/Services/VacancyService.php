@@ -19,6 +19,11 @@ class VacancyService
         $this->business = $business;
     }
 
+    public function setBusiness(Business $business)
+    {
+        $this->business = $business;
+    }
+
     public function isAvailable(User $user, $limit = 7)
     {
         $vacancies = $this->getVacancies($limit);

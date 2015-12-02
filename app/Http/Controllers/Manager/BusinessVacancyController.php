@@ -7,13 +7,8 @@ use Carbon\Carbon;
 use App\Models\Vacancy;
 use App\Models\Business;
 use Illuminate\Http\Request;
-use App\AvailabilityServiceLayer;
+use App\Services\VacancyService;
 use App\Http\Controllers\Controller;
-
-///////////////////////////////////////////////////////
-// ToDo: Refactor with service layers                //
-// This should probably not be a resource Controller //
-///////////////////////////////////////////////////////
 
 class BusinessVacancyController extends Controller
 {
@@ -27,12 +22,17 @@ class BusinessVacancyController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
-        $dates = AvailabilityServiceLayer::generateAvailability($business->vacancies);
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
+        $dates = VacancyService::generateAvailability($business->vacancies);
         $services = $business->services;
         if ($services->isEmpty()) {
             return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'))
             ->withErrors(array("msg" => trans('manager.vacancies.msg.edit.no_services') ));
         }
+
         return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'));
     }
 

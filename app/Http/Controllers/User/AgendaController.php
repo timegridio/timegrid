@@ -64,7 +64,10 @@ class AgendaController extends Controller
 
         $includeToday = $business->pref('appointment_take_today');
 
+        $this->concierge->setBusiness($business);
+
         $availability = $this->concierge->getVacancies(auth()->user(), 7, $includeToday);
+
         return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
     }
 
@@ -77,7 +80,11 @@ class AgendaController extends Controller
     public function postStore(Request $request)
     {
         $this->log->info(__METHOD__);
-        
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $issuer = auth()->user();
 
         $business = Business::findOrFail($request->input('businessId'));
@@ -85,6 +92,8 @@ class AgendaController extends Controller
         $service = Service::find($request->input('service_id'));
         $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'))->timezone($business->timezone);
         $comments = $request->input('comments');
+
+        $this->concierge->setBusiness($business);
 
         $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
