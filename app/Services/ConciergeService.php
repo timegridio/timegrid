@@ -8,7 +8,7 @@ use App\Models\Service;
 use App\Models\Contact;
 use App\Models\Business;
 use App\BookingStrategy;
-use App\AvailabilityServiceLayer;
+#use App\Services\VacancyService;
 
 /*******************************************************************************
  * Concierge Service Layer
@@ -18,12 +18,12 @@ class ConciergeService
 {
     private $availabilityService;
 
-    public function __construct(AvailabilityServiceLayer $availabilityService = null)
+    public function __construct(VacancyService $availabilityService = null)
     {
         $this->availabilityService = $availabilityService;
     }
 
-    public function setAvailabilityService(AvailabilityServiceLayer $availabilityService)
+    public function setAvailabilityService(VacancyService $availabilityService)
     {
         $this->availabilityService = $availabilityService;
     }

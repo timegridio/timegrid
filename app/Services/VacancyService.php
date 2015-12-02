@@ -1,10 +1,6 @@
 <?php
 
-/**
- * ToDo: Should probably change name with design pattern suffix
- */
-
-namespace App;
+namespace App\Services;
 
 use Carbon\Carbon;
 use App\Models\User;
@@ -14,7 +10,7 @@ use App\Models\Business;
 use App\Models\Appointment;
 use Illuminate\Support\Collection;
 
-class AvailabilityServiceLayer
+class VacancyService
 {
     protected $business;
 

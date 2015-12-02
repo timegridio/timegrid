@@ -6,7 +6,7 @@ use App\Models\Service;
 use App\Models\Vacancy;
 use App\Models\Business;
 use App\Models\Appointment;
-use App\AvailabilityServiceLayer;
+use App\Services\VacancyService;
 use App\Services\ConciergeService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -14,50 +14,121 @@ class ConciergeServiceUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
+    /**
+     * [$user description]
+     * @var [type]
+     */
+    protected $user;
+
+    /**
+     * [$business description]
+     * @var [type]
+     */
     protected $business;
 
     /**
+     * [$contact description]
+     * @var [type]
+     */
+    protected $contact;
+
+    /**
+     * [$service description]
+     * @var [type]
+     */
+    protected $service;
+
+    /**
+     * [$vacancy description]
+     * @var [type]
+     */
+    protected $vacancy;
+
+    /**
+     * [$concierge description]
+     * @var [type]
+     */
+    protected $concierge;
+
+    /////////////
+    // HELPERS //
+    /////////////
+
+    /**
+     * arrange a fixed scenario for testing
+     * @return void
+     */
+    protected function arrangeScenario()
+    {
+        // Common Arrange
+        $this->user = factory(User::class)->create();
+        
+        $this->business = factory(Business::class)->create();
+        
+        $this->service = factory(Service::class)->make();
+        
+        $this->business->services()->save($this->service);
+
+        $this->concierge = new ConciergeService(new VacancyService($this->business));
+    }
+
+    /**
+     * make date time object with timezone
+     * @param  string $date        Date
+     * @param  string $time        Time
+     * @param  string $timezone    TimeZone
+     * @param  string $modificator Ex: +1 day
+     * @return Carbon              DateTime
+     */
+    protected function makeDateTime($date, $time, $timezone, $modificator = '')
+    {
+        $strDateTime = date('Y-m-d H:i:s', strtotime("{$date} {$time} {$modificator}"));
+        return Carbon::parse($strDateTime, $timezone);
+    }
+
+    ///////////
+    // TESTS //
+    ///////////
+
+    /**
      * Test get vacancies from Concierge Service Layer
-     * @covers            \App\Services\ConciergeService::getVacancies
+     *
+     * @covers     \App\Services\ConciergeService::getVacancies
      * @return bool Vacancy found
+     * @test
      */
     public function testConciergeGetVacancies()
     {
-        /* Setup Stubs */
-        $user = factory(User::class)->create();
+        // Arrange
+        $this->arrangeScenario();
 
-        $business = factory(Business::class)->create();
-        $service = factory(Service::class)->make();
-        $business->services()->save($service);
-        $vacancy = factory(Vacancy::class)->make();
-        $vacancy->business()->associate($business);
-        $vacancy->service()->associate($service);
-        $business->vacancies()->save($vacancy);
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->business()->associate($this->business);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
 
-        /* Perform Test */
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
+        // Act
+        $vacancies = $this->concierge->getVacancies($this->user);
 
-        $vacancies = $concierge->getVacancies($user);
-        return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
+        // Assert
+        return $this->assertContainsOnly($this->vacancy, $vacancies[$this->vacancy->date]);
     }
 
     /**
      * Test get empty vacancies from Concierge Service Layer
+     *
      * @covers            \App\Services\ConciergeService::getVacancies
+     * @test
      */
     public function testConciergeGetEmptyVacancies()
     {
-        /* Setup Stubs */
-        $user = factory(User::class)->create();
+        // Arrange
+        $this->arrangeScenario();
 
-        $business = factory(Business::class)->create();
-        $service = factory(Service::class)->make();
-        $business->services()->save($service);
+        // Act
+        $vacancies = $this->concierge->getVacancies($this->user);
 
-        /* Perform Test */
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
-
-        $vacancies = $concierge->getVacancies($user);
+        // Assert
         foreach ($vacancies as $vacancy) {
             $this->assertContainsOnly([], $vacancy);
         }
@@ -66,109 +137,130 @@ class ConciergeServiceUnitTest extends TestCase
     /**
      * Test Make Successful Reservation
      * @covers            \App\Services\ConciergeService::makeReservation
+     * @test
      */
     public function testMakeSuccessfulReservation()
     {
-        /* Setup Stubs */
-        $issuer = factory(User::class)->create();
-        
-        $business = factory(Business::class)->create();
-        $business->owners()->save($issuer);
+        // Arrange
+        $this->arrangeScenario();
 
-        $service = factory(Service::class)->make();
-        $business->services()->save($service);
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
 
-        $vacancy = factory(Vacancy::class)->make();
-        $vacancy->service()->associate($service);
-        $business->vacancies()->save($vacancy);
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->business()->associate($this->business);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
 
-        $contact = factory(Contact::class)->create();
-        $business->contacts()->save($contact);
+        // Act
+        $date = $this->makeDateTime(
+            $this->vacancy->date,
+            $this->vacancy->business->pref('start_at'),
+            $this->business->timezone
+            );
 
-        /* Perform Test */
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
+        $appointment = $this->concierge->makeReservation(
+            $this->user,
+            $this->business,
+            $this->contact,
+            $this->service,
+            $date
+            );
 
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
-
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
-
+        // Assert
         $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertTrue($appointment->exists);
     }
 
     /**
      * Test Make Successful Reservation
+     *
      * @covers            \App\Services\ConciergeService::makeReservation
+     * @test
      */
     public function testBlockOverbooking()
     {
-        /* Setup Stubs */
-        $issuer = factory(User::class)->create();
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->vacancy = factory(Vacancy::class)->make(['capacity' => 1]);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        // Act
+        $date = $this->makeDateTime(
+            $this->vacancy->date,
+            $this->vacancy->business->pref('start_at'),
+            $this->business->timezone
+            );
+
+        $appointment = $this->concierge->makeReservation(
+            $this->user,
+            $this->business,
+            $this->contact,
+            $this->service,
+            $date
+            );
+
+        $date = $this->makeDateTime(
+            $this->vacancy->date,
+            $this->vacancy->business->pref('start_at'),
+            $this->business->timezone,
+            '+30 minutes'
+            );
         
-        $business = factory(Business::class)->create();
-        $business->owners()->save($issuer);
-
-        $service = factory(Service::class)->make();
-        $business->services()->save($service);
-
-        $vacancy = factory(Vacancy::class)->make();
-        $vacancy->capacity = 1;
-        $vacancy->service()->associate($service);
-        $business->vacancies()->save($vacancy);
-
-        $contact = factory(Contact::class)->create();
-        $business->contacts()->save($contact);
-
-        /* Perform Test */
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
-
-        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
-
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
-
+        $appointmentOverbook = $this->concierge->makeReservation(
+            $this->user,
+            $this->business,
+            $this->contact,
+            $this->service,
+            $date
+            );
+        
+        // Assert
         $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertTrue($appointment->exists);
-
-        /* Try OverBook */
-        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone)->timezone('UTC');
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +30 minutes')), $business->timezone);
-
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
-
-        $this->assertFalse($appointment);
+        $this->assertFalse($appointmentOverbook);
     }
 
     /**
      * Test Attempt Bad Reservation
      * @covers            \App\Services\ConciergeService::makeReservation
+     * @test
      */
     public function testAttemptBadReservation()
     {
-        /* Setup Stubs */
-        $issuer = factory(User::class)->create();
-        
-        $business = factory(Business::class)->create();
-        $business->owners()->save($issuer);
+        // Arrange
+        $this->arrangeScenario();
 
-        $service = factory(Service::class)->make();
-        $business->services()->save($service);
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
 
-        $vacancy = factory(Vacancy::class)->make();
-        $vacancy->service()->associate($service);
-        $business->vacancies()->save($vacancy);
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->business()->associate($this->business);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
 
-        $contact = factory(Contact::class)->create();
-        $business->contacts()->save($contact);
+        // Act
+        $date = $this->makeDateTime(
+            $this->vacancy->date,
+            $this->vacancy->business->pref('start_at'),
+            $this->business->timezone,
+            '+1 day'
+            );
 
-        /* Perform Test */
-        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
+        $appointment = $this->concierge->makeReservation(
+            $this->user,
+            $this->business,
+            $this->contact,
+            $this->service,
+            $date
+            );
 
-        #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone)->timezone('UTC');
-        $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone);
-
-        $appointment = $concierge->makeReservation($issuer, $business, $contact, $service, $date);
-
+        // Assert
         $this->assertFalse($appointment);
     }
 }
