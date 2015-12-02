@@ -16,7 +16,7 @@ class VacancyService
 
     public function __construct(Business $business)
     {
-        $this->business = $business;
+        $this->setBusiness($business);
     }
 
     public function setBusiness(Business $business)
@@ -26,36 +26,27 @@ class VacancyService
 
     public function isAvailable(User $user, $limit = 7)
     {
-        $vacancies = $this->getVacancies($limit);
+        $vacancies = $this->removeBookedVacancies($this->business->vacancies);
         $vacancies = $this->removeSelfBooked($vacancies, $user);
 
-        return !$vacancies->isEmpty();
+        return ! $vacancies->isEmpty();
     }
 
-    public function getVacanciesFor($user, $limit = 7, $includeToday = true)
-    {
-        $vacancies = $this->getVacancies($limit);
-
-        $vacancies = $this->removeSelfBooked($vacancies, $user);
-
-        $starting = $includeToday ? 'today' : 'tomorrow';
-        $availability = $this->generateAvailability($vacancies, $starting, $limit);
-        return $availability;
-    }
-
-    public function getVacancies($limit = 7)
+    public function getVacanciesFor($user, $starting = 'today', $limit = 7)
     {
         $vacancies = $this->removeBookedVacancies($this->business->vacancies);
-
-        return $vacancies;
+        $vacancies = $this->removeSelfBooked($vacancies, $user);
+        
+        return $this->generateAvailability($vacancies, $starting, $limit);
     }
 
     public static function generateAvailability($vacancies, $starting = 'today', $days = 10)
     {
         $dates = [];
-        for ($i=0; $i < $days; $i++) {
+        for ($i = 0; $i < $days; $i++) {
             $dates[date('Y-m-d', strtotime("$starting +$i days"))] = [];
         }
+
         foreach ($vacancies as $vacancy) {
             if (array_key_exists($vacancy->date, $dates)) {
                 $dates[$vacancy->date][$vacancy->service->slug] = $vacancy;
@@ -66,9 +57,11 @@ class VacancyService
 
     public function getSlotFor(Carbon $targetDateTime, Service $service)
     {
-        return $this->business->vacancies()->forDateTime($targetDateTime)
-                                            ->forService($service)
-                                            ->first();
+        return $this->business
+            ->vacancies()
+            ->forDateTime($targetDateTime)
+            ->forService($service)
+            ->first();
     }
 
     /////////////

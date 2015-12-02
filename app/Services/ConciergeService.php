@@ -66,9 +66,9 @@ class ConciergeService
      * @param  integer  $limit    For a maximum of $limit days
      * @return Array              Array of vacancies for each date
      */
-    public function getVacancies(User $user, $limit = 7, $includeToday = false)
+    public function getVacancies(User $user, $starting = 'today', $limit = 7)
     {
-        return $this->vacancyService->getVacanciesFor($user, $limit, $includeToday);
+        return $this->vacancyService->getVacanciesFor($user, $starting, $limit);
     }
 
     /**

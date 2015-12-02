@@ -66,9 +66,9 @@ class AgendaController extends Controller
 
         $this->concierge->setBusiness($business);
 
-        $availability = $this->concierge->getVacancies(auth()->user(), 7, $includeToday);
+        $availability = $this->concierge->getVacancies(auth()->user(), 'today', 7);
 
-        return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability'));
+        return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability', 'includeToday'));
     }
 
     /**
