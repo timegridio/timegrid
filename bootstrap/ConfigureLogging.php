@@ -103,6 +103,11 @@ class ConfigureLogging
      */
     protected function configureSyslogHandler(Application $app, Writer $log)
     {
+        // META: This piece raises lint warning:
+        //       "Avoid unused parameters such as '$app'"
+        //       But $app is not needed in this case and the method signature
+        //       still respects the overrided method signature.
+
         $log->useSyslog(env('SYSLOG_APPNAME', 'laravel'));
     }
 }
