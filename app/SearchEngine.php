@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Service;
 use App\Models\Business;
 use App\Models\Appointment;
 use Illuminate\Support\Collection;
