@@ -1,15 +1,20 @@
 <?php
 
-namespace App;
+namespace App\Services;
 
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\Contact;
 use App\Models\Service;
+use App\Models\Contact;
 use App\Models\Business;
+use App\BookingStrategy;
 use App\AvailabilityServiceLayer;
 
-class ConciergeServiceLayer
+/*******************************************************************************
+ * Concierge Service Layer
+ *     High level booking manager
+ ******************************************************************************/
+class ConciergeService
 {
     private $availabilityService;
 

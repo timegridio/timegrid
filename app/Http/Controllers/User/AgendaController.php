@@ -10,7 +10,7 @@ use App\Models\Service;
 use App\Models\Business;
 use App\Events\NewBooking;
 use Illuminate\Http\Request;
-use App\ConciergeServiceLayer;
+use App\Services\ConciergeService;
 use App\Http\Controllers\Controller;
 
 /**
@@ -21,7 +21,7 @@ class AgendaController extends Controller
 {
     private $concierge;
 
-    public function __construct(ConciergeServiceLayer $concierge)
+    public function __construct(ConciergeService $concierge)
     {
         $this->concierge = $concierge;
         parent::__construct();

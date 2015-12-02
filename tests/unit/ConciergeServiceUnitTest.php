@@ -1,16 +1,16 @@
 <?php
 
-use App\AvailabilityServiceLayer;
-use App\ConciergeServiceLayer;
-use App\Models\Appointment;
-use App\Models\Business;
+use App\Models\User;
 use App\Models\Contact;
 use App\Models\Service;
-use App\Models\User;
 use App\Models\Vacancy;
+use App\Models\Business;
+use App\Models\Appointment;
+use App\AvailabilityServiceLayer;
+use App\Services\ConciergeService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ConciergeServiceLayerUnitTest extends TestCase
+class ConciergeServiceUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -18,7 +18,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
     /**
      * Test get vacancies from Concierge Service Layer
-     * @covers            \App\ConciergeServiceLayer::getVacancies
+     * @covers            \App\Services\ConciergeService::getVacancies
      * @return bool Vacancy found
      */
     public function testConciergeGetVacancies()
@@ -35,7 +35,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->vacancies()->save($vacancy);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
 
         $vacancies = $concierge->getVacancies($user);
         return $this->assertContainsOnly($vacancy, $vacancies[$vacancy->date]);
@@ -43,7 +43,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
     /**
      * Test get empty vacancies from Concierge Service Layer
-     * @covers            \App\ConciergeServiceLayer::getVacancies
+     * @covers            \App\Services\ConciergeService::getVacancies
      */
     public function testConciergeGetEmptyVacancies()
     {
@@ -55,7 +55,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->services()->save($service);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
 
         $vacancies = $concierge->getVacancies($user);
         foreach ($vacancies as $vacancy) {
@@ -65,7 +65,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
     /**
      * Test Make Successful Reservation
-     * @covers            \App\ConciergeServiceLayer::makeReservation
+     * @covers            \App\Services\ConciergeService::makeReservation
      */
     public function testMakeSuccessfulReservation()
     {
@@ -86,7 +86,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
 
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
 
@@ -98,7 +98,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
     /**
      * Test Make Successful Reservation
-     * @covers            \App\ConciergeServiceLayer::makeReservation
+     * @covers            \App\Services\ConciergeService::makeReservation
      */
     public function testBlockOverbooking()
     {
@@ -120,7 +120,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
 
         #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone)->timezone('UTC');
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at'))), $business->timezone);
@@ -141,7 +141,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
 
     /**
      * Test Attempt Bad Reservation
-     * @covers            \App\ConciergeServiceLayer::makeReservation
+     * @covers            \App\Services\ConciergeService::makeReservation
      */
     public function testAttemptBadReservation()
     {
@@ -162,7 +162,7 @@ class ConciergeServiceLayerUnitTest extends TestCase
         $business->contacts()->save($contact);
 
         /* Perform Test */
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
 
         #$date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone)->timezone('UTC');
         $date = Carbon::parse(date('Y-m-d H:i:s', strtotime($vacancy->date .' '. $business->pref('start_at') . ' +1 day')), $business->timezone);

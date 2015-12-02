@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use Flash;
 use Carbon\Carbon;
 use App\Models\Business;
-use App\ConciergeServiceLayer;
 use App\AvailabilityServiceLayer;
+use App\Services\ConciergeService;
 use App\Http\Controllers\Controller;
 use Fenos\Notifynder\Facades\Notifynder;
 
@@ -40,7 +40,7 @@ class BusinessController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        $concierge = new ConciergeServiceLayer(new AvailabilityServiceLayer($business));
+        $concierge = new ConciergeService(new AvailabilityServiceLayer($business));
         $available = $concierge->isAvailable(auth()->user());
         # $available = true; /* ToDo */
 
