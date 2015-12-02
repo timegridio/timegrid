@@ -17,7 +17,8 @@ class Business extends EloquentModel
      *
      * @var array
      */
-    protected $fillable = ['name', 'description', 'timezone', 'postal_address', 'phone', 'social_facebook', 'strategy', 'plan'];
+    protected $fillable = ['name', 'description', 'timezone', 'postal_address',
+        'phone', 'social_facebook', 'strategy', 'plan'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -48,7 +49,6 @@ class Business extends EloquentModel
     public function category()
     {
         /* TODO: Use cache here? */
-        # return $this->belongsTo('App\Category')->remember(120);
         return $this->belongsTo('App\Models\Category');
     }
 
@@ -59,7 +59,10 @@ class Business extends EloquentModel
      */
     public function contacts()
     {
-        return $this->belongsToMany('App\Models\Contact')->with('user')->withPivot('notes')->withTimestamps();
+        return $this->belongsToMany('App\Models\Contact')
+                    ->with('user')
+                    ->withPivot('notes')
+                    ->withTimestamps();
     }
 
     /**
@@ -101,7 +104,6 @@ class Business extends EloquentModel
     public function owners()
     {
         /* TODO: Use cache here? */
-        # return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120);
         return $this->belongsToMany(config('auth.model'))->withTimestamps();
     }
 
@@ -113,7 +115,6 @@ class Business extends EloquentModel
     public function owner()
     {
         /* TODO: Use cache here? */
-        # return $this->belongsToMany(config('auth.model'))->withTimestamps()->remember(120)->first();
         return $this->belongsToMany(config('auth.model'))->withTimestamps()->first();
     }
 
@@ -124,7 +125,10 @@ class Business extends EloquentModel
      */
     public function subscriptionsCount()
     {
-        return $this->belongsToMany('App\Models\Contact')->selectRaw('id, count(*) as aggregate')->whereNotNull('user_id')->groupBy('business_id');
+        return $this->belongsToMany('App\Models\Contact')
+                    ->selectRaw('id, count(*) as aggregate')
+                    ->whereNotNull('user_id')
+                    ->groupBy('business_id');
     }
 
     /**
@@ -190,7 +194,7 @@ class Business extends EloquentModel
 
     /**
      * set name of the business
-     * 
+     *
      * @param string $name Name of business
      */
     public function setNameAttribute($name)
@@ -216,9 +220,9 @@ class Business extends EloquentModel
      *
      * @param string $postal_address Postal address
      */
-    public function setPostalAddressAttribute($postal_address)
+    public function setPostalAddressAttribute($postalAddress)
     {
-        $this->attributes['postal_address'] = trim($postal_address) ?: null;
+        $this->attributes['postal_address'] = trim($postalAddress) ?: null;
     }
 
     /**
@@ -226,8 +230,8 @@ class Business extends EloquentModel
      *
      * @param string $social_facebook Facebook User URL
      */
-    public function setSocialFacebookAttribute($social_facebook)
+    public function setSocialFacebookAttribute($facebookPageUrl)
     {
-        $this->attributes['social_facebook'] = trim($social_facebook) ?: null;
+        $this->attributes['social_facebook'] = trim($facebookPageUrl) ?: null;
     }
 }
