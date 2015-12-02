@@ -1,56 +1,62 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/21 13:28:55 
+ Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
 *************************************************************************/
 
 return array (
-  'jumbotron' => 
-  array (
-    'btn' => [ 'begin' => 'Empecemos', 'login' => 'Iniciar Sesión' ],
-    'description' => 'La agenda de turnos para profesionales exitosos.',
-    'title' => 'timegrid.io',
-  ),
+  //==================================== Translations ====================================//
   'feature' => 
   array (
     1 => 
     array (
+      'content' => 'Asigna los turnos por tí para que puedas dedicarte a lo que importa. Tu tiempo vale.',
+      'title' => 'Optimiza',
       'btn' => 
       array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => 'Asigna los turnos por tí para que puedas dedicarte a lo que importa. Tu tiempo vale.',
-      'title' => 'Optimiza',
     ),
     2 => 
     array (
+      'content' => 'Mantiene a todos tus contactos organizados para que tu cartera de clientes esté siempre vigente.',
+      'title' => 'Fideliza',
       'btn' => 
       array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => 'Mantiene a todos tus contactos organizados para que tu cartera de clientes esté siempre vigente.',
-      'title' => 'Fideliza',
     ),
     3 => 
     array (
+      'content' => 'Le da a tus clientes el servicio que merecen, porque realmente lo merecen.',
+      'title' => 'Profesionaliza',
       'btn' => 
       array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => 'Le da a tus clientes el servicio que merecen, porque realmente lo merecen.',
-      'title' => 'Profesionaliza',
     ),
     4 => 
     array (
+      'content' => 'Es hora de aprovechar el tiempo ahorrado y tomar unas buenas vacaciones.',
+      'title' => 'Libera',
       'btn' => 
       array (
         'action' => 'Ver cómo',
         'info' => 'Más info',
       ),
-      'content' => 'Es hora de aprovechar el tiempo ahorrado y tomar unas buenas vacaciones.',
-      'title' => 'Libera',
     ),
   ),
+  'jumbotron' => 
+  array (
+    'btn' => 
+    array (
+      'begin' => 'Empecemos',
+      'login' => 'Iniciar Sesión',
+    ),
+    'description' => 'La agenda de turnos para profesionales exitosos.',
+    'title' => 'timegrid.io',
+  ),
+  //================================== Obsolete strings ==================================//
 );

@@ -1,16 +1,33 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'dateformat' => ['carbon' => 'd/m/Y', 'datetimepicker' => 'DD/MM/YYYY'],
+  'footer' => 
+  array (
+    'demo' => 'Please translate this !',
+    'local' => 'Please translate this !',
+  ),
+  'label' => 
+  array (
+    'attention' => 'Please translate this !',
+    'select_timezone' => 'Zona horaria',
+  ),
+  //==================================== Translations ====================================//
+  'btn' => 
+  array (
+    'update' => 'Actualizar',
+  ),
+  'dateformat' => 
+  array (
+    'datetimepicker' => 'DD/MM/YYYY',
+    'carbon' => 'd/m/Y',
+  ),
+  'name' => 'timegrid.io',
   'nav' => 
   array (
-    'manual' => 'Manual de usuario',
     'login' => 'Iniciar Sesión',
     'logout' => 'Salir',
     'manager' => 
@@ -22,6 +39,7 @@ return array (
         'register' => 'Registrar Prestador',
       ),
     ),
+    'manual' => 'Manual de usuario',
     'register' => 'Registrarme',
     'user' => 
     array (
@@ -37,21 +55,12 @@ return array (
     'wizard' => 'Asistente',
     'home' => 'Inicio',
   ),
-  //==================================== Translations ====================================//
-  'btn' => 
-  array (
-    'update' => 'Actualizar',
-  ),
-  'label' => 
-  array (
-    'select_timezone' => 'Zona horaria',
-  ),
-  'name' => 'timegrid.io',
   'notifications' => 
   array (
     'title' => 'Recientemente',
   ),
   'search' => 'Buscar',
+  //================================== Obsolete strings ==================================//
   'business' => 
   array (
     'category' => 
@@ -61,7 +70,6 @@ return array (
       'photography' => 'Fotografía',
     ),
   ),
-  //================================== Obsolete strings ==================================//
   'filter' => 'Filtrar',
   'gender' => 
   array (

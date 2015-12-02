@@ -1,28 +1,28 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/businesses/show.blade.php
-  'business' => 
+  'booking' => 
   array (
-    'subscriptions_count' => 'business.subscriptions_count',
-    'btn' => 
-    array (
-      'subscribe' => 'Suscribir',
-    ),
     'msg' => 
     array (
-      'please_select_a_business' => 'Seleccioná un prestador',
+      'store' => 
+      array (
+        'error' => 'Please translate this !',
+        'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
+        'success' => '¡Tomá nota! Reservamos tu turno bajo el código :code',
+      ),
+      'you_are_not_subscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
     ),
   ),
   //==================================== Translations ====================================//
   'appointments' => 
   array (
-    'alert' =>
-    array(
+    'alert' => 
+    array (
       'empty_list' => 'No tienes reserves en curso ahora.',
       'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
     ),
@@ -97,29 +97,17 @@ return array (
       'title' => 'Turnos',
     ),
   ),
-  'booking' => 
-  array (
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
-        'success' => '¡Tomá nota! Reservamos tu turno bajo el código :code',
-      ),
-      'you_are_not_subscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
-    ),
-  ),
   'business' => 
   array (
     'btn' => 
     array (
       'subscribe' => 'Suscribir',
     ),
-    'subscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
     'msg' => 
     array (
       'please_select_a_business' => 'Seleccioná un prestador',
     ),
+    'subscriptions_count' => '{0} ¡Sé el primer suscriptor! |Este prestador ya tiene :count usuario suscripto|Este prestador tiene :count usuarios suscriptos',
   ),
   'businesses' => 
   array (
@@ -133,18 +121,18 @@ return array (
       ),
       'title' => 'Prestadores disponibles',
     ),
-    'subscriptions' => 
+    'list' => 
     array (
-      'title' => 'Suscripciones',
-      'none_found' => 'No hay suscripciones disponibles.',
-    ),
-    'list' =>
-    array(
-      'alert' =>
-      array(
+      'no_businesses' => 'No se econtraron prestadores.',
+      'alert' => 
+      array (
         'not_found' => 'No podemos encontrar ese prestador, favor de escoger uno de la lista',
       ),
-      'no_businesses' => 'No se econtraron prestadores.',
+    ),
+    'subscriptions' => 
+    array (
+      'none_found' => 'No hay suscripciones disponibles.',
+      'title' => 'Suscripciones',
     ),
     'show' => 
     array (
@@ -164,7 +152,7 @@ return array (
     ),
     'create' => 
     array (
-        'help' => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
+      'help' => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
     ),
     'msg' => 

@@ -1,63 +1,90 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  'business' => 
-  array (
-    'alert' => 
-    array (
-      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
-    ),
-    'btn' => 
-    array (
-      'tooltip' => 
-      array (
-        'agenda' => 'Agenda de Turnos',
-        'contacts' => 'Lista de Contactos',
-        'edit' => 'Editar datos del Prestador',
-        'preferences' => 'Cambiar Preferencias',
-        'services' => 'Gestionar Servicios',
-        'vacancies' => 'Publicar Disponibilidad',
-      ),
-    ),
-    'hint' => 
-    array (
-      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
-      'set_services' => 'Agregá los servicios que brindás',
-    ),
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
-          'success' => 'Servicio Actualizado!',
-        ),
-      ),
-    ),
-    'form' => 
-    array (
-      'strategy' => 
-      array (
-        'dateslot' => 'Por fecha',
-        'timeslot' => 'Por fecha y horario',
-      ),
-    ),
-  ),
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/show.blade.php
-  //==================================== Translations ====================================//
   'businesses' => 
   array (
+    'form' => 
+    array (
+      'social_facebook' => 
+      array (
+        'label' => 'URL Página de Facebook',
+        'placeholder' => 'https://facebook.com/tu-pagina-de-facebook',
+      ),
+      'category' => 
+      array (
+        'label' => 'Rubro Comercial',
+      ),
+      'description' => 
+      array (
+        'label' => 'Descripción',
+        'placeholder' => 'Describe al prestador',
+      ),
+      'name' => 
+      array (
+        'label' => 'Nombre',
+        'placeholder' => 'Nombre completo del prestador',
+        'validation' => 'Se requiere nombre',
+      ),
+      'phone' => 
+      array (
+        'label' => 'Móvil',
+        'placeholder' => 'tu móvil de contacto',
+        'hint' => 'sin espacios ni guiones',
+      ),
+      'postal_address' => 
+      array (
+        'label' => 'Dirección Postal',
+        'placeholder' => 'altura calle, barrio, ciudad, país',
+      ),
+      'slug' => 
+      array (
+        'label' => 'Alias',
+        'placeholder' => 'así será el link en la web',
+        'validation' => 'Se requiere un alias',
+      ),
+      'timezone' => 
+      array (
+        'label' => 'Zona Horaria',
+      ),
+    ),
+    'msg' => 
+    array (
+      'index' => 
+      array (
+        'only_one_found' => 'Sólo tienes este negocio registrado.',
+      ),
+      'create' => 
+      array (
+        'success' => '¡Olé! Vamos a registrarte con el plan :plan',
+      ),
+      'destroy' => 
+      array (
+        'success' => 'Prestador removido',
+      ),
+      'preferences' => 
+      array (
+        'success' => 'Actualizaste las preferencias Ok',
+      ),
+      'store' => 
+      array (
+        'business_already_exists' => 'El prestador ya está registrado',
+        'restored_trashed' => 'Prestador restaurado',
+        'success' => 'Prestador registrado',
+      ),
+      'update' => 
+      array (
+        'success' => 'Datos del prestador actualizados',
+      ),
+    ),
+    'preferences' => 
+    array (
+      'instructions' => 'Aquí puedes configurar las preferencias a las necesidades de tu negocio',
+      'title' => 'Preferencias del prestador',
+    ),
     'btn' => 
     array (
       'deactivate' => 'Desactivar este prestador',
@@ -106,45 +133,6 @@ return array (
     array (
       'title' => 'Edición de datos del prestador',
     ),
-    'form' => 
-    array (
-      'category' => 
-      array (
-        'label' => 'Rubro Comercial',
-      ),
-      'description' => 
-      array (
-        'label' => 'Descripción',
-        'placeholder' => 'Describe al prestador',
-      ),
-      'name' => 
-      array (
-        'label' => 'Nombre',
-        'placeholder' => 'Nombre completo del prestador',
-        'validation' => 'Se requiere nombre',
-      ),
-      'phone' => 
-      array (
-        'label' => 'Móvil',
-        'placeholder' => 'tu móvil de contacto',
-        'hint' => 'sin espacios ni guiones',
-      ),
-      'postal_address' => 
-      array (
-        'label' => 'Dirección Postal',
-        'placeholder' => 'altura calle, barrio, ciudad, país',
-      ),
-      'slug' => 
-      array (
-        'label' => 'Alias',
-        'placeholder' => 'así será el link en la web',
-        'validation' => 'Se requiere un alias',
-      ),
-      'timezone' => 
-      array (
-        'label' => 'Zona Horaria',
-      ),
-    ),
     'index' => 
     array (
       'help' => 'Desde aquí puedes administrar todos los prestadores',
@@ -156,35 +144,6 @@ return array (
         'register' => 'Registrar un prestador',
       ),
     ),
-    'msg' => 
-    array (
-      'create' => 
-      array (
-        'success' => '¡Olé! Vamos a registrarte con el plan :plan',
-      ),
-      'destroy' => 
-      array (
-        'success' => 'Prestador removido',
-      ),
-      'preferences' => 
-      array (
-        'success' => 'Actualizaste las preferencias Ok',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'El prestador ya está registrado',
-        'restored_trashed' => 'Prestador restaurado',
-        'success' => 'Prestador registrado',
-      ),
-      'update' => 
-      array (
-        'success' => 'Datos del prestador actualizados',
-      ),
-    ),
-    'preferences' => 
-    array (
-      'title' => 'Preferencias del prestador',
-    ),
     'vacancies' => 
     array (
       'btn' => 
@@ -195,6 +154,116 @@ return array (
     'show' => 
     array (
       'title' => 'Prestador',
+    ),
+  ),
+  'services' => 
+  array (
+    'create' => 
+    array (
+      'instructions' => 'Aquí puedes dar de alta los servicios que prestas. Cada uno podrá ser reservado para una '.
+                        'y por la cantidad de citas que admitas',
+      'alert' => 
+      array (
+        'go_to_vacancies' => '¡Muy bien! Ya podés indicar tu disponibilidad y hacerla visible a tus clientes',
+      ),
+      'btn' => 
+      array (
+        'go_to_vacancies' => 'Publicar disponibilidad',
+      ),
+      'title' => 'Agregar un servicio',
+    ),
+    'index' => 
+    array (
+      'instructions' => 'Estos son tus servicios',
+      'title' => 'Servicios',
+      'th' => 
+      array (
+        'duration' => 'Duración',
+        'name' => 'Nombre',
+        'slug' => 'Alias',
+      ),
+    ),
+    'btn' => 
+    array (
+      'create' => 'Agregar un servicio',
+      'store' => 'Guardar',
+    ),
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => '¡Servicio eliminado!',
+      ),
+    ),
+  ),
+  'vacancies' => 
+  array (
+    'edit' => 
+    array (
+      'instructions' => 'Aquí puedes editar y publicar tu disponibilidad para cada servicio por cada fecha.',
+      'title' => 'Disponibilidades',
+    ),
+    'msg' => 
+    array (
+      'edit' => 
+      array (
+        'no_services' => 'No hay servicios registrados. Favor de registrar servicios para tu negocio.',
+      ),
+      'store' => 
+      array (
+        'nothing_changed' => 'Debés completar tu disponibilidad para alguna fecha',
+        'success' => 'Disponibilidades registradas!',
+      ),
+    ),
+    'table' => 
+    array (
+      'th' => 
+      array (
+        'date' => 'Fecha',
+      ),
+    ),
+  ),
+  //==================================== Translations ====================================//
+  'business' => 
+  array (
+    'alert' => 
+    array (
+      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
+    ),
+    'btn' => 
+    array (
+      'tooltip' => 
+      array (
+        'agenda' => 'Agenda de Turnos',
+        'contacts' => 'Lista de Contactos',
+        'edit' => 'Editar datos del Prestador',
+        'preferences' => 'Cambiar Preferencias',
+        'services' => 'Gestionar Servicios',
+        'vacancies' => 'Publicar Disponibilidad',
+      ),
+    ),
+    'hint' => 
+    array (
+      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
+      'set_services' => 'Agregá los servicios que brindás',
+    ),
+    'service' => 
+    array (
+      'msg' => 
+      array (
+        'update' => 
+        array (
+          'success' => 'Servicio Actualizado!',
+        ),
+      ),
+    ),
+    'form' => 
+    array (
+      'strategy' => 
+      array (
+        'dateslot' => 'Por fecha',
+        'timeslot' => 'Por fecha y horario',
+      ),
     ),
   ),
   'contacts' => 
@@ -235,8 +304,8 @@ return array (
       'firstname' => 
       array (
         'label' => 'Nombre',
-        'placeholder' => 'primer nombre',
         'validation' => 'Se requiere su primer nombre',
+        'placeholder' => 'primer nombre',
       ),
       'gender' => 
       array (
@@ -253,8 +322,8 @@ return array (
       'lastname' => 
       array (
         'label' => 'Apellido',
-        'placeholder' => 'apellido',
         'validation' => 'Se requiere su apellido',
+        'placeholder' => 'apellido',
       ),
       'mobile' => 
       array (
@@ -354,69 +423,6 @@ return array (
       'store' => 
       array (
         'success' => '¡Servicio Guardado!',
-      ),
-    ),
-  ),
-  'services' => 
-  array (
-    'btn' => 
-    array (
-      'create' => 'Agregar un servicio',
-      'store' => 'Guardar',
-    ),
-    'create' => 
-    array (
-      'alert' => 
-      array (
-        'go_to_vacancies' => '¡Muy bien! Ya podés indicar tu disponibilidad y hacerla visible a tus clientes',
-      ),
-      'btn' => 
-      array (
-        'go_to_vacancies' => 'Publicar disponibilidad',
-      ),
-      'title' => 'Agregar un servicio',
-    ),
-    'index' => 
-    array (
-      'th' => 
-      array (
-        'name' => 'Nombre',
-        'duration' => 'Duración',
-        'slug' => 'Alias',
-      ),
-      'title' => 'Servicios',
-    ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
-        'success' => '¡Servicio eliminado!',
-      ),
-    ),
-  ),
-  'vacancies' => 
-  array (
-    'edit' => 
-    array (
-      'title' => 'Disponibilidades',
-    ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'nothing_changed' => 'Debés completar tu disponibilidad para alguna fecha',
-        'success' => 'Disponibilidades registradas!',
-      ),
-      'edit' =>
-      array(
-        'no_services' => 'No hay servicios registrados. Favor de registrar servicios para tu negocio.',
-      ),
-    ),
-    'table' => 
-    array (
-      'th' => 
-      array (
-        'date' => 'Fecha',
       ),
     ),
   ),

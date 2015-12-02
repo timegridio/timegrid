@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/29 12:57:57 
+ Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
 *************************************************************************/
 
 return array (
@@ -22,8 +22,8 @@ return array (
     array (
       'hint' => 'Ideal para prestadores independientes',
       'name' => 'Free',
-      'fee' => '(Gratis)',
       'submit' => 'Empezar',
+      'fee' => '(Gratis)',
     ),
     'starter' => 
     array (
