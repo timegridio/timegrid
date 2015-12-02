@@ -13,11 +13,15 @@ class ConciergeServiceLayer
 {
     private $availabilityService;
 
-    public function __construct(AvailabilityServiceLayer $availabilityService)
+    public function __construct(AvailabilityServiceLayer $availabilityService = null)
     {
         $this->availabilityService = $availabilityService;
     }
 
+    public function setAvailabilityService(AvailabilityServiceLayer $availabilityService)
+    {
+        $this->availabilityService = $availabilityService;
+    }
 
     /**
      * is available for at least one reservation
@@ -38,9 +42,9 @@ class ConciergeServiceLayer
      * @param  integer  $limit    For a maximum of $limit days
      * @return Array              Array of vacancies for each date
      */
-    public function getVacancies(User $user, $limit = 7)
+    public function getVacancies(User $user, $limit = 7, $includeToday = false)
     {
-        return $this->availabilityService->getVacanciesFor($user, $limit);
+        return $this->availabilityService->getVacanciesFor($user, $limit, $includeToday);
     }
 
     /**
