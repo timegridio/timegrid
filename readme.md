@@ -4,6 +4,7 @@
 </a>
 
 timegrid
+a web application for online reservation of services for business.
 ============
 
 [![Build Status](https://travis-ci.org/alariva/timegrid.svg?branch=development)](https://travis-ci.org/alariva/timegrid)
@@ -13,13 +14,13 @@ timegrid
 [![ES User Manual](https://readthedocs.org/projects/manual-de-usuario-de-timegridio/badge/?version=latest&style=flat-square)](http://manual-de-usuario-de-timegridio.readthedocs.org/es/latest/?badge=latest)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-Timegrid is a web application for online reservation of services for business.
-
 **The problem**
-Small and medium scale business wish to provide online service booking for their customers, but the toos out there are either *too expensive* or *too complex* for their needs.
+
+Small and medium scale businesses wish to provide online service booking for their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
 
 **The Solution**
-Timegrid is a world-wide platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Useful, Simple, Fast.
+
+Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Useful, Simple, Fast.
 
 It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
@@ -37,7 +38,7 @@ Want action? Try the *beta* [live demo](http://demo.timegrid.io/)
 
 ## Features
 
-These are the current features so far:
+### Implemented
 
   * User regular and oAuth2 SignUp
   * Business management
@@ -46,6 +47,15 @@ These are the current features so far:
     * Availability management
   * Service Reservation
   * Local Search
+
+### Future
+
+  * Add SMS alerts
+  * Add automatic vacancy handling
+  * Support for Themes
+  * Support for more industry sectors reservation strategies
+  * Users reputation
+  * ...and more
 
 ## Official Documentation
 
