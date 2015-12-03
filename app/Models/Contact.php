@@ -56,20 +56,13 @@ class Contact extends EloquentModel
     }
 
     /**
-     * ToDo: Check usage of this method, might need to be deprecated
-     *       It is not safe to get just the first bussiness and there should be no need to use this
-     *       Responsibility might need to be moved.
-     *
-     * belongs to Business
+     * indicates if contact belongs to Business
      *
      * @return Illuminate\Database\Query Relationship Contact is part of Business' addressbook query
      */
-    public function business(Business $business)
+    public function isOnAddressbookOf(Business $business)
     {
-        return $this->belongsToMany('App\Models\Business')->withPivot('notes')
-                                                          ->where('business_id', $business->id)
-                                                          ->withTimestamps()
-                                                          ->first();
+        return $this->businesses()->contains($business);
     }
 
     /**

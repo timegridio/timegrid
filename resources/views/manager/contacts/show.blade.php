@@ -82,11 +82,11 @@
                                         @endif
                                         <tr>
                                                 <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
-                                                <td>{{ $contact->business($business)->pivot->created_at->diffForHumans() }}</td>
+                                                <td>{{ $business->pivot->created_at->diffForHumans() }}</td>
                                         </tr>
                                         <tr>
                                                 <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.notes') }}</label></td>
-                                                <td>{{ $contact->business($business)->pivot->notes or '' }}</td>
+                                                <td>{{ $business->pivot->notes or '' }}</td>
                                         </tr>
                                          
                                         </tbody>
