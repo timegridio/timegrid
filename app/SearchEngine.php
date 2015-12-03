@@ -22,7 +22,11 @@ class SearchEngine
 
     public function __construct($criteria)
     {
-        $this->scope['businessesIds'] = Auth::user()->businesses->transform(function ($item, $key) { return $item->id; });
+        $this->scope['businessesIds'] = auth()->user()->businesses->transform(
+            function ($item) {
+                return $item->id;
+            });
+
         $this->criteria = $criteria;
     }
 
@@ -52,12 +56,18 @@ class SearchEngine
 
     private function getServices($expression)
     {
-        $this->results['services'] = Service::whereIn('business_id', $this->scope['businessesIds'])->where('name', 'like', $expression.'%')->get();
+        $this->results['services'] = Service::whereIn(
+            'business_id',
+            $this->scope['businessesIds']
+            )->where('name', 'like', $expression.'%')->get();
     }
 
     private function getAppointments($expression)
     {
-        $this->results['appointments'] = Appointment::whereIn('business_id', $this->scope['businessesIds'])->where('hash', 'like', $expression.'%')->get();
+        $this->results['appointments'] = Appointment::whereIn(
+            'business_id',
+            $this->scope['businessesIds']
+            )->where('hash', 'like', $expression.'%')->get();
     }
 
     private function getContacts($expression)
