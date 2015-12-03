@@ -20,7 +20,7 @@ class BusinessContactController extends Controller
     public function index(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -39,7 +39,7 @@ class BusinessContactController extends Controller
     public function create(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -59,7 +59,7 @@ class BusinessContactController extends Controller
     public function store(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -109,10 +109,7 @@ class BusinessContactController extends Controller
     public function show(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s",
-            $business->id,
-            $contact->id
-            ));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -134,10 +131,7 @@ class BusinessContactController extends Controller
     public function edit(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s",
-            $business->id,
-            $contact->id
-            ));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -160,10 +154,7 @@ class BusinessContactController extends Controller
     public function update(Business $business, Contact $contact, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s",
-            $business->id,
-            $contact->id
-            ));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -204,10 +195,7 @@ class BusinessContactController extends Controller
     public function destroy(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s",
-            $business->id,
-            $contact->id
-            ));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
