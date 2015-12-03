@@ -95,18 +95,27 @@
 <script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
+$(document).ready(function() {
+    $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
 
-        var submitBtn = $('button:submit');
-        submitBtn.click(function(){
-            submitBtn.attr("disabled", true);
-    
-            setTimeout(function(){
-                submitBtn.attr("disabled", false);
-                }, 5000);
-        });
-    });
+    // jQuery plugin to prevent double submission of forms
+    jQuery.fn.preventDoubleSubmission = function() {
+      $(this).on('submit',function(e){
+        var $form = $(this);     
+        if ($form.data('submitted') === true) {
+            // Previously submitted - don't submit again
+            e.preventDefault();
+        } else {
+            // Mark it so that the next submit can be ignored
+            $form.data('submitted', true);
+        }
+      });
+      // Keep chainability
+      return this;
+    };
+
+    $('form').preventDoubleSubmission();
+});
 </script>
 
 @yield('footer_scripts')
