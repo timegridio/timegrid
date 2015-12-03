@@ -245,10 +245,12 @@ class Contact extends EloquentModel
 
         if ($user === null) {
             $this->user()->dissociate();
+            $this->save();
+            return $this;
         }
         
         $this->user()->associate($user);
-
+        $this->save();
         return $this;
     }
 
