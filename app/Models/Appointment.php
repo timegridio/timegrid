@@ -322,6 +322,24 @@ class Appointment extends EloquentModel implements PresentableInterface
     /////////////////////////
 
     /**
+     * Scope to Unarchived Appointments
+     *
+     * @param  Illuminate\Database\Query $query
+     * @return Illuminate\Database\Query Scoped query
+     */
+    public function scopeUnarchived($query)
+    {
+        return $query
+            ->where(function ($query) {
+                $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED])
+                    ->where('start_at', '<=', Carbon::parse('today midnight')->timezone('UTC'));
+            })
+            ->orWhere(function ($query) {
+                $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
+            });
+    }
+
+    /**
      * Scope to Served Appointments
      *
      * @param  Illuminate\Database\Query $query

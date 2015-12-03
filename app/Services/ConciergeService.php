@@ -83,6 +83,39 @@ class ConciergeService
     }
 
     /**
+     * get Future Appointments For
+     *
+     * @param  User   $user This User
+     * @return Illuminate\Support\Collection       Collection of Appointments
+     */
+    public function getFutureAppointmentsFor(User $user)
+    {
+        return $user->appointments()->orderBy('start_at')->future()->get();
+    }
+
+    /**
+     * get Active Appointments For
+     *
+     * @param  User   $user This User
+     * @return Illuminate\Support\Collection       Collection of Appointments
+     */
+    public function getActiveAppointmentsFor(User $user)
+    {
+        return $user->appointments()->orderBy('start_at')->active()->get();
+    }
+
+    /**
+     * get Unarchived Appointments For
+     *
+     * @param  User   $user This User
+     * @return Illuminate\Support\Collection       Collection of Appointments
+     */
+    public function getUnarchivedAppointmentsFor(User $user)
+    {
+        return $user->appointments()->orderBy('start_at')->unarchived()->get();
+    }
+
+    /**
      * make Reservation
      * 
      * @param  User     $issuer   Requested by User as issuer
