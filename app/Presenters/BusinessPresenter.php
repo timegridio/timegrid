@@ -2,7 +2,9 @@
 
 namespace App\Presenters;
 
-class BusinessPresenter extends \Robbo\Presenter\Presenter
+use Robbo\Presenter\Presenter;
+
+class BusinessPresenter extends Presenter
 {
     /**
      * get Facebook Profile Public Picture
@@ -15,12 +17,12 @@ class BusinessPresenter extends \Robbo\Presenter\Presenter
         if (!$this->social_facebook) {
             return "<img class=\"img-thumbnail\" src=\"//placehold.it/100x100\"/>";
         }
-        $r = parse_url($this->social_facebook);
-        if ($r['path'] == '/profile.php') {
-            parse_str($r['query'], $parts);
+        $url = parse_url($this->social_facebook);
+        if ($url['path'] == '/profile.php') {
+            parse_str($url['query'], $parts);
             $UID = $parts['id'];
         } else {
-            $UID = trim($r['path'], '/');
+            $UID = trim($url['path'], '/');
         }
         $url = "http://graph.facebook.com/$UID/picture?type=$type";
         return "<img class=\"img-thumbnail media-object\" src='$url' />";
@@ -34,13 +36,14 @@ class BusinessPresenter extends \Robbo\Presenter\Presenter
      */
     public function getStaticMap($zoom = 15)
     {
-        $data = array('center'         => $this->postal_address,
-                      'zoom'           => intval($zoom),
-                      'scale'          =>'2',
-                      'size'           =>'180x100',
-                      'maptype'        =>'roadmap',
-                      'format'         =>'gif',
-                      'visual_refresh' =>'true');
+        $data = [
+            'center' => $this->postalAddress,
+            'zoom' => intval($zoom),
+            'scale' =>'2',
+            'size' =>'180x100',
+            'maptype' =>'roadmap',
+            'format' =>'gif',
+            'visual_refresh' =>'true'];
 
         $src = 'http://maps.googleapis.com/maps/api/staticmap?' . http_build_query($data, '', '&amp;');
         return "<img class=\"img-responsive img-thumbnail center-block\" src=\"$src\"/>";
