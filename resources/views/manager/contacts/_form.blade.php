@@ -20,7 +20,7 @@
                 'class'=>'form-control',
                 'placeholder'=> trans('manager.contacts.form.firstname.label'),
                 'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.firstname.validation').'" )',
-                'oninput' => 'this.setCustomValidity("")' )) !!}
+                'oninput' => 'this.setCustomValidity("")' ]) !!}
         </div>
         <div class="form-group col-xs-8">
             {!! Form::text('lastname', null, [
