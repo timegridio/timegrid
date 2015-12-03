@@ -28,19 +28,19 @@
                 'class'=>'form-control',
                 'placeholder'=> trans('manager.contacts.form.lastname.label'),
                 'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.lastname.validation').'" )',
-                'oninput' => 'this.setCustomValidity("")' )) !!}
+                'oninput' => 'this.setCustomValidity("")' ]) !!}
         </div>
     </div>
     <div class="row">
         <div class="form-group col-xs-4">
         {!! Form::text('nin', null, [
             'class'=>'form-control',
-            'placeholder'=> trans('manager.contacts.form.nin.label') )) !!}
+            'placeholder'=> trans('manager.contacts.form.nin.label') ]) !!}
         </div>
         <div class="form-group col-xs-8">
             {!! Form::email('email', null, [
                 'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.email.label') )) !!}
+                'placeholder'=> trans('manager.contacts.form.email.label') ]) !!}
         </div>
     </div>
     <div class="row">
@@ -57,7 +57,7 @@
                 'class'=>'form-control',
                 'id'=>'birthdate',
                 'placeholder'=> trans('manager.contacts.form.birthdate.label'),
-                'title'=> trans('manager.contacts.form.birthdate.label') )) !!}
+                'title'=> trans('manager.contacts.form.birthdate.label') ]) !!}
         </div>
     </div>
     <div class="row">
@@ -65,7 +65,7 @@
             {!! Form::text('mobile-input', null, [
                 'id' => 'mobile-input',
                 'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.mobile.label') )) !!}
+                'placeholder'=> trans('manager.contacts.form.mobile.label') ]) !!}
         </div>
     </div>
     <div class="row">
@@ -73,7 +73,7 @@
             {!! Form::textarea('notes', null, [
                 'class'=>'form-control',
                 'rows'=>'4',
-                'placeholder'=> trans('manager.contacts.form.notes.label') )) !!}
+                'placeholder'=> trans('manager.contacts.form.notes.label') ]) !!}
         </div>
     </div>
     <div class="row">
