@@ -111,7 +111,9 @@ class AgendaController extends Controller
         $appointmentPresenter = $appointment->getPresenter();
         if ($appointment->exists) {
             $this->log->info('  Appointment saved successfully');
-            Event::fire(new NewBooking($issuer, $appointment));
+            
+            event(new NewBooking($issuer, $appointment));
+
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
             return redirect()->route('user.booking.list');
         }

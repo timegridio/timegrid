@@ -68,7 +68,7 @@ class AuthController extends Controller
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        Event::fire(new NewRegisteredUser($user));
+        event(new NewRegisteredUser($user));
         return $user;
     }
 }
