@@ -88,7 +88,7 @@ class BusinessContactController extends Controller
         $business->save();
         $this->log->info("  Contact created contactId:{$contact->id}");
 
-        $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
+        $business->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.store.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
@@ -174,7 +174,7 @@ class BusinessContactController extends Controller
             'mobile_country'  => $request->get('mobile_country'),
         ]);
 
-        $contact->business($business)->pivot->update(['notes' => $request->get('notes')]);
+        $business->pivot->update(['notes' => $request->get('notes')]);
 
         Flash::success(trans('manager.contacts.msg.update.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
