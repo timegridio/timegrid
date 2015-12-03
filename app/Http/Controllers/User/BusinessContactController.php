@@ -8,6 +8,7 @@ use Notifynder;
 use App\Http\Requests;
 use App\Models\Contact;
 use App\Models\Business;
+use App\Events\NewRegisteredContact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ViewContactRequest;
 use App\Http\Requests\AlterContactRequest;
@@ -80,6 +81,8 @@ class BusinessContactController extends Controller
         $business->contacts()->attach($contact);
         $business->save();
 
+        event(new NewRegisteredContact($contact));
+
         Flash::success(trans('user.contacts.msg.store.success'));
         return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
@@ -100,7 +103,9 @@ class BusinessContactController extends Controller
             $contact->id
             ));
 
-        return view('user.contacts.show', compact('business', 'contact'));
+        $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
+
+        return view('user.contacts.show', compact('business', 'contact', 'memberSince'));
     }
 
     /**

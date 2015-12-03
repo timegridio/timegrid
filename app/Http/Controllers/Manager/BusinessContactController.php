@@ -92,6 +92,8 @@ class BusinessContactController extends Controller
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
         }
 
+        event(new NewRegisteredContact($contact));
+
         Flash::success(trans('manager.contacts.msg.store.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
@@ -185,6 +187,8 @@ class BusinessContactController extends Controller
         if ($request->get('notes')) {
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
         }
+
+        // TODO: If email was updated, user linking should be triggered (if contact is not owned)
 
         Flash::success(trans('manager.contacts.msg.update.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);

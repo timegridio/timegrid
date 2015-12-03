@@ -84,7 +84,7 @@
                                         @endif
                                         <tr>
                                                 <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
-                                                <td>{{ $business->pivot->created_at->diffForHumans() }}</td>
+                                                <td>{{ $memberSince->diffForHumans() }}</td>
                                         </tr>                                         
                                         </tbody>
                                     </table>

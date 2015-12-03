@@ -156,21 +156,17 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * TODO: Review the logic of this method.
-     *       The method may return true even when no Contacts were found
-     *       Should return the Contact Collection that were associated
+     * Link User to existing Contacts
      * 
-     * Link to Contacts
-     * 
-     * @return boolean The User was linked to at least one Contact
+     * @return boolean   The User was linked to at least one Contact
      */
     public function linkToContacts()
     {
-        if (trim($this->email) == '') {
+        $contacts = Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
+
+        if($contacts->isEmpty()){
             return false;
         }
-
-        $contacts = Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
 
         foreach ($contacts as $contact) {
             $contact->user()->associate($this)->save();

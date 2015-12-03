@@ -31,15 +31,11 @@ class Contact extends EloquentModel
      * @param  array  $options
      * @return bool
      */
-    public function save(array $options = array())
-    {
-        $changed = $this->getDirty();
-
-        if (array_key_exists('email', $changed)) {
-            $this->autoLinkToUser();
-        }
-        return parent::save($options);
-    }
+#    public function save(array $options = array())
+#    {
+#
+#        return parent::save($options);
+#    }
 
     //////////////////
     // Relationship //
@@ -239,42 +235,19 @@ class Contact extends EloquentModel
     }
 
     /**
-     * TODO: Check that might be reusable code from User.linkToContacts()
+     * link Contact to existing User if any
      *
-     * link to User
-     *
-     * @param  boolean $forceRelink Force relinking if already linked to a User
-     * @return Contact               Current Contact already linked
+     * @return Contact    Current Contact linked to user
      */
     public function autoLinkToUser()
     {
-        if (trim($this->email) == '' || $this->user_id !== null) {
-            return $this;
-        }
-
         $user = User::where(['email' => $this->email])->first();
 
         if ($user === null) {
-            $this->unlinkUser();
+            $this->user()->dissociate();
         }
         
         $this->user()->associate($user);
-        $this->save();
-
-        return $this;
-    }
-
-    /**
-     * TODO: This method does not alter DB
-     *       Seems to be a helper function that might need to get moved somewhere else
-     *
-     * unlink User
-     *
-     * @return Contact               Current Contact already unlinked
-     */
-    public function unlinkUser()
-    {
-        $this->attributes['user_id'] = null;
 
         return $this;
     }
