@@ -29,7 +29,7 @@
                     @endif
 
                     <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/email') }}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">{{ trans('auth.login.email') }}</label>

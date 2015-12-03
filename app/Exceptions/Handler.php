@@ -46,6 +46,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
+        // Catch TokenMismatchException to show a friendly error message
+        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+            return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
+        }
+
         return parent::render($request, $e);
     }
 }

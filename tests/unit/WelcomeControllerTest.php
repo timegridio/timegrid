@@ -70,4 +70,28 @@ class WelcomeControllerTest extends TestCase
              ->see('Repeat password') // Login Form field
              ->see('Register');       // Submit button
     }
+
+   /**
+    * Regresion for https://github.com/alariva/timegrid/issues/39
+    * @test
+    */
+#    public function it_fails_to_submit_aun_invalid_token_post()
+#    {
+#        // Given I am a not authenticated user (guest)
+#        
+#        // And I visit the homepage
+#        
+#        $this->visit('/auth/login');
+#
+#        // And I fill the login form
+#        $this->type('test@example.org', 'email')
+#             ->type('password', 'password');
+#
+#        // TODO: HERE Change the _token field value to simulate invalidation/tampering
+#        
+#        $this->click('Login');
+#
+#        // Then I should see an invalid token message
+#        $this->see('please submit your form again');
+#    }
 }

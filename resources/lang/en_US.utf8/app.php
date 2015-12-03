@@ -1,6 +1,10 @@
 <?php
 
 return [
+  'msg' =>
+  [
+    'invalid_token' => 'We found a validation error, please submit your form again',
+  ],
   'footer' =>
   [
     'demo' => 'Remember this is a DEMO version.',
