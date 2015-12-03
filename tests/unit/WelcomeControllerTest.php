@@ -75,23 +75,24 @@ class WelcomeControllerTest extends TestCase
     * Regresion for https://github.com/alariva/timegrid/issues/39
     * @test
     */
-#    public function it_fails_to_submit_aun_invalid_token_post()
-#    {
-#        // Given I am a not authenticated user (guest)
-#        
-#        // And I visit the homepage
-#        
-#        $this->visit('/auth/login');
-#
-#        // And I fill the login form
-#        $this->type('test@example.org', 'email')
-#             ->type('password', 'password');
-#
-#        // TODO: HERE Change the _token field value to simulate invalidation/tampering
-#        
-#        $this->click('Login');
-#
-#        // Then I should see an invalid token message
-#        $this->see('please submit your form again');
-#    }
+    public function it_fails_to_submit_an_invalid_token_post()
+    {
+        // Given I am a not authenticated user (guest)
+        
+        // And I visit the homepage
+        $this->visit('/auth/login');
+
+        // And I fill the login form
+        $this->type('test@example.org', 'email')
+             ->type('password', 'password');
+
+        // And my session expired so as a token was invalidated 
+        session()->regenerateToken();
+
+        // And I submit the form        
+        $this->press('Login');
+
+        // Then I should see a message asking for resubmit
+        $this->see('please submit your form again');
+    }
 }
