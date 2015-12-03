@@ -58,6 +58,7 @@ class AgendaController extends Controller
 
         if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('  [ADVICE] User not subscribed to Business');
+            
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
             return redirect()->back();
         }
@@ -104,6 +105,7 @@ class AgendaController extends Controller
 
         if (false === $appointment) {
             $this->log->info(' [ADVICE] Unable to book');
+            
             Flash::warning(trans('user.booking.msg.store.error'));
             return redirect()->route('user.booking.list');
         }
