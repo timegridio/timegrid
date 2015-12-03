@@ -14,7 +14,7 @@ class BookingControllerUnitTest extends TestCase
     use DatabaseTransactions;
 
    /**
-     * @covers            \App\Models\Business::__construct
+     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_annulates_an_existing_appointment()
@@ -57,7 +57,7 @@ class BookingControllerUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Models\Business::__construct
+     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_annulates_fails_to_activate_a_served_appointment()

@@ -9,7 +9,7 @@ class ContactUnitTest extends TestCase
     use DatabaseTransactions;
 
    /**
-     * @covers            \App\Models\Business::__construct
+     * @covers App\Models\Contact::autoLinkToUser
      * @test
      */
     public function test_it_links_to_existing_user()
@@ -24,7 +24,7 @@ class ContactUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Models\Business::__construct
+     * @covers App\Models\Contact::autoLinkToUser
      * @test
      */
     public function test_it_links_another_to_existing_user()
@@ -47,7 +47,7 @@ class ContactUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Models\Business::__construct
+     * @covers App\Models\Contact::autoLinkToUser
      * @test
      */
     public function test_it_unlinks_removed_user()

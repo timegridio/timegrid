@@ -16,9 +16,10 @@ class VacancyUnitTest extends TestCase
     protected $business;
 
     /**
-     * @covers            \App\Models\Vacancy::isHoldingAnyFor
+     * @covers  \App\Models\Vacancy::isHoldingAnyFor
+     * @test
      */
-    public function testIsHoldingAnyFor()
+    public function it_verifies_a_vacancy_holds_appointment_for_a_user()
     {
         /* Setup Stubs */
         $issuer = factory(User::class)->create();
@@ -51,8 +52,9 @@ class VacancyUnitTest extends TestCase
 
     /**
      * @covers            \App\Models\Vacancy::isHoldingAnyFor
+     * @test
      */
-    public function testIsNotHoldingAnyFor()
+    public function it_verifies_a_vacancy_doesnt_hold_appointment_for_a_user()
     {
         /* Setup Stubs */
         $issuer = factory(User::class)->create();
