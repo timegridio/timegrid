@@ -46,7 +46,13 @@ class Preference extends EloquentModel
         $class = get_class($model);
         $value = Config::get("preferences.{$class}.{$key}.value");
         $type = Config::get("preferences.{$class}.{$key}.type");
-        return new Preference(['key' => $key, 'value' => $value, 'type' => $type, 'preferenceable_type' => $class, 'preferenceable_id' => $model]);
+        return new Preference([
+            'key' => $key,
+            'value' => $value,
+            'type' => $type,
+            'preferenceable_type' => $class,
+            'preferenceable_id' => $model
+            ]);
     }
 
     /**
