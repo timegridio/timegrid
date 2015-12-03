@@ -4,8 +4,9 @@
 </a>
 
 timegrid
-a web application for online reservation of services for business.
 ============
+
+> Online reservation of services for business. Made easy.
 
 [![Build Status](https://travis-ci.org/alariva/timegrid.svg?branch=development)](https://travis-ci.org/alariva/timegrid)
 [![Code Climate](https://codeclimate.com/github/alariva/timegrid/badges/gpa.svg)](https://codeclimate.com/github/alariva/timegrid)
