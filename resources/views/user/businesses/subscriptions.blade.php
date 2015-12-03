@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
@@ -31,14 +30,8 @@
                     	{{ trans('user.businesses.subscriptions.none_found') }}
                     @endif
                 </div>
-
-                <div class="panel-footer">
-
-                </div>
-
             </div>
         </div>
     </div>
 </div>
-
 @endsection
