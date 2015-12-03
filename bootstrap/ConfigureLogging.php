@@ -45,9 +45,9 @@ class ConfigureLogging
      */
     protected function registerLogger(Application $app)
     {
-        $app->instance('log', $log = new Writer(
-            new Monolog($app->environment()), $app['events'])
-        );
+        $log = new Writer(new Monolog($app->environment()));
+
+        $app->instance('log', $log, $app['events']);
 
         return $log;
     }
