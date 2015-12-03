@@ -8,7 +8,7 @@
     <title>{{trans('app.name')}}</title>
 
     <!-- Latest compiled and minified CSS -->
-<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tooltipster/themes/tooltipster-timegrid.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tooltipster/tooltipster.css') }}">
@@ -18,20 +18,24 @@
     @yield('css')
 
     <!-- Fonts -->
-{{--    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> --}}
+    {{--    <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'> --}}
 
     @yield('headscripts')
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
 </head>
-<body>{!! Analytics::render() !!}
+<body>
+{!! Analytics::render() !!}
+
     @if (App::isLocal())
-        <a target="_blank" href="https://github.com/alariva/timegrid"><img style="position: absolute; top: 0; left: 0; border: 0; z-index:99999" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png"></a>
+        <a target="_blank" href="https://github.com/alariva/timegrid">
+            <img style="position: absolute; top: 0; left: 0; border: 0; z-index:99999" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
+        </a>
     @endif
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -74,27 +78,37 @@
         </div>
     </nav>
 
-    <div class="container">
-        @include('flash::message')
-    </div>
+<div class="container">
+    @include('flash::message')
+</div>
 
-    @yield('content')
+@yield('content')
 
-    @include('_footer')
+@include('_footer')
 
-    <!-- Scripts -->
+<!-- Scripts -->
 <!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> -->
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <!-- Latest compiled and minified JavaScript -->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+<!-- Latest compiled and minified JavaScript -->
 <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
+
+        var submitBtn = $('button:submit');
+        submitBtn.click(function(){
+            submitBtn.attr("disabled", true);
+    
+            setTimeout(function(){
+                submitBtn.attr("disabled", false);
+                }, 5000);
         });
-    </script>
-    @yield('footer_scripts')
+    });
+</script>
+
+@yield('footer_scripts')
 </body>
 </html>
