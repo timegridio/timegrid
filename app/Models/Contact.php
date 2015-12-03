@@ -36,7 +36,7 @@ class Contact extends EloquentModel
         $changed = $this->getDirty();
 
         if (array_key_exists('email', $changed)) {
-            $this->linkToUser(true);
+            $this->autoLinkToUser();
         }
         return parent::save($options);
     }
@@ -246,9 +246,9 @@ class Contact extends EloquentModel
      * @param  boolean $forceRelink Force relinking if already linked to a User
      * @return Contact               Current Contact already linked
      */
-    public function linkToUser($forceRelink = false)
+    public function autoLinkToUser()
     {
-        if (trim($this->email) == '' || $this->user_id !== null && $forceRelink == false) {
+        if (trim($this->email) == '' || $this->user_id !== null) {
             return $this;
         }
 
@@ -256,9 +256,11 @@ class Contact extends EloquentModel
 
         if ($user === null) {
             $this->unlinkUser();
-        } else {
-            $this->attributes['user_id'] = $user->id;
         }
+        
+        $this->user()->associate($user);
+        $this->save();
+
         return $this;
     }
 

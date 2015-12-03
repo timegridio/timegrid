@@ -88,7 +88,9 @@ class BusinessContactController extends Controller
         $business->save();
         $this->log->info("  Contact created contactId:{$contact->id}");
 
-        $business->pivot->update(['notes' => $request->get('notes')]);
+        if ($request->get('notes')) {
+            $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
+        }
 
         Flash::success(trans('manager.contacts.msg.store.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
@@ -113,6 +115,9 @@ class BusinessContactController extends Controller
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
         }
+        
+        // Grab contact with pivot
+        $contact = $business->contacts()->find($contact->id);
 
         return view('manager.contacts.show', compact('business', 'contact'));
     }
@@ -136,7 +141,10 @@ class BusinessContactController extends Controller
             abort(403);
         }
 
-        return view('manager.contacts.edit', compact('business', 'contact'));
+        // Grab contact with pivot
+        $notes = $business->contacts()->find($contact->id)->pivot->notes;
+
+        return view('manager.contacts.edit', compact('business', 'contact', 'notes'));
     }
 
     /**
@@ -174,7 +182,9 @@ class BusinessContactController extends Controller
             'mobile_country'  => $request->get('mobile_country'),
         ]);
 
-        $business->pivot->update(['notes' => $request->get('notes')]);
+        if ($request->get('notes')) {
+            $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
+        }
 
         Flash::success(trans('manager.contacts.msg.update.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);

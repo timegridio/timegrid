@@ -70,7 +70,7 @@
     </div>
     <div class="row">
         <div class="form-group col-xs-12">
-            {!! Form::textarea('notes', null, [
+            {!! Form::textarea('notes', isset($notes) ? $notes : null, [
                 'class'=>'form-control',
                 'rows'=>'4',
                 'placeholder'=> trans('manager.contacts.form.notes.label') ]) !!}
