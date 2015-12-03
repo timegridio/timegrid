@@ -12,10 +12,10 @@ return array (
       'store' => 
       array (
         'error' => 'Please translate this !',
-        'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
-        'success' => '¡Tomá nota! Reservamos tu turno bajo el código :code',
+        'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
+        'success' => '¡Tomá nota! Reservamos tu cita bajo el código :code',
       ),
-      'you_are_not_subscribed_to_business' => 'Para pedir un turno debés suscribirte al prestador antes',
+      'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
     ),
   ),
   //==================================== Translations ====================================//
@@ -28,8 +28,8 @@ return array (
     ),
     'btn' => 
     array (
-      'book' => 'Reservar Turno',
-      'book_in_biz' => 'Reservar Turno en :biz',
+      'book' => 'Reservar Cita',
+      'book_in_biz' => 'Reservar cita en :biz',
     ),
     'form' => 
     array (
@@ -63,12 +63,12 @@ return array (
       ),
       'timetable' => 
       array (
-        'instructions' => 'Selecciona un servicio para reservar turno',
+        'instructions' => 'Selecciona un servicio para reservar cita',
         'msg' => 
         array (
           'no_vacancies' => 'No hay disponibilidades para esta fecha',
         ),
-        'title' => 'Reserva un Turno',
+        'title' => 'Reserva una cita',
       ),
       'business' => 
       array (
@@ -94,7 +94,7 @@ return array (
         'start_time' => 'Comienza',
         'status' => 'Estado',
       ),
-      'title' => 'Turnos',
+      'title' => 'Citas',
     ),
   ),
   'business' => 
@@ -138,7 +138,7 @@ return array (
     array (
       'btn' => 
       array (
-        'book' => 'Reservar Turno',
+        'book' => 'Reservar Cita',
         'change' => 'Cambiar',
       ),
     ),

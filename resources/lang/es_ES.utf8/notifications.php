@@ -3,7 +3,7 @@
 return [
   'user' => [
     'checkingVacancies' => ':user consultó la disponibilidad',
-    'booked' => ':user reservó un turno en :business_name',
+    'booked' => ':user reservó una cita en :business_name',
     'visitedShowroom' => ':user pareció interesarse en :business_name',
     'subscribedBusiness' => ':user se suscribió a :business_name',
     'registeredBusiness' => ':user registró el alta :business_name. ¡Bravo!',
@@ -11,9 +11,9 @@ return [
     'importedContacts' => ':user importó :count contactos',
   ],
   'appointment' => [
-    'reserve' => ':user reservó el turno :code del día :date',
-    'annulate' => ':user anuló el turno :code del día :date',
-    'confirm' => ':user confirmó el turno :code del día :date',
-    'serve' => ':user atendió el turno :code del día :date',
+    'reserve' => ':user reservó la cita :code del día :date',
+    'annulate' => ':user anuló la cita :code del día :date',
+    'confirm' => ':user confirmó la cita :code del día :date',
+    'serve' => ':user atendió la cita :code del día :date',
     ]
 ];

@@ -14,7 +14,7 @@ return array(
   array(
     'agenda' =>
     array(
-      'content' => 'Aquí se presentan todos los turnos pendientes en forma de lista.',
+      'content' => 'Aquí se presentan todos las citas pendientes en forma de lista.',
       'title' => 'Agenda',
     ),
     'contacts' =>
@@ -44,33 +44,33 @@ return array(
     ),
     'indicator1' =>
     array(
-      'content' => 'Este indicador es la cantidad de turnos activos para atender hoy.',
-      'title' => 'Turnos activos para hoy',
+      'content' => 'Este indicador es la cantidad de citas activos para atender hoy.',
+      'title' => 'Citas activos para hoy',
     ),
     'indicator2' =>
     array(
-      'content' => 'Son los turnos que estaban reservados para hoy, pero que se encuentran anulados.',
-      'title' => 'Turnos anulados para hoy',
+      'content' => 'Son las citas que estaban reservados para hoy, pero que se encuentran anulados.',
+      'title' => 'Citas anulados para hoy',
     ),
     'indicator3' =>
     array(
-      'content' => 'Son los turnos pendientes para mañana.',
-      'title' => 'Turnos activos para mañana',
+      'content' => 'Son las citas pendientes para mañana.',
+      'title' => 'Citas activos para mañana',
     ),
     'indicator4' =>
     array(
-      'content' => 'Es la cantidad de turnos activos de hoy en adelante.',
-      'title' => 'Turnos activos en total',
+      'content' => 'Es la cantidad de citas activos de hoy en adelante.',
+      'title' => 'Citas activos en total',
     ),
     'indicator5' =>
     array(
-      'content' => 'Es la cantidad de turnos que atendiste históricamente.',
-      'title' => 'Turnos atendidos en total',
+      'content' => 'Es la cantidad de citas que atendiste históricamente.',
+      'title' => 'Citas atendidos en total',
     ),
     'indicator6' =>
     array(
-      'content' => 'Es la cantidad de turnos totales, en cualquier estado, que se registraron históricamente.',
-      'title' => 'Turnos totales',
+      'content' => 'Es la cantidad de citas totales, en cualquier estado, que se registraron históricamente.',
+      'title' => 'Citas totales',
     ),
     'indicator7' =>
     array(
@@ -79,7 +79,7 @@ return array(
     ),
     'indicator8' =>
     array(
-      'content' => 'Es la cantidad de usuarios que pueden iniciar sesión y pedir turnos a tu comercio.',
+      'content' => 'Es la cantidad de usuarios que pueden iniciar sesión y pedir Citas a tu comercio.',
       'title' => 'Usuarios Suscriptos',
     ),
     'indicator9' =>
@@ -94,7 +94,7 @@ return array(
     ),
     'panel' =>
     array(
-      'content' => 'Bienvenido a tu panel de control. Aquí tendrás una vista de halcón de lo relevante a los turnos y tu cartera de clientes. Veamos cómo se administra...',
+      'content' => 'Bienvenido a tu panel de control. Aquí tendrás una vista de halcón de lo relevante a las citas y tu cartera de clientes. Veamos cómo se administra...',
       'title' => 'Tu panel de control',
     ),
     'profile' =>
@@ -104,7 +104,7 @@ return array(
     ),
     'search' =>
     array(
-      'content' => 'Queremos que ganes tiempo. Por eso el buscador será tu principal aliado. No dudes en escribir nombres de personas, códigos de turno o nombres de servicios para encontrar lo que buscas.',
+      'content' => 'Queremos que ganes tiempo. Por eso el buscador será tu principal aliado. No dudes en escribir nombres de personas, códigos de cita o nombres de servicios para encontrar lo que buscas.',
       'title' => 'Potente Buscador',
     ),
     'services' =>
@@ -114,7 +114,7 @@ return array(
     ),
     'vacancies' =>
     array(
-      'content' => 'Aquí podrás publicar tu disponibilidad y empezar a dar turnos, ¡muy importante!',
+      'content' => 'Aquí podrás publicar tu disponibilidad y empezar a dar citas, ¡muy importante!',
       'title' => 'Disponibilidad',
     ),
   ),

@@ -14,7 +14,7 @@ return array (
   //================================== Obsolete strings ==================================//
   'alert' => 
   array (
-    'annulated' => '¡Atención! Turno ANULADO',
+    'annulated' => '¡Atención! Cita ANULADA',
   ),
   'status' => 
   array (

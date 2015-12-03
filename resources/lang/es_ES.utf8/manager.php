@@ -136,7 +136,7 @@ return array (
     'index' => 
     array (
       'help' => 'Desde aquí puedes administrar todos los prestadores',
-      'register_business_help' => 'Si eres prestador y quieres dar turnos online, es tu oportunidad!',
+      'register_business_help' => 'Si eres prestador y quieres dar citas online, es tu oportunidad!',
       'title' => 'Mis Prestadores',
       'btn' => 
       array (
@@ -234,7 +234,7 @@ return array (
     array (
       'tooltip' => 
       array (
-        'agenda' => 'Agenda de Turnos',
+        'agenda' => 'Agenda de Citass',
         'contacts' => 'Lista de Contactos',
         'edit' => 'Editar datos del Prestador',
         'preferences' => 'Cambiar Preferencias',
@@ -244,7 +244,7 @@ return array (
     ),
     'hint' => 
     array (
-      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte turnos es necesario que indiques tu disponibilidad',
+      'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte citas es necesario que indiques tu disponibilidad',
       'set_services' => 'Agregá los servicios que brindás',
     ),
     'service' => 
@@ -358,7 +358,7 @@ return array (
       'nin' => 'DNI',
       'notes' => 'Notas',
       'gender' => 'Sexo',
-      'next_appointment' => 'Próximo Turno',
+      'next_appointment' => 'Próxima Cita',
       'username' => 'Usuario',
     ),
     'list' => 

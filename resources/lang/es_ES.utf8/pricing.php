@@ -12,7 +12,7 @@ return array (
   array (
     'feature' => 
     array (
-      'appointments' => 'turnos por mes',
+      'appointments' => 'citas por mes',
       'contacts' => 'contactos en agenda',
       'email_alerts' => 'alertas por email',
       'reports' => 'reportes gráficos',

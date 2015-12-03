@@ -46,7 +46,7 @@ return array (
       'business' => 
       array (
         'menu' => 'Prestadores',
-        'my_appointments' => 'Mis turnos',
+        'my_appointments' => 'Mis citas',
         'my_subscriptions' => 'Favoritos',
         'selector' => 'Buscar',
         'home' => 'Inicio',

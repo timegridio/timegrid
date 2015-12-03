@@ -9,7 +9,7 @@ return array (
   array (
     1 => 
     array (
-      'content' => 'Asigna los turnos por tí para que puedas dedicarte a lo que importa. Tu tiempo vale.',
+      'content' => 'Asigna las citas por tí para que puedas dedicarte a lo que importa. Tu tiempo vale.',
       'title' => 'Optimiza',
       'btn' => 
       array (
@@ -55,7 +55,7 @@ return array (
       'begin' => 'Empecemos',
       'login' => 'Iniciar Sesión',
     ),
-    'description' => 'La agenda de turnos para profesionales exitosos.',
+    'description' => 'La agenda de citas para profesionales exitosos.',
     'title' => 'timegrid.io',
   ),
   //================================== Obsolete strings ==================================//

@@ -19,14 +19,14 @@ return array (
     'appointment_annulation_pre_hs' => 
     array (
       'format' => 'cantidad de horas',
-      'help' => '¿ Cuántas horas de antelación para anular un turno ?',
-      'label' => 'Política de Anulación de Turnos',
+      'help' => '¿ Cuántas horas de antelación para anular una cita ?',
+      'label' => 'Política de Anulación de citas',
     ),
     'appointment_code_length' => 
     array (
       'format' => '1234',
-      'help' => '¿ Que tan largo debe ser el codigo de turnos ?',
-      'label' => 'Longitud de Codigo de Turno',
+      'help' => '¿ Que tan largo debe ser el codigo de citas ?',
+      'label' => 'Longitud de Codigo de Cita',
     ),
     'appointment_take_today' => 
     array (
