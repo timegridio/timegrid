@@ -19,6 +19,8 @@ class CreateBusinessContactPivotTable extends Migration
             $table->foreign('contact_id')->references('id')->on('contacts')->onDelete('cascade');
             $table->string('notes')->nullable();
             $table->timestamps();
+
+            $table->unique(['business_id', 'contact_id']);
         });
     }
 
