@@ -5,7 +5,7 @@
 
 return array (
   //==================================== Translations ====================================//
-  'currency_price' => '&euro; 10',
+  'currency_price' => '&euro; 5',
   'free' => 'GRATIS',
   'month' => 'mes',
   'plan' => 

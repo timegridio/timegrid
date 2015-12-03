@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'currency_price' => '$ 119',
+  'currency_price' => '$ 5',
   'free' => 'FREE',
   'month' => 'month',
   'plan' =>
