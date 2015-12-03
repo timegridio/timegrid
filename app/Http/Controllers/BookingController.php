@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterAppointmentRequest;
 
 /**
- * ToDo:
+ * FOR REFACTOR:
  *     - Access auth()->ith constructor dependency injection
  *     - Access Appointments with Appointments repository injected dependency
  *     - Access Notifynder with constructor dependency
@@ -69,11 +69,17 @@ class BookingController extends Controller
          */
         switch ($widget) {
             case 'row':
-                $html = Widget::AppointmentsTableRow(['appointment' => $appointment, 'user' => auth()->user()])->render();
+                $html = Widget::AppointmentsTableRow([
+                    'appointment' => $appointment,
+                    'user' => auth()->user()]
+                    )->render();
                 break;
             case 'panel':
             default:
-                $html = Widget::AppointmentPanel(['appointment' => $appointment, 'user' => auth()->user()])->render();
+                $html = Widget::AppointmentPanel([
+                    'appointment' => $appointment,
+                    'user' => auth()->user()]
+                    )->render();
                 break;
         }
 

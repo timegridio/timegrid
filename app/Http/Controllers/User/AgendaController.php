@@ -14,7 +14,7 @@ use App\Services\ConciergeService;
 use App\Http\Controllers\Controller;
 
 /**
- * ToDo:
+ * FOR REFACTOR:
  *     - Use constructor dependency injection for Auth, Flash, Event
  */
 class AgendaController extends Controller
@@ -68,7 +68,10 @@ class AgendaController extends Controller
 
         $availability = $this->concierge->getVacancies(auth()->user(), 'today', 7);
 
-        return view('user.appointments.'.$business->strategy.'.book', compact('business', 'availability', 'includeToday'));
+        return view(
+            'user.appointments.'.$business->strategy.'.book',
+            compact('business', 'availability', 'includeToday')
+            );
     }
 
     /**
@@ -90,7 +93,9 @@ class AgendaController extends Controller
         $business = Business::findOrFail($request->input('businessId'));
         $contact = $issuer->getContactSubscribedTo($business);
         $service = Service::find($request->input('service_id'));
-        $datetime = Carbon::parse($request->input('_date').' '.$business->pref('start_at'))->timezone($business->timezone);
+
+        $strDateTime = $request->input('_date').' '.$business->pref('start_at');
+        $datetime = Carbon::parse($strDateTime)->timezone($business->timezone);
         $comments = $request->input('comments');
 
         $this->concierge->setBusiness($business);

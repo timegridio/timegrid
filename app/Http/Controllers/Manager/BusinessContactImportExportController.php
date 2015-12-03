@@ -82,14 +82,10 @@ class BusinessContactImportExportController extends Controller
     }
 
     /**
-     * TODO: Should probably be moved as helper
+     * Converts submitted CSV string data into an Array
      *
-     * csvToArray
-     *
-     *      Converts submitted CSV string data into an Array
-     *
-     * @param  string $data      CSV string of Contacts
-     * @return array             Converted CSV into Array
+     * @param  string $data   CSV string of Contacts
+     * @return array          Converted CSV into Array
      */
     private function csvToArray($data = '')
     {

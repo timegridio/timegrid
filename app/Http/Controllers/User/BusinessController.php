@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 use Fenos\Notifynder\Facades\Notifynder;
 
 /**
- * ToDo:
+ * FOR REFACTOR:
  *     - Access Notifynder with constructor dependency injection
  *     - Access Auth with constructor dependency injection
  *     - Access Business with dependency injection of a BusinessRepository
@@ -27,10 +27,7 @@ class BusinessController extends Controller
     public function getHome(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s businessSlug:'%s'",
-                                    $business->id,
-                                    $business->slug
-                                ));
+        $this->log->info(sprintf("  businessId:%s businessSlug:'%s'", $business->id, $business->slug));
 
         //////////////////
         // FOR REFACTOR //
@@ -63,10 +60,12 @@ class BusinessController extends Controller
         return view('user.businesses.index', compact('businesses'));
     }
 
+    ////////////////
+    // FOR REVIEW //
+    ////////////////
+
     /**
-     * TODO: Selecting Business by Session should probably be deprecated
-     *
-     * get Select
+     * Sets the selected business session var
      *
      * @param  Business $business Business to be selected
      * @return Response           Response provided by getHome()
@@ -81,14 +80,9 @@ class BusinessController extends Controller
     }
 
     /**
-     * TODO: Should be named getFavorites
+     * Gets the User profile Contacts that MAY BE subscribed to Businesses
      *
-     * get Subscriptions
-     *
-     *      Gets the User profile Contacts that MAY BE subscribed to Businesses
-     *
-     * @return Response Rendered view of the Contacts linked to the
-     *                  requesting User
+     * @return Response Rendered view of the Contacts linked to the requesting User
      */
     public function getSubscriptions()
     {

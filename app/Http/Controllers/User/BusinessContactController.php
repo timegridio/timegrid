@@ -113,7 +113,9 @@ class BusinessContactController extends Controller
      */
     public function edit(Business $business, Contact $contact, AlterContactRequest $request)
     {
-        $this->log->info("BusinessContactController: edit: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+
         return view('user.contacts.edit', compact('business', 'contact'));
     }
 
@@ -127,7 +129,13 @@ class BusinessContactController extends Controller
      */
     public function update(Business $business, Contact $contact, AlterContactRequest $request)
     {
-        $this->log->info("BusinessContactController: update: businessId:{$business->id} contactId:{$contact->id}");
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
         $update = [
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country')
@@ -151,8 +159,6 @@ class BusinessContactController extends Controller
     }
 
     /**
-     * TODO: Destroying a Contact should cascade-delete all belonging elements
-     *
      * destroy Contact
      *
      * @param  Business           $business Business holding the Contact
@@ -162,8 +168,10 @@ class BusinessContactController extends Controller
      */
     public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
     {
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+
         $contact->delete();
-        $this->log->info("BusinessContactController: destroy: Deleted contact:{$contact->id}");
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return redirect()->route('manager.business.show', $business);

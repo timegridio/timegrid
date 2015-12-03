@@ -28,7 +28,7 @@ class BusinessController extends Controller
 
         $businesses = auth()->user()->businesses;
 
-        if ($businesses->count()==1) {
+        if ($businesses->count() == 1) {
             $this->log->info('  Only one business to show');
             $business = $businesses->first();
             Flash::success(trans('manager.businesses.msg.index.only_one_found'));
@@ -61,7 +61,7 @@ class BusinessController extends Controller
 
         $business = new Business; // For Form Model Binding
         Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
-        return view('manager.businesses.create', compact('business','timezone', 'categories', 'plan'));
+        return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
     /**
@@ -167,7 +167,11 @@ class BusinessController extends Controller
         //////////////////
 
         $location = GeoIP::getLocation();
-        $timezone = in_array($business->timezone, \DateTimeZone::listIdentifiers()) ? $business->timezone : $timezone = $location['timezone'];
+        $timezone = in_array(
+            $business->timezone,
+            \DateTimeZone::listIdentifiers()
+            ) ? $business->timezone : $timezone = $location['timezone'];
+
         $categories = Category::lists('slug', 'id')->transform(
             function ($item, $key = null) {
                 return trans('app.business.category.'.$item);
@@ -246,11 +250,13 @@ class BusinessController extends Controller
         return redirect()->route('manager.business.index');
     }
 
+    ////////////
+    // SEARCH //
+    ////////////
+
     /**
      * search elements in a business
      *
-     * TODO: Probably needs to get moved into a separate controller for searches
-     * 
      * @param  Request $request Search criteria
      * @return Response         View with results or redirect to default
      */

@@ -26,8 +26,6 @@ class Contact extends EloquentModel
     protected $dates = ['birthdate'];
 
     /**
-     * TODO: Check if possible to move to a more proper place
-     *
      * Save the model to the database.
      *
      * @param  array  $options
