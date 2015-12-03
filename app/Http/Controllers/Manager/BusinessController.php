@@ -178,12 +178,13 @@ class BusinessController extends Controller
             });
         
         $category = $business->category_id;
-        $this->log->info(sprintf("  businessId:%s timezone:%s category:%s location:%s",
+        $this->log->info(sprintf(
+            "businessId:%s timezone:%s category:%s location:%s",
             $business->id,
             $timezone,
             $category,
-            serialize($location))
-        );
+            serialize($location)
+            ));
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
