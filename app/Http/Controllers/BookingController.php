@@ -38,12 +38,13 @@ class BookingController extends Controller
         $action = $request->input('action');
         $widget = $request->input('widget');
 
-        $this->log->info(sprintf("  AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]",
-                                    $issuer->email,
-                                    $action,
-                                    $businessId,
-                                    $appointmentId)
-                                );
+        $this->log->info(sprintf(
+            "AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]",
+            $issuer->email,
+            $action,
+            $businessId,
+            $appointmentId
+            ));
 
         $appointment = Appointment::find($appointmentId);
 
@@ -59,7 +60,7 @@ class BookingController extends Controller
                 break;
             default:
                 // Ignore Invalid Action
-                $this->log->warning('  Invalid Action request');
+                $this->log->warning('Invalid Action request');
                 break;
         }
 
