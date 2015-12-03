@@ -18,7 +18,7 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         Service $service,
         Carbon $datetime,
         $comments = null
-        ) {
+    ) {
         /* TODO */
     }
 }

@@ -19,7 +19,7 @@ class BookingDateslotStrategy implements BookingStrategyInterface
         Service $service,
         Carbon $datetime,
         $comments = null
-        ) {
+    ) {
         $appointment = new Appointment();
         
         $appointment->doReserve();
