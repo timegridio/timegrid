@@ -59,8 +59,9 @@ class BusinessController extends Controller
                 return trans('app.business.category.'.$item);
             });
 
+        $business = new Business; // For Form Model Binding
         Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
-        return view('manager.businesses.create', compact('timezone', 'categories', 'plan'));
+        return view('manager.businesses.create', compact('business','timezone', 'categories', 'plan'));
     }
 
     /**

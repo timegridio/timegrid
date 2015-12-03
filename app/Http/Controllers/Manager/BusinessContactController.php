@@ -44,8 +44,9 @@ class BusinessContactController extends Controller
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
         }
-
-        return view('manager.contacts.create', compact('business'));
+        
+        $contact = new Contact; // For Form Model Binding
+        return view('manager.contacts.create', compact('business', 'contact'));
     }
 
     /**

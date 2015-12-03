@@ -33,7 +33,8 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
-        return view('manager.businesses.services.create', compact('business'));
+        $service = new Service; // For Form Model Binding
+        return view('manager.businesses.services.create', compact('business', 'service'));
     }
 
     /**

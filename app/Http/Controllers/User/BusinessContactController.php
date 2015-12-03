@@ -35,7 +35,8 @@ class BusinessContactController extends Controller
 #            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
 #        }
 
-        return view('user.contacts.create', compact('business'));
+        $contact = new Contact; // For Form Model Binding
+        return view('user.contacts.create', compact('business', 'contact'));
     }
 
     /**
