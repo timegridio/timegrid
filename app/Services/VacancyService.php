@@ -24,7 +24,7 @@ class VacancyService
         $this->business = $business;
     }
 
-    public function isAvailable(User $user, $limit = 7)
+    public function isAvailable(User $user)
     {
         $vacancies = $this->removeBookedVacancies($this->business->vacancies);
         $vacancies = $this->removeSelfBooked($vacancies, $user);
