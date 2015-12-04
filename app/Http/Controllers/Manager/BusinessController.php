@@ -232,7 +232,7 @@ class BusinessController extends Controller
         if (Gate::denies('destroy', $business)) {
             abort(403);
         }
-
+        
         //////////////////
         // FOR REFACOTR //
         //////////////////
@@ -256,7 +256,7 @@ class BusinessController extends Controller
     public function postSearch()
     {
         if (! session()->get('selected.business')) {
-            return Redirect::route('user.businesses.list');
+            return redirect()->route('user.businesses.list');
         }
 
         $search = new SearchEngine(Request::input('criteria'));
