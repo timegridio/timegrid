@@ -180,12 +180,12 @@ class Vacancy extends EloquentModel
      */
     public function isHolding(Appointment $appointment)
     {
-        return ($appointment->isActive() &&
-                ($this->start_at <= $appointment->start_at) &&
-                ($this->finish_at >= $appointment->finish_at) &&
-                ($this->service_id == $appointment->service_id) &&
-                ($this->business_id == $appointment->business_id)
-               );
+        return 
+            ($appointment->isActive() &&
+            ($this->start_at <= $appointment->start_at) &&
+            ($this->finish_at >= $appointment->finish_at) &&
+            ($this->service_id == $appointment->service_id) &&
+            ($this->business_id == $appointment->business_id));
     }
 
     /**
