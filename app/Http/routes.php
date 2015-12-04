@@ -78,8 +78,6 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']],
 /////////////////////
 
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => ['auth']], function () {
-
-    Route::controller('appointment', 'BusinessAgendaController', ['postAction' => 'manager.business.agenda.action']);
     
     Route::controller('agenda/{business}', 'BusinessAgendaController', ['getIndex' => 'manager.business.agenda.index']);
 
