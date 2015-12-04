@@ -48,15 +48,6 @@ class Appointment extends EloquentModel implements PresentableInterface
     const PROFILE_MANAGER = 'manager';
 
     /**
-     * Create Appointment model
-     * @param array $attributes Attributes for filling the model
-     */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-    }
-
-    /**
      * Return a created presenter.
      *
      * @return Robbo\Presenter\Presenter
