@@ -219,10 +219,10 @@ class Appointment extends EloquentModel implements PresentableInterface
     {
         return $this->attributes['hash'] = md5(
             $this->start_at . '/' .
-            $this->contact_id .'/' .
-            $this->business_id .'/'.
+            $this->contact_id . '/' .
+            $this->business_id . '/'.
             $this->service_id
-            );
+        );
     }
 
     /**
