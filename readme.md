@@ -35,7 +35,9 @@ It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framew
 
 Want action? Try the *beta* [live demo](http://demo.timegrid.io/)
 
-> Hold on tight! It's a bumpy ride for all of us!
+> **Hint:** To know which commit is installed in *demo* you can hover the cursor on the leftmost *timegrid.io* label in the footer of the app.
+
+> Now... Hold on tight! It's a bumpy ride for all of us!
 
 ## Features
 
