@@ -81,7 +81,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
 
     /**
      * arrange fixture
-     * 
+     *
      * @return void
      */
     protected function arrangeFixture()

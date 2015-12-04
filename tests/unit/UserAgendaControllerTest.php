@@ -13,7 +13,7 @@ class UserAgendaControllerTest extends TestCase
 
     /**
      * user
-     * 
+     *
      * @var User user
      */
     private $user;

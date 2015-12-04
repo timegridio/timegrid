@@ -86,10 +86,10 @@ class WelcomeControllerTest extends TestCase
         $this->type('test@example.org', 'email')
              ->type('password', 'password');
 
-        // And my session expired so as a token was invalidated 
+        // And my session expired so as a token was invalidated
         session()->regenerateToken();
 
-        // And I submit the form        
+        // And I submit the form
         $this->press('Login');
 
         // Then I should see a message asking for resubmit

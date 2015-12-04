@@ -70,7 +70,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
 
     /**
      * arrange fixture
-     * 
+     *
      * @return void
      */
     protected function arrangeFixture()
