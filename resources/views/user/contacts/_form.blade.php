@@ -5,12 +5,13 @@
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/intlTelInput/intlTelInput.css') }}">
 <style type="text/css">
-  .iti-flag {background-image: url("/img/intlTelInput/flags.png");}
-  .intl-tel-input {width: 100%;}
+    .iti-flag { background-image: url("/img/intlTelInput/flags.png"); }
+    .intl-tel-input { width: 100%; }
 </style>
 @endsection
 
 {!! Form::hidden('mobile', '') !!}
+<div class="container">
     <div class="row">
         <div class="form-group col-xs-4">
             {!! Form::text('firstname', auth()->user()->name,
@@ -66,6 +67,7 @@
             {!! Button::primary($submitLabel)->block()->submit() !!}
         </div>
     </div>
+</div>
 
 @section('footer_scripts')
 <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
@@ -76,26 +78,27 @@
 
 <script>
 $(document).ready(function(){
-  $("#birthdate").datetimepicker( { viewMode: 'years', locale: '{{Session::get('language')}}', format: '{!! trans('app.dateformat.datetimepicker') !!}' } );
-  $('option[value="M"]').data("icon", "ion-male");
-  $('option[value="F"]').data("icon", "ion-female");
-  $('selectpicker').addClass('dropupAuto');
-  $('selectpicker').selectpicker();
 
-  $("#mobile-input").intlTelInput({
-    preferredCountries:["ar", "es", "us"],
-    defaultCountry: "auto",
-    geoIpLookup: function(callback) {
-      $.get('http://ipinfo.io', function() {}, "jsonp").always(function(resp) {
-        var countryCode = (resp && resp.country) ? resp.country : "";
-        callback(countryCode);
-      });
-    }
-  });
+    $("#birthdate").datetimepicker( { viewMode: 'years', locale: '{{Session::get('language')}}', format: '{!! trans('app.dateformat.datetimepicker') !!}' } );
+    $('option[value="M"]').data("icon", "ion-male");
+    $('option[value="F"]').data("icon", "ion-female");
+    $('selectpicker').addClass('dropupAuto');
+    $('selectpicker').selectpicker();
 
-  $("form").submit(function() {
-    $("input[name=mobile]").val($("#mobile-input").intlTelInput("getNumber"));
-  });
+    $("#mobile-input").intlTelInput({
+        preferredCountries:["ar", "es", "us"],
+        defaultCountry: "auto",
+        geoIpLookup: function(callback) {
+            $.get('http://ipinfo.io', function() {}, "jsonp").always(function(resp) {
+                var countryCode = (resp && resp.country) ? resp.country : "";
+                callback(countryCode);
+            });
+        }
+    });
+
+    $("form").submit(function() {
+        $("input[name=mobile]").val($("#mobile-input").intlTelInput("getNumber"));
+    });
 
 });
 </script>
