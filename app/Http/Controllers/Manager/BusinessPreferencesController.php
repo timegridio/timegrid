@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Manager;
 
 use Gate;
-use App\Http\Requests;
 use App\Models\Business;
 use Laracasts\Flash\Flash;
 use Illuminate\Http\Request;
@@ -21,9 +20,7 @@ class BusinessPreferencesController extends Controller
     public function getPreferences(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('managePreferences', $business)) {
             abort(403);
@@ -44,9 +41,7 @@ class BusinessPreferencesController extends Controller
     public function postPreferences(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", 
-                                    $business->id
-                                ));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('managePreferences', $business)) {
             abort(403);
@@ -56,20 +51,7 @@ class BusinessPreferencesController extends Controller
         // FOR REFACTOR //
         //////////////////
 
-        $parameters = config()->get('preferences.App\Models\Business');
-        $parametersKeys = array_flip(array_keys($parameters));
-        $preferences = $request->all();
-        $preferences = array_intersect_key($preferences, $parametersKeys);
-        
-        foreach ($preferences as $key => $value) {
-            $this->log->info(sprintf("  post: businessId:%s key:%s='%s' type:%s",
-                                        $business->id,
-                                        $key,
-                                        $value,
-                                        $parameters[$key]['type']));
-
-            $business->pref($key, $value, $parameters[$key]['type']);
-        }
+        $this->setBusinessPreferences($business, $request->all());
 
         $business_name = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
@@ -81,5 +63,34 @@ class BusinessPreferencesController extends Controller
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));
         return redirect()->route('manager.business.show', $business);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+
+    protected function setBusinessPreferences(Business $business, $preferences)
+    {
+        // Get parameters from app configuration
+        $parameters = config()->get('preferences.App\Models\Business');
+        
+        // Get the keys of the parameters
+        $parametersKeys = array_flip(array_keys($parameters));
+
+        // Merge the user input with the parameter keys
+        $mergedPreferences = array_intersect_key($preferences, $parametersKeys);
+        
+        // Store each parameter key-value pair to the business preferences
+        foreach ($mergedPreferences as $key => $value) {
+            $this->log->info(
+                sprintf("set preference: businessId:%s key:%s='%s' type:%s",
+                $business->id,
+                $key,
+                $value,
+                $parameters[$key]['type']
+                ));
+
+            $business->pref($key, $value, $parameters[$key]['type']);
+        }
     }
 }
