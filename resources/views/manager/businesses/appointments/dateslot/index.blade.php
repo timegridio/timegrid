@@ -1,14 +1,20 @@
 @extends('app')
 
 @section('content')
-{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
-{!! Form::hidden('business', $business->id) !!}
 <div class="container">
-
-    {!! Widget::AppointmentsTable(['appointments' => $appointments, 'user' => auth()->user(), 'business' => $business]) !!}
-
+@if ($appointments->isEmpty())
+    {!! Alert::info(trans('manager.businesses.index.msg.no_appointments')) !!}
+@else
+    {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
+    {!! Form::hidden('business', $business->id) !!}
+    <div class="container">
+    
+        {!! Widget::AppointmentsTable(['appointments' => $appointments, 'user' => auth()->user(), 'business' => $business]) !!}
+    
+    </div>
+    {!! Form::close() !!}
+@endif
 </div>
-{!! Form::close() !!}
 @endsection
 
 {{-- ToDo: Reusable code with app/resources/views/manager/businesses/appointments/dateslot/index.blade.php --}}
