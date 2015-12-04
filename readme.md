@@ -175,10 +175,13 @@ Let me know if you are facing any inconvenients to install, as I'm working on br
 
 Thank you for considering contributing to Timegrid.
 
-Please see CONTRIBUTING doc for further details.
-You are welcome to join the core development team and enhance the development process apart from just code :)
+While there is no strict guideline right now, you are welcome to bring your ideas to enhance the code as well as the process.
 
-[Slack for technical discussion](https://timegrid.slack.com/home)
+As a rule of the thumb, keep **PSR-2** and **passing tests** in mind.
+
+Dont heastiate to ask :)
+
+[Slack for technical discussion](https://timegrid.slack.com/home) **you will find me here easily**
 
 [Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
