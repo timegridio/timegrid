@@ -1,27 +1,28 @@
 @extends('app')
 
 @section('content')
-{!! Form::open(array('route' => 'user.booking.store', 'class' => 'form')) !!}
-{!! Form::hidden('businessId', $business->id, array('required') ) !!}
+{!! Form::open(['route' => 'user.booking.store', 'class' => 'form']) !!}
+{!! Form::hidden('businessId', $business->id, ['required'] ) !!}
+
 <div class="container">
     <div class="row">
-      @include('user.appointments.dateslot._timetable', ['dates' => $availability])
+        @include('user.appointments.dateslot._timetable', ['dates' => $availability])
     </div>
 </div>
 
 <div id="extra" class="container hidden">
-{!! Form::hidden('_date', null,
-    array('required',
-          'class'=>'form-control',
-          'id'=>'date',
-          'min'=> date('Y-m-d'),
-          'placeholder'=> trans('user.appointments.form.date.label') )) !!}
+    {!! Form::hidden('_date', null,
+        array('required',
+              'class'=>'form-control',
+              'id'=>'date',
+              'min'=> date('Y-m-d'),
+              'placeholder'=> trans('user.appointments.form.date.label') )) !!}
 
-{!! Form::hidden('service_id', '',
-    array('required',
-          'id'=>'service',
-          'class'=>'form-control',
-          'placeholder'=> trans('user.appointments.form.service.label') )) !!}
+    {!! Form::hidden('service_id', '',
+        array('required',
+              'id'=>'service',
+              'class'=>'form-control',
+              'placeholder'=> trans('user.appointments.form.service.label') )) !!}
 
     <div class="row">
         <div class="form-group col-sm-12">
