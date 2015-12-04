@@ -73,15 +73,15 @@ class BookingController extends Controller
             case 'row':
                 $html = Widget::AppointmentsTableRow([
                     'appointment' => $appointment,
-                    'user' => auth()->user()]
-                    )->render();
+                    'user' => auth()->user()
+                    ])->render();
                 break;
             case 'panel':
             default:
                 $html = Widget::AppointmentPanel([
                     'appointment' => $appointment,
-                    'user' => auth()->user()]
-                    )->render();
+                    'user' => auth()->user()
+                    ])->render();
                 break;
         }
 
