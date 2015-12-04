@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
 use Fenos\Notifynder\Facades\Notifynder;
 use App\Http\Requests\BusinessFormRequest;
-use App\Http\Requests\BusinessPreferencesFormRequest;
 
 class BusinessController extends Controller
 {
@@ -49,9 +48,7 @@ class BusinessController extends Controller
         $plan = Request::query('plan') ?: 'free';
         $this->log->info("  plan:$plan");
 
-        $location = GeoIP::getLocation();
-        $timezone = $location['timezone'];
-        $this->log->info("  timezone:$timezone location:".serialize($location));
+        $timezone = $this->guessTimezone(null);
 
         $categories = $this->listCategories();
 
@@ -161,22 +158,14 @@ class BusinessController extends Controller
         // FOR REFACTOR //
         //////////////////
 
-        $location = GeoIP::getLocation();
-        $timezone = in_array(
-            $business->timezone,
-            \DateTimeZone::listIdentifiers()
-            ) ? $business->timezone : $timezone = $location['timezone'];
+        $timezone = $this->guessTimezone($business->timezone);
 
         $categories = $this->listCategories();
         
         $category = $business->category_id;
-        $this->log->info(sprintf(
-            "businessId:%s timezone:%s category:%s location:%s",
-            $business->id,
-            $timezone,
-            $category,
-            serialize($location)
-            ));
+        
+        $this->log->info(sprintf("businessId:%s timezone:%s category:%s", $business->id, $timezone, $category));
+
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
@@ -268,11 +257,36 @@ class BusinessController extends Controller
     /////////////
     // HELPERS //
     /////////////
+
+    /**
+     * get business category list
+     * 
+     * @return Array list of categories for combo
+     */
     protected function listCategories()
     {
         return Category::lists('slug', 'id')->transform(
             function ($item, $key = null) {
                 return trans('app.business.category.'.$item);
             });
+    }
+
+    /**
+     * guess user (client) timezone
+     * 
+     * @param  string $timezone Default or fallback timezone
+     * @return string           Guessed or fallbacked timezone
+     */
+    protected function guessTimezone($timezone = null)
+    {
+        if (!empty($timezone)) {
+            return $timezone;
+        }
+
+        $location = GeoIP::getLocation();
+
+        $this->log->info(sprintf("Fallback timezone:%s Guessed timezone:%s", $timezone, $location['timezone']));
+
+        return in_array($location['timezone'], \DateTimeZone::listIdentifiers()) ? $location['timezone'] : $timezone;
     }
 }
