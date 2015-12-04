@@ -186,11 +186,12 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function getStatusLabelAttribute()
     {
-        $labels = [ Self::STATUS_RESERVED  => 'reserved',
-                    Self::STATUS_CONFIRMED => 'confirmed',
-                    Self::STATUS_ANNULATED => 'annulated',
-                    Self::STATUS_SERVED    => 'served',
-                ];
+        $labels = [
+            Self::STATUS_RESERVED => 'reserved',
+            Self::STATUS_CONFIRMED => 'confirmed',
+            Self::STATUS_ANNULATED => 'annulated',
+            Self::STATUS_SERVED => 'served'
+            ];
 
         return array_key_exists($this->status, $labels) ? $labels[$this->status] : '';
     }
@@ -216,10 +217,12 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function doHash()
     {
-        return $this->attributes['hash'] = md5($this->start_at . '/' .
-                                                $this->contact_id .'/' .
-                                                $this->business_id .'/'.
-                                                $this->service_id);
+        return $this->attributes['hash'] = md5(
+            $this->start_at . '/' .
+            $this->contact_id .'/' .
+            $this->business_id .'/'.
+            $this->service_id
+            );
     }
 
     /**
@@ -324,8 +327,7 @@ class Appointment extends EloquentModel implements PresentableInterface
             ->where(function ($query) {
                 $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED])
                     ->where('start_at', '<=', Carbon::parse('today midnight')->timezone('UTC'));
-            })
-            ->orWhere(function ($query) {
+            })->orWhere(function ($query) {
                 $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
             });
     }
@@ -541,7 +543,8 @@ class Appointment extends EloquentModel implements PresentableInterface
      */
     public function needConfirmationOf($profile)
     {
-        return ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_USER) ||
-               ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_MANAGER);
+        return
+            ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_USER) ||
+            ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_MANAGER);
     }
 }
