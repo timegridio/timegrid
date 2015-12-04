@@ -266,7 +266,7 @@ class BusinessController extends Controller
     protected function listCategories()
     {
         return Category::lists('slug', 'id')->transform(
-            function ($item, $key = null) {
+            function ($item) {
                 return trans('app.business.category.'.$item);
             });
     }
