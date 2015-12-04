@@ -6,6 +6,7 @@ use Gate;
 use App\Models\Contact;
 use App\Models\Business;
 use Laracasts\Flash\Flash;
+use App\Events\NewRegisteredContact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 

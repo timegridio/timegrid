@@ -241,6 +241,10 @@ class Contact extends EloquentModel
      */
     public function autoLinkToUser()
     {
+        if ($this->email === null) {
+            return $this;
+        }
+        
         $user = User::where(['email' => $this->email])->first();
 
         if ($user === null) {
