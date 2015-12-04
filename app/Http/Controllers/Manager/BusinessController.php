@@ -248,10 +248,12 @@ class BusinessController extends Controller
             return redirect()->route('user.businesses.list');
         }
 
-        $search = new SearchEngine(Request::input('criteria'));
+        $criteria = Request::input('criteria');
+        
+        $search = new SearchEngine($criteria);
         $search->setBusinessScope([session()->get('selected.business')->id])->run();
 
-        return view('manager.search.index')->with(['results' => $search->results()]);
+        return view('manager.search.index')->with(['results' => $search->results(), 'criteria' => $criteria]);
     }
 
     /////////////
