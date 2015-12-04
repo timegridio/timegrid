@@ -175,13 +175,15 @@ Let me know if you are facing any inconvenients to install, as I'm working on br
 
 Thank you for considering contributing to Timegrid.
 
+> Is it your first time ? Are you new to Laravel or PHP or Github ?
+
+If you are willing to do your first time contribution, don't worry, you are welcome here.
+
 While there is no strict guideline right now, you are welcome to bring your ideas to enhance the code as well as the process.
 
-As a rule of the thumb, keep **PSR-2** and **passing tests** in mind.
+As a rule of the thumb, keep **PSR-2** and **tests** in mind.
 
-Dont heastiate to ask :)
-
-[Slack for technical discussion](https://timegrid.slack.com/home) **you will find me here easily**
+Anyway, [contact me](https://timegrid.slack.com/home) and we will figure out your first steps into contributing :)
 
 [Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
