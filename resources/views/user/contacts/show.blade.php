@@ -36,87 +36,86 @@
 
 @section('content')
 <div class="container">
-{!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
+    {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
 
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad">
 
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">{{ $contact->fullname }}</h3>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{ $contact->fullname }}</h3>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            @if($contact->email)
+                            <img alt="{{$contact->fullname}}" src="{{ Gravatar::get($contact->email) }}" class="img-circle" />
+                            @endif
+                            <p>&nbsp;</p>
+                            <small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
                         </div>
 
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-md-3 col-lg-3 " align="center">
-                                    @if($contact->email)
-                                        <img alt="{{$contact->fullname}}" src="{{ Gravatar::get($contact->email) }}" class="img-circle">
+                        <div class=" col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    @if ($contact->email)
+                                    <tr>
+                                        <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.email') }}</label></td>
+                                        <td>{{ $contact->email }}</td>
+                                    </tr>
                                     @endif
-                                    <p>&nbsp;</p><small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
-                                </div>
-                                
-                                <div class=" col-md-9 col-lg-9 ">
-                                    <table class="table table-user-information">
-                                        <tbody>
-                                        @if ($contact->email)
-                                        <tr>
-                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.email') }}</label></td>
-                                                <td>{{ $contact->email }}</td>
-                                        </tr>
-                                        @endif
-                                        @if ($contact->nin)
-                                        <tr>
-                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.nin') }}</label></td>
-                                                <td>{{ $contact->nin }}</td>
-                                        </tr>
-                                        @endif
-                                        @if ($contact->birthdate)
-                                        <tr>
-                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.birthdate') }}</label></td>
-                                                <td>{{ $contact->birthdate->formatLocalized('%d %B %Y') }}</td>
-                                        </tr>
-                                        @endif
-                                        @if ($contact->mobile)
-                                        <tr>
-                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.mobile') }}</label></td>
-                                                <td>{{ (trim($contact->mobile) != '') ? $contact->mobile : '' }}</td>
-                                        </tr>
-                                        @endif
-                                        <tr>
-                                                <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
-                                                <td>{{ $memberSince->diffForHumans() }}</td>
-                                        </tr>                                         
-                                        </tbody>
-                                    </table>
-                                    
-                                    
-                                </div>
-                            </div>
+                                    @if ($contact->nin)
+                                    <tr>
+                                        <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.nin') }}</label></td>
+                                        <td>{{ $contact->nin }}</td>
+                                    </tr>
+                                    @endif
+                                    @if ($contact->birthdate)
+                                    <tr>
+                                        <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.birthdate') }}</label></td>
+                                        <td>{{ $contact->birthdate->formatLocalized('%d %B %Y') }}</td>
+                                    </tr>
+                                    @endif
+                                    @if ($contact->mobile)
+                                    <tr>
+                                        <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.mobile') }}</label></td>
+                                        <td>{{ (trim($contact->mobile) != '') ? $contact->mobile : '' }}</td>
+                                    </tr>
+                                    @endif
+                                    <tr>
+                                        <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
+                                        <td>{{ $memberSince->diffForHumans() }}</td>
+                                    </tr>                                         
+                                </tbody>
+                            </table>
                         </div>
-                                 <div class="panel-footer">
-                                                {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
-                                                
-                                                @if ($contact->username)
-                                                    {!! Button::success($contact->username)->withIcon(Icon::ok_circle()) !!}
-                                                @else
-                                                    {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
-                                                @endif
-
-                                                <span class="pull-right">
-                                                        {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('user.business.contact.edit', [$business, $contact]) ) !!}
-                                                </span>
-                                 </div>
                     </div>
+                </div>
+                <div class="panel-footer">
+                    {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
 
-                @if($contact->hasAppointment())
-                    @include('user.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business)->future()->get()] )
-                @else
-                    {!! Button::large()->success(trans('user.appointments.btn.book_in_biz', ['biz' => $business->name]))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
-                @endif
+                    @if ($contact->username)
+                        {!! Button::success($contact->username)->withIcon(Icon::ok_circle()) !!}
+                    @else
+                        {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
+                    @endif
 
+                    <span class="pull-right">
+                        {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('user.business.contact.edit', [$business, $contact]) ) !!}
+                    </span>
                 </div>
             </div>
-{!! Form::close() !!}
+
+            @if($contact->hasAppointment())
+            @include('user.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business)->future()->get()] )
+            @else
+            {!! Button::large()->success(trans('user.appointments.btn.book_in_biz', ['biz' => $business->name]))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
+            @endif
+
+        </div>
+    </div>
+    {!! Form::close() !!}
 </div>
 @endsection
 
@@ -125,7 +124,7 @@
 <script>
 $(document).ready(function(){
 
-function prepareEvents(){
+    function prepareEvents(){
 
         console.log('prepareEvents()');
 
@@ -136,15 +135,15 @@ function prepareEvents(){
 
         button.click(function (event){
 
-        event.preventDefault();
+            event.preventDefault();
 
-        var business = $(this).data('business');
-        var appointment = $(this).data('appointment');
-        var action = $(this).data('action');
-        var code = $(this).data('code');
-        var row = $('#'+code);
+            var business = $(this).data('business');
+            var appointment = $(this).data('appointment');
+            var action = $(this).data('action');
+            var code = $(this).data('code');
+            var row = $('#'+code);
 
-        $(this).parent().hide();
+            $(this).parent().hide();
 
             $.ajax({
                 url: form.attr('action'),
@@ -155,15 +154,15 @@ function prepareEvents(){
                 },
                 data: { business: business, appointment: appointment, action: action, widget:'panel' }
             }).done(function (data) {
-                    console.log('AJAX Done');
-                    $('#'+code).replaceWith(data.html);
+                console.log('AJAX Done');
+                $('#'+code).replaceWith(data.html);
             }).fail(function (data) {
-                    console.log('AJAX Fail');
+                console.log('AJAX Fail');
             }).always(function (data) {
-                    $(this).parent().show();
-                    prepareEvents();
-                    console.log('AJAX Finish');
-                    console.log(data);
+                $(this).parent().show();
+                prepareEvents();
+                console.log('AJAX Finish');
+                console.log(data);
             });
         });
     }
