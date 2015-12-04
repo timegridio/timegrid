@@ -33,10 +33,10 @@ class Appointment extends EloquentModel implements PresentableInterface
     /**
      * Appointment Hard Status Constants
      */
-    const STATUS_RESERVED  = 'R';
+    const STATUS_RESERVED = 'R';
     const STATUS_CONFIRMED = 'C';
     const STATUS_ANNULATED = 'A';
-    const STATUS_SERVED    = 'S';
+    const STATUS_SERVED = 'S';
 
     /**
      * User Profile Constants
@@ -44,7 +44,7 @@ class Appointment extends EloquentModel implements PresentableInterface
      * Used to determine the detected behavior of the user depending
      * on if he acts as a user or a Business manager.
      */
-    const PROFILE_USER    = 'user';
+    const PROFILE_USER = 'user';
     const PROFILE_MANAGER = 'manager';
 
     /**
