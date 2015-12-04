@@ -20,16 +20,8 @@
     "build_systems":
     [
         {
-            "name": "List",
-            "shell_cmd": "ls -la"
-        },
-        {
-            "name": "Push",
-            "shell_cmd": "git push"
-        },
-        {
-            "name": "gitg",
-            "shell_cmd": "gitg"
+            "name": "PHPUnit",
+            "shell_cmd": "phpunit"
         }
     ]
 }
