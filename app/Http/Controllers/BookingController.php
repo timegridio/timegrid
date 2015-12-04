@@ -61,6 +61,7 @@ class BookingController extends Controller
             default:
                 // Ignore Invalid Action
                 $this->log->warning('Invalid Action request');
+                return response()->json(['code' => 'ERROR', 'html' => '']);
                 break;
         }
 
