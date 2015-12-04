@@ -18,6 +18,11 @@ class BusinessServiceController extends Controller
     public function index(Business $business)
     {
         $this->log->info(__METHOD__);
+        $this->log->info(sprintf("businessId:%s", $business->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         $services = $business->services;
         return view('manager.businesses.services.index', compact('business', 'services'));
@@ -31,7 +36,11 @@ class BusinessServiceController extends Controller
     public function create(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         $service = new Service; // For Form Model Binding
         return view('manager.businesses.services.create', compact('business', 'service'));
@@ -47,6 +56,10 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
+
         //////////////////
         // FOR REFACTOR //
         //////////////////
@@ -54,7 +67,8 @@ class BusinessServiceController extends Controller
         $service = Service::firstOrNew($request->except('_token'));
         $service->business()->associate($business->id);
         $service->save();
-        $this->log->info("  Stored serviceId:{$service->id}");
+        
+        $this->log->info("Stored serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
         return redirect()->route('manager.business.service.index', [$business]);
@@ -70,10 +84,11 @@ class BusinessServiceController extends Controller
     public function show(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s serviceId:%s", 
-                                    $business->id,
-                                    $service->id
-                                ));
+        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         return view('manager.businesses.services.show', compact('service'));
     }
@@ -88,10 +103,11 @@ class BusinessServiceController extends Controller
     public function edit(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s serviceId:%s", 
-                                    $business->id,
-                                    $service->id
-                                ));
+        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         return view('manager.businesses.services.edit', compact('service'));
     }
@@ -106,10 +122,11 @@ class BusinessServiceController extends Controller
     public function update(Business $business, Service $service, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s serviceId:%s", 
-                                    $business->id,
-                                    $service->id
-                                ));
+        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         //////////////////
         // FOR REFACTOR //
@@ -135,10 +152,11 @@ class BusinessServiceController extends Controller
     public function destroy(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s serviceId:%s", 
-                                    $business->id,
-                                    $service->id
-                                ));
+        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
 
         //////////////////
         // FOR REFACTOR //
