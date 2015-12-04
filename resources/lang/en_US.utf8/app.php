@@ -1,10 +1,17 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
+ Generated via "php artisan localization:missing" at 2015/12/04 21:45:28 
 *************************************************************************/
 
 return array (
-  //==================================== Translations ====================================//
+  'search' => 
+  array (
+    'msg' => 
+    array (
+      'no_results' => 'We found nothing with this criteria: :criteria',
+    ),
+    'placeholder' => 'search',
+  ),
   'btn' => 
   array (
     'update' => 'Update',
@@ -58,7 +65,6 @@ return array (
   array (
     'title' => 'Recently',
   ),
-  'search' => 'Search',
   //================================== Obsolete strings ==================================//
   'business' => 
   array (
