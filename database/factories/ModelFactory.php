@@ -12,6 +12,20 @@ $factory->define('App\Models\User', function (Faker\Generator $faker) {
     ];
 });
 
+//////////
+// Role //
+//////////
+
+$factory->define('App\Models\Role', function (Faker\Generator $faker) {
+    $name = $faker->word;
+    return [
+        'name' => $faker->word,
+        'slug' => str_slug($name),
+        'description' => $faker->sentence
+    ];
+});
+
+
 /////////////
 // Contact //
 /////////////
