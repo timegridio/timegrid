@@ -22,35 +22,35 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $e
+     * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $e)
+    public function report(Exception $exception)
     {
         if (env('APP_ENV', 'local')!='local') {
-            Mail::raw($e, function ($message) {
+            Mail::raw($exception, function ($message) {
                 $message->subject('[ROOT] Exception Report');
                 $message->from(env('MAIL_FROM_ADDRESS', 'root@localhost'), env('SYSLOG_APPNAME', ''));
                 $message->to(env('ROOT_REPORT_MAIL', 'root@localhost'));
             });
         }
-        return parent::report($e);
+        return parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $e
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
-    public function render($request, Exception $e)
+    public function render($request, Exception $exception)
     {
         // Catch TokenMismatchException to show a friendly error message
-        if ($e instanceof \Illuminate\Session\TokenMismatchException) {
+        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
             return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
         }
 
-        return parent::render($request, $e);
+        return parent::render($request, $exception);
     }
 }
