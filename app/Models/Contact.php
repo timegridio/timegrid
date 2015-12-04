@@ -25,18 +25,6 @@ class Contact extends EloquentModel
      */
     protected $dates = ['birthdate'];
 
-    /**
-     * Save the model to the database.
-     *
-     * @param  array  $options
-     * @return bool
-     */
-#    public function save(array $options = array())
-#    {
-#
-#        return parent::save($options);
-#    }
-
     //////////////////
     // Relationship //
     //////////////////
