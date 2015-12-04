@@ -16,10 +16,7 @@ class BusinessController extends Controller
     public function getHome(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s businessSlug:%s", 
-                                    $business->id,
-                                    $business->slug
-                                ));
+        $this->log->info(sprintf("businessId:%s businessSlug:%s", $business->id, $business->slug));
 
         return view('guest.businesses.show', compact('business'));
     }
