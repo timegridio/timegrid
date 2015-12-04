@@ -29,10 +29,9 @@ class BusinessController extends Controller
         $businesses = auth()->user()->businesses;
 
         if ($businesses->count() == 1) {
-            $this->log->info('  Only one business to show');
-            $business = $businesses->first();
+            $this->log->info('Only one business to show');
             Flash::success(trans('manager.businesses.msg.index.only_one_found'));
-            return redirect()->route('manager.business.show', $business);
+            return redirect()->route('manager.business.show', $businesses->first());
         }
 
         return view('manager.businesses.index', compact('businesses'));
