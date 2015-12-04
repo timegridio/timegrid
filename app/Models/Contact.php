@@ -141,7 +141,7 @@ class Contact extends EloquentModel
      * get Fullname of associated User
      *
      * TODO: Move to presenter
-     * 
+     *
      * @return string Contact firstname and lastname
      */
     public function getFullnameAttribute()
@@ -176,7 +176,7 @@ class Contact extends EloquentModel
      */
     public function setMobileAttribute($mobile)
     {
-        $this->attributes['mobile'] = trim($mobile) ?: null;
+        return $this->attributes['mobile'] = trim($mobile) ?: null;
     }
 
     /**
@@ -186,7 +186,7 @@ class Contact extends EloquentModel
      */
     public function setMobileCountryAttribute($country)
     {
-        $this->attributes['mobile_country'] = trim($country) ?: null;
+        return $this->attributes['mobile_country'] = trim($country) ?: null;
     }
 
     /**
@@ -196,7 +196,8 @@ class Contact extends EloquentModel
      */
     public function setBirthdateAttribute($birthdate)
     {
-        $this->attributes['birthdate'] = trim($birthdate) ? Carbon::createFromFormat(trans('app.dateformat.carbon'), $birthdate) : null;
+        return $this->attributes['birthdate'] =
+            trim($birthdate) ? Carbon::createFromFormat(trans('app.dateformat.carbon'), $birthdate) : null;
     }
 
     /**
@@ -206,7 +207,7 @@ class Contact extends EloquentModel
      */
     public function setEmailAttribute($email)
     {
-        $this->attributes['email'] = trim($email) ?: null;
+        return $this->attributes['email'] = trim($email) ?: null;
     }
 
     /**
@@ -219,7 +220,7 @@ class Contact extends EloquentModel
      */
     public function setNinAttribute($nin)
     {
-        $this->attributes['nin'] = trim($nin) ?: null;
+        return $this->attributes['nin'] = trim($nin) ?: null;
     }
 
     /**
@@ -274,7 +275,7 @@ class Contact extends EloquentModel
 
     /**
      * ToDo: Use Carbon instead of DateTime
-     * 
+     *
      * get Age
      *
      * @return int Age in years
@@ -306,13 +307,13 @@ class Contact extends EloquentModel
     public function getQualityAttribute()
     {
         $quality  = 0;
-        $quality += $this->firstname ? 1 : 0;
-        $quality += $this->lastname ? 1 : 0;
-        $quality += $this->nin ? 5 : 0;
-        $quality += $this->birthdate ? 2 : 0;
-        $quality += $this->mobile ? 4 : 0;
-        $quality += $this->email ? 4 : 0;
-        $quality += $this->postal_address ? 3 : 0;
+        $quality += isset($this->firstname) ? 1 : 0;
+        $quality += isset($this->lastname) ? 1 : 0;
+        $quality += isset($this->nin) ? 5 : 0;
+        $quality += isset($this->birthdate) ? 2 : 0;
+        $quality += isset($this->mobile) ? 4 : 0;
+        $quality += isset($this->email) ? 4 : 0;
+        $quality += isset($this->postal_address) ? 3 : 0;
         $total    = 20;
         return $quality/$total*100;
     }
