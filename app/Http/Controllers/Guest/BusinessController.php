@@ -20,22 +20,4 @@ class BusinessController extends Controller
 
         return view('guest.businesses.show', compact('business'));
     }
-
-    /**
-     * get List
-     *
-     * @return Response Rendered view of all existing Businesses
-     */
-    public function getList()
-    {
-        $this->log->info(__METHOD__);
-        
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-
-        $businesses = Business::all();
-
-        return view('guest.businesses.index', compact('businesses'));
-    }
 }
