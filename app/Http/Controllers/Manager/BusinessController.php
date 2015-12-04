@@ -53,13 +53,9 @@ class BusinessController extends Controller
         $timezone = $location['timezone'];
         $this->log->info("  timezone:$timezone location:".serialize($location));
 
-        $categories = Category::lists('slug', 'id')->transform(
-            function ($item, $key = null) {
-                return trans('app.business.category.'.$item);
-            });
+        $categories = $this->listCategories();
 
-        $business = new Business; // For Form Model Binding
-        Flash::success(trans('manager.businesses.msg.create.success', ['plan' => trans("pricing.plan.$plan.name")]));
+        $business = new Business;
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
@@ -171,10 +167,7 @@ class BusinessController extends Controller
             \DateTimeZone::listIdentifiers()
             ) ? $business->timezone : $timezone = $location['timezone'];
 
-        $categories = Category::lists('slug', 'id')->transform(
-            function ($item, $key = null) {
-                return trans('app.business.category.'.$item);
-            });
+        $categories = $this->listCategories();
         
         $category = $business->category_id;
         $this->log->info(sprintf(
@@ -270,5 +263,16 @@ class BusinessController extends Controller
         $search->setBusinessScope([session()->get('selected.business')->id])->run();
 
         return view('manager.search.index')->with(['results' => $search->results()]);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+    protected function listCategories()
+    {
+        return Category::lists('slug', 'id')->transform(
+            function ($item, $key = null) {
+                return trans('app.business.category.'.$item);
+            });
     }
 }
