@@ -1,20 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
+ Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  'footer' => 
-  array (
-    'demo' => 'Please translate this !',
-    'local' => 'Please translate this !',
-  ),
-  'label' => 
-  array (
-    'attention' => 'Please translate this !',
-    'select_timezone' => 'Zona horaria',
-  ),
   //==================================== Translations ====================================//
   'btn' => 
   array (
@@ -24,6 +13,16 @@ return array (
   array (
     'datetimepicker' => 'DD/MM/YYYY',
     'carbon' => 'd/m/Y',
+  ),
+  'footer' => 
+  array (
+    'demo' => 'Please translate this !',
+    'local' => 'Please translate this !',
+  ),
+  'label' => 
+  array (
+    'attention' => 'Please translate this !',
+    'select_timezone' => 'Zona horaria',
   ),
   'name' => 'timegrid.io',
   'nav' => 

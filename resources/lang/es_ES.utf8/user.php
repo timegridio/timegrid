@@ -1,23 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/02 23:47:14 
+ Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  'booking' => 
-  array (
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'error' => 'Please translate this !',
-        'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
-        'success' => '¡Tomá nota! Reservamos tu cita bajo el código :code',
-      ),
-      'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
-    ),
-  ),
   //==================================== Translations ====================================//
   'appointments' => 
   array (
@@ -95,6 +81,19 @@ return array (
         'status' => 'Estado',
       ),
       'title' => 'Citas',
+    ),
+  ),
+  'booking' => 
+  array (
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'error' => 'Please translate this !',
+        'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
+        'success' => '¡Tomá nota! Reservamos tu cita bajo el código :code',
+      ),
+      'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
     ),
   ),
   'business' => 
