@@ -89,7 +89,7 @@ class BusinessController extends Controller
             // If not owned, return message
             $this->log->info("  Already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
-            return redirect()->route('manager.business.index');
+            return redirect()->back()->withInput(request()->all());
         }
 
         // Register new Business
