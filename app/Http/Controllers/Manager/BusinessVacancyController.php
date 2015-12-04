@@ -22,6 +22,10 @@ class BusinessVacancyController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
+
         //////////////////
         // FOR REFACTOR //
         //////////////////
@@ -46,6 +50,10 @@ class BusinessVacancyController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("  businessId:%s", $business->id));
 
+        ///////////////////////////////
+        // TODO: AUTH GATE GOES HERE //
+        ///////////////////////////////
+
         //////////////////
         // FOR REFACTOR //
         //////////////////
@@ -58,7 +66,7 @@ class BusinessVacancyController extends Controller
                 switch (trim($capacity)) {
                     case '':
                         // Dont update, leave as is
-                        $this->log->info("  Blank vacancy capacity value");
+                        $this->log->info("Blank vacancy capacity value");
                         break;
                     default:
                         $start_at  = Carbon::parse($date.' '.$business->pref('start_at'))->timezone($business->timezone);
@@ -79,11 +87,12 @@ class BusinessVacancyController extends Controller
         }
 
         if (!$changed) {
-            $this->log->warning("  Nothing to update");
+            $this->log->warning("Nothing to update");
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
             return redirect()->back();
         }
 
+        $this->log->warning("Vacancies updated");
         Flash::success(trans('manager.vacancies.msg.store.success'));
         return redirect()->route('manager.business.show', [$business]);
     }
