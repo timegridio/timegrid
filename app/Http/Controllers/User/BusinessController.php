@@ -33,12 +33,12 @@ class BusinessController extends Controller
         // FOR REFACTOR //
         //////////////////
 
-        $business_name = $business->name;
+        $businessName = $business->name;
         Notifynder::category('user.visitedShowroom')
                    ->from('App\Models\User', auth()->user()->id)
                    ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
-                   ->extra(compact('business_name'))
+                   ->extra(compact('businessName'))
                    ->send();
 
         $concierge = new ConciergeService(new VacancyService($business));

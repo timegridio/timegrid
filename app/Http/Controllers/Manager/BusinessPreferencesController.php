@@ -53,12 +53,12 @@ class BusinessPreferencesController extends Controller
 
         $this->setBusinessPreferences($business, $request->all());
 
-        $business_name = $business->name;
+        $businessName = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
                    ->from('App\Models\User', auth()->user()->id)
                    ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
-                   ->extra(compact('business_name'))
+                   ->extra(compact('businessName'))
                    ->send();
 
         Flash::success(trans('manager.businesses.msg.preferences.success'));

@@ -58,12 +58,12 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        $business_name = $business->name;
+        $businessName = $business->name;
         Notifynder::category('user.subscribedBusiness')
                    ->from('App\Models\User', auth()->user()->id)
                    ->to('App\Models\Business', $business->id)
                    ->url('http://localhost')
-                   ->extra(compact('business_name'))
+                   ->extra(compact('businessName'))
                    ->send();
 
         $existingContacts = Contact::whereNull('user_id')

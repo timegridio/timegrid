@@ -3,11 +3,11 @@
 return [
   'user' => [
     'checkingVacancies' => ':user consultó la disponibilidad',
-    'booked' => ':user reservó una cita en :business_name',
-    'visitedShowroom' => ':user pareció interesarse en :business_name',
-    'subscribedBusiness' => ':user se suscribió a :business_name',
-    'registeredBusiness' => ':user registró el alta :business_name. ¡Bravo!',
-    'updatedBusinessPreferences' => ':user ajustó las preferencias de :business_name',
+    'booked' => ':user reservó una cita en :businessName',
+    'visitedShowroom' => ':user pareció interesarse en :businessName',
+    'subscribedBusiness' => ':user se suscribió a :businessName',
+    'registeredBusiness' => ':user registró el alta :businessName. ¡Bravo!',
+    'updatedBusinessPreferences' => ':user ajustó las preferencias de :businessName',
     'importedContacts' => ':user importó :count contactos',
   ],
   'appointment' => [
