@@ -207,21 +207,3 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 Route::get('/', 'WelcomeController@index');
 
 Route::get('{business}', ['as' => 'guest.business.home', 'uses' => 'Guest\BusinessController@getHome'])->where('business', '[^_]+.*');
-
-///////////////////////
-// BUSINESS SELECTOR //
-///////////////////////
-
-#Route::get('{business_slug}', function ($business_slug) {
-#
-#    if ($business_slug->isEmpty()) {
-#        Flash::warning(trans('user.businesses.list.alert.not_found'));
-#        return Redirect::route('user.businesses.list');
-#    }
-#
-#    $context = Auth::check() ? 'user' : 'guest';
-#
-#    return Redirect::route("{$context}.business.home", $business_slug->first()->id);
-#
-#})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
-
