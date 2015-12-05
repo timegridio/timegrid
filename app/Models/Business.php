@@ -153,7 +153,7 @@ class Business extends EloquentModel
     // Overrides //
     ///////////////
 
-    // 
+    //
 
     ///////////////
     // Presenter //
