@@ -13,12 +13,12 @@
     <div class="row">
 
         <div class="col-md-2 col-sm-3 text-left">
-            <a href="{{route('user.businesses.home', ['business' => $business->id])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
+            <a href="{{route('user.businesses.home', ['business' => $business])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
         </div>
 
         <div class="col-md-10 col-sm-9">
             <h3>
-                <a href="{{route('user.businesses.home', ['business' => $business->id])}}">{{ str_limit($business->name, 50) }}</a>
+                <a href="{{route('user.businesses.home', ['business' => $business])}}">{{ str_limit($business->name, 50) }}</a>
                 &nbsp;
                 <small class="text-muted"><i class="glyphicon glyphicon-star"></i>{{ $business->subscriptionsCount }}</small>
             </h3>

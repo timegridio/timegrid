@@ -3,7 +3,7 @@
     <ul class="dropdown-menu">
     @if($business = session()->get('selected.business'))
         <li>
-            <a href="{{ route('user.businesses.home', $business->id) }}">{!! Icon::map_marker() !!}&nbsp;{{ $business->name }}</a>
+            <a href="{{ route('user.businesses.home', $business) }}">{!! Icon::map_marker() !!}&nbsp;{{ $business->name }}</a>
         </li>
         <li class="nav-divider"></li>
     @endif

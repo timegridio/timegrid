@@ -169,6 +169,19 @@ class Business extends EloquentModel
         return new BusinessPresenter($this);
     }
 
+    ///////////////
+    // Accessors //
+    ///////////////
+
+    /**
+     * get route key
+     * @return string   Model slug
+     */
+    public function getRouteKey()
+    {
+        return $this->slug;
+    }
+
     //////////////
     // Mutators //
     //////////////

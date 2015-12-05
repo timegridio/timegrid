@@ -26,7 +26,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business agenda section
-        $this->visit("/manager/agenda/{$this->business->id}");
+        $this->visit(route('manager.business.agenda.index', $this->business));
 
         // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
@@ -58,7 +58,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
 
-        $this->visit("/manager/agenda/{$this->business->id}");
+        $this->visit(route('manager.business.agenda.index', $this->business));
 
         // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
