@@ -9,21 +9,28 @@
 </style>
 @endsection
 
-<div class="container">
-    <div class="row">
+<div class="row">
 
-        <div class="col-md-2 col-sm-3 text-left">
-            <a href="{{route('user.businesses.home', ['business' => $business])}}">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
-        </div>
+    <div class="col-md-2 col-sm-3 text-left">
+        <a href="{{route('user.businesses.home', ['business' => $business])}}">
+            {!! $business->getPresenter()->getFacebookImg('normal') !!}
+        </a>
+    </div>
 
-        <div class="col-md-10 col-sm-9">
-            <h3>
-                <a href="{{route('user.businesses.home', ['business' => $business])}}">{{ str_limit($business->name, 50) }}</a>
-                &nbsp;
-                <small class="text-muted"><i class="glyphicon glyphicon-star"></i>{{ $business->subscriptionsCount }}</small>
-            </h3>
-            <div class="row">
-                <div class="col-xs-9">
+    <div class="col-md-10 col-sm-9">
+
+        <h3>
+            <a href="{{route('user.businesses.home', ['business' => $business])}}">
+                {{ str_limit($business->name, 50) }}
+            </a>
+            &nbsp;
+            <small class="text-muted">
+                <i class="glyphicon glyphicon-star"></i>{{ $business->subscriptionsCount }}
+            </small>
+        </h3>
+
+        <div class="row">
+            <div class="col-xs-9">
 
                 @if ( $business->category )
                     <p>
@@ -46,10 +53,9 @@
                     </p>
                 @endif
 
-                </div>
-                <div class="col-xs-3"></div>
             </div>
-        </div>{{-- column --}}
-    </div>{{-- row --}}
-</div>{{-- container --}}
-<hr />
+            <div class="col-xs-3"></div>
+        </div>
+    </div>{{-- column --}}
+
+</div>{{-- row --}}
