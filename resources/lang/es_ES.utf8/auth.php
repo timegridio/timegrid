@@ -1,20 +1,20 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
+ Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
-  'btn' => 
-  array (
+  'btn' =>
+  array(
     'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
     'forgot' => '¿ Has olvidado tu contraseña ? Blanqueala aquí',
     'not_registered' => '¿ Aún no tenés usuario ? Registrate acá',
   ),
-  'login' => 
-  array (
-    'alert' => 
-    array (
+  'login' =>
+  array(
+    'alert' =>
+    array(
       'message' => '¿Puedo ayudarte?',
       'whoops' => 'Whoops!',
     ),
@@ -26,10 +26,10 @@ return array (
     'remember_me' => 'Recordarme',
     'title' => 'Inicio de Sesión',
   ),
-  'register' => 
-  array (
-    'btn' => 
-    array (
+  'register' =>
+  array(
+    'btn' =>
+    array(
       'submit' => 'Registrame',
     ),
     'username' => 'Tu nombre de usuario',
@@ -39,15 +39,15 @@ return array (
     'password' => 'Una Contraseña',
     'password_confirmation' => 'La misma contraseña',
     'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
-    'msg' => 
-    array (
+    'msg' =>
+    array(
       'errors' => 'Errores',
     ),
   ),
-  'reset' => 
-  array (
-    'btn' => 
-    array (
+  'reset' =>
+  array(
+    'btn' =>
+    array(
       'reset' => 'Blanquear contraseña',
       'send_link' => 'Enviame el link de blanqueo',
     ),

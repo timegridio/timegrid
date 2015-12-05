@@ -1,70 +1,70 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/05 14:03:08 
+ Generated via "php artisan localization:missing" at 2015/12/05 14:03:08
 *************************************************************************/
 
-return array (
+return array(
   //============================== New strings to translate ==============================//
-  'businesses' => 
-  array (
-    'msg' => 
-    array (
+  'businesses' =>
+  array(
+    'msg' =>
+    array(
       'register' => 'Great! We are going to register your business with :plan plan',
-      'destroy' => 
-      array (
+      'destroy' =>
+      array(
         'success' => 'Business removed',
       ),
-      'index' => 
-      array (
+      'index' =>
+      array(
         'only_one_found' => 'You only have one business registered. Here your dashboard.',
       ),
-      'preferences' => 
-      array (
+      'preferences' =>
+      array(
         'success' => 'Successfully updated preferences!',
       ),
-      'store' => 
-      array (
+      'store' =>
+      array(
         'business_already_exists' => 'The business is already registered',
         'restored_trashed' => 'Business restored',
         'success' => 'Business successfully registered',
       ),
-      'update' => 
-      array (
+      'update' =>
+      array(
         'success' => 'Updated business data',
       ),
-      'create' => 
-      array (
+      'create' =>
+      array(
         'success' => 'Well done! You chose :plan',
       ),
     ),
-    'btn' => 
-    array (
+    'btn' =>
+    array(
       'deactivate' => 'Deactivate this business',
       'store' => 'Register',
       'update' => 'Update',
       'return' => 'Back',
     ),
-    'contacts' => 
-    array (
-      'btn' => 
-      array (
+    'contacts' =>
+    array(
+      'btn' =>
+      array(
         'create' => 'Add a contact',
         'import' => 'Import contacts',
       ),
     ),
-    'create' => 
-    array (
+    'create' =>
+    array(
       'title' => 'Register a business',
     ),
-    'dashboard' => 
-    array (
-      'alert' => 
-      array (
+    'dashboard' =>
+    array(
+      'alert' =>
+      array(
         'no_services_set' => 'There are still no services added. Add them from here!',
         'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
       ),
-      'panel' => 
-      array (
+      'panel' =>
+      array(
         'title_appointments_active' => 'Active',
         'title_appointments_annulated' => 'Annulated',
         'title_appointments_served' => 'Served',
@@ -75,103 +75,103 @@ return array (
         'title_contacts_registered' => 'Registered',
         'title_contacts_total' => 'Total',
       ),
-      'meta' => 
-      array (
+      'meta' =>
+      array(
         'title_owner' => 'Owner',
         'title_registered_since' => 'Registered since',
       ),
     ),
-    'edit' => 
-    array (
+    'edit' =>
+    array(
       'title' => 'Business profile edit',
     ),
-    'form' => 
-    array (
-      'category' => 
-      array (
+    'form' =>
+    array(
+      'category' =>
+      array(
         'label' => 'Industry',
       ),
-      'description' => 
-      array (
+      'description' =>
+      array(
         'label' => 'Describe yourself',
         'placeholder' => 'Describe your business and the services you provide',
       ),
-      'name' => 
-      array (
+      'name' =>
+      array(
         'label' => 'Name',
         'placeholder' => 'Commercial name',
         'validation' => 'A name is required',
       ),
-      'phone' => 
-      array (
+      'phone' =>
+      array(
         'label' => 'Mobile',
         'placeholder' => 'your mobile number',
         'hint' => 'no spaces or dashes',
       ),
-      'postal_address' => 
-      array (
+      'postal_address' =>
+      array(
         'label' => 'Postal Address',
         'placeholder' => 'street name and number, area, city, country',
       ),
-      'slug' => 
-      array (
+      'slug' =>
+      array(
         'label' => 'Alias',
         'placeholder' => 'this will be your timegrid URL',
         'validation' => 'An alias is required',
       ),
-      'social_facebook' => 
-      array (
+      'social_facebook' =>
+      array(
         'label' => 'Your Facebook Page URL',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ),
-      'timezone' => 
-      array (
+      'timezone' =>
+      array(
         'label' => 'TimeZone',
       ),
     ),
-    'index' => 
-    array (
+    'index' =>
+    array(
       'help' => 'From here you can manage all your businesses',
-      'msg' => 
-      array (
+      'msg' =>
+      array(
         'no_appointments' => 'There are no active appointments right now',
       ),
       'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
       'title' => 'My businesses',
-      'btn' => 
-      array (
+      'btn' =>
+      array(
         'manage' => 'Manage businesses',
         'register' => 'Register a business',
       ),
     ),
-    'preferences' => 
-    array (
+    'preferences' =>
+    array(
       'instructions' => 'Here you can customize the business settings to your needs.',
       'title' => 'Business preferences',
     ),
-    'vacancies' => 
-    array (
-      'btn' => 
-      array (
+    'vacancies' =>
+    array(
+      'btn' =>
+      array(
         'update' => 'Update availability',
       ),
     ),
-    'show' => 
-    array (
+    'show' =>
+    array(
       'title' => 'Business',
     ),
   ),
   //==================================== Translations ====================================//
-  'business' => 
-  array (
-    'alert' => 
-    array (
+  'business' =>
+  array(
+    'alert' =>
+    array(
       'deactivate_confirm' => 'Advice! Deactivating the business is IRREVERSIBLE. Are you sure?',
     ),
-    'btn' => 
-    array (
-      'tooltip' => 
-      array (
+    'btn' =>
+    array(
+      'tooltip' =>
+      array(
         'agenda' => 'Reservations schedule',
         'contacts' => 'Contact list',
         'edit' => 'Edit business profile',
@@ -180,34 +180,34 @@ return array (
         'vacancies' => 'Publish availability',
       ),
     ),
-    'hint' => 
-    array (
+    'hint' =>
+    array(
       'out_of_vacancies' => 'Publish your availability<br><br>For clients to begin taking reservations you need to publish your availability.',
       'set_services' => 'Add the services you provide',
     ),
-    'service' => 
-    array (
-      'msg' => 
-      array (
-        'update' => 
-        array (
+    'service' =>
+    array(
+      'msg' =>
+      array(
+        'update' =>
+        array(
           'success' => 'Service updated!',
         ),
       ),
     ),
-    'form' => 
-    array (
-      'strategy' => 
-      array (
+    'form' =>
+    array(
+      'strategy' =>
+      array(
         'dateslot' => 'By date',
         'timeslot' => 'By date and time',
       ),
     ),
   ),
-  'contacts' => 
-  array (
-    'btn' => 
-    array (
+  'contacts' =>
+  array(
+    'btn' =>
+    array(
       'confirm_delete' => 'Sure to delete contact?',
       'delete' => 'Delete',
       'edit' => 'Edit',
@@ -215,80 +215,80 @@ return array (
       'store' => 'Save',
       'update' => 'Update',
     ),
-    'create' => 
-    array (
+    'create' =>
+    array(
       'title' => 'Contacts',
     ),
-    'form' => 
-    array (
-      'birthdate' => 
-      array (
+    'form' =>
+    array(
+      'birthdate' =>
+      array(
         'label' => 'Birthdate',
         'placeholder' => 'birthdate',
       ),
-      'data' => 
-      array (
+      'data' =>
+      array(
         'label' => 'CSV data',
       ),
-      'description' => 
-      array (
+      'description' =>
+      array(
         'label' => 'Description',
       ),
-      'email' => 
-      array (
+      'email' =>
+      array(
         'label' => 'Email',
         'placeholder' => 'email@example.com',
       ),
-      'firstname' => 
-      array (
+      'firstname' =>
+      array(
         'label' => 'Name',
         'validation' => 'Name is required',
         'placeholder' => 'first name',
       ),
-      'gender' => 
-      array (
-        'female' => 
-        array (
+      'gender' =>
+      array(
+        'female' =>
+        array(
           'label' => 'Female',
         ),
-        'male' => 
-        array (
+        'male' =>
+        array(
           'label' => 'Male',
         ),
         'label' => 'Gender',
       ),
-      'lastname' => 
-      array (
+      'lastname' =>
+      array(
         'label' => 'Last name',
         'validation' => 'Last name is required',
         'placeholder' => 'last name',
       ),
-      'mobile' => 
-      array (
+      'mobile' =>
+      array(
         'label' => 'Mobile',
         'placeholder' => 'complete mobile number',
       ),
-      'nin' => 
-      array (
+      'nin' =>
+      array(
         'label' => 'ID',
         'placeholder' => 'national identification number',
       ),
-      'notes' => 
-      array (
+      'notes' =>
+      array(
         'label' => 'Notes',
         'placeholder' => 'notes',
       ),
-      'prerequisites' => 
-      array (
+      'prerequisites' =>
+      array(
         'label' => 'Prerequisites',
       ),
     ),
-    'import' => 
-    array (
+    'import' =>
+    array(
       'title' => 'Import contacts',
     ),
-    'label' => 
-    array (
+    'label' =>
+    array(
       'birthdate' => 'Birthdate',
       'email' => 'Email',
       'member_since' => 'Subscribed since',
@@ -299,14 +299,14 @@ return array (
       'next_appointment' => 'Next Appointment',
       'username' => 'Username',
     ),
-    'list' => 
-    array (
-      'btn' => 
-      array (
+    'list' =>
+    array(
+      'btn' =>
+      array(
         'filter' => 'Filter',
       ),
-      'header' => 
-      array (
+      'header' =>
+      array(
         'email' => 'Email',
         'firstname' => 'Name',
         'lastname' => 'Lastname',
@@ -315,117 +315,117 @@ return array (
         'username' => 'Username',
         'gender' => 'Gender',
       ),
-      'msg' => 
-      array (
+      'msg' =>
+      array(
         'filter_no_results' => 'Nothing here',
       ),
     ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
+    'msg' =>
+    array(
+      'destroy' =>
+      array(
         'success' => 'Contact deleted!',
       ),
-      'import' => 
-      array (
+      'import' =>
+      array(
         'success' => ':count imported contacts',
       ),
-      'store' => 
-      array (
+      'store' =>
+      array(
         'success' => 'Contact registered successfully!',
         'warning_showing_existing_contact' => 'Advice: We found this existing contact',
       ),
-      'update' => 
-      array (
+      'update' =>
+      array(
         'success' => 'Updated successfully',
       ),
     ),
     'title' => 'My customers',
   ),
-  'service' => 
-  array (
-    'btn' => 
-    array (
+  'service' =>
+  array(
+    'btn' =>
+    array(
       'delete' => 'Delete',
       'update' => 'Update',
     ),
-    'form' => 
-    array (
-      'name' => 
-      array (
+    'form' =>
+    array(
+      'name' =>
+      array(
         'label' => 'Service name',
       ),
     ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
+    'msg' =>
+    array(
+      'store' =>
+      array(
         'success' => 'Service stored successfully!',
       ),
     ),
   ),
-  'services' => 
-  array (
-    'btn' => 
-    array (
+  'services' =>
+  array(
+    'btn' =>
+    array(
       'create' => 'Add a service',
       'store' => 'Save',
     ),
-    'create' => 
-    array (
-      'alert' => 
-      array (
+    'create' =>
+    array(
+      'alert' =>
+      array(
         'go_to_vacancies' => 'Well done! Now you can publish your availability.',
       ),
-      'btn' => 
-      array (
+      'btn' =>
+      array(
         'go_to_vacancies' => 'Set and publish my availability',
       ),
       'instructions' => 'Give a name to your service, a wide description to help your customers be familiar with it.Add any instructions for your customers before they get to the appointment.',
       'title' => 'Add a service',
     ),
-    'index' => 
-    array (
+    'index' =>
+    array(
       'instructions' => 'Add as many services as you provide to configure availability for each of them.',
       'title' => 'Services',
-      'th' => 
-      array (
+      'th' =>
+      array(
         'duration' => 'Duration',
         'name' => 'Name',
         'slug' => 'Alias',
       ),
     ),
-    'msg' => 
-    array (
-      'destroy' => 
-      array (
+    'msg' =>
+    array(
+      'destroy' =>
+      array(
         'success' => 'Service deleted!',
       ),
     ),
   ),
-  'vacancies' => 
-  array (
-    'edit' => 
-    array (
+  'vacancies' =>
+  array(
+    'edit' =>
+    array(
       'instructions' => 'Enter the appointments capacity for each service on each day day. This is, how may appointments can you handle per service per day?',
       'title' => 'Availability',
     ),
-    'msg' => 
-    array (
-      'edit' => 
-      array (
+    'msg' =>
+    array(
+      'edit' =>
+      array(
         'no_services' => 'No services registered. Please register services for your business.',
       ),
-      'store' => 
-      array (
+      'store' =>
+      array(
         'nothing_changed' => 'You must indicate your availability at least for one date',
         'success' => 'Availability registered successfully!',
       ),
     ),
-    'table' => 
-    array (
-      'th' => 
-      array (
+    'table' =>
+    array(
+      'th' =>
+      array(
         'date' => 'Date',
       ),
     ),

@@ -1,9 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
+ Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
 *************************************************************************/
 
-return array (
+return array(
   //==================================== Translations ====================================//
   'user' => 'We did not find this email. Are you registered?',
   //================================== Obsolete strings ==================================//
