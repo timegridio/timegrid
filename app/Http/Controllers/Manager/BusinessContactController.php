@@ -71,15 +71,15 @@ class BusinessContactController extends Controller
         //////////////////
 
         if (trim($request->input('nin'))) {
-            $existing_contacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
+            $existingContacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
             
-            foreach ($existing_contacts as $existing_contact) {
-                $this->log->info("  [ADVICE] Found existing contactId:{$existing_contact->id}");
+            foreach ($existingContacts as $existingContact) {
+                $this->log->info("  [ADVICE] Found existing contactId:{$existingContact->id}");
                 
-                if ($existing_contact->isSubscribedTo($business)) {
+                if ($existingContact->isSubscribedTo($business)) {
                     $this->log->info("  [ADVICE] Existing contact is already linked to business");
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-                    return redirect()->route('manager.business.contact.show', [$business, $existing_contact]);
+                    return redirect()->route('manager.business.contact.show', [$business, $existingContact]);
                 }
             }
         }
