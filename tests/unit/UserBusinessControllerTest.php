@@ -135,13 +135,13 @@ class UserBusinessControllerTest extends TestCase
 
         // And I go to favourites (subscriptions) section
         $this->visit('/')->click('Favourites');
-#
-#        // Then I should see the subscription list
-#        // and my profile (contact) firstname and last name
-#        // and the business slug i'm subscribed to
-#        $this->see('Subscriptions')
-#             ->see($contact->firstname)
-#             ->see($contact->lastname)
-#             ->see($business->slug);
+
+        // Then I should see the subscription list
+        // and my profile (contact) firstname and last name
+        // and the business slug i'm subscribed to
+        $this->see('Subscriptions')
+             ->see($contact->firstname)
+             ->see($contact->lastname)
+             ->see($business->slug);
     }
 }
