@@ -102,7 +102,10 @@ class Contact extends EloquentModel
      */
     public function appointmentsCount()
     {
-        return $this->hasMany('App\Models\Appointment')->selectRaw('contact_id, count(*) as aggregate')->groupBy('contact_id');
+        return $this
+            ->hasMany('App\Models\Appointment')
+            ->selectRaw('contact_id, count(*) as aggregate')
+            ->groupBy('contact_id');
     }
 
     /**

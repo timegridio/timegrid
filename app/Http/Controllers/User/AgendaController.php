@@ -72,7 +72,7 @@ class AgendaController extends Controller
         return view(
             'user.appointments.'.$business->strategy.'.book',
             compact('business', 'availability', 'includeToday')
-            );
+        );
     }
 
     /**
