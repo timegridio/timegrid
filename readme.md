@@ -86,7 +86,7 @@ If you want to stand on the latest beta-stable version:
 
     cd timegrid
 
-    git checkout tags/v3.4.2-beta
+    git checkout tags/v3.5.0-15120502-beta
 
 -----
 <a name="step2"></a>
