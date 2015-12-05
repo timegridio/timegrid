@@ -104,12 +104,12 @@ class BusinessController extends Controller
         auth()->user()->save();
 
         // Generate local notification
-        $business_name = $business->name;
+        $businessName = $business->name;
         Notifynder::category('user.registeredBusiness')
         ->from('App\Models\User', auth()->user()->id)
         ->to('App\Models\Business', $business->id)
         ->url('http://localhost')
-        ->extra(compact('business_name'))
+        ->extra(compact('businessName'))
         ->send();
 
         // Redirect success

@@ -22,13 +22,13 @@ class SendBookingNotification
 
         $code = $event->appointment->getPresenter()->code();
         $date = $event->appointment->start_at->toDateString();
-        $business_name = $event->appointment->business->name;
+        $businessName = $event->appointment->business->name;
         
         Notifynder::category('appointment.reserve')
                    ->from('App\Models\User', $event->user->id)
                    ->to('App\Models\Business', $event->appointment->business->id)
                    ->url('http://localhost')
-                   ->extra(compact('business_name', 'code', 'date'))
+                   ->extra(compact('businessName', 'code', 'date'))
                    ->send();
 
         $locale = app()->getLocale();
