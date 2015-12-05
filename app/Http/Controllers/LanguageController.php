@@ -27,7 +27,7 @@ class LanguageController extends Controller
 
     /**
      * Determine if is a language is accepted by app config
-     * 
+     *
      * @param  string  $lang Requested language
      * @return boolean       Is an accepted language for this app
      */
@@ -38,7 +38,7 @@ class LanguageController extends Controller
 
     /**
      * set Language to Session
-     * 
+     *
      * @param string $lang Requested language
      */
     protected function setSessionLanguage($lang)

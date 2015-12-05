@@ -262,7 +262,7 @@ class BusinessController extends Controller
 
     /**
      * get business category list
-     * 
+     *
      * @return Array list of categories for combo
      */
     protected function listCategories()
@@ -270,12 +270,13 @@ class BusinessController extends Controller
         return Category::lists('slug', 'id')->transform(
             function ($item) {
                 return trans('app.business.category.'.$item);
-            });
+            }
+        );
     }
 
     /**
      * guess user (client) timezone
-     * 
+     *
      * @param  string $timezone Default or fallback timezone
      * @return string           Guessed or fallbacked timezone
      */

@@ -44,7 +44,7 @@ class BookingController extends Controller
             $action,
             $businessId,
             $appointmentId
-            ));
+        ));
 
         $appointment = Appointment::find($appointmentId);
 
