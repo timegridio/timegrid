@@ -69,8 +69,10 @@ class BusinessVacancyController extends Controller
                         $this->log->info("Blank vacancy capacity value");
                         break;
                     default:
-                        $start_at  = Carbon::parse($date.' '.$business->pref('start_at'))->timezone($business->timezone);
-                        $finish_at = Carbon::parse($date.' '.$business->pref('finish_at', '20:00:00'))->timezone($business->timezone);
+                        $start_at = Carbon::parse($date.' '.$business->pref('start_at'))
+                            ->timezone($business->timezone);
+                        $finish_at = Carbon::parse($date.' '.$business->pref('finish_at'))
+                            ->timezone($business->timezone);
 
                         $vacancyKeys = [
                             'business_id' => $business->id,
