@@ -41,6 +41,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">{{ trans('auth.register.username') }}</label>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">{!! Icon::user() !!}</span>
+                                    <input class="form-control" name="username" value="{{ old('username') }}" data-minlength="3" data-maxlength="25" required>
+                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+                                </div>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label for="email" class="col-md-4 control-label">{{ trans('auth.register.email') }}</label>
                             <div class="col-md-6">
                                 <div class="input-group">

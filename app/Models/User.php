@@ -29,7 +29,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      *
      * @var array
      */
-    protected $fillable = ['name', 'email', 'password'];
+    protected $fillable = ['name', 'email', 'username', 'password'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -118,13 +118,23 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     //////////////
 
     /**
+     * set Username
+     * 
+     * @param string $username The desired username
+     */
+    public function setUsernameAttribute($username)
+    {
+        return $this->attributes['username'] = trim($username) != '' ? strtolower($username) : md5(time());
+    }
+
+    /**
      * set Name
      * 
      * @param string $string The first name of the User
      */
     public function setNameAttribute($name)
     {
-        $this->attributes['name'] = ucwords(strtolower($name));
+        return $this->attributes['name'] = ucwords(strtolower($name));
     }
 
     /**

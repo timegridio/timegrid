@@ -44,6 +44,7 @@ class AuthController extends Controller
     public function validator(array $data)
     {
         $rules = [
+                'username' => 'required|min:3|max:25|unique:users',
                 'email' => 'required|email|max:255|unique:users',
                 'password' => 'required|confirmed|min:6',
                 'g-recaptcha-response' => 'required|captcha'
@@ -64,11 +65,13 @@ class AuthController extends Controller
     public function create(array $data)
     {
         $user = User::create([
+            'username' => $data['username'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
         event(new NewRegisteredUser($user));
+        
         return $user;
     }
 }
