@@ -32,6 +32,8 @@ class BusinessAgendaController extends Controller
                                              ->unserved()
                                              ->orderBy('start_at')
                                              ->get();
-        return view('manager.businesses.appointments.'.$business->strategy.'.index', compact('business', 'appointments'));
+
+        $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
+        return view($viewKey, compact('business', 'appointments'));
     }
 }
