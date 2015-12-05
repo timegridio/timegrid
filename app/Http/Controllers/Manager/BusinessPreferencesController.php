@@ -22,9 +22,9 @@ class BusinessPreferencesController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("businessId:%s", $business->id));
 
-        #if (Gate::denies('managePreferences', $business)) {
-        #    abort(403);
-        #}
+        if (Gate::denies('managePreferences', $business)) {
+            abort(403);
+        }
 
         $parameters = config()->get('preferences.App\Models\Business');
         $preferences = $business->preferences;
