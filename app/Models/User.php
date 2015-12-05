@@ -124,7 +124,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function setUsernameAttribute($username)
     {
-        return $this->attributes['username'] = trim($username) != '' ? strtolower($username) : md5(time());
+        return $this->attributes['username'] = trim($username) != '' ? strtolower($username) : md5(time().uniqid());
     }
 
     /**
