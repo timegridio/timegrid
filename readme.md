@@ -21,7 +21,7 @@ Small and medium scale businesses wish to provide online service booking for the
 
 **The Solution**
 
-Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Useful, Simple, Fast.
+Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Like a **CRM**, but *Simple*, *Useful*, and *Fast*.
 
 It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
