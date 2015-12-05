@@ -18,7 +18,7 @@ class GuestBusinessControllerTest extends TestCase
         $business = factory(Business::class)->create();
 
         // And I visit the homepage
-        $this->visit("/about/{$business->id}");
+        $this->visit(route('guest.business.home', $business));
 
         // Then I should see the business home
         $this->see($business->name)

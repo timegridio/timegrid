@@ -17,22 +17,22 @@
                         <tr>
                             <td title="{{ $service->description }}">
                             <div class="btn-group">
-                                {!! Button::normal()->withIcon(Icon::edit())->asLinkTo( route('manager.business.service.edit', [$business->id, $service->id]) ) !!}
-                                {!! Button::normal($service->name)->asLinkTo( route('manager.business.service.show', [$business->id, $service->id]) ) !!}
+                                {!! Button::normal()->withIcon(Icon::edit())->asLinkTo( route('manager.business.service.edit', [$business, $service->id]) ) !!}
+                                {!! Button::normal($service->name)->asLinkTo( route('manager.business.service.show', [$business, $service->id]) ) !!}
                             </div>
                             </td>
                         </tr>
                     @endforeach
                     </table>
 
-                {!! Button::primary(trans('manager.services.btn.create'))->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business->id]) )->block() !!}
+                {!! Button::primary(trans('manager.services.btn.create'))->withIcon(Icon::plus())->asLinkTo( route('manager.business.service.create', [$business]) )->block() !!}
 
                 </div>
             
             </div>
             @if ($business->services()->count())
                 {!! Alert::success(trans('manager.services.create.alert.go_to_vacancies')) !!}
-                {!! Button::success(trans('manager.services.create.btn.go_to_vacancies'))->withIcon(Icon::time())->large()->block()->asLinkTo(route('manager.business.vacancy.create', $business->id)) !!}
+                {!! Button::success(trans('manager.services.create.btn.go_to_vacancies'))->withIcon(Icon::time())->large()->block()->asLinkTo(route('manager.business.vacancy.create', $business)) !!}
             @endif
         </div>
     </div>

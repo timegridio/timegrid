@@ -13,7 +13,7 @@
                 <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::open(['route' => ['manager.business.preferences', $business->id], 'id' => 'preferences', 'data-toggle' => 'validator']) !!}
+                {!! Form::open(['route' => ['manager.business.preferences', $business], 'id' => 'preferences', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses.preferences._form')
                 {!! Form::close() !!}
 

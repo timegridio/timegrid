@@ -13,7 +13,7 @@
             @include('_errors')
 
             {!! Form::model($service, ['route' => ['manager.business.service.store', $business]]) !!}
-                @include('manager.businesses.services._form',['submitLabel' => trans('manager.services.btn.store')])
+                @include('manager.businesses.services._form', ['submitLabel' => trans('manager.services.btn.store')])
             {!! Form::close() !!}
         </div>
     </div>

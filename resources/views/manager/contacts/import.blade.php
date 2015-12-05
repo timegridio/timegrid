@@ -9,7 +9,7 @@
                 <div class="panel-body">
                     @include('_errors')
 
-                    {!! Form::open(['route' => ['manager.business.contact.import', $business->id], 'id' => 'import', 'data-toggle' => 'validator']) !!}
+                    {!! Form::open(['route' => ['manager.business.contact.import', $business], 'id' => 'import', 'data-toggle' => 'validator']) !!}
                     <div class="row">
                         <div class="form-group col-xs-12">
                             {!! Form::textarea('data', null, 
