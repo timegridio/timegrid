@@ -196,6 +196,7 @@ Anyway, [contact me](https://timegrid.slack.com/home) and we will figure out you
 ## Special Thanks
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
+  * [Jose V Herrera](https://github.com/josevh) for contributions
 
 ### License
 
