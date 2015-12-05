@@ -1,45 +1,45 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 21:45:28 
+ Generated via "php artisan localization:missing" at 2015/12/04 21:45:28
 *************************************************************************/
 
-return array (
-  'search' => 
-  array (
-    'msg' => 
-    array (
+return array(
+  'search' =>
+  array(
+    'msg' =>
+    array(
       'no_results' => 'We found nothing with this criteria: :criteria',
     ),
     'placeholder' => 'search',
   ),
-  'btn' => 
-  array (
+  'btn' =>
+  array(
     'update' => 'Update',
   ),
-  'dateformat' => 
-  array (
+  'dateformat' =>
+  array(
     'datetimepicker' => 'MM/DD/YYYY',
     'carbon' => 'm/d/Y',
   ),
-  'footer' => 
-  array (
+  'footer' =>
+  array(
     'demo' => 'Remember this is a DEMO version.',
     'local' => 'Local environment advice.',
   ),
-  'label' => 
-  array (
+  'label' =>
+  array(
     'attention' => 'Attention',
     'select_timezone' => 'TimeZone',
   ),
   'name' => 'timegrid.io',
-  'nav' => 
-  array (
+  'nav' =>
+  array(
     'login' => 'Login',
     'logout' => 'Logout',
-    'manager' => 
-    array (
-      'business' => 
-      array (
+    'manager' =>
+    array(
+      'business' =>
+      array(
         'list' => 'List',
         'menu' => 'My Businesses',
         'register' => 'SignUp Business',
@@ -47,10 +47,10 @@ return array (
     ),
     'manual' => 'User Manual',
     'register' => 'Register',
-    'user' => 
-    array (
-      'business' => 
-      array (
+    'user' =>
+    array(
+      'business' =>
+      array(
         'menu' => 'Businesses',
         'my_appointments' => 'My Reservations',
         'my_subscriptions' => 'Favourites',
@@ -61,48 +61,48 @@ return array (
     'wizard' => 'Wizard',
     'home' => 'Home',
   ),
-  'notifications' => 
-  array (
+  'notifications' =>
+  array(
     'title' => 'Recently',
   ),
   //================================== Obsolete strings ==================================//
-  'business' => 
-  array (
-    'category' => 
-    array (
+  'business' =>
+  array(
+    'category' =>
+    array(
       'doctor' => 'Healthcare',
       'garage' => 'Car Repair',
       'photography' => 'Photography',
     ),
   ),
   'filter' => 'Filter',
-  'gender' => 
-  array (
+  'gender' =>
+  array(
     'F' => 'Female',
     'M' => 'Male',
   ),
-  'general' => 
-  array (
-    'btn' => 
-    array (
+  'general' =>
+  array(
+    'btn' =>
+    array(
       'confirm_deletion' => 'Confirm deletion?',
     ),
   ),
-  'home' => 
-  array (
-    'btn' => 
-    array (
+  'home' =>
+  array(
+    'btn' =>
+    array(
       'actions' => 'Actions',
     ),
   ),
-  'msg' => 
-  array (
+  'msg' =>
+  array(
     'invalid_token' => 'We found a validation error, please submit your form again',
   ),
-  'welcome' => 
-  array (
-    'btn' => 
-    array (
+  'welcome' =>
+  array(
+    'btn' =>
+    array(
       'enter' => 'Enter',
     ),
     'description' => 'Login the application',
