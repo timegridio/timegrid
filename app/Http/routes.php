@@ -82,6 +82,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::get('agenda', ['as' => 'user.agenda', 'uses' => 'User\AgendaController@getIndex']);
     Route::get('businesses/register/{plan?}', ['as' => 'manager.business.register', 'uses' => 'Manager\BusinessController@create']);
+    Route::post('businesses/register', ['as' => 'manager.business.store', 'uses' => 'Manager\BusinessController@store']);
     Route::get('businesses', ['as' => 'manager.business.index', 'uses' => 'Manager\BusinessController@index']);
     Route::get('directory', ['as' => 'user.directory.list', 'uses' => 'User\BusinessController@getList']);
     Route::get('subscriptions', ['as' => 'user.subscriptions', 'uses' => 'User\BusinessController@getSubscriptions']);
@@ -160,9 +161,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         Route::get('agenda', ['as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
 
-        Route::get('dashboard', ['as' => 'manager.business.show', 'uses' => 'BusinessController@show']);
-        # Route::get('create', ['as' => 'manager.business.create', 'uses' => 'BusinessController@create']);
-        Route::post('', ['as' => 'manager.business.store', 'uses' => 'BusinessController@store']);
+        Route::get('dashboard', ['as' => 'manager.business.show', 'uses' => 'BusinessController@show']);        
         Route::get('edit', ['as' => 'manager.business.edit', 'uses' => 'BusinessController@edit']);
         Route::put('', ['as' => 'manager.business.update', 'uses' => 'BusinessController@update']);
         Route::delete('', ['as' => 'manager.business.destroy', 'uses' => 'BusinessController@destroy']);
