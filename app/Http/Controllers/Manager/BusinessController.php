@@ -46,7 +46,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
 
         # $plan = Request::query('plan') ?: 'free';
-        $this->log->info("  plan:$plan");
+        $this->log->info("plan:$plan");
 
         $timezone = $this->guessTimezone(null);
 

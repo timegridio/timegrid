@@ -1,25 +1,40 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01 
+ Generated via "php artisan localization:missing" at 2015/12/05 14:03:08 
 *************************************************************************/
 
 return array (
   //============================== New strings to translate ==============================//
   'businesses' => 
   array (
-    'index' => 
+    'msg' => 
     array (
-      'msg' => 
+      'register' => 'Great! We are going to register your business with :plan plan',
+      'destroy' => 
       array (
-        'no_appointments' => 'There are no active appointments right now',
+        'success' => 'Business removed',
       ),
-      'help' => 'From here you can manage all your businesses',
-      'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
-      'title' => 'My businesses',
-      'btn' => 
+      'index' => 
       array (
-        'manage' => 'Manage businesses',
-        'register' => 'Register a business',
+        'only_one_found' => 'You only have one business registered. Here your dashboard.',
+      ),
+      'preferences' => 
+      array (
+        'success' => 'Successfully updated preferences!',
+      ),
+      'store' => 
+      array (
+        'business_already_exists' => 'The business is already registered',
+        'restored_trashed' => 'Business restored',
+        'success' => 'Business successfully registered',
+      ),
+      'update' => 
+      array (
+        'success' => 'Updated business data',
+      ),
+      'create' => 
+      array (
+        'success' => 'Well done! You chose :plan',
       ),
     ),
     'btn' => 
@@ -114,33 +129,19 @@ return array (
         'label' => 'TimeZone',
       ),
     ),
-    'msg' => 
+    'index' => 
     array (
-      'create' => 
+      'help' => 'From here you can manage all your businesses',
+      'msg' => 
       array (
-        'success' => 'Well done! You chose :plan',
+        'no_appointments' => 'There are no active appointments right now',
       ),
-      'destroy' => 
+      'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
+      'title' => 'My businesses',
+      'btn' => 
       array (
-        'success' => 'Business removed',
-      ),
-      'index' => 
-      array (
-        'only_one_found' => 'You only have one business registered. Here your dashboard.',
-      ),
-      'preferences' => 
-      array (
-        'success' => 'Successfully updated preferences!',
-      ),
-      'store' => 
-      array (
-        'business_already_exists' => 'The business is already registered',
-        'restored_trashed' => 'Business restored',
-        'success' => 'Business successfully registered',
-      ),
-      'update' => 
-      array (
-        'success' => 'Updated business data',
+        'manage' => 'Manage businesses',
+        'register' => 'Register a business',
       ),
     ),
     'preferences' => 
