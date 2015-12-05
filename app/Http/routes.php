@@ -1,5 +1,5 @@
 <?php
-logger()->info('PROVIDER USER:'.serialize('$providerUser'));
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -77,39 +77,56 @@ Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']],
 // MANAGER CONTEXT //
 /////////////////////
 
-Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => ['auth']], function () {
-    
-    Route::controller('agenda/{business}', 'BusinessAgendaController', ['getIndex' => 'manager.business.agenda.index']);
+Route::group(['prefix' => '{business}', 'namespace' => 'Manager', 'middleware' => ['auth']], function () {
 
-    Route::post('search', ['uses' => 'BusinessController@postSearch']);
-
-    Route::get('business/{business}/preferences', [
+    Route::get('preferences', [
         'as' => 'manager.business.preferences',
         'uses' => 'BusinessPreferencesController@getPreferences'
         ]);
-    
-    Route::post('business/{business}/preferences', [
-        'as' => 'manager.business.preferences',
-        'uses' => 'BusinessPreferencesController@postPreferences'
-        ]);
-    
-    Route::resource('business', 'BusinessController');
 
-    Route::get('business/{business}/contact/import', [
-        'as' => 'manager.business.contact.import',
-        'uses' => 'BusinessContactImportExportController@getImport'
-        ]);
+    // OLD: Route::resource('business', 'BusinessController');
+
+    Route::get('agenda', [ 'as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
+
+    Route::get('index', [ 'as' => 'manager.business.index', 'uses' => 'BusinessController@index']);
+    Route::get('show', [ 'as' => 'manager.business.show', 'uses' => 'BusinessController@show']);
+    Route::get('create', [ 'as' => 'manager.business.create', 'uses' => 'BusinessController@create']);
+    Route::post('store', [ 'as' => 'manager.business.store', 'uses' => 'BusinessController@store']);
+    Route::get('edit', [ 'as' => 'manager.business.edit', 'uses' => 'BusinessController@edit']);
+    Route::post('update', [ 'as' => 'manager.business.update', 'uses' => 'BusinessController@update']);
+    Route::post('destroy', [ 'as' => 'manager.business.destroy', 'uses' => 'BusinessController@destroy']);
+
+    Route::post('search', ['uses' => 'BusinessController@postSearch']);
+
+    #Route::post('business/{business}/preferences', [
+    #    'as' => 'manager.business.preferences',
+    #    'uses' => 'BusinessPreferencesController@postPreferences'
+    #    ]);
     
-    Route::post('business/{business}/contact/import', [
-        'as' => 'manager.business.contact.import',
-        'uses' => 'BusinessContactImportExportController@postImport'
-        ]);
     
-    Route::resource('business.contact', 'BusinessContactController');
+
+    #Route::get('business/{business}/contact/import', [
+    #    'as' => 'manager.business.contact.import',
+    #    'uses' => 'BusinessContactImportExportController@getImport'
+    #    ]);
     
-    Route::resource('business.service', 'BusinessServiceController');
+    #Route::post('business/{business}/contact/import', [
+    #    'as' => 'manager.business.contact.import',
+    #    'uses' => 'BusinessContactImportExportController@postImport'
+    #    ]);
     
-    Route::resource('business.vacancy', 'BusinessVacancyController');
+    #Route::resource('business.contact', 'BusinessContactController');
+    
+    Route::get('contacts', [ 'as' => 'manager.business.contact.index', 'uses' => 'BusinessContactController@index']);
+
+    #Route::resource('business.service', 'BusinessServiceController');
+    
+    Route::get('services', [ 'as' => 'manager.business.service.index', 'uses' => 'BusinessServiceController@index']);
+    
+    #Route::resource('business.vacancy', 'BusinessVacancyController');
+    
+    Route::get('vacancy/create', [ 'as' => 'manager.business.vacancy.create', 'uses' => 'BusinessVacancyController@create']);
+
 });
 
 Route::get('about/{business}', ['as' => 'guest.business.home', 'uses' => 'Guest\BusinessController@getHome']);
@@ -172,15 +189,15 @@ Route::get('/', 'WelcomeController@index');
 // BUSINESS SELECTOR //
 ///////////////////////
 
-Route::get('{business_slug}', function ($business_slug) {
-    
-    if ($business_slug->isEmpty()) {
-        Flash::warning(trans('user.businesses.list.alert.not_found'));
-        return Redirect::route('user.businesses.list');
-    }
-
-    $context = Auth::check() ? 'user' : 'guest';
-
-    return Redirect::route("{$context}.business.home", $business_slug->first()->id);
-
-})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
+#Route::get('{business_slug}', function ($business_slug) {
+#    
+#    if ($business_slug->isEmpty()) {
+#        Flash::warning(trans('user.businesses.list.alert.not_found'));
+#        return Redirect::route('user.businesses.list');
+#    }
+#
+#    $context = Auth::check() ? 'user' : 'guest';
+#
+#    return Redirect::route("{$context}.business.home", $business_slug->first()->id);
+#
+#})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */

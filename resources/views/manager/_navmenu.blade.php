@@ -1,5 +1,5 @@
 @if(($business = Session::get('selected.business')) && auth()->user()->isOwner($business))
-    <li id="navHome"><a href="{{ route('manager.business.show', $business->id) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
+    <li id="navHome"><a href="{{ route('manager.business.show', $business->slug) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
 
     <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('app.nav.manager.business.menu') }} <b class="caret"></b></a>
