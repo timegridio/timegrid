@@ -150,14 +150,24 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * getFreeSlotsCount
+     * get free slots count
      *
-     * @return boolean                  Count Capacity minus Used
+     * @return int   Count Capacity minus Used
      */
     public function getFreeSlotsCount()
     {
         $count = $this->appointments()->active()->count();
         return $this->capacity - $count;
+    }
+
+    /**
+     * get capacity
+     *
+     * @return int   Capacity of the vacancy (in appointment instances)
+     */
+    public function getCapacityAttribute()
+    {
+        return intval($this->attributes['capacity']);
     }
 
     /**
