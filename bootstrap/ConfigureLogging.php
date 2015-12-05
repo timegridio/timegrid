@@ -22,9 +22,7 @@ class ConfigureLogging
         // we will call that, passing Monolog along. Otherwise, we will grab the
         // the configurations for the log system and use it for configuration.
         if ($app->hasMonologConfigurator()) {
-            call_user_func(
-                $app->getMonologConfigurator(), $log->getMonolog()
-            );
+            call_user_func($app->getMonologConfigurator(), $log->getMonolog());
         } else {
             $this->configureHandlers($app, $log);
         }
