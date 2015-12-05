@@ -44,7 +44,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * owns Business
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Business belongs to User query
      */
     public function businesses()
@@ -56,7 +56,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      * has Contacts
      *
      *      Contacts are the different profiles for different Businesses the User may have
-     * 
+     *
      * @return Illuminate\Database\Query Relationship User has Contacts query
      */
     public function contacts()
@@ -68,7 +68,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      * holds Appointments through Contacts
      *
      * The Appointments are the Contact reservations held by this User
-     * 
+     *
      * @return Illuminate\Database\Query Relationship User has Appointments through Contacts query
      */
     public function appointments()
@@ -82,9 +82,9 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * TODO: Rename to isOwnerOf()
-     * 
+     *
      * is Owner of Business
-     * 
+     *
      * @param  Business $business Business to inquiry against
      * @return boolean            The User is Owner of the inquired Business
      */
@@ -95,7 +95,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * has Business
-     * 
+     *
      * @return boolean The User is Owner of at least one Business
      */
     public function hasBusiness()
@@ -105,7 +105,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * has Contacts
-     * 
+     *
      * @return boolean The User has at least one Contact profile set
      */
     public function hasContacts()
@@ -119,7 +119,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * set Username
-     * 
+     *
      * @param string $username The desired username
      */
     public function setUsernameAttribute($username)
@@ -129,7 +129,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * set Name
-     * 
+     *
      * @param string $string The first name of the User
      */
     public function setNameAttribute($name)
@@ -139,7 +139,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * Get Subscribed Contact to Business
-     * 
+     *
      * @param  Business $business Business of inquiry
      * @return Contact            User profile Contact subscribed to the inquired Business
      */
@@ -167,14 +167,14 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
     /**
      * Link User to existing Contacts
-     * 
+     *
      * @return boolean   The User was linked to at least one Contact
      */
     public function linkToContacts()
     {
         $contacts = Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
 
-        if($contacts->isEmpty()){
+        if ($contacts->isEmpty()) {
             return false;
         }
 

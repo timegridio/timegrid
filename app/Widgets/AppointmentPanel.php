@@ -141,7 +141,7 @@ class AppointmentPanel extends Widget
 
     private function getBtnCommonAttributes($appointment)
     {
-        return ['class' => 'action', 
+        return ['class' => 'action',
                 'data-business' => $appointment->business->id,
                 'data-appointment' => $appointment->id,
                 'data-code' => $appointment->code()];

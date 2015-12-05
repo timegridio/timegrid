@@ -136,8 +136,7 @@ class TestingDatabaseSeeder extends Seeder
 
     private function generateDemoAddressBook(Business $business, $limit = 100)
     {
-        for($i = 0; $i<=$limit; $i++)
-        {
+        for ($i = 0; $i<=$limit; $i++) {
             $contact = $this->createDemoGuestUserContact();
             $this->putUserGuestContactOf($contact, $business);
         }

@@ -38,8 +38,10 @@ class AppointmentsTable extends Widget
     public function handle()
     {
         $this->profile = $this->getProfile();
-        return view("{$this->profile}.businesses.appointments.{$this->business->strategy}.widgets.table", 
-            ['appointments' => $this->appointments])->render();
+        
+        $viewKey = "{$this->profile}.businesses.appointments.{$this->business->strategy}.widgets.table";
+
+        return view($viewKey, ['appointments' => $this->appointments])->render();
     }
 
     private function getProfile()

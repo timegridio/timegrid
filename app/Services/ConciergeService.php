@@ -17,14 +17,14 @@ class ConciergeService
 {
     /**
      * [$vacancyService description]
-     * 
+     *
      * @var [type]
      */
     private $vacancyService;
 
     /**
      * [__construct description]
-     * 
+     *
      * @param VacancyService|null $vacancyService [description]
      */
     public function __construct(VacancyService $vacancyService = null)
@@ -34,7 +34,7 @@ class ConciergeService
 
     /**
      * [setVacancyService description]
-     * 
+     *
      * @param VacancyService $vacancyService [description]
      */
     public function setVacancyService(VacancyService $vacancyService)
@@ -117,7 +117,7 @@ class ConciergeService
 
     /**
      * make Reservation
-     * 
+     *
      * @param  User     $issuer   Requested by User as issuer
      * @param  Business $business For Business
      * @param  Contact  $contact  On behalf of Contact
