@@ -20,11 +20,11 @@ class BusinessPresenter extends Presenter
         $url = parse_url($this->social_facebook);
         if ($url['path'] == '/profile.php') {
             parse_str($url['query'], $parts);
-            $UID = $parts['id'];
+            $userId = $parts['id'];
         } else {
-            $UID = trim($url['path'], '/');
+            $userId = trim($url['path'], '/');
         }
-        $url = "http://graph.facebook.com/$UID/picture?type=$type";
+        $url = "http://graph.facebook.com/{$userId}/picture?type=$type";
         return "<img class=\"img-thumbnail media-object\" src='$url' />";
     }
 
@@ -57,6 +57,6 @@ class BusinessPresenter extends Presenter
     public function getIndustryIcon()
     {
         $src = asset('/img/industries/'.$this->category->slug.'.png');
-        return "<img class=\"img-responsive center-block\" src=\"$src\"/>";
+        return "<img class=\"img-responsive center-block\" src=\"{$src}\"/>";
     }
 }

@@ -143,7 +143,7 @@ class ConciergeService
             $service,
             $datetime,
             $comments
-            );
+        );
 
         if ($appointment->duplicates()) {
             return $appointment;

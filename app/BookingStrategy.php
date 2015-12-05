@@ -36,8 +36,8 @@ class BookingStrategy
         Contact $contact,
         Service $service,
         Carbon $datetime,
-        $comments = null)
-    {
+        $comments = null
+    ) {
         return $this->strategy->generateAppointment($issuer, $business, $contact, $service, $datetime, $comments);
     }
 }

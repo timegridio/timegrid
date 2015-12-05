@@ -108,10 +108,7 @@ class BusinessContactController extends Controller
     public function show(Business $business, Contact $contact, ViewContactRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s",
-            $business->id,
-            $contact->id
-            ));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
 
@@ -129,7 +126,7 @@ class BusinessContactController extends Controller
     public function edit(Business $business, Contact $contact, AlterContactRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         return view('user.contacts.edit', compact('business', 'contact'));
     }
@@ -184,7 +181,7 @@ class BusinessContactController extends Controller
     public function destroy(Business $business, Contact $contact, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         $contact->delete();
 
