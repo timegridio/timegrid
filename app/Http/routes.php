@@ -1,5 +1,5 @@
 <?php
-
+logger()->info('PROVIDER USER:'.serialize('$providerUser'));
 /*
 |--------------------------------------------------------------------------
 | Application Routes
