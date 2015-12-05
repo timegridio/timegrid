@@ -161,7 +161,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         Route::get('agenda', ['as' => 'manager.business.agenda.index', 'uses' => 'BusinessAgendaController@getIndex']);
 
-        Route::get('dashboard', ['as' => 'manager.business.show', 'uses' => 'BusinessController@show']);        
+        Route::get('dashboard', ['as' => 'manager.business.show', 'uses' => 'BusinessController@show']);
         Route::get('edit', ['as' => 'manager.business.edit', 'uses' => 'BusinessController@edit']);
         Route::put('', ['as' => 'manager.business.update', 'uses' => 'BusinessController@update']);
         Route::delete('', ['as' => 'manager.business.destroy', 'uses' => 'BusinessController@destroy']);
@@ -213,7 +213,7 @@ Route::get('{business}', ['as' => 'guest.business.home', 'uses' => 'Guest\Busine
 ///////////////////////
 
 #Route::get('{business_slug}', function ($business_slug) {
-#    
+#
 #    if ($business_slug->isEmpty()) {
 #        Flash::warning(trans('user.businesses.list.alert.not_found'));
 #        return Redirect::route('user.businesses.list');
@@ -224,3 +224,4 @@ Route::get('{business}', ['as' => 'guest.business.home', 'uses' => 'Guest\Busine
 #    return Redirect::route("{$context}.business.home", $business_slug->first()->id);
 #
 #})->where('business_slug', '[^_]+.*'); /* Underscore starter is reserved for debugging facilities */
+

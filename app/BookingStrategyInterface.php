@@ -10,5 +10,12 @@ use App\Models\Business;
 
 interface BookingStrategyInterface
 {
-    public function generateAppointment(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null);
+    public function generateAppointment(
+        User $issuer,
+        Business $business,
+        Contact $contact,
+        Service $service,
+        Carbon $datetime,
+        $comments = null
+    );
 }

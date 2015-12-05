@@ -15,7 +15,7 @@ class Category extends EloquentModel
 
     /**
      * clasifies Businesses
-     * 
+     *
      * @return Illuminate\Database\Query Relationship Category has Businesses query
      */
     public function businesses()
