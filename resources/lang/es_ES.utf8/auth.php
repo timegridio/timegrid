@@ -18,6 +18,7 @@ return array (
       'message' => '¿Puedo ayudarte?',
       'whoops' => 'Whoops!',
     ),
+    'username' => 'Nombre de Usuario',
     'email' => 'Email',
     'forgot' => 'Olvidé mi contraseña',
     'login' => 'Ingresar',
@@ -31,6 +32,7 @@ return array (
     array (
       'submit' => 'Registrame',
     ),
+    'username' => 'Tu nombre de usuario',
     'email' => 'Tu Email',
     'name' => 'Tu nombre',
     'need_help' => '¿Necesitas ayuda?',
