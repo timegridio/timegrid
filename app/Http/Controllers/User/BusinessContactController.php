@@ -30,16 +30,16 @@ class BusinessContactController extends Controller
         // FOR REFACTOR //
         //////////////////
 
-        $existing_contact = Contact::where(['email' => auth()->user()->email])->get()->first();
+        $existingContact = Contact::where(['email' => auth()->user()->email])->get()->first();
 
-        if ($existing_contact !== null && !$existing_contact->isSubscribedTo($business)) {
-            $this->log->info("[ADVICE] Found existing contact contactId:{$existing_contact->id}");
-            $business->contacts()->attach($existing_contact);
+        if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
+            $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
+            $business->contacts()->attach($existingContact);
             $business->save();
             $business = $business->fresh();
 
             Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
-            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
+            return redirect()->route('user.business.contact.show', [$business, $existingContact]);
         }
 
         $contact = new Contact; // For Form Model Binding
@@ -66,23 +66,23 @@ class BusinessContactController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        $existing_contacts = Contact::whereNull('user_id')
+        $existingContacts = Contact::whereNull('user_id')
             ->whereNotNull('email')
             ->where('email', '<>', '')
             ->where(['email' => $request->input('email')])
             ->get();
 
-        foreach ($existing_contacts as $existing_contact) {
-            if ($existing_contact->isSubscribedTo($business)) {
-                auth()->user()->contacts()->save($existing_contact);
+        foreach ($existingContacts as $existingContact) {
+            if ($existingContact->isSubscribedTo($business)) {
+                auth()->user()->contacts()->save($existingContact);
 
                 Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));
-                return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
+                return redirect()->route('user.business.contact.show', [$business, $existingContact]);
             }
-            $business->contacts()->attach($existing_contact);
+            $business->contacts()->attach($existingContact);
             $business->save();
             Flash::warning(trans('user.contacts.msg.store.warning.showing_existing_contact'));
-            return redirect()->route('user.business.contact.show', [$business, $existing_contact]);
+            return redirect()->route('user.business.contact.show', [$business, $existingContact]);
         }
 
         $contact = Contact::create(Request::all());
