@@ -9,24 +9,24 @@ class Preference extends EloquentModel
 {
     /**
      * [$fillable description]
-     * 
+     *
      * @var [type]
      */
     protected $fillable = ['key', 'value', 'type'];
 
     /**
      * [preferenceable description]
-     * 
+     *
      * @return [type] [description]
      */
     public function preferenceable()
     {
-      return $this->morphTo();
+        return $this->morphTo();
     }
 
     /**
      * [__toString description]
-     * 
+     *
      * @return string [description]
      */
     public function __toString()
@@ -36,7 +36,7 @@ class Preference extends EloquentModel
 
     /**
      * [getDefault description]
-     * 
+     *
      * @param  [type] $model [description]
      * @param  [type] $key   [description]
      * @return [type]        [description]
@@ -57,7 +57,7 @@ class Preference extends EloquentModel
 
     /**
      * [question description]
-     * 
+     *
      * @return [type] [description]
      */
     public function question()
@@ -67,7 +67,7 @@ class Preference extends EloquentModel
 
     /**
      * [help description]
-     * 
+     *
      * @return [type] [description]
      */
     public function help()
@@ -77,7 +77,7 @@ class Preference extends EloquentModel
 
     /**
      * [scopeForKey description]
-     * 
+     *
      * @param  [type] $query [description]
      * @param  [type] $key   [description]
      * @return [type]        [description]
@@ -89,7 +89,7 @@ class Preference extends EloquentModel
 
     /**
      * [value description]
-     * 
+     *
      * @return [type] [description]
      */
     public function value()
