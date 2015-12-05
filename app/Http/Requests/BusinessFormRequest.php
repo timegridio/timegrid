@@ -27,7 +27,7 @@ class BusinessFormRequest extends Request
             case 'PATCH':
             case 'PUT':
                 return [
-                      'name' => 'required|min:3',
+                      'name' => 'required|min:4',
                       'description' => 'required|min:10',
                       'timezone' => 'timezone',
                       'strategy' => 'required'
@@ -35,8 +35,8 @@ class BusinessFormRequest extends Request
                 break;
             case 'POST':
                 return [
-                      'name' => 'required|min:3',
-                      'slug' => 'required|min:3|unique:businesses',
+                      'name' => 'required|min:4',
+                      'slug' => 'required|min:4|unique:businesses',
                       'description' => 'required|min:10',
                       'timezone' => 'timezone',
                       'strategy' => 'required'
