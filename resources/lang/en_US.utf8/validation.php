@@ -85,10 +85,7 @@ return [
     |
     */
     'custom' => [
-        'password' => [
-            'min' => 'The password must be at least :min characters long',
-            'confirm' => 'Please confirm your password correctly',
-        ],
+        // []
     ],
     /*
     |--------------------------------------------------------------------------

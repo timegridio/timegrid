@@ -131,8 +131,7 @@ $(document).ready(function(){
           error: 'glyphicon-remove'
         },
         errors: {
-          match: '{{trans('validation.custom.password.confirm')}}',
-          minlength: '{{trans('validation.custom.password.min', ['min' => 6])}}'
+            // #
         }
     });
 });
