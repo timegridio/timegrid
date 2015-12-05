@@ -13,7 +13,7 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.store', $business->id]]) !!}
+                {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.store', $business]]) !!}
                 @include('manager.businesses.vacancies._form', ['submitLabel' => trans('manager.businesses.vacancies.btn.update')])
                 {!! Form::close() !!}
             </div>

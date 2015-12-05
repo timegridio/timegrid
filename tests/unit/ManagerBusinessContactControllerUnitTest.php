@@ -30,7 +30,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section
-        $this->visit("/manager/business/{$this->business->id}/contact")
+        $this->visit(route("manager.business.contact.index", $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -63,7 +63,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section
-        $this->visit("/manager/business/{$this->business->id}/contact")
+        $this->visit(route("manager.business.contact.index", $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')

@@ -13,14 +13,14 @@
                 <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::open(['route' => ['manager.business.preferences', $business->id], 'id' => 'preferences', 'data-toggle' => 'validator']) !!}
+                {!! Form::open(['route' => ['manager.business.preferences', $business], 'id' => 'preferences', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses.preferences._form')
                 {!! Form::close() !!}
 
                 </div>
 
                 <div class="panel-footer">
-                    {!! Button::withIcon(Icon::off())->small()->danger(trans('manager.businesses.btn.deactivate'))->withAttributes(['id' => 'btnDelete', 'data-method' => 'DELETE', 'data-confirm' => trans('manager.business.alert.deactivate_confirm')])->asLinkTo( route('manager.business.destroy', $business) ) !!}
+{{--                    {!! Button::withIcon(Icon::off())->small()->danger(trans('manager.businesses.btn.deactivate'))->withAttributes(['id' => 'btnDelete', 'data-method' => 'DELETE', 'data-confirm' => trans('manager.business.alert.deactivate_confirm')])->asLinkTo( route('manager.business.destroy', $business) ) !!} --}}
                 </div>
             </div>
         </div>

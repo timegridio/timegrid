@@ -10,7 +10,7 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::model($contact, ['method' => 'put', 'route' => ['user.business.contact.update', $business->id, $contact->id ]]) !!}
+                {!! Form::model($contact, ['method' => 'put', 'route' => ['user.business.contact.update', $business, $contact->id ]]) !!}
                     @include('user.contacts._form', ['submitLabel' => trans('user.contacts.btn.update')])
                 {!! Form::close() !!}
             </div>
