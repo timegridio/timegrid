@@ -40,6 +40,6 @@ class RootController extends Controller
         auth()->loginUsingId($userId);
         
         Flash::warning('ADVICE: THIS IS FOR AUTHORIZED USE ONLY AND YOUR ACTIONS ARE BEING RECORDERED !!!');
-        return redirect()->route('user.businesses.list');
+        return redirect()->route('user.directory.list');
     }
 }

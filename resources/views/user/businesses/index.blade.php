@@ -26,7 +26,7 @@
                     @if(auth()->user()->hasBusiness())
                         {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo( route('manager.business.index') ) !!}
                     @else
-                        {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.business.create') ) !!}
+                        {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.business.register') ) !!}
                     @endif
                 </div>
 

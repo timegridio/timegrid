@@ -56,7 +56,7 @@ class BusinessPresenter extends Presenter
      */
     public function getIndustryIcon()
     {
-        $src = asset('/img/industries/'.$this->category()->first()->slug.'.png');
+        $src = asset('/img/industries/'.$this->category->slug.'.png');
         return "<img class=\"img-responsive center-block\" src=\"$src\"/>";
     }
 }

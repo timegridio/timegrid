@@ -19,7 +19,7 @@
 	                            <td>
 	                            @if($contact->businesses()->count())
 	                                @foreach ($contact->businesses as $business)
-	                                    {!! Button::normal($business->slug)->asLinkTo( route('user.business.contact.show', [$business, $contact])) !!}
+	                                    {!! Button::normal($business->slug)->asLinkTo(route('user.business.contact.show', [$business, $contact])) !!}
 	                                @endforeach
 	                            @endif
 	                            </td>

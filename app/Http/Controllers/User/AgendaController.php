@@ -107,7 +107,7 @@ class AgendaController extends Controller
             $this->log->info(' [ADVICE] Unable to book');
             
             Flash::warning(trans('user.booking.msg.store.error'));
-            return redirect()->route('user.booking.list');
+            return redirect()->route('user.agenda');
         }
 
         $appointmentPresenter = $appointment->getPresenter();
@@ -117,11 +117,11 @@ class AgendaController extends Controller
             event(new NewBooking($issuer, $appointment));
 
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
-            return redirect()->route('user.booking.list');
+            return redirect()->route('user.agenda');
         }
 
         $this->log->info('  [ADVICE] Appointment is duplicated');
         Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
-        return redirect()->route('user.booking.list');
+        return redirect()->route('user.agenda');
     }
 }

@@ -41,11 +41,11 @@ class BusinessController extends Controller
      *
      * @return Response Rendered view of Business creation form
      */
-    public function create()
+    public function create($plan = 'free')
     {
         $this->log->info(__METHOD__);
 
-        $plan = Request::query('plan') ?: 'free';
+        # $plan = Request::query('plan') ?: 'free';
         $this->log->info("  plan:$plan");
 
         $timezone = $this->guessTimezone(null);
@@ -53,6 +53,7 @@ class BusinessController extends Controller
         $categories = $this->listCategories();
 
         $business = new Business;
+        Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
@@ -246,7 +247,7 @@ class BusinessController extends Controller
     public function postSearch()
     {
         if (! session()->get('selected.business')) {
-            return redirect()->route('user.businesses.list');
+            return redirect()->route('user.directory.list');
         }
 
         $criteria = Request::input('criteria');

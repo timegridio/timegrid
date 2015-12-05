@@ -11,7 +11,7 @@
                         
                         {!! Panel::normal()->withHeader(trans('wizard.business.header'))->withBody(
                             Thumbnail::image(asset('img/wizard/panel-business.png'))->caption(trans('wizard.business.caption')).
-                            Button::success(trans('wizard.business.btn'))->large()->block()->asLinkTo(route('user.wizard.pricing'))
+                            Button::success(trans('wizard.business.btn'))->large()->block()->asLinkTo(route('wizard.pricing'))
                         ) !!}
 
                 </div>
@@ -19,7 +19,7 @@
     
                     {!! Panel::normal()->withHeader(trans('wizard.user.header'))->withBody(
                         Thumbnail::image(asset('img/wizard/panel-user.png'))->caption(trans('wizard.user.caption')).
-                        Button::primary(trans('wizard.user.btn'))->large()->block()->asLinkTo(route('user.businesses.list'))
+                        Button::primary(trans('wizard.user.btn'))->large()->block()->asLinkTo(route('user.directory.list'))
                         ) !!}
 
                 </div>

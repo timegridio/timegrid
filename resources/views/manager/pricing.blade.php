@@ -114,7 +114,7 @@ body{
                         <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.create', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{trans('pricing.plan.free.submit')}}</a>
+                        <a href="{{ route('user.business.register', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{trans('pricing.plan.free.submit')}}</a>
                     </li>
                 </ul>
             </div>
@@ -147,7 +147,7 @@ body{
                         {!! Icon::signal() !!}&nbsp;&nbsp;{{trans('pricing.plan.feature.reports')}}
                     </li>
                     <li class="plan-action">
-                     <a href="{{ route('manager.business.create', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{trans('pricing.plan.starter.submit')}}</a>
+                     <a href="{{ route('user.business.register', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{trans('pricing.plan.starter.submit')}}</a>
                  </li>
                 </ul>
             </div>

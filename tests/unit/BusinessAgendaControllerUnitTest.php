@@ -26,13 +26,13 @@ class BusinessAgendaControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business agenda section
-        $this->visit(route('manager.business.agenda.index', $this->business));
+        $this->visit(route('user.agenda', $this->business));
 
         // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
 
         // Then I see the appointment listed
-        $this->see('There are no active appointments right now');
+        $this->see('You have no ongoing reservations');
     }
 
    /**
