@@ -122,7 +122,7 @@ class Vacancy extends EloquentModel
      * is Holding Any Appointment for given User
      *
      * ToDo: Remove from here as needs knowledge from User
-     * 
+     *
      * @param  User    $user User to check belonging Appointments
      * @return boolean       Vacancy holds at least one Appointment of User
      */
@@ -190,7 +190,7 @@ class Vacancy extends EloquentModel
      */
     public function isHolding(Appointment $appointment)
     {
-        return 
+        return
             ($appointment->isActive() &&
             ($this->start_at <= $appointment->start_at) &&
             ($this->finish_at >= $appointment->finish_at) &&
@@ -200,9 +200,9 @@ class Vacancy extends EloquentModel
 
     /**
      * holds Any of the given Appointments
-     * 
+     *
      * ToDo: Remove from here as needs knowledge from Appointment
-     * 
+     *
      * @param  Collection $appointments Appointments to check agains
      * @return boolean                  The Vacancy holds at least one of the inquired Appointments
      */

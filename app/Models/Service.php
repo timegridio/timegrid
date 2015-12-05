@@ -31,7 +31,7 @@ class Service extends EloquentModel
 
     /**
      * TODO: Check slug setting can be moved to a more proper place
-     * 
+     *
      * Save the model to the database.
      *
      * @param  array  $options
