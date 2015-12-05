@@ -13,7 +13,7 @@ class BusinessFormRequest extends Request
      */
     public function authorize()
     {
-      return true;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class BusinessFormRequest extends Request
             case 'POST':
                 return [
                       'name' => 'required|min:3',
-                      'slug' => 'required|min:3',
+                      'slug' => 'required|min:3|unique:businesses',
                       'description' => 'required|min:10',
                       'timezone' => 'timezone',
                       'strategy' => 'required'
