@@ -46,7 +46,11 @@ class AuthenticateUser
             return $this->getAuthorizationFirst($provider);
         }
 
-        $user = $this->users->findOrCreate($this->getUser($provider));
+        $providerUser = $this->getUser($provider);
+
+        logger()->info('PROVIDER USER:'.serialize($providerUser));
+
+        $user = $this->users->findOrCreate($providerUser);
         if ($user === null) {
             return $this->getAuthorizationFirst($provider);
         }
