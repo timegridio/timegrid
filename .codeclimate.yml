@@ -35,6 +35,8 @@ exclude_paths:
 - tests/**/*
 - vendor/**/*
 - public/**/*
+- database/migrations/*
+- database/seeds/*
 languages:
    Ruby: false
    JavaScript: true
