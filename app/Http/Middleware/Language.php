@@ -1,30 +1,32 @@
-<?php // app/Http/Middleware/Language.php
+<?php
 
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Contracts\Routing\Middleware;
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
-use Illuminate\Routing\Redirector;
-use Illuminate\Support\Facades\App;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Contracts\Routing\Middleware;
 
 class Language implements Middleware
 {
     public function handle($request, Closure $next)
     {
-        if (Session::has('applocale') and array_key_exists(Session::get('applocale'), Config::get('languages'))) {
-            App::setLocale(Session::get('applocale'));
-            setlocale(LC_TIME, Session::get('applocale'));
-            Carbon::setLocale(\Locale::getPrimaryLanguage(Session::get('applocale')));
-        } else {
-            App::setLocale(Config::get('app.fallback_locale'));
-            setlocale(LC_TIME, Config::get('app.fallback_locale'));
-            Carbon::setLocale(\Locale::getPrimaryLanguage(Config::get('app.fallback_locale')));
+        $sessionAppLocale = session()->get('applocale');
+
+        if (session()->has('applocale') and array_key_exists($sessionAppLocale, Config::get('languages'))) {
+            app()->setLocale($sessionAppLocale);
+            setlocale(LC_TIME, $sessionAppLocale);
+            Carbon::setLocale(\Locale::getPrimaryLanguage($sessionAppLocale));
+
+            return $next($request);
         }
+        
+        $fallbackLocale = Config::get('app.fallback_locale');
+
+        app()->setLocale($fallbackLocale);
+        setlocale(LC_TIME, $fallbackLocale);
+        Carbon::setLocale(\Locale::getPrimaryLanguage($fallbackLocale));
+        
         return $next($request);
     }
 }
