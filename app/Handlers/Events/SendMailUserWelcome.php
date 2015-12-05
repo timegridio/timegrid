@@ -19,8 +19,14 @@ class SendMailUserWelcome
     {
         logger()->info('Handle NewRegisteredUser.SendMailUserWelcome()');
         $locale = app()->getLocale();
-        Mail::send("emails.{$locale}.welcome", ['user' => $event->user], function ($m) use ($event) {
-            $m->to($event->user->email, $event->user->name)->subject(trans('emails.user.welcome.subject'));
+
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
+        Mail::send("emails.{$locale}.welcome", ['user' => $event->user], function ($mail) use ($event) {
+            $mail->to($event->user->email, $event->user->name)
+                 ->subject(trans('emails.user.welcome.subject'));
         });
     }
 }
