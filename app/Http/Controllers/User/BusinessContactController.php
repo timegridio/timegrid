@@ -66,7 +66,11 @@ class BusinessContactController extends Controller
                    ->extra(compact('business_name'))
                    ->send();
 
-        $existing_contacts = Contact::whereNull('user_id')->whereNotNull('email')->where('email', '<>', '')->where(['email' => $request->input('email')])->get();
+        $existing_contacts = Contact::whereNull('user_id')
+            ->whereNotNull('email')
+            ->where('email', '<>', '')
+            ->where(['email' => $request->input('email')])
+            ->get();
 
         foreach ($existing_contacts as $existing_contact) {
             if ($existing_contact->isSubscribedTo($business)) {
