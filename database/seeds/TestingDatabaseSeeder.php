@@ -62,7 +62,7 @@ class TestingDatabaseSeeder extends Seeder
     private function createDemoManagerUser()
     {
         // Create demo user (Business Manager)
-        $user = factory(User::class)->create(['email' => 'demo@timegrid.io', 'password' => bcrypt('demomanager')]);
+        $user = factory(User::class)->create(['username' => 'manager', 'email' => 'demo@timegrid.io', 'password' => bcrypt('demomanager')]);
 
         return $user;
     }
@@ -70,7 +70,7 @@ class TestingDatabaseSeeder extends Seeder
     private function createDemoGuestUser()
     {
         // Create demo user (Business Guest)
-        $user = factory(User::class)->create(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+        $user = factory(User::class)->create(['username' => 'guest', 'email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
 
         return $user;
     }
