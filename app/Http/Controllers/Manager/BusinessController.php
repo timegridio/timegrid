@@ -179,7 +179,7 @@ class BusinessController extends Controller
     public function update(Business $business, BusinessFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -193,8 +193,9 @@ class BusinessController extends Controller
         $business->category()->associate($category);
 
         $business->update([
+            'slug' => $business->slug
+            ], [
             'name' => $request->get('name'),
-            'slug' => $request->get('slug'),
             'description' => $request->get('description'),
             'timezone' => $request->get('timezone'),
             'postal_address' => $request->get('postal_address'),
@@ -204,7 +205,7 @@ class BusinessController extends Controller
             ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
-        return redirect()->route('manager.business.show', array($business->id));
+        return redirect()->route('manager.business.show', compact('business'));
     }
 
     /**
