@@ -22,6 +22,6 @@ class GuestBusinessControllerTest extends TestCase
 
         // Then I should see the business home
         $this->see($business->name)
-             ->see($business->description);
+             ->see(substr($business->description, 0, 15));
     }
 }

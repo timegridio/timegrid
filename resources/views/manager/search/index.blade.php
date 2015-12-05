@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container"> 
-@if ($results)
+@if (count($results) == 0)
     {!! Alert::info(trans('app.search.msg.no_results', ['criteria' => $criteria])) !!}
 @else
     @foreach ($results as $category => $items)
