@@ -144,4 +144,38 @@ class UserBusinessControllerTest extends TestCase
              ->see($contact->lastname)
              ->see($business->slug);
     }
+
+    ///////////////////////////
+    // BUSINESS REGISTRATION //
+    ///////////////////////////
+
+    /** @test */
+    public function it_registers_a_new_business_with_minimal_setup()
+    {
+        // Given I am an authenticated user
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+
+        $business = factory(Business::class)->make(['name' => 'tosto']);
+
+        // And I go to register a new Business
+        $this->visit(route('manager.business.register'));
+
+        // Then I should see the register business form
+        $this->see('We are going to register your business with free plan')
+             ->see('Register a business');
+
+        // And I fill in the fields and submit
+        $this->type($business->name, 'name')
+             ->type($business->slug, 'slug')
+             ->type($business->description, 'description')
+             ->press('Register');
+
+        // Then I should see the confirmation message
+        $this->see('Business successfully registered');
+
+        // Then I should see the registered business in database
+        $this->seeInDatabase('businesses', ['name' => $business->name]);
+        $this->seeInDatabase('businesses', ['slug' => $business->slug]);
+    }
 }
