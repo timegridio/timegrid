@@ -82,13 +82,13 @@ class BusinessPreferencesController extends Controller
         
         // Store each parameter key-value pair to the business preferences
         foreach ($mergedPreferences as $key => $value) {
-            $this->log->info(
-                sprintf("set preference: businessId:%s key:%s='%s' type:%s",
+            $this->log->info(sprintf(
+                "set preference: businessId:%s key:%s='%s' type:%s",
                 $business->id,
                 $key,
                 $value,
-                $parameters[$key]['type']
-                ));
+                $parameters[$key]['type'])
+            );
 
             $business->pref($key, $value, $parameters[$key]['type']);
         }

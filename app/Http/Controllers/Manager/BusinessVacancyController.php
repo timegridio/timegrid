@@ -72,14 +72,20 @@ class BusinessVacancyController extends Controller
                         $start_at  = Carbon::parse($date.' '.$business->pref('start_at'))->timezone($business->timezone);
                         $finish_at = Carbon::parse($date.' '.$business->pref('finish_at', '20:00:00'))->timezone($business->timezone);
 
-                        $vacancy = Vacancy::updateOrCreate([
+                        $vacancyKeys = [
                             'business_id' => $business->id,
                             'service_id' => $serviceId,
-                            'date' => $date],
-                            ['capacity' => intval($capacity),
+                            'date' => $date
+                            ];
+
+                        $vacancyValues = [
+                            'capacity' => intval($capacity),
                             'start_at' => $start_at,
                             'finish_at' => $finish_at
-                            ]);
+                            ];
+
+                        $vacancy = Vacancy::updateOrCreate($vacancyKeys, $vacancyValues);
+                        
                         $changed = true;
                         break;
                 }
