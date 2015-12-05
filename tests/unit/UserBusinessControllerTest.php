@@ -71,7 +71,7 @@ class UserBusinessControllerTest extends TestCase
 
         // Then I should see the business homepage
         $this->see($businesses[1]->name)
-             ->see($businesses[1]->description);
+             ->see(substr($businesses[1]->description, 0, 15));
     }
 
     /** @test */
