@@ -21,13 +21,13 @@ class WizardController extends Controller
         $this->log->info(__METHOD__);
 
         if (auth()->user()->hasBusiness()) {
-            $this->log->info('  User has Business');
+            $this->log->info('User has Business');
             return redirect()->route('manager.business.index');
         }
 
         if (auth()->user()->hasContacts()) {
-            $this->log->info('  User has Contacts');
-            return redirect()->route('user.businesses.list');
+            $this->log->info('User has Contacts');
+            return redirect()->route('user.directory.list');
         }
 
         return view('wizard');
