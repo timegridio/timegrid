@@ -12,7 +12,7 @@ class UserRepository
      */
     public function findOrCreate($userData)
     {
-        $user = User::where('email', '=', $userData->email)->first();
+        $user = User::where('email', '=', $userData->email)->orWhere('username', '=', $userData->nickname)->first();
         if ($user !== null) {
             return $user;
         }
