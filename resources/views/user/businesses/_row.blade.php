@@ -13,7 +13,7 @@
 
     <div class="col-md-2 col-sm-3 text-left">
         <a href="{{route('user.businesses.home', ['business' => $business])}}">
-            {!! $business->getPresenter()->getFacebookImg('normal') !!}
+            {!! $business->facebookImg('normal') !!}
         </a>
     </div>
 

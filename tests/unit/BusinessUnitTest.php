@@ -54,9 +54,9 @@ class BusinessUnitTest extends TestCase
     {
         $business = factory(Business::class)->create();
 
-        $businessPresenter = $business->getPresenter();
+        $businessPresenter = $business->getPresenterClass();
 
-        $this->assertInstanceOf(BusinessPresenter::class, $businessPresenter);
+        $this->assertSame(BusinessPresenter::class, $businessPresenter);
     }
 
    /**

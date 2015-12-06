@@ -7,11 +7,11 @@ use App\Traits\HasRoles;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
-use Illuminate\Foundation\Auth\Access\Authorizable;
-use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Foundation\Auth\Access\Authorizable;
 
 class User extends EloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
@@ -85,12 +85,12 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      *
      * is Owner of Business
      *
-     * @param  Business $business Business to inquiry against
-     * @return boolean            The User is Owner of the inquired Business
+     * @param  int      $businessId Business to inquiry against
+     * @return boolean              The User is Owner of the inquired Business
      */
-    public function isOwner(Business $business)
+    public function isOwner($businessId)
     {
-        return $this->businesses()->withTrashed()->get()->contains($business);
+        return $this->businesses()->withTrashed()->get()->contains($businessId);
     }
 
     /**
@@ -143,10 +143,10 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      * @param  Business $business Business of inquiry
      * @return Contact            User profile Contact subscribed to the inquired Business
      */
-    public function getContactSubscribedTo(Business $business)
+    public function getContactSubscribedTo($businessId)
     {
-        return $this->contacts->filter(function ($contact) use ($business) {
-            return $contact->isSubscribedTo($business);
+        return $this->contacts->filter(function ($contact) use ($businessId) {
+            return $contact->isSubscribedTo($businessId);
         })->first();
     }
 

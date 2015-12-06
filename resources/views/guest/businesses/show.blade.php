@@ -13,7 +13,7 @@
                     <ul class="list-group">
 
                         <li class="list-group-item">
-                            {!! $business->getPresenter()->getIndustryIcon() !!}
+                            {!! $business->industryIcon() !!}
                         </li>
 
                         <li class="list-group-item">
@@ -21,7 +21,7 @@
                             <div class="col-md-12">
                                 <div class="media">
                                   <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="#">{!! $business->getPresenter()->getFacebookImg('normal') !!}</a>
+                                    <a href="#">{!! $business->facebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
                                     <h4 class="media-heading">{{ $business->name }}</h4>
@@ -36,7 +36,7 @@
                         <li class="list-group-item">
                             <div class="row">
                                 <div class="col-md-12 text-center">
-                                    {!! $business->getPresenter()->getStaticMap(11) !!}
+                                    {!! $business->staticMap(11) !!}
                                 </div>
                             </div>
                         </li>

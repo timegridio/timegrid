@@ -132,7 +132,7 @@ class Vacancy extends EloquentModel
 
         foreach ($appointments as $appointment) {
             $contact = $appointment->contact()->first();
-            if ($contact->isProfileOf($user)) {
+            if ($contact->isProfileOf($user->id)) {
                 return true;
             }
         }

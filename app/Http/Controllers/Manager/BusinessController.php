@@ -79,7 +79,7 @@ class BusinessController extends Controller
             $this->log->info("  Found existing businessId:{$existingBusiness->id}");
 
             // If owned, restore
-            if (auth()->user()->isOwner($existingBusiness)) {
+            if (auth()->user()->isOwner($existingBusiness->id)) {
                 $this->log->info("  Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
 
