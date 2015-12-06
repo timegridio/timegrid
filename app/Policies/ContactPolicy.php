@@ -31,7 +31,7 @@ class ContactPolicy
      */
     public function manage(User $user, Contact $contact)
     {
-        return $contact->user->id == $user->id;
+        return $user->id == $contact->user->id;
     }
     
 }
