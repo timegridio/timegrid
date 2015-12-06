@@ -47,7 +47,7 @@ class BusinessUnitTest extends TestCase
     }
 
    /**
-     * @covers            \App\Models\Business::getPresenter
+     * @covers            \App\Models\Business::getPresenterClass
      * @test
      */
     public function test_gets_business_presenter()
