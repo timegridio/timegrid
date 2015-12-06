@@ -14,13 +14,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         'App\Models\Business' => 'App\Policies\BusinessPolicy',
-        'App\Models\Contact' => 'App\Policies\ContactPolicy',
+        'App\Models\Contact'  => 'App\Policies\ContactPolicy',
     ];
 
     /**
      * Register any application authentication / authorization services.
      *
-     * @param  \Illuminate\Contracts\Auth\Access\Gate  $gate
+     * @param \Illuminate\Contracts\Auth\Access\Gate $gate
+     *
      * @return void
      */
     public function boot(GateContract $gate)

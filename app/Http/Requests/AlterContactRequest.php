@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class AlterContactRequest extends Request
 {
     /**
@@ -24,12 +22,12 @@ class AlterContactRequest extends Request
      */
     public function rules()
     {
-        $rules = [  'firstname' => 'required|min:3',
+        $rules = ['firstname'  => 'required|min:3',
                     'lastname' => 'required|min:2',
-                    'gender' => 'required|max:1',
+                    'gender'   => 'required|max:1',
                     #'mobile_country' => 'required_with:mobile|size:2',
                     #'mobile' => 'phone',
-                    'email' => 'email'
+                    'email' => 'email',
                 ];
 
         switch ($this->method()) {

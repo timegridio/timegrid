@@ -15,10 +15,12 @@ trait Preferenceable
     {
         if (isset($value)) {
             $this->preferences()->updateOrCreate(['key' => $key], ['value' => $this->cast($value, $type),
-                                                                   'type' => $type]);
+                                                                   'type'  => $type, ]);
+
             return $value;
         }
         $default = Preference::getDefault($this, $key);
+
         return($pref = $this->preferences()->forKey($key)->first()) ? $pref->value() : $default->value();
     }
 

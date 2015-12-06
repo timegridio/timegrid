@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Flash;
-use Carbon\Carbon;
-use App\Models\Vacancy;
-use App\Models\Business;
-use Illuminate\Http\Request;
-use App\Services\VacancyService;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Models\Vacancy;
+use App\Services\VacancyService;
+use Carbon\Carbon;
+use Flash;
+use Illuminate\Http\Request;
 
 class BusinessVacancyController extends Controller
 {
     /**
-    * Show the form for creating a new resource.
-    *
-    * @return Response
-    */
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
     public function create(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -41,14 +41,14 @@ class BusinessVacancyController extends Controller
     }
 
     /**
-    * Store a newly created resource in storage.
-    *
-    * @return Response
-    */
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
     public function store(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -66,7 +66,7 @@ class BusinessVacancyController extends Controller
                 switch (trim($capacity)) {
                     case '':
                         // Dont update, leave as is
-                        $this->log->info("Blank vacancy capacity value");
+                        $this->log->info('Blank vacancy capacity value');
                         break;
                     default:
                         $startAt = Carbon::parse($date.' '.$business->pref('start_at'))
@@ -76,18 +76,18 @@ class BusinessVacancyController extends Controller
 
                         $vacancyKeys = [
                             'business_id' => $business->id,
-                            'service_id' => $serviceId,
-                            'date' => $date
+                            'service_id'  => $serviceId,
+                            'date'        => $date,
                             ];
 
                         $vacancyValues = [
-                            'capacity' => intval($capacity),
-                            'start_at' => $startAt,
-                            'finish_at' => $finishAt
+                            'capacity'  => intval($capacity),
+                            'start_at'  => $startAt,
+                            'finish_at' => $finishAt,
                             ];
 
                         $vacancy = Vacancy::updateOrCreate($vacancyKeys, $vacancyValues);
-                        
+
                         $changed = true;
                         break;
                 }
@@ -95,13 +95,15 @@ class BusinessVacancyController extends Controller
         }
 
         if (!$changed) {
-            $this->log->warning("Nothing to update");
+            $this->log->warning('Nothing to update');
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
+
             return redirect()->back();
         }
 
-        $this->log->warning("Vacancies updated");
+        $this->log->warning('Vacancies updated');
         Flash::success(trans('manager.vacancies.msg.store.success'));
+
         return redirect()->route('manager.business.show', [$business]);
     }
 }

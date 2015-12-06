@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Flash;
-use App\Models\Service;
-use App\Models\Business;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Models\Service;
+use Flash;
+use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller
 {
@@ -18,13 +18,14 @@ class BusinessServiceController extends Controller
     public function index(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
         ///////////////////////////////
 
         $services = $business->services;
+
         return view('manager.businesses.services.index', compact('business', 'services'));
     }
 
@@ -36,13 +37,13 @@ class BusinessServiceController extends Controller
     public function create(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
         ///////////////////////////////
 
-        $service = new Service; // For Form Model Binding
+        $service = new Service(); // For Form Model Binding
         return view('manager.businesses.services.create', compact('business', 'service'));
     }
 
@@ -54,7 +55,7 @@ class BusinessServiceController extends Controller
     public function store(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -67,24 +68,26 @@ class BusinessServiceController extends Controller
         $service = Service::firstOrNew($request->except('_token'));
         $service->business()->associate($business->id);
         $service->save();
-        
+
         $this->log->info("Stored serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
+
         return redirect()->route('manager.business.service.index', [$business]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Business  $business Business to show service of
-     * @param  Service   $service  Service to show
+     * @param Business $business Business to show service of
+     * @param Service  $service  Service to show
+     *
      * @return Response
      */
     public function show(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+        $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -96,14 +99,15 @@ class BusinessServiceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Business  $business Business to edit service of
-     * @param  Service   $service  Service to edit
+     * @param Business $business Business to edit service of
+     * @param Service  $service  Service to edit
+     *
      * @return Response
      */
     public function edit(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+        $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -115,14 +119,15 @@ class BusinessServiceController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Business  $business Business to update service of
-     * @param  Service   $service  Service to update
+     * @param Business $business Business to update service of
+     * @param Service  $service  Service to update
+     *
      * @return Response
      */
     public function update(Business $business, Service $service, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+        $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -139,20 +144,22 @@ class BusinessServiceController extends Controller
         ]);
 
         Flash::success(trans('manager.business.service.msg.update.success'));
+
         return redirect()->route('manager.business.service.show', [$business, $service]);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Business  $business Business to destroy service of
-     * @param  Service   $service  Service to destroy
+     * @param Business $business Business to destroy service of
+     * @param Service  $service  Service to destroy
+     *
      * @return Response
      */
     public function destroy(Business $business, Service $service)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s serviceId:%s", $business->id, $service->id));
+        $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -165,6 +172,7 @@ class BusinessServiceController extends Controller
         $service->forceDelete();
 
         Flash::success(trans('manager.services.msg.destroy.success'));
+
         return redirect()->route('manager.business.service.index', $business);
     }
 }

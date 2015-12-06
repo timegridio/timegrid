@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Presenters\BusinessPresenter;
 use App\Traits\Preferenceable;
 use Fenos\Notifynder\Notifable;
-use App\Presenters\BusinessPresenter;
-use McCool\LaravelAutoPresenter\HasPresenter;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Business extends EloquentModel implements HasPresenter
 {
@@ -19,7 +19,7 @@ class Business extends EloquentModel implements HasPresenter
      * @var array
      */
     protected $fillable = ['name', 'description', 'timezone', 'postal_address',
-        'phone', 'social_facebook', 'strategy', 'plan'];
+        'phone', 'social_facebook', 'strategy', 'plan', ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -29,7 +29,8 @@ class Business extends EloquentModel implements HasPresenter
     protected $dates = ['deleted_at'];
 
     /**
-     * Create Business model
+     * Create Business model.
+     *
      * @param array $attributes Attributes for filling the model
      */
     public function __construct(array $attributes = [])
@@ -43,7 +44,7 @@ class Business extends EloquentModel implements HasPresenter
     ///////////////////
 
     /**
-     * belongs to Category
+     * belongs to Category.
      *
      * @return Illuminate\Database\Query Relationship Business Category query
      */
@@ -54,7 +55,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * holds Contacts
+     * holds Contacts.
      *
      * @return Illuminate\Database\Query Relationship Business held Contacts query
      */
@@ -67,7 +68,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * provides Services
+     * provides Services.
      *
      * @return Illuminate\Database\Query Relationship Business provided Services query
      */
@@ -77,7 +78,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * publishes Vacancies
+     * publishes Vacancies.
      *
      * @return Illuminate\Database\Query Relationship Business published Vacancies query
      */
@@ -88,7 +89,7 @@ class Business extends EloquentModel implements HasPresenter
 
     /**
      * ToDo: Should be renamed to "appointments"
-     * holds Appointments booking
+     * holds Appointments booking.
      *
      * @return Illuminate\Database\Query Relationship Business holds Appointments query
      */
@@ -98,7 +99,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * belongs to Users
+     * belongs to Users.
      *
      * @return Illuminate\Database\Query Relationship Business belongs to User (owners) query
      */
@@ -109,7 +110,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * belongs to User
+     * belongs to User.
      *
      * @return User Relationship Business belongs to User (owner)
      */
@@ -120,7 +121,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Get the real Users subscriptions count
+     * Get the real Users subscriptions count.
      *
      * @return Illuminate\Database\Query Relationship
      */
@@ -133,21 +134,21 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * get SubscriptionsCount Attribute
+     * get SubscriptionsCount Attribute.
      *
-     * @return integer Count of Contacts with real User held by this Business
+     * @return int Count of Contacts with real User held by this Business
      */
     public function getSubscriptionsCountAttribute()
     {
         // if relation is not loaded already, let's do it first
-        if (! array_key_exists('subscriptionsCount', $this->relations)) {
+        if (!array_key_exists('subscriptionsCount', $this->relations)) {
             $this->load('subscriptionsCount');
         }
 
         $related = $this->getRelation('subscriptionsCount');
 
         // then return the count directly
-        return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
+        return ($related->count() > 0) ? (int) $related->first()->aggregate : 0;
     }
 
     ///////////////
@@ -161,9 +162,9 @@ class Business extends EloquentModel implements HasPresenter
     ///////////////
 
     /**
-     * get presenter
+     * get presenter.
      * 
-     * @return BusinessPresenter    Presenter class
+     * @return BusinessPresenter Presenter class
      */
     public function getPresenterClass()
     {
@@ -175,8 +176,9 @@ class Business extends EloquentModel implements HasPresenter
     ///////////////
 
     /**
-     * get route key
-     * @return string   Model slug
+     * get route key.
+     *
+     * @return string Model slug
      */
     public function getRouteKey()
     {
@@ -188,9 +190,9 @@ class Business extends EloquentModel implements HasPresenter
     //////////////
 
     /**
-     * set Slug
+     * set Slug.
      *
-     * @return string      Generated slug
+     * @return string Generated slug
      */
     public function setSlugAttribute()
     {
@@ -198,7 +200,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set name of the business
+     * set name of the business.
      *
      * @param string $name Name of business
      */
@@ -209,7 +211,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Phone
+     * set Phone.
      *
      * Expected phone number is international format numeric only
      *
@@ -221,7 +223,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Postal Address
+     * set Postal Address.
      *
      * @param string $postal_address Postal address
      */
@@ -231,7 +233,7 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Social Facebook
+     * set Social Facebook.
      *
      * @param string $social_facebook Facebook User URL
      */

@@ -7,7 +7,7 @@ class SetupCountriesTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function up()
     {
@@ -30,7 +30,7 @@ class SetupCountriesTable extends Migration
             $table->boolean('eea')->default(0);
             $table->string('calling_code', 3)->nullable();
             $table->string('flag', 6)->nullable();
-            
+
             $table->primary('id');
         });
     }
@@ -38,7 +38,7 @@ class SetupCountriesTable extends Migration
     /**
      * Reverse the migrations.
      *
-     * @return  void
+     * @return void
      */
     public function down()
     {

@@ -6,14 +6,13 @@ use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserBusinessContactControllerUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers   App\Http\Controllers\User\BusinessContactController::create
      * @covers   App\Http\Controllers\User\BusinessContactController::store
      * @covers   App\Http\Controllers\User\BusinessContactController::show
@@ -29,7 +28,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route("user.businesses.home", $this->business))
+        $this->visit(route('user.businesses.home', $this->business))
              ->click('Subscribe');
 
         $this->see('Save')
@@ -41,10 +40,10 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->assertResponseOk();
         $this->see('Successfully saved')
              ->see("{$contact->firstname} {$contact->lastname}")
-             ->see("Book appointment");
+             ->see('Book appointment');
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\User\BusinessContactController::create
      * @covers   App\Http\Controllers\User\BusinessContactController::store
      * @covers   App\Http\Controllers\User\BusinessContactController::show
@@ -63,7 +62,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route("user.businesses.home", $this->business))
+        $this->visit(route('user.businesses.home', $this->business))
              ->click('Subscribe');
 
         $this->see('Save')
@@ -79,7 +78,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->assertEquals(true, $existingContact->businesses->contains($this->business));
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\User\BusinessContactController::create
      * @covers   App\Http\Controllers\User\BusinessContactController::store
      * @covers   App\Http\Controllers\User\BusinessContactController::show
@@ -89,7 +88,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        
+
         // I have a registered contact in Business A (other business)
         $otherBusiness = factory(Business::class)->create();
         $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
@@ -102,7 +101,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $beforeCount = $this->issuer->contacts->count();
 
         // And I visit the business home to get subscribed
-        $this->visit(route("user.businesses.home", $this->business))
+        $this->visit(route('user.businesses.home', $this->business))
              ->click('Subscribe');
 
         $afterCount = $this->issuer->fresh()->contacts->count();
@@ -115,7 +114,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
     }
 
     /**
-     * arrange fixture
+     * arrange fixture.
      *
      * @return void
      */
@@ -125,7 +124,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->owner = factory(User::class)->create();
 
         $this->issuer = factory(User::class)->create();
-        
+
         $this->business = factory(Business::class)->create();
         $this->business->owners()->save($this->owner);
 

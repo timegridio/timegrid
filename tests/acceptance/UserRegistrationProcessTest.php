@@ -9,6 +9,7 @@ class UserRegistrationProcessTest extends IntegrationTest
     # use DatabaseTransactions;
 
     # protected $baseUrl = 'http://localhost:8000';
+
     protected function setLanguageAndGoToRegister()
     {
         return $this->visit('/lang/en_US.utf8')

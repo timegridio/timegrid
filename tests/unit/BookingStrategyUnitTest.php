@@ -1,12 +1,11 @@
 <?php
 
-use Carbon\Carbon;
-use App\Models\User;
+use App\BookingStrategy;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
-use App\Models\Business;
-use App\BookingStrategy;
-use App\BookingStrategyInterface;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BookingStrategyUnitTest extends TestCase

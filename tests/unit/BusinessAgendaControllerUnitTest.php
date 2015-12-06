@@ -13,7 +13,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers   App\Http\Controllers\Manager\BusinessAgendaController::getIndex
      * @test
      */
@@ -35,7 +35,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
         $this->see('You have no ongoing reservations');
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\Manager\BusinessAgendaController::getIndex
      * @test
      */
@@ -45,8 +45,8 @@ class BusinessAgendaControllerUnitTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -69,7 +69,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
     }
 
     /**
-     * arrange fixture
+     * arrange fixture.
      *
      * @return void
      */
@@ -77,7 +77,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
     {
         // A business owned by a user (me)
         $this->issuer = factory(User::class)->create();
-        
+
         $this->business = factory(Business::class)->create();
         $this->business->owners()->save($this->issuer);
 

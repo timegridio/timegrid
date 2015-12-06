@@ -8,7 +8,7 @@ class BusinessUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers            \App\Models\Business::__construct
      * @test
      */
@@ -19,7 +19,7 @@ class BusinessUnitTest extends TestCase
         return $business;
     }
 
-   /**
+    /**
      * @covers            \App\Models\Business::__construct
      * @covers            \App\Models\Business::save
      * @test
@@ -31,7 +31,7 @@ class BusinessUnitTest extends TestCase
         $this->seeInDatabase('businesses', ['slug' => $business->slug]);
     }
 
-   /**
+    /**
      * @covers            \App\Models\Business::__construct
      * @covers            \App\Models\Business::setSlugAttribute
      * @covers            \App\Models\Business::save
@@ -46,7 +46,7 @@ class BusinessUnitTest extends TestCase
         $this->assertEquals($slug, $business->slug);
     }
 
-   /**
+    /**
      * @covers            \App\Models\Business::getPresenterClass
      * @test
      */
@@ -59,7 +59,7 @@ class BusinessUnitTest extends TestCase
         $this->assertSame(BusinessPresenter::class, $businessPresenter);
     }
 
-   /**
+    /**
      * @covers            \App\Models\Business::setPhoneAttribute
      * @test
      */
@@ -70,7 +70,7 @@ class BusinessUnitTest extends TestCase
         $this->assertNull($business->phone);
     }
 
-   /**
+    /**
      * @covers            \App\Models\Business::setPostalAddressAttribute
      * @test
      */

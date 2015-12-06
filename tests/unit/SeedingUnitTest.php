@@ -2,14 +2,13 @@
 <?php
 
 # use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class SeedingUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @test
      */
     public function it_creates_a_demo_scenario()

@@ -5,19 +5,20 @@ namespace App\Http\Controllers;
 class LanguageController extends Controller
 {
     /**
-     * Switch Language
+     * Switch Language.
      *
-     * @param  string  $lang    Language iso code
-     * @return Redirect         HTTP Redirect
+     * @param string $lang Language iso code
+     *
+     * @return Redirect HTTP Redirect
      */
     public function switchLang($lang)
     {
-        $this->log->info(sprintf("%s: %s", __METHOD__, $lang));
- 
+        $this->log->info(sprintf('%s: %s', __METHOD__, $lang));
+
         if ($this->isValidLanguage($lang)) {
             $this->setSessionLanguage($lang);
         }
- 
+
         return redirect()->back();
     }
 
@@ -26,10 +27,11 @@ class LanguageController extends Controller
     /////////////
 
     /**
-     * Determine if is a language is accepted by app config
+     * Determine if is a language is accepted by app config.
      *
-     * @param  string  $lang Requested language
-     * @return boolean       Is an accepted language for this app
+     * @param string $lang Requested language
+     *
+     * @return bool Is an accepted language for this app
      */
     protected function isValidLanguage($lang)
     {
@@ -37,7 +39,7 @@ class LanguageController extends Controller
     }
 
     /**
-     * set Language to Session
+     * set Language to Session.
      *
      * @param string $lang Requested language
      */

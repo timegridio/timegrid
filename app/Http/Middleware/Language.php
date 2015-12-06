@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Config;
+use Closure;
 use Illuminate\Contracts\Routing\Middleware;
+use Illuminate\Support\Facades\Config;
 
 class Language implements Middleware
 {
@@ -20,13 +20,13 @@ class Language implements Middleware
 
             return $next($request);
         }
-        
+
         $fallbackLocale = Config::get('app.fallback_locale');
 
         app()->setLocale($fallbackLocale);
         setlocale(LC_TIME, $fallbackLocale);
         Carbon::setLocale(\Locale::getPrimaryLanguage($fallbackLocale));
-        
+
         return $next($request);
     }
 }

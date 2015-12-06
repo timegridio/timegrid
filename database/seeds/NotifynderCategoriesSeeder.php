@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Database\Seeder;
 use Fenos\Notifynder\Facades\Notifynder;
+use Illuminate\Database\Seeder;
 
 class NotifynderCategoriesSeeder extends Seeder
 {

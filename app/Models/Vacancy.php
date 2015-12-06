@@ -33,7 +33,7 @@ class Vacancy extends EloquentModel
     ///////////////////
 
     /**
-     * belongs to Business
+     * belongs to Business.
      *
      * @return Illuminate\Database\Query Relationship Vacancy belongs to Business query
      */
@@ -43,7 +43,7 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * for Service
+     * for Service.
      *
      * @return Illuminate\Database\Query Relationship Vacancy is for providing Service query
      */
@@ -53,7 +53,7 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * holds many Appointments
+     * holds many Appointments.
      *
      * @return Illuminate\Database\Query Relationship Vacancy belongs to Business query
      */
@@ -67,10 +67,11 @@ class Vacancy extends EloquentModel
     ////////////
 
     /**
-     * Scope For Date
+     * Scope For Date.
      *
-     * @param  Illuminate\Database\Query $query
-     * @param  Carbon $date  Date of inquiry
+     * @param Illuminate\Database\Query $query
+     * @param Carbon                    $date  Date of inquiry
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeForDate($query, Carbon $date)
@@ -79,10 +80,11 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * Scope For DateTime
+     * Scope For DateTime.
      *
-     * @param  Illuminate\Database\Query $query
-     * @param  Carbon $datetime  Date and Time of inquiry
+     * @param Illuminate\Database\Query $query
+     * @param Carbon                    $datetime Date and Time of inquiry
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeForDateTime($query, Carbon $datetime)
@@ -92,9 +94,10 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * Scope only Future
+     * Scope only Future.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeFuture($query)
@@ -103,10 +106,11 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * Scope For Service
+     * Scope For Service.
      *
-     * @param  Illuminate\Database\Query $query
-     * @param  Service $service Inquired Service to filter
+     * @param Illuminate\Database\Query $query
+     * @param Service                   $service Inquired Service to filter
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeForService($query, Service $service)
@@ -119,12 +123,13 @@ class Vacancy extends EloquentModel
     /////////////////////
 
     /**
-     * is Holding Any Appointment for given User
+     * is Holding Any Appointment for given User.
      *
      * ToDo: Remove from here as needs knowledge from User
      *
-     * @param  User    $user User to check belonging Appointments
-     * @return boolean       Vacancy holds at least one Appointment of User
+     * @param User $user User to check belonging Appointments
+     *
+     * @return bool Vacancy holds at least one Appointment of User
      */
     public function isHoldingAnyFor(User $user)
     {
@@ -136,13 +141,14 @@ class Vacancy extends EloquentModel
                 return true;
             }
         }
+
         return false;
     }
 
     /**
-     * is Full
+     * is Full.
      *
-     * @return boolean                  Vacancy is fully booked
+     * @return bool Vacancy is fully booked
      */
     public function isFull()
     {
@@ -150,20 +156,21 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * get free slots count
+     * get free slots count.
      *
-     * @return int   Count Capacity minus Used
+     * @return int Count Capacity minus Used
      */
     public function getFreeSlotsCount()
     {
         $count = $this->appointments()->active()->count();
+
         return $this->capacity - $count;
     }
 
     /**
-     * get capacity
+     * get capacity.
      *
-     * @return int   Capacity of the vacancy (in appointment instances)
+     * @return int Capacity of the vacancy (in appointment instances)
      */
     public function getCapacityAttribute()
     {
@@ -171,9 +178,9 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * has Room
+     * has Room.
      *
-     * @return boolean There is more capacity than used
+     * @return bool There is more capacity than used
      */
     public function hasRoom()
     {
@@ -181,30 +188,32 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * is holding given Appointment
+     * is holding given Appointment.
      *
      * ToDo: Remove from here as needs knowledge from Appointment
      *
-     * @param  Appointment $appointment Appointment to check against
-     * @return boolean                  Appointment is held by the Vacancy
+     * @param Appointment $appointment Appointment to check against
+     *
+     * @return bool Appointment is held by the Vacancy
      */
     public function isHolding(Appointment $appointment)
     {
         return
-            ($appointment->isActive() &&
+            $appointment->isActive() &&
             ($this->start_at <= $appointment->start_at) &&
             ($this->finish_at >= $appointment->finish_at) &&
             ($this->service_id == $appointment->service_id) &&
-            ($this->business_id == $appointment->business_id));
+            ($this->business_id == $appointment->business_id);
     }
 
     /**
-     * holds Any of the given Appointments
+     * holds Any of the given Appointments.
      *
      * ToDo: Remove from here as needs knowledge from Appointment
      *
-     * @param  Collection $appointments Appointments to check agains
-     * @return boolean                  The Vacancy holds at least one of the inquired Appointments
+     * @param Collection $appointments Appointments to check agains
+     *
+     * @return bool The Vacancy holds at least one of the inquired Appointments
      */
     public function isHoldingAny(Collection $appointments)
     {
@@ -213,6 +222,7 @@ class Vacancy extends EloquentModel
                 return true;
             }
         }
+
         return false;
     }
 }

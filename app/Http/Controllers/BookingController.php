@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterAppointmentRequest;
 use App\Models\Appointment;
-use App\Presenters\AppointmentPresenter;
 use Notifynder;
 use Widget;
 
@@ -14,16 +12,16 @@ use Widget;
  *     - Access auth()->ith constructor dependency injection
  *     - Access Appointments with Appointments repository injected dependency
  *     - Access Notifynder with constructor dependency
- *     - Move switches to proper responsibility class
+ *     - Move switches to proper responsibility class.
  */
-
 class BookingController extends Controller
 {
     /**
-     * post Action for booking
+     * post Action for booking.
      *
-     * @param  AlterAppointmentRequest $request
-     * @return JSON                    Action result object
+     * @param AlterAppointmentRequest $request
+     *
+     * @return JSON Action result object
      */
     public function postAction(AlterAppointmentRequest $request)
     {
@@ -40,7 +38,7 @@ class BookingController extends Controller
         $widget = $request->input('widget');
 
         $this->log->info(sprintf(
-            "AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]",
+            'AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
             $issuer->email,
             $action,
             $businessId,
@@ -62,11 +60,12 @@ class BookingController extends Controller
             default:
                 // Ignore Invalid Action
                 $this->log->warning('Invalid Action request');
+
                 return response()->json(['code' => 'ERROR', 'html' => '']);
                 break;
         }
 
-        /**
+        /*
          * Widgets MUST be rendered before being returned on Response
          * as they need to be interpreted as HTML
          */
@@ -91,6 +90,7 @@ class BookingController extends Controller
                    ->send();
 
         $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
+
         return response()->json(['code' => 'OK', 'html' => $html]);
     }
 }

@@ -1,13 +1,13 @@
 <?php
 
-use App\Models\User;
+use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Vacancy;
-use App\Models\Business;
-use App\Models\Appointment;
-use App\Services\VacancyService;
 use App\Services\ConciergeService;
+use App\Services\VacancyService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ConciergeServiceUnitTest extends TestCase
@@ -15,37 +15,43 @@ class ConciergeServiceUnitTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * [$user description]
+     * [$user description].
+     *
      * @var [type]
      */
     protected $user;
 
     /**
-     * [$business description]
+     * [$business description].
+     *
      * @var [type]
      */
     protected $business;
 
     /**
-     * [$contact description]
+     * [$contact description].
+     *
      * @var [type]
      */
     protected $contact;
 
     /**
-     * [$service description]
+     * [$service description].
+     *
      * @var [type]
      */
     protected $service;
 
     /**
-     * [$vacancy description]
+     * [$vacancy description].
+     *
      * @var [type]
      */
     protected $vacancy;
 
     /**
-     * [$concierge description]
+     * [$concierge description].
+     *
      * @var [type]
      */
     protected $concierge;
@@ -55,34 +61,38 @@ class ConciergeServiceUnitTest extends TestCase
     /////////////
 
     /**
-     * arrange a fixed scenario for testing
+     * arrange a fixed scenario for testing.
+     *
      * @return void
      */
     protected function arrangeScenario()
     {
         // Common Arrange
         $this->user = factory(User::class)->create();
-        
+
         $this->business = factory(Business::class)->create();
-        
+
         $this->service = factory(Service::class)->make();
-        
+
         $this->business->services()->save($this->service);
 
         $this->concierge = new ConciergeService(new VacancyService($this->business));
     }
 
     /**
-     * make date time object with timezone
-     * @param  string $date        Date
-     * @param  string $time        Time
-     * @param  string $timezone    TimeZone
-     * @param  string $modificator Ex: +1 day
-     * @return Carbon              DateTime
+     * make date time object with timezone.
+     *
+     * @param string $date        Date
+     * @param string $time        Time
+     * @param string $timezone    TimeZone
+     * @param string $modificator Ex: +1 day
+     *
+     * @return Carbon DateTime
      */
     protected function makeDateTime($date, $time, $timezone, $modificator = '')
     {
         $strDateTime = date('Y-m-d H:i:s', strtotime("{$date} {$time} {$modificator}"));
+
         return Carbon::parse($strDateTime, $timezone);
     }
 
@@ -91,9 +101,10 @@ class ConciergeServiceUnitTest extends TestCase
     ///////////
 
     /**
-     * Test get vacancies from Concierge Service Layer
+     * Test get vacancies from Concierge Service Layer.
      *
      * @covers     \App\Services\ConciergeService::getVacancies
+     *
      * @return bool Vacancy found
      * @test
      */
@@ -115,7 +126,7 @@ class ConciergeServiceUnitTest extends TestCase
     }
 
     /**
-     * Test get empty vacancies from Concierge Service Layer
+     * Test get empty vacancies from Concierge Service Layer.
      *
      * @covers            \App\Services\ConciergeService::getVacancies
      * @test
@@ -135,7 +146,8 @@ class ConciergeServiceUnitTest extends TestCase
     }
 
     /**
-     * Test Make Successful Reservation
+     * Test Make Successful Reservation.
+     *
      * @covers            \App\Services\ConciergeService::makeReservation
      * @test
      */
@@ -173,7 +185,7 @@ class ConciergeServiceUnitTest extends TestCase
     }
 
     /**
-     * Test Make Successful Reservation
+     * Test Make Successful Reservation.
      *
      * @covers            \App\Services\ConciergeService::makeReservation
      * @test
@@ -211,7 +223,7 @@ class ConciergeServiceUnitTest extends TestCase
             $this->business->timezone,
             '+30 minutes'
             );
-        
+
         $appointmentOverbook = $this->concierge->makeReservation(
             $this->user,
             $this->business,
@@ -219,7 +231,7 @@ class ConciergeServiceUnitTest extends TestCase
             $this->service,
             $date
             );
-        
+
         // Assert
         $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertTrue($appointment->exists);
@@ -227,7 +239,8 @@ class ConciergeServiceUnitTest extends TestCase
     }
 
     /**
-     * Test Attempt Bad Reservation
+     * Test Attempt Bad Reservation.
+     *
      * @covers            \App\Services\ConciergeService::makeReservation
      * @test
      */

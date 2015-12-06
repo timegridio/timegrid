@@ -3,24 +3,21 @@
  Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
 *************************************************************************/
 
-return array(
+return [
   //==================================== Translations ====================================//
-  'text' =>
-  array(
-    'minutes' => 'minutes',
-    'to' => 'to',
+  'text' => [
+    'minutes'  => 'minutes',
+    'to'       => 'to',
     'duration' => 'duration',
-  ),
+  ],
   //================================== Obsolete strings ==================================//
-  'alert' =>
-  array(
+  'alert' => [
     'annulated' => 'Advice! Reservation was ANNULATED',
-  ),
-  'status' =>
-  array(
+  ],
+  'status' => [
     'annulated' => 'Annulated',
     'confirmed' => 'Confirmed',
-    'reserved' => 'Reserved',
-    'served' => 'Served',
-  ),
-);
+    'reserved'  => 'Reserved',
+    'served'    => 'Served',
+  ],
+];
