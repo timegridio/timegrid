@@ -2,12 +2,16 @@
 
 namespace App\Presenters;
 
-/**
- * WIP TODO: SWITCHING PRESENTER PACKAGE
- */
+use App\Models\Business;
+use McCool\LaravelAutoPresenter\BasePresenter;
 
-class BusinessPresenter extends Presenter
+class BusinessPresenter extends BasePresenter
 {
+    public function __construct(Business $resource)
+    {
+        $this->wrappedObject = $resource;
+    }
+
     /**
      * get Facebook Profile Public Picture
      *

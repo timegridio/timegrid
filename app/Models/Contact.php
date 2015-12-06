@@ -5,10 +5,11 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Business;
-#use App\Presenters\ContactPresenter;
+use App\Presenters\ContactPresenter;
+use McCool\LaravelAutoPresenter\HasPresenter;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Contact extends EloquentModel
+class Contact extends EloquentModel implements HasPresenter
 {
     /**
      * The attributes that are mass assignable.
@@ -156,15 +157,15 @@ class Contact extends EloquentModel
     // Presenter //
     ///////////////
 
-#    /**
-#     * Return a created presenter.
-#     *
-#     * @return Robbo\Presenter\Presenter
-#     */
-#    public function getPresenter()
-#    {
-#        return new ContactPresenter($this);
-#    }
+    /**
+     * get presenter
+     * 
+     * @return ContactPresenter    Presenter class
+     */
+    public function getPresenterClass()
+    {
+        return ContactPresenter::class;
+    }
 
     //////////////
     // Mutators //
