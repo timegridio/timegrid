@@ -27,7 +27,7 @@ class BusinessContactImportExportController extends Controller
     public function getImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         return view('manager.contacts.import', compact('business'));
     }
@@ -42,7 +42,7 @@ class BusinessContactImportExportController extends Controller
     public function postImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         //////////////////
         // FOR REFACTOR //

@@ -27,7 +27,7 @@ class BusinessController extends Controller
     public function getHome(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s businessSlug:'%s'", $business->id, $business->slug));
+        $this->log->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
 
         //////////////////
         // FOR REFACTOR //
@@ -73,7 +73,7 @@ class BusinessController extends Controller
     public function getSelect(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         session()->set('selected.business', $business);
         return $this->getHome($business);

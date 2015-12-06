@@ -127,7 +127,7 @@ class BusinessController extends Controller
     public function show(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('manage', $business)) {
             abort(403);
@@ -149,7 +149,7 @@ class BusinessController extends Controller
     public function edit(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -218,7 +218,7 @@ class BusinessController extends Controller
     public function destroy(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         if (Gate::denies('destroy', $business)) {
             abort(403);
