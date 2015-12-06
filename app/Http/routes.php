@@ -143,19 +143,19 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
     Route::group(['as' => 'user.', 'namespace' => 'User', 'middleware' => ['auth']], function () {
 
-        Route::get('contact', ['as' => 'business.contact.index', 'uses' => 'BusinessContactController@index']);
-        Route::get('contact/create', ['as' => 'business.contact.create', 'uses' => 'BusinessContactController@create']);
-        Route::post('contact', ['as' => 'business.contact.store', 'uses' => 'BusinessContactController@store']);
-        Route::get('contact/{contact}', ['as' => 'business.contact.show', 'uses' => 'BusinessContactController@show']);
-        Route::get('contact/{contact}/edit', [
+        Route::get('user/contact', ['as' => 'business.contact.index', 'uses' => 'BusinessContactController@index']);
+        Route::get('user/contact/create', ['as' => 'business.contact.create', 'uses' => 'BusinessContactController@create']);
+        Route::post('user/contact', ['as' => 'business.contact.store', 'uses' => 'BusinessContactController@store']);
+        Route::get('user/contact/{contact}', ['as' => 'business.contact.show', 'uses' => 'BusinessContactController@show']);
+        Route::get('user/contact/{contact}/edit', [
             'as' => 'business.contact.edit',
             'uses' => 'BusinessContactController@edit'
         ]);
-        Route::put('contact/{contact}', [
+        Route::put('user/contact/{contact}', [
             'as' => 'business.contact.update',
             'uses' => 'BusinessContactController@update'
         ]);
-        Route::delete('contact/{contact}', [
+        Route::delete('user/contact/{contact}', [
             'as' => 'business.contact.destroy',
             'uses' => 'BusinessContactController@destroy'
         ]);
