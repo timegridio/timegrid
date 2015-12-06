@@ -32,15 +32,15 @@ class ConciergeService
         $this->vacancyService = $vacancyService;
     }
 
-    /**
-     * [setVacancyService description]
-     *
-     * @param VacancyService $vacancyService [description]
-     */
-    public function setVacancyService(VacancyService $vacancyService)
-    {
-        $this->vacancyService = $vacancyService;
-    }
+#    /**
+#     * [setVacancyService description]
+#     *
+#     * @param VacancyService $vacancyService [description]
+#     */
+#    public function setVacancyService(VacancyService $vacancyService)
+#    {
+#        $this->vacancyService = $vacancyService;
+#    }
 
     public function setBusiness(Business $business)
     {
@@ -71,38 +71,38 @@ class ConciergeService
         return $this->vacancyService->getVacanciesFor($user, $starting, $limit);
     }
 
-    /**
-     * get Appointments For
-     *
-     * @param  User   $user This User
-     * @return Illuminate\Support\Collection       Collection of Appointments
-     */
-    public function getAppointmentsFor(User $user)
-    {
-        return $user->appointments()->orderBy('start_at')->get();
-    }
+#    /**
+#     * get Appointments For
+#     *
+#     * @param  User   $user This User
+#     * @return Illuminate\Support\Collection       Collection of Appointments
+#     */
+#    public function getAppointmentsFor(User $user)
+#    {
+#        return $user->appointments()->orderBy('start_at')->get();
+#    }
 
-    /**
-     * get Future Appointments For
-     *
-     * @param  User   $user This User
-     * @return Illuminate\Support\Collection       Collection of Appointments
-     */
-    public function getFutureAppointmentsFor(User $user)
-    {
-        return $user->appointments()->orderBy('start_at')->future()->get();
-    }
+#    /**
+#     * get Future Appointments For
+#     *
+#     * @param  User   $user This User
+#     * @return Illuminate\Support\Collection       Collection of Appointments
+#     */
+#    public function getFutureAppointmentsFor(User $user)
+#    {
+#        return $user->appointments()->orderBy('start_at')->future()->get();
+#    }
 
-    /**
-     * get Active Appointments For
-     *
-     * @param  User   $user This User
-     * @return Illuminate\Support\Collection       Collection of Appointments
-     */
-    public function getActiveAppointmentsFor(User $user)
-    {
-        return $user->appointments()->orderBy('start_at')->active()->get();
-    }
+#    /**
+#     * get Active Appointments For
+#     *
+#     * @param  User   $user This User
+#     * @return Illuminate\Support\Collection       Collection of Appointments
+#     */
+#    public function getActiveAppointmentsFor(User $user)
+#    {
+#        return $user->appointments()->orderBy('start_at')->active()->get();
+#    }
 
     /**
      * get Unarchived Appointments For
