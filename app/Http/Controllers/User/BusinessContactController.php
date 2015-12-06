@@ -140,7 +140,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
         
-        $this->authorize('manage', $contact);
+        # $this->authorize('manage', $contact);
 
         return view('user.contacts.edit', compact('business', 'contact'));
     }
@@ -158,7 +158,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
-        $this->authorize('manage', $contact);
+        # $this->authorize('manage', $contact);
         //////////////////
         // FOR REFACTOR //
         //////////////////
@@ -198,7 +198,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
-        $this->authorize('manage', $contact);
+        # $this->authorize('manage', $contact);
 
         $contact->delete();
 
