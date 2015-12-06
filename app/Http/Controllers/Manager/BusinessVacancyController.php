@@ -20,7 +20,7 @@ class BusinessVacancyController extends Controller
     public function create(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -48,7 +48,7 @@ class BusinessVacancyController extends Controller
     public function store(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //

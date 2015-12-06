@@ -54,7 +54,7 @@ class BusinessServiceController extends Controller
     public function store(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s", $business->id));
+        $this->log->info(sprintf("businessId:%s", $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //

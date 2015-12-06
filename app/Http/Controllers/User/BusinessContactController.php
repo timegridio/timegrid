@@ -142,7 +142,7 @@ class BusinessContactController extends Controller
     public function update(Business $business, Contact $contact, AlterContactRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("  businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
 
         //////////////////
         // FOR REFACTOR //
