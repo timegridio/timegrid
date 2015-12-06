@@ -2,12 +2,10 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Vacancy;
-use App\Models\Service;
 use App\Models\Business;
-use App\Models\Appointment;
+use App\Models\Service;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
 class VacancyService
@@ -29,14 +27,14 @@ class VacancyService
         $vacancies = $this->removeBookedVacancies($this->business->vacancies);
         $vacancies = $this->removeSelfBooked($vacancies, $user);
 
-        return ! $vacancies->isEmpty();
+        return !$vacancies->isEmpty();
     }
 
     public function getVacanciesFor($user, $starting = 'today', $limit = 7)
     {
         $vacancies = $this->removeBookedVacancies($this->business->vacancies);
         $vacancies = $this->removeSelfBooked($vacancies, $user);
-        
+
         return $this->generateAvailability($vacancies, $starting, $limit);
     }
 
@@ -52,6 +50,7 @@ class VacancyService
                 $dates[$vacancy->date][$vacancy->service->slug] = $vacancy;
             }
         }
+
         return $dates;
     }
 
@@ -73,6 +72,7 @@ class VacancyService
         $vacancies = $vacancies->reject(function ($vacancy) {
             return $vacancy->isFull();
         });
+
         return $vacancies;
     }
 
@@ -81,6 +81,7 @@ class VacancyService
         $vacancies = $vacancies->reject(function ($vacancy) use ($user) {
             return $vacancy->isHoldingAnyFor($user);
         });
+
         return $vacancies;
     }
 }

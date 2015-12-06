@@ -8,6 +8,7 @@ class UserRepository
 {
     /**
      * @param $userData
+     *
      * @return static
      */
     public function findOrCreate($userData)
@@ -19,8 +20,8 @@ class UserRepository
 
         return User::create([
             'username' => $userData->nickname,
-            'name' => $userData->nickname,
-            'email' => $userData->email,
+            'name'     => $userData->nickname,
+            'email'    => $userData->email,
         ]);
     }
 }

@@ -1,19 +1,17 @@
 <?php
 
-use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ManagerBusinessContactControllerUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
      * @covers   App\Http\Controllers\Manager\BusinessContactController::create
      * @covers   App\Http\Controllers\Manager\BusinessContactController::store
@@ -30,7 +28,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route("manager.business.contact.index", $this->business))
+        $this->visit(route('manager.business.contact.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -42,7 +40,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
              ->see("{$contact->firstname} {$contact->lastname}");
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
      * @covers   App\Http\Controllers\Manager\BusinessContactController::create
      * @covers   App\Http\Controllers\Manager\BusinessContactController::store
@@ -61,7 +59,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route("manager.business.contact.index", $this->business))
+        $this->visit(route('manager.business.contact.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -75,7 +73,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
         $this->assertEquals($contact->email, $existingUser->contacts()->first()->email);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::store
      * @covers   App\Http\Controllers\Manager\BusinessContactController::show
      * @test
@@ -88,25 +86,25 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
 
         $existingContact = factory(Contact::class)->create([
             'firstname' => 'John',
-            'lastname' => 'Doe',
-            'email' => 'johndoe@example.org',
-            'nin' => '123456789'
+            'lastname'  => 'Doe',
+            'email'     => 'johndoe@example.org',
+            'nin'       => '123456789',
         ]);
         // And the existing contact belongs to the business addressbok
         $this->business->contacts()->attach($existingContact);
-        
+
         $contact = factory(Contact::class)->make([
             'firstname' => 'John',
-            'lastname' => 'Doe',
-            'email' => 'johndoe@example.org',
-            'nin' => '123456789'
+            'lastname'  => 'Doe',
+            'email'     => 'johndoe@example.org',
+            'nin'       => '123456789',
         ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route("manager.business.contact.index", $this->business))
+        $this->visit(route('manager.business.contact.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -123,7 +121,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
     }
 
     /**
-     * arrange fixture
+     * arrange fixture.
      *
      * @return void
      */
@@ -131,7 +129,7 @@ class ManagerBusinessContactControllerUnitTest extends TestCase
     {
         // A business owned by a user (me)
         $this->issuer = factory(User::class)->create();
-        
+
         $this->business = factory(Business::class)->create();
         $this->business->owners()->save($this->issuer);
 

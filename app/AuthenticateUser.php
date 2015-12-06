@@ -25,8 +25,8 @@ class AuthenticateUser
 
     /**
      * @param UserRepository $users
-     * @param Socialite $socialite
-     * @param Guard $auth
+     * @param Socialite      $socialite
+     * @param Guard          $auth
      */
     public function __construct(UserRepository $users, Socialite $socialite, Guard $auth)
     {
@@ -36,13 +36,14 @@ class AuthenticateUser
     }
 
     /**
-     * @param boolean $hasCode
+     * @param bool                     $hasCode
      * @param AuthenticateUserListener $listener
+     *
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function execute($provider, $hasCode, AuthenticateUserListener $listener)
     {
-        if (! $hasCode) {
+        if (!$hasCode) {
             return $this->getAuthorizationFirst($provider);
         }
 

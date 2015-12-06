@@ -14,7 +14,7 @@ class Category extends EloquentModel
     protected $fillable = ['slug', 'name', 'description', 'strategy'];
 
     /**
-     * clasifies Businesses
+     * clasifies Businesses.
      *
      * @return Illuminate\Database\Query Relationship Category has Businesses query
      */

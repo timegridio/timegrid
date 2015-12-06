@@ -12,7 +12,7 @@ use App\Http\Controllers\Controller;
 class WizardController extends Controller
 {
     /**
-     * get home page for old users and wizard for new users
+     * get home page for old users and wizard for new users.
      *
      * @return Response Rendered view of Wizard or Redirect
      */
@@ -22,11 +22,13 @@ class WizardController extends Controller
 
         if (auth()->user()->hasBusiness()) {
             $this->log->info('User has Business');
+
             return redirect()->route('manager.business.index');
         }
 
         if (auth()->user()->hasContacts()) {
             $this->log->info('User has Contacts');
+
             return redirect()->route('user.directory.list');
         }
 
@@ -34,7 +36,7 @@ class WizardController extends Controller
     }
 
     /**
-     * get Welcome page
+     * get Welcome page.
      *
      * @return Response Rendered view for Wizard
      */
@@ -46,7 +48,7 @@ class WizardController extends Controller
     }
 
     /**
-     * get Pricing
+     * get Pricing.
      *
      * @return Response Returns pricing table
      */
@@ -58,7 +60,7 @@ class WizardController extends Controller
     }
 
     /**
-     * get Terms and Conditions
+     * get Terms and Conditions.
      *
      * @return Response Rendered view for Terms and Conditions of use
      */

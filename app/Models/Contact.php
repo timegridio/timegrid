@@ -2,12 +2,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Business;
 use App\Presenters\ContactPresenter;
-use McCool\LaravelAutoPresenter\HasPresenter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Contact extends EloquentModel implements HasPresenter
 {
@@ -17,7 +15,7 @@ class Contact extends EloquentModel implements HasPresenter
      * @var array
      */
     protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes',
-                            'gender', 'occupation', 'martial_status', 'postal_address'];
+                            'gender', 'occupation', 'martial_status', 'postal_address', ];
 
     /**
      * The attributes that should be mutated to dates.
@@ -31,7 +29,7 @@ class Contact extends EloquentModel implements HasPresenter
     //////////////////
 
     /**
-     * is profile of User
+     * is profile of User.
      *
      * @return Illuminate\Database\Query Relationship Contact belongs to User query
      */
@@ -41,7 +39,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * indicates if contact belongs to Business
+     * indicates if contact belongs to Business.
      *
      * @return Illuminate\Database\Query Relationship Contact is part of Business' addressbook query
      */
@@ -51,7 +49,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * belongs to Business
+     * belongs to Business.
      *
      * @return Illuminate\Database\Query Relationship Contact is part of Businesses addressbooks query
      */
@@ -61,7 +59,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * has Appointments
+     * has Appointments.
      *
      * @return Illuminate\Database\Query Relationship Contact has booked Appointments query
      */
@@ -71,7 +69,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * has Appointment
+     * has Appointment.
      *
      * @return Illuminate\Database\Query Relationship Contact has first booked Appointment query
      */
@@ -85,9 +83,9 @@ class Contact extends EloquentModel implements HasPresenter
     /////////////////////
 
     /**
-     * has Appointment
+     * has Appointment.
      *
-     * @return boolean Check if Contact has at least one Appointment booked
+     * @return bool Check if Contact has at least one Appointment booked
      */
     public function hasAppointment()
     {
@@ -95,7 +93,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Appointments Count
+     * Appointments Count.
      *
      * This method is used to optimize the relationship counting performance
      *
@@ -110,21 +108,21 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * get AppointmentsCount
+     * get AppointmentsCount.
      *
-     * @return integer Count of Appointments held by this Contact
+     * @return int Count of Appointments held by this Contact
      */
     public function getAppointmentsCountAttribute()
     {
         # If relation is not loaded already, let's do it first
-        if (! array_key_exists('appointmentsCount', $this->relations)) {
+        if (!array_key_exists('appointmentsCount', $this->relations)) {
             $this->load('appointmentsCount');
         }
-     
+
         $related = $this->getRelation('appointmentsCount');
 
         # Then return the count directly
-        return ($related->count()>0) ? (int) $related->first()->aggregate : 0;
+        return ($related->count() > 0) ? (int) $related->first()->aggregate : 0;
     }
 
     ///////////////
@@ -132,9 +130,9 @@ class Contact extends EloquentModel implements HasPresenter
     ///////////////
 
     /**
-     * get presenter
+     * get presenter.
      *
-     * @return ContactPresenter    Presenter class
+     * @return ContactPresenter Presenter class
      */
     public function getPresenterClass()
     {
@@ -146,7 +144,7 @@ class Contact extends EloquentModel implements HasPresenter
     //////////////
 
     /**
-     * set Mobile
+     * set Mobile.
      *
      * Expected phone number is international format numeric only
      *
@@ -158,7 +156,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Mobile Country
+     * set Mobile Country.
      *
      * @param string $country Country ISO Code ALPHA-2
      */
@@ -168,7 +166,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Birthdate
+     * set Birthdate.
      *
      * @param string $birthdate Carbon parseable birth date
      */
@@ -179,7 +177,7 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * set Email
+     * set Email.
      *
      * @param string $email Valid email address
      */
@@ -190,7 +188,7 @@ class Contact extends EloquentModel implements HasPresenter
 
     /**
      * TODO: Check if possible to handle in a more structured way
-     *       NIN record is currently too flexible
+     *       NIN record is currently too flexible.
      *
      * set NIN: National Identity Number
      *
@@ -202,26 +200,28 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * link Contact to existing User if any
+     * link Contact to existing User if any.
      *
-     * @return Contact    Current Contact linked to user
+     * @return Contact Current Contact linked to user
      */
     public function autoLinkToUser()
     {
         if ($this->email === null) {
             return $this;
         }
-        
+
         $user = User::where(['email' => $this->email])->first();
 
         if ($user === null) {
             $this->user()->dissociate();
             $this->save();
+
             return $this;
         }
-        
+
         $this->user()->associate($user);
         $this->save();
+
         return $this;
     }
 
@@ -230,10 +230,11 @@ class Contact extends EloquentModel implements HasPresenter
     /////////////////////
 
     /**
-     * is Subscribed To Business
+     * is Subscribed To Business.
      *
-     * @param  int     $businessId  Business of inquiry
-     * @return boolean              The Contact belongs to the inquired Business' addressbook
+     * @param int $businessId Business of inquiry
+     *
+     * @return bool The Contact belongs to the inquired Business' addressbook
      */
     public function isSubscribedTo($businessId)
     {
@@ -241,10 +242,11 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * is Profile of User
+     * is Profile of User.
      *
-     * @param  int $userId        User of inquiry
-     * @return boolean            The Contact belongs to the inquired User
+     * @param int $userId User of inquiry
+     *
+     * @return bool The Contact belongs to the inquired User
      */
     public function isProfileOf($userId)
     {

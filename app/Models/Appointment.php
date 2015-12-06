@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Presenters\AppointmentPresenter;
-use McCool\LaravelAutoPresenter\HasPresenter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Appointment extends EloquentModel implements HasPresenter
 {
@@ -31,7 +31,7 @@ class Appointment extends EloquentModel implements HasPresenter
     protected $dates = ['start_at', 'finish_at'];
 
     /**
-     * Appointment Hard Status Constants
+     * Appointment Hard Status Constants.
      */
     const STATUS_RESERVED = 'R';
     const STATUS_CONFIRMED = 'C';
@@ -39,7 +39,7 @@ class Appointment extends EloquentModel implements HasPresenter
     const STATUS_SERVED = 'S';
 
     /**
-     * User Profile Constants
+     * User Profile Constants.
      *
      * Used to determine the detected behavior of the user depending
      * on if he acts as a user or a Business manager.
@@ -53,9 +53,9 @@ class Appointment extends EloquentModel implements HasPresenter
     ///////////////
 
     /**
-     * get presenter
+     * get presenter.
      *
-     * @return AppointmentPresenter    Presenter class
+     * @return AppointmentPresenter Presenter class
      */
     public function getPresenterClass()
     {
@@ -65,12 +65,14 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Save the model to the database.
      *
-     * @param  array  $options
+     * @param array $options
+     *
      * @return bool
      */
-    public function save(array $options = array())
+    public function save(array $options = [])
     {
         $this->doHash();
+
         return parent::save($options);
     }
 
@@ -79,7 +81,7 @@ class Appointment extends EloquentModel implements HasPresenter
     ///////////////////
 
     /**
-     * Issuer
+     * Issuer.
      *
      * @return Collection $user User who has created the appointment
      */
@@ -89,7 +91,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Contact
+     * Contact.
      *
      * @return Collection $contact Contact for whom the appointment is made
      */
@@ -99,7 +101,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Business
+     * Business.
      *
      * @return Collection $business Business for which the appointment is made
      */
@@ -109,7 +111,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Service
+     * Service.
      *
      * @return Collection $service Service for which the contact is set for appointment
      */
@@ -119,7 +121,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Vacancy
+     * Vacancy.
      *
      * @return Collection $vacancy Vacancy that holds the appointment
      */
@@ -133,7 +135,7 @@ class Appointment extends EloquentModel implements HasPresenter
     ///////////
 
     /**
-     * User
+     * User.
      *
      * @return [type] [description]
      */
@@ -143,9 +145,9 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Duplicates
+     * Duplicates.
      *
-     * @return boolean Determines if the new Appointment will hash crash with an existing Appointment
+     * @return bool Determines if the new Appointment will hash crash with an existing Appointment
      */
     public function duplicates()
     {
@@ -162,7 +164,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * FinishAt
+     * FinishAt.
      *
      * @return Carbon Calculates the start_at time plus duration in minutes
      */
@@ -171,11 +173,12 @@ class Appointment extends EloquentModel implements HasPresenter
         if (is_numeric($this->duration)) {
             return $this->start_at->addMinutes($this->duration);
         }
+
         return $this->start_at;
     }
 
     /**
-     * TimeZone
+     * TimeZone.
      *
      * @return string The TimeZone set for Business
      */
@@ -185,24 +188,24 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Get the human readable status name
+     * Get the human readable status name.
      *
      * @return string The name of the current Appointment status
      */
     public function getStatusLabelAttribute()
     {
         $labels = [
-            Self::STATUS_RESERVED => 'reserved',
+            Self::STATUS_RESERVED  => 'reserved',
             Self::STATUS_CONFIRMED => 'confirmed',
             Self::STATUS_ANNULATED => 'annulated',
-            Self::STATUS_SERVED => 'served'
+            Self::STATUS_SERVED    => 'served',
             ];
 
         return array_key_exists($this->status, $labels) ? $labels[$this->status] : '';
     }
 
     /**
-     * Date
+     * Date.
      *
      * @return string Formatted Date string from the start_at attribute in UTC
      */
@@ -216,22 +219,22 @@ class Appointment extends EloquentModel implements HasPresenter
     //////////////
 
     /**
-     * do Hash
+     * do Hash.
      *
      * @return string MD5 hash for unique id
      */
     public function doHash()
     {
         return $this->attributes['hash'] = md5(
-            $this->start_at . '/' .
-            $this->contact_id . '/' .
-            $this->business_id . '/'.
+            $this->start_at.'/'.
+            $this->contact_id.'/'.
+            $this->business_id.'/'.
             $this->service_id
         );
     }
 
     /**
-     * Set start_at attribute
+     * Set start_at attribute.
      *
      * @param Carbon $datetime The Appointment starting datetime
      */
@@ -241,7 +244,7 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Set Comments
+     * Set Comments.
      *
      * @param string $comments User comments for the Business owner on the Appointment
      */
@@ -255,7 +258,7 @@ class Appointment extends EloquentModel implements HasPresenter
     ///////////////////////////
 
     /**
-     * Appointment Status Workflow
+     * Appointment Status Workflow.
      *
      * Hard Status: Those concrete values stored in DB
      * Soft Status: Those values calculated from stored values in DB
@@ -269,13 +272,12 @@ class Appointment extends EloquentModel implements HasPresenter
      * Soft Status
      *     (Active)   [ Reserved  | Confirmed ]
      *     (InActive) [ Annulated | Served    ]
-     *
      */
 
     /**
-     * is Active
+     * is Active.
      *
-     * @return boolean Determination if the Appointment is in an active status
+     * @return bool Determination if the Appointment is in an active status
      */
     public function isActive()
     {
@@ -283,9 +285,9 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * is Pending
+     * is Pending.
      *
-     * @return boolean is Active AND is Future
+     * @return bool is Active AND is Future
      */
     public function isPending()
     {
@@ -293,9 +295,9 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * is Future
+     * is Future.
      *
-     * @return boolean The start_at datetime is future from the current system datetime
+     * @return bool The start_at datetime is future from the current system datetime
      */
     public function isFuture()
     {
@@ -303,9 +305,9 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * is Due
+     * is Due.
      *
-     * @return boolean The start_at datetime is past from the current system datetime
+     * @return bool The start_at datetime is past from the current system datetime
      */
     public function isDue()
     {
@@ -321,9 +323,10 @@ class Appointment extends EloquentModel implements HasPresenter
     /////////////////////////
 
     /**
-     * Scope to Unarchived Appointments
+     * Scope to Unarchived Appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeUnarchived($query)
@@ -338,9 +341,10 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Scope to Served Appointments
+     * Scope to Served Appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeServed($query)
@@ -349,9 +353,10 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Scope to Annulated Appointments
+     * Scope to Annulated Appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeAnnulated($query)
@@ -364,9 +369,10 @@ class Appointment extends EloquentModel implements HasPresenter
     /////////////////////////
 
     /**
-     * Scope to not Served Appointments
+     * Scope to not Served Appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeUnServed($query)
@@ -375,24 +381,26 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Scope to Active Appointments
+     * Scope to Active Appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeActive($query)
     {
         return $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED]);
     }
-    
+
     /////////////
     // Sorting //
     /////////////
 
     /**
-     * Oldest first
+     * Oldest first.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeOldest($query)
@@ -401,10 +409,11 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Of Business
+     * Of Business.
      *
-     * @param  Illuminate\Database\Query   $query
-     * @param  Business $business An inquired business to validate against
+     * @param Illuminate\Database\Query $query
+     * @param Business                  $business An inquired business to validate against
+     *
      * @return Illuminate\Database\Query The appointments belonging to the inquired Business as holder
      */
     public function scopeOfBusiness($query, Business $business)
@@ -413,11 +422,12 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Of Date
+     * Of Date.
      *
-     * @param  Illuminate\Database\Query $query
-     * @param  Carbon $date  An inquired date to validate against
-     * @return Illuminate\Database\Query    The scoped appointments for the inquired date
+     * @param Illuminate\Database\Query $query
+     * @param Carbon                    $date  An inquired date to validate against
+     *
+     * @return Illuminate\Database\Query The scoped appointments for the inquired date
      */
     public function scopeOfDate($query, Carbon $date)
     {
@@ -425,9 +435,10 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Scope only future appointments
+     * Scope only future appointments.
      *
-     * @param  Illuminate\Database\Query $query
+     * @param Illuminate\Database\Query $query
+     *
      * @return Illuminate\Database\Query The appointments scoped for future date
      */
     public function scopeFuture($query)
@@ -436,10 +447,11 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * Scope only till date
+     * Scope only till date.
      *
-     * @param  Illuminate\Database\Query $query
-     * @param  Carbon $date  Inquired range end date
+     * @param Illuminate\Database\Query $query
+     * @param Carbon                    $date  Inquired range end date
+     *
      * @return Illuminate\Database\Query Scoped appointments up to the inquired date
      */
     public function scopeTillDate($query, Carbon $date)
@@ -452,9 +464,9 @@ class Appointment extends EloquentModel implements HasPresenter
     //////////////////////////
 
     /**
-     * is Serveable
+     * is Serveable.
      *
-     * @return boolean The Serve action can be performed
+     * @return bool The Serve action can be performed
      */
     public function isServeable()
     {
@@ -462,23 +474,23 @@ class Appointment extends EloquentModel implements HasPresenter
     }
 
     /**
-     * is Confirmable
+     * is Confirmable.
      *
-     * @return boolean The Confirm action can be performed
+     * @return bool The Confirm action can be performed
      */
     public function isConfirmable()
     {
-        return ($this->status == self::STATUS_RESERVED && $this->isFuture());
+        return $this->status == self::STATUS_RESERVED && $this->isFuture();
     }
 
     /**
-     * is Annulable
+     * is Annulable.
      *
-     * @return boolean The Annulate action can be performed
+     * @return bool The Annulate action can be performed
      */
     public function isAnnulable()
     {
-        return ($this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED);
+        return $this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED;
     }
 
     /////////////////////////
@@ -486,7 +498,7 @@ class Appointment extends EloquentModel implements HasPresenter
     /////////////////////////
 
     /**
-     * Check and perform Confirm action
+     * Check and perform Confirm action.
      *
      * @return Appointment The changed Appointment
      */
@@ -495,11 +507,12 @@ class Appointment extends EloquentModel implements HasPresenter
         if ($this->status === null) {
             $this->status = self::STATUS_RESERVED;
         }
+
         return $this;
     }
 
     /**
-     * Check and perform Confirm action
+     * Check and perform Confirm action.
      *
      * @return Appointment The changed Appointment
      */
@@ -507,13 +520,15 @@ class Appointment extends EloquentModel implements HasPresenter
     {
         if ($this->isConfirmable()) {
             $this->status = self::STATUS_CONFIRMED;
+
             return $this->save();
         }
+
         return $this;
     }
 
     /**
-     * Check and perform Annulate action
+     * Check and perform Annulate action.
      *
      * @return Appointment The changed Appointment
      */
@@ -521,13 +536,15 @@ class Appointment extends EloquentModel implements HasPresenter
     {
         if ($this->isAnnulable()) {
             $this->status = self::STATUS_ANNULATED;
+
             return $this->save();
         }
+
         return $this;
     }
 
     /**
-     * Check and perform Serve action
+     * Check and perform Serve action.
      *
      * @return Appointment The changed Appointment
      */
@@ -535,8 +552,10 @@ class Appointment extends EloquentModel implements HasPresenter
     {
         if ($this->isServeable()) {
             $this->status = self::STATUS_SERVED;
+
             return $this->save();
         }
+
         return $this;
     }
 
@@ -549,11 +568,11 @@ class Appointment extends EloquentModel implements HasPresenter
 
             if ($this->business->owners->contains($userId)) {
                 return self::PROFILE_USER;
-            }            
+            }
         } catch (Exception $e) {
-            
             return false;
         }
+
         return self::PROFILE_GUEST;
     }
 }

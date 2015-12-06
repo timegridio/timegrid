@@ -1,10 +1,8 @@
 <?php
 
-use App\Models\User;
-use App\Models\Contact;
-use App\Models\Service;
 use App\Models\Business;
-use App\Models\Appointment;
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserBusinessControllerTest extends TestCase
@@ -12,7 +10,7 @@ class UserBusinessControllerTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * user
+     * user.
      *
      * @var User user
      */
@@ -125,7 +123,6 @@ class UserBusinessControllerTest extends TestCase
 
         // And there exist a registered business
         $business = factory(Business::class)->create(['name' => 'tosto']);
-
 
         // And which I am subscribed as contact
         $contact = factory(Contact::class)->create();

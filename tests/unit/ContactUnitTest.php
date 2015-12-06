@@ -1,14 +1,14 @@
 <?php
 
-use App\Models\User;
 use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ContactUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers App\Models\Contact::autoLinkToUser
      * @test
      */
@@ -23,7 +23,7 @@ class ContactUnitTest extends TestCase
         $this->assertEquals($user->email, $contact->user->email);
     }
 
-   /**
+    /**
      * @covers App\Models\Contact::autoLinkToUser
      * @test
      */
@@ -46,7 +46,7 @@ class ContactUnitTest extends TestCase
         $this->assertEquals(2, $user->contacts()->count());
     }
 
-   /**
+    /**
      * @covers App\Models\Contact::autoLinkToUser
      * @test
      */

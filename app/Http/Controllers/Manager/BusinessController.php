@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Gate;
-use GeoIP;
-use App\SearchEngine;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BusinessFormRequest;
 use App\Models\Business;
 use App\Models\Category;
-use Laracasts\Flash\Flash;
-use App\Http\Controllers\Controller;
+use App\SearchEngine;
+use Fenos\Notifynder\Facades\Notifynder;
+use Gate;
+use GeoIP;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Session;
-use Fenos\Notifynder\Facades\Notifynder;
-use App\Http\Requests\BusinessFormRequest;
+use Laracasts\Flash\Flash;
 
 class BusinessController extends Controller
 {
     /**
-     * index
+     * index.
      *
      * @return Response Rendered view for Businesses listing
      */
@@ -30,6 +30,7 @@ class BusinessController extends Controller
         if ($businesses->count() == 1) {
             $this->log->info('Only one business to show');
             Flash::success(trans('manager.businesses.msg.index.only_one_found'));
+
             return redirect()->route('manager.business.show', $businesses->first());
         }
 
@@ -37,7 +38,7 @@ class BusinessController extends Controller
     }
 
     /**
-     * create Business
+     * create Business.
      *
      * @return Response Rendered view of Business creation form
      */
@@ -52,16 +53,18 @@ class BusinessController extends Controller
 
         $categories = $this->listCategories();
 
-        $business = new Business;
+        $business = new Business();
         Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
+
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
     /**
-     * store Business
+     * store Business.
      *
-     * @param  BusinessFormRequest $request Business form Request
-     * @return Response                     Redirect
+     * @param BusinessFormRequest $request Business form Request
+     *
+     * @return Response Redirect
      */
     public function store(BusinessFormRequest $request)
     {
@@ -84,12 +87,14 @@ class BusinessController extends Controller
                 $existingBusiness->restore();
 
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
+
                 return redirect()->route('manager.business.service.create', $existingBusiness);
             }
 
             // If not owned, return message
             $this->log->info("  Already taken businessId:{$existingBusiness->id}");
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+
             return redirect()->back()->withInput(request()->all());
         }
 
@@ -114,20 +119,22 @@ class BusinessController extends Controller
 
         // Redirect success
         Flash::success(trans('manager.businesses.msg.store.success'));
+
         return redirect()->route('manager.business.service.create', $business);
     }
 
     /**
-     * show Business
+     * show Business.
      *
-     * @param  Business            $business Business to show
-     * @param  BusinessFormRequest $request  Business form Request
-     * @return Response                      Rendered view for Business show
+     * @param Business            $business Business to show
+     * @param BusinessFormRequest $request  Business form Request
+     *
+     * @return Response Rendered view for Business show
      */
     public function show(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('manage', $business)) {
             abort(403);
@@ -141,15 +148,16 @@ class BusinessController extends Controller
     }
 
     /**
-     * edit Business
+     * edit Business.
      *
-     * @param  Business            $business Business to edit
-     * @return Response                      Rendered view of Business edit form
+     * @param Business $business Business to edit
+     *
+     * @return Response Rendered view of Business edit form
      */
     public function edit(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -162,25 +170,26 @@ class BusinessController extends Controller
         $timezone = $this->guessTimezone($business->timezone);
 
         $categories = $this->listCategories();
-        
+
         $category = $business->category_id;
-        
-        $this->log->info(sprintf("businessId:%s timezone:%s category:%s", $business->id, $timezone, $category));
+
+        $this->log->info(sprintf('businessId:%s timezone:%s category:%s', $business->id, $timezone, $category));
 
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
 
     /**
-     * update Business
+     * update Business.
      *
-     * @param  Business            $business Business to update
-     * @param  BusinessFormRequest $request  Business form Request
-     * @return Response                      Redirect
+     * @param Business            $business Business to update
+     * @param BusinessFormRequest $request  Business form Request
+     *
+     * @return Response Redirect
      */
     public function update(Business $business, BusinessFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('update', $business)) {
             abort(403);
@@ -194,36 +203,38 @@ class BusinessController extends Controller
         $business->category()->associate($category);
 
         $business->update([
-            'slug' => $business->slug
+            'slug' => $business->slug,
             ], [
-            'name' => $request->get('name'),
-            'description' => $request->get('description'),
-            'timezone' => $request->get('timezone'),
-            'postal_address' => $request->get('postal_address'),
-            'phone' => $request->get('phone'),
+            'name'            => $request->get('name'),
+            'description'     => $request->get('description'),
+            'timezone'        => $request->get('timezone'),
+            'postal_address'  => $request->get('postal_address'),
+            'phone'           => $request->get('phone'),
             'social_facebook' => $request->get('social_facebook'),
-            'strategy' => $request->get('strategy')
+            'strategy'        => $request->get('strategy'),
             ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
+
         return redirect()->route('manager.business.show', compact('business'));
     }
 
     /**
-     * destroy Business
+     * destroy Business.
      *
-     * @param  Business            $business Business to destroy
-     * @return Response                      Redirect to Businesses index
+     * @param Business $business Business to destroy
+     *
+     * @return Response Redirect to Businesses index
      */
     public function destroy(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('destroy', $business)) {
             abort(403);
         }
-        
+
         //////////////////
         // FOR REFACOTR //
         //////////////////
@@ -231,6 +242,7 @@ class BusinessController extends Controller
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
+
         return redirect()->route('manager.business.index');
     }
 
@@ -239,19 +251,20 @@ class BusinessController extends Controller
     ////////////
 
     /**
-     * search elements in a business
+     * search elements in a business.
      *
-     * @param  Request $request Search criteria
-     * @return Response         View with results or redirect to default
+     * @param Request $request Search criteria
+     *
+     * @return Response View with results or redirect to default
      */
     public function postSearch()
     {
-        if (! session()->get('selected.business')) {
+        if (!session()->get('selected.business')) {
             return redirect()->route('user.directory.list');
         }
 
         $criteria = Request::input('criteria');
-        
+
         $search = new SearchEngine($criteria);
         $search->setBusinessScope([session()->get('selected.business')->id])->run();
 
@@ -263,9 +276,9 @@ class BusinessController extends Controller
     /////////////
 
     /**
-     * get business category list
+     * get business category list.
      *
-     * @return Array list of categories for combo
+     * @return array list of categories for combo
      */
     protected function listCategories()
     {
@@ -277,10 +290,11 @@ class BusinessController extends Controller
     }
 
     /**
-     * guess user (client) timezone
+     * guess user (client) timezone.
      *
-     * @param  string $timezone Default or fallback timezone
-     * @return string           Guessed or fallbacked timezone
+     * @param string $timezone Default or fallback timezone
+     *
+     * @return string Guessed or fallbacked timezone
      */
     protected function guessTimezone($timezone = null)
     {
@@ -290,7 +304,7 @@ class BusinessController extends Controller
 
         $location = GeoIP::getLocation();
 
-        $this->log->info(sprintf("Fallback timezone:%s Guessed timezone:%s", $timezone, $location['timezone']));
+        $this->log->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $location['timezone']));
 
         return in_array($location['timezone'], \DateTimeZone::listIdentifiers()) ? $location['timezone'] : $timezone;
     }

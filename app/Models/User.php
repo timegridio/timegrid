@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Contact;
 use App\Traits\HasRoles;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Auth\Authenticatable;
@@ -43,7 +42,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     ///////////////////
 
     /**
-     * owns Business
+     * owns Business.
      *
      * @return Illuminate\Database\Query Relationship Business belongs to User query
      */
@@ -53,7 +52,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * has Contacts
+     * has Contacts.
      *
      *      Contacts are the different profiles for different Businesses the User may have
      *
@@ -65,7 +64,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * holds Appointments through Contacts
+     * holds Appointments through Contacts.
      *
      * The Appointments are the Contact reservations held by this User
      *
@@ -81,12 +80,13 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     /////////////////////
 
     /**
-     * TODO: Rename to isOwnerOf()
+     * TODO: Rename to isOwnerOf().
      *
      * is Owner of Business
      *
-     * @param  int      $businessId Business to inquiry against
-     * @return boolean              The User is Owner of the inquired Business
+     * @param int $businessId Business to inquiry against
+     *
+     * @return bool The User is Owner of the inquired Business
      */
     public function isOwner($businessId)
     {
@@ -94,9 +94,9 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * has Business
+     * has Business.
      *
-     * @return boolean The User is Owner of at least one Business
+     * @return bool The User is Owner of at least one Business
      */
     public function hasBusiness()
     {
@@ -104,9 +104,9 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * has Contacts
+     * has Contacts.
      *
-     * @return boolean The User has at least one Contact profile set
+     * @return bool The User has at least one Contact profile set
      */
     public function hasContacts()
     {
@@ -118,7 +118,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     //////////////
 
     /**
-     * set Username
+     * set Username.
      *
      * @param string $username The desired username
      */
@@ -128,7 +128,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * set Name
+     * set Name.
      *
      * @param string $string The first name of the User
      */
@@ -138,10 +138,11 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * Get Subscribed Contact to Business
+     * Get Subscribed Contact to Business.
      *
-     * @param  Business $business Business of inquiry
-     * @return Contact            User profile Contact subscribed to the inquired Business
+     * @param Business $business Business of inquiry
+     *
+     * @return Contact User profile Contact subscribed to the inquired Business
      */
     public function getContactSubscribedTo($businessId)
     {
@@ -153,12 +154,13 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     /**
      * Get the first record matching the email or create it.
      *
-     * @param  array  $attributes
+     * @param array $attributes
+     *
      * @return self
      */
     public static function firstOrCreate(array $attributes)
     {
-        if (! is_null($instance = static::where('email', $attributes['email'])->first())) {
+        if (!is_null($instance = static::where('email', $attributes['email'])->first())) {
             return $instance;
         }
 
@@ -166,9 +168,9 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     }
 
     /**
-     * Link User to existing Contacts
+     * Link User to existing Contacts.
      *
-     * @return boolean   The User was linked to at least one Contact
+     * @return bool The User was linked to at least one Contact
      */
     public function linkToContacts()
     {
@@ -181,6 +183,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
         foreach ($contacts as $contact) {
             $contact->user()->associate($this)->save();
         }
+
         return true;
     }
 }

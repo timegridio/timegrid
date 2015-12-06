@@ -3,9 +3,7 @@
 namespace App\Events;
 
 use App\Models\Contact;
-use App\Events\Event;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class NewRegisteredContact extends Event
 {

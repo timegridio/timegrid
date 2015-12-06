@@ -2,11 +2,9 @@
 
 namespace App\Events;
 
-use App\Models\User;
-use App\Events\Event;
 use App\Models\Appointment;
+use App\Models\User;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 class NewBooking extends Event
 {

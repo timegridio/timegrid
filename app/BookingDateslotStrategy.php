@@ -2,13 +2,12 @@
 
 namespace App;
 
-use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
-use App\Models\Business;
-use App\Models\Appointment;
-use App\BookingStrategyInterface;
+use App\Models\User;
+use Carbon\Carbon;
 
 class BookingDateslotStrategy implements BookingStrategyInterface
 {
@@ -21,7 +20,7 @@ class BookingDateslotStrategy implements BookingStrategyInterface
         $comments = null
     ) {
         $appointment = new Appointment();
-        
+
         $appointment->doReserve();
         $appointment->setStartAtAttribute($datetime);
         $appointment->business()->associate($business);

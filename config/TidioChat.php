@@ -2,7 +2,7 @@
 
 /**
  * Configure your TidioChat key getting it from the admin panel of TidioChat:
- * https://www.tidiochat.com/panel#!content-integration
+ * https://www.tidiochat.com/panel#!content-integration.
  *
  * EXAMPLE:
  * <script src="//code.tidio.co/yx0hvipyomp12mpd7y0jbbji2mmr03iy.js"></script>
@@ -11,5 +11,5 @@
  */
 
 return [
-    'key' => env('TIDIO_KEY', '')
+    'key' => env('TIDIO_KEY', ''),
 ];

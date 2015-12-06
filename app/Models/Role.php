@@ -19,7 +19,8 @@ class Role extends EloquentModel
     /**
      * Grant the given permission to a role.
      *
-     * @param  Permission $permission
+     * @param Permission $permission
+     *
      * @return mixed
      */
     public function givePermissionTo(Permission $permission)

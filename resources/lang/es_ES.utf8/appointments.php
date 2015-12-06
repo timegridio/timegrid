@@ -3,24 +3,21 @@
  Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
 *************************************************************************/
 
-return array(
+return [
   //==================================== Translations ====================================//
-  'text' =>
-  array(
-    'minutes' => 'minutos',
-    'to' => 'a',
+  'text' => [
+    'minutes'  => 'minutos',
+    'to'       => 'a',
     'duration' => 'duración',
-  ),
+  ],
   //================================== Obsolete strings ==================================//
-  'alert' =>
-  array(
+  'alert' => [
     'annulated' => '¡Atención! Cita ANULADA',
-  ),
-  'status' =>
-  array(
+  ],
+  'status' => [
     'annulated' => 'Anulado',
     'confirmed' => 'Confirmado',
-    'reserved' => 'Reservado',
-    'served' => 'Servido',
-  ),
-);
+    'reserved'  => 'Reservado',
+    'served'    => 'Servido',
+  ],
+];

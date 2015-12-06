@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Service;
-use App\Models\Contact;
-use App\Models\Business;
 use App\BookingStrategy;
+use App\Models\Business;
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\User;
+use Carbon\Carbon;
 
 /*******************************************************************************
  * Concierge Service Layer
@@ -16,14 +16,14 @@ use App\BookingStrategy;
 class ConciergeService
 {
     /**
-     * [$vacancyService description]
+     * [$vacancyService description].
      *
      * @var [type]
      */
     private $vacancyService;
 
     /**
-     * [__construct description]
+     * [__construct description].
      *
      * @param VacancyService|null $vacancyService [description]
      */
@@ -48,11 +48,12 @@ class ConciergeService
     }
 
     /**
-     * is available for at least one reservation
+     * is available for at least one reservation.
      *
-     * @param  User     $user     Potential issuer of reservation
-     * @param  integer  $limit    Quantiy of days from "today"
-     * @return boolean            There exist vacancies to reserve
+     * @param User $user  Potential issuer of reservation
+     * @param int  $limit Quantiy of days from "today"
+     *
+     * @return bool There exist vacancies to reserve
      */
     public function isAvailable(User $user, $limit = 7)
     {
@@ -60,11 +61,12 @@ class ConciergeService
     }
 
     /**
-     * get Vacancies
+     * get Vacancies.
      *
-     * @param  User     $user     To present to User
-     * @param  integer  $limit    For a maximum of $limit days
-     * @return Array              Array of vacancies for each date
+     * @param User $user  To present to User
+     * @param int  $limit For a maximum of $limit days
+     *
+     * @return array Array of vacancies for each date
      */
     public function getVacancies(User $user, $starting = 'today', $limit = 7)
     {
@@ -105,10 +107,11 @@ class ConciergeService
 #    }
 
     /**
-     * get Unarchived Appointments For
+     * get Unarchived Appointments For.
      *
-     * @param  User   $user This User
-     * @return Illuminate\Support\Collection       Collection of Appointments
+     * @param User $user This User
+     *
+     * @return Illuminate\Support\Collection Collection of Appointments
      */
     public function getUnarchivedAppointmentsFor(User $user)
     {
@@ -116,15 +119,16 @@ class ConciergeService
     }
 
     /**
-     * make Reservation
+     * make Reservation.
      *
-     * @param  User     $issuer   Requested by User as issuer
-     * @param  Business $business For Business
-     * @param  Contact  $contact  On behalf of Contact
-     * @param  Service  $service  For Service
-     * @param  Carbon   $datetime     for Date and Time
-     * @param  string   $comments     optional issuer comments for the appointment
-     * @return Appointment|boolean             Generated Appointment or false
+     * @param User     $issuer   Requested by User as issuer
+     * @param Business $business For Business
+     * @param Contact  $contact  On behalf of Contact
+     * @param Service  $service  For Service
+     * @param Carbon   $datetime for Date and Time
+     * @param string   $comments optional issuer comments for the appointment
+     *
+     * @return Appointment|bool Generated Appointment or false
      */
     public function makeReservation(User $issuer, Business $business, Contact $contact, Service $service, Carbon $datetime, $comments = null)
     {
@@ -159,6 +163,7 @@ class ConciergeService
                 return $appointment;
             }
         }
+
         return false;
     }
 }

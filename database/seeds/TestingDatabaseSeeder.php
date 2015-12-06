@@ -1,18 +1,17 @@
 <?php
 
-use App\Models\User;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Vacancy;
-use App\Models\Business;
-use Illuminate\Database\Seeder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\QueryException;
+use Illuminate\Database\Seeder;
 
 class TestingDatabaseSeeder extends Seeder
 {
     /**
-     * Run the database seeds for a Demo Fixture
+     * Run the database seeds for a Demo Fixture.
      *
      * @return void
      */
@@ -45,7 +44,7 @@ class TestingDatabaseSeeder extends Seeder
         $serviceA = $this->publishServiceFor($business);
         $serviceB = $this->publishServiceFor($business);
         $serviceC = $this->publishServiceFor($business);
-        
+
         // Publish Vacancies for each Service for Business
         $this->publishVacanciesFor($business, $serviceA);
         $this->publishVacanciesFor($business, $serviceA);
@@ -123,7 +122,7 @@ class TestingDatabaseSeeder extends Seeder
         $vacancy = factory(Vacancy::class)->make();
         $vacancy->business()->associate($business);
         $vacancy->service()->associate($service);
-        
+
         try {
             $vacancy->save();
         } catch (QueryException $e) {
@@ -136,7 +135,7 @@ class TestingDatabaseSeeder extends Seeder
 
     private function generateDemoAddressBook(Business $business, $limit = 100)
     {
-        for ($i = 0; $i<=$limit; $i++) {
+        for ($i = 0; $i <= $limit; $i++) {
             $contact = $this->createDemoGuestUserContact();
             $this->putUserGuestContactOf($contact, $business);
         }

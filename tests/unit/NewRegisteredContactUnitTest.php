@@ -1,15 +1,15 @@
 <?php
 
-use App\Models\User;
-use App\Models\Contact;
 use App\Events\NewRegisteredContact;
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class NewRegisteredContactUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers App\Events\NewRegisteredContact::__construct
      * @covers App\Handlers\Events\LinkContactToExistingUser::handle
      * @test
@@ -22,10 +22,10 @@ class NewRegisteredContactUnitTest extends TestCase
 
         event(new NewRegisteredContact($contact));
 
-        $this->seeInDatabase('contacts', ['email' =>$user->email, 'user_id' => $user->id]);
+        $this->seeInDatabase('contacts', ['email' => $user->email, 'user_id' => $user->id]);
     }
 
-   /**
+    /**
      * @covers App\Events\NewRegisteredUser::broadcastOn
      * @test
      */

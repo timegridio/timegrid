@@ -32,13 +32,12 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 
 Route::group(
     [
-        'prefix'=> 'root',
-        'as' => 'root.',
-        'namespace' => 'Root',
-        'middleware' => ['auth', 'role:root']
+        'prefix'     => 'root',
+        'as'         => 'root.',
+        'namespace'  => 'Root',
+        'middleware' => ['auth', 'role:root'],
     ],
-    function ()
-    {
+    function () {
         Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
         Route::get('sudo/{userId}', ['as' => 'sudo', 'uses' => 'RootController@getSudo'])->where('userId', '\d*');
@@ -49,14 +48,14 @@ Route::group(
 // LANGUAGE SWITCHER //
 ///////////////////////
 
-Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
 //////////////////
 // REGULAR AUTH //
 //////////////////
 
 Route::controllers([
-    'auth' => 'Auth\AuthController',
+    'auth'     => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
 
@@ -65,8 +64,8 @@ Route::controllers([
 /////////////////
 
 Route::get('social/login/redirect/{provider}', [
-    'as' => 'social.login',
-    'uses' => 'Auth\OAuthController@redirectToProvider'
+    'as'   => 'social.login',
+    'uses' => 'Auth\OAuthController@redirectToProvider',
     ]);
 
 Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
@@ -85,12 +84,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     Route::get('agenda', ['as' => 'user.agenda', 'uses' => 'User\AgendaController@getIndex']);
     Route::get('businesses/register/{plan?}', [
-        'as' => 'manager.business.register',
-        'uses' => 'Manager\BusinessController@create'
+        'as'   => 'manager.business.register',
+        'uses' => 'Manager\BusinessController@create',
     ]);
     Route::post('businesses/register', [
-        'as' => 'manager.business.store',
-        'uses' => 'Manager\BusinessController@store'
+        'as'   => 'manager.business.store',
+        'uses' => 'Manager\BusinessController@store',
     ]);
     Route::get('businesses', ['as' => 'manager.business.index', 'uses' => 'Manager\BusinessController@index']);
     Route::get('directory', ['as' => 'user.directory.list', 'uses' => 'User\BusinessController@getList']);
@@ -148,16 +147,16 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
         Route::post('user/contact', ['as' => 'business.contact.store', 'uses' => 'BusinessContactController@store']);
         Route::get('user/contact/{contact}', ['as' => 'business.contact.show', 'uses' => 'BusinessContactController@show']);
         Route::get('user/contact/{contact}/edit', [
-            'as' => 'business.contact.edit',
-            'uses' => 'BusinessContactController@edit'
+            'as'   => 'business.contact.edit',
+            'uses' => 'BusinessContactController@edit',
         ]);
         Route::put('user/contact/{contact}', [
-            'as' => 'business.contact.update',
-            'uses' => 'BusinessContactController@update'
+            'as'   => 'business.contact.update',
+            'uses' => 'BusinessContactController@update',
         ]);
         Route::delete('user/contact/{contact}', [
-            'as' => 'business.contact.destroy',
-            'uses' => 'BusinessContactController@destroy'
+            'as'   => 'business.contact.destroy',
+            'uses' => 'BusinessContactController@destroy',
         ]);
     });
 
@@ -170,13 +169,13 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
         // BUSINESS PREFERENCES
 
         Route::get('preferences', [
-            'as' => 'manager.business.preferences',
-            'uses' => 'BusinessPreferencesController@getPreferences'
+            'as'   => 'manager.business.preferences',
+            'uses' => 'BusinessPreferencesController@getPreferences',
             ]);
 
         Route::post('preferences', [
-            'as' => 'manager.business.preferences',
-            'uses' => 'BusinessPreferencesController@postPreferences'
+            'as'   => 'manager.business.preferences',
+            'uses' => 'BusinessPreferencesController@postPreferences',
             ]);
 
         // AGENDA
@@ -197,78 +196,78 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
         // CONTACT IMPORT
 
         Route::get('contacts/import', [
-            'as' => 'manager.business.contact.import',
-            'uses' => 'BusinessContactImportExportController@getImport'
+            'as'   => 'manager.business.contact.import',
+            'uses' => 'BusinessContactImportExportController@getImport',
             ]);
-        
+
         Route::post('contacts/import', [
-            'as' => 'manager.business.contact.import',
-            'uses' => 'BusinessContactImportExportController@postImport'
+            'as'   => 'manager.business.contact.import',
+            'uses' => 'BusinessContactImportExportController@postImport',
             ]);
 
         // CONTACT RESOURCE
 
         Route::get('contact', ['as' => 'manager.business.contact.index', 'uses' => 'BusinessContactController@index']);
         Route::get('contact/create', [
-            'as' => 'manager.business.contact.create',
-            'uses' => 'BusinessContactController@create'
+            'as'   => 'manager.business.contact.create',
+            'uses' => 'BusinessContactController@create',
         ]);
         Route::post('contact', [
-            'as' => 'manager.business.contact.store',
-            'uses' => 'BusinessContactController@store'
+            'as'   => 'manager.business.contact.store',
+            'uses' => 'BusinessContactController@store',
         ]);
         Route::get('contact/{contact}', [
-            'as' => 'manager.business.contact.show',
-            'uses' => 'BusinessContactController@show'
+            'as'   => 'manager.business.contact.show',
+            'uses' => 'BusinessContactController@show',
         ]);
         Route::get('contact/{contact}/edit', [
-            'as' => 'manager.business.contact.edit',
-            'uses' => 'BusinessContactController@edit'
+            'as'   => 'manager.business.contact.edit',
+            'uses' => 'BusinessContactController@edit',
         ]);
         Route::put('contact/{contact}', [
-            'as' => 'manager.business.contact.update',
-            'uses' => 'BusinessContactController@update'
+            'as'   => 'manager.business.contact.update',
+            'uses' => 'BusinessContactController@update',
         ]);
         Route::delete('contact/{contact}', [
-            'as' => 'manager.business.contact.destroy',
-            'uses' => 'BusinessContactController@destroy'
+            'as'   => 'manager.business.contact.destroy',
+            'uses' => 'BusinessContactController@destroy',
         ]);
 
         // SERVICE
 
         Route::get('service', ['as' => 'manager.business.service.index', 'uses' => 'BusinessServiceController@index']);
         Route::get('service/create', [
-            'as' => 'manager.business.service.create',
-            'uses' => 'BusinessServiceController@create'
+            'as'   => 'manager.business.service.create',
+            'uses' => 'BusinessServiceController@create',
         ]);
         Route::post('service', [
-            'as' => 'manager.business.service.store',
-            'uses' => 'BusinessServiceController@store'
+            'as'   => 'manager.business.service.store',
+            'uses' => 'BusinessServiceController@store',
         ]);
         Route::get('service/{service}', [
-            'as' => 'manager.business.service.show',
-            'uses' => 'BusinessServiceController@show'
+            'as'   => 'manager.business.service.show',
+            'uses' => 'BusinessServiceController@show',
         ]);
         Route::get('service/{service}/edit', [
-            'as' => 'manager.business.service.edit',
-            'uses' => 'BusinessServiceController@edit'
+            'as'   => 'manager.business.service.edit',
+            'uses' => 'BusinessServiceController@edit',
         ]);
         Route::put('service/{service}', [
-            'as' => 'manager.business.service.update',
-            'uses' => 'BusinessServiceController@update'
+            'as'   => 'manager.business.service.update',
+            'uses' => 'BusinessServiceController@update',
         ]);
         Route::delete('service/{service}', [
-            'as' => 'manager.business.service.destroy',
-            'uses' => 'BusinessServiceController@destroy'
+            'as'   => 'manager.business.service.destroy',
+            'uses' => 'BusinessServiceController@destroy',
         ]);
-            
+
         Route::get('vacancy/create', [
-            'as' => 'manager.business.vacancy.create',
-            'uses' => 'BusinessVacancyController@create'
+            'as'   => 'manager.business.vacancy.create',
+            'uses' => 'BusinessVacancyController@create',
         ]);
         Route::post('vacancy', [
-            'as' => 'manager.business.vacancy.store',
-            'uses' => 'BusinessVacancyController@store'
+            'as'   => 'manager.business.vacancy.store',
+            'uses' => 'BusinessVacancyController@store',
         ]);
 
     });
@@ -281,6 +280,6 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 Route::get('/', 'WelcomeController@index');
 
 Route::get('{business}', [
-    'as' => 'guest.business.home',
-    'uses' => 'Guest\BusinessController@getHome'
+    'as'   => 'guest.business.home',
+    'uses' => 'Guest\BusinessController@getHome',
 ])->where('business', '[^_]+.*');

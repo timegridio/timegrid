@@ -1,6 +1,6 @@
 <?php
 
-return array(
+return [
 
     /*
     |--------------------------------------------------------------------------
@@ -16,11 +16,10 @@ return array(
     | No error or exception is thrown when a folder does not exist.
     |
     */
-    'folders' => array(
+    'folders' => [
         '%BASE/resources/views',
         '%APP/Http/Controllers',
-    ),
-
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -30,10 +29,9 @@ return array(
     | These lang files will not be written
     |
     */
-    'ignore_lang_files' => array(
+    'ignore_lang_files' => [
         'validation',
-    ),
-
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -48,7 +46,6 @@ return array(
     */
     'lang_folder_path' => null,
 
-
     /*
     |--------------------------------------------------------------------------
     | Methods or functions to search for
@@ -58,35 +55,34 @@ return array(
     | Several regular expressions can be used for a single method or function.
     |
     */
-    'trans_methods' => array(
-        'trans' => array(
+    'trans_methods' => [
+        'trans' => [
             '@trans\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@trans\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        'Lang::Get' => array(
+        ],
+        'Lang::Get' => [
             '@Lang::Get\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@Lang::Get\(\s*(".*")\s*(,.*)*\)@U',
             '@Lang::get\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@Lang::get\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        'trans_choice' => array(
+        ],
+        'trans_choice' => [
             '@trans_choice\(\s*(\'.*\')\s*,.*\)@U',
             '@trans_choice\(\s*(".*")\s*,.*\)@U',
-        ),
-        'Lang::choice' => array(
+        ],
+        'Lang::choice' => [
             '@Lang::choice\(\s*(\'.*\')\s*,.*\)@U',
             '@Lang::choice\(\s*(".*")\s*,.*\)@U',
-        ),
-        '@lang' => array(
+        ],
+        '@lang' => [
             '@\@lang\(\s*(\'.*\')\s*(,.*)*\)@U',
             '@\@lang\(\s*(".*")\s*(,.*)*\)@U',
-        ),
-        '@choice' => array(
+        ],
+        '@choice' => [
             '@\@choice\(\s*(\'.*\')\s*,.*\)@U',
             '@\@choice\(\s*(".*")\s*,.*\)@U',
-        ),
-    ),
-
+        ],
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -112,11 +108,10 @@ return array(
     |   translation files.
     |
     */
-    'never_obsolete_keys' => array(
-        'dynamic' ,
-        'fields' ,
-    ),
-
+    'never_obsolete_keys' => [
+        'dynamic',
+        'fields',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -126,6 +121,6 @@ return array(
     | when using option editor, package will use this command to open your files
     |
     */
-    'editor_command_line' => '/Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl'
+    'editor_command_line' => '/Applications/Sublime\\ Text.app/Contents/SharedSupport/bin/subl',
 
-);
+];
