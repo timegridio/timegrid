@@ -42,10 +42,9 @@ class BusinessContactController extends Controller
 
             $business->contacts()->attach($newContact);
             $business->save();
-            # $business = $business->fresh();
 
             Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
-            return redirect()->route('user.business.contact.show', [$business, $existingContact]);
+            return redirect()->route('user.business.contact.show', [$business, $newContact]);
         }
 
         $contact = new Contact; // For Form Model Binding
