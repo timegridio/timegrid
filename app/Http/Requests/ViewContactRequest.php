@@ -13,7 +13,7 @@ class ViewContactRequest extends Request
      */
     public function authorize()
     {
-        return auth()->user()->contacts->contains($this->contact);
+        return true;
     }
 
     /**

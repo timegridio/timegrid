@@ -25,6 +25,19 @@ class NewRegisteredUserUnitTest extends TestCase
         $this->seeInDatabase('contacts', ['email' => $user->email, 'user_id' => $user->id]);
     }
 
+   /**
+     * @covers App\Events\NewRegisteredUser::broadcastOn
+     * @test
+     */
+    public function it_verifies_broadcasts_on()
+    {
+        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+
+        $event = new NewRegisteredUser($user);
+
+        $this->assertEquals([], $event->broadcastOn());
+    }
+
     /////////////
     // HELPERS //
     /////////////
