@@ -79,6 +79,40 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->assertEquals(true, $existingContact->businesses->contains($this->business));
     }
 
+   /**
+     * @covers   App\Http\Controllers\User\BusinessContactController::create
+     * @covers   App\Http\Controllers\User\BusinessContactController::store
+     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @test
+     */
+    public function it_creates_a_contact_subscription_copying_existing_contact()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+        
+        // I have a registered contact in Business A (other business)
+        $otherBusiness = factory(Business::class)->create();
+        $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $existingContact->user()->associate($this->issuer);
+        $otherBusiness->contacts()->save($existingContact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+
+        $beforeCount = $this->issuer->contacts->count();
+
+        // And I visit the business home to get subscribed
+        $this->visit(route("user.businesses.home", $this->business))
+             ->click('Subscribe');
+
+        $afterCount = $this->issuer->fresh()->contacts->count();
+
+        // Then I am not requested for form filling and get my contact copied from existing
+        $this->assertResponseOk();
+        $this->see('Your profile was attached to an existing one')
+             ->see("{$existingContact->firstname} {$existingContact->lastname}");
+        $this->assertEquals($afterCount, $beforeCount + 1);
+    }
 
     /**
      * arrange fixture
