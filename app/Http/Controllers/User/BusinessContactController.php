@@ -120,7 +120,7 @@ class BusinessContactController extends Controller
         /////////////////////////
         // GATE AUTH GOES HERE //
         /////////////////////////
-        $this->authorize('manage', $contact);
+        # $this->authorize('manage', $contact);
 
         # $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
 
