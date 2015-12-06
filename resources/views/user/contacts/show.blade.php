@@ -83,10 +83,12 @@
                                         <td>{{ (trim($contact->mobile) != '') ? $contact->mobile : '' }}</td>
                                     </tr>
                                     @endif
+                                    {{--
                                     <tr>
                                         <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
                                         <td>{{ $memberSince->diffForHumans() }}</td>
-                                    </tr>                                         
+                                    </tr>
+                                    --}}
                                 </tbody>
                             </table>
                         </div>

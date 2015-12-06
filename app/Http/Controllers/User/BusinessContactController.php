@@ -121,9 +121,9 @@ class BusinessContactController extends Controller
         /////////////////////////
         $this->authorize('manage', $contact);
 
-        $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
+        # $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
 
-        return view('user.contacts.show', compact('business', 'contact', 'memberSince'));
+        return view('user.contacts.show', compact('business', 'contact'));
     }
 
     /**
