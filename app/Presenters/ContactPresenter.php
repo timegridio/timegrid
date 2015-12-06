@@ -3,14 +3,12 @@
 namespace App\Presenters;
 
 use App\Models\Contact;
+use McCool\LaravelAutoPresenter\BasePresenter;
 
-/**
- * WIP TODO: SWITCHING PRESENTER PACKAGE
- */
-
-class ContactPresenter extends Presenter
+class ContactPresenter extends BasePresenter
 {
-    /**
- * ToDo
- */
+    public function __construct(Contact $resource)
+    {
+        $this->wrappedObject = $resource;
+    }
 }

@@ -3,11 +3,11 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-#use App\Presenters\AppointmentPresenter;
-#use Robbo\Presenter\PresentableInterface;
+use App\Presenters\AppointmentPresenter;
+use McCool\LaravelAutoPresenter\HasPresenter;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
-class Appointment extends EloquentModel implements PresentableInterface
+class Appointment extends EloquentModel implements HasPresenter
 {
     /**
      * The attributes that are mass assignable.
@@ -47,15 +47,19 @@ class Appointment extends EloquentModel implements PresentableInterface
     const PROFILE_USER = 'user';
     const PROFILE_MANAGER = 'manager';
 
-#    /**
-#     * Return a created presenter.
-#     *
-#     * @return Robbo\Presenter\Presenter
-#     */
-#    public function getPresenter()
-#    {
-#        return new AppointmentPresenter($this);
-#    }
+    ///////////////
+    // PRESENTER //
+    ///////////////
+
+    /**
+     * get presenter
+     * 
+     * @return AppointmentPresenter    Presenter class
+     */
+    public function getPresenterClass()
+    {
+        return AppointmentPresenter::class;
+    }
 
     /**
      * Save the model to the database.
