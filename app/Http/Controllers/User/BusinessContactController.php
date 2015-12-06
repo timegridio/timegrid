@@ -37,7 +37,7 @@ class BusinessContactController extends Controller
             $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
             
             $newContact = $existingContact->replicate();
-            $newContact->businesses()->dettach();
+            $newContact->businesses()->detach();
             $newContact->save();
 
             $business->contacts()->attach($newContact);
