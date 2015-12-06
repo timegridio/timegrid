@@ -14,7 +14,6 @@ class UserBusinessContactControllerUnitTest extends TestCase
     use DatabaseTransactions;
 
    /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::index
      * @covers   App\Http\Controllers\User\BusinessContactController::create
      * @covers   App\Http\Controllers\User\BusinessContactController::store
      * @covers   App\Http\Controllers\User\BusinessContactController::show
@@ -46,7 +45,6 @@ class UserBusinessContactControllerUnitTest extends TestCase
     }
 
    /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::index
      * @covers   App\Http\Controllers\User\BusinessContactController::create
      * @covers   App\Http\Controllers\User\BusinessContactController::store
      * @covers   App\Http\Controllers\User\BusinessContactController::show
