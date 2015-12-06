@@ -21,6 +21,7 @@
 		"laravel/framework": "5.1.*",
 		"laravel/socialite": "^2.0",
 		"laravelcollective/html": "~5.0",
+		"mccool/laravel-auto-presenter": "^4.0",
 		"patricktalmadge/bootstrapper": "~5",
 		"pid/speakingurl": "^0.11.0",
 		"propaganistas/laravel-phone": "~2.0",
