@@ -30,17 +30,20 @@ Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 // ROOT CONTEXT //
 //////////////////
 
-Route::group([
-    'prefix'=> 'root',
-    'as' => 'root.',
-    'namespace' => 'Root',
-    'middleware' => ['auth', 'role:root']
+Route::group(
+    [
+        'prefix'=> 'root',
+        'as' => 'root.',
+        'namespace' => 'Root',
+        'middleware' => ['auth', 'role:root']
     ],
-    function () {
+    function ()
+    {
         Route::get('dashboard', ['as' => 'dashboard', 'uses' => 'RootController@getIndex']);
 
         Route::get('sudo/{userId}', ['as' => 'sudo', 'uses' => 'RootController@getSudo'])->where('userId', '\d*');
-    });
+    }
+);
 
 ///////////////////////
 // LANGUAGE SWITCHER //
