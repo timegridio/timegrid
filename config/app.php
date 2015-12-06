@@ -158,6 +158,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
 
         #Kodeine\Acl\AclServiceProvider::class,
+        McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
 
         Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,

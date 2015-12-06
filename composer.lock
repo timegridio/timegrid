@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "189e451a4b39de72533d05c69767153e",
-    "content-hash": "080154356a126c7848136ced5f74f504",
+    "hash": "a6aeb71e1bffa21bd128cc8f93de729e",
+    "content-hash": "c2727605efe6432e54f8a023ff0c7bb4",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1895,6 +1895,68 @@
                 "maxmind"
             ],
             "time": "2015-03-13 22:35:13"
+        },
+        {
+            "name": "mccool/laravel-auto-presenter",
+            "version": "4.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-auto-presenter/laravel-auto-presenter.git",
+                "reference": "1e3efb5a0026eea6c80b2942515270992e53e837"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-auto-presenter/laravel-auto-presenter/zipball/1e3efb5a0026eea6c80b2942515270992e53e837",
+                "reference": "1e3efb5a0026eea6c80b2942515270992e53e837",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.1.*|5.2.*",
+                "illuminate/contracts": "5.1.*|5.2.*",
+                "illuminate/events": "5.1.*|5.2.*",
+                "illuminate/pagination": "5.1.*|5.2.*",
+                "illuminate/support": "5.1.*|5.2.*",
+                "illuminate/view": "5.1.*|5.2.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "graham-campbell/testbench": "^3.1",
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8|^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "McCool\\LaravelAutoPresenter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shawn McCool",
+                    "email": "shawn@heybigname.com"
+                },
+                {
+                    "name": "Graham Campbell",
+                    "email": "graham@alt-three.com"
+                }
+            ],
+            "description": "A system for auto-decorating models with presenter objects.",
+            "keywords": [
+                "eloquent",
+                "laravel",
+                "lpm",
+                "presenter"
+            ],
+            "time": "2015-11-14 11:46:57"
         },
         {
             "name": "monolog/monolog",
