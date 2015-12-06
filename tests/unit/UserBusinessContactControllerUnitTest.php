@@ -55,6 +55,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
         $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $this->business->contacts()->save($existingContact);
 
         $contact = factory(Contact::class)->make(['firstname' => 'John2', 'lastname' => 'Doe2']);
 
@@ -73,7 +74,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
 
         // Then I see the contact registered
         $this->assertResponseOk();
-        $this->see('Your profile was attached to an existing one')
+        $this->see('This profile was already registered')
              ->see("{$existingContact->firstname} {$existingContact->lastname}");
         $this->assertEquals(true, $existingContact->businesses->contains($this->business));
     }
