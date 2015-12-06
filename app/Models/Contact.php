@@ -5,7 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Business;
-use App\Presenters\ContactPresenter;
+#use App\Presenters\ContactPresenter;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
 class Contact extends EloquentModel
@@ -156,15 +156,15 @@ class Contact extends EloquentModel
     // Presenter //
     ///////////////
 
-    /**
-     * Return a created presenter.
-     *
-     * @return Robbo\Presenter\Presenter
-     */
-    public function getPresenter()
-    {
-        return new ContactPresenter($this);
-    }
+#    /**
+#     * Return a created presenter.
+#     *
+#     * @return Robbo\Presenter\Presenter
+#     */
+#    public function getPresenter()
+#    {
+#        return new ContactPresenter($this);
+#    }
 
     //////////////
     // Mutators //

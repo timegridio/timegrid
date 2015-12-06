@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\Preferenceable;
 use Fenos\Notifynder\Notifable;
-use App\Presenters\BusinessPresenter;
+#use App\Presenters\BusinessPresenter;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
@@ -159,15 +159,15 @@ class Business extends EloquentModel
     // Presenter //
     ///////////////
 
-    /**
-     * Return a created presenter.
-     *
-     * @return Robbo\Presenter\Presenter
-     */
-    public function getPresenter()
-    {
-        return new BusinessPresenter($this);
-    }
+#    /**
+#     * Return a created presenter.
+#     *
+#     * @return Robbo\Presenter\Presenter
+#     */
+#    public function getPresenter()
+#    {
+#        return new BusinessPresenter($this);
+#    }
 
     ///////////////
     // Accessors //
