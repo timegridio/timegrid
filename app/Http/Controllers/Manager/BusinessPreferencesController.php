@@ -87,8 +87,8 @@ class BusinessPreferencesController extends Controller
                 $business->id,
                 $key,
                 $value,
-                $parameters[$key]['type'])
-            );
+                $parameters[$key]['type']
+            ));
 
             $business->pref($key, $value, $parameters[$key]['type']);
         }
