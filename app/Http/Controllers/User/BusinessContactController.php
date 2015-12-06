@@ -42,7 +42,7 @@ class BusinessContactController extends Controller
             if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
                 $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
                 $newContact = Contact::create($existingContact->toArray());
-                $newContact->user()->associate(auth()->user->id);
+                $newContact->user()->associate(auth()->user()->id);
                 $newContact->businesses()->detach();
                 $newContact->save();
 
