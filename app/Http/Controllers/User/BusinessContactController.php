@@ -36,7 +36,7 @@ class BusinessContactController extends Controller
         if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
             $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
             
-            $newContact = $existingContact->clone();
+            $newContact = $existingContact->replicate();
             $newContact->businesses()->dettach();
             $newContact->save();
 
