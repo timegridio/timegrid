@@ -23,7 +23,7 @@ Small and medium scale businesses wish to provide online service booking for the
 
 Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Like a **CRM**, but *Simple*, *Useful*, and *Fast*.
 
-It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
+Built with the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework for [**PHP**](http://php.net/).
 
 ## Screenshots
 
@@ -35,7 +35,7 @@ It is made under the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framew
 
 Want action? Try the *beta* [live demo](http://demo.timegrid.io/)
 
-> **Hint:** To know which commit is installed in *demo* you can hover the cursor on the leftmost *timegrid.io* label in the footer of the app.
+> **Hint:** To know which commit is in *demo*, you can hover the cursor on the leftmost label of the app footer.
 
 > Now... Hold on tight! It's a bumpy ride for all of us!
 
@@ -96,11 +96,9 @@ If you want to stand on the latest beta-stable version:
 
 -----
 <a name="step3"></a>
-### Step 3: Create database
+### Step 3: Create the database
 
-If you finished first three steps, now you can create database on your database server(MySQL). You must create database
-with utf-8 collation(uft8_general_ci), to install and application work perfectly.
-After that, copy .env.example and rename it as .env and put connection and change default database connection name, only database connection, put name database, database username and password.
+Once you finished the first three steps, you can create the *MySQL* database server. You must create the database with `utf-8` collation (`utf8_general_ci`), for the application to work.
 
 -----
 <a name="step4"></a>
@@ -109,6 +107,8 @@ After that, copy .env.example and rename it as .env and put connection and chang
 **Copy** the **.env.example** file to **.env**
 
     cp .env.example .env
+
+**Edit** the `.env` file and set the database configuration among the other settings.
 
 Set the application key
 
@@ -171,7 +171,7 @@ Now you have two demo credentials to log in and play around.
 
 I'd like to [hear your feedback](https://timegrid.slack.com/messages/general/).
 
-Let me know if you are facing any inconvenients to install, as I'm working on bringing a more comprehensive installation guide assessing common problems.
+Let me know if you face any inconvenient to install. I'm working on bringing a more comprehensive installation guide assessing common problems.
 
 ## Contributing
 
@@ -181,7 +181,7 @@ Thank you for considering contributing to Timegrid.
 
 If you are willing to do your first time contribution, don't worry, you are welcome here.
 
-While there is no strict guideline right now, you are welcome to bring your ideas to enhance the code as well as the process.
+While there is no strict guideline right now, you are welcome to bring your ideas and pull requests.
 
 As a rule of the thumb, keep **PSR-2** and **tests** in mind.
 
