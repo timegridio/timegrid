@@ -75,6 +75,7 @@ class UserBusinessContactControllerUnitTest extends TestCase
         $this->assertResponseOk();
         $this->see('Your profile was attached to an existing one')
              ->see("{$existingContact->firstname} {$existingContact->lastname}");
+        $this->assertEquals(true, $existingContact->businesses->contains($this->business));
     }
 
 

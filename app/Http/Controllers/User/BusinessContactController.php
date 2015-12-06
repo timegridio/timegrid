@@ -30,7 +30,9 @@ class BusinessContactController extends Controller
         // FOR REFACTOR //
         //////////////////
 
-        $existingContact = Contact::where(['email' => auth()->user()->email])->get()->first();
+        $existingContact = $this->findExistingContacts(auth()->user()->email)->first();
+
+        # dd($existingContact);
 
         if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
             $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
@@ -70,11 +72,7 @@ class BusinessContactController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $existingContacts = Contact::whereNull('user_id')
-            ->whereNotNull('email')
-            ->where('email', '<>', '')
-            ->where(['email' => $request->input('email')])
-            ->get();
+        $existingContacts = $this->findExistingContacts($request->input('email'));
 
         foreach ($existingContacts as $existingContact) {
             if ($existingContact->isSubscribedTo($business)) {
@@ -196,5 +194,18 @@ class BusinessContactController extends Controller
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return redirect()->route('manager.business.show', $business);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+    
+    protected function findExistingContacts($email)
+    {
+        return Contact::whereNull('user_id')
+            ->whereNotNull('email')
+            ->where('email', '<>', '')
+            ->where(['email' => $email])
+            ->get();
     }
 }
