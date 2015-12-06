@@ -13,7 +13,8 @@ class AlterContactRequest extends Request
      */
     public function authorize()
     {
-        return $this->contact === null || auth()->user()->contacts->contains($this->contact);
+        return true;
+        #return $this->contact === null || auth()->user()->contacts->contains($this->contact);
     }
 
     /**

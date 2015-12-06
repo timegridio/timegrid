@@ -58,6 +58,10 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
 
+        /////////////////////////
+        // AUTH GATE GOES HERE //
+        /////////////////////////
+
         $businessName = $business->name;
         Notifynder::category('user.subscribedBusiness')
                    ->from('App\Models\User', auth()->user()->id)
@@ -81,6 +85,7 @@ class BusinessContactController extends Controller
             }
             $business->contacts()->attach($existingContact);
             $business->save();
+                
             Flash::warning(trans('user.contacts.msg.store.warning.showing_existing_contact'));
             return redirect()->route('user.business.contact.show', [$business, $existingContact]);
         }
@@ -109,6 +114,10 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
         $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
+
+        /////////////////////////
+        // GATE AUTH GOES HERE //
+        /////////////////////////
 
         $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
 
