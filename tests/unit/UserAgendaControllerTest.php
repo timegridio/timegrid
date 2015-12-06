@@ -1,10 +1,10 @@
 <?php
 
-use App\Models\User;
+use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
-use App\Models\Business;
-use App\Models\Appointment;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserAgendaControllerTest extends TestCase
@@ -12,7 +12,7 @@ class UserAgendaControllerTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * user
+     * user.
      *
      * @var User user
      */
@@ -53,7 +53,7 @@ class UserAgendaControllerTest extends TestCase
         $contact->user()->associate($this->user);
         $contact->save();
         $business->contacts()->save($contact);
-        
+
         $service = factory(Service::class)->make();
         $business->services()->save($service);
 
@@ -67,7 +67,7 @@ class UserAgendaControllerTest extends TestCase
 
         // And I go to favourites (subscriptions) section
         $this->visit('/')->click('My Reservations');
-        
+
         // Then I should see my reservations list
         // and the reservation details
         $this->see('Reserved')
@@ -91,7 +91,7 @@ class UserAgendaControllerTest extends TestCase
         $contact->user()->associate($this->user);
         $contact->save();
         $business->contacts()->save($contact);
-        
+
         $service = factory(Service::class)->make();
         $business->services()->save($service);
 
@@ -105,7 +105,7 @@ class UserAgendaControllerTest extends TestCase
 
         // And I go to favourites (subscriptions) section
         $this->visit('/')->click('My Reservations');
-        
+
         // Then I should see my reservations list
         // and the reservation details
         $this->see('Annulated')
@@ -129,14 +129,14 @@ class UserAgendaControllerTest extends TestCase
         $contact->user()->associate($this->user);
         $contact->save();
         $business->contacts()->save($contact);
-        
+
         $service = factory(Service::class)->make();
         $business->services()->save($service);
 
         // And I have a RESERVED appointment
         $appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_ANNULATED,
-            'start_at' => Carbon::now()->subDays(50)
+            'status'   => Appointment::STATUS_ANNULATED,
+            'start_at' => Carbon::now()->subDays(50),
             ]);
         $appointment->issuer()->associate($this->user);
         $appointment->contact()->associate($contact);
@@ -146,7 +146,7 @@ class UserAgendaControllerTest extends TestCase
 
         // And I go to favourites (subscriptions) section
         $this->visit('/')->click('My Reservations');
-        
+
         // Then I should see my reservations list
         // and the reservation details
         $this->see('You have no ongoing reservations')
@@ -171,14 +171,14 @@ class UserAgendaControllerTest extends TestCase
         $contact->user()->associate($this->user);
         $contact->save();
         $business->contacts()->save($contact);
-        
+
         $service = factory(Service::class)->make();
         $business->services()->save($service);
 
         // And I have a RESERVED appointment
         $appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->subDays(50)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->subDays(50),
             ]);
         $appointment->issuer()->associate($this->user);
         $appointment->contact()->associate($contact);
@@ -188,7 +188,7 @@ class UserAgendaControllerTest extends TestCase
 
         // And I go to favourites (subscriptions) section
         $this->visit('/')->click('My Reservations');
-        
+
         // Then I should see my reservations list
         // and the reservation details
         $this->see('Reserved')

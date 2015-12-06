@@ -8,7 +8,7 @@ class ManagerTest extends Selenium
     use Laravel;
 
     /**
-     * set Language And Login
+     * set Language And Login.
      */
     protected function setLanguageAndLogin()
     {

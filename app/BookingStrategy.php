@@ -2,13 +2,11 @@
 
 namespace App;
 
-use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
-use App\Models\Business;
-use App\BookingTimeslotStrategy;
-use App\BookingDateslotStrategy;
+use App\Models\User;
+use Carbon\Carbon;
 
 class BookingStrategy
 {

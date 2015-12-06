@@ -16,7 +16,7 @@ class WelcomeControllerTest extends TestCase
              ->see('Login');
     }
 
-   /** @test */
+    /** @test */
     public function it_presents_the_login_page()
     {
         // Given I am a not authenticated user (guest)
@@ -71,14 +71,15 @@ class WelcomeControllerTest extends TestCase
              ->see('Register');       // Submit button
     }
 
-   /**
-    * Regresion for https://github.com/alariva/timegrid/issues/39
-    * @test
-    */
+    /**
+     * Regresion for https://github.com/alariva/timegrid/issues/39.
+     *
+     * @test
+     */
     public function it_fails_to_submit_an_invalid_token_post()
     {
         // Given I am a not authenticated user (guest)
-        
+
         // And I visit the homepage
         $this->visit('/auth/login');
 

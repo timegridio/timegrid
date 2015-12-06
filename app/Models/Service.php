@@ -21,7 +21,8 @@ class Service extends EloquentModel
     protected $guarded = ['id', 'slug'];
 
     /**
-     * belongs to Business
+     * belongs to Business.
+     *
      * @return Illuminate\Database\Query Relationship Service belongs to Business query
      */
     public function business()
@@ -30,14 +31,15 @@ class Service extends EloquentModel
     }
 
     /**
-     * TODO: Check slug setting can be moved to a more proper place
+     * TODO: Check slug setting can be moved to a more proper place.
      *
      * Save the model to the database.
      *
-     * @param  array  $options
+     * @param array $options
+     *
      * @return bool
      */
-    public function save(array $options = array())
+    public function save(array $options = [])
     {
         $this->attributes['slug'] = str_slug($this->attributes['name']);
 
@@ -49,9 +51,11 @@ class Service extends EloquentModel
     ////////////
 
     /**
-     * Scope Slug
-     * @param  Illuminate\Database\Query $query
-     * @param  string $slug  Slug of the desired Service
+     * Scope Slug.
+     *
+     * @param Illuminate\Database\Query $query
+     * @param string                    $slug  Slug of the desired Service
+     *
      * @return Illuminate\Database\Query Scoped query
      */
     public function scopeSlug($query, $slug)

@@ -2,26 +2,27 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Gate;
-use App\Models\Contact;
-use App\Models\Business;
-use Laracasts\Flash\Flash;
 use App\Events\NewRegisteredContact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
+use App\Models\Business;
+use App\Models\Contact;
+use Gate;
+use Laracasts\Flash\Flash;
 
 class BusinessContactController extends Controller
 {
     /**
-     * index of Contacts for Business
+     * index of Contacts for Business.
      *
-     * @param  Business $business Business that holds the Contacts
-     * @return Response           Rendered view of Contact addressbook
+     * @param Business $business Business that holds the Contacts
+     *
+     * @return Response Rendered view of Contact addressbook
      */
     public function index(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -31,36 +32,38 @@ class BusinessContactController extends Controller
     }
 
     /**
-     * create Contact
+     * create Contact.
      *
-     * @param  Business           $business Business that will hold the Contact
-     * @param  ContactFormRequest $request  Contact form Request
-     * @return Response                     Rendered form for Contact creation
+     * @param Business           $business Business that will hold the Contact
+     * @param ContactFormRequest $request  Contact form Request
+     *
+     * @return Response Rendered form for Contact creation
      */
     public function create(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
         }
-        
-        $contact = new Contact; // For Form Model Binding
+
+        $contact = new Contact(); // For Form Model Binding
         return view('manager.contacts.create', compact('business', 'contact'));
     }
 
     /**
-     * store Contact
+     * store Contact.
      *
-     * @param  Business           $business Business that will hold the Contact
-     * @param  ContactFormRequest $request  Contact form Request
-     * @return Response                     Rendered view or Redirect
+     * @param Business           $business Business that will hold the Contact
+     * @param ContactFormRequest $request  Contact form Request
+     *
+     * @return Response Rendered view or Redirect
      */
     public function store(Business $business, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -72,13 +75,14 @@ class BusinessContactController extends Controller
 
         if (trim($request->input('nin'))) {
             $existingContacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
-            
+
             foreach ($existingContacts as $existingContact) {
                 $this->log->info("  [ADVICE] Found existing contactId:{$existingContact->id}");
-                
+
                 if ($existingContact->isSubscribedTo($business)) {
-                    $this->log->info("  [ADVICE] Existing contact is already linked to business");
+                    $this->log->info('  [ADVICE] Existing contact is already linked to business');
                     Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+
                     return redirect()->route('manager.business.contact.show', [$business, $existingContact]);
                 }
             }
@@ -96,26 +100,28 @@ class BusinessContactController extends Controller
         event(new NewRegisteredContact($contact));
 
         Flash::success(trans('manager.contacts.msg.store.success'));
+
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
     /**
-     * show Contact
+     * show Contact.
      *
-     * @param  Business           $business Business holding the Contact
-     * @param  Contact            $contact  Contact to show
-     * @param  ContactFormRequest $request  Contact form Request
-     * @return Response                     Rendered view of Contact show
+     * @param Business           $business Business holding the Contact
+     * @param Contact            $contact  Contact to show
+     * @param ContactFormRequest $request  Contact form Request
+     *
+     * @return Response Rendered view of Contact show
      */
     public function show(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
         }
-        
+
         // Grab contact with pivot
         $contact = $business->contacts()->find($contact->id);
 
@@ -123,16 +129,17 @@ class BusinessContactController extends Controller
     }
 
     /**
-     * edit Contact
+     * edit Contact.
      *
-     * @param  Business           $business Business holding the Contact
-     * @param  Contact            $contact  Contact to edit
-     * @return Response                     Rendered view of edit form
+     * @param Business $business Business holding the Contact
+     * @param Contact  $contact  Contact to edit
+     *
+     * @return Response Rendered view of edit form
      */
     public function edit(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -145,17 +152,18 @@ class BusinessContactController extends Controller
     }
 
     /**
-     * update Contact
+     * update Contact.
      *
-     * @param  Business           $business Business holding the Contact
-     * @param  Contact            $contact  Contact to update
-     * @param  ContactFormRequest $request  Contact form Request
-     * @return Response                     Redirect to updated Contact show
+     * @param Business           $business Business holding the Contact
+     * @param Contact            $contact  Contact to update
+     * @param ContactFormRequest $request  Contact form Request
+     *
+     * @return Response Redirect to updated Contact show
      */
     public function update(Business $business, Contact $contact, ContactFormRequest $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -183,20 +191,22 @@ class BusinessContactController extends Controller
         // TODO: If email was updated, user linking should be triggered (if contact is not owned)
 
         Flash::success(trans('manager.contacts.msg.update.success'));
+
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
     /**
-     * destroy Contact
+     * destroy Contact.
      *
-     * @param  Business           $business Business holding the Contact
-     * @param  Contact            $contact  Contact to destroy
-     * @return Response                     Redirect back to Business dashboard
+     * @param Business $business Business holding the Contact
+     * @param Contact  $contact  Contact to destroy
+     *
+     * @return Response Redirect back to Business dashboard
      */
     public function destroy(Business $business, Contact $contact)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s contactId:%s", $business->id, $contact->id));
+        $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
         if (Gate::denies('manageContacts', $business)) {
             abort(403);
@@ -209,6 +219,7 @@ class BusinessContactController extends Controller
         $contact->businesses()->detach($business->id);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
+
         return redirect()->route('manager.business.contact.index', $business);
     }
 }

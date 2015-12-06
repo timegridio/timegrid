@@ -1,12 +1,11 @@
 <?php
 
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Session;
 
 class LanguageSwitchTest extends TestCase
 {
     /**
-     * Test switch language to English
+     * Test switch language to English.
+     *
      * @covers \App\Http\Controllers\LanguageController::switchLang
      */
     public function testSwitchLanguageToEnglish()
@@ -20,7 +19,8 @@ class LanguageSwitchTest extends TestCase
     }
 
     /**
-     * Test switch language to Spanish Spain
+     * Test switch language to Spanish Spain.
+     *
      * @covers \App\Http\Controllers\LanguageController::switchLang
      */
     public function testSwitchLanguageToSpanishSpain()

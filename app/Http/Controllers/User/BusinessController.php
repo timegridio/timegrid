@@ -2,27 +2,26 @@
 
 namespace App\Http\Controllers\User;
 
-use Flash;
-use Carbon\Carbon;
-use App\Models\Business;
-use App\Services\VacancyService;
-use App\Services\ConciergeService;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Services\ConciergeService;
+use App\Services\VacancyService;
 use Fenos\Notifynder\Facades\Notifynder;
 
 /**
  * FOR REFACTOR:
  *     - Access Notifynder with constructor dependency injection
  *     - Access Auth with constructor dependency injection
- *     - Access Business with dependency injection of a BusinessRepository
+ *     - Access Business with dependency injection of a BusinessRepository.
  */
 class BusinessController extends Controller
 {
     /**
-     * get Home
+     * get Home.
      *
-     * @param  Business $business Business to display
-     * @return Response           Rendered view for desired Business
+     * @param Business $business Business to display
+     *
+     * @return Response Rendered view for desired Business
      */
     public function getHome(Business $business)
     {
@@ -48,7 +47,7 @@ class BusinessController extends Controller
     }
 
     /**
-     * get List
+     * get List.
      *
      * @return Response Rendered view of all existing Businesses
      */
@@ -57,6 +56,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
 
         $businesses = Business::all();
+
         return view('user.businesses.index', compact('businesses'));
     }
 
@@ -65,7 +65,7 @@ class BusinessController extends Controller
     ////////////////
 
     /**
-     * Gets the User profile Contacts that MAY BE subscribed to Businesses
+     * Gets the User profile Contacts that MAY BE subscribed to Businesses.
      *
      * @return Response Rendered view of the Contacts linked to the requesting User
      */
@@ -74,6 +74,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
 
         $contacts = auth()->user()->contacts;
+
         return view('user.businesses.subscriptions', compact('contacts'));
     }
 }

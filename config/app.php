@@ -259,15 +259,15 @@ return [
         'Thumbnail'      => Bootstrapper\Facades\Thumbnail::class,
 
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
-        'Flash'    => Laracasts\Flash\Flash::class,
-        'Countries' => Webpatser\Countries\CountriesFacade::class,
+        'Flash'      => Laracasts\Flash\Flash::class,
+        'Countries'  => Webpatser\Countries\CountriesFacade::class,
 
         'Location' => Stevebauman\Location\Facades\Location::class,
-        'GeoIP' => Torann\GeoIP\GeoIPFacade::class,
-        'Carbon' => Carbon\Carbon::class,
+        'GeoIP'    => Torann\GeoIP\GeoIPFacade::class,
+        'Carbon'   => Carbon\Carbon::class,
 
-        'Gravatar' => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Widget' => Caffeinated\Widgets\Facades\Widget::class,
+        'Gravatar'  => Creativeorange\Gravatar\Facades\Gravatar::class,
+        'Widget'    => Caffeinated\Widgets\Facades\Widget::class,
         'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
 
         'TidioChat'    => alariva\tidiochat\TidioChatFacade::class,

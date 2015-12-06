@@ -2,9 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\User;
-use App\Models\Contact;
 use App\Models\Business;
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class ContactPolicy
@@ -22,16 +22,16 @@ class ContactPolicy
     }
 
     /**
-     * Determine if the given contact can be managed by the profile owner user
+     * Determine if the given contact can be managed by the profile owner user.
      *
-     * @param  User  $user
-     * @param  Business  $business
-     * @param  Business  $contact
+     * @param User     $user
+     * @param Business $business
+     * @param Business $contact
+     *
      * @return bool
      */
     public function manage(User $user, Contact $contact)
     {
         return $user->id == $contact->user->id;
     }
-    
 }

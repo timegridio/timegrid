@@ -2,20 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Config;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
+use Illuminate\Support\Facades\Config;
 
 class Preference extends EloquentModel
 {
     /**
-     * [$fillable description]
+     * [$fillable description].
      *
      * @var [type]
      */
     protected $fillable = ['key', 'value', 'type'];
 
     /**
-     * [preferenceable description]
+     * [preferenceable description].
      *
      * @return [type] [description]
      */
@@ -25,7 +25,7 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [__toString description]
+     * [__toString description].
      *
      * @return string [description]
      */
@@ -35,28 +35,30 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [getDefault description]
+     * [getDefault description].
      *
-     * @param  [type] $model [description]
-     * @param  [type] $key   [description]
-     * @return [type]        [description]
+     * @param [type] $model [description]
+     * @param [type] $key   [description]
+     *
+     * @return [type] [description]
      */
     public static function getDefault($model, $key)
     {
         $class = get_class($model);
         $value = Config::get("preferences.{$class}.{$key}.value");
         $type = Config::get("preferences.{$class}.{$key}.type");
-        return new Preference([
-            'key' => $key,
-            'value' => $value,
-            'type' => $type,
+
+        return new self([
+            'key'                 => $key,
+            'value'               => $value,
+            'type'                => $type,
             'preferenceable_type' => $class,
-            'preferenceable_id' => $model
+            'preferenceable_id'   => $model,
             ]);
     }
 
     /**
-     * [question description]
+     * [question description].
      *
      * @return [type] [description]
      */
@@ -66,7 +68,7 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [help description]
+     * [help description].
      *
      * @return [type] [description]
      */
@@ -76,11 +78,12 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [scopeForKey description]
+     * [scopeForKey description].
      *
-     * @param  [type] $query [description]
-     * @param  [type] $key   [description]
-     * @return [type]        [description]
+     * @param [type] $query [description]
+     * @param [type] $key   [description]
+     *
+     * @return [type] [description]
      */
     public function scopeForKey($query, $key)
     {
@@ -88,7 +91,7 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [value description]
+     * [value description].
      *
      * @return [type] [description]
      */
@@ -116,6 +119,7 @@ class Preference extends EloquentModel
             default:
                 break;
         }
+
         return $this->value;
     }
 }

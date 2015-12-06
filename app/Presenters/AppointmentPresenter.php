@@ -3,13 +3,10 @@
 namespace App\Presenters;
 
 use App\Models\Appointment;
-use Bootstrapper\Facades\Button;
-use Bootstrapper\Facades\Icon;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class AppointmentPresenter extends BasePresenter
 {
-
     public function __construct(Appointment $resource)
     {
         $this->wrappedObject = $resource;

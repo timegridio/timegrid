@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Events\NewBooking;
+use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Models\Service;
+use App\Services\ConciergeService;
+use Carbon;
 use Event;
 use Flash;
-use Carbon;
-use Notifynder;
-use App\Models\Service;
-use App\Models\Business;
-use App\Events\NewBooking;
 use Illuminate\Http\Request;
-use App\Services\ConciergeService;
-use App\Http\Controllers\Controller;
+use Notifynder;
 
 /**
  * FOR REFACTOR:
- *     - Use constructor dependency injection for Auth, Flash, Event
+ *     - Use constructor dependency injection for Auth, Flash, Event.
  */
 class AgendaController extends Controller
 {
@@ -28,7 +28,7 @@ class AgendaController extends Controller
     }
 
     /**
-     * get Index
+     * get Index.
      *
      * @return Response Rendered list view for User Appointments
      */
@@ -37,13 +37,15 @@ class AgendaController extends Controller
         $this->log->info(__METHOD__);
 
         $appointments = $this->concierge->getUnarchivedAppointmentsFor(auth()->user());
+
         return view('user.appointments.index', compact('appointments'));
     }
 
     /**
-     * get Availability for Business
+     * get Availability for Business.
      *
-     * @param  Business              $business  Business to query
+     * @param Business $business Business to query
+     *
      * @return Response Rendered view of Appointment booking form
      */
     public function getAvailability(Business $business)
@@ -58,8 +60,9 @@ class AgendaController extends Controller
 
         if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('  [ADVICE] User not subscribed to Business');
-            
+
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+
             return redirect()->back();
         }
 
@@ -76,10 +79,11 @@ class AgendaController extends Controller
     }
 
     /**
-     * post Store
+     * post Store.
      *
-     * @param  Request $request Input data of booking form
-     * @return Response         Redirect to Appointments listing
+     * @param Request $request Input data of booking form
+     *
+     * @return Response Redirect to Appointments listing
      */
     public function postStore(Request $request)
     {
@@ -105,23 +109,26 @@ class AgendaController extends Controller
 
         if (false === $appointment) {
             $this->log->info('[ADVICE] Unable to book');
-            
+
             Flash::warning(trans('user.booking.msg.store.error'));
+
             return redirect()->route('user.agenda');
         }
 
         # $appointmentPresenter = $appointment->getPresenter();
         if ($appointment->exists) {
             $this->log->info('Appointment saved successfully');
-            
+
             event(new NewBooking($issuer, $appointment));
 
             Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
+
             return redirect()->route('user.agenda');
         }
 
         $this->log->info('[ADVICE] Appointment is duplicated');
         Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+
         return redirect()->route('user.agenda');
     }
 }

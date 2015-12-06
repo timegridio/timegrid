@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class RootControllerTest extends TestCase
 {
     use DatabaseTransactions;
- 
+
     /**
-     * user
+     * user.
      *
      * @var User user
      */

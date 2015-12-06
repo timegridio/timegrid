@@ -3,8 +3,8 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Mail;
 
 class Handler extends ExceptionHandler
 {
@@ -14,7 +14,7 @@ class Handler extends ExceptionHandler
      * @var array
      */
     protected $dontReport = [
-        'Symfony\Component\HttpKernel\Exception\HttpException'
+        'Symfony\Component\HttpKernel\Exception\HttpException',
     ];
 
     /**
@@ -22,26 +22,29 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param  \Exception  $exception
+     * @param \Exception $exception
+     *
      * @return void
      */
     public function report(Exception $exception)
     {
-        if (env('APP_ENV', 'local')!='local') {
+        if (env('APP_ENV', 'local') != 'local') {
             Mail::raw($exception, function ($message) {
                 $message->subject('[ROOT] Exception Report');
                 $message->from(env('MAIL_FROM_ADDRESS', 'root@localhost'), env('SYSLOG_APPNAME', ''));
                 $message->to(env('ROOT_REPORT_MAIL', 'root@localhost'));
             });
         }
+
         return parent::report($exception);
     }
 
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param \Illuminate\Http\Request $request
+     * @param \Exception               $exception
+     *
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)

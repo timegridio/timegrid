@@ -2,21 +2,22 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Models\Business;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
 
 class BusinessAgendaController extends Controller
 {
     /**
-     * get Index
+     * get Index.
      *
-     * @param  Business $business Business to get agenda
-     * @return Response           Rendered view of Business agenda
+     * @param Business $business Business to get agenda
+     *
+     * @return Response Rendered view of Business agenda
      */
     public function getIndex(Business $business)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         ///////////////////////////////
         // TODO: AUTH GATE GOES HERE //
@@ -34,6 +35,7 @@ class BusinessAgendaController extends Controller
                                              ->get();
 
         $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
+
         return view($viewKey, compact('business', 'appointments'));
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
-use App\Models\Contact;
-use App\Models\Business;
 use App\Models\Appointment;
+use App\Models\Business;
+use App\Models\Contact;
+use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AppointmentTest extends TestCase

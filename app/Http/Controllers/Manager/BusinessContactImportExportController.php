@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Flash;
-use Request;
-use Notifynder;
-use App\Models\Contact;
-use App\Models\Business;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Models\Contact;
+use Flash;
+use Notifynder;
+use Request;
 
 /*******************************************************************************
  * The importer allows the business manager to import contacts from a CSV
@@ -18,38 +18,40 @@ use App\Http\Controllers\Controller;
 class BusinessContactImportExportController extends Controller
 {
     /**
-     * get Import form
+     * get Import form.
      *
-     * @param  Business $business Business to import Contacts to
-     * @param  Request  $request
-     * @return Response           Rendered Import form view
+     * @param Business $business Business to import Contacts to
+     * @param Request  $request
+     *
+     * @return Response Rendered Import form view
      */
     public function getImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         return view('manager.contacts.import', compact('business'));
     }
 
     /**
-     * post Import
+     * post Import.
      *
-     * @param  Business $business Business to import Contacts to
-     * @param  Request  $request  Submitted form data
-     * @return Response           Redirect to Business addressbook
+     * @param Business $business Business to import Contacts to
+     * @param Request  $request  Submitted form data
+     *
+     * @return Response Redirect to Business addressbook
      */
     public function postImport(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
+        $this->log->info(sprintf('businessId:%s', $business->id));
 
         //////////////////
         // FOR REFACTOR //
         //////////////////
 
         $csv = $this->csvToArray(Request::get('data'));
-        
+
         foreach ($csv as $import) {
             $import = array_map(function ($item) {
                 return $item == 'NULL' ? null : $item;
@@ -78,14 +80,16 @@ class BusinessContactImportExportController extends Controller
                    ->send();
 
         Flash::success(trans('manager.contacts.msg.import.success'));
+
         return redirect()->route('manager.business.contact.index', [$business]);
     }
 
     /**
-     * Converts submitted CSV string data into an Array
+     * Converts submitted CSV string data into an Array.
      *
-     * @param  string $data   CSV string of Contacts
-     * @return array          Converted CSV into Array
+     * @param string $data CSV string of Contacts
+     *
+     * @return array Converted CSV into Array
      */
     private function csvToArray($data = '')
     {
@@ -93,10 +97,11 @@ class BusinessContactImportExportController extends Controller
 
         $rows = array_map('str_getcsv', explode("\n", $data));
         $header = array_shift($rows);
-        $csv = array();
+        $csv = [];
         foreach ($rows as $row) {
             $csv[] = array_combine($header, $row);
         }
+
         return $csv;
     }
 }

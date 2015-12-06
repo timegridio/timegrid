@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-
 class BusinessFormRequest extends Request
 {
     /**
@@ -27,19 +25,19 @@ class BusinessFormRequest extends Request
             case 'PATCH':
             case 'PUT':
                 return [
-                      'name' => 'required|min:4',
+                      'name'        => 'required|min:4',
                       'description' => 'required|min:10',
-                      'timezone' => 'timezone',
-                      'strategy' => 'required'
+                      'timezone'    => 'timezone',
+                      'strategy'    => 'required',
                     ];
                 break;
             case 'POST':
                 return [
-                      'name' => 'required|min:4',
-                      'slug' => 'required|min:4|unique:businesses',
+                      'name'        => 'required|min:4',
+                      'slug'        => 'required|min:4|unique:businesses',
                       'description' => 'required|min:10',
-                      'timezone' => 'timezone',
-                      'strategy' => 'required'
+                      'timezone'    => 'timezone',
+                      'strategy'    => 'required',
                     ];
                 break;
             default:

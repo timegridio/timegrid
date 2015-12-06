@@ -13,7 +13,7 @@ class BookingControllerUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -23,8 +23,8 @@ class BookingControllerUnitTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -39,11 +39,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'annulate',
-            'widget' => 'row'
+            'action'      => 'annulate',
+            'widget'      => 'row',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -54,7 +54,7 @@ class BookingControllerUnitTest extends TestCase
         $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->status);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -64,8 +64,8 @@ class BookingControllerUnitTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -80,11 +80,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'annulate',
-            'widget' => 'panel'
+            'action'      => 'annulate',
+            'widget'      => 'panel',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -95,7 +95,7 @@ class BookingControllerUnitTest extends TestCase
         $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->status);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -106,8 +106,8 @@ class BookingControllerUnitTest extends TestCase
 
         // And the appointment is reserved and past
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->subDays(1)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->subDays(1),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -122,11 +122,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'serve',
-            'widget' => 'panel'
+            'action'      => 'serve',
+            'widget'      => 'panel',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -137,7 +137,7 @@ class BookingControllerUnitTest extends TestCase
         $this->assertEquals(Appointment::STATUS_SERVED, $this->appointment->status);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -148,8 +148,8 @@ class BookingControllerUnitTest extends TestCase
 
         // And the appointment is reserved but still future
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -164,11 +164,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'serve',
-            'widget' => 'panel'
+            'action'      => 'serve',
+            'widget'      => 'panel',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -179,7 +179,7 @@ class BookingControllerUnitTest extends TestCase
         $this->assertEquals(Appointment::STATUS_RESERVED, $this->appointment->status);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -189,8 +189,8 @@ class BookingControllerUnitTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_SERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_SERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -205,11 +205,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'confirm',
-            'widget' => 'row'
+            'action'      => 'confirm',
+            'widget'      => 'row',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -220,7 +220,7 @@ class BookingControllerUnitTest extends TestCase
         $this->assertEquals(Appointment::STATUS_SERVED, $this->appointment->status);
     }
 
-   /**
+    /**
      * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
@@ -230,8 +230,8 @@ class BookingControllerUnitTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
         $this->appointment->issuer()->associate($this->issuer);
         $this->appointment->business()->associate($this->business);
@@ -246,11 +246,11 @@ class BookingControllerUnitTest extends TestCase
 
         // And I request the annulation of the appointment
         $input = [
-            '_token' => csrf_token(),
-            'business' => $this->business->id,
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action' => 'some-invalid-action',
-            'widget' => 'row'
+            'action'      => 'some-invalid-action',
+            'widget'      => 'row',
             ];
 
         $this->post('/api/booking/action', $input);
@@ -269,7 +269,7 @@ class BookingControllerUnitTest extends TestCase
     {
         // A business owned by a user (me)
         $this->issuer = factory(User::class)->create();
-        
+
         $this->business = factory(Business::class)->create();
         $this->business->owners()->save($this->issuer);
 

@@ -2,18 +2,16 @@
 
 namespace App;
 
-use App\Models\Service;
-use App\Models\Business;
 use App\Models\Appointment;
-use Illuminate\Support\Collection;
+use App\Models\Business;
+use App\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 class SearchEngine
 {
     /**
-     * TODO: Check if there is a suitable package for seaching among Models
+     * TODO: Check if there is a suitable package for seaching among Models.
      */
-
     protected $results = [];
 
     protected $scope = [];
@@ -31,9 +29,10 @@ class SearchEngine
         $this->criteria = $criteria;
     }
 
-    public function setBusinessScope(Array $scope)
+    public function setBusinessScope(array $scope)
     {
         $this->scope['businessesIds'] = $scope;
+
         return $this;
     }
 

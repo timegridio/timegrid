@@ -3,109 +3,87 @@
  Generated via "php artisan localization:missing" at 2015/12/04 21:45:28
 *************************************************************************/
 
-return array(
-  'search' =>
-  array(
-    'msg' =>
-    array(
+return [
+  'search' => [
+    'msg' => [
       'no_results' => 'We found nothing with this criteria: :criteria',
-    ),
+    ],
     'placeholder' => 'search',
-  ),
-  'btn' =>
-  array(
+  ],
+  'btn' => [
     'update' => 'Update',
-  ),
-  'dateformat' =>
-  array(
+  ],
+  'dateformat' => [
     'datetimepicker' => 'MM/DD/YYYY',
-    'carbon' => 'm/d/Y',
-  ),
-  'footer' =>
-  array(
-    'demo' => 'Remember this is a DEMO version.',
+    'carbon'         => 'm/d/Y',
+  ],
+  'footer' => [
+    'demo'  => 'Remember this is a DEMO version.',
     'local' => 'Local environment advice.',
-  ),
-  'label' =>
-  array(
-    'attention' => 'Attention',
+  ],
+  'label' => [
+    'attention'       => 'Attention',
     'select_timezone' => 'TimeZone',
-  ),
+  ],
   'name' => 'timegrid.io',
-  'nav' =>
-  array(
-    'login' => 'Login',
-    'logout' => 'Logout',
-    'manager' =>
-    array(
-      'business' =>
-      array(
-        'list' => 'List',
-        'menu' => 'My Businesses',
+  'nav'  => [
+    'login'   => 'Login',
+    'logout'  => 'Logout',
+    'manager' => [
+      'business' => [
+        'list'     => 'List',
+        'menu'     => 'My Businesses',
         'register' => 'SignUp Business',
-      ),
-    ),
-    'manual' => 'User Manual',
+      ],
+    ],
+    'manual'   => 'User Manual',
     'register' => 'Register',
-    'user' =>
-    array(
-      'business' =>
-      array(
-        'menu' => 'Businesses',
-        'my_appointments' => 'My Reservations',
+    'user'     => [
+      'business' => [
+        'menu'             => 'Businesses',
+        'my_appointments'  => 'My Reservations',
         'my_subscriptions' => 'Favourites',
-        'selector' => 'Browse',
-        'home' => 'Home',
-      ),
-    ),
+        'selector'         => 'Browse',
+        'home'             => 'Home',
+      ],
+    ],
     'wizard' => 'Wizard',
-    'home' => 'Home',
-  ),
-  'notifications' =>
-  array(
+    'home'   => 'Home',
+  ],
+  'notifications' => [
     'title' => 'Recently',
-  ),
+  ],
   //================================== Obsolete strings ==================================//
-  'business' =>
-  array(
-    'category' =>
-    array(
-      'doctor' => 'Healthcare',
-      'garage' => 'Car Repair',
+  'business' => [
+    'category' => [
+      'doctor'      => 'Healthcare',
+      'garage'      => 'Car Repair',
       'photography' => 'Photography',
-    ),
-  ),
+    ],
+  ],
   'filter' => 'Filter',
-  'gender' =>
-  array(
+  'gender' => [
     'F' => 'Female',
     'M' => 'Male',
-  ),
-  'general' =>
-  array(
-    'btn' =>
-    array(
+  ],
+  'general' => [
+    'btn' => [
       'confirm_deletion' => 'Confirm deletion?',
-    ),
-  ),
-  'home' =>
-  array(
-    'btn' =>
-    array(
+    ],
+  ],
+  'home' => [
+    'btn' => [
       'actions' => 'Actions',
-    ),
-  ),
-  'msg' =>
-  array(
+    ],
+  ],
+  'msg' => [
     'invalid_token' => 'We found a validation error, please submit your form again',
-  ),
-  'welcome' =>
-  array(
-    'btn' =>
-    array(
+  ],
+  'welcome' => [
+    'btn' => [
       'enter' => 'Enter',
-    ),
+    ],
     'description' => 'Login the application',
-    'title' => 'Welcome!',
-  ),
-);
+    'title'       => 'Welcome!',
+  ],
+];

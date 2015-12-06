@@ -1,12 +1,11 @@
 <?php
 
-use Carbon\Carbon;
-use App\Models\User;
+use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\User;
 use App\Models\Vacancy;
-use App\Models\Business;
-use App\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VacancyUnitTest extends TestCase
@@ -23,7 +22,7 @@ class VacancyUnitTest extends TestCase
     {
         /* Setup Stubs */
         $issuer = factory(User::class)->create();
-        
+
         $business = factory(Business::class)->create();
         $business->owners()->save($issuer);
 
@@ -58,7 +57,7 @@ class VacancyUnitTest extends TestCase
     {
         /* Setup Stubs */
         $issuer = factory(User::class)->create();
-        
+
         $business = factory(Business::class)->create();
         $business->owners()->save($issuer);
 

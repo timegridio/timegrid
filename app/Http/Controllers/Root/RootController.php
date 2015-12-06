@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Root;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Laracasts\Flash\Flash;
-use App\Http\Controllers\Controller;
 
 class RootController extends Controller
 {
     /**
-     * get Index
+     * get Index.
      *
      * @return Response Show Root dashboard
      */
@@ -28,7 +28,7 @@ class RootController extends Controller
     }
 
     /**
-     * Switch authentication into another user for support purpose
+     * Switch authentication into another user for support purpose.
      *
      * @return Response Show Root dashboard
      */
@@ -38,8 +38,9 @@ class RootController extends Controller
 
         $this->log->warning("[!] ROOT SUDO userId:{$userId}");
         auth()->loginUsingId($userId);
-        
+
         Flash::warning('ADVICE: THIS IS FOR AUTHORIZED USE ONLY AND YOUR ACTIONS ARE BEING RECORDERED !!!');
+
         return redirect()->route('user.directory.list');
     }
 }

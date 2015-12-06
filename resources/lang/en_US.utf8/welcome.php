@@ -3,60 +3,49 @@
  Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
 *************************************************************************/
 
-return array(
+return [
   //==================================== Translations ====================================//
-  'feature' =>
-  array(
-    1 =>
-    array(
+  'feature' => [
+    1 => [
       'content' => 'Allows your clients to choose when to book.',
-      'title' => 'Optimize',
-      'btn' =>
-      array(
+      'title'   => 'Optimize',
+      'btn'     => [
         'action' => 'See how',
-        'info' => 'More info',
-      ),
-    ),
-    2 =>
-    array(
+        'info'   => 'More info',
+      ],
+    ],
+    2 => [
       'content' => 'Keep all your contacts together and get new subscribers.',
-      'title' => 'Annuitize',
-      'btn' =>
-      array(
+      'title'   => 'Annuitize',
+      'btn'     => [
         'action' => 'See how',
-        'info' => 'More info',
-      ),
-    ),
-    3 =>
-    array(
+        'info'   => 'More info',
+      ],
+    ],
+    3 => [
       'content' => 'Provide a better service to your customers.',
-      'title' => 'Professionalize',
-      'btn' =>
-      array(
+      'title'   => 'Professionalize',
+      'btn'     => [
         'action' => 'See how',
-        'info' => 'More info',
-      ),
-    ),
-    4 =>
-    array(
+        'info'   => 'More info',
+      ],
+    ],
+    4 => [
       'content' => 'It\'s time to enjoy the saved time and take your vacations.',
-      'title' => 'Liberate',
-      'btn' =>
-      array(
+      'title'   => 'Liberate',
+      'btn'     => [
         'action' => 'See how',
-        'info' => 'More info',
-      ),
-    ),
-  ),
-  'jumbotron' =>
-  array(
-    'btn' =>
-    array(
+        'info'   => 'More info',
+      ],
+    ],
+  ],
+  'jumbotron' => [
+    'btn' => [
       'begin' => 'Let\'s begin',
       'login' => 'Login',
-    ),
+    ],
     'description' => 'The booking app for successful professionals.',
-    'title' => 'timegrid.io',
-  ),
+    'title'       => 'timegrid.io',
+  ],
   //================================== Obsolete strings ==================================//
-);
+];
