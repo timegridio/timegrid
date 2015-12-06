@@ -2,9 +2,12 @@
 
 namespace App\Providers;
 
+use App\Models\Contact;
+use App\Models\Service;
+use App\Models\Business;
+use App\Models\Appointment;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
-use App\Models\Business;
 
 class RouteServiceProvider extends ServiceProvider
 {
@@ -27,9 +30,9 @@ class RouteServiceProvider extends ServiceProvider
     {
         parent::boot($router);
 
-        $router->model('contact', 'App\Models\Contact');
-        $router->model('service', 'App\Models\Service');
-        $router->model('appointment', 'App\Models\Appointment');
+        $router->model('contact', Contact::class);
+        $router->model('service', Service::class);
+        $router->model('appointment', Appointment::class);
         $router->bind('business', function ($businessSlug) {
             return Business::where('slug', $businessSlug)->first();
         });
