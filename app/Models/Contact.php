@@ -128,38 +128,12 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     ///////////////
-    // Accessors //
-    ///////////////
-
-    /**
-     * get Username of associated User
-     *
-     * @return string Associated User's email address (if any)
-     */
-    public function getUsernameAttribute()
-    {
-        return ($this->user) ? $this->user->email : null;
-    }
-
-    /**
-     * get Fullname of associated User
-     *
-     * TODO: Move to presenter
-     *
-     * @return string Contact firstname and lastname
-     */
-    public function getFullnameAttribute()
-    {
-        return ($this->lastname) ? $this->firstname . ' ' . $this->lastname : $this->firstname;
-    }
-
-    ///////////////
     // Presenter //
     ///////////////
 
     /**
      * get presenter
-     * 
+     *
      * @return ContactPresenter    Presenter class
      */
     public function getPresenterClass()
@@ -275,50 +249,5 @@ class Contact extends EloquentModel implements HasPresenter
     public function isProfileOf(User $user)
     {
         return $this->user ? $this->user->id == $user->id : false;
-    }
-
-    /**
-     * ToDo: Use Carbon instead of DateTime
-     *
-     * get Age
-     *
-     * @return int Age in years
-     */
-    public function getAgeAttribute()
-    {
-        if ($this->birthdate == null) {
-            return null;
-        }
-        
-        $reference = new \DateTime;
-        $born = new \DateTime($this->birthdate);
-
-        if ($this->birthdate > $reference) {
-            return null;
-        }
-
-        $diff = $reference->diff($born);
-        return $diff->y;
-    }
-
-    /**
-     * TODO: Check if needs to get moved to Presenter or another responsibility class
-     *
-     * get Quality
-     *
-     * @return float Contact quality percentual score calculated from profile completion
-     */
-    public function getQualityAttribute()
-    {
-        $quality  = 0;
-        $quality += isset($this->firstname) ? 1 : 0;
-        $quality += isset($this->lastname) ? 1 : 0;
-        $quality += isset($this->nin) ? 5 : 0;
-        $quality += isset($this->birthdate) ? 2 : 0;
-        $quality += isset($this->mobile) ? 4 : 0;
-        $quality += isset($this->email) ? 4 : 0;
-        $quality += isset($this->postal_address) ? 3 : 0;
-        $total    = 20;
-        return $quality/$total*100;
     }
 }
