@@ -65,21 +65,6 @@ class BusinessController extends Controller
     ////////////////
 
     /**
-     * Sets the selected business session var
-     *
-     * @param  Business $business Business to be selected
-     * @return Response           Response provided by getHome()
-     */
-    public function getSelect(Business $business)
-    {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s", $business->id));
-
-        session()->set('selected.business', $business);
-        return $this->getHome($business);
-    }
-
-    /**
      * Gets the User profile Contacts that MAY BE subscribed to Businesses
      *
      * @return Response Rendered view of the Contacts linked to the requesting User
