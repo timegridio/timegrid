@@ -46,6 +46,7 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     const PROFILE_USER = 'user';
     const PROFILE_MANAGER = 'manager';
+    const PROFILE_GUEST = 'guest';
 
     ///////////////
     // PRESENTER //
@@ -53,7 +54,7 @@ class Appointment extends EloquentModel implements HasPresenter
 
     /**
      * get presenter
-     * 
+     *
      * @return AppointmentPresenter    Presenter class
      */
     public function getPresenterClass()
@@ -539,16 +540,20 @@ class Appointment extends EloquentModel implements HasPresenter
         return $this;
     }
 
-    /**
-     * Need confirmation of
-     *
-     * @param  string $profile Name of the current User profile [user|manager]
-     * @return boolean         The Appointment needs to be confirmed by the inquired User profile
-     */
-    public function needConfirmationOf($profile)
+    public function profile($userId)
     {
-        return
-            ($this->issuer()->first() != $this->user() && $profile == self::PROFILE_USER) ||
-            ($this->issuer()->first() == $this->user() && $profile == self::PROFILE_MANAGER);
+        try {
+            if ($this->issuer->id == $userId) {
+                return self::PROFILE_USER;
+            }
+
+            if ($this->business->owners->contains($userId)) {
+                return self::PROFILE_USER;
+            }            
+        } catch (Exception $e) {
+            
+            return false;
+        }
+        return self::PROFILE_GUEST;
     }
 }

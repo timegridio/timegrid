@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Widget;
-use Notifynder;
-use App\Models\Appointment;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterAppointmentRequest;
+use App\Models\Appointment;
+use App\Presenters\AppointmentPresenter;
+use Notifynder;
+use Widget;
 
 /**
  * FOR REFACTOR:
@@ -71,26 +72,19 @@ class BookingController extends Controller
          */
         switch ($widget) {
             case 'row':
-                $html = Widget::AppointmentsTableRow([
-                    'appointment' => $appointment,
-                    'user' => auth()->user()
-                    ])->render();
+                $buttons = '';
+                $html = view('widgets.appointment.row._body', ['appointment' => $appointment, 'user' => auth()->user()])->render();
                 break;
             case 'panel':
             default:
-                $html = Widget::AppointmentPanel([
-                    'appointment' => $appointment,
-                    'user' => auth()->user()
-                    ])->render();
+                $html = view('widgets.appointment.panel._body', ['appointment' => $appointment, 'user' => auth()->user()])->render();
                 break;
         }
 
-        $appointmentPresenter = $appointment->getPresenter();
-
-        $date = $appointment->start_at->toDateString();
-        $code = $appointmentPresenter->code();
+        $date = $appointment->date;
+        $code = $appointment->code;
         Notifynder::category('appointment.'.$action)
-                   ->from('App\Models\User', auth()->user()->id)
+                   ->from('App\Models\User', $issuer->id)
                    ->to('App\Models\Business', $appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('code', 'action', 'date'))

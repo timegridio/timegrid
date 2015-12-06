@@ -65,7 +65,7 @@ class BusinessAgendaControllerUnitTest extends TestCase
 
         // Then I see the appointment listed
         $this->see($this->appointment->code);
-        $this->see($this->appointment->contact->firstname);
+        #$this->see($this->appointment->contact->firstname);
     }
 
     /**

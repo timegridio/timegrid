@@ -1,3 +1,4 @@
+{{-- Appointment Table Partial --}}
 <table class="table table-hover">
   <thead>
     <tr>

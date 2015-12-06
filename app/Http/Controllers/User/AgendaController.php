@@ -92,7 +92,7 @@ class AgendaController extends Controller
         $issuer = auth()->user();
 
         $business = Business::findOrFail($request->input('businessId'));
-        $contact = $issuer->getContactSubscribedTo($business);
+        $contact = $issuer->getContactSubscribedTo($business->id);
         $service = Service::find($request->input('service_id'));
 
         $strDateTime = $request->input('_date').' '.$business->pref('start_at');
@@ -104,24 +104,24 @@ class AgendaController extends Controller
         $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
-            $this->log->info(' [ADVICE] Unable to book');
+            $this->log->info('[ADVICE] Unable to book');
             
             Flash::warning(trans('user.booking.msg.store.error'));
             return redirect()->route('user.agenda');
         }
 
-        $appointmentPresenter = $appointment->getPresenter();
+        # $appointmentPresenter = $appointment->getPresenter();
         if ($appointment->exists) {
-            $this->log->info('  Appointment saved successfully');
+            $this->log->info('Appointment saved successfully');
             
             event(new NewBooking($issuer, $appointment));
 
-            Flash::success(trans('user.booking.msg.store.success', ['code' => $appointmentPresenter->code()]));
+            Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
             return redirect()->route('user.agenda');
         }
 
-        $this->log->info('  [ADVICE] Appointment is duplicated');
-        Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointmentPresenter->code()]));
+        $this->log->info('[ADVICE] Appointment is duplicated');
+        Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
         return redirect()->route('user.agenda');
     }
 }

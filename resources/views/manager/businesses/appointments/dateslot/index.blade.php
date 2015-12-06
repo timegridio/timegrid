@@ -9,7 +9,7 @@
     {!! Form::hidden('business', $business->id) !!}
     <div class="container">
     
-        {!! Widget::AppointmentsTable(['appointments' => $appointments, 'user' => auth()->user(), 'business' => $business]) !!}
+        @include('widgets.appointment.table._body', ['appointments' => $appointments, 'user' => auth()->user(), 'business' => $business])
     
     </div>
     {!! Form::close() !!}

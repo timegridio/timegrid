@@ -45,9 +45,9 @@ class Contact extends EloquentModel implements HasPresenter
      *
      * @return Illuminate\Database\Query Relationship Contact is part of Business' addressbook query
      */
-    public function isOnAddressbookOf(Business $business)
+    public function isOnAddressbookOf($businessId)
     {
-        return $this->businesses()->contains($business);
+        return $this->businesses()->contains($businessId);
     }
 
     /**
@@ -232,22 +232,22 @@ class Contact extends EloquentModel implements HasPresenter
     /**
      * is Subscribed To Business
      *
-     * @param  Business $business Business of inquiry
-     * @return boolean            The Contact belongs to the inquired Business' addressbook
+     * @param  int     $businessId  Business of inquiry
+     * @return boolean              The Contact belongs to the inquired Business' addressbook
      */
-    public function isSubscribedTo(Business $business)
+    public function isSubscribedTo($businessId)
     {
-        return $this->businesses->contains($business);
+        return $this->businesses->contains($businessId);
     }
 
     /**
      * is Profile of User
      *
-     * @param  User $user         User of inquiry
+     * @param  int $userId        User of inquiry
      * @return boolean            The Contact belongs to the inquired User
      */
-    public function isProfileOf(User $user)
+    public function isProfileOf($userId)
     {
-        return $this->user ? $this->user->id == $user->id : false;
+        return $this->user ? $this->user->id == $userId : false;
     }
 }

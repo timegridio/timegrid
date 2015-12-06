@@ -12,7 +12,7 @@
             <div class="panel-body">
                 @if (!$businesses->isEmpty())
                     @foreach ($businesses as $business)
-                        @include('user.businesses._row', $business)
+                        @include('user.businesses._row', ['business' => $business])
                     @endforeach
                 @else
                     {{ trans('user.businesses.list.no_businesses') }}

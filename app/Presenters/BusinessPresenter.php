@@ -18,12 +18,12 @@ class BusinessPresenter extends BasePresenter
      * @param  string $type Type of picture to print
      * @return string       HTML code to render img with facebook picture
      */
-    public function getFacebookImg($type = 'square')
+    public function facebookImg($type = 'square')
     {
-        if (!$this->social_facebook) {
+        if (!$this->wrappedObject->social_facebook) {
             return "<img class=\"img-thumbnail\" src=\"//placehold.it/100x100\"/>";
         }
-        $url = parse_url($this->social_facebook);
+        $url = parse_url($this->wrappedObject->social_facebook);
         if ($url['path'] == '/profile.php') {
             parse_str($url['query'], $parts);
             $userId = $parts['id'];
@@ -40,10 +40,10 @@ class BusinessPresenter extends BasePresenter
      * @param  integer $zoom Zoom Level
      * @return string        HTML code to render img with map
      */
-    public function getStaticMap($zoom = 15)
+    public function staticMap($zoom = 15)
     {
         $data = [
-            'center' => $this->postalAddress,
+            'center' => $this->wrappedObject->postalAddress,
             'zoom' => intval($zoom),
             'scale' =>'2',
             'size' =>'180x100',
@@ -60,9 +60,13 @@ class BusinessPresenter extends BasePresenter
      *
      * @return string        HTML code to render img with icon
      */
-    public function getIndustryIcon()
+    public function industryIcon()
     {
-        $src = asset('/img/industries/'.$this->category->slug.'.png');
+        if (!isset($this->wrappedObject)) {
+            return '';
+        }
+
+        $src = asset('/img/industries/'.$this->wrappedObject->category->slug.'.png');
         return "<img class=\"img-responsive center-block\" src=\"{$src}\"/>";
     }
 }

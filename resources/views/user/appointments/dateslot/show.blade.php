@@ -3,8 +3,8 @@
 @section('content')
 {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
 <div class="container">
-    {!! $appointment->widget()->panel() !!}
-    {!! $appointment->widget()->actionButtons() !!}
+    {!! $appointment->panel !!}
+    {!! $appointment->actionButtons !!}
 </div>
 {!! Form::close() !!}
 @endsection
