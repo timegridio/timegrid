@@ -37,7 +37,7 @@ $factory->define('App\Models\Contact', function (Faker\Generator $faker) {
         'lastname' => $faker->lastName,
         'nin' => $faker->numberBetween(25000000, 50000000),
         'email' => $faker->safeEmail,
-        'birthdate' => $faker->dateTimeThisCentury->format('m/d/Y'),
+        #'birthdate' => \Carbon\Carbon::now()->subYears(30)->format('m/d/Y'),
         'mobile' => null,
         'mobile_country' => null,
         'gender' => $faker->randomElement(['M', 'F']),
