@@ -96,9 +96,9 @@ class AppointmentTest extends TestCase
         return $contact;
     }
 
-    private function makeBusiness(User $owner)
+    private function makeBusiness(User $owner, $overrides = [])
     {
-        $business = factory(Business::class)->make();
+        $business = factory(Business::class)->make($overrides);
         $business->save();
         $business->owners()->attach($owner);
 
