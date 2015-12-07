@@ -7,6 +7,7 @@ class LanguageControllerTest extends TestCase
      * Test switch language to English.
      *
      * @covers \App\Http\Controllers\LanguageController::switchLang
+     * @test
      */
     public function testSwitchLanguageToEnglish()
     {
@@ -22,6 +23,7 @@ class LanguageControllerTest extends TestCase
      * Test switch language to Spanish Spain.
      *
      * @covers \App\Http\Controllers\LanguageController::switchLang
+     * @test
      */
     public function testSwitchLanguageToSpanishSpain()
     {
