@@ -90,7 +90,7 @@ class ContactService
         }
     }
 
-    protected function detach(Business $business, Contact $contact)
+    public function detach(Business $business, Contact $contact)
     {
         return $contact->businesses()->detach($business->id);
     }
