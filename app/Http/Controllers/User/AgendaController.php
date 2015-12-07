@@ -111,24 +111,21 @@ class AgendaController extends Controller
             $this->log->info('[ADVICE] Unable to book');
 
             Flash::warning(trans('user.booking.msg.store.error'));
-
             return redirect()->route('user.agenda');
         }
 
-        # $appointmentPresenter = $appointment->getPresenter();
-        if ($appointment->exists) {
-            $this->log->info('Appointment saved successfully');
-
-            event(new NewBooking($issuer, $appointment));
-
-            Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
-
+        if (!$appointment->exists) {
+            $this->log->info('[ADVICE] Appointment is duplicated');
+            
+            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
             return redirect()->route('user.agenda');
         }
 
-        $this->log->info('[ADVICE] Appointment is duplicated');
-        Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+        $this->log->info('Appointment saved successfully');
 
+        event(new NewBooking($issuer, $appointment));
+
+        Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
         return redirect()->route('user.agenda');
     }
 }
