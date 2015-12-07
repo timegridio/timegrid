@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ManagerBusinessContactControllerUnitTest extends TestCase
+class ManagerBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
 

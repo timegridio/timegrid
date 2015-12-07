@@ -9,7 +9,7 @@ use App\Models\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class BusinessAgendaControllerUnitTest extends TestCase
+class BusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
 

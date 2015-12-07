@@ -4,7 +4,7 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ContactUnitTest extends TestCase
+class ContactTest extends TestCase
 {
     use DatabaseTransactions;
 

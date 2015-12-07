@@ -67,6 +67,10 @@ class AppointmentTest extends TestCase
         $this->assertTrue($appointmentDuplicate->duplicates());
     }
 
+    /////////////
+    // HELPERS //
+    /////////////
+
     private function makeUser()
     {
         $user = factory(User::class)->make();

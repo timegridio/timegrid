@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class VacancyUnitTest extends TestCase
+class VacancyTest extends TestCase
 {
     use DatabaseTransactions;
 
