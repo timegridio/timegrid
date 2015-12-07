@@ -2,21 +2,38 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\BusinessFormRequest;
+use GeoIP;
+use App\SearchEngine;
 use App\Models\Business;
 use App\Models\Category;
-use App\SearchEngine;
-use App\Services\BusinessService;
-use Fenos\Notifynder\Facades\Notifynder;
-use Gate;
-use GeoIP;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
 use Laracasts\Flash\Flash;
+use App\Services\BusinessService;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
+use Fenos\Notifynder\Facades\Notifynder;
+use App\Http\Requests\BusinessFormRequest;
 
 class BusinessController extends Controller
 {
+    /**
+     * [$businessService description]
+     *
+     * @var [type]
+     */
+    private $businessService;
+
+    /**
+     * [__construct description]
+     *
+     * @param BusinessService $businessService [description]
+     */
+    public function __construct(BusinessService $businessService)
+    {
+        $this->businessService = $businessService;
+
+        parent::__construct();
+    }
+
     /**
      * index.
      *
@@ -25,6 +42,8 @@ class BusinessController extends Controller
     public function index()
     {
         $this->log->info(__METHOD__);
+
+        // BEGIN
 
         $businesses = auth()->user()->businesses;
 
@@ -47,7 +66,8 @@ class BusinessController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        # $plan = Request::query('plan') ?: 'free';
+        // BEGIN
+
         $this->log->info("plan:$plan");
 
         $timezone = $this->guessTimezone(null);
@@ -71,17 +91,11 @@ class BusinessController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-        try {
-            
-            $business = BusinessService::register(auth()->user(), $request->all(), $request->get('category'));
+        // BEGIN
 
+        try {
+            $business = $this->businessService->register(auth()->user(), $request->all(), $request->get('category'));
         } catch (BusinessAlreadyRegisteredException $exception) {
-                
-            #Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-            #return redirect()->route('manager.business.service.create', $business);
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
             return redirect()->back()->withInput(request()->all());
         }
@@ -115,6 +129,8 @@ class BusinessController extends Controller
 
         $this->authorize('manage', $business);
 
+        // BEGIN
+
         session()->set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
         $business->readAllNotifications();
@@ -136,9 +152,7 @@ class BusinessController extends Controller
 
         $this->authorize('update', $business);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        // BEGIN
 
         $timezone = $this->guessTimezone($business->timezone);
 
@@ -166,14 +180,10 @@ class BusinessController extends Controller
 
         $this->authorize('update', $business);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        // BEGIN
+        $category = $request->get('category');
 
-        $category = Category::find(Request::get('category'));
-        $business->category()->associate($category);
-
-        $updateData = [
+        $data = [
                 'name'            => $request->get('name'),
                 'description'     => $request->get('description'),
                 'timezone'        => $request->get('timezone'),
@@ -183,7 +193,9 @@ class BusinessController extends Controller
                 'strategy'        => $request->get('strategy')
         ];
 
-        $business->where(['id' => $business->id])->update($updateData);
+        $this->businessService->update($business, $data);
+
+        $this->businessService->setCategory($business, $category);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
         return redirect()->route('manager.business.show', compact('business'));
@@ -203,11 +215,9 @@ class BusinessController extends Controller
 
         $this->authorize('destroy', $business);
 
-        //////////////////
-        // FOR REFACOTR //
-        //////////////////
-
-        $business->delete();
+        // BEGIN
+        
+        $this->businessService->deactivate();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
         return redirect()->route('manager.business.index');
@@ -246,6 +256,8 @@ class BusinessController extends Controller
 
     /**
      * get business category list.
+     *
+     * TODO: SHOULD BE USED WITH VIEW COMPOSER
      *
      * @return array list of categories for combo
      */
