@@ -100,7 +100,8 @@ class AgendaController extends Controller
         $service = Service::find($request->input('service_id'));
 
         $strDateTime = $request->input('_date').' '.$business->pref('start_at');
-        $datetime = Carbon::parse($strDateTime)->timezone($business->timezone);
+        $datetime = Carbon::parse($strDateTime.' '.$business->timezone)->setTimezone('UTC');
+
         $comments = $request->input('comments');
 
         $this->concierge->setBusiness($business);
