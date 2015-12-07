@@ -13,6 +13,23 @@ use Laracasts\Flash\Flash;
 class BusinessContactController extends Controller
 {
     /**
+     * [$contactService description]
+     * @var [type]
+     */
+    private $contactService;
+
+    /**
+     * [__construct description]
+     * @param ContactService $contactService [description]
+     */
+    public function __construct(ContactService $contactService)
+    {
+        $this->contactService = $contactService;
+
+        parent::__construct();
+    }
+
+    /**
      * index of Contacts for Business.
      *
      * @param Business $business Business that holds the Contacts
@@ -67,10 +84,9 @@ class BusinessContactController extends Controller
 
         // BEGIN //
 
-        $contact = ContactService::register(auth()->user(), $business, $request->all());
+        $contact = $this->contactService->register(auth()->user(), $business, $request->all());
 
-        if(!$contact->wasRecentlyCreated)
-        {
+        if (!$contact->wasRecentlyCreated) {
             Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
             return redirect()->route('manager.business.contact.show', [$business, $contact]);
         }
@@ -97,7 +113,7 @@ class BusinessContactController extends Controller
 
         // BEGIN //
 
-        $contact = ContactService::find($business, $contact);
+        $contact = $this->contactService->find($business, $contact);
 
         return view('manager.contacts.show', compact('business', 'contact'));
     }
@@ -119,7 +135,7 @@ class BusinessContactController extends Controller
 
         // BEGIN //
 
-        $contact = ContactService::find($business, $contact);
+        $contact = $this->contactService->find($business, $contact);
 
         $notes = $contact->pivot->notes;
 
@@ -155,7 +171,7 @@ class BusinessContactController extends Controller
             'mobile_country'  => $request->get('mobile_country')
         ];
 
-        $contact = ContactService::update($business, $contact, $data, $request->get('notes'));
+        $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
 
         // FEATURE: If email was updated, user linking should be triggered (if contact is not owned)
 
@@ -180,7 +196,7 @@ class BusinessContactController extends Controller
 
         // BEGIN //
 
-        $contact = ContactService::detach($business, $contact);
+        $contact = $this->contactService->detach($business, $contact);
 
         // FEATURE: If user is linked to contact, inform removal
 

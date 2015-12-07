@@ -20,7 +20,7 @@ class ContactService
      * @param  [type]   $data     [description]
      * @return [type]             [description]
      */
-    public static function register(User $user, Business $business, $data)
+    public function register(User $user, Business $business, $data)
     {
         if (false === $contact = self::getExisting($user, $business, $data['nin'])) {
             $contact = Contact::create($data);
@@ -44,7 +44,7 @@ class ContactService
      * @param  [type]   $nin      [description]
      * @return [type]             [description]
      */
-    public static function getExisting(User $user, Business $business, $nin)
+    public function getExisting(User $user, Business $business, $nin)
     {
         if (trim($nin) == '') {
             return false;
@@ -71,26 +71,26 @@ class ContactService
      * @param  Contact  $contact  [description]
      * @return [type]             [description]
      */
-    public static function find(Business $business, Contact $contact)
+    public function find(Business $business, Contact $contact)
     {
         return $business->contacts()->find($contact->id);
     }
 
-    public static function update(Business $business, Contact $contact, $data = [], $notes = null)
+    public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
         $contact->where('id', '=', $contact->id)->update($data);
 
         self::updateNotes($business, $contact, $notes);
     }
 
-    protected static function updateNotes(Business $business, Contact $contact, $notes)
+    protected function updateNotes(Business $business, Contact $contact, $notes)
     {
         if ($notes) {
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $notes]);
         }
     }
 
-    protected static function detach(Business $business, Contact $contact)
+    protected function detach(Business $business, Contact $contact)
     {
         return $contact->businesses()->detach($business->id);
     }
