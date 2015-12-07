@@ -114,6 +114,68 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
+     * @covers   App\Http\Controllers\User\BusinessContactController::edit
+     * @covers   App\Http\Controllers\User\BusinessContactController::update
+     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @test
+     */
+    public function it_edits_a_contact()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        // I have a registered contact in Business
+        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => null, 'email' => null]);
+        $contact->user()->associate($this->issuer);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+
+        // And I visit the contact edit form
+        // And set a NIN and and submit
+        $this->visit(route('user.business.contact.edit', ['business' => $this->business, 'contact' => $contact]))
+             ->type('1122334455', 'nin')
+             ->press('Update');
+
+        // Then I see the profile is updated with the NIN
+        $this->assertResponseOk();
+        $this->see('Updated successfully')
+             ->see('1122334455');
+    }
+
+    /**
+     * @covers   App\Http\Controllers\User\BusinessContactController::edit
+     * @covers   App\Http\Controllers\User\BusinessContactController::update
+     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @test
+     */
+    public function it_cannot_change_nin_of_a_contact()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        // I have a registered contact in Business
+        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '12345', 'email' => null]);
+        $contact->user()->associate($this->issuer);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+
+        // And I visit the contact edit form
+        // And set a NIN and and submit
+        $this->visit(route('user.business.contact.edit', ['business' => $this->business, 'contact' => $contact]))
+             ->type('54321', 'nin')
+             ->press('Update');
+
+        // Then I see the profile is updated with the NIN
+        $this->assertResponseOk();
+        $this->see('Updated successfully')
+             ->see('12345');
+    }
+
+    /**
      * arrange fixture.
      *
      * @return void
