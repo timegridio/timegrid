@@ -261,6 +261,45 @@ class BookingControllerTest extends TestCase
         $this->assertEquals(Appointment::STATUS_RESERVED, $this->appointment->status);
     }
 
+    /**
+     * @covers   App\Http\Controllers\BookingController::postAction
+     * @test
+     */
+    public function it_requests_an_invalid_widget()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        $this->appointment = factory(Appointment::class)->make([
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->addDays(5),
+            ]);
+        $this->appointment->issuer()->associate($this->issuer);
+        $this->appointment->business()->associate($this->business);
+        $this->appointment->service()->associate($this->service);
+        $this->appointment->contact()->associate($this->contact);
+        $this->appointment->vacancy()->associate($this->vacancy);
+        $this->appointment->save();
+
+        // And I am authenticated
+        session()->start();
+        $this->actingAs($this->issuer);
+
+        // And I request the annulation of the appointment and telling an invalid widgetType
+        $input = [
+            '_token'      => csrf_token(),
+            'business'    => $this->business->id,
+            'appointment' => $this->appointment->id,
+            'action'      => 'annulate',
+            'widget'      => 'InvalidWidgetType',
+            ];
+
+        $this->post('/api/booking/action', $input);
+
+        // Then I receive a response with error code
+        $this->seeJson(['code' => 'ERROR']);
+    }
+
     /////////////
     // HELPERS //
     /////////////
