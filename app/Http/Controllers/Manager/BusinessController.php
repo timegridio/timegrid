@@ -29,8 +29,8 @@ class BusinessController extends Controller
 
         if ($businesses->count() == 1) {
             $this->log->info('Only one business to show');
-            Flash::success(trans('manager.businesses.msg.index.only_one_found'));
 
+            Flash::success(trans('manager.businesses.msg.index.only_one_found'));
             return redirect()->route('manager.business.show', $businesses->first());
         }
 
@@ -54,8 +54,8 @@ class BusinessController extends Controller
         $categories = $this->listCategories();
 
         $business = new Business();
-        Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
 
+        Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
@@ -79,22 +79,21 @@ class BusinessController extends Controller
 
         // If found
         if ($existingBusiness !== null) {
-            $this->log->info("  Found existing businessId:{$existingBusiness->id}");
+            $this->log->info("Found existing businessId:{$existingBusiness->id}");
 
             // If owned, restore
             if (auth()->user()->isOwner($existingBusiness->id)) {
-                $this->log->info("  Restoring owned businessId:{$existingBusiness->id}");
+                $this->log->info("Restoring owned businessId:{$existingBusiness->id}");
                 $existingBusiness->restore();
 
                 Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-
                 return redirect()->route('manager.business.service.create', $existingBusiness);
             }
 
             // If not owned, return message
             $this->log->info("  Already taken businessId:{$existingBusiness->id}");
-            Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
 
+            Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
             return redirect()->back()->withInput(request()->all());
         }
 
@@ -111,15 +110,14 @@ class BusinessController extends Controller
         // Generate local notification
         $businessName = $business->name;
         Notifynder::category('user.registeredBusiness')
-        ->from('App\Models\User', auth()->user()->id)
-        ->to('App\Models\Business', $business->id)
-        ->url('http://localhost')
-        ->extra(compact('businessName'))
-        ->send();
+            ->from('App\Models\User', auth()->user()->id)
+            ->to('App\Models\Business', $business->id)
+            ->url('http://localhost')
+            ->extra(compact('businessName'))
+            ->send();
 
         // Redirect success
         Flash::success(trans('manager.businesses.msg.store.success'));
-
         return redirect()->route('manager.business.service.create', $business);
     }
 
@@ -215,7 +213,6 @@ class BusinessController extends Controller
             ]);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
-
         return redirect()->route('manager.business.show', compact('business'));
     }
 
@@ -242,7 +239,6 @@ class BusinessController extends Controller
         $business->delete();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
-
         return redirect()->route('manager.business.index');
     }
 
