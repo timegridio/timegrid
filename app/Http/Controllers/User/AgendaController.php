@@ -53,10 +53,10 @@ class AgendaController extends Controller
         $this->log->info(__METHOD__);
 
         Notifynder::category('user.checkingVacancies')
-                   ->from('App\Models\User', auth()->user()->id)
-                   ->to('App\Models\Business', $business->id)
-                   ->url('http://localhost')
-                   ->send();
+           ->from('App\Models\User', auth()->user()->id)
+           ->to('App\Models\Business', $business->id)
+           ->url('http://localhost')
+           ->send();
 
         if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('  [ADVICE] User not subscribed to Business');
