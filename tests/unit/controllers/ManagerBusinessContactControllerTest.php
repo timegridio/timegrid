@@ -44,7 +44,6 @@ class ManagerBusinessContactControllerTest extends TestCase
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
      * @covers   App\Http\Controllers\Manager\BusinessContactController::edit
      * @covers   App\Http\Controllers\Manager\BusinessContactController::update
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
      * @test
      */
     public function it_edits_a_contact_of_addressbook()
@@ -74,6 +73,33 @@ class ManagerBusinessContactControllerTest extends TestCase
              ->see('NewName')
              ->see('NewLastName');
     }
+
+#    /**
+#     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
+#     * @covers   App\Http\Controllers\Manager\BusinessContactController::destroy
+#     * @test
+#     */
+#    public function it_removes_a_contact_from_addressbook()
+#    {
+#        // Given a fixture of
+#        $this->arrangeFixture();
+#        $contact = factory(Contact::class)->create(['firstname' => 'DeletemeFirst', 'lastname' => 'DeletemeLast', 'nin' => '1133224455']);
+#        $this->business->contacts()->save($contact);
+#
+#        // And I am authenticated as the business owner
+#        $this->actingAs($this->issuer);
+#
+#        // And I visit the business contact profile
+#        $this->visit(route('manager.business.contact.show', ['business' => $this->business->slug, 'contact' => $contact->id]));
+#
+#        // TODO: DELETE CONTACT BY CLICK
+#
+#        // Then I see the contact not listed and message of confirmation
+#        $this->assertResponseOk();
+#        $this->see('Contact deleted')
+#             ->dontSee($contact->firstname)
+#             ->dontSee($contact->lastname);
+#    }
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
