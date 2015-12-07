@@ -412,13 +412,13 @@ class Appointment extends EloquentModel implements HasPresenter
      * Of Business.
      *
      * @param Illuminate\Database\Query $query
-     * @param Business                  $business An inquired business to validate against
+     * @param int                        $businessId An inquired business to validate against
      *
      * @return Illuminate\Database\Query The appointments belonging to the inquired Business as holder
      */
-    public function scopeOfBusiness($query, Business $business)
+    public function scopeOfBusiness($query, $businessId)
     {
-        return $query->where('business_id', '=', $business->id);
+        return $query->where('business_id', '=', $businessId);
     }
 
     /**
