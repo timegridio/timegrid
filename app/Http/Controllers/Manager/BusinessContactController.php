@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Events\NewRegisteredContact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 use App\Models\Business;
 use App\Models\Contact;
+use App\Services\ContactService;
 use Gate;
 use Laracasts\Flash\Flash;
 
@@ -63,38 +63,9 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-
-        if (trim($request->input('nin'))) {
-            $existingContacts = Contact::whereNotNull('nin')->where(['nin' => $request->input('nin')])->get();
-
-            foreach ($existingContacts as $existingContact) {
-                $this->log->info("  [ADVICE] Found existing contactId:{$existingContact->id}");
-
-                if ($existingContact->isSubscribedTo($business)) {
-                    $this->log->info('  [ADVICE] Existing contact is already linked to business');
-                    Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
-
-                    return redirect()->route('manager.business.contact.show', [$business, $existingContact]);
-                }
-            }
-        }
-
-        $contact = Contact::create($request->except('notes', '_token'));
-        $business->contacts()->attach($contact);
-        $business->save();
-        $this->log->info("  Contact created contactId:{$contact->id}");
-
-        if ($request->get('notes')) {
-            $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
-        }
-
-        event(new NewRegisteredContact($contact));
+        $contact = ContactService::register(auth()->user(), $business, $request->all());
 
         Flash::success(trans('manager.contacts.msg.store.success'));
-
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 

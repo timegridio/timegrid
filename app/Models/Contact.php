@@ -14,7 +14,7 @@ class Contact extends EloquentModel implements HasPresenter
      *
      * @var array
      */
-    protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country', 'notes',
+    protected $fillable = ['firstname', 'lastname', 'nin', 'email', 'birthdate', 'mobile', 'mobile_country',
                             'gender', 'occupation', 'martial_status', 'postal_address', ];
 
     /**
