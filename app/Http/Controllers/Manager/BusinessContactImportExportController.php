@@ -30,6 +30,8 @@ class BusinessContactImportExportController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
+        $this->authorize('manageContacts', $business);
+
         return view('manager.contacts.import', compact('business'));
     }
 
@@ -45,6 +47,8 @@ class BusinessContactImportExportController extends Controller
     {
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
+
+        $this->authorize('manageContacts', $business);
 
         //////////////////
         // FOR REFACTOR //
