@@ -134,9 +134,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('manage', $business)) {
-            abort(403);
-        }
+        $this->authorize('manage', $business);
 
         session()->set('selected.business', $business);
         $notifications = $business->getNotificationsNotRead(100);
@@ -157,9 +155,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('update', $business)) {
-            abort(403);
-        }
+        $this->authorize('update', $business);
 
         //////////////////
         // FOR REFACTOR //
@@ -189,9 +185,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('update', $business)) {
-            abort(403);
-        }
+        $this->authorize('update', $business);
 
         //////////////////
         // FOR REFACTOR //
@@ -228,9 +222,7 @@ class BusinessController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('destroy', $business)) {
-            abort(403);
-        }
+        $this->authorize('destroy', $business);
 
         //////////////////
         // FOR REFACOTR //
@@ -253,16 +245,18 @@ class BusinessController extends Controller
      *
      * @return Response View with results or redirect to default
      */
-    public function postSearch()
+    public function postSearch(Business $business)
     {
-        if (!session()->get('selected.business')) {
-            return redirect()->route('user.directory.list');
-        }
+        $this->authorize('manage', $business);
+
+        #if (!session()->get('selected.business')) {
+        #    return redirect()->route('user.directory.list');
+        #}
 
         $criteria = Request::input('criteria');
 
         $search = new SearchEngine($criteria);
-        $search->setBusinessScope([session()->get('selected.business')->id])->run();
+        $search->setBusinessScope([$business->id])->run();
 
         return view('manager.search.index')->with(['results' => $search->results(), 'criteria' => $criteria]);
     }
