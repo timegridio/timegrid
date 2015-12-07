@@ -28,7 +28,8 @@ Built with the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework fo
 
 ## Screenshots
 
-![Screenshot](http://i.imgur.com/aiG7jlx.png)
+![Dashboard Screenshot](http://i.imgur.com/aiG7jlx.png)
+![Appointment Screenshot](http://i.imgur.com/68dAS4f.png)
 
 [Wanna see more?](https://github.com/alariva/timegrid/wiki/Screenshots)
 
