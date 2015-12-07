@@ -10,11 +10,15 @@
                     @if(auth()->user()->isOwner($business->id))
                         {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
-                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {{ $business->name }}
+                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }}
                     @endif
                 </div>
 
                     <ul class="list-group">
+
+                        <li class="list-group-item text-center">
+                            <h1>{!! $business->name !!}</h1>
+                        </li>
 
                         <li class="list-group-item">
                             {!! $business->industryIcon !!}
@@ -28,7 +32,6 @@
                                     <a href="#">{!! $business->facebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
-                                    <h4 class="media-heading">{{ $business->name }}</h4>
                                     <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
                                   </div>
                                 </div>
@@ -54,11 +57,11 @@
                         @endif
 
                         @if ($appointment = auth()->user()->appointments()->where('business_id', $business)->oldest()->active()->future()->first())
-                        {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
-                        <li class="list-group-item" title="{{$business->timezone}}">
-                            {!! Widget::AppointmentPanel(['appointment' => $appointment, 'user' => auth()->user()]) !!}
-                        </li>
-                        {!! Form::close() !!}
+                            {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
+                            <li class="list-group-item" title="{{$business->timezone}}">
+                                {!! $appointment->panel !!}
+                            </li>
+                            {!! Form::close() !!}
                         @endif
 
                         @if ($business->pref('show_map') && $business->postal_address)
