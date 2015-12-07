@@ -6,7 +6,7 @@
     <td>{{ $appointment->date }}</td>
     <td title="{{ $appointment->timezone }}">{{ $appointment->time }}</td>
     <td>{{ $appointment->business->name }}</td>
-    <td>{{ $appointment->service->description }}</td>
+    <td>{{ $appointment->service->name }}</td>
     <td>{{ $appointment->diffForHumans }}</td>
     <td>
         <div class="btn-group">
