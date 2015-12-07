@@ -1,7 +1,7 @@
 <?php
 
 
-class LanguageSwitchTest extends TestCase
+class LanguageControllerTest extends TestCase
 {
     /**
      * Test switch language to English.

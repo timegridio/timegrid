@@ -10,7 +10,7 @@ use App\Services\ConciergeService;
 use App\Services\VacancyService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ConciergeServiceUnitTest extends TestCase
+class ConciergeServiceTest extends TestCase
 {
     use DatabaseTransactions;
 

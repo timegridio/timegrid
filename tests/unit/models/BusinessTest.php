@@ -4,7 +4,7 @@ use App\Models\Business;
 use App\Presenters\BusinessPresenter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class BusinessUnitTest extends TestCase
+class BusinessTest extends TestCase
 {
     use DatabaseTransactions;
 

@@ -3,13 +3,11 @@
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserUnitTest extends TestCase
+class UserTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_creates_a_user_without_username()
     {
         $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest'), 'username' => '']);
@@ -18,9 +16,7 @@ class UserUnitTest extends TestCase
         $this->assertEquals(strlen($user->username), 32);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_creates_a_user_with_username()
     {
         $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest'), 'username' => 'alariva']);
