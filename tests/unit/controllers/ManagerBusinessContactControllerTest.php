@@ -42,6 +42,41 @@ class ManagerBusinessContactControllerTest extends TestCase
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
+     * @covers   App\Http\Controllers\Manager\BusinessContactController::edit
+     * @covers   App\Http\Controllers\Manager\BusinessContactController::update
+     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
+     * @test
+     */
+    public function it_edits_a_contact_of_addressbook()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '1133224455']);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+
+        // And I visit the business contact edit form
+        $this->visit(route('manager.business.contact.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
+             ->see($contact->firstname)
+             ->see($contact->lastname)
+             ->see($contact->nin);
+
+        // And I change the name and lastname
+        $this->type('NewName', 'firstname')
+             ->type('NewLastName', 'lastname')
+             ->press('Update');
+
+        // Then I see the contact updated on the list
+        $this->assertResponseOk();
+        $this->see('Updated successfully')
+             ->see('NewName')
+             ->see('NewLastName');
+    }
+
+    /**
+     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
      * @covers   App\Http\Controllers\Manager\BusinessContactController::create
      * @covers   App\Http\Controllers\Manager\BusinessContactController::store
      * @covers   App\Http\Controllers\Manager\BusinessContactController::show
