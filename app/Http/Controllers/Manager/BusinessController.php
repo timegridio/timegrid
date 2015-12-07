@@ -7,6 +7,7 @@ use App\Http\Requests\BusinessFormRequest;
 use App\Models\Business;
 use App\Models\Category;
 use App\SearchEngine;
+use App\Services\BusinessService;
 use Fenos\Notifynder\Facades\Notifynder;
 use Gate;
 use GeoIP;
@@ -73,39 +74,17 @@ class BusinessController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
+        try {
+            
+            $business = BusinessService::register(auth()->user(), $request->all(), $request->get('category'));
 
-        // Search Existing
-        $existingBusiness = Business::withTrashed()->where(['slug' => $request->input('slug')])->first();
-
-        // If found
-        if ($existingBusiness !== null) {
-            $this->log->info("Found existing businessId:{$existingBusiness->id}");
-
-            // If owned, restore
-            if (auth()->user()->isOwner($existingBusiness->id)) {
-                $this->log->info("Restoring owned businessId:{$existingBusiness->id}");
-                $existingBusiness->restore();
-
-                Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
-                return redirect()->route('manager.business.service.create', $existingBusiness);
-            }
-
-            // If not owned, return message
-            $this->log->info("  Already taken businessId:{$existingBusiness->id}");
-
+        } catch (BusinessAlreadyRegisteredException $exception) {
+                
+            #Flash::success(trans('manager.businesses.msg.store.restored_trashed'));
+            #return redirect()->route('manager.business.service.create', $business);
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
             return redirect()->back()->withInput(request()->all());
         }
-
-        // Register new Business
-        $business = new Business($request->all());
-        $category = Category::find($request->get('category'));
-        $business->strategy = $category->strategy;
-        $business->category()->associate($category);
-        $business->save();
-
-        auth()->user()->businesses()->attach($business);
-        auth()->user()->save();
 
         // Generate local notification
         $businessName = $business->name;
