@@ -30,15 +30,10 @@ class BusinessAgendaController extends Controller
         $this->log->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);
-
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
         
         $appointments = $this->concierge->setBusiness($business)->getUnservedAppointments();
 
         $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
-
         return view($viewKey, compact('business', 'appointments'));
     }
 }
