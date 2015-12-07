@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\BookingStrategy;
+use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
+use Fenos\Notifynder\Facades\Notifynder;
 
 /*******************************************************************************
  * Concierge Service Layer
@@ -124,7 +126,8 @@ class ConciergeService
         );
 
         if ($appointment->duplicates()) {
-            throw new AppointmentDuplicationException;
+            return $appointment;
+            # throw new \Exception('Duplicated Appointment Attempted');
         }
 
         $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);
@@ -139,5 +142,46 @@ class ConciergeService
         }
 
         return false;
+    }
+
+    /**
+     * [requestAction description]
+     * @param  User        $user        [description]
+     * @param  Appointment $appointment [description]
+     * @param  [type]      $action      [description]
+     * @return [type]                   [description]
+     * @throws Exception                [description]
+     */
+    public function requestAction(User $user, Appointment $appointment, $action)
+    {
+        switch ($action) {
+            case 'annulate':
+                $appointment->doAnnulate();
+                break;
+            case 'confirm':
+                $appointment->doConfirm();
+                break;
+            case 'serve':
+                $appointment->doServe();
+                break;
+            default:
+                // Ignore Invalid Action
+                logger()->warning('Invalid Action request');
+
+                throw new \Exception('Invalid Action Request');
+                break;
+        }
+
+        // REFACTOR: $this->notify(notificationCategory, user, business, extraArgs)
+        $date = $appointment->date;
+        $code = $appointment->code;
+        Notifynder::category('appointment.'.$action)
+                   ->from('App\Models\User', $user->id)
+                   ->to('App\Models\Business', $appointment->business->id)
+                   ->url('http://localhost')
+                   ->extra(compact('code', 'action', 'date'))
+                   ->send();
+
+        return $appointment->fresh();
     }
 }

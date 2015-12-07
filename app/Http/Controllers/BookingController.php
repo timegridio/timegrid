@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlterAppointmentRequest;
 use App\Models\Appointment;
+use App\Services\ConciergeService;
 use Notifynder;
 use Widget;
 
@@ -16,6 +17,25 @@ use Widget;
  */
 class BookingController extends Controller
 {
+    /**
+     * [$concierge description]
+     *
+     * @var [type]
+     */
+    private $concierge;
+
+    /**
+     * [__construct description]
+     *
+     * @param ConciergeService $concierge [description]
+     */
+    public function __construct(ConciergeService $concierge)
+    {
+        $this->concierge = $concierge;
+
+        parent::__construct();
+    }
+
     /**
      * post Action for booking.
      *
@@ -33,64 +53,39 @@ class BookingController extends Controller
 
         $issuer = auth()->user();
         $businessId = $request->input('business');
-        $appointmentId = $request->input('appointment');
+        $appointment = Appointment::findOrFail($request->input('appointment'));
         $action = $request->input('action');
-        $widget = $request->input('widget');
+        $widgetType = $request->input('widget');
+
+        ///////////////////////////////////
+        // TODO: AUTHORIZATION GOES HERE //
+        ///////////////////////////////////
 
         $this->log->info(sprintf(
-            'AJAX postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
+            'postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
             $issuer->email,
             $action,
             $businessId,
-            $appointmentId
+            $appointment->id
         ));
 
-        $appointment = Appointment::find($appointmentId);
-
-        switch ($action) {
-            case 'annulate':
-                $appointment->doAnnulate();
-                break;
-            case 'confirm':
-                $appointment->doConfirm();
-                break;
-            case 'serve':
-                $appointment->doServe();
-                break;
-            default:
-                // Ignore Invalid Action
-                $this->log->warning('Invalid Action request');
-
-                return response()->json(['code' => 'ERROR', 'html' => '']);
-                break;
+        try {
+            $appointment = $this->concierge->requestAction(auth()->user(), $appointment, $action);
+        } catch (\Exception $e) {
+            return response()->json(['code' => 'ERROR', 'html' => '']);
         }
 
-        /*
-         * Widgets MUST be rendered before being returned on Response
-         * as they need to be interpreted as HTML
-         */
-        switch ($widget) {
-            case 'row':
-                $buttons = '';
-                $html = view('widgets.appointment.row._body', ['appointment' => $appointment, 'user' => auth()->user()])->render();
-                break;
-            case 'panel':
-            default:
-                $html = view('widgets.appointment.panel._body', ['appointment' => $appointment, 'user' => auth()->user()])->render();
-                break;
-        }
+        $contents = ['appointment' => $appointment, 'user' => auth()->user()];
 
-        $date = $appointment->date;
-        $code = $appointment->code;
-        Notifynder::category('appointment.'.$action)
-                   ->from('App\Models\User', $issuer->id)
-                   ->to('App\Models\Business', $appointment->business->id)
-                   ->url('http://localhost')
-                   ->extra(compact('code', 'action', 'date'))
-                   ->send();
+        $viewKey = "widgets.appointment.{$widgetType}._body";
+        if (!view()->exists($viewKey)) {
+            return response()->json(['code' => 'ERROR', 'html' => '']);
+        }
+        
+        // Widgets MUST be rendered before being returned on Response as they need to be interpreted as HTML
+        $html = view($viewKey, $contents)->render();
 
         $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
-
         return response()->json(['code' => 'OK', 'html' => $html]);
     }
 }
