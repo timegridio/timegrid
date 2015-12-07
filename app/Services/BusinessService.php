@@ -21,7 +21,7 @@ class BusinessService
      * @param  [type] $category [description]
      * @return [type]           [description]
      */
-    public static function register(User $user, $data, $category)
+    public function register(User $user, $data, $category)
     {
         if (false === $business = self::getExisting($user, $data['slug'])) {
             $business = new Business($data);
@@ -46,7 +46,7 @@ class BusinessService
      * @return Business|false        Business if found or false otherwise
      * @throws BusinessAlreadyExists When Business exists and is not owned by User
      */
-    public static function getExisting(User $user, $slug)
+    public function getExisting(User $user, $slug)
     {
         $business = Business::withTrashed()->where(['slug' => $slug])->first();
 
@@ -64,6 +64,33 @@ class BusinessService
         logger()->info("Restoring owned businessId:{$business->id}");
         
         $business->restore();
+
+        return $business;
+    }
+
+    /**
+     * [deactivate description]
+     *
+     * @param  Business $business [description]
+     * @return [type]             [description]
+     */
+    public function deactivate(Business $business)
+    {
+        return $business->delete();
+    }
+
+    public function update(Business $business, $data)
+    {
+        $business->where(['id' => $business->id])->update($data);
+
+        return $business;
+    }
+
+    public function setCategory(Business $business, $category)
+    {
+        $category = Category::find($category);
+        $business->category()->associate($category);
+        $business->save();
 
         return $business;
     }
