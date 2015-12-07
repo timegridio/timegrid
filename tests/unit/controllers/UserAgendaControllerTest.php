@@ -5,6 +5,7 @@ use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserAgendaControllerTest extends TestCase
@@ -194,5 +195,42 @@ class UserAgendaControllerTest extends TestCase
         $this->see('Reserved')
             ->see($appointment->code)
             ->see($appointment->business->name);
+    }
+
+    /** @test */
+    public function it_queries_vacancies()
+    {
+        // Given I am an authenticated user
+        $this->owner = factory(User::class)->create();
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+
+        // And there exist a registered business
+        // And which I am subscribed as contact
+        $business = factory(Business::class)->create(['name' => 'tosto this tosti']);
+        $business->owners()->save($this->owner);
+        $contact = factory(Contact::class)->create();
+        $contact->user()->associate($this->user);
+        $contact->save();
+        $business->contacts()->save($contact);
+
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+
+        // And there is vacancy for the service
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        // And I go to favourites (subscriptions) section
+        $this->visit(route('user.booking.book', ['business' => $business]));
+
+        // WARNING; may return false positive as the view includes the services description
+
+        // Then I should see my reservations list
+        // and the reservation details
+        $this->see('Select a service to reserve')
+             ->see($service->name)
+             ->see('Confirm');
     }
 }
