@@ -74,6 +74,7 @@ class ManagerBusinessContactControllerTest extends TestCase
              ->see('NewLastName');
     }
 
+#    TEST NOT WORKING - VERIFY
 #    /**
 #     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
 #     * @covers   App\Http\Controllers\Manager\BusinessContactController::destroy
@@ -90,15 +91,10 @@ class ManagerBusinessContactControllerTest extends TestCase
 #        $this->actingAs($this->issuer);
 #
 #        // And I visit the business contact profile
-#        $this->visit(route('manager.business.contact.show', ['business' => $this->business->slug, 'contact' => $contact->id]));
-#
-#        // TODO: DELETE CONTACT BY CLICK
+#        $this->call('DELETE', route('user.business.contact.destroy', ['_token' => csrf_token(), 'business' => $this->business->slug, 'contact' => $contact->id]));
 #
 #        // Then I see the contact not listed and message of confirmation
-#        $this->assertResponseOk();
-#        $this->see('Contact deleted')
-#             ->dontSee($contact->firstname)
-#             ->dontSee($contact->lastname);
+#        $this->assertEquals(false, $this->business->fresh()->contacts->contains($contact));
 #    }
 
     /**
