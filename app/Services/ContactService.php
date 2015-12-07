@@ -28,9 +28,7 @@ class ContactService
 
             logger()->info("Contact created contactId:{$contact->id}");
 
-            if ($data['notes']) {
-                $business->contacts()->find($contact->id)->pivot->update(['notes' => $data['notes']]);
-            }
+            self::updateNotes($business, $contact, $data['notes']);
         }
 
         event(new NewRegisteredContact($contact));
@@ -64,5 +62,36 @@ class ContactService
             }
         }
         return false;
+    }
+
+    /**
+     * [find description]
+     *
+     * @param  Business $business [description]
+     * @param  Contact  $contact  [description]
+     * @return [type]             [description]
+     */
+    public static function find(Business $business, Contact $contact)
+    {
+        return $business->contacts()->find($contact->id);
+    }
+
+    public static function update(Business $business, Contact $contact, $data = [], $notes = null)
+    {
+        $contact->where('id', '=', $contact->id)->update($data);
+
+        self::updateNotes($business, $contact, $notes);
+    }
+
+    protected static function updateNotes(Business $business, Contact $contact, $notes)
+    {
+        if ($notes) {
+            $business->contacts()->find($contact->id)->pivot->update(['notes' => $notes]);
+        }
+    }
+
+    protected static function detach(Business $business, Contact $contact)
+    {
+        return $contact->businesses()->detach($business->id);
     }
 }

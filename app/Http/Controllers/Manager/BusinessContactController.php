@@ -44,6 +44,8 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
+        // BEGIN //
+
         $contact = new Contact(); // For Form Model Binding
         return view('manager.contacts.create', compact('business', 'contact'));
     }
@@ -63,7 +65,15 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
+        // BEGIN //
+
         $contact = ContactService::register(auth()->user(), $business, $request->all());
+
+        if(!$contact->wasRecentlyCreated)
+        {
+            Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+            return redirect()->route('manager.business.contact.show', [$business, $contact]);
+        }
 
         Flash::success(trans('manager.contacts.msg.store.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
@@ -85,7 +95,9 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        $contact = $business->contacts()->find($contact->id);
+        // BEGIN //
+
+        $contact = ContactService::find($business, $contact);
 
         return view('manager.contacts.show', compact('business', 'contact'));
     }
@@ -105,8 +117,11 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        // Grab contact with pivot
-        $notes = $business->contacts()->find($contact->id)->pivot->notes;
+        // BEGIN //
+
+        $contact = ContactService::find($business, $contact);
+
+        $notes = $contact->pivot->notes;
 
         return view('manager.contacts.edit', compact('business', 'contact', 'notes'));
     }
@@ -127,11 +142,9 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        // BEGIN //
 
-        $contact->update([
+        $data = [
             'firstname'       => $request->get('firstname'),
             'lastname'        => $request->get('lastname'),
             'email'           => $request->get('email'),
@@ -139,14 +152,12 @@ class BusinessContactController extends Controller
             'gender'          => $request->get('gender'),
             'birthdate'       => $request->get('birthdate'),
             'mobile'          => $request->get('mobile'),
-            'mobile_country'  => $request->get('mobile_country'),
-        ]);
+            'mobile_country'  => $request->get('mobile_country')
+        ];
 
-        if ($request->get('notes')) {
-            $business->contacts()->find($contact->id)->pivot->update(['notes' => $request->get('notes')]);
-        }
+        $contact = ContactService::update($business, $contact, $data, $request->get('notes'));
 
-        // TODO: If email was updated, user linking should be triggered (if contact is not owned)
+        // FEATURE: If email was updated, user linking should be triggered (if contact is not owned)
 
         Flash::success(trans('manager.contacts.msg.update.success'));
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
@@ -167,11 +178,11 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        // BEGIN //
 
-        $contact->businesses()->detach($business->id);
+        $contact = ContactService::detach($business, $contact);
+
+        // FEATURE: If user is linked to contact, inform removal
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
         return redirect()->route('manager.business.contact.index', $business);
