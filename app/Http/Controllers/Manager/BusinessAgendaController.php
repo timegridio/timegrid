@@ -19,9 +19,7 @@ class BusinessAgendaController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manage', $business);
 
         //////////////////
         // FOR REFACTOR //
