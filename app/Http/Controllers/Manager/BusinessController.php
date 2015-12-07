@@ -200,17 +200,17 @@ class BusinessController extends Controller
         $category = Category::find(Request::get('category'));
         $business->category()->associate($category);
 
-        $business->update([
-            'slug' => $business->slug,
-            ], [
-            'name'            => $request->get('name'),
-            'description'     => $request->get('description'),
-            'timezone'        => $request->get('timezone'),
-            'postal_address'  => $request->get('postal_address'),
-            'phone'           => $request->get('phone'),
-            'social_facebook' => $request->get('social_facebook'),
-            'strategy'        => $request->get('strategy'),
-            ]);
+        $updateData = [
+                'name'            => $request->get('name'),
+                'description'     => $request->get('description'),
+                'timezone'        => $request->get('timezone'),
+                'postal_address'  => $request->get('postal_address'),
+                'phone'           => $request->get('phone'),
+                'social_facebook' => $request->get('social_facebook'),
+                'strategy'        => $request->get('strategy')
+        ];
+
+        $business->where(['id' => $business->id])->update($updateData);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
         return redirect()->route('manager.business.show', compact('business'));
