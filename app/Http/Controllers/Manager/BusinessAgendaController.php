@@ -2,11 +2,21 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
 use App\Models\Business;
+use App\Services\ConciergeService;
+use App\Http\Controllers\Controller;
 
 class BusinessAgendaController extends Controller
 {
+    private $concierge;
+
+    public function __construct(ConciergeService $concierge)
+    {
+        $this->concierge = $concierge;
+
+        parent::__construct();
+    }
+
     /**
      * get Index.
      *
@@ -24,13 +34,8 @@ class BusinessAgendaController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
-
-        $appointments = $business->bookings()->with('contact')
-                                             ->with('business')
-                                             ->with('service')
-                                             ->unserved()
-                                             ->orderBy('start_at')
-                                             ->get();
+        
+        $appointments = $this->concierge->setBusiness($business)->getUnservedAppointments();
 
         $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
 

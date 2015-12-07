@@ -22,6 +22,8 @@ class ConciergeService
      */
     private $vacancyService;
 
+    private $business;
+
     /**
      * [__construct description].
      *
@@ -44,7 +46,11 @@ class ConciergeService
 
     public function setBusiness(Business $business)
     {
+        $this->business = $business;
+
         $this->vacancyService->setBusiness($business);
+
+        return $this;
     }
 
     /**
@@ -58,6 +64,17 @@ class ConciergeService
     public function isAvailable(User $user, $limit = 7)
     {
         return $this->vacancyService->isAvailable($user, $limit);
+    }
+
+    public function getUnservedAppointments()
+    {
+        return $appointments = $this->business
+            ->bookings()->with('contact')
+            ->with('business')
+            ->with('service')
+            ->unserved()
+            ->orderBy('start_at')
+            ->get();
     }
 
     /**
@@ -150,7 +167,7 @@ class ConciergeService
         );
 
         if ($appointment->duplicates()) {
-            return $appointment;
+            throw new AppointmentDuplicationException;
         }
 
         $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);
