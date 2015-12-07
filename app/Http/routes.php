@@ -191,7 +191,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         // SEARCH
 
-        Route::post('search', ['uses' => 'BusinessController@postSearch']);
+        Route::post('search', ['as' => 'manager.search', 'uses' => 'BusinessController@postSearch']);
 
         // CONTACT IMPORT
 
