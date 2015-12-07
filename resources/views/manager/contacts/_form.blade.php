@@ -53,7 +53,7 @@
                 ['id' => 'gender', 'class'=>'selectpicker'] ) !!}
         </div>
         <div class="form-group col-xs-8">
-            {!! Form::text('birthdate', null, [
+            {!! Form::text('birthdate', isset($contact) ? old('birthdate', $contact->birthdate ? $contact->birthdate->format(trans('app.dateformat.carbon')) : null) : null, [
                 'class'=>'form-control',
                 'id'=>'birthdate',
                 'placeholder'=> trans('manager.contacts.form.birthdate.label'),
