@@ -24,9 +24,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         return view('manager.contacts.index', compact('business'));
     }
@@ -44,9 +42,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         $contact = new Contact(); // For Form Model Binding
         return view('manager.contacts.create', compact('business', 'contact'));
@@ -65,9 +61,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         //////////////////
         // FOR REFACTOR //
@@ -118,11 +112,8 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
-        // Grab contact with pivot
         $contact = $business->contacts()->find($contact->id);
 
         return view('manager.contacts.show', compact('business', 'contact'));
@@ -141,9 +132,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         // Grab contact with pivot
         $notes = $business->contacts()->find($contact->id)->pivot->notes;
@@ -165,9 +154,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         //////////////////
         // FOR REFACTOR //
@@ -191,7 +178,6 @@ class BusinessContactController extends Controller
         // TODO: If email was updated, user linking should be triggered (if contact is not owned)
 
         Flash::success(trans('manager.contacts.msg.update.success'));
-
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
@@ -208,9 +194,7 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        if (Gate::denies('manageContacts', $business)) {
-            abort(403);
-        }
+        $this->authorize('manageContacts', $business);
 
         //////////////////
         // FOR REFACTOR //
@@ -219,7 +203,6 @@ class BusinessContactController extends Controller
         $contact->businesses()->detach($business->id);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
-
         return redirect()->route('manager.business.contact.index', $business);
     }
 }
