@@ -107,7 +107,7 @@
 
                                                 <span class="pull-right">
                                                         {!! Button::warning()->withIcon(Icon::edit())->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) )->withAttributes(['data-for' => 'edit', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.edit')]) !!}
-                                                        {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-for' => 'delete', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=> trans('manager.contacts.btn.confirm_delete')])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
+                                                        {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['id' => 'delete-btn', 'type' => 'button', 'data-for' => 'delete', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.contacts.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=> trans('manager.contacts.btn.confirm_delete')])->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) ) !!}
                                                 </span>
                                  </div>
                         
