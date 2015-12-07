@@ -66,7 +66,7 @@ class BusinessPresenter extends BasePresenter
      */
     public function industryIcon()
     {
-        if (!isset($this->wrappedObject)) {
+        if (!isset($this->wrappedObject) || !isset($this->wrappedObject->category)) {
             return '';
         }
 
