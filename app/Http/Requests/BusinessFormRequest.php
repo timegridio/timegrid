@@ -34,7 +34,7 @@ class BusinessFormRequest extends Request
             case 'POST':
                 return [
                       'name'        => 'required|min:4',
-                      'slug'        => 'required|min:4|unique:businesses',
+                      'slug'        => 'required|min:4',
                       'description' => 'required|min:10',
                       'timezone'    => 'timezone',
                       'strategy'    => 'required',
