@@ -2,30 +2,30 @@
 
 namespace App\Http\Controllers\Manager;
 
-use GeoIP;
-use App\SearchEngine;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\BusinessFormRequest;
 use App\Models\Business;
 use App\Models\Category;
-use Laracasts\Flash\Flash;
+use App\SearchEngine;
 use App\Services\BusinessService;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Request;
 use Fenos\Notifynder\Facades\Notifynder;
-use App\Http\Requests\BusinessFormRequest;
+use GeoIP;
+use Illuminate\Support\Facades\Request;
+use Laracasts\Flash\Flash;
 
 class BusinessController extends Controller
 {
     /**
-     * [$businessService description]
+     * Business service.
      *
-     * @var [type]
+     * @var App\Services\BusinessService
      */
     private $businessService;
 
     /**
-     * [__construct description]
+     * Create Controller.
      *
-     * @param BusinessService $businessService [description]
+     * @param App\Services\BusinessService $businessService
      */
     public function __construct(BusinessService $businessService)
     {
@@ -35,7 +35,7 @@ class BusinessController extends Controller
     }
 
     /**
-     * index.
+     * List all businesses.
      *
      * @return Response Rendered view for Businesses listing
      */
@@ -51,6 +51,7 @@ class BusinessController extends Controller
             $this->log->info('Only one business to show');
 
             Flash::success(trans('manager.businesses.msg.index.only_one_found'));
+
             return redirect()->route('manager.business.show', $businesses->first());
         }
 
@@ -77,6 +78,7 @@ class BusinessController extends Controller
         $business = new Business();
 
         Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
+
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
@@ -97,6 +99,7 @@ class BusinessController extends Controller
             $business = $this->businessService->register(auth()->user(), $request->all(), $request->get('category'));
         } catch (BusinessAlreadyRegisteredException $exception) {
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+
             return redirect()->back()->withInput(request()->all());
         }
 
@@ -111,6 +114,7 @@ class BusinessController extends Controller
 
         // Redirect success
         Flash::success(trans('manager.businesses.msg.store.success'));
+
         return redirect()->route('manager.business.service.create', $business);
     }
 
@@ -190,7 +194,7 @@ class BusinessController extends Controller
                 'postal_address'  => $request->get('postal_address'),
                 'phone'           => $request->get('phone'),
                 'social_facebook' => $request->get('social_facebook'),
-                'strategy'        => $request->get('strategy')
+                'strategy'        => $request->get('strategy'),
         ];
 
         $this->businessService->update($business, $data);
@@ -198,6 +202,7 @@ class BusinessController extends Controller
         $this->businessService->setCategory($business, $category);
 
         Flash::success(trans('manager.businesses.msg.update.success'));
+
         return redirect()->route('manager.business.show', compact('business'));
     }
 
@@ -216,10 +221,11 @@ class BusinessController extends Controller
         $this->authorize('destroy', $business);
 
         // BEGIN
-        
+
         $this->businessService->deactivate();
 
         Flash::success(trans('manager.businesses.msg.destroy.success'));
+
         return redirect()->route('manager.business.index');
     }
 
@@ -237,10 +243,6 @@ class BusinessController extends Controller
     public function postSearch(Business $business)
     {
         $this->authorize('manage', $business);
-
-        #if (!session()->get('selected.business')) {
-        #    return redirect()->route('user.directory.list');
-        #}
 
         $criteria = Request::input('criteria');
 
