@@ -5,7 +5,6 @@ namespace App\Services;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\User;
-use Carbon\Carbon;
 
 /*******************************************************************************
  * Business Service Layer
@@ -14,12 +13,13 @@ use Carbon\Carbon;
 class BusinessService
 {
     /**
-     * register Business
+     * register Business.
      *
-     * @param  User   $user     [description]
-     * @param  [type] $data     [description]
-     * @param  [type] $category [description]
-     * @return [type]           [description]
+     * @param User   $user
+     * @param array  $data
+     * @param int    $category
+     *
+     * @return App\Models\Business
      */
     public function register(User $user, $data, $category)
     {
@@ -31,20 +31,23 @@ class BusinessService
             $business->strategy = $category->strategy;
             $business->category()->associate($category);
             $business->save();
-    
+
             auth()->user()->businesses()->attach($business);
             auth()->user()->save();
         }
+
         return $business;
     }
 
     /**
-     * get existing registered business
+     * get existing registered business.
      *
-     * @param  User           $user  User who attempts to register the business
-     * @param  string         $slug  Desired slug for business
-     * @return Business|false        Business if found or false otherwise
+     * @param User   $user User who attempts to register the business
+     * @param string $slug Desired slug for business
+     *
      * @throws BusinessAlreadyExists When Business exists and is not owned by User
+     *
+     * @return Business|false Business if found or false otherwise
      */
     public function getExisting(User $user, $slug)
     {
@@ -58,27 +61,38 @@ class BusinessService
 
         if (!$user->isOwner($business->id)) {
             logger()->info("Already taken businessId:{$business->id}");
-            throw new BusinessAlreadyExists;
+            throw new BusinessAlreadyExists();
         }
 
         logger()->info("Restoring owned businessId:{$business->id}");
-        
+
         $business->restore();
 
         return $business;
     }
 
     /**
-     * [deactivate description]
+     * Soft delete the business.
      *
-     * @param  Business $business [description]
-     * @return [type]             [description]
+     * @param Business $business
+     *
+     * @return bool|null
+     *
+     * @throws \Exception
      */
     public function deactivate(Business $business)
     {
         return $business->delete();
     }
 
+    /**
+     * Update business attirbutes.
+     * 
+     * @param  Business $business
+     * @param  array    $data
+     * 
+     * @return App\Models\Business
+     */
     public function update(Business $business, $data)
     {
         $business->where(['id' => $business->id])->update($data);
@@ -86,6 +100,14 @@ class BusinessService
         return $business;
     }
 
+    /**
+     * Set category to a Business and save.
+     * 
+     * @param Business $business
+     * @param int      $category
+     *
+     * @return App\Models\Business
+     */
     public function setCategory(Business $business, $category)
     {
         $category = Category::find($category);
