@@ -60,6 +60,10 @@ class BookingController extends Controller
         ///////////////////////////////////
         // TODO: AUTHORIZATION GOES HERE //
         ///////////////////////////////////
+        // AUTHORIZE:
+        //  (A) auth()->user() is owner of $business
+        // OR
+        //  (B) auth()->user() is issuer of $appointment
 
         $this->log->info(sprintf(
             'postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
