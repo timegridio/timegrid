@@ -114,14 +114,14 @@ class Contact extends EloquentModel implements HasPresenter
      */
     public function getAppointmentsCountAttribute()
     {
-        # If relation is not loaded already, let's do it first
+        // If relation is not loaded already, let's do it first
         if (!array_key_exists('appointmentsCount', $this->relations)) {
             $this->load('appointmentsCount');
         }
 
         $related = $this->getRelation('appointmentsCount');
 
-        # Then return the count directly
+        // Return the count directly
         return ($related->count() > 0) ? (int) $related->first()->aggregate : 0;
     }
 
@@ -178,13 +178,12 @@ class Contact extends EloquentModel implements HasPresenter
             }
 
             $this->attributes['birthdate'] = Carbon::parse($birthdate);
-                # trim($birthdate) ? Carbon::createFromFormat(trans('app.dateformat.carbon'), $birthdate) : null;
         }
 
         if ($birthdate instanceof Carbon) {
             $this->attributes['birthdate'] = $birthdate;
         }
-        
+
         return $this->attributes['birthdate'] = null;
     }
 
