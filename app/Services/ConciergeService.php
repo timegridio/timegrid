@@ -145,12 +145,15 @@ class ConciergeService
     }
 
     /**
-     * [requestAction description]
-     * @param  User        $user        [description]
-     * @param  Appointment $appointment [description]
-     * @param  [type]      $action      [description]
-     * @return [type]                   [description]
-     * @throws Exception                [description]
+     * Attempt an action over an indicated Appointment.
+     *
+     * @param User        $user
+     * @param Appointment $appointment
+     * @param string      $action
+     *
+     * @throws Exception
+     *
+     * @return App\Models\Appointment
      */
     public function requestAction(User $user, Appointment $appointment, $action)
     {
