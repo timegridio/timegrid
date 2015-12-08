@@ -13,7 +13,7 @@
 
                 <div class="panel-body">
                     <table class="table">
-                    @foreach ($services as $service)
+                    @foreach ($business->services as $service)
                         <tr>
                             <td title="{{ $service->description }}">
                             <div class="btn-group">

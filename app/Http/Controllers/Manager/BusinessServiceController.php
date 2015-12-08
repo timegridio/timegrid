@@ -24,9 +24,7 @@ class BusinessServiceController extends Controller
 
         // BEGIN
 
-        $services = $business->services;
-
-        return view('manager.businesses.services.index', compact('business', 'services'));
+        return view('manager.businesses.services.index', compact('business'));
     }
 
     /**
