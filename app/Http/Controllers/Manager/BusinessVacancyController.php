@@ -96,14 +96,14 @@ class BusinessVacancyController extends Controller
 
         if (!$changed) {
             $this->log->warning('Nothing to update');
+            
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
-
             return redirect()->back();
         }
 
         $this->log->warning('Vacancies updated');
+        
         Flash::success(trans('manager.vacancies.msg.store.success'));
-
         return redirect()->route('manager.business.show', [$business]);
     }
 }
