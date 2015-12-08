@@ -110,4 +110,17 @@ class BusinessPolicy
     {
         return $user->isOwner($business);
     }
+
+    /**
+     * Determine if the given user can manage a business' vacancies.
+     *
+     * @param User     $user
+     * @param Business $business
+     *
+     * @return bool
+     */
+    public function manageVacancies(User $user, Business $business)
+    {
+        return $user->isOwner($business);
+    }
 }

@@ -22,9 +22,9 @@ class BusinessVacancyController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageVacancies', $business);
+
+        // BEGIN
 
         //////////////////
         // FOR REFACTOR //
@@ -50,9 +50,9 @@ class BusinessVacancyController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageVacancies', $business);
+
+        // BEGIN
 
         //////////////////
         // FOR REFACTOR //
