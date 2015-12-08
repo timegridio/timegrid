@@ -25,9 +25,9 @@ class BusinessPresenter extends BasePresenter
             return '<img class="img-thumbnail" src="//placehold.it/100x100"/>';
         }
         $url = parse_url($this->wrappedObject->social_facebook);
-        
+
         $userId = trim($url['path'], '/');
-        
+
         if ($url['path'] == '/profile.php') {
             parse_str($url['query'], $parts);
             $userId = $parts['id'];

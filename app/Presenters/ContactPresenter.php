@@ -32,19 +32,18 @@ class ContactPresenter extends BasePresenter
     public function quality()
     {
         $propertiesScore = [
-            'firstname' => 3,
-            'lastname' => 7,
-            'nin' => 10,
-            'birthdate' => 5,
-            'mobile' => 20,
-            'email' => 15,
+            'firstname'      => 3,
+            'lastname'       => 7,
+            'nin'            => 10,
+            'birthdate'      => 5,
+            'mobile'         => 20,
+            'email'          => 15,
             'postal_address' => 25,
         ];
         $totalScore = array_sum($propertiesScore);
 
         $qualityScore = 0;
         foreach ($propertiesScore as $property => $score) {
-
             if (trim($this->wrappedObject->$property) != '') {
                 $qualityScore += $score;
             }
