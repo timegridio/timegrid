@@ -31,17 +31,26 @@ class ContactPresenter extends BasePresenter
      */
     public function quality()
     {
-        $quality = 0;
-        $quality += isset($this->wrappedObject->firstname) ? 1 : 0;
-        $quality += isset($this->wrappedObject->lastname) ? 1 : 0;
-        $quality += isset($this->wrappedObject->nin) ? 5 : 0;
-        $quality += isset($this->wrappedObject->birthdate) ? 2 : 0;
-        $quality += isset($this->wrappedObject->mobile) ? 4 : 0;
-        $quality += isset($this->wrappedObject->email) ? 4 : 0;
-        $quality += isset($this->wrappedObject->postal_address) ? 3 : 0;
-        $total = 20;
+        $propertiesScore = [
+            'firstname' => 3,
+            'lastname' => 7,
+            'nin' => 10,
+            'birthdate' => 5,
+            'mobile' => 20,
+            'email' => 15,
+            'postal_address' => 25,
+        ];
+        $totalScore = array_sum($propertiesScore);
 
-        return $quality / $total * 100;
+        $qualityScore = 0;
+        foreach ($propertiesScore as $property => $score) {
+
+            if (trim($this->wrappedObject->$property) != '') {
+                $qualityScore += $score;
+            }
+        }
+
+        return ceil($qualityScore / $totalScore * 100);
     }
 
     /**
