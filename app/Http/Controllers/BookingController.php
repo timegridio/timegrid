@@ -18,16 +18,16 @@ use Widget;
 class BookingController extends Controller
 {
     /**
-     * [$concierge description]
+     * Concierge service implementation.
      *
-     * @var [type]
+     * @var App\Services\ConciergeService
      */
     private $concierge;
 
     /**
-     * [__construct description]
+     * Create controller.
      *
-     * @param ConciergeService $concierge [description]
+     * @param ConciergeService $concierge
      */
     public function __construct(ConciergeService $concierge)
     {
@@ -85,11 +85,12 @@ class BookingController extends Controller
         if (!view()->exists($viewKey)) {
             return response()->json(['code' => 'ERROR', 'html' => '']);
         }
-        
+
         // Widgets MUST be rendered before being returned on Response as they need to be interpreted as HTML
         $html = view($viewKey, $contents)->render();
 
         $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
+
         return response()->json(['code' => 'OK', 'html' => $html]);
     }
 }
