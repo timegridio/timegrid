@@ -222,42 +222,46 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
             'uses' => 'BusinessContactController@destroy',
         ]);
 
-        // SERVICE
+        // SERVICE RESOURCE
+        Route::group(['prefix' => 'service'], function () {
+            Route::get('', ['as' => 'manager.business.service.index', 'uses' => 'BusinessServiceController@index']);
+            Route::get('create', [
+                'as'   => 'manager.business.service.create',
+                'uses' => 'BusinessServiceController@create',
+            ]);
+            Route::post('', [
+                'as'   => 'manager.business.service.store',
+                'uses' => 'BusinessServiceController@store',
+            ]);
+            Route::get('{service}', [
+                'as'   => 'manager.business.service.show',
+                'uses' => 'BusinessServiceController@show',
+            ]);
+            Route::get('{service}/edit', [
+                'as'   => 'manager.business.service.edit',
+                'uses' => 'BusinessServiceController@edit',
+            ]);
+            Route::put('{service}', [
+                'as'   => 'manager.business.service.update',
+                'uses' => 'BusinessServiceController@update',
+            ]);
+            Route::delete('{service}', [
+                'as'   => 'manager.business.service.destroy',
+                'uses' => 'BusinessServiceController@destroy',
+            ]);
+        });
 
-        Route::get('service', ['as' => 'manager.business.service.index', 'uses' => 'BusinessServiceController@index']);
-        Route::get('service/create', [
-            'as'   => 'manager.business.service.create',
-            'uses' => 'BusinessServiceController@create',
-        ]);
-        Route::post('service', [
-            'as'   => 'manager.business.service.store',
-            'uses' => 'BusinessServiceController@store',
-        ]);
-        Route::get('service/{service}', [
-            'as'   => 'manager.business.service.show',
-            'uses' => 'BusinessServiceController@show',
-        ]);
-        Route::get('service/{service}/edit', [
-            'as'   => 'manager.business.service.edit',
-            'uses' => 'BusinessServiceController@edit',
-        ]);
-        Route::put('service/{service}', [
-            'as'   => 'manager.business.service.update',
-            'uses' => 'BusinessServiceController@update',
-        ]);
-        Route::delete('service/{service}', [
-            'as'   => 'manager.business.service.destroy',
-            'uses' => 'BusinessServiceController@destroy',
-        ]);
-
-        Route::get('vacancy/create', [
-            'as'   => 'manager.business.vacancy.create',
-            'uses' => 'BusinessVacancyController@create',
-        ]);
-        Route::post('vacancy', [
-            'as'   => 'manager.business.vacancy.store',
-            'uses' => 'BusinessVacancyController@store',
-        ]);
+        // VACANCY RESOURCE
+        Route::group(['prefix' => 'vacancy'], function () {
+            Route::get('create', [
+                'as'   => 'manager.business.vacancy.create',
+                'uses' => 'BusinessVacancyController@create',
+            ]);
+            Route::post('', [
+                'as'   => 'manager.business.vacancy.store',
+                'uses' => 'BusinessVacancyController@store',
+            ]);
+        });
 
     });
 });
