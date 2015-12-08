@@ -1,5 +1,6 @@
 <?php
 
+use Laracasts\TestDummy\Factory;
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
@@ -11,11 +12,22 @@ class AppointmentTest extends TestCase
     use DatabaseTransactions;
 
     /**
+     * @test
+     */
+    public function it_creates_an_appointment()
+    {
+        $appointment = Factory::create('App\Models\Appointment');
+
+        $this->assertInstanceOf(Appointment::class, $appointment);
+    }
+
+    /**
      * @covers \App\Models\Appointment::user
      * @test
      */
     public function it_gets_the_contact_user_of_appointment()
     {
+        $appointment = Factory::create('App\Models\Appointment');
         $user = $this->makeUser();
         $user->save();
 
@@ -73,22 +85,10 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_finish_datetime_of_appointment()
     {
-        $issuer = $this->makeUser();
-        $issuer->save();
-
-        $contact = $this->makeContact();
-        $contact->save();
-
-        $business = $this->makeBusiness($issuer);
-        $business->save();
-
-        $appointment = $this->makeAppointment(
-            $business,
-            $issuer,
-            $contact,
-            ['startAt' => Carbon::parse('2015-12-08 08:00:00 UTC'), 'duration' => 90]
-        );
-        $appointment->save();
+        $appointment = Factory::create('App\Models\Appointment', [
+            'startAt' => Carbon::parse('2015-12-08 08:00:00 UTC'),
+            'duration' => 90
+        ]);
 
         $startAt = $appointment->startAt;
         $finishAt = $appointment->finishAt;
