@@ -303,7 +303,7 @@ class ConciergeServiceTest extends TestCase
 
         $this->concierge->setBusiness($this->business);
         $appointments = $this->concierge->getUnservedAppointments();
-        
+
         // Assert
         $this->assertInstanceOf(Collection::class, $appointments);
         $this->assertEquals(1, $appointments->count());
@@ -334,7 +334,7 @@ class ConciergeServiceTest extends TestCase
 
         $this->concierge->setBusiness($this->business);
         $appointments = $this->concierge->getUnservedAppointments();
-        
+
         // Assert
         $this->assertInstanceOf(Collection::class, $appointments);
         $this->assertEquals(0, $appointments->count());
