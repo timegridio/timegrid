@@ -11,7 +11,7 @@ class ServiceTest extends TestCase
     protected $service;
 
     /**
-     * @covers  App\Models\Service::slug
+     * @covers  App\Models\Service::scopeSlug
      * @test
      */
     public function it_scopes_by_slug()
