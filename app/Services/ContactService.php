@@ -2,11 +2,11 @@
 
 namespace App\Services;
 
-use Carbon\Carbon;
-use App\Models\User;
-use App\Models\Contact;
-use App\Models\Business;
 use App\Events\NewRegisteredContact;
+use App\Models\Business;
+use App\Models\Contact;
+use App\Models\User;
+use Carbon\Carbon;
 
 /*******************************************************************************
  * Contact Service Layer
@@ -14,12 +14,13 @@ use App\Events\NewRegisteredContact;
 class ContactService
 {
     /**
-     * [register description]
+     * Register a new Contact.
      *
-     * @param  User     $user     [description]
-     * @param  Business $business [description]
-     * @param  [type]   $data     [description]
-     * @return [type]             [description]
+     * @param User     $user
+     * @param Business $business
+     * @param array    $data
+     *
+     * @return App\Models\Contact
      */
     public function register(User $user, Business $business, $data)
     {
@@ -38,12 +39,13 @@ class ContactService
     }
 
     /**
-     * [getExisting description]
+     * Find an existing contact with the same NIN.
      *
-     * @param  User     $user     [description]
-     * @param  Business $business [description]
-     * @param  [type]   $nin      [description]
-     * @return [type]             [description]
+     * @param User     $user
+     * @param Business $business
+     * @param string   $nin
+     *
+     * @return App\Models\Contact
      */
     public function getExisting(User $user, Business $business, $nin)
     {
@@ -58,29 +60,40 @@ class ContactService
 
             if ($existingContact->isSubscribedTo($business->id)) {
                 logger()->info('[ADVICE] Existing contact is already linked to business');
-                
+
                 return $existingContact;
             }
         }
+
         return false;
     }
 
     /**
-     * [find description]
+     * Find a contact within a Business addressbok.
      *
-     * @param  Business $business [description]
-     * @param  Contact  $contact  [description]
-     * @return [type]             [description]
+     * @param Business $business
+     * @param Contact  $contact
+     *
+     * @return App\Models\Contact
      */
     public function find(Business $business, Contact $contact)
     {
         return $business->contacts()->find($contact->id);
     }
 
+    /**
+     * Update Contact attributes.
+     *
+     * @param  Business $business
+     * @param  Contact  $contact
+     * @param  array    $data
+     * @param  string   $notes
+     *
+     * @return void
+     */
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
-        if(array_key_exists('birthdate', $data) && trim($data['birthdate']) != '')
-        {
+        if (array_key_exists('birthdate', $data) && trim($data['birthdate']) != '') {
             $data['birthdate'] = Carbon::createFromFormat(trans('app.dateformat.carbon'), $data['birthdate']);
         }
 
@@ -89,15 +102,36 @@ class ContactService
         self::updateNotes($business, $contact, $notes);
     }
 
+    /**
+     * Detach a Contact froma Business addressbok.
+     *
+     * @param  Business $business
+     * @param  Contact  $contact
+     *
+     * @return int
+     */
+    public function detach(Business $business, Contact $contact)
+    {
+        return $contact->businesses()->detach($business->id);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+
+    /**
+     * Update notes from pivot table.
+     *
+     * @param  Business $business
+     * @param  Contact  $contact
+     * @param  string   $notes
+     *
+     * @return void
+     */
     protected function updateNotes(Business $business, Contact $contact, $notes)
     {
         if ($notes) {
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $notes]);
         }
-    }
-
-    public function detach(Business $business, Contact $contact)
-    {
-        return $contact->businesses()->detach($business->id);
     }
 }
