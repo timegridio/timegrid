@@ -13,17 +13,6 @@
 Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 
     Route::controller('booking', 'BookingController', ['postAction' => 'api.booking.action']);
-
-    Route::group(['prefix' => 'services'], function () {
-
-        Route::get('list/{business}', function ($business) {
-            return $business->services()->lists('name', 'id');
-        });
-
-        Route::get('duration/{service}', function ($service) {
-            return $service->duration;
-        });
-    });
 });
 
 //////////////////
