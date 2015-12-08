@@ -72,7 +72,6 @@ class BusinessServiceController extends Controller
         $this->log->info("Stored serviceId:{$service->id}");
 
         Flash::success(trans('manager.service.msg.store.success'));
-
         return redirect()->route('manager.business.service.index', [$business]);
     }
 
@@ -144,7 +143,6 @@ class BusinessServiceController extends Controller
         ]);
 
         Flash::success(trans('manager.business.service.msg.update.success'));
-
         return redirect()->route('manager.business.service.show', [$business, $service]);
     }
 
@@ -172,7 +170,6 @@ class BusinessServiceController extends Controller
         $service->forceDelete();
 
         Flash::success(trans('manager.services.msg.destroy.success'));
-
         return redirect()->route('manager.business.service.index', $business);
     }
 }
