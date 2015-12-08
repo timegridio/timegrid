@@ -33,11 +33,11 @@ $factory->define('App\Models\Role', function (Faker\Generator $faker) {
 
 $factory->define('App\Models\Contact', function (Faker\Generator $faker) {
     return [
-        'firstname' => $faker->firstName,
-        'lastname'  => $faker->lastName,
-        'nin'       => $faker->numberBetween(25000000, 50000000),
-        'email'     => $faker->safeEmail,
-        'birthdate' => \Carbon\Carbon::now()->subYears(30)->format('m/d/Y'),
+        'firstname'      => $faker->firstName,
+        'lastname'       => $faker->lastName,
+        'nin'            => $faker->numberBetween(25000000, 50000000),
+        'email'          => $faker->safeEmail,
+        'birthdate'      => \Carbon\Carbon::now()->subYears(30)->format('m/d/Y'),
         'mobile'         => null,
         'mobile_country' => null,
         'gender'         => $faker->randomElement(['M', 'F']),
