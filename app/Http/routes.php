@@ -195,8 +195,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
             ]);
 
         // CONTACT RESOURCE
-
-        Route::get('contact', ['as' => 'manager.business.contact.index', 'uses' => 'BusinessContactController@index']);
+        Route::get('contact', [
+            'as' => 'manager.business.contact.index',
+            'uses' => 'BusinessContactController@index'
+        ]);
         Route::get('contact/create', [
             'as'   => 'manager.business.contact.create',
             'uses' => 'BusinessContactController@create',
@@ -224,7 +226,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         // SERVICE RESOURCE
         Route::group(['prefix' => 'service'], function () {
-            Route::get('', ['as' => 'manager.business.service.index', 'uses' => 'BusinessServiceController@index']);
+            Route::get('', [
+                'as' => 'manager.business.service.index',
+                'uses' => 'BusinessServiceController@index'
+            ]);
             Route::get('create', [
                 'as'   => 'manager.business.service.create',
                 'uses' => 'BusinessServiceController@create',
