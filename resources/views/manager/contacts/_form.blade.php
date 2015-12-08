@@ -62,7 +62,7 @@
     </div>
     <div class="row">
         <div class="form-group col-xs-12">
-            {!! Form::text('mobile-input', null, [
+            {!! Form::text('mobile-input', isset($contact) ? old('mobile', $contact->mobile ?: null) : null, [
                 'id' => 'mobile-input',
                 'class'=>'form-control',
                 'placeholder'=> trans('manager.contacts.form.mobile.label') ]) !!}
