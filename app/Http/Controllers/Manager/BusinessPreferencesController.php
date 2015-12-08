@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use Fenos\Notifynder\Facades\Notifynder;
-use Gate;
 use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
