@@ -13,14 +13,20 @@ use Flash;
 use Illuminate\Http\Request;
 use Notifynder;
 
-/**
- * FOR REFACTOR:
- *     - Use constructor dependency injection for Auth, Flash, Event.
- */
 class AgendaController extends Controller
 {
+    /**
+     * [$concierge description]
+     * 
+     * @var [type]
+     */
     private $concierge;
 
+    /**
+     * [__construct description]
+     * 
+     * @param ConciergeService $concierge [description]
+     */
     public function __construct(ConciergeService $concierge)
     {
         $this->concierge = $concierge;
@@ -62,7 +68,6 @@ class AgendaController extends Controller
             $this->log->info('  [ADVICE] User not subscribed to Business');
 
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
-
             return redirect()->back();
         }
 
