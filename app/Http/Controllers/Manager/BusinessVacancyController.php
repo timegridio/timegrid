@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers\Manager;
 
-use Flash;
-use App\Models\Business;
-use Illuminate\Http\Request;
-use App\Services\VacancyService;
 use App\Http\Controllers\Controller;
+use App\Models\Business;
+use App\Services\VacancyService;
+use Flash;
+use Illuminate\Http\Request;
 
 class BusinessVacancyController extends Controller
 {
     /**
-     * [$vacancyService description]
+     * Vacancy service implementation.
      *
-     * @var [type]
+     * @var App\Services\VacancyService
      */
     private $vacancyService;
 
     /**
-     * [__construct description]
+     * Create controller.
      *
-     * @param VacancyService $vacancyService [description]
+     * @param App\Services\VacancyService $vacancyService
      */
     public function __construct(VacancyService $vacancyService)
     {
@@ -70,14 +70,16 @@ class BusinessVacancyController extends Controller
 
         if (!$this->vacancyService->update($business, $vacanciesForPublishing)) {
             $this->log->warning('Nothing to update');
-            
+
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
+
             return redirect()->back();
         }
 
         $this->log->info('Vacancies updated');
-        
+
         Flash::success(trans('manager.vacancies.msg.store.success'));
+
         return redirect()->route('manager.business.show', [$business]);
     }
 }
