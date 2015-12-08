@@ -2,16 +2,33 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\Http\Controllers\Controller;
-use App\Models\Business;
-use App\Models\Vacancy;
-use App\Services\VacancyService;
-use Carbon\Carbon;
 use Flash;
+use App\Models\Business;
 use Illuminate\Http\Request;
+use App\Services\VacancyService;
+use App\Http\Controllers\Controller;
 
 class BusinessVacancyController extends Controller
 {
+    /**
+     * [$vacancyService description]
+     *
+     * @var [type]
+     */
+    private $vacancyService;
+
+    /**
+     * [__construct description]
+     *
+     * @param VacancyService $vacancyService [description]
+     */
+    public function __construct(VacancyService $vacancyService)
+    {
+        $this->vacancyService = $vacancyService;
+
+        parent::__construct();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -26,18 +43,13 @@ class BusinessVacancyController extends Controller
 
         // BEGIN
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        $dates = $this->vacancyService->generateAvailability($business->vacancies);
 
-        $dates = VacancyService::generateAvailability($business->vacancies);
-        $services = $business->services;
-
-        if ($services->isEmpty()) {
+        if ($business->services->isEmpty()) {
             Flash::warning(trans('manager.vacancies.msg.edit.no_services'));
         }
 
-        return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'services'));
+        return view('manager.businesses.vacancies.edit', compact('business', 'dates'));
     }
 
     /**
@@ -54,54 +66,16 @@ class BusinessVacancyController extends Controller
 
         // BEGIN
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        $vacanciesForPublishing = $request->get('vacancy');
 
-        $dates = $request->get('vacancy');
-        $changed = false;
-
-        foreach ($dates as $date => $vacancy) {
-            foreach ($vacancy as $serviceId => $capacity) {
-                switch (trim($capacity)) {
-                    case '':
-                        // Dont update, leave as is
-                        $this->log->info('Blank vacancy capacity value');
-                        break;
-                    default:
-                        $startAt = Carbon::parse($date.' '.$business->pref('start_at'))
-                            ->timezone($business->timezone);
-                        $finishAt = Carbon::parse($date.' '.$business->pref('finish_at'))
-                            ->timezone($business->timezone);
-
-                        $vacancyKeys = [
-                            'business_id' => $business->id,
-                            'service_id'  => $serviceId,
-                            'date'        => $date,
-                            ];
-
-                        $vacancyValues = [
-                            'capacity'  => intval($capacity),
-                            'start_at'  => $startAt,
-                            'finish_at' => $finishAt,
-                            ];
-
-                        $vacancy = Vacancy::updateOrCreate($vacancyKeys, $vacancyValues);
-
-                        $changed = true;
-                        break;
-                }
-            }
-        }
-
-        if (!$changed) {
+        if (!$this->vacancyService->update($business, $vacanciesForPublishing)) {
             $this->log->warning('Nothing to update');
             
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
             return redirect()->back();
         }
 
-        $this->log->warning('Vacancies updated');
+        $this->log->info('Vacancies updated');
         
         Flash::success(trans('manager.vacancies.msg.store.success'));
         return redirect()->route('manager.business.show', [$business]);

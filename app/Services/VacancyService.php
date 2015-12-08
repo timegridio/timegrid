@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Business;
 use App\Models\Service;
+use App\Models\Vacancy;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
@@ -61,6 +62,42 @@ class VacancyService
             ->forDateTime($targetDateTime)
             ->forService($service)
             ->first();
+    }
+
+    public function update(Business $business, $dates)
+    {
+        $changed = false;
+        foreach ($dates as $date => $vacancy) {
+            foreach ($vacancy as $serviceId => $capacity) {
+                switch (trim($capacity)) {
+                    case '':
+                        // Dont update, leave as is
+                        logger()->info(sprintf('businessId:%s %s: Blank vacancy capacity value', $business->id, $date));
+                        break;
+                    default:
+                        $startAt = Carbon::parse($date.' '.$business->pref('start_at').' '.$business->timezone);
+                        $finishAt = Carbon::parse($date.' '.$business->pref('finish_at').' '.$business->timezone);
+
+                        $vacancyKeys = [
+                            'business_id' => $business->id,
+                            'service_id'  => $serviceId,
+                            'date'        => $date,
+                            ];
+
+                        $vacancyValues = [
+                            'capacity'  => intval($capacity),
+                            'start_at'  => $startAt,
+                            'finish_at' => $finishAt,
+                            ];
+
+                        $vacancy = Vacancy::updateOrCreate($vacancyKeys, $vacancyValues);
+
+                        $changed = true;
+                        break;
+                }
+            }
+        }
+        return $changed;
     }
 
     /////////////
