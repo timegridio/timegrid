@@ -233,4 +233,35 @@ class UserAgendaControllerTest extends TestCase
              ->see($service->name)
              ->see('Confirm');
     }
+
+    /** @test */
+    public function it_tries_to_query_vacancies_without_subscription()
+    {
+        // Given I am an authenticated user
+        $this->owner = factory(User::class)->create();
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+
+        // And there exist a registered business
+        // And which I am NOT subscribed as contact
+        $business = factory(Business::class)->create(['name' => 'tosto this tosti']);
+        $business->owners()->save($this->owner);
+
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+
+        // And there is vacancy for the service (OPTIONAL)
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        // And I go to business home
+        $this->visit(route('user.businesses.home', ['business' => $business]));
+
+        // WARNING; may return false positive as the view includes the services description
+
+        // Then I should see Subscribe button for that business
+        $this->see('Subscribe')
+             ->see($business->name);
+    }
 }
