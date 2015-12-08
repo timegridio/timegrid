@@ -8,7 +8,6 @@ use App\Http\Requests\AlterContactRequest;
 use App\Models\Business;
 use App\Models\Contact;
 use Flash;
-use Gate;
 use Notifynder;
 use Request;
 
@@ -90,11 +89,6 @@ class BusinessContactController extends Controller
 
                 return redirect()->route('user.business.contact.show', [$business, $existingContact]);
             }
-            #$business->contacts()->attach($existingContact);
-            #$business->save();
-            #
-            #Flash::warning(trans('user.contacts.msg.store.warning.showing_existing_contact'));
-            #return redirect()->route('user.business.contact.show', [$business, $existingContact]);
         }
 
         $contact = Contact::create(Request::all());
@@ -113,8 +107,8 @@ class BusinessContactController extends Controller
     /**
      * show Contact.
      *
-     * @param Business           $business Business holding the Contact
-     * @param Contact            $contact  Desired Contact to show
+     * @param Business $business Business holding the Contact
+     * @param Contact  $contact  Desired Contact to show
      *
      * @return Response Rendered view of Contact
      */
@@ -228,10 +222,11 @@ class BusinessContactController extends Controller
     /////////////
 
     /**
-     * [findExistingContactsByUserId description]
+     * Find an existing Contact By UserId.
      * 
-     * @param  [type] $userId [description]
-     * @return [type]         [description]
+     * @param int $userId
+     *
+     * @return Collection|Builder
      */
     protected function findExistingContactsByUserId($userId)
     {
@@ -239,10 +234,11 @@ class BusinessContactController extends Controller
     }
 
     /**
-     * [findExistingContactsByEmail description]
+     * Find an existing Contact By Email.
      * 
-     * @param  [type] $email [description]
-     * @return [type]        [description]
+     * @param string $email
+     *
+     * @return Collection|Builder
      */
     protected function findExistingContactsByEmail($email)
     {
