@@ -17,11 +17,10 @@ class AlterAppointmentRequest extends Request
     {
         $appointmentId = $this->get('appointment');
         $businessId = $this->get('business');
-        $issuer = auth()->user();
 
         $appointment = Appointment::find($appointmentId);
 
-        $authorize = ($appointment->issuer->id == $issuer->id) || $issuer->isOwner($businessId);
+        $authorize = ($appointment->issuer->id == auth()->user()->id) || auth()->user()->isOwner($businessId);
 
         return $authorize;
     }
