@@ -412,7 +412,7 @@ class Appointment extends EloquentModel implements HasPresenter
      * Of Business.
      *
      * @param Illuminate\Database\Query $query
-     * @param int                        $businessId An inquired business to validate against
+     * @param int                       $businessId An inquired business to validate against
      *
      * @return Illuminate\Database\Query The appointments belonging to the inquired Business as holder
      */
@@ -559,6 +559,12 @@ class Appointment extends EloquentModel implements HasPresenter
         return $this;
     }
 
+    /**
+     * Get the profile type of the user for this appointment.
+     *
+     * @param  int      $userId
+     * @return string
+     */
     public function profile($userId)
     {
         try {
