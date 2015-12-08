@@ -7,21 +7,21 @@ use App\Http\Requests\ContactFormRequest;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Services\ContactService;
-use Carbon\Carbon;
-use Gate;
 use Laracasts\Flash\Flash;
 
 class BusinessContactController extends Controller
 {
     /**
-     * [$contactService description]
-     * @var [type]
+     * Contact service implementation.
+     *
+     * @var App\Services\ContactService
      */
     private $contactService;
 
     /**
-     * [__construct description]
-     * @param ContactService $contactService [description]
+     * Create controller.
+     *
+     * @param App\Services\ContactService $contactService
      */
     public function __construct(ContactService $contactService)
     {
@@ -89,10 +89,12 @@ class BusinessContactController extends Controller
 
         if (!$contact->wasRecentlyCreated) {
             Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+
             return redirect()->route('manager.business.contact.show', [$business, $contact]);
         }
 
         Flash::success(trans('manager.contacts.msg.store.success'));
+
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
@@ -169,7 +171,7 @@ class BusinessContactController extends Controller
             'gender'          => $request->get('gender'),
             'birthdate'       => $request->get('birthdate'),
             'mobile'          => $request->get('mobile'),
-            'mobile_country'  => $request->get('mobile_country')
+            'mobile_country'  => $request->get('mobile_country'),
         ];
 
         $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
@@ -177,6 +179,7 @@ class BusinessContactController extends Controller
         // FEATURE: If email was updated, user linking should be triggered (if contact is not owned)
 
         Flash::success(trans('manager.contacts.msg.update.success'));
+
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
 
@@ -202,6 +205,7 @@ class BusinessContactController extends Controller
         // FEATURE: If user is linked to contact, inform removal
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
+
         return redirect()->route('manager.business.contact.index', $business);
     }
 }
