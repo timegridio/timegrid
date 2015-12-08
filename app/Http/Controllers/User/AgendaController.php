@@ -16,16 +16,16 @@ use Notifynder;
 class AgendaController extends Controller
 {
     /**
-     * [$concierge description]
-     * 
-     * @var [type]
+     * Concierge service implementation.
+     *
+     * @var App\Services\ConciergeService
      */
     private $concierge;
 
     /**
-     * [__construct description]
-     * 
-     * @param ConciergeService $concierge [description]
+     * Create Controller.
+     *
+     * @param App\Services\ConciergeService $concierge
      */
     public function __construct(ConciergeService $concierge)
     {
@@ -34,7 +34,7 @@ class AgendaController extends Controller
     }
 
     /**
-     * get Index.
+     * List all pending appointments.
      *
      * @return Response Rendered list view for User Appointments
      */
@@ -68,6 +68,7 @@ class AgendaController extends Controller
             $this->log->info('  [ADVICE] User not subscribed to Business');
 
             Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+
             return redirect()->back();
         }
 
@@ -117,13 +118,15 @@ class AgendaController extends Controller
             $this->log->info('[ADVICE] Unable to book');
 
             Flash::warning(trans('user.booking.msg.store.error'));
+
             return redirect()->route('user.agenda');
         }
 
         if (!$appointment->exists) {
             $this->log->info('[ADVICE] Appointment is duplicated');
-            
+
             Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+
             return redirect()->route('user.agenda');
         }
 
@@ -132,6 +135,7 @@ class AgendaController extends Controller
         event(new NewBooking($issuer, $appointment));
 
         Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
+
         return redirect()->route('user.agenda');
     }
 }
