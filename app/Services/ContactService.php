@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Business;
@@ -78,6 +79,11 @@ class ContactService
 
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
+        if(array_key_exists('birthdate', $data) && trim($data['birthdate']) != '')
+        {
+            $data['birthdate'] = Carbon::createFromFormat(trans('app.dateformat.carbon'), $data['birthdate']);
+        }
+
         $contact->where('id', '=', $contact->id)->update($data);
 
         self::updateNotes($business, $contact, $notes);
