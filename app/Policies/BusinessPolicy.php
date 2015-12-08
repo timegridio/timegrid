@@ -97,4 +97,17 @@ class BusinessPolicy
     {
         return $user->isOwner($business);
     }
+
+    /**
+     * Determine if the given user can manage a business' service.
+     *
+     * @param User     $user
+     * @param Business $business
+     *
+     * @return bool
+     */
+    public function manageServices(User $user, Business $business)
+    {
+        return $user->isOwner($business);
+    }
 }

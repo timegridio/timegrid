@@ -20,9 +20,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         $services = $business->services;
 
@@ -39,9 +39,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         $service = new Service(); // For Form Model Binding
         return view('manager.businesses.services.create', compact('business', 'service'));
@@ -57,9 +57,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s', $business->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         //////////////////
         // FOR REFACTOR //
@@ -89,9 +89,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         return view('manager.businesses.services.show', compact('service'));
     }
@@ -109,9 +109,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         return view('manager.businesses.services.edit', compact('service'));
     }
@@ -129,9 +129,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         //////////////////
         // FOR REFACTOR //
@@ -161,9 +161,9 @@ class BusinessServiceController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
-        ///////////////////////////////
-        // TODO: AUTH GATE GOES HERE //
-        ///////////////////////////////
+        $this->authorize('manageServices', $business);
+
+        // BEGIN
 
         //////////////////
         // FOR REFACTOR //
