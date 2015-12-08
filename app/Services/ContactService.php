@@ -84,10 +84,10 @@ class ContactService
     /**
      * Update Contact attributes.
      *
-     * @param  Business $business
-     * @param  Contact  $contact
-     * @param  array    $data
-     * @param  string   $notes
+     * @param Business $business
+     * @param Contact  $contact
+     * @param array    $data
+     * @param string   $notes
      *
      * @return void
      */
@@ -105,8 +105,8 @@ class ContactService
     /**
      * Detach a Contact froma Business addressbok.
      *
-     * @param  Business $business
-     * @param  Contact  $contact
+     * @param Business $business
+     * @param Contact  $contact
      *
      * @return int
      */
@@ -122,9 +122,9 @@ class ContactService
     /**
      * Update notes from pivot table.
      *
-     * @param  Business $business
-     * @param  Contact  $contact
-     * @param  string   $notes
+     * @param Business $business
+     * @param Contact  $contact
+     * @param string   $notes
      *
      * @return void
      */

@@ -562,7 +562,8 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Get the profile type of the user for this appointment.
      *
-     * @param  int      $userId
+     * @param int $userId
+     *
      * @return string
      */
     public function profile($userId)

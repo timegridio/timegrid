@@ -15,9 +15,9 @@ class BusinessService
     /**
      * register Business.
      *
-     * @param User   $user
-     * @param array  $data
-     * @param int    $category
+     * @param User  $user
+     * @param array $data
+     * @param int   $category
      *
      * @return App\Models\Business
      */
@@ -76,9 +76,9 @@ class BusinessService
      *
      * @param Business $business
      *
-     * @return bool|null
-     *
      * @throws \Exception
+     *
+     * @return bool|null
      */
     public function deactivate(Business $business)
     {
@@ -88,8 +88,8 @@ class BusinessService
     /**
      * Update business attirbutes.
      * 
-     * @param  Business $business
-     * @param  array    $data
+     * @param Business $business
+     * @param array    $data
      * 
      * @return App\Models\Business
      */

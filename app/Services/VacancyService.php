@@ -41,8 +41,9 @@ class VacancyService
     /**
      * [isAvailable description].
      *
-     * @param  User    $user
-     * @return boolean
+     * @param User $user
+     *
+     * @return bool
      */
     public function isAvailable(User $user)
     {
@@ -55,9 +56,9 @@ class VacancyService
     /**
      * [getVacanciesFor description].
      *
-     * @param  App\Models\User  $user
-     * @param  string           $starting
-     * @param  integer          $limit
+     * @param App\Models\User $user
+     * @param string          $starting
+     * @param int             $limit
      *
      * @return array
      */
@@ -72,9 +73,9 @@ class VacancyService
     /**
      * [generateAvailability description].
      *
-     * @param  Illuminate\Database\Eloquent\Collection  $vacancies
-     * @param  string                                   $starting
-     * @param  integer                                  $days
+     * @param Illuminate\Database\Eloquent\Collection $vacancies
+     * @param string                                  $starting
+     * @param int                                     $days
      *
      * @return array
      */
@@ -97,8 +98,8 @@ class VacancyService
     /**
      * Get a Vacancy for a given DateTime and Service combination.
      *
-     * @param  Carbon  $targetDateTime
-     * @param  Service $service
+     * @param Carbon  $targetDateTime
+     * @param Service $service
      *
      * @return App\Models\Vacancy
      */
@@ -114,8 +115,8 @@ class VacancyService
     /**
      * Update vacancies.
      *
-     * @param  Business $business
-     * @param  array    $dates
+     * @param Business $business
+     * @param array    $dates
      *
      * @return bool
      */
@@ -163,7 +164,7 @@ class VacancyService
     /**
      * [removeBookedVacancies description].
      *
-     * @param  Collection $vacancies
+     * @param Collection $vacancies
      *
      * @return Illuminate\Database\Eloquent\Collection
      */
@@ -179,7 +180,7 @@ class VacancyService
     /**
      * [removeBookedVacancies description].
      *
-     * @param  Collection $vacancies
+     * @param Collection $vacancies
      *
      * @return Illuminate\Database\Eloquent\Collection
      */
