@@ -83,12 +83,8 @@ You are welcome to contribute.
 ### Step 1: Get the code - Clone the repository
 
     git clone https://github.com/alariva/timegrid.git
-    
-If you want to stand on the latest beta-stable version:
 
     cd timegrid
-
-    git checkout tags/v3.5.0-15120502-beta
 
 -----
 <a name="step2"></a>
