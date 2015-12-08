@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Vacancy;
 use App\Services\ConciergeService;
 use App\Services\VacancyService;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ConciergeServiceTest extends TestCase
@@ -275,5 +276,67 @@ class ConciergeServiceTest extends TestCase
 
         // Assert
         $this->assertFalse($appointment);
+    }
+
+    /**
+     * @covers            \App\Services\ConciergeService::getUnservedAppointments
+     * @test
+     */
+    public function it_gets_the_unserved_appointments()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->business()->associate($this->business);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
+
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->issuer()->associate($this->user);
+        $appointment->business()->associate($this->business);
+        $appointment->save();
+
+        $this->concierge->setBusiness($this->business);
+        $appointments = $this->concierge->getUnservedAppointments();
+        
+        // Assert
+        $this->assertInstanceOf(Collection::class, $appointments);
+        $this->assertEquals(1, $appointments->count());
+    }
+
+    /**
+     * @covers            \App\Services\ConciergeService::getUnservedAppointments
+     * @test
+     */
+    public function it_gets_the_unserved_appointments_and_omits_those_served()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->business()->associate($this->business);
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
+
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_SERVED]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->issuer()->associate($this->user);
+        $appointment->business()->associate($this->business);
+        $appointment->save();
+
+        $this->concierge->setBusiness($this->business);
+        $appointments = $this->concierge->getUnservedAppointments();
+        
+        // Assert
+        $this->assertInstanceOf(Collection::class, $appointments);
+        $this->assertEquals(0, $appointments->count());
     }
 }
