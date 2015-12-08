@@ -195,34 +195,36 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
             ]);
 
         // CONTACT RESOURCE
-        Route::get('contact', [
-            'as' => 'manager.business.contact.index',
-            'uses' => 'BusinessContactController@index'
-        ]);
-        Route::get('contact/create', [
-            'as'   => 'manager.business.contact.create',
-            'uses' => 'BusinessContactController@create',
-        ]);
-        Route::post('contact', [
-            'as'   => 'manager.business.contact.store',
-            'uses' => 'BusinessContactController@store',
-        ]);
-        Route::get('contact/{contact}', [
-            'as'   => 'manager.business.contact.show',
-            'uses' => 'BusinessContactController@show',
-        ]);
-        Route::get('contact/{contact}/edit', [
-            'as'   => 'manager.business.contact.edit',
-            'uses' => 'BusinessContactController@edit',
-        ]);
-        Route::put('contact/{contact}', [
-            'as'   => 'manager.business.contact.update',
-            'uses' => 'BusinessContactController@update',
-        ]);
-        Route::delete('contact/{contact}', [
-            'as'   => 'manager.business.contact.destroy',
-            'uses' => 'BusinessContactController@destroy',
-        ]);
+        Route::group(['prefix' => 'contact'], function () {
+            Route::get('', [
+                'as' => 'manager.business.contact.index',
+                'uses' => 'BusinessContactController@index'
+            ]);
+            Route::get('create', [
+                'as'   => 'manager.business.contact.create',
+                'uses' => 'BusinessContactController@create',
+            ]);
+            Route::post('', [
+                'as'   => 'manager.business.contact.store',
+                'uses' => 'BusinessContactController@store',
+            ]);
+            Route::get('{contact}', [
+                'as'   => 'manager.business.contact.show',
+                'uses' => 'BusinessContactController@show',
+            ]);
+            Route::get('{contact}/edit', [
+                'as'   => 'manager.business.contact.edit',
+                'uses' => 'BusinessContactController@edit',
+            ]);
+            Route::put('{contact}', [
+                'as'   => 'manager.business.contact.update',
+                'uses' => 'BusinessContactController@update',
+            ]);
+            Route::delete('{contact}', [
+                'as'   => 'manager.business.contact.destroy',
+                'uses' => 'BusinessContactController@destroy',
+            ]);
+        });
 
         // SERVICE RESOURCE
         Route::group(['prefix' => 'service'], function () {
