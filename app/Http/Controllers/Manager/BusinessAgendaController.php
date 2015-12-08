@@ -2,14 +2,24 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Services\ConciergeService;
-use App\Http\Controllers\Controller;
 
 class BusinessAgendaController extends Controller
 {
+    /**
+     * Concierge service implementation.
+     *
+     * @var App\Services\ConciergeService
+     */
     private $concierge;
 
+    /**
+     * Create controller.
+     *
+     * @param App\Services\ConciergeService $concierge
+     */
     public function __construct(ConciergeService $concierge)
     {
         $this->concierge = $concierge;
@@ -30,10 +40,11 @@ class BusinessAgendaController extends Controller
         $this->log->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);
-        
+
         $appointments = $this->concierge->setBusiness($business)->getUnservedAppointments();
 
         $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
+
         return view($viewKey, compact('business', 'appointments'));
     }
 }
