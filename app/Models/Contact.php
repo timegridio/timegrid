@@ -184,7 +184,8 @@ class Contact extends EloquentModel implements HasPresenter
         if ($birthdate instanceof Carbon) {
             $this->attributes['birthdate'] = $birthdate;
         }
-        return $this->attributes['birthdate'];
+        
+        return $this->attributes['birthdate'] = null;
     }
 
     /**
