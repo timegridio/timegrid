@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Events\NewRegisteredContact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterContactRequest;
-use App\Http\Requests\ViewContactRequest;
 use App\Models\Business;
 use App\Models\Contact;
 use Flash;
@@ -118,7 +117,6 @@ class BusinessContactController extends Controller
      *
      * @param Business           $business Business holding the Contact
      * @param Contact            $contact  Desired Contact to show
-     * @param ViewContactRequest $request  Read access Request
      *
      * @return Response Rendered view of Contact
      */
