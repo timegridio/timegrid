@@ -67,6 +67,35 @@ class AppointmentTest extends TestCase
         $this->assertTrue($appointmentDuplicate->duplicates());
     }
 
+    /**
+     * @covers \App\Models\Appointment::getFinishAtAttribute
+     * @test
+     */
+    public function it_gets_the_finish_datetime_of_appointment()
+    {
+        $issuer = $this->makeUser();
+        $issuer->save();
+
+        $contact = $this->makeContact();
+        $contact->save();
+
+        $business = $this->makeBusiness($issuer);
+        $business->save();
+
+        $appointment = $this->makeAppointment(
+            $business,
+            $issuer,
+            $contact,
+            ['startAt' => Carbon::parse('2015-12-08 08:00:00 UTC'), 'duration' => 90]
+        );
+        $appointment->save();
+
+        $startAt = $appointment->startAt;
+        $finishAt = $appointment->finishAt;
+
+        $this->assertEquals('2015-12-08 09:30:00', $finishAt);
+    }
+
     /////////////
     // HELPERS //
     /////////////
@@ -80,9 +109,9 @@ class AppointmentTest extends TestCase
         return $user;
     }
 
-    private function makeAppointment(Business $business, User $issuer, Contact $contact)
+    private function makeAppointment(Business $business, User $issuer, Contact $contact, $overrides = [])
     {
-        $appointment = factory(Appointment::class)->make();
+        $appointment = factory(Appointment::class)->make($overrides);
         $appointment->contact()->associate($contact);
         $appointment->issuer()->associate($issuer);
         $appointment->business()->associate($business);
