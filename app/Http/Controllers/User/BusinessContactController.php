@@ -70,9 +70,7 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        /////////////////////////
-        // AUTH GATE GOES HERE //
-        /////////////////////////
+        // BEGIN
 
         $businessName = $business->name;
         Notifynder::category('user.subscribedBusiness')
@@ -125,10 +123,9 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        /////////////////////////
-        // GATE AUTH GOES HERE //
-        /////////////////////////
-        # $this->authorize('manage', $contact);
+        $this->authorize('manage', $contact);
+
+        // BEGIN
 
         # $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
 
@@ -149,7 +146,9 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        # $this->authorize('manage', $contact);
+        $this->authorize('manage', $contact);
+
+        // BEGIN
 
         return view('user.contacts.edit', compact('business', 'contact'));
     }
@@ -168,7 +167,10 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        # $this->authorize('manage', $contact);
+        $this->authorize('manage', $contact);
+
+        // BEGIN
+
         //////////////////
         // FOR REFACTOR //
         //////////////////
@@ -210,7 +212,9 @@ class BusinessContactController extends Controller
         $this->log->info(__METHOD__);
         $this->log->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
-        # $this->authorize('manage', $contact);
+        $this->authorize('manage', $contact);
+
+        // BEGIN
 
         $contact->delete();
 
@@ -223,11 +227,23 @@ class BusinessContactController extends Controller
     // HELPERS //
     /////////////
 
+    /**
+     * [findExistingContactsByUserId description]
+     * 
+     * @param  [type] $userId [description]
+     * @return [type]         [description]
+     */
     protected function findExistingContactsByUserId($userId)
     {
         return Contact::where('user_id', '=', $userId)->get();
     }
 
+    /**
+     * [findExistingContactsByEmail description]
+     * 
+     * @param  [type] $email [description]
+     * @return [type]        [description]
+     */
     protected function findExistingContactsByEmail($email)
     {
         return Contact::whereNull('user_id')
