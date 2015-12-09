@@ -15,11 +15,15 @@ $factory('App\Models\User', [
 // Role //
 //////////
 
-$factory('App\Models\Role', [
-    'name'        => $faker->word,
-#    'slug'        => str_slug($name),
-    'description' => $faker->sentence,
-]);
+$factory('App\Models\Role', function ($faker) {
+    $name = $faker->word;
+
+    return [
+        'name'        => $faker->word,
+        'slug'        => str_slug($name),
+        'description' => $faker->sentence,
+    ];
+});
 
 /////////////
 // Contact //
@@ -71,26 +75,34 @@ $factory('App\Models\Service', [
 // Vacancy //
 /////////////
 
-$factory('App\Models\Vacancy', [
-    'business_id' => 'factory:App\Models\Business',
-    'service_id'  => 'factory:App\Models\Service',
-    'date'        => $date = Carbon\Carbon::parse('today +7 days')->toDateTimeString(),
-    'start_at'    => date('Y-m-d 00:00:00', strtotime($date)),
-    'finish_at'   => date('Y-m-d 23:00:00', strtotime($date)),
-    'capacity'    => 1,
-]);
+$factory('App\Models\Vacancy', function ($faker) {
+    $dateTime = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d H:i:s');
+
+    return [
+        'business_id' => 'factory:App\Models\Business',
+        'service_id'  => 'factory:App\Models\Service',
+        'date'        => Carbon\Carbon::parse($dateTime)->toDateTimeString(),
+        'start_at'    => date('Y-m-d 00:00:00', strtotime($dateTime)),
+        'finish_at'   => date('Y-m-d 23:00:00', strtotime($dateTime)),
+        'capacity'    => 1,
+    ];
+});
 
 /////////////////
 // Appointment //
 /////////////////
 
-$factory('App\Models\Appointment', [
-    'business_id' => 'factory:App\Models\Business',
-    'contact_id'  => 'factory:App\Models\Contact',
-    'service_id'  => 'factory:App\Models\Service',
-    'vacancy_id'  => 'factory:App\Models\Vacancy',
-    'status'      => $faker->randomElement(['R', 'C', 'A', 'S']),
-    'start_at'    => Carbon\Carbon::parse(date('Y-m-d 08:00:00', strtotime('today +2 days'))),
-    'duration'    => $faker->randomElement([15, 30, 60, 120]),
-    'comments'    => $faker->sentence,
-]);
+$factory('App\Models\Appointment', function ($faker) {
+    $startAt = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d H:i:s');
+
+    return [
+        'business_id' => 'factory:App\Models\Business',
+        'contact_id'  => 'factory:App\Models\Contact',
+        'service_id'  => 'factory:App\Models\Service',
+        'vacancy_id'  => 'factory:App\Models\Vacancy',
+        'status'      => $faker->randomElement(['R', 'C', 'A', 'S']),
+        'start_at'    => Carbon\Carbon::parse($startAt),
+        'duration'    => $faker->randomElement([15, 30, 60, 120]),
+        'comments'    => $faker->sentence,
+    ];
+});
