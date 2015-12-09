@@ -1,51 +1,40 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
+ Generated via "php artisan localization:missing" at 2015/12/09 15:37:10
 *************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
-  'feature' => [
-    1 => [
+return array(
+  'feature' =>
+  array(
+    1 =>
+    array(
       'content' => 'Asigna las citas por tí para que puedas dedicarte a lo que importa. Tu tiempo vale.',
-      'title'   => 'Optimiza',
-      'btn'     => [
-        'action' => 'Ver cómo',
-        'info'   => 'Más info',
-      ],
-    ],
-    2 => [
+      'title' => 'Optimiza',
+    ),
+    2 =>
+    array(
       'content' => 'Mantiene a todos tus contactos organizados para que tu cartera de clientes esté siempre vigente.',
-      'title'   => 'Fideliza',
-      'btn'     => [
-        'action' => 'Ver cómo',
-        'info'   => 'Más info',
-      ],
-    ],
-    3 => [
+      'title' => 'Fideliza',
+    ),
+    3 =>
+    array(
       'content' => 'Le da a tus clientes el servicio que merecen, porque realmente lo merecen.',
-      'title'   => 'Profesionaliza',
-      'btn'     => [
-        'action' => 'Ver cómo',
-        'info'   => 'Más info',
-      ],
-    ],
-    4 => [
+      'title' => 'Profesionaliza',
+    ),
+    4 =>
+    array(
       'content' => 'Es hora de aprovechar el tiempo ahorrado y tomar unas buenas vacaciones.',
-      'title'   => 'Libera',
-      'btn'     => [
-        'action' => 'Ver cómo',
-        'info'   => 'Más info',
-      ],
-    ],
-  ],
-  'jumbotron' => [
-    'btn' => [
+      'title' => 'Libera',
+    ),
+  ),
+  'jumbotron' =>
+  array(
+    'btn' =>
+    array(
       'begin' => 'Empecemos',
       'login' => 'Iniciar Sesión',
-    ],
+    ),
     'description' => 'La agenda de citas para profesionales exitosos.',
-    'title'       => 'timegrid.io',
-  ],
-  //================================== Obsolete strings ==================================//
-];
+    'title' => 'timegrid.io',
+  ),
+);

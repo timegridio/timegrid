@@ -3,6 +3,29 @@
 @endsection
 {{-- $preferences->findBy(['key' => $key]) --}}
 
+{{-- [META] Translation keys for potsky/laravel-localization-helpers -dev
+trans('preferences.App\Models\Business.appointment_annulation_pre_hs.format')
+trans('preferences.App\Models\Business.appointment_annulation_pre_hs.help')
+trans('preferences.App\Models\Business.appointment_annulation_pre_hs.label')
+trans('preferences.App\Models\Business.appointment_code_length.format')
+trans('preferences.App\Models\Business.appointment_code_length.help')
+trans('preferences.App\Models\Business.appointment_code_length.label')
+trans('preferences.App\Models\Business.appointment_take_today.format')
+trans('preferences.App\Models\Business.appointment_take_today.help')
+trans('preferences.App\Models\Business.appointment_take_today.label')
+trans('preferences.App\Models\Business.show_map.format')
+trans('preferences.App\Models\Business.show_map.help')
+trans('preferences.App\Models\Business.show_map.label')
+trans('preferences.App\Models\Business.show_phone.format')
+trans('preferences.App\Models\Business.show_phone.help')
+trans('preferences.App\Models\Business.show_phone.label')
+trans('preferences.App\Models\Business.show_postal_address.format')
+trans('preferences.App\Models\Business.show_postal_address.help')
+trans('preferences.App\Models\Business.show_postal_address.label')
+trans('preferences.App\Models\Business.start_at.format')
+trans('preferences.App\Models\Business.start_at.help')
+trans('preferences.App\Models\Business.start_at.label')
+--}}
 <div class="col-md-12">
 @foreach ($parameters as $key => $value)
 <div class="row">

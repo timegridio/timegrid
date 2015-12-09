@@ -4,13 +4,10 @@
 *************************************************************************/
 
 return [
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/errors/403.blade.php
   403 => [
-    'description' => '403.description',
+    'description' => '403 Not Authorized',
   ],
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/errors/404.blade.php
   404 => [
-    'description' => '404.description',
+    'description' => '404 Not Found',
   ],
 ];

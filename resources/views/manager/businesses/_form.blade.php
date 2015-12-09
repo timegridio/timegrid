@@ -7,6 +7,15 @@
 </style>
 @endsection
 
+{{--
+/**
+ * [META] Translation keys for potsky/laravel-localization-helpers -dev
+ * trans('app.business.category.doctor')
+ * trans('app.business.category.garage')
+ * trans('app.business.category.photography')
+ */
+--}}
+
 <div class="row">
     <div class="form-group col-sm-7">
         {!! Form::label( trans('manager.businesses.form.name.label') ) !!}

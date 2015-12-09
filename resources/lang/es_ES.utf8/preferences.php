@@ -1,52 +1,60 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
+ Generated via "php artisan localization:missing" at 2015/12/09 15:50:54 
 *************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
-  'controls' => [
-    'select' => [
-      'no'  => 'No',
-      'yes' => 'Sí',
-    ],
-  ],
-  //================================== Obsolete strings ==================================//
-  'App\\Business' => [
-    'appointment_annulation_pre_hs' => [
-      'format' => 'cantidad de horas',
-      'help'   => '¿ Cuántas horas de antelación para anular una cita ?',
-      'label'  => 'Política de Anulación de citas',
-    ],
-    'appointment_code_length' => [
-      'format' => '1234',
-      'help'   => '¿ Que tan largo debe ser el codigo de citas ?',
-      'label'  => 'Longitud de Codigo de Cita',
-    ],
-    'appointment_take_today' => [
-      'format' => 'si/no',
-      'help'   => '¿ Permitir reservas para el mismo día que se está reservando ?',
-      'label'  => 'Tomar reservas para el mismo día',
-    ],
-    'show_map' => [
-      'format' => 'si/no',
-      'help'   => '¿ Querés mostrar el mapa de tu ubicación ?',
-      'label'  => 'Mostrar Mapa',
-    ],
-    'show_phone' => [
-      'format' => 'si/no',
-      'help'   => '¿ Querés mostrar tu teléfono ?',
-      'label'  => 'Mostrar Teléfono',
-    ],
-    'show_postal_address' => [
-      'format' => 'si/no',
-      'help'   => '¿ Querés mostrar tu dirección postal ?',
-      'label'  => 'Mostrar Dirección Postal',
-    ],
-    'start_at' => [
+return array (
+  'App\\Models\\Business' => 
+  array (
+    'appointment_annulation_pre_hs' => 
+    array (
+      'format' => 'Cantida de horas',
+      'help' => 'Cantidad de horas con las que es factible anular una cita',
+      'label' => 'Antelación de Anulaciones',
+    ),
+    'appointment_code_length' => 
+    array (
+      'format' => 'Cantidad de caracteres',
+      'help' => 'Cantidad de caracteres para identificar una cita',
+      'label' => 'Largo de Código de Cita',
+    ),
+    'appointment_take_today' => 
+    array (
+      'format' => 'Cantidad de horas',
+      'help' => 'Permitir que se tomen citas en el mismo día',
+      'label' => 'Recibir citas en el día',
+    ),
+    'show_map' => 
+    array (
+      'format' => 'Si/No',
+      'help' => 'Quieres mostrar el mapa de tu ubicación (nivel ciudad)',
+      'label' => 'Publicar mapa',
+    ),
+    'show_phone' => 
+    array (
+      'format' => 'Sí/No',
+      'help' => 'Publicar el teléfono de mi negocio en el perfil',
+      'label' => 'Publicar teléfono',
+    ),
+    'show_postal_address' => 
+    array (
+      'format' => 'Sí/No',
+      'help' => 'Publicar la dirección postal completa',
+      'label' => 'Publicar Dirección Postal',
+    ),
+    'start_at' => 
+    array (
       'format' => 'hh:mm:ss',
-      'help'   => '¿ A qué hora abre tu comercio ?',
-      'label'  => 'Horario de apertura',
-    ],
-  ],
-];
+      'help' => 'Horario en que tu comercio comienza a recibir citas',
+      'label' => 'Hora de Apertura',
+    ),
+  ),
+  'controls' => 
+  array (
+    'select' => 
+    array (
+      'no' => 'No',
+      'yes' => 'Sí',
+    ),
+  ),
+);

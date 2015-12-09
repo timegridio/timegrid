@@ -1,23 +1,19 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
+ Generated via "php artisan localization:missing" at 2015/12/09 15:54:14
 *************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
-  'text' => [
-    'minutes'  => 'minutes',
-    'to'       => 'to',
-    'duration' => 'duration',
-  ],
-  //================================== Obsolete strings ==================================//
-  'alert' => [
-    'annulated' => 'Advice! Reservation was ANNULATED',
-  ],
-  'status' => [
+return array(
+  'status' =>
+  array(
     'annulated' => 'Annulated',
     'confirmed' => 'Confirmed',
-    'reserved'  => 'Reserved',
-    'served'    => 'Served',
-  ],
-];
+    'reserved' => 'Reserved',
+    'served' => 'Served',
+  ),
+  'text' =>
+  array(
+    'minutes' => 'minutes',
+    'to' => 'to',
+  ),
+);

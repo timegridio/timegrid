@@ -46,6 +46,14 @@
                     <h3 class="panel-title">{{ $contact->fullname }}</h3>
                 </div>
 
+{{--
+                /**
+                 * [META] Translation keys for potsky/laravel-localization-helpers -dev
+                 * trans('app.gender.F')
+                 * trans('app.gender.M')
+                 */
+--}}
+
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-3 col-lg-3 " align="center">

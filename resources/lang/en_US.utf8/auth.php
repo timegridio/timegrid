@@ -1,51 +1,50 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/04 11:29:01
+ Generated via "php artisan localization:missing" at 2015/12/09 15:37:10
 *************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
-  'btn' => [
+return array(
+  'btn' =>
+  array(
     'already_registered' => 'Already registered ? Login',
-    'forgot'             => 'Forgot password ? Reset',
-    'not_registered'     => 'Not registered yet ? SignUp',
-  ],
-  'login' => [
-    'alert' => [
+    'forgot' => 'Forgot password ? Reset',
+    'not_registered' => 'Not registered yet ? SignUp',
+  ),
+  'login' =>
+  array(
+    'alert' =>
+    array(
       'message' => 'May I help ?',
-      'whoops'  => 'Whoops!',
-    ],
-    'username'    => 'Username',
-    'email'       => 'Email',
-    'forgot'      => 'Forgot password',
-    'login'       => 'Login',
-    'password'    => 'Password',
+      'whoops' => 'Whoops!',
+    ),
+    'email' => 'Email',
+    'forgot' => 'Forgot password',
+    'login' => 'Login',
+    'password' => 'Password',
     'remember_me' => 'Remember me',
-    'title'       => 'Login',
-  ],
-  'register' => [
-    'btn' => [
+    'title' => 'Login',
+  ),
+  'register' =>
+  array(
+    'btn' =>
+    array(
       'submit' => 'Register',
-    ],
-    'username'              => 'Username',
-    'email'                 => 'Your Email',
-    'name'                  => 'Your name',
-    'need_help'             => 'Need help ?',
-    'password'              => 'A password',
+    ),
+    'email' => 'Your Email',
+    'name' => 'Your name',
+    'need_help' => 'Need help ?',
+    'password' => 'A password',
     'password_confirmation' => 'Repeat password',
-    'title'                 => 'Hi! We are going to build your profile in timegrid.io',
-    'msg'                   => [
-      'errors' => 'Errors',
-    ],
-  ],
-  'reset' => [
-    'btn' => [
-      'reset'     => 'Reset password',
+    'title' => 'Hi! We are going to build your profile in timegrid.io',
+    'username' => 'Username',
+  ),
+  'reset' =>
+  array(
+    'btn' =>
+    array(
+      'reset' => 'Reset password',
       'send_link' => 'Send me the reset link',
-    ],
+    ),
     'title' => 'Password reset',
-  ],
-  //================================== Obsolete strings ==================================//
-  'failed'   => 'These credentials are invalid. Did you forget your password?',
-  'throttle' => 'Too many attempts! Please try again within :seconds seconds.',
-];
+  ),
+);
