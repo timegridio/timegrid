@@ -1,13 +1,11 @@
 {{-- Appointment Panel Partial --}}
 
 {{--
-/**
- * [META] Translation keys for potsky/laravel-localization-helpers -dev
- * trans('appointments.status.annulated')
- * trans('appointments.status.confirmed')
- * trans('appointments.status.reserved')
- * trans('appointments.status.served')
- */
+    [META] Translation keys for potsky/laravel-localization-helpers -dev
+    trans('appointments.status.annulated')
+    trans('appointments.status.confirmed')
+    trans('appointments.status.reserved')
+    trans('appointments.status.served')
 --}}
 <div class='panel panel-{{ $appointment->statusToCssClass }}' id='{{ $appointment->code }}'>
     <div class='panel-heading'>
