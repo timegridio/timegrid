@@ -47,11 +47,9 @@
                 </div>
 
 {{--
-                /**
-                 * [META] Translation keys for potsky/laravel-localization-helpers -dev
-                 * trans('app.gender.F')
-                 * trans('app.gender.M')
-                 */
+    [META] Translation keys for potsky/laravel-localization-helpers -dev
+    trans('app.gender.F')
+    trans('app.gender.M')
 --}}
 
                 <div class="panel-body">
