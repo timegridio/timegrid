@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
 use App\Models\Business;
@@ -77,8 +78,6 @@ class BusinessController extends Controller
 
         $business = new Business();
 
-        Flash::success(trans('manager.businesses.msg.register', ['plan' => trans($plan)]));
-
         return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
     }
 
@@ -97,7 +96,7 @@ class BusinessController extends Controller
 
         try {
             $business = $this->businessService->register(auth()->user(), $request->all(), $request->get('category'));
-        } catch (BusinessAlreadyRegisteredException $exception) {
+        } catch (BusinessAlreadyRegistered $exception) {
             Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
 
             return redirect()->back()->withInput(request()->all());

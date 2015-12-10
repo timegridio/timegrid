@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+
+    {!! Alert::info(trans('manager.businesses.msg.register', ['plan' => trans($plan)])) !!}
+
     <div class="row">
         <div class="panel panel-default">
             <div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>

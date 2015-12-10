@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\BusinessAlreadyRegistered;
 use App\Models\Business;
 use App\Models\Category;
 use App\Models\User;
@@ -61,7 +62,7 @@ class BusinessService
 
         if (!$user->isOwner($business->id)) {
             logger()->info("Already taken businessId:{$business->id}");
-            throw new BusinessAlreadyExists();
+            throw new BusinessAlreadyRegistered();
         }
 
         logger()->info("Restoring owned businessId:{$business->id}");
