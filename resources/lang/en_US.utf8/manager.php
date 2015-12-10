@@ -1,15 +1,12 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:37:10 
+ Generated via "php artisan localization:missing" at 2015/12/10 11:27:51 
 *************************************************************************/
 
 return array (
+  //==================================== Translations ====================================//
   'business' => 
   array (
-    'alert' => 
-    array (
-      'deactivate_confirm' => 'Advice! Deactivating the business is IRREVERSIBLE. Are you sure?',
-    ),
     'btn' => 
     array (
       'tooltip' => 
@@ -37,14 +34,18 @@ return array (
         ),
       ),
     ),
+    'alert' => 
+    array (
+      'deactivate_confirm' => 'Advice! Deactivating the business is IRREVERSIBLE. Are you sure?',
+    ),
   ),
   'businesses' => 
   array (
     'btn' => 
     array (
-      'deactivate' => 'Deactivate this business',
       'store' => 'Register',
       'update' => 'Update',
+      'deactivate' => 'Deactivate this business',
     ),
     'contacts' => 
     array (
@@ -381,4 +382,5 @@ return array (
       ),
     ),
   ),
+  //================================== Obsolete strings ==================================//
 );
