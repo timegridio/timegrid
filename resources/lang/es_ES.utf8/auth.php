@@ -3,48 +3,41 @@
  Generated via "php artisan localization:missing" at 2015/12/09 15:37:10
 *************************************************************************/
 
-return array(
-  'btn' =>
-  array(
+return [
+  'btn' => [
     'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
-    'forgot' => '¿ Has olvidado tu contraseña ? Blanqueala aquí',
-    'not_registered' => '¿ Aún no tenés usuario ? Registrate acá',
-  ),
-  'login' =>
-  array(
-    'alert' =>
-    array(
+    'forgot'             => '¿ Has olvidado tu contraseña ? Blanqueala aquí',
+    'not_registered'     => '¿ Aún no tenés usuario ? Registrate acá',
+  ],
+  'login' => [
+    'alert' => [
       'message' => '¿Puedo ayudarte?',
-      'whoops' => 'Whoops!',
-    ),
-    'email' => 'Email',
-    'forgot' => 'Olvidé mi contraseña',
-    'login' => 'Ingresar',
-    'password' => 'Contraseña',
+      'whoops'  => 'Whoops!',
+    ],
+    'email'       => 'Email',
+    'forgot'      => 'Olvidé mi contraseña',
+    'login'       => 'Ingresar',
+    'password'    => 'Contraseña',
     'remember_me' => 'Recordarme',
-    'title' => 'Inicio de Sesión',
-  ),
-  'register' =>
-  array(
-    'btn' =>
-    array(
+    'title'       => 'Inicio de Sesión',
+  ],
+  'register' => [
+    'btn' => [
       'submit' => 'Registrame',
-    ),
-    'email' => 'Tu Email',
-    'name' => 'Tu nombre',
-    'need_help' => '¿Necesitas ayuda?',
-    'password' => 'Una Contraseña',
+    ],
+    'email'                 => 'Tu Email',
+    'name'                  => 'Tu nombre',
+    'need_help'             => '¿Necesitas ayuda?',
+    'password'              => 'Una Contraseña',
     'password_confirmation' => 'La misma contraseña',
-    'title' => '¡Hola! Vamos a crear un perfil en timegrid.io',
-    'username' => 'Tu nombre de usuario',
-  ),
-  'reset' =>
-  array(
-    'btn' =>
-    array(
-      'reset' => 'Blanquear contraseña',
+    'title'                 => '¡Hola! Vamos a crear un perfil en timegrid.io',
+    'username'              => 'Tu nombre de usuario',
+  ],
+  'reset' => [
+    'btn' => [
+      'reset'     => 'Blanquear contraseña',
       'send_link' => 'Enviame el link de blanqueo',
-    ),
+    ],
     'title' => 'Blanqueo de contraseña',
-  ),
-);
+  ],
+];

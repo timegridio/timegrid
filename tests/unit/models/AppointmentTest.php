@@ -1,11 +1,11 @@
 <?php
 
-use Laracasts\TestDummy\Factory;
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Laracasts\TestDummy\Factory;
 
 class AppointmentTest extends TestCase
 {
@@ -86,8 +86,8 @@ class AppointmentTest extends TestCase
     public function it_gets_the_finish_datetime_of_appointment()
     {
         $appointment = Factory::create('App\Models\Appointment', [
-            'startAt' => Carbon::parse('2015-12-08 08:00:00 UTC'),
-            'duration' => 90
+            'startAt'  => Carbon::parse('2015-12-08 08:00:00 UTC'),
+            'duration' => 90,
         ]);
 
         $startAt = $appointment->startAt;

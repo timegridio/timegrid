@@ -3,85 +3,69 @@
  Generated via "php artisan localization:missing" at 2015/12/10 11:27:51 
 *************************************************************************/
 
-return array (
+return  [
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/_errors.blade.php
-  'msg' => 
-  array (
+  'msg' =>  [
     'invalid_token' => 'Por favor envía el formulario nuevamente.',
-  ),
+  ],
   //==================================== Translations ====================================//
-  'btn' => 
-  array (
+  'btn' =>  [
     'update' => 'Actualizar',
-  ),
-  'business' => 
-  array (
-    'category' => 
-    array (
-      'doctor' => 'Salud',
-      'garage' => 'Mecánica',
+  ],
+  'business' =>  [
+    'category' =>  [
+      'doctor'      => 'Salud',
+      'garage'      => 'Mecánica',
       'photography' => 'Fotografía',
-    ),
-  ),
-  'dateformat' => 
-  array (
-    'carbon' => 'd/m/Y',
+    ],
+  ],
+  'dateformat' =>  [
+    'carbon'         => 'd/m/Y',
     'datetimepicker' => 'DD/MM/YYYY',
-  ),
-  'footer' => 
-  array (
-    'demo' => 'Please translate this !',
+  ],
+  'footer' =>  [
+    'demo'  => 'Please translate this !',
     'local' => 'Please translate this !',
-  ),
-  'gender' => 
-  array (
+  ],
+  'gender' =>  [
     'F' => 'Mujer',
     'M' => 'Hombre',
-  ),
-  'label' => 
-  array (
-    'attention' => 'Please translate this !',
+  ],
+  'label' =>  [
+    'attention'       => 'Please translate this !',
     'select_timezone' => 'Zona horaria',
-  ),
+  ],
   'name' => 'timegrid.io',
-  'nav' => 
-  array (
-    'login' => 'Iniciar Sesión',
-    'logout' => 'Salir',
-    'manager' => 
-    array (
-      'business' => 
-      array (
-        'list' => 'Listar',
-        'menu' => 'Mis Prestadores',
+  'nav'  =>  [
+    'login'   => 'Iniciar Sesión',
+    'logout'  => 'Salir',
+    'manager' =>  [
+      'business' =>  [
+        'list'     => 'Listar',
+        'menu'     => 'Mis Prestadores',
         'register' => 'Registrar Prestador',
-      ),
-    ),
-    'manual' => 'Manual de usuario',
+      ],
+    ],
+    'manual'   => 'Manual de usuario',
     'register' => 'Registrarme',
-    'user' => 
-    array (
-      'business' => 
-      array (
-        'menu' => 'Prestadores',
-        'my_appointments' => 'Mis citas',
+    'user'     =>  [
+      'business' =>  [
+        'menu'             => 'Prestadores',
+        'my_appointments'  => 'Mis citas',
         'my_subscriptions' => 'Favoritos',
-        'selector' => 'Buscar',
-      ),
-    ),
+        'selector'         => 'Buscar',
+      ],
+    ],
     'wizard' => 'Asistente',
-  ),
-  'notifications' => 
-  array (
+  ],
+  'notifications' =>  [
     'title' => 'Recientemente',
-  ),
-  'search' => 
-  array (
-    'msg' => 
-    array (
+  ],
+  'search' =>  [
+    'msg' =>  [
       'no_results' => 'Sin resultados',
-    ),
+    ],
     'placeholder' => 'Buscar',
-  ),
-);
+  ],
+];
