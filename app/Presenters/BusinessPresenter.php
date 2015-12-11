@@ -48,7 +48,7 @@ class BusinessPresenter extends BasePresenter
     public function staticMap($zoom = 15)
     {
         $data = [
-            'center'         => $this->wrappedObject->postalAddress,
+            'center'         => $this->wrappedObject->postal_address,
             'zoom'           => intval($zoom),
             'scale'          => '2',
             'size'           => '180x100',
