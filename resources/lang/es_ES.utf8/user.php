@@ -1,116 +1,177 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:37:10 
+ Generated via "php artisan localization:missing" at 2015/12/12 14:47:28 
 *************************************************************************/
 
-return  [
-  'appointments' =>  [
-    'alert' =>  [
-      'empty_list'   => 'No tienes reserves en curso ahora.',
+return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
+  'dashboard' => 
+  array (
+    'card' => 
+    array (
+      'directory' => 
+      array (
+        'button' => 'Ver Directorio',
+        'description' => 'Conoce los comercions en los que puedes reservar servicios.',
+        'title' => 'Directorio',
+      ),
+      'agenda' => 
+      array (
+        'button' => 'Ver Agenda',
+        'description' => 'Revisa tu cita actual en agenda.|[2, Inf] Revisa tus citas actuales en agenda.',
+        'title' => 'Tu Cita|[2, Inf] Tus Citas',
+      ),
+      'subscriptions' => 
+      array (
+        'button' => 'Mis Suscripciones',
+        'description' => 'Revisa los comercios a los que ya estás suscripto.',
+        'title' => 'Suscripciones',
+      ),
+    ),
+  ),
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
+  //==================================== Translations ====================================//
+  'appointments' => 
+  array (
+    'alert' => 
+    array (
+      'empty_list' => 'No tienes reserves en curso ahora.',
       'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
-    ],
-    'btn' =>  [
-      'book'        => 'Reservar Cita',
+    ),
+    'btn' => 
+    array (
+      'book' => 'Reservar Cita',
       'book_in_biz' => 'Reservar cita en :biz',
-    ],
-    'form' =>  [
-      'btn' =>  [
+    ),
+    'form' => 
+    array (
+      'btn' => 
+      array (
         'submit' => 'Confirmar',
-      ],
-      'comments' =>  [
+      ),
+      'comments' => 
+      array (
         'label' => 'Comentarios',
-      ],
-      'date' =>  [
+      ),
+      'date' => 
+      array (
         'label' => 'Fecha',
-      ],
-      'duration' =>  [
+      ),
+      'duration' => 
+      array (
         'label' => 'Duración',
-      ],
-      'msg' =>  [
+      ),
+      'msg' => 
+      array (
         'please_select_a_service' => 'Selecciona un servicio',
-      ],
-      'service' =>  [
+      ),
+      'service' => 
+      array (
         'label' => 'Servicio',
-      ],
-      'time' =>  [
+      ),
+      'time' => 
+      array (
         'label' => 'Hora',
-      ],
-      'timetable' =>  [
+      ),
+      'timetable' => 
+      array (
         'instructions' => 'Selecciona un servicio para reservar cita',
-        'msg'          =>  [
+        'msg' => 
+        array (
           'no_vacancies' => 'No hay disponibilidades para esta fecha',
-        ],
+        ),
         'title' => 'Reserva una cita',
-      ],
-    ],
-    'index' =>  [
-      'th' =>  [
-        'business'    => 'Prestador',
-        'calendar'    => 'Fecha',
-        'code'        => 'Código',
-        'contact'     => 'Cliente',
-        'duration'    => 'Duración',
+      ),
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'business' => 'Prestador',
+        'calendar' => 'Fecha',
+        'code' => 'Código',
+        'contact' => 'Cliente',
+        'duration' => 'Duración',
         'finish_time' => 'Finaliza',
-        'remaining'   => 'Dentro de',
-        'service'     => 'Servicio',
-        'start_time'  => 'Comienza',
-        'status'      => 'Estado',
-      ],
+        'remaining' => 'Dentro de',
+        'service' => 'Servicio',
+        'start_time' => 'Comienza',
+        'status' => 'Estado',
+      ),
       'title' => 'Citas',
-    ],
-  ],
-  'booking' =>  [
-    'msg' =>  [
-      'store' =>  [
-        'error'            => 'Please translate this !',
+    ),
+  ),
+  'booking' => 
+  array (
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'error' => 'Please translate this !',
         'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
-        'success'          => '¡Tomá nota! Reservamos tu cita bajo el código :code',
-      ],
+        'success' => '¡Tomá nota! Reservamos tu cita bajo el código :code',
+      ),
       'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
-    ],
-  ],
-  'business' =>  [
-    'btn' =>  [
+    ),
+  ),
+  'business' => 
+  array (
+    'btn' => 
+    array (
       'subscribe' => 'Suscribir',
-    ],
-  ],
-  'businesses' =>  [
-    'index' =>  [
-      'btn' =>  [
-        'create'       => 'Registrar prestador',
-        'manage'       => 'Mis prestadores',
+    ),
+  ),
+  'businesses' => 
+  array (
+    'index' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Registrar prestador',
+        'manage' => 'Mis prestadores',
         'power_create' => 'Registrá tu comercio ahora',
-      ],
+      ),
       'title' => 'Prestadores disponibles',
-    ],
-    'list' =>  [
+    ),
+    'list' => 
+    array (
       'no_businesses' => 'No se econtraron prestadores.',
-    ],
-    'subscriptions' =>  [
+    ),
+    'subscriptions' => 
+    array (
       'none_found' => 'No hay suscripciones disponibles.',
-      'title'      => 'Suscripciones',
-    ],
-  ],
-  'contacts' =>  [
-    'btn' =>  [
-      'store'  => 'Guardar',
+      'title' => 'Suscripciones',
+    ),
+  ),
+  'contacts' => 
+  array (
+    'btn' => 
+    array (
+      'store' => 'Guardar',
       'update' => 'Editar',
-    ],
-    'create' =>  [
-      'help'  => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
+    ),
+    'create' => 
+    array (
+      'help' => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
-    ],
-    'msg' =>  [
-      'store' =>  [
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
         'associated_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',
-        'success'                     => 'Guardado',
-        'warning'                     =>  [
+        'success' => 'Guardado',
+        'warning' => 
+        array (
           'already_registered' => 'Se asoció tu perfil a los datos ya registrados',
-        ],
-      ],
-      'update' =>  [
+        ),
+      ),
+      'update' => 
+      array (
         'success' => 'Actualizado',
-      ],
-    ],
-  ],
-];
+      ),
+    ),
+  ),
+);

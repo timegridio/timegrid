@@ -1,71 +1,88 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/10 11:27:51 
+ Generated via "php artisan localization:missing" at 2015/12/12 14:50:37 
 *************************************************************************/
 
-return  [
+return array (
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/_errors.blade.php
-  'msg' =>  [
-    'invalid_token' => 'We found some validation problems, please submit your form again.',
-  ],
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
+  'nav' => 
+  array (
+    'dashboard' => 'Dashboard',
+    'login' => 'Login',
+    'logout' => 'Logout',
+    'manager' => 
+    array (
+      'business' => 
+      array (
+        'list' => 'List',
+        'menu' => 'My Businesses',
+        'register' => 'SignUp Business',
+      ),
+    ),
+    'manual' => 'User Manual',
+    'register' => 'Register',
+    'user' => 
+    array (
+      'business' => 
+      array (
+        'menu' => 'Businesses',
+        'my_appointments' => 'My Reservations',
+        'my_subscriptions' => 'Favourites',
+        'selector' => 'Browse',
+      ),
+    ),
+    'wizard' => 'Wizard',
+  ),
   //==================================== Translations ====================================//
-  'btn' =>  [
+  'btn' => 
+  array (
     'update' => 'Update',
-  ],
-  'business' =>  [
-    'category' =>  [
-      'doctor'      => 'Healthcare',
-      'garage'      => 'Car Mechanic',
+  ),
+  'business' => 
+  array (
+    'category' => 
+    array (
+      'doctor' => 'Healthcare',
+      'garage' => 'Car Mechanic',
       'photography' => 'Photography',
-    ],
-  ],
-  'dateformat' =>  [
-    'carbon'         => 'm/d/Y',
+    ),
+  ),
+  'dateformat' => 
+  array (
+    'carbon' => 'm/d/Y',
     'datetimepicker' => 'MM/DD/YYYY',
-  ],
-  'footer' =>  [
-    'demo'  => 'Remember this is a DEMO version.',
+  ),
+  'footer' => 
+  array (
+    'demo' => 'Remember this is a DEMO version.',
     'local' => 'Local environment advice.',
-  ],
-  'gender' =>  [
+  ),
+  'gender' => 
+  array (
     'F' => 'Female',
     'M' => 'Male',
-  ],
-  'label' =>  [
-    'attention'       => 'Attention',
+  ),
+  'label' => 
+  array (
+    'attention' => 'Attention',
     'select_timezone' => 'TimeZone',
-  ],
+  ),
+  'msg' => 
+  array (
+    'invalid_token' => 'We found some validation problems, please submit your form again.',
+  ),
   'name' => 'timegrid.io',
-  'nav'  =>  [
-    'login'   => 'Login',
-    'logout'  => 'Logout',
-    'manager' =>  [
-      'business' =>  [
-        'list'     => 'List',
-        'menu'     => 'My Businesses',
-        'register' => 'SignUp Business',
-      ],
-    ],
-    'manual'   => 'User Manual',
-    'register' => 'Register',
-    'user'     =>  [
-      'business' =>  [
-        'menu'             => 'Businesses',
-        'my_appointments'  => 'My Reservations',
-        'my_subscriptions' => 'Favourites',
-        'selector'         => 'Browse',
-      ],
-    ],
-    'wizard' => 'Wizard',
-  ],
-  'notifications' =>  [
+  'notifications' => 
+  array (
     'title' => 'Recently',
-  ],
-  'search' =>  [
-    'msg' =>  [
+  ),
+  'search' => 
+  array (
+    'msg' => 
+    array (
       'no_results' => 'We found nothing with this criteria: :criteria',
-    ],
+    ),
     'placeholder' => 'search',
-  ],
-];
+  ),
+);

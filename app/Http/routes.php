@@ -101,6 +101,10 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
         'as'   => 'user.subscriptions',
         'uses' => 'User\BusinessController@getSubscriptions',
     ]);
+    Route::get('dashboard', [
+        'as'   => 'user.dashboard',
+        'uses' => 'User\WizardController@getDashboard',
+    ]);
 
     ////////////
     // WIZARD //

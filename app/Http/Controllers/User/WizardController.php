@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Services\ConciergeService;
 
 /*******************************************************************************
  * The Wizard will present either a guided step-by-step configuration for
@@ -29,10 +30,24 @@ class WizardController extends Controller
         if (auth()->user()->hasContacts()) {
             $this->log->info('User has Contacts');
 
-            return redirect()->route('user.directory.list');
+            return redirect()->route('user.dashboard');
         }
 
         return view('wizard');
+    }
+
+    /**
+     * get Dashboard page.
+     *
+     * @return Response Rendered view for Wizard
+     */
+    public function getDashboard(ConciergeService $concierge)
+    {
+        $this->log->info(__METHOD__);
+
+        $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
+
+        return view('user.dashboard', ['appointments' => $appointments]);
     }
 
     /**
