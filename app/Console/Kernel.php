@@ -42,6 +42,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('root:report')->daily();
+        $schedule->command('root:report')->dailyAt(env('ROOT_REPORT_TIME', '20:00'));
     }
 }
