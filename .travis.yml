@@ -7,6 +7,7 @@ php:
 
 before_script:
   - cp .env.travis .env
+  - cp travis.phpunit.xml phpunit.xml
   - mkdir /tmp/timegrid
   - mysql -e 'create database test_timegrid;'
   - composer self-update
