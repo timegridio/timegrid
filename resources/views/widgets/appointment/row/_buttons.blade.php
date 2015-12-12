@@ -1,6 +1,6 @@
 <span class="btn-group">
 
-    @if($appointment->isAnnulable())
+    @if($appointment->isAnnulableBy(auth()->user()->id))
         {!! Button::danger()->withIcon(Icon::remove())->withAttributes([
             'data-action' => 'annulate',
             'class' => 'action',
@@ -10,7 +10,7 @@
         ]) !!}
     @endif
 
-    @if($appointment->isConfirmable())
+    @if($appointment->isConfirmableBy(auth()->user()->id))
         {!! Button::success()->withIcon(Icon::ok())->withAttributes([
             'data-action' => 'confirm',
             'class' => 'action',
@@ -20,9 +20,7 @@
         ]) !!}
     @endif
 
-@if($appointment->profile($user->id) == 'manager')
-
-    @if($appointment->isServeable())
+    @if($appointment->isServeableBy(auth()->user()->id))
         {!! Button::normal()->withIcon(Icon::ok())->withAttributes([
             'data-action' => 'serve',
             'class' => 'action',
@@ -31,7 +29,5 @@
             'data-code' => $appointment->code
         ]) !!}
     @endif
-
-@endif
 
 </span>

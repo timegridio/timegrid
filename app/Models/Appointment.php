@@ -253,6 +253,20 @@ class Appointment extends EloquentModel implements HasPresenter
         $this->attributes['comments'] = trim($comments) ?: null;
     }
 
+    /////////////////
+    // HARD STATUS //
+    /////////////////
+
+    /**
+     * is Reserved.
+     *
+     * @return bool Determination if the Appointment is in reserved status
+     */
+    public function isReserved()
+    {
+        return $this->status == Self::STATUS_RESERVED;
+    }
+
     ///////////////////////////
     // Calculated attributes //
     ///////////////////////////
@@ -464,13 +478,130 @@ class Appointment extends EloquentModel implements HasPresenter
     //////////////////////////
 
     /**
+     * User is issuer of the appointment.
+     *
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isIssuer($userId)
+    {
+        return $this->issuer->id == $userId;
+    }
+
+    /**
+     * User is owner of business.
+     *
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isOwner($userId)
+    {
+        return $this->business->owners->contains($userId);
+    }
+
+    /**
+     * can be annulated by user.
+     *
+     * @param  int $userId
+     * @return boolean
+     */
+    public function canAnnulate($userId)
+    {
+        return $this->isOwner($userId) || $this->isIssuer($userId);
+    }
+
+    /**
+     * can Serve.
+     *
+     * @param  int $userId
+     * @return boolean
+     */
+    public function canServe($userId)
+    {
+        return $this->isOwner($userId);
+    }
+
+    /**
+     * can confirm.
+     *
+     * @param  int $userId
+     * @return boolean
+     */
+    public function canConfirm($userId)
+    {
+        return $this->isIssuer($userId) || $this->isOwner($userId);
+    }
+
+    /**
+     * is Serveable by user.
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isServeableBy($userId)
+    {
+        return $this->isServeable() && $this->canServe($userId);
+    }
+
+    /**
+     * is Confirmable By user.
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isConfirmableBy($userId)
+    {
+        return $this->isConfirmable() && $this->shouldConfirmBy($userId) && $this->canConfirm($userId);
+    }
+
+    /**
+     * is Annulable By user.
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isAnnulableBy($userId)
+    {
+        return $this->isAnnulable() && $this->canAnnulate($userId);
+    }
+
+    /**
+     * Determine if the queried userId may confirm the appointment or not.
+     *
+     * @param  int $userId
+     * @return boolean
+     */
+    public function shouldConfirmBy($userId)
+    {
+        return ($this->isSelfIssued() && $this->isOwner($userId)) ||
+               ($this->isOwner($this->issuer->id) && $this->isIssuer($userId));
+    }
+
+    /**
+     * Determine if the target contact user is the same of the appointment issuer user.
+     *
+     * @return boolean
+     */
+    public function isSelfIssued()
+    {
+        if (!$this->issuer) {
+            return false;
+        }
+        if (!$this->contact) {
+            return false;
+        }
+        if (!$this->contact->user) {
+            return false;
+        }
+
+        return $this->issuer->id == $this->contact->user->id;
+    }
+
+    /**
      * is Serveable.
      *
      * @return bool The Serve action can be performed
      */
     public function isServeable()
     {
-        return ($this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED) && $this->isDue();
+        return $this->isActive() && $this->isDue();
     }
 
     /**
@@ -490,7 +621,7 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function isAnnulable()
     {
-        return $this->status == self::STATUS_RESERVED || $this->status == self::STATUS_CONFIRMED;
+        return $this->isActive();
     }
 
     /////////////////////////
@@ -557,29 +688,5 @@ class Appointment extends EloquentModel implements HasPresenter
         }
 
         return $this;
-    }
-
-    /**
-     * Get the profile type of the user for this appointment.
-     *
-     * @param int $userId
-     *
-     * @return string
-     */
-    public function profile($userId)
-    {
-        try {
-            if ($this->issuer->id == $userId) {
-                return self::PROFILE_USER;
-            }
-
-            if ($this->business->owners->contains($userId)) {
-                return self::PROFILE_USER;
-            }
-        } catch (Exception $e) {
-            return false;
-        }
-
-        return self::PROFILE_GUEST;
     }
 }
