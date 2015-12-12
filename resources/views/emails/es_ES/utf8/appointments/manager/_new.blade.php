@@ -50,7 +50,7 @@ Notas Para el Prestador: {{ $appointment->comments }}
         </tr>
         <tr>
           <td class="container-padding footer-text" align="left" style="font-family:Helvetica, Arial, sans-serif;font-size:12px;line-height:16px;color:#aaaaaa;padding-left:24px;padding-right:24px">
-          @include('emails._footer')
+          @include('emails.'.App::getLocale().'._footer')
           </td>
         </tr>
       </table>
