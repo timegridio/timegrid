@@ -66,9 +66,9 @@ class BusinessVacancyController extends Controller
 
         // BEGIN
 
-        $vacanciesForPublishing = $request->get('vacancy');
+        $publishedVacancies = $request->get('vacancy');
 
-        if (!$this->vacancyService->update($business, $vacanciesForPublishing)) {
+        if (!$this->vacancyService->update($business, $publishedVacancies)) {
             $this->log->warning('Nothing to update');
 
             Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
