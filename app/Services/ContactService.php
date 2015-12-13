@@ -93,11 +93,16 @@ class ContactService
      */
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
-        if (array_key_exists('birthdate', $data) && trim($data['birthdate']) != '') {
-            $data['birthdate'] = Carbon::createFromFormat(trans('app.dateformat.carbon'), $data['birthdate']);
-        }
+        $contact->firstname = $data['firstname'];
+        $contact->lastname = $data['lastname'];
+        $contact->email = $data['email'];
+        $contact->nin = $data['nin'];
+        $contact->gender = $data['gender'];
+        $contact->birthdate = $data['birthdate'];
+        $contact->mobile = $data['mobile'];
+        $contact->mobile_country = $data['mobile_country'];
 
-        $contact->where('id', '=', $contact->id)->update($data);
+        $contact->save();
 
         self::updateNotes($business, $contact, $notes);
     }

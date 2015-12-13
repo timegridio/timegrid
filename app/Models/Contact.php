@@ -173,18 +173,21 @@ class Contact extends EloquentModel implements HasPresenter
     public function setBirthdateAttribute($birthdate)
     {
         if (is_string($birthdate)) {
-            if (trim($birthdate) == '') {
+            if (empty(trim($birthdate))) {
                 return $this->attributes['birthdate'] = null;
             }
 
-            $this->attributes['birthdate'] = Carbon::parse($birthdate);
+            if (stripos($birthdate, '-')) {
+                return $this->attributes['birthdate'] = Carbon::parse($birthdate);
+            }
+
+            return $this->attributes['birthdate'] = Carbon::createFromFormat(
+                trans('app.dateformat.carbon'),
+                $birthdate
+            );
         }
 
-        if ($birthdate instanceof Carbon) {
-            $this->attributes['birthdate'] = $birthdate;
-        }
-
-        return $this->attributes['birthdate'] = null;
+        return $this->attributes['birthdate'] = $birthdate;
     }
 
     /**
@@ -194,7 +197,7 @@ class Contact extends EloquentModel implements HasPresenter
      */
     public function setEmailAttribute($email)
     {
-        return $this->attributes['email'] = trim($email) ?: null;
+        return $this->attributes['email'] = empty(trim($email)) ? null : $email;
     }
 
     /**
@@ -207,7 +210,7 @@ class Contact extends EloquentModel implements HasPresenter
      */
     public function setNinAttribute($nin)
     {
-        return $this->attributes['nin'] = trim($nin) ?: null;
+        return $this->attributes['nin'] = empty(trim($nin)) ? null : $nin;
     }
 
     ///////////////
