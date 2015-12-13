@@ -223,7 +223,7 @@ class BusinessContactController extends Controller
 
     /**
      * Find an existing Contact By UserId.
-     * 
+     *
      * @param int $userId
      *
      * @return Collection|Builder
@@ -235,7 +235,7 @@ class BusinessContactController extends Controller
 
     /**
      * Find an existing Contact By Email.
-     * 
+     *
      * @param string $email
      *
      * @return Collection|Builder

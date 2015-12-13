@@ -163,7 +163,7 @@ class Business extends EloquentModel implements HasPresenter
 
     /**
      * get presenter.
-     * 
+     *
      * @return BusinessPresenter Presenter class
      */
     public function getPresenterClass()

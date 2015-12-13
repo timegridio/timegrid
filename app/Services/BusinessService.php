@@ -88,10 +88,10 @@ class BusinessService
 
     /**
      * Update business attirbutes.
-     * 
+     *
      * @param Business $business
      * @param array    $data
-     * 
+     *
      * @return App\Models\Business
      */
     public function update(Business $business, $data)
@@ -103,7 +103,7 @@ class BusinessService
 
     /**
      * Set category to a Business and save.
-     * 
+     *
      * @param Business $business
      * @param int      $category
      *
