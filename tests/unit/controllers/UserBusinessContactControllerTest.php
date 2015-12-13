@@ -150,7 +150,7 @@ class UserBusinessContactControllerTest extends TestCase
      * @covers   App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
-    public function it_cannot_change_nin_of_a_contact()
+    public function it_can_change_nin_of_a_contact()
     {
         // Given a fixture of
         $this->arrangeFixture();
@@ -165,14 +165,16 @@ class UserBusinessContactControllerTest extends TestCase
 
         // And I visit the contact edit form
         // And set a NIN and and submit
+        $newNin = '54321';
+
         $this->visit(route('user.business.contact.edit', ['business' => $this->business, 'contact' => $contact]))
-             ->type('54321', 'nin')
+             ->type($newNin, 'nin')
              ->press('Update');
 
         // Then I see the profile is updated with the NIN
         $this->assertResponseOk();
         $this->see('Updated successfully')
-             ->see('12345');
+             ->see($newNin);
     }
 
     /**

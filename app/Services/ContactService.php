@@ -42,6 +42,15 @@ class ContactService
         return $contact;
     }
 
+    /**
+     * Copy Contact from provided exiting.
+     *
+     * @param  User     $user
+     * @param  Business $business
+     * @param  Contact  $existingContact
+     *
+     * @return App\Models\Contact
+     */
     public function copyFrom(User $user, Business $business, Contact $existingContact)
     {
         $contact = Contact::create($existingContact->toArray());
@@ -55,6 +64,14 @@ class ContactService
         return $contact;
     }
 
+    /**
+     * Associate Contact with User.
+     *
+     * @param  Contact $contact
+     * @param  User    $user
+     *
+     * @return App\Models\Contact
+     */
     public function linkToUser(Contact $contact, User $user)
     {
         $contact->user()->associate($user->id);
@@ -158,6 +175,8 @@ class ContactService
         $contact->save();
 
         self::updateNotes($business, $contact, $notes);
+
+        return $contact;
     }
 
     /**
@@ -186,7 +205,7 @@ class ContactService
      *
      * @return void
      */
-    protected function updateNotes(Business $business, Contact $contact, $notes)
+    protected function updateNotes(Business $business, Contact $contact, $notes = null)
     {
         if ($notes) {
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $notes]);

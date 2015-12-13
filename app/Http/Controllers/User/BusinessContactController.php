@@ -45,10 +45,6 @@ class BusinessContactController extends Controller
     {
         $this->log->info(__METHOD__);
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-
         $existingContacts = $this->contactService->findExistingContactsByUserId(auth()->user()->id);
 
         if ($existingContacts->isEmpty()) {
@@ -177,27 +173,18 @@ class BusinessContactController extends Controller
 
         // BEGIN
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-
-        $update = [
+        $data = [
+            'firstname'       => $request->get('firstname'),
+            'lastname'        => $request->get('lastname'),
+            'email'           => $request->get('email'),
+            'nin'             => $request->get('nin'),
+            'gender'          => $request->get('gender'),
+            'birthdate'       => $request->get('birthdate'),
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country'),
         ];
 
-        /* Only allow filling empty fields, not modification */
-        if ($contact->birthdate === null && $request->get('birthdate')) {
-            $update['birthdate'] = $request->get('birthdate');
-            $this->log->info("BusinessContactController: update: Updated birthdate:{$update['birthdate']}");
-        }
-        if (trim($contact->nin) == '' && $request->get('nin')) {
-            $update['nin'] = $request->get('nin');
-            $this->log->info("BusinessContactController: update: Updated nin:{$update['nin']}");
-        }
-
-        $contact->update($update);
-        $this->log->info('BusinessContactController: update: Updated contact');
+        $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
 
         Flash::success(trans('user.contacts.msg.update.success'));
 
@@ -209,7 +196,6 @@ class BusinessContactController extends Controller
      *
      * @param Business           $business Business holding the Contact
      * @param Contact            $contact  Contact to destroy
-     * @param ContactFormRequest $request  Contact Form Request
      *
      * @return Response Redirect back to Business show
      */
@@ -222,7 +208,7 @@ class BusinessContactController extends Controller
 
         // BEGIN
 
-        $contact->delete();
+        $this->contactService->detach($business, $contact);
 
         Flash::success(trans('manager.contacts.msg.destroy.success'));
 
