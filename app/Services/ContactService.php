@@ -26,11 +26,15 @@ class ContactService
     {
         if (false === $contact = self::getExisting($user, $business, $data['nin'])) {
             $contact = Contact::create($data);
+
             $business->contacts()->attach($contact);
+            $business->save();
 
             logger()->info("Contact created contactId:{$contact->id}");
 
-            self::updateNotes($business, $contact, $data['notes']);
+            if (array_key_exists('notes', $data)) {
+                self::updateNotes($business, $contact, $data['notes']);
+            }
         }
 
         event(new NewRegisteredContact($contact));
@@ -49,6 +53,14 @@ class ContactService
         $business->save();
 
         return $contact;
+    }
+
+    public function linkToUser(Contact $contact, User $user)
+    {
+        $contact->user()->associate($user->id);
+        $contact->save();
+
+        return $contact->fresh();
     }
 
     /**

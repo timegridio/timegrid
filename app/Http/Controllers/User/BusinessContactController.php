@@ -105,11 +105,9 @@ class BusinessContactController extends Controller
             }
         }
 
-        $contact = Contact::create(Request::all());
-        $contact->user()->associate(auth()->user()->id);
-        $contact->save();
-        $business->contacts()->attach($contact);
-        $business->save();
+        $contact = $this->contactService->register(auth()->user(), $business, Request::all());
+
+        $this->contactService->linkToUser($contact, auth()->user());
 
         event(new NewRegisteredContact($contact));
 
