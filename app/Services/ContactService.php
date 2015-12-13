@@ -38,6 +38,19 @@ class ContactService
         return $contact;
     }
 
+    public function copyFrom(User $user, Business $business, Contact $existingContact)
+    {
+        $contact = Contact::create($existingContact->toArray());
+        $contact->user()->associate($user->id);
+        $contact->businesses()->detach();
+        $contact->save();
+
+        $business->contacts()->attach($contact);
+        $business->save();
+
+        return $contact;
+    }
+
     /**
      * Find an existing contact with the same NIN.
      *
@@ -66,6 +79,34 @@ class ContactService
         }
 
         return false;
+    }
+
+    /**
+     * Find an existing Contact By UserId.
+     *
+     * @param int $userId
+     *
+     * @return Collection|Builder
+     */
+    public function findExistingContactsByUserId($userId)
+    {
+        return Contact::where('user_id', '=', $userId)->get();
+    }
+
+    /**
+     * Find an existing Contact By Email.
+     *
+     * @param string $email
+     *
+     * @return Collection|Builder
+     */
+    public function findExistingContactsByEmail($email)
+    {
+        return Contact::whereNull('user_id')
+            ->whereNotNull('email')
+            ->where('email', '<>', '')
+            ->where(['email' => $email])
+            ->get();
     }
 
     /**
