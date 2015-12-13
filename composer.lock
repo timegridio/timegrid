@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0e4ab4f238a88d981a5130a550c8d0c6",
-    "content-hash": "adec4175592fb72c361f3cb84c30f7e9",
+    "hash": "b935d499a2a846954daa8d6ec4521eb2",
+    "content-hash": "fd716200bb59a02454f8e3aca893cccb",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -2606,30 +2606,30 @@
         },
         {
             "name": "stevebauman/location",
-            "version": "v1.1.10",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/stevebauman/location.git",
-                "reference": "e9142ebdeb3404e316c317d86dd4000a68dfdbf5"
+                "reference": "7a9fdaa7591c556f49f86cdf82d2f9f480419d6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stevebauman/location/zipball/e9142ebdeb3404e316c317d86dd4000a68dfdbf5",
-                "reference": "e9142ebdeb3404e316c317d86dd4000a68dfdbf5",
+                "url": "https://api.github.com/repos/stevebauman/location/zipball/7a9fdaa7591c556f49f86cdf82d2f9f480419d6b",
+                "reference": "7a9fdaa7591c556f49f86cdf82d2f9f480419d6b",
                 "shasum": ""
             },
             "require": {
                 "geoip2/geoip2": "2.1.*",
-                "illuminate/support": "4.*|5.*",
-                "php": ">=5.4.0"
+                "illuminate/support": "5.*",
+                "php": ">=5.5.9"
             },
             "require-dev": {
-                "mockery/mockery": "0.9.*"
+                "orchestra/testbench": "3.1.*"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Stevebauman\\Location\\": "src/Stevebauman/Location/"
+                    "Stevebauman\\Location\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -2639,7 +2639,7 @@
             "authors": [
                 {
                     "name": "Steve Bauman",
-                    "email": "steven_bauman_7@hotmail.com"
+                    "email": "steven_bauman@outlook.com"
                 }
             ],
             "description": "Retrieve a users location by their IP Address using Laravel 4 / 5",
@@ -2652,7 +2652,7 @@
                 "location",
                 "php"
             ],
-            "time": "2015-12-01 21:44:23"
+            "time": "2015-12-01 15:29:14"
         },
         {
             "name": "swiftmailer/swiftmailer",
