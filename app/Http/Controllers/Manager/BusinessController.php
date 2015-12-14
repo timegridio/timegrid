@@ -320,7 +320,10 @@ class BusinessController extends Controller
     {
         if ($this->location === null) {
             $this->log->info('Getting location');
+
             $this->location = GeoIP::getLocation();
+            
+            $this->log->info(serialize($this->location));
         }
         return $this->location;
     }
