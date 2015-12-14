@@ -11,7 +11,7 @@ return array (
     array (
       'tooltip' => 
       array (
-        'agenda' => 'Agenda de Citass',
+        'agenda' => 'Agenda de Citas',
         'contacts' => 'Lista de Contactos',
         'edit' => 'Editar datos del Prestador',
         'preferences' => 'Cambiar Preferencias',
