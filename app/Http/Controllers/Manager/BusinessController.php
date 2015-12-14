@@ -313,7 +313,7 @@ class BusinessController extends Controller
     {
         $this->getLocation();
 
-        return in_array('isoCode', $this->location) ? $this->location['isoCode'] : null;
+        return array_get($this->location, 'isoCode', null);
     }
 
     protected function getLocation()
@@ -322,7 +322,7 @@ class BusinessController extends Controller
             $this->log->info('Getting location');
 
             $this->location = GeoIP::getLocation();
-            
+
             $this->log->info(serialize($this->location));
         }
         return $this->location;
