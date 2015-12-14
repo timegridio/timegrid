@@ -2,7 +2,7 @@
 <tr id="{{ $appointment->code }}" class="{{ $appointment->statusToCssClass }}">
     <td>{{ $appointment->status }}</td>
     <td>{{ $appointment->code }}</td>
-    <td>{{ $appointment->contact->name }}</td>
+    <td>{{ $appointment->contact->firstname }} {{ $appointment->contact->lastname }}</td>
     <td>{{ $appointment->date }}</td>
     <td title="{{ $appointment->timezone }}">{{ $appointment->time }}</td>
     <td>{{ $appointment->business->name }}</td>
