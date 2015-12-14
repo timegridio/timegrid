@@ -19,6 +19,10 @@
                 {{ $appointment->business->name }}
             </li>
 
+            <li class="list-group-item">
+                <span class='glyphicon glyphicon-user'></span>&nbsp;
+                {{ $appointment->contact->firstname }} {{ $appointment->contact->lasttname }}
+            </li>
 
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-calendar'></span>&nbsp;

@@ -479,6 +479,17 @@ class Appointment extends EloquentModel implements HasPresenter
     //////////////////////////
 
     /**
+     * User is target contact of the appointment.
+     *
+     * @param  int  $userId
+     * @return boolean
+     */
+    public function isTarget($userId)
+    {
+        return $this->contact->isProfileOf($userId);
+    }
+
+    /**
      * User is issuer of the appointment.
      *
      * @param  int  $userId
@@ -508,7 +519,23 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function canAnnulate($userId)
     {
-        return $this->isOwner($userId) || $this->isIssuer($userId);
+        return $this->isOwner($userId) ||
+            ($this->isIssuer($userId) && $this->isOnTimeToAnnulate()) ||
+            ($this->isTarget($userId) && $this->isOnTimeToAnnulate());
+    }
+
+    /**
+     * Determine if it is still possible to annulate according business policy.
+     *
+     * @return boolean
+     */
+    public function isOnTimeToAnnulate()
+    {
+        $graceHours = $this->business->pref('appointment_annulation_pre_hs');
+
+        $diff = $this->start_at->diffInHours(Carbon::now());
+        
+        return intval($diff) >= intval($graceHours);
     }
 
     /**
