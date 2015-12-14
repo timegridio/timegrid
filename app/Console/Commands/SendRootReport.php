@@ -41,7 +41,7 @@ class SendRootReport extends Command
     {
         $registeredUsersCount = DB::table('users')->count();
         $locale = app()->getLocale();
-        
+
         logger()->info('Generating Root Report');
         logger()->info('Users Count: ' . $registeredUsersCount);
 

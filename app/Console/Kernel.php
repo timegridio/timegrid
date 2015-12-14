@@ -31,6 +31,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         'App\Console\Commands\SendRootReport',
+        'App\Console\Commands\SendBusinessReport',
     ];
 
     /**
@@ -43,5 +44,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('root:report')->dailyAt(env('ROOT_REPORT_TIME', '20:00'));
+
+        $schedule->command('business:report')->dailyAt('21:00');
     }
 }
