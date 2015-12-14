@@ -348,9 +348,10 @@ class Appointment extends EloquentModel implements HasPresenter
         return $query
             ->where(function ($query) {
                 $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED])
-                    ->where('start_at', '<=', Carbon::parse('today midnight')->timezone('UTC'));
-            })->orWhere(function ($query) {
-                $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
+                    ->where('start_at', '<=', Carbon::parse('today midnight')->timezone('UTC'))
+                    ->orWhere(function ($query) {
+                        $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
+                    });
             });
     }
 
