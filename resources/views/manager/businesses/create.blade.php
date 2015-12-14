@@ -14,6 +14,8 @@
 
                 {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
                 {!! Form::hidden('plan', $plan) !!}
+                {!! Form::hidden('country_code', $countryCode) !!}
+                {!! Form::hidden('locale', $locale) !!}
                 @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
                 {!! Form::close() !!}
             </div>

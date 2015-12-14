@@ -14,6 +14,10 @@
   trans('app.business.category.photography')
 --}}
 
+@if(isset($country))
+  {{ $country }}
+@endif
+
 <div class="row">
     <div class="form-group col-sm-7">
         {!! Form::label( trans('manager.businesses.form.name.label') ) !!}

@@ -17,6 +17,13 @@ use Laracasts\Flash\Flash;
 class BusinessController extends Controller
 {
     /**
+     * Location data.
+     *
+     * @var array
+     */
+    protected $location = null;
+
+    /**
      * Business service.
      *
      * @var App\Services\BusinessService
@@ -67,18 +74,28 @@ class BusinessController extends Controller
     public function create($plan = 'free')
     {
         $this->log->info(__METHOD__);
+        $this->log->info("plan:$plan");
 
         // BEGIN
 
-        $this->log->info("plan:$plan");
-
         $timezone = $this->guessTimezone(null);
+
+        $countryCode = $this->getCountry();
+
+        $locale = app()->getLocale();
 
         $categories = $this->listCategories();
 
         $business = new Business();
 
-        return view('manager.businesses.create', compact('business', 'timezone', 'categories', 'plan'));
+        return view('manager.businesses.create', compact(
+            'business',
+            'timezone',
+            'categories',
+            'plan',
+            'countryCode',
+            'locale'
+        ));
     }
 
     /**
@@ -284,10 +301,27 @@ class BusinessController extends Controller
             return $timezone;
         }
 
-        $location = GeoIP::getLocation();
+        $this->getLocation();
 
-        $this->log->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $location['timezone']));
+        $this->log->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $this->location['timezone']));
 
-        return in_array($location['timezone'], \DateTimeZone::listIdentifiers()) ? $location['timezone'] : $timezone;
+        $identifiers = \DateTimeZone::listIdentifiers();
+        return in_array($this->location['timezone'], $identifiers) ? $this->location['timezone'] : $timezone;
+    }
+
+    protected function getCountry()
+    {
+        $this->getLocation();
+
+        return in_array('isoCode', $this->location) ? $this->location['isoCode'] : null;
+    }
+
+    protected function getLocation()
+    {
+        if ($this->location === null) {
+            $this->log->info('Getting location');
+            $this->location = GeoIP::getLocation();
+        }
+        return $this->location;
     }
 }

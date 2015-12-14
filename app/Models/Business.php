@@ -19,7 +19,7 @@ class Business extends EloquentModel implements HasPresenter
      * @var array
      */
     protected $fillable = ['name', 'description', 'timezone', 'postal_address',
-        'phone', 'social_facebook', 'strategy', 'plan', ];
+        'phone', 'social_facebook', 'strategy', 'plan', 'country_code', 'locale'];
 
     /**
      * The attributes that should be mutated to dates.
