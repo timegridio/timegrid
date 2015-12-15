@@ -2,7 +2,7 @@
 
 namespace App\Handlers\Events;
 
-use App\Events\NewRegisteredContact;
+use App\Events\NewContactWasRegistered;
 
 class LinkContactToExistingUser
 {
@@ -13,7 +13,7 @@ class LinkContactToExistingUser
      *
      * @return void
      */
-    public function handle(NewRegisteredContact $event)
+    public function handle(NewContactWasRegistered $event)
     {
         logger()->info(__METHOD__);
         logger()->info("Linking <{$event->contact->email}> to user");

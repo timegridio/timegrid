@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Events\NewRegisteredContact;
+use App\Events\NewContactWasRegistered;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\User;
@@ -37,7 +37,7 @@ class ContactService
             }
         }
 
-        event(new NewRegisteredContact($contact));
+        event(new NewContactWasRegistered($contact));
 
         return $contact;
     }

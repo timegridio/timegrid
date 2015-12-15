@@ -20,7 +20,7 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewBooking' => [
             'App\Handlers\Events\SendBookingNotification',
         ],
-        'App\Events\NewRegisteredContact' => [
+        'App\Events\NewContactWasRegistered' => [
             'App\Handlers\Events\LinkContactToExistingUser',
         ],
     ];

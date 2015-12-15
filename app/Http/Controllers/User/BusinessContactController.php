@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Events\NewRegisteredContact;
+use App\Events\NewContactWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterContactRequest;
 use App\Models\Business;
@@ -105,7 +105,7 @@ class BusinessContactController extends Controller
 
         $this->contactService->linkToUser($contact, auth()->user());
 
-        event(new NewRegisteredContact($contact));
+        event(new NewContactWasRegistered($contact));
 
         Flash::success(trans('user.contacts.msg.store.success'));
 

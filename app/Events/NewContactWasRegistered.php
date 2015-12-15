@@ -5,7 +5,7 @@ namespace App\Events;
 use App\Models\Contact;
 use Illuminate\Queue\SerializesModels;
 
-class NewRegisteredContact extends Event
+class NewContactWasRegistered extends Event
 {
     use SerializesModels;
 

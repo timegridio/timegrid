@@ -1,11 +1,11 @@
 <?php
 
-use App\Events\NewRegisteredContact;
+use App\Events\NewContactWasRegistered;
 use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class NewRegisteredContactUnitTest extends TestCase
+class NewContactWasRegisteredUnitTest extends TestCase
 {
     use DatabaseTransactions;
 
@@ -14,13 +14,13 @@ class NewRegisteredContactUnitTest extends TestCase
      * @covers App\Handlers\Events\LinkContactToExistingUser::handle
      * @test
      */
-    public function it_fires_NewRegisteredContact_event_and_links_user()
+    public function it_fires_event_and_links_user()
     {
         $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
 
         $contact = $this->createContact(['email' => 'guest@example.org']);
 
-        event(new NewRegisteredContact($contact));
+        event(new NewContactWasRegistered($contact));
 
         $this->seeInDatabase('contacts', ['email' => $user->email, 'user_id' => $user->id]);
     }
@@ -33,7 +33,7 @@ class NewRegisteredContactUnitTest extends TestCase
     {
         $contact = $this->createContact(['email' => 'guest@example.org']);
 
-        $event = new NewRegisteredContact($contact);
+        $event = new NewContactWasRegistered($contact);
 
         $this->assertEquals([], $event->broadcastOn());
     }
