@@ -55,8 +55,8 @@ return array (
   ),
   'footer' => 
   array (
-    'demo' => 'Please translate this !',
-    'local' => 'Please translate this !',
+    'demo' => 'Recuerda que ésto es un DEMO',
+    'local' => 'Estás en LOCAL',
   ),
   'gender' => 
   array (
@@ -65,7 +65,7 @@ return array (
   ),
   'label' => 
   array (
-    'attention' => 'Please translate this !',
+    'attention' => 'Tenga en cuenta',
     'select_timezone' => 'Zona horaria',
   ),
   'msg' => 

@@ -109,7 +109,7 @@ return array (
     array (
       'store' => 
       array (
-        'error' => 'Please translate this !',
+        'error' => 'Ups !',
         'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
         'success' => '¡Tomá nota! Reservamos tu cita bajo el código :code',
       ),
