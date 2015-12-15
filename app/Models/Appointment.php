@@ -38,16 +38,6 @@ class Appointment extends EloquentModel implements HasPresenter
     const STATUS_ANNULATED = 'A';
     const STATUS_SERVED = 'S';
 
-    /**
-     * User Profile Constants.
-     *
-     * Used to determine the detected behavior of the user depending
-     * on if he acts as a user or a Business manager.
-     */
-    const PROFILE_USER = 'user';
-    const PROFILE_MANAGER = 'manager';
-    const PROFILE_GUEST = 'guest';
-
     ///////////////
     // PRESENTER //
     ///////////////
