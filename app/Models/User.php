@@ -35,7 +35,14 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      *
      * @var array
      */
-    protected $hidden = ['password', 'remember_token'];
+    protected $hidden = ['password', 'remember_token', 'last_ip', 'last_login_at'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = ['last_login_at'];
 
     ///////////////////
     // Relationships //
