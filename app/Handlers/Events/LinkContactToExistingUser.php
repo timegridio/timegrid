@@ -9,7 +9,7 @@ class LinkContactToExistingUser
     /**
      * Handle the event.
      *
-     * @param NewRegisteredUser $event
+     * @param NewUserWasRegistered $event
      *
      * @return void
      */

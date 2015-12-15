@@ -13,7 +13,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\NewRegisteredUser' => [
+        'App\Events\NewUserWasRegistered' => [
             'App\Handlers\Events\LinkUserToExistingContacts',
             'App\Handlers\Events\SendMailUserWelcome',
         ],

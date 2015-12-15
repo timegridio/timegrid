@@ -2,7 +2,7 @@
 
 namespace App\Handlers\Events;
 
-use App\Events\NewRegisteredUser;
+use App\Events\NewUserWasRegistered;
 use Illuminate\Support\Facades\Mail;
 
 class SendMailUserWelcome
@@ -10,13 +10,13 @@ class SendMailUserWelcome
     /**
      * Handle the event.
      *
-     * @param NewRegisteredUser $event
+     * @param NewUserWasRegistered $event
      *
      * @return void
      */
-    public function handle(NewRegisteredUser $event)
+    public function handle(NewUserWasRegistered $event)
     {
-        logger()->info('Handle NewRegisteredUser.SendMailUserWelcome()');
+        logger()->info('Handle NewUserWasRegistered.SendMailUserWelcome()');
         $locale = app()->getLocale();
 
         //////////////////

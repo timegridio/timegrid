@@ -2,18 +2,18 @@
 
 namespace App\Handlers\Events;
 
-use App\Events\NewRegisteredUser;
+use App\Events\NewUserWasRegistered;
 
 class LinkUserToExistingContacts
 {
     /**
      * Handle the event.
      *
-     * @param NewRegisteredUser $event
+     * @param NewUserWasRegistered $event
      *
      * @return void
      */
-    public function handle(NewRegisteredUser $event)
+    public function handle(NewUserWasRegistered $event)
     {
         logger()->info(__METHOD__);
         logger()->info("Linking <{$event->user->email}> to user");

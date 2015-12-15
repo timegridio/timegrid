@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Events\NewRegisteredUser;
+use App\Events\NewUserWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Event;
@@ -74,7 +74,7 @@ class AuthController extends Controller
             'email'    => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
-        event(new NewRegisteredUser($user));
+        event(new NewUserWasRegistered($user));
 
         return $user;
     }
