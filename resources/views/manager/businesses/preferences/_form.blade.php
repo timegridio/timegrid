@@ -41,6 +41,13 @@ trans('preferences.App\Models\Business.start_at.label')
                   'placeholder'=> trans('preferences.App\Models\Business.'.$key.'.format'),
                   'title'=> trans('preferences.App\Models\Business.'.$key.'.help') )) !!}
     @endif
+    @if ($value['type'] == 'time')
+        {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
+        {!! Form::time($key, $business->pref($key),
+            array('class'=>'form-control',
+                  'placeholder'=> trans('preferences.App\Models\Business.'.$key.'.format'),
+                  'title'=> trans('preferences.App\Models\Business.'.$key.'.help') )) !!}
+    @endif
     @if ($value['type'] == 'int')
         {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
         {!! Form::number($key, $business->pref($key),
