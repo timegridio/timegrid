@@ -1,37 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:47:28 
+ Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
-  'dashboard' => 
-  array (
-    'card' => 
-    array (
-      'directory' => 
-      array (
-        'button' => 'Ver Directorio',
-        'description' => 'Conoce los comercions en los que puedes reservar servicios.',
-        'title' => 'Directorio',
-      ),
-      'agenda' => 
-      array (
-        'button' => 'Ver Agenda',
-        'description' => 'Revisa tu cita actual en agenda.|[2, Inf] Revisa tus citas actuales en agenda.',
-        'title' => 'Tu Cita|[2, Inf] Tus Citas',
-      ),
-      'subscriptions' => 
-      array (
-        'button' => 'Mis Suscripciones',
-        'description' => 'Revisa los comercios a los que ya estás suscripto.',
-        'title' => 'Suscripciones',
-      ),
-    ),
-  ),
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
   //==================================== Translations ====================================//
   'appointments' => 
   array (
@@ -62,10 +34,6 @@ return array (
       'duration' => 
       array (
         'label' => 'Duración',
-      ),
-      'msg' => 
-      array (
-        'please_select_a_service' => 'Selecciona un servicio',
       ),
       'service' => 
       array (
@@ -174,4 +142,29 @@ return array (
       ),
     ),
   ),
+  'dashboard' => 
+  array (
+    'card' => 
+    array (
+      'agenda' => 
+      array (
+        'button' => 'Ver Agenda',
+        'description' => 'Revisa tu cita actual en agenda.|[2, Inf] Revisa tus citas actuales en agenda.',
+        'title' => 'Tu Cita|[2, Inf] Tus Citas',
+      ),
+      'directory' => 
+      array (
+        'button' => 'Ver Directorio',
+        'description' => 'Conoce los comercions en los que puedes reservar servicios.',
+        'title' => 'Directorio',
+      ),
+      'subscriptions' => 
+      array (
+        'button' => 'Mis Suscripciones',
+        'description' => 'Revisa los comercios a los que ya estás suscripto.',
+        'title' => 'Suscripciones',
+      ),
+    ),
+  ),
+  //================================== Obsolete strings ==================================//
 );

@@ -40,6 +40,11 @@ return [
       'help'   => 'The time your business opens for receiving appointments',
       'label'  => 'Opening Hour',
     ],
+    'finish_at' => [
+      'format' => 'hh:mm:ss',
+      'help'   => 'The time your business closes for receiving appointments',
+      'label'  => 'Closing Hour',
+    ],
   ],
   'controls' => [
     'select' => [

@@ -1,9 +1,37 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:57:34 
+ Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
+  'service' => 
+  array (
+    'form' => 
+    array (
+      'duration' => 
+      array (
+        'label' => 'Duration in minutes',
+      ),
+      'name' => 
+      array (
+        'label' => 'Service name',
+      ),
+    ),
+    'btn' => 
+    array (
+      'delete' => 'Delete',
+      'update' => 'Update',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => 'Service stored successfully!',
+      ),
+    ),
+  ),
   //==================================== Translations ====================================//
   'business' => 
   array (
@@ -34,10 +62,6 @@ return array (
         ),
       ),
     ),
-    'alert' => 
-    array (
-      'deactivate_confirm' => 'Advice! Deactivating the business is IRREVERSIBLE. Are you sure?',
-    ),
   ),
   'businesses' => 
   array (
@@ -45,7 +69,6 @@ return array (
     array (
       'store' => 'Register',
       'update' => 'Update',
-      'deactivate' => 'Deactivate this business',
     ),
     'contacts' => 
     array (
@@ -299,28 +322,6 @@ return array (
       ),
     ),
     'title' => 'My customers',
-  ),
-  'service' => 
-  array (
-    'btn' => 
-    array (
-      'delete' => 'Delete',
-      'update' => 'Update',
-    ),
-    'form' => 
-    array (
-      'name' => 
-      array (
-        'label' => 'Service name',
-      ),
-    ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'success' => 'Service stored successfully!',
-      ),
-    ),
   ),
   'services' => 
   array (

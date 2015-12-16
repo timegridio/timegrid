@@ -1,37 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:47:28 
+ Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
 *************************************************************************/
 
 return array (
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
-  'dashboard' => 
-  array (
-    'card' => 
-    array (
-      'directory' => 
-      array (
-        'button' => 'Browse Directory',
-        'description' => 'Browse the directory and book your service.',
-        'title' => 'Directory',
-      ),
-      'agenda' => 
-      array (
-        'button' => 'See Agenda',
-        'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
-        'title' => 'One appointment|[2,Inf] Your appointments',
-      ),
-      'subscriptions' => 
-      array (
-        'button' => 'See Subscriptions',
-        'description' => 'Manage your subscriptions to businesses.',
-        'title' => 'Subscriptions',
-      ),
-    ),
-  ),
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/dashboard.blade.php
   //==================================== Translations ====================================//
   'appointments' => 
   array (
@@ -62,10 +34,6 @@ return array (
       'duration' => 
       array (
         'label' => 'Duration',
-      ),
-      'msg' => 
-      array (
-        'please_select_a_service' => 'Select a service',
       ),
       'service' => 
       array (
@@ -174,4 +142,29 @@ return array (
       ),
     ),
   ),
+  'dashboard' => 
+  array (
+    'card' => 
+    array (
+      'agenda' => 
+      array (
+        'button' => 'See Agenda',
+        'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
+        'title' => 'One appointment|[2,Inf] Your appointments',
+      ),
+      'directory' => 
+      array (
+        'button' => 'Browse Directory',
+        'description' => 'Browse the directory and book your service.',
+        'title' => 'Directory',
+      ),
+      'subscriptions' => 
+      array (
+        'button' => 'See Subscriptions',
+        'description' => 'Manage your subscriptions to businesses.',
+        'title' => 'Subscriptions',
+      ),
+    ),
+  ),
+  //================================== Obsolete strings ==================================//
 );

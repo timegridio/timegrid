@@ -37,8 +37,13 @@ return  [
     ],
     'start_at' =>  [
       'format' => 'hh:mm:ss',
-      'help'   => 'Horario en que tu comercio comienza a recibir citas',
+      'help'   => 'Horario en que comienzas a recibir citas',
       'label'  => 'Hora de Apertura',
+    ],
+    'finish_at' => [
+      'format' => 'hh:mm:ss',
+      'help'   => 'Horario en que no recibes más citas',
+      'label'  => 'Horario de Cierre',
     ],
   ],
   'controls' =>  [

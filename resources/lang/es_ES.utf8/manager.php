@@ -1,9 +1,37 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:57:34 
+ Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
 *************************************************************************/
 
 return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
+  'service' => 
+  array (
+    'form' => 
+    array (
+      'duration' => 
+      array (
+        'label' => 'Duración en minutos',
+      ),
+      'name' => 
+      array (
+        'label' => 'Nombre del servicio',
+      ),
+    ),
+    'btn' => 
+    array (
+      'delete' => 'Eliminar',
+      'update' => 'Actualizar',
+    ),
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'success' => '¡Servicio Guardado!',
+      ),
+    ),
+  ),
   //==================================== Translations ====================================//
   'business' => 
   array (
@@ -34,10 +62,6 @@ return array (
         ),
       ),
     ),
-    'alert' => 
-    array (
-      'deactivate_confirm' => '¡Atención! Desactivar el prestador es una operación IRREVERSIBLE. ¿Seguro desactivar?',
-    ),
   ),
   'businesses' => 
   array (
@@ -45,7 +69,6 @@ return array (
     array (
       'store' => 'Registrar',
       'update' => 'Actualizar',
-      'deactivate' => 'Desactivar este prestador',
     ),
     'contacts' => 
     array (
@@ -299,28 +322,6 @@ return array (
       ),
     ),
     'title' => 'Mis Clientes',
-  ),
-  'service' => 
-  array (
-    'btn' => 
-    array (
-      'delete' => 'Eliminar',
-      'update' => 'Actualizar',
-    ),
-    'form' => 
-    array (
-      'name' => 
-      array (
-        'label' => 'Nombre del servicio',
-      ),
-    ),
-    'msg' => 
-    array (
-      'store' => 
-      array (
-        'success' => '¡Servicio Guardado!',
-      ),
-    ),
   ),
   'services' => 
   array (
