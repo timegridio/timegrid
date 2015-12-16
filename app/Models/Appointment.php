@@ -182,6 +182,13 @@ class Appointment extends EloquentModel implements HasPresenter
         return $this->business->timezone;
     }
 
+    public function getAnnulationDeadlineAttribute()
+    {
+        return $this->start_at
+                    ->subHours($this->business->pref('appointment_annulation_pre_hs'))
+                    ->timezone($this->business->timezone);
+    }
+
     /**
      * Get the human readable status name.
      *
