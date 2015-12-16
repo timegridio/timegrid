@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlterAppointmentRequest;
 use App\Models\Appointment;
+use App\Models\Business;
+use App\Models\Service;
 use App\Services\ConciergeService;
+use Carbon\Carbon;
 use Notifynder;
 use Widget;
 
@@ -92,5 +95,48 @@ class BookingController extends Controller
         $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
 
         return response()->json(['code' => 'OK', 'html' => $html]);
+    }
+
+    public function getTimes($businessId, $serviceId, $date)
+    {
+        logger()->info(__METHOD__);
+        logger()->info("businessId:$businessId serviceId:$serviceId date:$date");
+
+        $business = Business::findOrFail($businessId);
+        $service = Service::findOrFail($serviceId);
+
+        $vacancies = $business->vacancies()->forDate(Carbon::parse($date))->get();
+
+        $times = $this->splitTimes($vacancies, $service);
+
+        return response()->json([
+            'business' => $businessId,
+            'service' => [
+                'id' => $service->id,
+                'duration' => $service->duration,
+            ],
+            'date' => $date,
+            'times' => $times,
+        ], 200);
+    }
+
+    protected function splitTimes($vacancies, $service)
+    {
+        $times = [];
+        foreach ($vacancies as $vacancy) {
+            $begin = $vacancy->start_at;
+            $end = $vacancy->finish_at;
+            $testBeginTime = $begin->copy();
+            $testEndTime = $begin->copy()->addMinutes($service->duration);
+
+            for ($i = 0; $i <= 24; $i++) {
+                $testEndTime = $testBeginTime->copy()->addMinutes($service->duration);
+                if ($vacancy->hasRoomBetween($testBeginTime, $testEndTime)) {
+                    $times[] = $testBeginTime->timezone($vacancy->business->timezone)->toTimeString();
+                }
+                $testBeginTime->addMinutes($service->duration);
+            }
+        }
+        return $times;
     }
 }

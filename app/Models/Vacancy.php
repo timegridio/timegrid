@@ -194,7 +194,13 @@ class Vacancy extends EloquentModel
      */
     public function hasRoomBetween(Carbon $startAt, Carbon $finishAt)
     {
-        return $this->capacity > $this->appointments()->active()->affectingInterval($startAt, $finishAt)->count();
+        return $this->capacity > $this->appointments()
+                                      ->active()
+                                      ->affectingInterval(
+                                        $startAt,
+                                        $finishAt)
+                                      ->count() &&
+            $this->start_at <= $startAt && $this->finish_at >= $finishAt;
     }
 
     /**

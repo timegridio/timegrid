@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\BookingStrategy;
 use App\Models\Business;
 use App\Models\Service;
 use App\Models\User;
@@ -17,6 +18,13 @@ class VacancyService
      * @var App\Models\Business
      */
     protected $business;
+
+    /**
+     * Booking strategy.
+     *
+     * @var BookingStrategy
+     */
+    protected $strategy;
 
     /**
      * Create the Vacancy Service object.
@@ -36,6 +44,8 @@ class VacancyService
     public function setBusiness(Business $business)
     {
         $this->business = $business;
+
+        $this->strategy = new BookingStrategy($business->strategy);
     }
 
     /**
@@ -64,8 +74,8 @@ class VacancyService
      */
     public function getVacanciesFor($user, $starting = 'today', $limit = 7)
     {
-        $vacancies = $this->removeBookedVacancies($this->business->vacancies);
-        $vacancies = $this->removeSelfBooked($vacancies, $user);
+        $vacancies = $this->strategy->removeBookedVacancies($this->business->vacancies);
+        $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
 
         return $this->generateAvailability($vacancies, $starting, $limit);
     }
@@ -131,8 +141,8 @@ class VacancyService
                         logger()->info(sprintf('businessId:%s %s: Blank vacancy capacity value', $business->id, $date));
                         break;
                     default:
-                        $startAt = Carbon::parse($date.' '.$business->pref('start_at').' '.$business->timezone);
-                        $finishAt = Carbon::parse($date.' '.$business->pref('finish_at').' '.$business->timezone);
+                        $startAt = Carbon::parse($date.' '.$business->pref('start_at').' '.$business->timezone)->timezone('UTC');
+                        $finishAt = Carbon::parse($date.' '.$business->pref('finish_at').' '.$business->timezone)->timezone('UTC');
 
                         $vacancyKeys = [
                             'business_id' => $business->id,
@@ -155,41 +165,5 @@ class VacancyService
         }
 
         return $changed;
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    /**
-     * [removeBookedVacancies description].
-     *
-     * @param Collection $vacancies
-     *
-     * @return Illuminate\Database\Eloquent\Collection
-     */
-    private function removeBookedVacancies(Collection $vacancies)
-    {
-        $vacancies = $vacancies->reject(function ($vacancy) {
-            return $vacancy->isFull();
-        });
-
-        return $vacancies;
-    }
-
-    /**
-     * [removeBookedVacancies description].
-     *
-     * @param Collection $vacancies
-     *
-     * @return Illuminate\Database\Eloquent\Collection
-     */
-    private function removeSelfBooked(Collection $vacancies, User $user)
-    {
-        $vacancies = $vacancies->reject(function ($vacancy) use ($user) {
-            return $vacancy->isHoldingAnyFor($user);
-        });
-
-        return $vacancies;
     }
 }

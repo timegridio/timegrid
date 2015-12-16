@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class BookingTimeslotStrategy implements BookingStrategyInterface
 {
@@ -39,5 +40,37 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
     public function hasRoom(Appointment $appointment, Vacancy $vacancy)
     {
         return $vacancy->hasRoomBetween($appointment->start_at, $appointment->finish_at);
+    }
+
+    /**
+     * [removeBookedVacancies description].
+     *
+     * @param Collection $vacancies
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function removeBookedVacancies(Collection $vacancies)
+    {
+        #$vacancies = $vacancies->reject(function ($vacancy) {
+        #    return $vacancy->isFull();
+        #});
+
+        return $vacancies;
+    }
+
+    /**
+     * [removeBookedVacancies description].
+     *
+     * @param Collection $vacancies
+     *
+     * @return Illuminate\Database\Eloquent\Collection
+     */
+    public function removeSelfBooked(Collection $vacancies, User $user)
+    {
+        #$vacancies = $vacancies->reject(function ($vacancy) use ($user) {
+        #    return $vacancy->isHoldingAnyFor($user);
+        #});
+
+        return $vacancies;
     }
 }

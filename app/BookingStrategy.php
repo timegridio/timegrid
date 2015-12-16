@@ -9,6 +9,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class BookingStrategy
 {
@@ -44,5 +45,15 @@ class BookingStrategy
     public function hasRoom(Appointment $appointment, Vacancy $vacancy)
     {
         return $this->strategy->hasRoom($appointment, $vacancy);
+    }
+
+    public function removeBookedVacancies(Collection $vacancies)
+    {
+        return $this->strategy->removeBookedVacancies($vacancies);
+    }
+
+    public function removeSelfBooked(Collection $vacancies, User $user)
+    {
+        return $this->strategy->removeSelfBooked($vacancies, $user);
     }
 }

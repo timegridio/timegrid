@@ -35,12 +35,15 @@
             <li class="list-group-item"><span title="{{ $appointment->tz }}">
                 <span class='glyphicon glyphicon-time'></span>&nbsp;
                     {{ $appointment->time }}&nbsp;&nbsp;
-                </span>
-                <span class="text-muted">
-                    <small>{{ $appointment->tz }}</small>
+                    @if($appointment->duration)
+                            <span class="text-muted">
+                                <span class='glyphicon glyphicon-hourglass'></span>&nbsp;
+                                {{ $appointment->duration }}&prime;&nbsp;
+                            </span>
+                        </span>
+                    @endif
                 </span>
             </li>
-
 
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-tag'></span>&nbsp;{{ $appointment->service->name }}
@@ -48,7 +51,7 @@
 
             @if($appointment->comments)
             <li class="list-group-item">
-                <span class='glyphicon glyphicon-pen'></span>&nbsp;{{ $appointment->comments }}
+                <span class='glyphicon glyphicon-pencil'></span>&nbsp;{{ $appointment->comments }}
             </li>
             @endif
         </ul>

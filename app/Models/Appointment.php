@@ -162,7 +162,7 @@ class Appointment extends EloquentModel implements HasPresenter
     public function getFinishAtAttribute()
     {
         if (array_get($this->attributes, 'finish_at') !== null) {
-            return $this->attributes['finish_at'];
+            return Carbon::parse($this->attributes['finish_at']);
         }
 
         if (is_numeric($this->duration)) {
@@ -490,10 +490,27 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function scopeAffectingInterval($query, Carbon $startAt, Carbon $finishAt)
     {
-        return $query->where(function ($query) use ($startAt, $finishAt) {
-            $query->whereRaw('date(`finish_at`) >= ?', [$startAt->timezone('UTC')->toDateString()])
-                  ->orWhereRaw('date(`start_at`) <= ?', [$finishAt->timezone('UTC')->toDateString()]);
-        });
+        return $query
+            ->where(function ($query) use ($startAt, $finishAt) {
+
+                $query->where(function ($query) use ($startAt, $finishAt) {
+                    $query->where('finish_at', '>=', $finishAt->timezone('UTC'))
+                          ->where('start_at', '<=', $startAt->timezone('UTC'));
+                })
+                ->orWhere(function ($query) use ($startAt, $finishAt) {
+                    $query->where('finish_at', '<', $finishAt->timezone('UTC'))
+                          ->where('finish_at', '>', $startAt->timezone('UTC'));
+                })
+                ->orWhere(function ($query) use ($startAt, $finishAt) {
+                    $query->where('start_at', '>', $startAt->timezone('UTC'))
+                          ->where('start_at', '<', $finishAt->timezone('UTC'));
+                })
+                ->orWhere(function ($query) use ($startAt, $finishAt) {
+                    $query->where('start_at', '>', $startAt->timezone('UTC'))
+                          ->where('finish_at', '<', $finishAt->timezone('UTC'));
+                });
+
+            });
     }
 
     //////////////////////////
