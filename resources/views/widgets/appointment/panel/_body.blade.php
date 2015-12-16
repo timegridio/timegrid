@@ -60,14 +60,13 @@
             {!! Alert::warning(trans('appointments.advice.annulation_deadline_past_due')) !!}
         @endif
 
-        @if(($annulationPolicyAdvice = $appointment->business->pref('annulation_policy_advice')) && $appointment->isAnnulable() && $appointment->annulationDeadline->isFuture()))
+        @if(($annulationPolicyAdvice = $appointment->business->pref('annulation_policy_advice')) && $appointment->isAnnulable() && $appointment->annulationDeadline->isFuture())
             {!! Alert::warning(sprintf($annulationPolicyAdvice, $appointment->annulationDeadline)) !!}
         @endif
 
         @include('widgets.appointment.panel._buttons', ['appointment' => $appointment, 'user' => $user])
 
     </div>
-
 
     <div class='panel-footer'>
         <span class='glyphicon glyphicon-barcode'></span>&nbsp;<code>{{ $appointment->code }}</code>
