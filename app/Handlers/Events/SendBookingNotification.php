@@ -2,7 +2,7 @@
 
 namespace App\Handlers\Events;
 
-use App\Events\NewBooking;
+use App\Events\NewAppointmentWasBooked;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Mail;
 
@@ -11,13 +11,13 @@ class SendBookingNotification
     /**
      * Handle the event.
      *
-     * @param NewBooking $event
+     * @param NewAppointmentWasBooked $event
      *
      * @return void
      */
-    public function handle(NewBooking $event)
+    public function handle(NewAppointmentWasBooked $event)
     {
-        logger()->info('Handle NewBooking.SendBookingNotification()');
+        logger()->info('Handle NewAppointmentWasBooked.SendBookingNotification()');
 
         $code = $event->appointment->code;
         $date = $event->appointment->start_at->toDateString();

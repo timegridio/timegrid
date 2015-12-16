@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Events\NewBooking;
+use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Service;
@@ -132,7 +132,7 @@ class AgendaController extends Controller
 
         $this->log->info('Appointment saved successfully');
 
-        event(new NewBooking($issuer, $appointment));
+        event(new NewAppointmentWasBooked($issuer, $appointment));
 
         Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
 

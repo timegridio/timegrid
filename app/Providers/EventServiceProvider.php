@@ -17,7 +17,7 @@ class EventServiceProvider extends ServiceProvider
             'App\Handlers\Events\LinkUserToExistingContacts',
             'App\Handlers\Events\SendMailUserWelcome',
         ],
-        'App\Events\NewBooking' => [
+        'App\Events\NewAppointmentWasBooked' => [
             'App\Handlers\Events\SendBookingNotification',
         ],
         'App\Events\NewContactWasRegistered' => [

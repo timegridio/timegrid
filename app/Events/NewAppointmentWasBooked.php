@@ -6,7 +6,7 @@ use App\Models\Appointment;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 
-class NewBooking extends Event
+class NewAppointmentWasBooked extends Event
 {
     use SerializesModels;
 
