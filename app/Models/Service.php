@@ -46,6 +46,20 @@ class Service extends EloquentModel
         return parent::save($options);
     }
 
+    //////////////
+    // Mutators //
+    //////////////
+
+    /**
+     * set Duration Attribute.
+     * 
+     * @param int $duration
+     */
+    public function setDurationAttribute($duration)
+    {
+        return $this->attributes['duration'] = $duration ? intval($duration) : null;
+    }
+
     ////////////
     // Scopes //
     ////////////

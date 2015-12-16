@@ -10,12 +10,26 @@
                     <h3 class="panel-title">{{ $service->name }}</h3>
                 </div>
 
+                <ul class="list-group">
+                    <li class="list-group-item">
+                        <span class='glyphicon glyphicon-tag'></span>&nbsp;{{ $service->slug }}&nbsp;
+                        &nbsp;&nbsp;
+                        <span class='glyphicon glyphicon-hourglass'></span>&nbsp;{{ $service->duration }}&prime;
+                    </li>
+                </ul>
+
                 <div class="panel-body">
                     <p>{{ $service->description }}</p>
                 </div>
 
                 <div class="panel-footer">
-                    {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['type' => 'button', 'data-toggle' => 'tooltip', 'data-original-title' => trans('manager.service.btn.delete'), 'data-method'=>'DELETE', 'data-confirm'=>'Delete?'])->asLinkTo( route('manager.business.service.destroy', [$service->business, $service]) ) !!}
+                    {!! Button::danger()->withIcon(Icon::trash())->withAttributes([
+                        'type' => 'button',
+                        'data-toggle' => 'tooltip',
+                        'data-original-title' => trans('manager.service.btn.delete'),
+                        'data-method' => 'DELETE',
+                        'data-confirm' => 'Delete?']
+                    )->asLinkTo( route('manager.business.service.destroy', [$service->business, $service]) ) !!}
                 </div>
             </div>
         </div>
@@ -102,13 +116,13 @@ $(document).ready(function() {
         },
  
         createForm: function(link) {
-            var form = 
+            var form =
             $('<form>', {
                 'method': 'POST',
                 'action': link.attr('href')
             });
  
-            var token = 
+            var token =
             $('<input>', {
                 'type': 'hidden',
                 'name': '_token',

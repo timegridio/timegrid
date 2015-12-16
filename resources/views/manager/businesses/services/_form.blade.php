@@ -1,13 +1,25 @@
 {{-- Services Form Partial --}}
 <div class="row">
-    <div class="form-group col-xs-6">
+    <div class="form-group col-xs-8">
         {!! Form::text('name', null, [
             'required',
             'class'=>'form-control',
             'placeholder'=> trans('manager.service.form.name.label')
             ]) !!}
     </div>
+    <div class="form-group col-xs-4">
+        <div class="input-group">
+            <span class="input-group-addon">{!! Icon::hourglass() !!}</span>
+                {!! Form::number('duration', null, [
+                    'required',
+                    'step' => 15,
+                    'class'=>'form-control',
+                    'placeholder'=> trans('manager.service.form.duration.label')
+                    ]) !!}
+        </div>
+    </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="form-group">
@@ -19,6 +31,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="form-group">
@@ -30,6 +43,7 @@
         </div>
     </div>
 </div>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="form-group">
