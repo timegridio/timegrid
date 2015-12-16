@@ -12,7 +12,7 @@
             <span class="input-group-addon">{!! Icon::hourglass() !!}</span>
                 {!! Form::number('duration', null, [
                     'required',
-                    'step' => 15,
+                    'step' => 5,
                     'class'=>'form-control',
                     'placeholder'=> trans('manager.service.form.duration.label')
                     ]) !!}

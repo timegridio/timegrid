@@ -50,10 +50,16 @@ trans('preferences.App\Models\Business.start_at.label')
     @endif
     @if ($value['type'] == 'int')
         {!! Form::label( trans('preferences.App\Models\Business.'.$key.'.label') ) !!}
+        <div class="input-group">
+        @if($icon = array_get($value, 'icon'))
+            <span class="input-group-addon">{!! Icon::create($icon) !!}</span>
+        @endif
         {!! Form::number($key, $business->pref($key),
             array('class'=>'form-control',
+                  'step' => array_get($value, 'step', 5),
                   'placeholder'=> trans('preferences.App\Models\Business.'.$key.'.format'),
                   'title'=> trans('preferences.App\Models\Business.'.$key.'.help') )) !!}
+        </div>
     @endif
         <div class="help-block with-errors"></div>
 </div>

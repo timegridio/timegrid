@@ -7,8 +7,9 @@ return [
         'show_map'                      => ['type' => 'bool', 'value' => false],
         'show_postal_address'           => ['type' => 'bool', 'value' => false],
         'show_phone'                    => ['type' => 'bool', 'value' => false],
-        'appointment_annulation_pre_hs' => ['type' => 'int', 'value' => '48'],
+        'appointment_annulation_pre_hs' => ['type' => 'int', 'value' => '48', 'icon' => 'hourglass'],
         'appointment_take_today'        => ['type' => 'bool', 'value' => false],
-        'appointment_code_length'       => ['type' => 'int', 'value' => 4],
+        'appointment_code_length'       => ['type' => 'int', 'value' => 4, 'icon' => 'barcode'],
+        'service_default_duration'      => ['type' => 'int', 'value' => 30, 'step' => 5, 'icon' => 'hourglass'],
     ],
 ];
