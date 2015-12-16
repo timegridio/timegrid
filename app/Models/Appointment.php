@@ -161,7 +161,7 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function getFinishAtAttribute()
     {
-        if ($this->attributes['finish_at'] !== null) {
+        if (array_get($this->attributes, 'finish_at') !== null) {
             return $this->attributes['finish_at'];
         }
 
