@@ -216,6 +216,17 @@ class Appointment extends EloquentModel implements HasPresenter
         return $this->start_at->timezone('UTC')->toDateString();
     }
 
+    /**
+     * get Code Attribute.
+     * 
+     * @return string
+     */
+    public function getCodeAttribute()
+    {
+        $length = $this->business->pref('appointment_code_length');
+        return strtoupper(substr($this->hash, 0, $length));
+    }
+
     //////////////
     // Mutators //
     //////////////
