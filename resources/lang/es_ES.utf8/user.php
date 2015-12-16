@@ -129,8 +129,8 @@ return array (
     array (
       'btn' => 
       array (
-        'create' => 'Registrar prestador',
-        'manage' => 'Mis prestadores',
+        'create' => 'Registrar Prestación',
+        'manage' => 'Mis Prestaciones',
         'power_create' => 'Registrá tu comercio ahora',
       ),
       'title' => 'Prestadores disponibles',

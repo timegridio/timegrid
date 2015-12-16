@@ -26,13 +26,13 @@ return array (
     array (
       'business' => 
       array (
-        'menu' => 'Businesses',
+        'menu' => 'Directory',
         'my_appointments' => 'My Reservations',
-        'my_subscriptions' => 'Favourites',
+        'my_subscriptions' => 'My Subscriptions',
         'selector' => 'Browse',
       ),
     ),
-    'wizard' => 'Wizard',
+    'wizard' => 'Help',
   ),
   //==================================== Translations ====================================//
   'btn' => 

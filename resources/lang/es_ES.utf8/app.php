@@ -16,8 +16,8 @@ return array (
       'business' => 
       array (
         'list' => 'Listar',
-        'menu' => 'Mis Prestadores',
-        'register' => 'Registrar Prestador',
+        'menu' => 'Mis Prestaciones',
+        'register' => 'Registrar Prestación',
       ),
     ),
     'manual' => 'Manual de usuario',
@@ -26,13 +26,13 @@ return array (
     array (
       'business' => 
       array (
-        'menu' => 'Prestadores',
+        'menu' => 'Directorio',
         'my_appointments' => 'Mis citas',
-        'my_subscriptions' => 'Favoritos',
+        'my_subscriptions' => 'Mis Suscripciones',
         'selector' => 'Buscar',
       ),
     ),
-    'wizard' => 'Asistente',
+    'wizard' => 'Ayuda',
   ),
   //==================================== Translations ====================================//
   'btn' => 
