@@ -132,13 +132,11 @@ class ConciergeService
 
         $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);
 
-        if (null !== $vacancy) {
-            if ($vacancy->hasRoom()) {
-                $appointment->vacancy()->associate($vacancy);
-                $appointment->save();
+        if (null !== $vacancy && $vacancy->hasRoom()) {
+            $appointment->vacancy()->associate($vacancy);
+            $appointment->save();
 
-                return $appointment;
-            }
+            return $appointment;
         }
 
         return false;
