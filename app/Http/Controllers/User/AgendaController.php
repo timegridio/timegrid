@@ -137,6 +137,6 @@ class AgendaController extends Controller
 
         Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
 
-        return redirect()->route('user.agenda');
+        return redirect()->route('user.agenda', '#'.$appointment->code);
     }
 }
