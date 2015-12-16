@@ -49,7 +49,7 @@ class UserBusinessControllerTest extends TestCase
 
         // And I should see each of the businesses by their name
         foreach ($businesses as $business) {
-            $this->see($business->name);
+            $this->see(substr($business->name, 0, 50)); /* Up to 50 chars */
         }
     }
 
