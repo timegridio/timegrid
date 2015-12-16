@@ -10,7 +10,7 @@ class NewContactWasRegisteredUnitTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @covers App\Events\NewRegisteredContact::__construct
+     * @covers App\Events\NewContactWasRegistered::__construct
      * @covers App\Handlers\Events\LinkContactToExistingUser::handle
      * @test
      */
@@ -26,7 +26,7 @@ class NewContactWasRegisteredUnitTest extends TestCase
     }
 
     /**
-     * @covers App\Events\NewRegisteredUser::broadcastOn
+     * @covers App\Events\NewContactWasRegistered::broadcastOn
      * @test
      */
     public function it_verifies_broadcasts_on()
