@@ -130,8 +130,8 @@ class UserBusinessControllerTest extends TestCase
         $contact->save();
         $business->contacts()->save($contact);
 
-        // And I go to favourites (subscriptions) section
-        $this->visit('/')->click('Favourites');
+        // And I go to subscriptions (favourites) section
+        $this->visit('/')->click('Subscriptions');
 
         // Then I should see the subscription list
         // and my profile (contact) firstname and last name
