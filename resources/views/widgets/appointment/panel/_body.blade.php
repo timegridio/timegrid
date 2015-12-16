@@ -56,20 +56,16 @@
             @endif
         </ul>
 
+        @if($appointment->isActive() && $appointment->annulationDeadline->isPast())
+            {!! Alert::warning(trans('appointments.advice.annulation_deadline_past_due')) !!}
+        @endif
+
+        @if(($annulationPolicyAdvice = $appointment->business->pref('annulation_policy_advice')) && $appointment->isAnnulable() && $appointment->annulationDeadline->isFuture()))
+            {!! Alert::warning(sprintf($annulationPolicyAdvice, $appointment->annulationDeadline)) !!}
+        @endif
+
         @include('widgets.appointment.panel._buttons', ['appointment' => $appointment, 'user' => $user])
-{{-- BUTTON GROUP
-        <span class="btn-group">
 
-        <button class='btn btn-danger action' data-action='annulate' data-appointment='{{ $appointment->id }}' data-business='{{ $appointment->business->id }}' data-code='{{ $appointment->code }}' type='button'>
-            <span class='glyphicon glyphicon-remove'></span>
-        </button>
-        
-        <button class='btn btn-success action' data-action='confirm' data-appointment='{{ $appointment->id }}' data-business='{{ $appointment->business->id }}' data-code='{{ $appointment->code }}' type='button'>
-            <span class='glyphicon glyphicon-ok'></span>
-        </button>
-
-        </span>
---}}
     </div>
 
 
