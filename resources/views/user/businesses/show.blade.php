@@ -56,7 +56,7 @@
                         </li>
                         @endif
 
-                        @if ($appointment = auth()->user()->appointments()->where('business_id', $business)->oldest()->active()->future()->first())
+                        @if ($appointment)
                             {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
                             <li class="list-group-item" title="{{$business->timezone}}">
                                 {!! $appointment->panel !!}

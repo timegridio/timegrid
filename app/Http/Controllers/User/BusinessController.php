@@ -42,9 +42,13 @@ class BusinessController extends Controller
 
         $concierge = new ConciergeService(new VacancyService($business));
         #$available = $concierge->isAvailable(auth()->user());
+        $concierge->setBusiness($business);
+
+        $appointment = $concierge->getNextAppointmentFor(auth()->user()->contacts);
+
         $available = true;
 
-        return view('user.businesses.show', compact('business', 'available'));
+        return view('user.businesses.show', compact('business', 'available', 'appointment'));
     }
 
     /**

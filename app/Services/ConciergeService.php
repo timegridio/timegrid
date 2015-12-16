@@ -95,6 +95,18 @@ class ConciergeService
     }
 
     /**
+     * get Next Appointment For Cintacts.
+     *
+     * @param $contacts
+     *
+     * @return App\Models\Appointment|null
+     */
+    public function getNextAppointmentFor($contacts)
+    {
+        return $this->business->bookings()->forContacts($contacts)->active()->first();
+    }
+
+    /**
      * make Reservation.
      *
      * @param User     $issuer   Requested by User as issuer
