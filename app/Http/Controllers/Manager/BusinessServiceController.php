@@ -41,7 +41,9 @@ class BusinessServiceController extends Controller
 
         // BEGIN
 
-        $service = new Service(); // For Form Model Binding
+        $service = new Service([
+            'duration' => $business->pref('service_default_duration')
+        ]); // For Form Model Binding
         return view('manager.businesses.services.create', compact('business', 'service'));
     }
 
