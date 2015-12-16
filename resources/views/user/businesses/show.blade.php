@@ -56,14 +56,6 @@
                         </li>
                         @endif
 
-                        @if ($appointment)
-                            {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
-                            <li class="list-group-item" title="{{$business->timezone}}">
-                                {!! $appointment->panel !!}
-                            </li>
-                            {!! Form::close() !!}
-                        @endif
-
                         @if ($business->pref('show_map') && $business->postal_address)
                         <li class="list-group-item">
                             <div class="row">
@@ -91,6 +83,13 @@
                     </ul>
                 
             </div>
+
+            @if ($appointment)
+            {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
+                {!! $appointment->panel !!}
+            {!! Form::close() !!}
+            @endif
+
         </div>
     </div>
 </div>
