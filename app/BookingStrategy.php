@@ -2,10 +2,12 @@
 
 namespace App;
 
+use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Vacancy;
 use Carbon\Carbon;
 
 class BookingStrategy
@@ -37,5 +39,10 @@ class BookingStrategy
         $comments = null
     ) {
         return $this->strategy->generateAppointment($issuer, $business, $contact, $service, $datetime, $comments);
+    }
+
+    public function hasRoom(Appointment $appointment, Vacancy $vacancy)
+    {
+        return $this->strategy->hasRoom($appointment, $vacancy);
     }
 }

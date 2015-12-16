@@ -188,6 +188,16 @@ class Vacancy extends EloquentModel
     }
 
     /**
+     * has Room between time.
+     *
+     * @return bool There is more capacity than used
+     */
+    public function hasRoomBetween(Carbon $startAt, Carbon $finishAt)
+    {
+        return $this->capacity > $this->appointments()->active()->affectingInterval($startAt, $finishAt)->count();
+    }
+
+    /**
      * is holding given Appointment.
      *
      * ToDo: Remove from here as needs knowledge from Appointment

@@ -105,8 +105,9 @@ class AgendaController extends Controller
         $contact = $issuer->getContactSubscribedTo($business->id);
         $service = Service::find($request->input('service_id'));
 
-        $strDateTime = $request->input('_date').' '.$business->pref('start_at');
-        $datetime = Carbon::parse($strDateTime.' '.$business->timezone)->setTimezone('UTC');
+        $strTime = $request->input('_time') ?: $business->pref('start_at');
+        $strDateTime = $request->input('_date').' '.$strTime.' '.$business->timezone;
+        $datetime = Carbon::parse($strDateTime)->setTimezone('UTC');
 
         $comments = $request->input('comments');
 

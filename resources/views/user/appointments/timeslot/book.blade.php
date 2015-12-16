@@ -6,8 +6,9 @@
 @endsection
 
 @section('content')
-{!! Form::open(array('route' => 'user.booking.store', 'class' => 'form')) !!}
-{!! Form::hidden('business_id', Session::get('selected.business')->id, array('required', 'id' => 'business_id') ) !!}
+{!! Form::open(['route' => 'user.booking.store', 'class' => 'form']) !!}
+{!! Form::hidden('businessId', $business->id, ['required'] ) !!}
+
 <div class="container">
     <div class="row">
         <div class="form-group col-sm-4">
@@ -40,7 +41,11 @@
     </div>
     <div class="row">
         <div class="form-group col-sm-11">
-            {!! Form::select('service_id', ['0' => trans('user.appointments.form.msg.please_select_a_service')], '0', ['class'=>'', 'id' => 'service_id'] ) !!}
+            {!! Form::text('service_id', 0,
+                array('required',
+                      'id'=>'service',
+                      'class'=>'form-control',
+                      'placeholder'=> trans('user.appointments.form.service.label') )) !!}
         </div>
     </div>
     <div class="row">

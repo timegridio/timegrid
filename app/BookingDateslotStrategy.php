@@ -7,6 +7,7 @@ use App\Models\Business;
 use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
+use App\Models\Vacancy;
 use Carbon\Carbon;
 
 class BookingDateslotStrategy implements BookingStrategyInterface
@@ -31,5 +32,10 @@ class BookingDateslotStrategy implements BookingStrategyInterface
         $appointment->doHash();
 
         return $appointment;
+    }
+
+    public function hasRoom(Appointment $appointment, Vacancy $vacancy)
+    {
+        return $vacancy->hasRoom();
     }
 }

@@ -14,14 +14,15 @@ class Appointment extends EloquentModel implements HasPresenter
      *
      * @var array
      */
-    protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'duration', 'comments'];
+    protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'finish_at', 'duration',
+        'comments'];
 
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id', 'hash', 'status', 'finish_at', 'vacancy_id'];
+    protected $guarded = ['id', 'hash', 'status', 'vacancy_id'];
 
     /**
      * The attributes that should be mutated to dates.
@@ -160,6 +161,10 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function getFinishAtAttribute()
     {
+        if ($this->attributes['finish_at'] !== null) {
+            return $this->attributes['finish_at'];
+        }
+
         if (is_numeric($this->duration)) {
             return $this->start_at->addMinutes($this->duration);
         }
@@ -231,6 +236,16 @@ class Appointment extends EloquentModel implements HasPresenter
     public function setStartAtAttribute(Carbon $datetime)
     {
         $this->attributes['start_at'] = $datetime;
+    }
+
+    /**
+     * Set finish_at attribute.
+     *
+     * @param Carbon $datetime The Appointment finishing datetime
+     */
+    public function setFinishAtAttribute(Carbon $datetime)
+    {
+        $this->attributes['finish_at'] = $datetime;
     }
 
     /**
@@ -462,6 +477,23 @@ class Appointment extends EloquentModel implements HasPresenter
     public function scopeTillDate($query, Carbon $date)
     {
         return $query->where('start_at', '<=', $date->timezone('UTC'));
+    }
+
+    /**
+     * Between Dates.
+     *
+     * @param Illuminate\Database\Query $query
+     * @param Carbon                    $startAt
+     * @param Carbon                    $finishAt
+     *
+     * @return Illuminate\Database\Query The scoped appointments held between the inquired dates
+     */
+    public function scopeAffectingInterval($query, Carbon $startAt, Carbon $finishAt)
+    {
+        return $query->where(function ($query) use ($startAt, $finishAt) {
+            $query->whereRaw('date(`finish_at`) >= ?', [$startAt->timezone('UTC')->toDateString()])
+                  ->orWhereRaw('date(`start_at`) <= ?', [$finishAt->timezone('UTC')->toDateString()]);
+        });
     }
 
     //////////////////////////
