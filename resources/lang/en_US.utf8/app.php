@@ -66,6 +66,7 @@ return  [
   'search' =>  [
     'msg' =>  [
       'no_results' => 'We found nothing with this criteria: :criteria',
+      'generic_exception' => 'Sorry, we cannot process that request.',
     ],
     'placeholder' => 'search',
   ],

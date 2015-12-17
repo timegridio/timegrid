@@ -66,6 +66,7 @@ return  [
   'search' =>  [
     'msg' =>  [
       'no_results' => 'Sin resultados',
+      'generic_exception' => 'Disculpa, no podemos procesar ese pedido.',
     ],
     'placeholder' => 'Buscar',
   ],

@@ -57,7 +57,7 @@ class Handler extends ExceptionHandler
 
         // Catch General exceptios to show a friendly error message
         if ($exception instanceof Exception) {
-            return redirect('/')->withErrors(trans('app.msg.generic_exception'));
+            return redirect(route('user.dashboard'))->withErrors(trans('app.msg.generic_exception'));
         }
 
         // Handle any other case
