@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redirect;
 
 class Handler extends ExceptionHandler
 {
@@ -51,9 +52,15 @@ class Handler extends ExceptionHandler
     {
         // Catch TokenMismatchException to show a friendly error message
         if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
+            return redirect($request->fullUrl());
         }
 
+        // Catch General exceptios to show a friendly error message
+        if ($exception instanceof \Exception) {
+            return redirect('/');
+        }
+
+        // Handle any other case
         return parent::render($request, $exception);
     }
 }
