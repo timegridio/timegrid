@@ -82,7 +82,7 @@ class SendBookingNotification
             throw new \Exception('Email view does not exist');
         }
 
-        mailer()->send($view, $params, function ($mail) use ($event) {
+        Mail::send($view, $params, function ($mail) use ($header) {
             $mail->to($header['toMail'], $header['toName'])->subject($header['subject']);
         });
     }
