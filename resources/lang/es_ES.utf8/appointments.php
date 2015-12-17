@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
+ Generated via "php artisan localization:missing" at 2015/12/16 18:22:37
 *************************************************************************/
 
 return  [
@@ -17,7 +17,9 @@ return  [
     'served'    => 'Servida',
   ],
   'text' =>  [
-    'minutes' => 'minutos',
-    'to'      => 'a',
+    'minutes'  => 'minutos',
+    'to'       => 'a',
+    'today'    => 'hoy',
+    'tomorrow' => 'mañana',
   ],
 ];

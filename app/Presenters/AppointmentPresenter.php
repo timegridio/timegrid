@@ -21,6 +21,14 @@ class AppointmentPresenter extends BasePresenter
 
     public function date()
     {
+        if ($this->wrappedObject->start_at->isToday()) {
+            return studly_case(trans('appointments.text.today'));
+        }
+
+        if ($this->wrappedObject->start_at->isTomorrow()) {
+            return studly_case(trans('appointments.text.tomorrow'));
+        }
+
         return $this->wrappedObject
                     ->start_at
                     ->timezone($this->wrappedObject->business->timezone)
