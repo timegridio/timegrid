@@ -24,7 +24,7 @@ class SendBusinessReport extends Command
     protected $description = 'Send Business report';
 
     /**
-     * Concierge Service
+     * Concierge Service.
      *
      * @var ConciergeService
      */
@@ -74,7 +74,7 @@ class SendBusinessReport extends Command
     }
 
     /**
-     * scan Businesses
+     * scan Businesses.
      *
      * @return void
      */
@@ -87,9 +87,10 @@ class SendBusinessReport extends Command
     }
 
     /**
-     * send Business Report
+     * send Business Report.
      *
-     * @param  Business $business
+     * @param Business $business
+     *
      * @return void
      */
     protected function sendBusinessReport(Business $business)
@@ -102,12 +103,12 @@ class SendBusinessReport extends Command
 
         // Mail to User
         $mailParams = [
-            'business' => $business,
-            'appointments' => $appointments
+            'business'     => $business,
+            'appointments' => $appointments,
         ];
         Mail::send($viewKey, $mailParams, function ($mail) use ($business) {
             $mail->to($business->owners()->first()->email, $business->owners()->first()->name)
-                 ->subject($business->name . ' Schedule Report');
+                 ->subject($business->name.' Schedule Report');
         });
     }
 }

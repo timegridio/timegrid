@@ -15,7 +15,7 @@ class Appointment extends EloquentModel implements HasPresenter
      * @var array
      */
     protected $fillable = ['issuer_id', 'contact_id', 'business_id', 'service_id', 'start_at', 'finish_at', 'duration',
-        'comments'];
+        'comments', ];
 
     /**
      * The attributes that aren't mass assignable.
@@ -224,6 +224,7 @@ class Appointment extends EloquentModel implements HasPresenter
     public function getCodeAttribute()
     {
         $length = $this->business->pref('appointment_code_length');
+
         return strtoupper(substr($this->hash, 0, $length));
     }
 
@@ -550,8 +551,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * User is target contact of the appointment.
      *
-     * @param  int  $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isTarget($userId)
     {
@@ -561,8 +563,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * User is issuer of the appointment.
      *
-     * @param  int  $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isIssuer($userId)
     {
@@ -572,8 +575,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * User is owner of business.
      *
-     * @param  int  $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isOwner($userId)
     {
@@ -583,8 +587,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * can be annulated by user.
      *
-     * @param  int $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function canAnnulate($userId)
     {
@@ -596,22 +601,23 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Determine if it is still possible to annulate according business policy.
      *
-     * @return boolean
+     * @return bool
      */
     public function isOnTimeToAnnulate()
     {
         $graceHours = $this->business->pref('appointment_annulation_pre_hs');
 
         $diff = $this->start_at->diffInHours(Carbon::now());
-        
+
         return intval($diff) >= intval($graceHours);
     }
 
     /**
      * can Serve.
      *
-     * @param  int $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function canServe($userId)
     {
@@ -621,8 +627,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * can confirm.
      *
-     * @param  int $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function canConfirm($userId)
     {
@@ -631,8 +638,10 @@ class Appointment extends EloquentModel implements HasPresenter
 
     /**
      * is Serveable by user.
-     * @param  int  $userId
-     * @return boolean
+     *
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isServeableBy($userId)
     {
@@ -641,8 +650,10 @@ class Appointment extends EloquentModel implements HasPresenter
 
     /**
      * is Confirmable By user.
-     * @param  int  $userId
-     * @return boolean
+     *
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isConfirmableBy($userId)
     {
@@ -651,8 +662,10 @@ class Appointment extends EloquentModel implements HasPresenter
 
     /**
      * is Annulable By user.
-     * @param  int  $userId
-     * @return boolean
+     *
+     * @param int $userId
+     *
+     * @return bool
      */
     public function isAnnulableBy($userId)
     {
@@ -662,8 +675,9 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Determine if the queried userId may confirm the appointment or not.
      *
-     * @param  int $userId
-     * @return boolean
+     * @param int $userId
+     *
+     * @return bool
      */
     public function shouldConfirmBy($userId)
     {
@@ -674,7 +688,7 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Determine if the target contact user is the same of the appointment issuer user.
      *
-     * @return boolean
+     * @return bool
      */
     public function isSelfIssued()
     {

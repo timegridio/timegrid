@@ -35,6 +35,7 @@ class ContactPolicy
         if (!$contact->user) {
             return false;
         }
+
         return $user->id == $contact->user->id;
     }
 }

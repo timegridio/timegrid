@@ -111,11 +111,11 @@ class BookingController extends Controller
 
         return response()->json([
             'business' => $businessId,
-            'service' => [
-                'id' => $service->id,
+            'service'  => [
+                'id'       => $service->id,
                 'duration' => $service->duration,
             ],
-            'date' => $date,
+            'date'  => $date,
             'times' => $times,
         ], 200);
     }
@@ -137,6 +137,7 @@ class BookingController extends Controller
                 $testBeginTime->addMinutes($service->duration);
             }
         }
+
         return $times;
     }
 }

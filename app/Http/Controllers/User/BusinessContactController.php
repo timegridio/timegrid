@@ -194,8 +194,8 @@ class BusinessContactController extends Controller
     /**
      * destroy Contact.
      *
-     * @param Business           $business Business holding the Contact
-     * @param Contact            $contact  Contact to destroy
+     * @param Business $business Business holding the Contact
+     * @param Contact  $contact  Contact to destroy
      *
      * @return Response Redirect back to Business show
      */

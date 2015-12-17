@@ -43,11 +43,11 @@ class SendRootReport extends Command
         $locale = app()->getLocale();
 
         logger()->info('Generating Root Report');
-        logger()->info('Users Count: ' . $registeredUsersCount);
+        logger()->info('Users Count: '.$registeredUsersCount);
 
         // Mail to User
         $mailParams = [
-            'registeredUsersCount' => $registeredUsersCount
+            'registeredUsersCount' => $registeredUsersCount,
         ];
         Mail::send("emails.{$locale}.root.report", $mailParams, function ($mail) {
             $mail->to(env('ROOT_REPORT_MAIL'), 'Root')

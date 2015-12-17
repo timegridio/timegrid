@@ -6,7 +6,6 @@ use App\Events\NewContactWasRegistered;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\User;
-use Carbon\Carbon;
 
 /*******************************************************************************
  * Contact Service Layer
@@ -45,9 +44,9 @@ class ContactService
     /**
      * Copy Contact from provided exiting.
      *
-     * @param  User     $user
-     * @param  Business $business
-     * @param  Contact  $existingContact
+     * @param User     $user
+     * @param Business $business
+     * @param Contact  $existingContact
      *
      * @return App\Models\Contact
      */
@@ -67,8 +66,8 @@ class ContactService
     /**
      * Associate Contact with User.
      *
-     * @param  Contact $contact
-     * @param  User    $user
+     * @param Contact $contact
+     * @param User    $user
      *
      * @return App\Models\Contact
      */

@@ -15,7 +15,7 @@ Route::group(['prefix' => 'api'], function () {
 
     Route::controller('booking', 'BookingController', ['postAction' => 'api.booking.action']);
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
-        'uses' => 'BookingController@getTimes'
+        'uses' => 'BookingController@getTimes',
     ]);
 });
 

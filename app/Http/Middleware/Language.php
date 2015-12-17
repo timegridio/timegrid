@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use Jenssegers\Agent\Agent;
 use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Support\Facades\Config;
+use Jenssegers\Agent\Agent;
 
 class Language implements Middleware
 {
@@ -61,7 +61,7 @@ class Language implements Middleware
     {
         $configLangs = Config::get('languages');
         $agentLangs = $this->agent->languages();
-        
+
         $availableLangs = $this->normalizeArrayKeys($configLangs);
         $agentLangs = $this->normalizeArrayValues($agentLangs);
 
@@ -75,8 +75,8 @@ class Language implements Middleware
     /**
      * Search all AgentLangs aming app available Langs.
      *
-     * @param  array $agentLangs
-     * @param  array $availableLangs
+     * @param array $agentLangs
+     * @param array $availableLangs
      *
      * @return string
      */
@@ -92,8 +92,8 @@ class Language implements Middleware
     /**
      * Search for an AgentLang among app available Langs.
      *
-     * @param  array  $availableLangs
-     * @param  string $agentLang
+     * @param array  $availableLangs
+     * @param string $agentLang
      *
      * @return string|false
      */
@@ -104,13 +104,14 @@ class Language implements Middleware
                 return $availableKey;
             }
         }
+
         return false;
     }
 
     /**
      * Copy keys as lowercase values.
      *
-     * @param  array  $array
+     * @param array $array
      *
      * @return array
      */
@@ -119,13 +120,14 @@ class Language implements Middleware
         array_walk($array, function (&$value, $key) {
             $value = strtolower($key);
         });
+
         return $array;
     }
 
     /**
      * Change values to lowercase and undescored instead of dashed.
      *
-     * @param  array  $array
+     * @param array $array
      *
      * @return array
      */
@@ -134,6 +136,7 @@ class Language implements Middleware
         array_walk($array, function (&$value) {
             $value = str_replace('-', '_', strtolower($value));
         });
+
         return $array;
     }
 }

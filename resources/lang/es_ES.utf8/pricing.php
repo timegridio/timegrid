@@ -7,20 +7,20 @@ return  [
   'currency_price' => '&euro; 5',
   'free'           => 'GRATIS',
   'month'          => 'mes',
-  'plan'           =>  [
-    'feature' =>  [
+  'plan'           => [
+    'feature' => [
       'appointments' => 'citas por mes',
       'contacts'     => 'contactos en agenda',
       'email_alerts' => 'alertas por email',
       'reports'      => 'reportes gráficos',
       'services'     => 'servicios registrables',
     ],
-    'free' =>  [
+    'free' => [
       'hint'   => 'Ideal para prestadores independientes',
       'name'   => 'Free',
       'submit' => 'Empezar',
     ],
-    'starter' =>  [
+    'starter' => [
       'hint'   => 'Ideal para negocios en crecimiento',
       'name'   => 'Starter',
       'submit' => 'Contratar',

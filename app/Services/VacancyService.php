@@ -8,7 +8,6 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
-use Illuminate\Support\Collection;
 
 class VacancyService
 {

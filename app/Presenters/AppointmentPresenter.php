@@ -15,6 +15,7 @@ class AppointmentPresenter extends BasePresenter
     public function code()
     {
         $length = $this->wrappedObject->business->pref('appointment_code_length');
+
         return strtoupper(substr($this->wrappedObject->hash, 0, $length));
     }
 
