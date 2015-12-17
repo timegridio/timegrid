@@ -59,7 +59,7 @@
 <script>
 $(document).ready(function(){
 
-function prepareEvents(){
+    function prepareEvents(){
 
         console.log('prepareEvents()');
 
@@ -70,15 +70,15 @@ function prepareEvents(){
 
         button.click(function (event){
 
-        event.preventDefault();
+            event.preventDefault();
 
-        var business = $(this).data('business');
-        var appointment = $(this).data('appointment');
-        var action = $(this).data('action');
-        var code = $(this).data('code');
-        var panel = $('#'+code);
+            var business = $(this).data('business');
+            var appointment = $(this).data('appointment');
+            var action = $(this).data('action');
+            var code = $(this).data('code');
+            var panel = $('#'+code);
 
-        $(this).parent().hide();
+            $(this).parent().hide();
 
             $.ajax({
                 url: form.attr('action'),
@@ -89,20 +89,20 @@ function prepareEvents(){
                 },
                 data: { business: business, appointment: appointment, action: action, widget: 'panel' }
             }).done(function (data) {
-                    console.log('AJAX Done');
-                    $('#'+code).replaceWith(data.html);
+                console.log('AJAX Done');
+                $('#'+code).replaceWith(data.html);
             }).fail(function (data) {
-                    console.log('AJAX Fail');
+                console.log('AJAX Fail');
             }).always(function (data) {
-                    $(this).parent().show();
-                    prepareEvents();
-                    console.log('AJAX Finish');
-                    console.log(data);
+                $(this).parent().show();
+                prepareEvents();
+                console.log('AJAX Finish');
+                console.log(data);
             });
         });
     }
 
-prepareEvents();
+    prepareEvents();
 
 });
 </script>
