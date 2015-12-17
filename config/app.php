@@ -137,9 +137,10 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
 
-        /*
-         * Application Service Providers...
-         */
+        ///////////////////////////////////
+        // Application Service Providers //
+        ///////////////////////////////////
+
         App\Providers\AuthServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\BusServiceProvider::class,
@@ -147,36 +148,25 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        Collective\Html\HtmlServiceProvider::class,
-
+        alariva\tidiochat\TidioChatServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
-
-        Intervention\Image\ImageServiceProvider::class,
-
         Bootstrapper\BootstrapperL5ServiceProvider::class,
-
-        Laracasts\Flash\FlashServiceProvider::class,
-
-        #Kodeine\Acl\AclServiceProvider::class,
-        McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
-
-        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
-        Webpatser\Countries\CountriesServiceProvider::class,
-
-        Stevebauman\Location\LocationServiceProvider::class,
-        Torann\GeoIP\GeoIPServiceProvider::class,
+        Caffeinated\Widgets\WidgetsServiceProvider::class,
         Camroncade\Timezone\TimezoneServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         Fenos\Notifynder\NotifynderServiceProvider::class,
-        Caffeinated\Widgets\WidgetsServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
-
-        alariva\tidiochat\TidioChatServiceProvider::class,
-
-        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-
         Jenssegers\Agent\AgentServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
+        Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,
+        Stevebauman\Location\LocationServiceProvider::class,
+        Torann\GeoIP\GeoIPServiceProvider::class,
+        Webpatser\Countries\CountriesServiceProvider::class,
     ],
 
     /*
@@ -229,12 +219,6 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
 
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
-        'PDF'      => Barryvdh\Snappy\Facades\SnappyPdf::class,
-        'Image'    => Barryvdh\Snappy\Facades\SnappyImage::class,
-
-        'Image'    => Intervention\Image\Facades\Image::class,
-
         'Accordion'      => Bootstrapper\Facades\Accordion::class,
         'Alert'          => Bootstrapper\Facades\Alert::class,
         'Badge'          => Bootstrapper\Facades\Badge::class,
@@ -260,23 +244,22 @@ return [
         'Table'          => Bootstrapper\Facades\Table::class,
         'Thumbnail'      => Bootstrapper\Facades\Thumbnail::class,
 
-        'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
-        'Flash'      => Laracasts\Flash\Flash::class,
+        'Agent'      => Jenssegers\Agent\Facades\Agent::class,
+        'Analytics'  => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
+        'Carbon'     => Carbon\Carbon::class,
         'Countries'  => Webpatser\Countries\CountriesFacade::class,
-
-        'Location' => Stevebauman\Location\Facades\Location::class,
-        'GeoIP'    => Torann\GeoIP\GeoIPFacade::class,
-        'Carbon'   => Carbon\Carbon::class,
-
-        'Gravatar'  => Creativeorange\Gravatar\Facades\Gravatar::class,
-        'Widget'    => Caffeinated\Widgets\Facades\Widget::class,
-        'Analytics' => Ipunkt\LaravelAnalytics\AnalyticsFacade::class,
-
-        'TidioChat'    => alariva\tidiochat\TidioChatFacade::class,
-
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
-        'Agent' => Jenssegers\Agent\Facades\Agent::class,
+        'Debugbar'   => Barryvdh\Debugbar\Facade::class,
+        'Flash'      => Laracasts\Flash\Flash::class,
+        'GeoIP'      => Torann\GeoIP\GeoIPFacade::class,
+        'Gravatar'   => Creativeorange\Gravatar\Facades\Gravatar::class,
+        'Image'      => Intervention\Image\Facades\Image::class,
+        #'Image'      => Barryvdh\Snappy\Facades\SnappyImage::class,
+        'Location'   => Stevebauman\Location\Facades\Location::class,
+        'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
+        'PDF'        => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'Socialite'  => Laravel\Socialite\Facades\Socialite::class,
+        'TidioChat'  => alariva\tidiochat\TidioChatFacade::class,
+        'Widget'     => Caffeinated\Widgets\Facades\Widget::class,
     ],
 
 ];
