@@ -10,13 +10,13 @@
 // API CALLS //
 ///////////////
 
-# Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
-Route::group(['prefix' => 'api'], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['auth']], function () {
 
     Route::controller('booking', 'BookingController', ['postAction' => 'api.booking.action']);
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
         'uses' => 'BookingController@getTimes',
     ]);
+
 });
 
 //////////////////
