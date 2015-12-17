@@ -52,12 +52,12 @@ class Handler extends ExceptionHandler
     {
         // Catch TokenMismatchException to show a friendly error message
         if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect($request->fullUrl());
+            return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
         }
 
         // Catch General exceptios to show a friendly error message
-        if ($exception instanceof \Exception) {
-            return redirect('/');
+        if ($exception instanceof Exception) {
+            return redirect('/')->withErrors(trans('app.msg.generic_exception'));
         }
 
         // Handle any other case
