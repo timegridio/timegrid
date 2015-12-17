@@ -21,12 +21,18 @@ class AppointmentPresenter extends BasePresenter
 
     public function date()
     {
-        return $this->wrappedObject->start_at->timezone($this->wrappedObject->business->timezone)->toDateString();
+        return $this->wrappedObject
+                    ->start_at
+                    ->timezone($this->wrappedObject->business->timezone)
+                    ->toDateString();
     }
 
     public function time()
     {
-        return $this->wrappedObject->start_at->timezone($this->wrappedObject->business->timezone)->toTimeString();
+        return $this->wrappedObject
+                    ->start_at
+                    ->timezone($this->wrappedObject->business->timezone)
+                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
     }
 
     public function diffForHumans()
