@@ -30,32 +30,60 @@ class SendBookingNotification
                    ->extra(compact('businessName', 'code', 'date'))
                    ->send();
 
-        $locale = app()->getLocale();
-
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
+        /////////////////
+        // Send emails //
+        /////////////////
 
         // Mail to User
-        $mailParams = [
+        $params = [
             'user'        => $event->user,
             'appointment' => $event->appointment,
         ];
-        Mail::send("emails.{$locale}.appointments.user._new", $mailParams, function ($mail) use ($event) {
-            $mail->to($event->user->email, $event->user->name)
-                 ->subject(trans('emails.user.appointment.reserved.subject'));
-        });
-
-        $businessLocale = $event->appointment->business->locale ?: $locale;
+        $header = [
+            'toMail'  => $event->user->email,
+            'toName'  => $event->user->name,
+            'subject' => trans('emails.user.appointment.reserved.subject'),
+        ];
+        $this->sendMail($header, $params, 'appointments.user._new');
 
         // Mail to Owner
-        $mailParams = [
+        $params = [
             'user'        => $event->appointment->business->owner(),
             'appointment' => $event->appointment,
         ];
-        Mail::send("emails.{$businessLocale}.appointments.manager._new", $mailParams, function ($mail) use ($event) {
-            $mail->to($event->appointment->business->owner()->email, $event->appointment->business->owner()->name)
-                 ->subject(trans('emails.manager.appointment.reserved.subject'));
+        $header = [
+            'toMail'  => $event->appointment->business->owner()->email,
+            'toName'  => $event->appointment->business->owner()->name,
+            'subject' => trans('emails.manager.appointment.reserved.subject'),
+        ];
+        $this->sendMail($header, $params, 'appointments.manager._new', $event->appointment->business->locale);
+    }
+
+    /**
+     * Load localized email view and send email.
+     *
+     * @param  array  $header
+     * @param  array  $params
+     * @param  string $view   Tail of view path after locale
+     * @param  string $locale
+     *
+     * @return void
+     *
+     * @throws  \Exception 'Email view does not exist'
+     */
+    protected function sendMail(array $header, array $params, $view, $locale = null)
+    {
+        if ($locale === null) {
+            $locale = app()->getLocale();
+        }
+
+        $view = "emails.{$locale}.{$view}";
+        if (!view()->exists($view)) {
+            throw new \Exception('Email view does not exist');
+        }
+
+        mailer()->send($view, $params, function ($mail) use ($event) {
+            $mail->to($header['toMail'], $header['toName'])->subject($header['subject']);
         });
     }
 }
