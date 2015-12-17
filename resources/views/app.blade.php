@@ -78,6 +78,7 @@
 
 <div class="container">
     @include('flash::message')
+    @include('_errors')
 </div>
 
 @yield('content')
