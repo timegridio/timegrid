@@ -90,22 +90,25 @@ $(document).ready(function() {
         var date = $('#date').val();
         var service = $('#service').val();
 
+        var timesSelect = $('#times');
+        var durationInput = $('#duration');
+
         $.ajax({
             url:'/api/vacancies/' + business + '/' + service + '/' + date,
             type:'GET',
             dataType: 'json',
             success: function( data ) {
-                $.each(data.times,function(key, value) 
+                timesSelect.find('option').remove();
+                $.each(data.times,function(key, value)
                 {
-                    $('#times').append('<option value=' + value + '>' + value + '</option>');
+                    timesSelect.append('<option value=' + value + '>' + value + '</option>');
                 });
-                $('#duration').val(data.service.duration);
+                durationInput.val(data.service.duration);
             },
             fail: function ( data ) {
-                $('#duration').val(0);
+                durationInput.val(0);
             }
         });
-
 
     });
 
