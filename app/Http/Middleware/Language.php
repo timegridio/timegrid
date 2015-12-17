@@ -12,14 +12,14 @@ class Language implements Middleware
 {
     /**
      * Agent information gather class.
-     * 
+     *
      * @var Jenssegers\Agent\Facades\Agent
      */
     private $agent;
 
     /**
      * Create the class.
-     * 
+     *
      * @param Agent $agent
      */
     public function __construct(Agent $agent)
@@ -92,6 +92,13 @@ class Language implements Middleware
     /**
      * Search for an AgentLang among app available Langs.
      *
+     * EXAMPLE MATCH
+     * "en_us" "en_us.utf8" : true
+     * "en"    "en_us.utf8" : true
+     * "es"    "es_es.utf8" : true
+     * "en_us" "es_es.utf8" : false
+     * "es_ar" "es_es.utf8" : false
+     *
      * @param array  $availableLangs
      * @param string $agentLang
      *
@@ -111,6 +118,12 @@ class Language implements Middleware
     /**
      * Copy keys as lowercase values.
      *
+     * EXAMPLE CONVERSION
+     * array:2 [                   >> array:2 [
+     *   "en_US.utf8" => "English" >>   "en_US.utf8" => "en_us.utf8"
+     *   "es_ES.utf8" => "Español" >>   "es_ES.utf8" => "es_es.utf8"
+     * ]                           >> ]
+     *
      * @param array $array
      *
      * @return array
@@ -126,6 +139,13 @@ class Language implements Middleware
 
     /**
      * Change values to lowercase and undescored instead of dashed.
+     *
+     * EXAMPLE CONVERSION
+     * array:3 [      >> array:3 [
+     *   0 => "es"    >>   0 => "es"
+     *   1 => "en-us" >>   1 => "en_us"
+     *   2 => "en"    >>   2 => "en"
+     * ]              >> ]
      *
      * @param array $array
      *
