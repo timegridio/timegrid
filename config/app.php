@@ -175,6 +175,8 @@ return [
 
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+
+        Jenssegers\Agent\AgentServiceProvider::class
     ],
 
     /*
@@ -273,6 +275,8 @@ return [
         'TidioChat'    => alariva\tidiochat\TidioChatFacade::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
+        'Agent' => Jenssegers\Agent\Facades\Agent::class
     ],
 
 ];
