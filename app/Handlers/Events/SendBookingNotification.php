@@ -46,12 +46,14 @@ class SendBookingNotification
                  ->subject(trans('emails.user.appointment.reserved.subject'));
         });
 
+        $businessLocale = $event->appointment->business->locale ?: $locale;
+
         // Mail to Owner
         $mailParams = [
             'user'        => $event->appointment->business->owner(),
             'appointment' => $event->appointment,
         ];
-        Mail::send("emails.{$locale}.appointments.manager._new", $mailParams, function ($mail) use ($event) {
+        Mail::send("emails.{$businessLocale}.appointments.manager._new", $mailParams, function ($mail) use ($event) {
             $mail->to($event->appointment->business->owner()->email, $event->appointment->business->owner()->name)
                  ->subject(trans('emails.manager.appointment.reserved.subject'));
         });
