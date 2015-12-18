@@ -19,7 +19,7 @@ class AppointmentPresenter extends BasePresenter
         return strtoupper(substr($this->wrappedObject->hash, 0, $length));
     }
 
-    public function date()
+    public function date($format = 'Y-m-d')
     {
         if ($this->wrappedObject->start_at->isToday()) {
             return studly_case(trans('appointments.text.today'));
@@ -32,13 +32,21 @@ class AppointmentPresenter extends BasePresenter
         return $this->wrappedObject
                     ->start_at
                     ->timezone($this->wrappedObject->business->timezone)
-                    ->toDateString();
+                    ->format($format);
     }
 
     public function time()
     {
         return $this->wrappedObject
                     ->start_at
+                    ->timezone($this->wrappedObject->business->timezone)
+                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+    }
+
+    public function finishTime()
+    {
+        return $this->wrappedObject
+                    ->finish_at
                     ->timezone($this->wrappedObject->business->timezone)
                     ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
     }
