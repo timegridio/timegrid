@@ -1,16 +1,13 @@
 {{-- Appointment Row Partial --}}
-<tr id="{{ $appointment->code }}" class="{{ $appointment->statusToCssClass }}">
-    <td>{{ $appointment->status }}</td>
-    <td>{{ $appointment->code }}</td>
-    <td>{{ $appointment->contact->firstname }} {{ $appointment->contact->lastname }}</td>
-    <td>{{ $appointment->date }}</td>
-    <td title="{{ $appointment->timezone }}">{{ $appointment->time }}</td>
-    <td>{{ $appointment->business->name }}</td>
-    <td>{{ $appointment->service->name }}</td>
-    <td>{{ $appointment->diffForHumans }}</td>
+<tr id="{{ $appointment->code }}">
+    <td>&nbsp;<code>{!! Icon::barcode() !!}&nbsp;{{ $appointment->code }}</code>&nbsp;{!! $appointment->statusIcon !!}</td>
+    <td>{{ $appointment->date('d/M') }}</td>
+    <td title="{{ $appointment->start_at->diffForHumans() }}">{{ $appointment->time }}</td>
+    <td title="{{ $appointment->tz }}">{{ $appointment->finishTime }}</td>
+    <td>{{ $appointment->duration }}&prime;</td>
+    <td>{{ $appointment->service ? $appointment->service->name : '' }}</td>
+    <td>{{ $appointment->contact->fullname }}</td>
     <td>
-        <div class="btn-group">
-            @include('widgets.appointment.row._buttons', ['appointment' => $appointment, 'user' => $user])
-        </div>
+    @include('widgets.appointment.row._buttons', ['appointment' => $appointment, 'user' => $appointment->contact->user])
     </td>
 </tr>
