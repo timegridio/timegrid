@@ -26,7 +26,11 @@
             @if ($business->services()->count() == 0)
             <div class="row">
                 <div class="col-md-12">
-                    {!! Alert::warning(Button::withIcon(Icon::tag())->warning()->asLinkTo( route('manager.business.service.create', $business)) . '&nbsp;' . trans('manager.businesses.dashboard.alert.no_services_set')) !!}
+                    {!! Alert::warning(Button::withIcon(Icon::tag())
+                        ->warning()
+                        ->asLinkTo( route('manager.business.service.create', $business)) . '&nbsp;' .
+                            trans('manager.businesses.dashboard.alert.no_services_set'))
+                    !!}
                 </div>
             </div>
             @endif
@@ -34,81 +38,135 @@
             @if ($business->vacancies()->future()->count() == 0)
             <div class="row">
                 <div class="col-md-12">
-                    {!! Alert::warning(Button::withIcon(Icon::time())->warning()->asLinkTo( route('manager.business.vacancy.create', $business)) . '&nbsp;' . trans('manager.businesses.dashboard.alert.no_vacancies_set')) !!}
+                    {!! Alert::warning(Button::withIcon(Icon::time())
+                        ->warning()
+                        ->asLinkTo( route('manager.business.vacancy.create', $business)) . '&nbsp;' .
+                            trans('manager.businesses.dashboard.alert.no_vacancies_set'))
+                    !!}
                 </div>
             </div>
             @endif
 
             <div class="row">
-              <div class="col-md-2">
+                <div class="col-md-2">
                     <div class="panel panel-default panel-success">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-                      <div class="panel-body" id="indicator1"><h1 class="text-center">{{ array_get($dashboard, 'appointments_active_today', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}
+                        </div>
+                        <div class="panel-body" id="indicator1">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_active_today', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="panel panel-default panel-danger">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_annulated') }}</div>
-                      <div class="panel-body" id="indicator2"><h1 class="text-center">{{ array_get($dashboard, 'appointments_annulated_today', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_annulated') }}
+                        </div>
+                        <div class="panel-body" id="indicator2">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_annulated_today', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="panel panel-default panel-warning">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-                      <div class="panel-body" id="indicator3"><h1 class="text-center">{{ array_get($dashboard, 'appointments_active_tomorrow', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_tomorrow') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}
+                        </div>
+                        <div class="panel-body" id="indicator3">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_active_tomorrow', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_tomorrow') }}
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="panel panel-default panel-success">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
-                      <div class="panel-body" id="indicator4"><h1 class="text-center">{{ array_get($dashboard, 'appointments_active_total', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}
+                        </div>
+                        <div class="panel-body" id="indicator4">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_active_total', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_total') }}
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="panel panel-default panel-info">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_served') }}</div>
-                      <div class="panel-body" id="indicator5"><h1 class="text-center">{{ array_get($dashboard, 'appointments_served_total', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_served') }}
+                        </div>
+                        <div class="panel-body" id="indicator5">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_served_total', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_total') }}
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+                <div class="col-md-2">
                     <div class="panel panel-default panel-info">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
-                      <div class="panel-body" id="indicator6"><h1 class="text-center">{{ array_get($dashboard, 'appointments_total', '?') }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}
+                        </div>
+                        <div class="panel-body" id="indicator6">
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_total', '?') }}</h1>
+                        </div>
+                        <div class="panel-footer">
+                            {{ trans('manager.businesses.dashboard.panel.title_total') }}
+                        </div>
                     </div>
-              </div>
+                </div>
             </div>
 
             <div class="row">
-              <div class="col-md-2">
+
+                <div class="col-md-2">
                     <div class="panel panel-default">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_registered') }}</div>
-                      <div class="panel-body" id="indicator7"><h2 class="text-center">{{ array_get($dashboard, 'contacts_registered', '?') }}</h2></div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_contacts_registered') }}
+                        </div>
+                        <div class="panel-body" id="indicator7">
+                            <h2 class="text-center">{{ array_get($dashboard, 'contacts_registered', '?') }}</h2>
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-2">
+                </div>
+
+                <div class="col-md-2">
                     <div class="panel panel-default">
-                      <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_active') }}</div>
-                      <div class="panel-body" id="indicator8"><h2 class="text-center">{{ array_get($dashboard, 'contacts_subscribed', '?') }}</h2></div>
+                        <div class="panel-heading">
+                            {{ trans('manager.businesses.dashboard.panel.title_contacts_active') }}
+                        </div>
+                        <div class="panel-body" id="indicator8">
+                            <h2 class="text-center">{{ array_get($dashboard, 'contacts_subscribed', '?') }}</h2>
+                        </div>
                     </div>
-              </div>
-              <div class="col-md-8">
-                  @include('manager.businesses._notifications', ['notifications' => $notifications ])
-              </div>
+                </div>
+
+                <div class="col-md-8">
+                    @include('manager.businesses._notifications', ['notifications' => $notifications ])
+                </div>
+                
             </div>
 
         </div>
+
         <div class="panel-footer">
-            <span class="btn-group"> 
+            <span class="btn-group">
                 {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences', 'title' => trans('manager.business.btn.tooltip.preferences')])->asLinkTo( route('manager.business.preferences', $business) ) !!}
                 {!! Button::withIcon(Icon::edit())->normal()->withAttributes(['id' => 'btnEdit', 'title' => trans('manager.business.btn.tooltip.edit')])->asLinkTo( route('manager.business.edit', $business) ) !!}
             </span>
         </div>
+
     </div>
 
 </div>
