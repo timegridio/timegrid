@@ -7,7 +7,7 @@
     </tr>
     @foreach ($dates as $date => $vacancies)
     <tr>
-        <td title="{{ Carbon::parse($date)->formatLocalized('%A %d %B') }}">{{ $date }}</td>
+        <td title="{{ $date }}">{{ Carbon::parse($date)->formatLocalized('%A %d %B') }}</td>
         @foreach ($business->services as $service)
         @if(count($vacancies) > 0 && array_key_exists($service->slug, $vacancies))
         <td> {!! Form::text("vacancy[$date][$service->id]", $vacancies[$service->slug]->capacity, array('class'=>'form-control', 'type' => 'numeric', 'step' => '1', 'placeholder'=> "$date {$service->name} ({$vacancies[$service->slug]->capacity})" )) !!} </td>
