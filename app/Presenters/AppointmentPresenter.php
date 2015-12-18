@@ -56,6 +56,11 @@ class AppointmentPresenter extends BasePresenter
         return $this->wrappedObject->start_at->timezone($this->wrappedObject->business->timezone)->diffForHumans();
     }
 
+    public function location()
+    {
+        return $this->wrappedObject->business->postal_address;
+    }
+
     public function statusLetter()
     {
         return substr(trans('appointments.status.'.$this->wrappedObject->statusLabel), 0, 1);
