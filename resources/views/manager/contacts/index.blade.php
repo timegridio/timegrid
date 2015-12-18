@@ -99,7 +99,7 @@ $(document).ready(function(){
                 </tr>
             </thead>
             <tbody>
-                @foreach ($business->contacts()->orderBy('lastname', 'ASC')->simplePaginate(300) as $contact)
+                @foreach ($contacts as $contact)
                     <tr>
                         <td>{{ $contact->lastname }}</td>
                         <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>

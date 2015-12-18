@@ -44,7 +44,9 @@ class BusinessContactController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        return view('manager.contacts.index', compact('business'));
+        $contacts = $business->contacts()->orderBy('lastname', 'ASC')->simplePaginate(100);
+
+        return view('manager.contacts.index', compact('business', 'contacts'));
     }
 
     /**
