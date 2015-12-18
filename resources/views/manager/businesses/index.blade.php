@@ -33,6 +33,10 @@
                         <div class="text-center">{!! Button::success(trans('user.businesses.index.btn.power_create'))->withIcon(Icon::ok())->large()->asLinkTo( route('manager.business.register') ) !!}</div>
                     @endif
                 </div>
+
+                <div class="panel-footer">
+                    {!! Button::normal(trans('app.nav.manager.business.register'))->asLinkTo( route('manager.business.register') ) !!}
+                </div>
             </div>
         </div>
 

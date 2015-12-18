@@ -7,14 +7,6 @@
 
     <li id="navHome"><a href="{{ route('manager.business.show', $business->slug) }}">{!! Icon::home() !!} {{ $business->name }}</a></li>
 
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('app.nav.manager.business.menu') }} <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-            <li><a href="{{ route('manager.business.index') }}">{{ trans('app.nav.manager.business.list') }}</a></li>
-            <li><a href="{{ route('manager.business.register') }}">{{ trans('app.nav.manager.business.register') }}</a></li>
-        </ul>
-    </li>
-
     {!! Form::open(['method' => 'post', 'url' => route('manager.search', $business), 'class' => 'navbar-form navbar-left', 'role' => 'search']) !!}
     <div class="form-group">
         <input id="search" name="criteria" type="text" class="form-control" placeholder="{{trans('app.search.placeholder')}}">
