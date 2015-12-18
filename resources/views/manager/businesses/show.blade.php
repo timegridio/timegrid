@@ -18,18 +18,7 @@
 
     <div class="panel panel-default" id="dashboard">
         <div class="panel-heading">
-          <span class="btn-group"> 
-            {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences', 'title' => trans('manager.business.btn.tooltip.preferences')])->asLinkTo( route('manager.business.preferences', $business) ) !!}
-            {!! Button::withIcon(Icon::edit())->primary()->withAttributes(['id' => 'btnEdit', 'title' => trans('manager.business.btn.tooltip.edit')])->asLinkTo( route('manager.business.edit', $business) ) !!}
-          </span>
-          <span class="btn-group"> 
-            {!! Button::withIcon(Icon::tag())->normal()->withAttributes(['id' => 'btnServices', 'title' => trans('manager.business.btn.tooltip.services')])->asLinkTo( route('manager.business.service.index', $business) ) !!}
-            {!! Button::withIcon(Icon::time())->normal()->withAttributes(['id' => 'btnVacancies', 'title' => trans('manager.business.btn.tooltip.vacancies')])->asLinkTo( route('manager.business.vacancy.create', $business) ) !!}
-            {!! Button::withIcon(Icon::calendar())->withAttributes(['id' => 'btnAgenda', 'title' => trans('manager.business.btn.tooltip.agenda')])->normal()->asLinkTo( route('manager.business.agenda.index', $business) ) !!}
-          </span>
-          <span class="btn-group"> 
-            {!! Button::withIcon(Icon::user())->withAttributes(['id' => 'btnContacts', 'title' => trans('manager.business.btn.tooltip.contacts')])->normal()->asLinkTo( route('manager.business.contact.index', $business) ) !!}
-          </span>
+            {{ $business->name }}
         </div>
 
         <div class="panel-body">
@@ -120,7 +109,12 @@
             </div>
 
         </div>
-        <div class="panel-footer">{{ $business->name }}</div>
+        <div class="panel-footer">
+            <span class="btn-group"> 
+                {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences', 'title' => trans('manager.business.btn.tooltip.preferences')])->asLinkTo( route('manager.business.preferences', $business) ) !!}
+                {!! Button::withIcon(Icon::edit())->normal()->withAttributes(['id' => 'btnEdit', 'title' => trans('manager.business.btn.tooltip.edit')])->asLinkTo( route('manager.business.edit', $business) ) !!}
+            </span>
+        </div>
     </div>
 
 </div>
