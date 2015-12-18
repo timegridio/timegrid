@@ -322,6 +322,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         // VACANCY RESOURCE
         Route::group(['prefix' => 'vacancy'], function () {
+            Route::get('show', [
+                'as'   => 'manager.business.vacancy.show',
+                'uses' => 'BusinessVacancyController@show',
+            ]);
             Route::get('create', [
                 'as'   => 'manager.business.vacancy.create',
                 'uses' => 'BusinessVacancyController@create',

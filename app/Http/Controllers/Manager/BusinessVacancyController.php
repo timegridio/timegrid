@@ -83,4 +83,32 @@ class BusinessVacancyController extends Controller
 
         return redirect()->route('manager.business.show', [$business]);
     }
+
+    /**
+     * Show the published vacancies timetable.
+     *
+     * @return Response
+     */
+    public function show(Business $business)
+    {
+        $this->log->info(__METHOD__);
+        $this->log->info(sprintf('businessId:%s', $business->id));
+
+        $this->authorize('manageVacancies', $business);
+
+        // BEGIN
+        $daysQuantity = $business->pref('vacancy_edit_days_quantity', env('DEFAULT_VACANCY_EDIT_DAYS_QUANTITY', 7));
+
+        $vacancies = $business->vacancies()->with('Appointments')->get();
+
+        $timetable = $this->vacancyService
+                          ->setBusiness($business)
+                          ->buildTimetable($vacancies, 'today', $daysQuantity);
+
+        if ($business->services->isEmpty()) {
+            Flash::warning(trans('manager.vacancies.msg.edit.no_services'));
+        }
+
+        return view('manager.businesses.vacancies.show', compact('business', 'timetable'));
+    }
 }

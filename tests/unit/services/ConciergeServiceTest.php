@@ -77,7 +77,9 @@ class ConciergeServiceTest extends TestCase
 
         $this->business->services()->save($this->service);
 
-        $this->concierge = new ConciergeService(new VacancyService($this->business));
+        $this->concierge = new ConciergeService(new VacancyService);
+
+        $this->concierge->setBusiness($this->business);
     }
 
     /**

@@ -30,9 +30,9 @@ class VacancyService
      *
      * @param App\Models\Business $business
      */
-    public function __construct(Business $business)
+    public function __construct()
     {
-        $this->setBusiness($business);
+        # $this->setBusiness($business);
     }
 
     /**
@@ -45,6 +45,8 @@ class VacancyService
         $this->business = $business;
 
         $this->strategy = new BookingStrategy($business->strategy);
+
+        return $this;
     }
 
     /**
@@ -77,6 +79,20 @@ class VacancyService
         $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
 
         return $this->generateAvailability($vacancies, $starting, $limit);
+    }
+
+    /**
+     * Build timetable.
+     *
+     * @param Illuminate\Database\Eloquent\Collection $vacancies
+     * @param string                                  $starting
+     * @param int                                     $days
+     *
+     * @return array
+     */
+    public function buildTimetable($vacancies, $starting = 'today', $days = 10)
+    {
+        return $this->strategy->buildTimetable($vacancies, $starting, $days);
     }
 
     /**

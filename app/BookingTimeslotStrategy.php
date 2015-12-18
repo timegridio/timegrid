@@ -73,4 +73,52 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
 
         return $vacancies;
     }
+
+    /**
+     * Build timetable.
+     *
+     * @param Illuminate\Database\Eloquent\Collection $vacancies
+     * @param string                                  $starting
+     * @param int                                     $days
+     *
+     * @return array
+     */
+    public function buildTimetable($vacancies, $starting = 'today', $days = 10)
+    {
+        $dates = [];
+        for ($i = 0; $i < $days; $i++) {
+            $dates[date('Y-m-d', strtotime("$starting +$i days"))] = [];
+        }
+
+        foreach ($vacancies as $vacancy) {
+            if (array_key_exists($vacancy->date, $dates)) {
+                $dates[$vacancy->date][$vacancy->service->slug] = $this->chunkTimeslots($vacancy);
+            }
+        }
+
+        return $dates;
+    }
+
+    protected function chunkTimeslots(Vacancy $vacancy, $step = 30)
+    {
+        $times = [];
+        $startTime = $vacancy->business->pref('start_at');
+
+        $startKey = date('Y-m-d H:i', strtotime("{$vacancy->date} {$startTime}")).' '.$vacancy->business->timezone;
+
+        $finishTime = $vacancy->business->pref('finish_at');
+        $endKey = date('Y-m-d H:i', strtotime("{$vacancy->date} {$finishTime}")).' '.$vacancy->business->timezone;
+
+        $from = Carbon::parse($startKey);
+        $to = $from->copy()->addMinutes($step);
+        $limit = Carbon::parse($endKey);
+
+        while ($from <= $limit) {
+            $times[$from->timezone($vacancy->business->timezone)->toTimeString()] = $vacancy->getRoomBetween($from, $to);
+            $to->addMinutes($step);
+            $from->addMinutes($step);
+        }
+
+        return $times;
+    }
 }

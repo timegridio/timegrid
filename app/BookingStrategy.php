@@ -56,4 +56,9 @@ class BookingStrategy
     {
         return $this->strategy->removeSelfBooked($vacancies, $user);
     }
+
+    public function buildTimetable($vacancies, $starting = 'today', $days = 10)
+    {
+        return $this->strategy->buildTimetable($vacancies, $starting, $days);
+    }
 }
