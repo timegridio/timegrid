@@ -45,6 +45,16 @@ return  [
       'help'   => 'Horario en que no recibes más citas',
       'label'  => 'Horario de Cierre',
     ],
+    'service_default_duration' => [
+      'format' => 'ejemplo: 30',
+      'help'   => 'La duración por defecto de tus servicios',
+      'label'  => 'Duración Predeterminada de Servicios (minutos)',
+    ],
+    'annulation_policy_advice' => [
+      'format' => 'ejemplo: Podrás anular la cita sin cargo hasta el %s',
+      'help'   => 'Escribe un breve texto de tu política de anulación de citas',
+      'label'  => 'Política de Anulación de Citas',
+    ],
   ],
   'controls' => [
     'select' => [

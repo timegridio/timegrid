@@ -45,6 +45,16 @@ return [
       'help'   => 'The time your business closes for receiving appointments',
       'label'  => 'Closing Hour',
     ],
+    'service_default_duration' => [
+      'format' => 'example: 30',
+      'help'   => 'The default duration of any service you provide',
+      'label'  => 'Default service duration (minutes)',
+    ],
+    'annulation_policy_advice' => [
+      'format' => 'example: You may annulate this appointment charge-free until %s',
+      'help'   => 'Write an advice text your clients will see about your appointment annulation policy',
+      'label'  => 'Annulation Policy Advice Text',
+    ],
   ],
   'controls' => [
     'select' => [
