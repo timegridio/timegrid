@@ -14,15 +14,27 @@
 
     <div class='panel-body'>
         <ul class="list-group appointmentinfo {{ $appointment->statusToCssClass }}">
-            <li class="list-group-item">
-                <span class='glyphicon glyphicon-home'></span>&nbsp;
-                {{ $appointment->business->name }}
-            </li>
 
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-user'></span>&nbsp;
                 {{ $appointment->contact->firstname }} {{ $appointment->contact->lasttname }}
             </li>
+
+            <li class="list-group-item">
+                <span class='glyphicon glyphicon-tag'></span>&nbsp;{{ $appointment->service->name }}
+            </li>
+
+            <li class="list-group-item">
+                <span class='glyphicon glyphicon-home'></span>&nbsp;
+                {{ $appointment->business->name }}
+            </li>
+
+            @if($appointment->location !== null)
+            <li class="list-group-item">
+                <span class='glyphicon glyphicon-map-marker'></span>&nbsp;
+                {{ $appointment->location }}
+            </li>
+            @endif
 
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-calendar'></span>&nbsp;
@@ -43,10 +55,6 @@
                         </span>
                     @endif
                 </span>
-            </li>
-
-            <li class="list-group-item">
-                <span class='glyphicon glyphicon-tag'></span>&nbsp;{{ $appointment->service->name }}
             </li>
 
             @if($appointment->comments)
