@@ -42,8 +42,9 @@ class BusinessVacancyController extends Controller
         $this->authorize('manageVacancies', $business);
 
         // BEGIN
+        $daysQuantity = $business->pref('vacancy_edit_days_quantity', env('DEFAULT_VACANCY_EDIT_DAYS_QUANTITY', 15));
 
-        $dates = $this->vacancyService->generateAvailability($business->vacancies);
+        $dates = $this->vacancyService->generateAvailability($business->vacancies, 'today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
             Flash::warning(trans('manager.vacancies.msg.edit.no_services'));
