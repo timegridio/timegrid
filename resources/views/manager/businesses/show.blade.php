@@ -6,9 +6,7 @@
 <style type="text/css">
 .bizurl {
     font-family: monospace;
-    background: #ECECEC;
-    padding: 10px 8px;
-    margin: 0px 0px 20px 0px;
+    color: #bbb;
 }
 </style>
 @endsection
@@ -19,6 +17,7 @@
     <div class="panel panel-default" id="dashboard">
         <div class="panel-heading">
             {{ $business->name }}
+            <span class="bizurl pull-right">{{ route('guest.business.home', $business->slug) }}</span>
         </div>
 
         <div class="panel-body">
