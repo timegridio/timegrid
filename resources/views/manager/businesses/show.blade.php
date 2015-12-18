@@ -82,21 +82,21 @@
                     <div class="panel panel-default panel-success">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_active') }}</div>
                       <div class="panel-body" id="indicator4"><h1 class="text-center">{{ $business->bookings()->active()->get()->count() }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
                     </div>
               </div>
               <div class="col-md-2">
                     <div class="panel panel-default panel-info">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_served') }}</div>
                       <div class="panel-body" id="indicator5"><h1 class="text-center">{{ $business->bookings()->served()->get()->count() }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
                     </div>
               </div>
               <div class="col-md-2">
                     <div class="panel panel-default panel-info">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
                       <div class="panel-body" id="indicator6"><h1 class="text-center">{{ $business->bookings()->get()->count() }}</h1></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_appointments_total') }}</div>
+                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_total') }}</div>
                     </div>
               </div>
             </div>
@@ -106,14 +106,12 @@
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_registered') }}</div>
                       <div class="panel-body" id="indicator7"><h2 class="text-center">{{ $business->contacts()->count() }}</h2></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_contacts_total') }}</div>
                     </div>
               </div>
               <div class="col-md-2">
                     <div class="panel panel-default">
                       <div class="panel-heading">{{ trans('manager.businesses.dashboard.panel.title_contacts_active') }}</div>
                       <div class="panel-body" id="indicator8"><h2 class="text-center">{{ $business->contacts()->whereNotNull('user_id')->count() }}</h2></div>
-                      <div class="panel-footer">{{ trans('manager.businesses.dashboard.panel.title_contacts_total') }}</div>
                     </div>
               </div>
               <div class="col-md-8">
