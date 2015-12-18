@@ -5,23 +5,24 @@
 
     {!! Alert::info(trans('manager.businesses.msg.register', ['plan' => trans($plan)])) !!}
 
-    <div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>
 
-            <div class="panel-body">
-                @include('_errors')
+    <div class="panel panel-default">
 
-                {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
-                {!! Form::hidden('plan', $plan) !!}
-                {!! Form::hidden('country_code', $countryCode) !!}
-                {!! Form::hidden('locale', $locale) !!}
-                @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
-                {!! Form::close() !!}
-            </div>
+        <div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>
 
+        <div class="panel-body">
+            @include('_errors')
+
+            {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
+            {!! Form::hidden('plan', $plan) !!}
+            {!! Form::hidden('country_code', $countryCode) !!}
+            {!! Form::hidden('locale', $locale) !!}
+            @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
+            {!! Form::close() !!}
         </div>
+
     </div>
+
 </div>
 @endsection
 
