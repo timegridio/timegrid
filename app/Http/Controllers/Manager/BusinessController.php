@@ -9,6 +9,7 @@ use App\Models\Business;
 use App\Models\Category;
 use App\SearchEngine;
 use App\Services\BusinessService;
+use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
 use GeoIP;
 use Illuminate\Support\Facades\Request;
@@ -152,10 +153,21 @@ class BusinessController extends Controller
         // BEGIN
 
         session()->set('selected.business', $business);
-        $notifications = $business->getNotificationsNotRead(100);
+        $notifications = $business->getNotificationsNotRead(20);
         $business->readAllNotifications();
 
-        return view('manager.businesses.show', compact('business', 'notifications'));
+        // Build Dashboard Report
+        $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate(Carbon::now())->get()->count();
+        $dashboard['appointments_annulated_today'] = $business->bookings()->annulated()->ofDate(Carbon::now())->get()->count();
+        $dashboard['appointments_active_tomorrow'] = $business->bookings()->active()->ofDate(Carbon::tomorrow())->get()->count();
+        $dashboard['appointments_active_total'] = $business->bookings()->active()->get()->count();
+        $dashboard['appointments_served_total'] = $business->bookings()->served()->get()->count();
+        $dashboard['appointments_total'] = $business->bookings()->get()->count();
+
+        $dashboard['contacts_registered'] = $business->contacts()->count();
+        $dashboard['contacts_subscribed'] = $business->contacts()->whereNotNull('user_id')->count();
+
+        return view('manager.businesses.show', compact('business', 'notifications', 'dashboard'));
     }
 
     /**
