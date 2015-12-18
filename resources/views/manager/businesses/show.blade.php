@@ -4,9 +4,12 @@
 <link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
 @parent
 <style type="text/css">
+.bizurl:hover {
+    color: #444;
+}
 .bizurl {
     font-family: monospace;
-    color: #bbb;
+    color: #ddd;
 }
 </style>
 @endsection
