@@ -38,9 +38,23 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next)
     {
         if ($this->auth->check()) {
-            return new RedirectResponse(url('/home'));
+            # return new RedirectResponse(url('/home'));
+            return $this->authenticated($request, $this->auth->user);
         }
 
         return $next($request);
+    }
+
+    /**
+     * Redirect after authenticated.
+     *
+     * @param  Illuminate\Http\Request $request
+     * @param  App\Models\User         $user
+     *
+     * @return Illuminate\Support\Facades\Redirect
+     */
+    protected function authenticated(Request $request, User $user)
+    {
+        return redirect()->intended();
     }
 }
