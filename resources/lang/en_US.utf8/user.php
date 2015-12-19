@@ -13,6 +13,7 @@ return  [
     'btn' =>  [
       'book'        => 'Book appointment',
       'book_in_biz' => 'Book appointment for :biz',
+      'more_dates'  => 'Check more dates',
     ],
     'form' =>  [
       'btn' =>  [

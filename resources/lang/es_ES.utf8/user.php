@@ -13,6 +13,7 @@ return  [
     'btn' =>  [
       'book'        => 'Reservar Cita',
       'book_in_biz' => 'Reservar cita en :biz',
+      'more_dates'  => 'Ver más fechas',
     ],
     'form' =>  [
       'btn' =>  [
