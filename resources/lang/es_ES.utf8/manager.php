@@ -120,7 +120,7 @@ return  [
     'index' =>  [
       'help' => 'Desde aquí puedes administrar todos los prestadores',
       'msg'  =>  [
-        'no_appointments' => 'manager.businesses.index.msg.no_appointments',
+        'no_appointments' => 'No hay citas reservadas en este momento.',
       ],
       'register_business_help' => 'Si eres prestador y quieres dar citas online, es tu oportunidad!',
       'title'                  => 'Mis Prestaciones',
