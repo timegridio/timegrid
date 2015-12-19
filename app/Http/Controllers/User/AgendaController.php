@@ -54,9 +54,14 @@ class AgendaController extends Controller
      *
      * @return Response Rendered view of Appointment booking form
      */
-    public function getAvailability(Business $business)
+    public function getAvailability(Business $business, Request $request)
     {
         $this->log->info(__METHOD__);
+
+        $date = $request->input('date', 'today');
+        $days = $request->input('days', 7);
+
+        // BEGIN
 
         Notifynder::category('user.checkingVacancies')
            ->from('App\Models\User', auth()->user()->id)
@@ -74,9 +79,11 @@ class AgendaController extends Controller
 
         $includeToday = $business->pref('appointment_take_today');
 
+        $date = $this->sanitizeDate($date, $includeToday);
+
         $this->concierge->setBusiness($business);
 
-        $availability = $this->concierge->getVacancies(auth()->user(), 'today', 7);
+        $availability = $this->concierge->getVacancies(auth()->user(), $date, $days);
 
         return view(
             'user.appointments.'.$business->strategy.'.book',
@@ -138,5 +145,24 @@ class AgendaController extends Controller
         Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
 
         return redirect()->route('user.agenda', '#'.$appointment->code);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+
+    protected function sanitizeDate($dateString, $includeToday)
+    {
+        try {
+            $date = Carbon::parse($dateString);
+        } catch (Exception $e) {
+            return 'tomorrow';
+        }
+
+        if($date->isPast() && !$includeToday){
+            return 'tomorrow';
+        }
+
+        return $date->toDateString();
     }
 }
