@@ -627,16 +627,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.2.1",
+            "version": "7.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "d0bfaec05d1881f56bbb00e6e4c7004b49562eb9"
+                "reference": "8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/d0bfaec05d1881f56bbb00e6e4c7004b49562eb9",
-                "reference": "d0bfaec05d1881f56bbb00e6e4c7004b49562eb9",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64",
+                "reference": "8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64",
                 "shasum": ""
             },
             "require": {
@@ -686,7 +686,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2015-11-12 14:17:02"
+            "time": "2015-12-15 17:24:20"
         },
         {
             "name": "guzzle/guzzle",
@@ -2435,16 +2435,16 @@
         },
         {
             "name": "propaganistas/laravel-phone",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Phone.git",
-                "reference": "3d23f6f20f5b1d6263b4b93f61ee143c47fd461b"
+                "reference": "c9d75872e1ea62de99d0a43be20fe153ca9f9422"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/3d23f6f20f5b1d6263b4b93f61ee143c47fd461b",
-                "reference": "3d23f6f20f5b1d6263b4b93f61ee143c47fd461b",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/c9d75872e1ea62de99d0a43be20fe153ca9f9422",
+                "reference": "c9d75872e1ea62de99d0a43be20fe153ca9f9422",
                 "shasum": ""
             },
             "require": {
@@ -2452,6 +2452,9 @@
                 "illuminate/support": "~4.0|~5.0",
                 "illuminate/validation": "~4.0|~5.0",
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.1"
             },
             "suggest": {
                 "monarobase/country-list": "Adds a compatible (and fully translated) country list API."
@@ -2482,7 +2485,7 @@
                 "phone",
                 "validation"
             ],
-            "time": "2015-12-08 11:54:34"
+            "time": "2015-12-19 11:34:59"
         },
         {
             "name": "psr/http-message",
@@ -3981,12 +3984,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/codeclimate/php-test-reporter.git",
-                "reference": "892163d67e3bd9c190d43655acb69657da765c7b"
+                "reference": "02790d733f9eb43d0a5981962c41846092fb387f"
             },
             "dist": {
                 "type": "zip",
                 "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/02790d733f9eb43d0a5981962c41846092fb387f",
-                "reference": "892163d67e3bd9c190d43655acb69657da765c7b",
+                "reference": "02790d733f9eb43d0a5981962c41846092fb387f",
                 "shasum": ""
             },
             "require": {
@@ -4031,7 +4034,7 @@
                 "codeclimate",
                 "coverage"
             ],
-            "time": "2015-10-15 14:41:10"
+            "time": "2015-12-17 00:52:54"
         },
         {
             "name": "doctrine/instantiator",
