@@ -44,27 +44,27 @@
     @endforeach
     </table>
 
-    <div class="panel-body">
+    <ul class="list-group">
+    @foreach ($business->services as $service)
+    @if($service->description)
+        <li class="list-group-item list-group-item-info service-description hidden" id="service-description-{{$service->id}}">
+        {{ $service->description }}
+        </li>
+    @endif
 
-        <div class="row">
-            <div class="form-group col-sm-12">
-                @foreach ($business->services as $service)
-                @if($service->description)
-                    <p class="service-description hidden" id="service-description-{{$service->id}}">
-                        <strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}
-                    </p>
-                @endif
-                @if($service->prerequisites)
-                    {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('app.label.attention'))
-                        ->withBody("<p>{$service->prerequisites}</p>")
-                        ->withAttributes([
-                            'class' => 'service-prerequisites hidden',
-                            'id' => "service-prerequisites-{$service->id}"]) !!}
-                @endif
-                @endforeach
-            </div>
-        </div>
+    @if($service->prerequisites)
+    <li class="list-group-item list-group-item-warning service-prerequisites hidden" id="service-prerequisites-{{$service->id}}">
+        {!! Icon::alert() !!} &nbsp;&nbsp; {{ trans('app.label.attention') }}: {{ $service->prerequisites }}
+    </li>
+    @endif
+    @endforeach
+    </ul>
 
+    <div id="moreDates">
+    {!! Button::primary(trans('user.appointments.btn.more_dates'))
+        ->asLinkTo(route('user.booking.book', ['business' => $business, 'date' => date('Y-m-d', strtotime("$date +7 days"))]))
+        ->small()
+        ->block()!!}
     </div>
 
 </div>
@@ -106,6 +106,7 @@ $(document).ready(function() {
                     timesSelect.append('<option value=' + value + '>' + value + '</option>');
                 });
                 durationInput.val(data.service.duration);
+                $('#moreDates').hide();
                 $('#extra').show();
             },
             fail: function ( data ) {
@@ -118,10 +119,12 @@ $(document).ready(function() {
     $('#timetable .btn.btn-date').click(function(e){
         $('.daterow').show();
         $('#extra').hide();
+        $('#moreDates').show();
     });
     $('#date').click(function(e){
         $('#panel').show();
         $('#extra').hide();
+        $('#moreDates').show();
         return false;
     });
 });
