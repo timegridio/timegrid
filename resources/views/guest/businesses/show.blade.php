@@ -43,7 +43,7 @@
                         @endif
 
                         <li class="list-group-item">
-                                    {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
+                                    {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.businesses.home', $business))->withIcon(Icon::calendar())->block() !!}
                         </li>
 
                     </ul>
