@@ -12,46 +12,50 @@
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
 
 <div class="container">
+    <div class="col-md-8 col-md-offset-2">
 
-    <div class="row">
-        @include('user.appointments.timeslot._timetable', ['dates' => $availability])
-    </div>
-
-    <div class="row">
-        <div class="form-group col-sm-5">
-            {!! Form::label(trans('user.appointments.form.time.label')) !!}
-            <br/>
-            <select id="times" name="_time" class="form-control"></select>
+        <div class="row">
+            @include('user.appointments.timeslot._timetable', ['dates' => $availability])
         </div>
 
-        <div class="form-group col-sm-7">
-            {!! Form::label(trans('user.appointments.form.duration.label')) !!}
-            {!! Form::text('duration', null, [
-                      'readonly',
-                      'id'=>'duration',
-                      'class'=>'form-control',
-                      'placeholder'=> trans('user.appointments.form.duration.label')
-            ]) !!}
-        </div>
-    </div>
+        <div id="extra">
+            <div class="row">
+                <div class="form-group col-sm-5">
+                    {!! Form::label(trans('user.appointments.form.time.label')) !!}
+                    <br/>
+                    <select id="times" name="_time" class="form-control"></select>
+                </div>
 
-    <div class="row">
-        <div class="form-group col-sm-12">
-            {!! Form::label(trans('user.appointments.form.comments.label')) !!}
-            {!! Form::text('comments', null, [
-                      'required',
-                      'class'=>'form-control',
-                      'placeholder'=> trans('user.appointments.form.comments.label')
-            ]) !!}
-        </div>
-    </div>
+                <div class="form-group col-sm-7">
+                    {!! Form::label(trans('user.appointments.form.duration.label')) !!}
+                    {!! Form::text('duration', null, [
+                        'readonly',
+                        'id'=>'duration',
+                        'class'=>'form-control',
+                        'placeholder'=> trans('user.appointments.form.duration.label')
+                        ]) !!}
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="form-group col-sm-12">
-            {!! Button::primary(trans('manager.contacts.btn.store'))->block()->submit() !!}
-        </div>
-    </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    {!! Form::label(trans('user.appointments.form.comments.label')) !!}
+                    {!! Form::text('comments', null, [
+                        'required',
+                        'class'=>'form-control',
+                        'placeholder'=> trans('user.appointments.form.comments.label')
+                        ]) !!}
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    {!! Button::primary(trans('user.appointments.btn.book'))->large()->block()->submit() !!}
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 {!! Form::close() !!}
 @endsection

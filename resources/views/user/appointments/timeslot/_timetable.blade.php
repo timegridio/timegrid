@@ -1,31 +1,8 @@
 <div id="panel" class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
-    <div class="panel-body">
-        {!! Alert::info(trans('user.appointments.form.timetable.instructions')) !!}
-
-        <div class="row">
-            <div class="form-group col-sm-12">
-                @foreach ($business->services as $service)
-                @if($service->description)
-                    <div class="well service-description hidden" id="service-description-{{$service->id}}">
-                        <strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}
-                    </div>
-                @endif
-                @if($service->prerequisites)
-                    {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('app.label.attention'))
-                        ->withBody("<pre>{$service->prerequisites}</pre>")
-                        ->withAttributes([
-                            'class' => 'service-prerequisites hidden',
-                            'id' => "service-prerequisites-{$service->id}"]) !!}
-                @endif
-                @endforeach
-            </div>
-        </div>
-
-    </div>
-
-    <table id="timetable" class="table table-condensed table-hover">
+    
+    <table id="timetable" class="table">
     @foreach ($dates as $date => $vacancies)
         @if (empty($vacancies) || ($date == date('Y-m-d') && ! $includeToday))
         <tr class="daterow">
@@ -34,7 +11,8 @@
                     ->block()
                     ->disable()
                     ->prependIcon(Icon::calendar())
-                    ->withAttributes(['class' => 'btn-date']) !!}
+                    ->withAttributes(['class' => 'btn-date'])
+                    !!}
             </td>
             <td class="serviceslot" >
                 <p class="hidden-xs">
@@ -65,6 +43,30 @@
         @endif
     @endforeach
     </table>
+
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="form-group col-sm-12">
+                @foreach ($business->services as $service)
+                @if($service->description)
+                    <p class="service-description hidden" id="service-description-{{$service->id}}">
+                        <strong>{{$service->name}}:</strong>&nbsp;{{ $service->description }}
+                    </p>
+                @endif
+                @if($service->prerequisites)
+                    {!! Panel::warning()->withHeader(Icon::alert() ."&nbsp;&nbsp;". trans('app.label.attention'))
+                        ->withBody("<p>{$service->prerequisites}</p>")
+                        ->withAttributes([
+                            'class' => 'service-prerequisites hidden',
+                            'id' => "service-prerequisites-{$service->id}"]) !!}
+                @endif
+                @endforeach
+            </div>
+        </div>
+
+    </div>
+
 </div>
 
 @section('footer_scripts')
@@ -104,6 +106,7 @@ $(document).ready(function() {
                     timesSelect.append('<option value=' + value + '>' + value + '</option>');
                 });
                 durationInput.val(data.service.duration);
+                $('#extra').show();
             },
             fail: function ( data ) {
                 durationInput.val(0);
@@ -118,6 +121,7 @@ $(document).ready(function() {
     });
     $('#date').click(function(e){
         $('#panel').show();
+        $('#extra').hide();
         return false;
     });
 });
