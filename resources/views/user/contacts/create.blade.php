@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
 
         {!! Alert::info(trans('user.contacts.create.help')) !!}
 
@@ -19,6 +18,6 @@
                 {!! Form::close() !!}
             </div>
         </div>
-    </div>
+
 </div>
 @endsection

@@ -11,75 +11,73 @@
 @endsection
 
 {!! Form::hidden('mobile', '') !!}
-<div class="container">
 
-    <div class="row">
-        <div class="form-group col-xs-4">
-            {!! Form::text('firstname', auth()->user()->name, [
-                'required',
-                'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.firstname.label'),
-                'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.firstname.validation').'" )',
-                'oninput' => 'this.setCustomValidity("")'
-                ]) !!}
-        </div>
-        <div class="form-group col-xs-8">
-            {!! Form::text('lastname', null, [
-                'required',
-                'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.lastname.label'),
-                'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.lastname.validation').'" )',
-                'oninput' => 'this.setCustomValidity("")'
-                ]) !!}
-        </div>
+<div class="row">
+    <div class="form-group col-xs-4">
+        {!! Form::text('firstname', auth()->user()->name, [
+            'required',
+            'class'=>'form-control',
+            'placeholder'=> trans('manager.contacts.form.firstname.label'),
+            'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.firstname.validation').'" )',
+            'oninput' => 'this.setCustomValidity("")'
+            ]) !!}
     </div>
-
-    <div class="row">
-        <div class="form-group col-xs-4">
-            {!! Form::text('nin', null, [
-                'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.nin.label')
-                ]) !!}
-        </div>
-        <div class="form-group col-xs-8">
-            {!! Form::email('email', null, [
-                'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.email.label')
-                ]) !!}
-        </div>
+    <div class="form-group col-xs-8">
+        {!! Form::text('lastname', null, [
+            'required',
+            'class'=>'form-control',
+            'placeholder'=> trans('manager.contacts.form.lastname.label'),
+            'oninvalid' => 'this.setCustomValidity( "'.trans('manager.contacts.form.lastname.validation').'" )',
+            'oninput' => 'this.setCustomValidity("")'
+            ]) !!}
     </div>
-
-    <div class="row">
-        <div class="form-group col-xs-4">
-            {!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
-        </div>
-        <div class="form-group col-xs-8">
-            {!! Form::text('birthdate', $contact ? old('birthdate', $contact->birthdate ? $contact->birthdate->format(trans('app.dateformat.carbon')) : null) : null, [
-                'class'=>'form-control',
-                'id'=>'birthdate',
-                'placeholder'=> trans('manager.contacts.form.birthdate.label'),
-                'title'=> trans('manager.contacts.form.birthdate.label')
-                ]) !!}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="form-group col-xs-12">
-            {!! Form::text('mobile-input', isset($contact) ? old('mobile', $contact->mobile) : null, [
-                'id' => 'mobile-input',
-                'class'=>'form-control',
-                'placeholder'=> trans('manager.contacts.form.mobile.label')
-                ]) !!}
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="notes form-group col-xs-12">
-            {!! Button::primary($submitLabel)->block()->submit() !!}
-        </div>
-    </div>
-
 </div>
+
+<div class="row">
+    <div class="form-group col-xs-4">
+        {!! Form::text('nin', null, [
+            'class'=>'form-control',
+            'placeholder'=> trans('manager.contacts.form.nin.label')
+            ]) !!}
+    </div>
+    <div class="form-group col-xs-8">
+        {!! Form::email('email', null, [
+            'class'=>'form-control',
+            'placeholder'=> trans('manager.contacts.form.email.label')
+            ]) !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-xs-4">
+        {!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
+    </div>
+    <div class="form-group col-xs-8">
+        {!! Form::text('birthdate', $contact ? old('birthdate', $contact->birthdate ? $contact->birthdate->format(trans('app.dateformat.carbon')) : null) : null, [
+            'class'=>'form-control',
+            'id'=>'birthdate',
+            'placeholder'=> trans('manager.contacts.form.birthdate.label'),
+            'title'=> trans('manager.contacts.form.birthdate.label')
+            ]) !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-xs-12">
+        {!! Form::text('mobile-input', isset($contact) ? old('mobile', $contact->mobile) : null, [
+            'id' => 'mobile-input',
+            'class'=>'form-control',
+            'placeholder'=> trans('manager.contacts.form.mobile.label')
+            ]) !!}
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-xs-12">
+        {!! Button::primary($submitLabel)->block()->submit() !!}
+    </div>
+</div>
+
 
 @section('footer_scripts')
 <script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
