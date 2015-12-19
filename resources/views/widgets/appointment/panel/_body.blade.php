@@ -17,7 +17,7 @@
 
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-user'></span>&nbsp;
-                {{ $appointment->contact->firstname }} {{ $appointment->contact->lasttname }}
+                {{ $appointment->contact->firstname }} {{ $appointment->contact->lastname }}
             </li>
 
             <li class="list-group-item">
