@@ -54,7 +54,7 @@
             {!! Form::select('gender', ['M' => trans('manager.contacts.form.gender.male.label'), 'F' => trans('manager.contacts.form.gender.female.label')], 'M', ['class'=>'selectpicker'] ) !!}
         </div>
         <div class="form-group col-xs-8">
-            {!! Form::text('birthdate', $contact ? old('birthdate', $contact->birthdate ? $contact->birthdate->toDateString() : null) : null, [
+            {!! Form::text('birthdate', $contact ? old('birthdate', $contact->birthdate ? $contact->birthdate->format(trans('app.dateformat.carbon')) : null) : null, [
                 'class'=>'form-control',
                 'id'=>'birthdate',
                 'placeholder'=> trans('manager.contacts.form.birthdate.label'),
