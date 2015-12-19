@@ -36,6 +36,13 @@
             </li>
             @endif
 
+            @if($appointment->phone)
+            <li class="list-group-item">
+                <span class='glyphicon glyphicon-phone'></span>&nbsp;
+                {{ $appointment->phone }}
+            </li>
+            @endif
+
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-calendar'></span>&nbsp;
                 {{ $appointment->date }}&nbsp;&nbsp;
