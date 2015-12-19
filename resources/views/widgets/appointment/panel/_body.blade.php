@@ -29,7 +29,7 @@
                 {{ $appointment->business->name }}
             </li>
 
-            @if($appointment->location !== null)
+            @if($appointment->location)
             <li class="list-group-item">
                 <span class='glyphicon glyphicon-map-marker'></span>&nbsp;
                 {{ $appointment->location }}
