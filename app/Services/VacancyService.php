@@ -58,8 +58,8 @@ class VacancyService
      */
     public function isAvailable(User $user)
     {
-        $vacancies = $this->removeBookedVacancies($this->business->vacancies);
-        $vacancies = $this->removeSelfBooked($vacancies, $user);
+        $vacancies = $this->strategy->removeBookedVacancies($this->business->vacancies);
+        $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
 
         return !$vacancies->isEmpty();
     }
