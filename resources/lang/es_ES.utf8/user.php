@@ -61,7 +61,7 @@ return  [
   'booking' =>  [
     'msg' =>  [
       'store' =>  [
-        'error'            => 'Ups !',
+        'error'            => 'Lo sentimos, no hay la disponibilidad está agotada para esta reserva.',
         'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
         'success'          => '¡Tomá nota! Reservamos tu cita bajo el código :code',
       ],

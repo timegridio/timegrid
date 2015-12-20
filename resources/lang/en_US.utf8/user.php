@@ -61,7 +61,7 @@ return  [
   'booking' =>  [
     'msg' =>  [
       'store' =>  [
-        'error'            => 'Sorry, we could not allocate your reservation request.',
+        'error'            => 'Sorry, there is no longer availability for the attempted reservation.',
         'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
         'success'          => 'Success! Your appointment was registered with code :code',
       ],

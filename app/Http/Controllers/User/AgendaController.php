@@ -127,7 +127,7 @@ class AgendaController extends Controller
 
             Flash::warning(trans('user.booking.msg.store.error'));
 
-            return redirect()->route('user.agenda');
+            return redirect()->back();
         }
 
         if (!$appointment->exists) {
