@@ -20,6 +20,11 @@ return  [
       'help'   => 'Permitir que se tomen citas en el mismo día',
       'label'  => 'Recibir citas en el día',
     ],
+    'appointment_flexible_arrival' => [
+      'format' => 'Si/No',
+      'help'   => 'Permitir a los clientes llegar entre los horarios de atención',
+      'label'  => 'Horario de Llegada Flexible',
+    ],
     'show_map' => [
       'format' => 'Si/No',
       'help'   => 'Quieres mostrar el mapa de tu ubicación (nivel ciudad)',

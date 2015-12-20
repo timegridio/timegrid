@@ -18,7 +18,9 @@ return  [
   ],
   'text' =>  [
     'minutes'  => 'minutes',
+    'from'     => 'from',
     'to'       => 'to',
+    'from_to'  => 'we wait for you from :from to :to',
     'today'    => 'today',
     'tomorrow' => 'tomorrow',
   ],

@@ -20,6 +20,11 @@ return [
       'help'   => 'Permit booking on the same day the reservation takes place',
       'label'  => 'Permit booking on same day',
     ],
+    'appointment_flexible_arrival' => [
+      'format' => 'Yes/No',
+      'help'   => 'Let clients arrive between opening and closing hours',
+      'label'  => 'Flexible Arrival Time',
+    ],
     'show_map' => [
       'format' => 'Yes/No',
       'help'   => 'Publish the map of your location (city level)',

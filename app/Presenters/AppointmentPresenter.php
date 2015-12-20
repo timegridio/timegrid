@@ -35,6 +35,29 @@ class AppointmentPresenter extends BasePresenter
                     ->format($format);
     }
 
+    public function arriveAt()
+    {
+        $flexibleArrival = $this->wrappedObject->business->pref('appointment_flexible_arrival');
+
+        if (!$flexibleArrival) {
+            return $this->time;
+        }
+
+        $from = $this->wrappedObject
+                    ->vacancy
+                    ->start_at
+                    ->timezone($this->wrappedObject->business->timezone)
+                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+
+        $to = $this->wrappedObject
+                   ->vacancy
+                   ->finish_at
+                   ->timezone($this->wrappedObject->business->timezone)
+                   ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+
+        return ucwords(trans('appointments.text.from_to', compact('from', 'to')));
+    }
+
     public function time()
     {
         return $this->wrappedObject
@@ -42,6 +65,7 @@ class AppointmentPresenter extends BasePresenter
                     ->timezone($this->wrappedObject->business->timezone)
                     ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
     }
+    
 
     public function finishTime()
     {

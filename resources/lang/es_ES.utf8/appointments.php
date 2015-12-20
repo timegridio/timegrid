@@ -18,7 +18,9 @@ return  [
   ],
   'text' =>  [
     'minutes'  => 'minutos',
+    'from'     => 'de',
     'to'       => 'a',
+    'from_to'  => 'te esperamos de :from a :to',
     'today'    => 'hoy',
     'tomorrow' => 'mañana',
   ],
