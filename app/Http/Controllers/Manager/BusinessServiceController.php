@@ -138,9 +138,10 @@ class BusinessServiceController extends Controller
         //////////////////
 
         $service->update([
-            'name'            => $request->get('name'),
-            'description'     => $request->get('description'),
-            'prerequisites'   => $request->get('prerequisites'),
+            'name'          => $request->get('name'),
+            'duration'      => $request->get('duration'),
+            'description'   => $request->get('description'),
+            'prerequisites' => $request->get('prerequisites'),
         ]);
 
         Flash::success(trans('manager.business.service.msg.update.success'));
