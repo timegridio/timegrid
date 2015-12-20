@@ -69,6 +69,17 @@ class ConciergeService
             ->get();
     }
 
+    public function getActiveAppointments()
+    {
+        return $appointments = $this->business
+            ->bookings()->with('contact')
+            ->with('business')
+            ->with('service')
+            ->active()
+            ->orderBy('start_at')
+            ->get();
+    }
+
     /**
      * get Vacancies.
      *

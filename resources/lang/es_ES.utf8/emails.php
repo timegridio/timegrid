@@ -11,5 +11,8 @@ return [
     'appointment' => [
       'reserved' => ['subject' => 'Te hicieron una reserva'],
     ],
+    'business' => [
+      'report' => ['subject' => ':date Agenda de :business'],
+    ],
   ],
 ];

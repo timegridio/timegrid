@@ -96,19 +96,25 @@ class SendBusinessReport extends Command
     protected function sendBusinessReport(Business $business)
     {
         $this->info("Sending to businessId:{$business->id}");
-        $appointments = $this->concierge->setBusiness($business)->getUnservedAppointments();
+        $appointments = $this->concierge->setBusiness($business)->getActiveAppointments();
 
-        $locale = app()->getLocale();
-        $viewKey = "emails.{$locale}.appointments.manager._schedule";
+        $locale = $business->locale ?: app()->getLocale();
+        app()->setLocale($locale);
 
         // Mail to User
         $mailParams = [
             'business'     => $business,
             'appointments' => $appointments,
         ];
+
+        $viewKey = "emails.{$locale}.appointments.manager._schedule";
+
         Mail::send($viewKey, $mailParams, function ($mail) use ($business) {
             $mail->to($business->owners()->first()->email, $business->owners()->first()->name)
-                 ->subject($business->name.' Schedule Report');
+                 ->subject(trans('emails.manager.business.report.subject', [
+                    'date' => date('Y-m-d'),
+                    'business' => $business->name
+                    ]));
         });
     }
 }
