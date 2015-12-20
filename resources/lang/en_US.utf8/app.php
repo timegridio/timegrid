@@ -1,6 +1,6 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:50:37 
+ Generated via "php artisan localization:missing" at 2015/12/12 14:50:37
 *************************************************************************/
 
 return  [
@@ -58,6 +58,7 @@ return  [
   ],
   'msg' =>  [
     'invalid_token' => 'We found some validation problems, please submit your form again.',
+    'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
   ],
   'name'          => 'timegrid.io',
   'notifications' =>  [
@@ -66,7 +67,6 @@ return  [
   'search' =>  [
     'msg' =>  [
       'no_results' => 'We found nothing with this criteria: :criteria',
-      'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
     ],
     'placeholder' => 'search',
   ],
