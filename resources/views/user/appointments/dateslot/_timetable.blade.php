@@ -23,11 +23,18 @@
             </div>
         </div>
 
+    <div id="moreDates">
+    {!! Button::primary(trans('user.appointments.btn.more_dates'))
+        ->asLinkTo(route('user.booking.book', ['business' => $business, 'date' => date('Y-m-d', strtotime("$startFromDate +7 days"))]))
+        ->small()
+        ->block() !!}
+    </div>
+
     </div>
 
     <table id="timetable" class="table table-condensed table-hover">
     @foreach ($dates as $date => $vacancies)
-        @if (empty($vacancies) || ($date == date('Y-m-d') && ! $includeToday))
+        @if (empty($vacancies))
         <tr class="daterow">
             <td class="dateslot disable">
                 {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))

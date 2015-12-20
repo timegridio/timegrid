@@ -79,15 +79,15 @@ class AgendaController extends Controller
 
         $includeToday = $business->pref('appointment_take_today');
 
-        $date = $this->sanitizeDate($date, $includeToday);
+        $startFromDate = $this->sanitizeDate($date, $includeToday);
 
         $this->concierge->setBusiness($business);
 
-        $availability = $this->concierge->getVacancies(auth()->user(), $date, $days);
+        $availability = $this->concierge->getVacancies(auth()->user(), $startFromDate, $days);
 
         return view(
             'user.appointments.'.$business->strategy.'.book',
-            compact('business', 'availability', 'includeToday')
+            compact('business', 'availability', 'startFromDate')
         );
     }
 
