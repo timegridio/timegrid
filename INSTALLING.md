@@ -1,4 +1,4 @@
-# Installation
+# Installating
 
 * [Step 1: Get the code](#step1)
 * [Step 2: Use Composer to install dependencies](#step2)
