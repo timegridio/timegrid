@@ -2,11 +2,21 @@
 
 Thank you for considering contributing to Timegrid.
 
-For being this a new and sprouting project, there are no strict rules for 
-contribution, as long as they tend to attach to best practices.
+> Is it your first time ? Are you new to Laravel or PHP or Github ?
 
-For Coding Style please follow the 
-[Laravel documentation](http://laravel.com/docs/contributions) guide.
+If you are willing to do your first time contribution, don't worry, you are welcome here.
+
+While there is no strict guideline right now, you are welcome to bring your ideas and pull requests.
+
+As a rule of the thumb, keep **PSR-2** and **tests** in mind.
+
+Anyway, [contact me](https://timegrid.slack.com/home) and we will figure out your first steps into contributing :)
+
+[Trello board for development roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+
+[Dev Newsletter](http://eepurl.com/bF_ARX)
+
+[![Join the chat at https://gitter.im/alariva/timegridDevelopment](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/alariva/timegridDevelopment?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # Reporting Issues
 
