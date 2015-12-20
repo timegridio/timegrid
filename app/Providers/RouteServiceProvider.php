@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
+use App\Models\Domain;
 use App\Models\Service;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
@@ -36,6 +37,9 @@ class RouteServiceProvider extends ServiceProvider
         $router->model('appointment', Appointment::class);
         $router->bind('business', function ($businessSlug) {
             return Business::where('slug', $businessSlug)->first();
+        });
+        $router->bind('domain', function ($domainSlug) {
+            return Domain::where('slug', $domainSlug)->first();
         });
     }
 

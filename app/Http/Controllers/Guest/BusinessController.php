@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Business;
+use App\Models\Domain;
 
 class BusinessController extends Controller
 {
@@ -14,11 +15,35 @@ class BusinessController extends Controller
      *
      * @return Response Rendered view for desired Business
      */
-    public function getHome(Business $business)
+    public function getHome($slug)
     {
         $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s businessSlug:%s', $business->id, $business->slug));
+        $this->log->info(sprintf('slug:%s', $slug));
+
+        if ($domain = Domain::where('slug', $slug)->first()) {
+            return $this->getDomain($domain);
+        }
+
+        $business = Business::where('slug', $slug)->first();
 
         return view('guest.businesses.show', compact('business'));
+    }
+
+    /**
+     * get Domain.
+     *
+     * @return Response Rendered view of all existing Businesses belonging to Domain
+     */
+    public function getDomain(Domain $domain)
+    {
+        $this->log->info(__METHOD__);
+
+        $businesses = $domain->businesses;
+
+        if (1 == $businesses->count()) {
+            return redirect(route('guest.business.home', $businesses->first()));
+        }
+
+        return view('guest.businesses.index', compact('businesses'));
     }
 }

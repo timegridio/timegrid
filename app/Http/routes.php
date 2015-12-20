@@ -345,7 +345,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('{business}', [
+Route::get('{slug}', [
     'as'   => 'guest.business.home',
     'uses' => 'Guest\BusinessController@getHome',
-])->where('business', '[^_]+.*');
+])->where('slug', '[^_]+.*');

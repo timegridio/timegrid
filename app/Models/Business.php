@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Presenters\BusinessPresenter;
+use App\Traits\HasDomain;
 use App\Traits\Preferenceable;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
@@ -11,7 +12,7 @@ use McCool\LaravelAutoPresenter\HasPresenter;
 
 class Business extends EloquentModel implements HasPresenter
 {
-    use Notifable, SoftDeletes, Preferenceable;
+    use Notifable, SoftDeletes, Preferenceable, HasDomain;
 
     /**
      * The attributes that are mass assignable.
