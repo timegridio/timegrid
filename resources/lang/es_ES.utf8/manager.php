@@ -6,29 +6,29 @@
 return  [
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
-  'service' =>  [
-    'form' =>  [
-      'duration' =>  [
+  'service' => [
+    'form' => [
+      'duration' => [
         'label' => 'Duración en minutos',
       ],
-      'name' =>  [
+      'name' => [
         'label' => 'Nombre del servicio',
       ],
     ],
-    'btn' =>  [
+    'btn' => [
       'delete' => 'Eliminar',
       'update' => 'Actualizar',
     ],
-    'msg' =>  [
-      'store' =>  [
+    'msg' => [
+      'store' => [
         'success' => '¡Servicio Guardado!',
       ],
     ],
   ],
   //==================================== Translations ====================================//
-  'business' =>  [
-    'btn' =>  [
-      'tooltip' =>  [
+  'business' => [
+    'btn' => [
+      'tooltip' => [
         'agenda'      => 'Agenda de Citas',
         'contacts'    => 'Lista de Contactos',
         'edit'        => 'Editar datos del Prestador',
@@ -37,38 +37,38 @@ return  [
         'vacancies'   => 'Publicar Disponibilidad',
       ],
     ],
-    'hint' =>  [
+    'hint' => [
       'out_of_vacancies' => 'Publicá tu disponibilidad<br><br>Para que puedan empezar a pedirte citas es necesario que indiques tu disponibilidad',
       'set_services'     => 'Agregá los servicios que brindás',
     ],
-    'service' =>  [
-      'msg' =>  [
-        'update' =>  [
+    'service' => [
+      'msg' => [
+        'update' => [
           'success' => 'Servicio Actualizado!',
         ],
       ],
     ],
   ],
-  'businesses' =>  [
-    'btn' =>  [
+  'businesses' => [
+    'btn' => [
       'store'  => 'Registrar',
       'update' => 'Actualizar',
     ],
-    'contacts' =>  [
-      'btn' =>  [
+    'contacts' => [
+      'btn' => [
         'create' => 'Agregar un contacto',
         'import' => 'Importar contactos',
       ],
     ],
-    'create' =>  [
+    'create' => [
       'title' => 'Registrar un prestador',
     ],
-    'dashboard' =>  [
-      'alert' =>  [
+    'dashboard' => [
+      'alert' => [
         'no_services_set'  => 'Aún no tienes servicios cargados! Hazlo aquí!',
         'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
       ],
-      'panel' =>  [
+      'panel' => [
         'title_appointments_active'    => 'Citas Activas',
         'title_appointments_annulated' => 'Citas Anuladas',
         'title_appointments_served'    => 'Citas Atendidas',
@@ -80,82 +80,82 @@ return  [
         'title_contacts_registered'    => 'Contactos Registrados',
       ],
     ],
-    'edit' =>  [
+    'edit' => [
       'title' => 'Edición de datos del prestador',
     ],
-    'form' =>  [
-      'category' =>  [
+    'form' => [
+      'category' => [
         'label' => 'Rubro Comercial',
       ],
-      'description' =>  [
+      'description' => [
         'label'       => 'Descripción',
         'placeholder' => 'Describe al prestador',
       ],
-      'name' =>  [
+      'name' => [
         'label'       => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
         'validation'  => 'Se requiere nombre',
       ],
-      'phone' =>  [
+      'phone' => [
         'label'       => 'Móvil',
         'placeholder' => 'tu móvil de contacto',
       ],
-      'postal_address' =>  [
+      'postal_address' => [
         'label'       => 'Dirección Postal',
         'placeholder' => 'altura calle, barrio, ciudad, país',
       ],
-      'slug' =>  [
+      'slug' => [
         'label'       => 'Alias',
         'placeholder' => 'así será el link en la web',
         'validation'  => 'Se requiere un alias',
       ],
-      'social_facebook' =>  [
+      'social_facebook' => [
         'label'       => 'URL Página de Facebook',
         'placeholder' => 'https://facebook.com/tu-pagina-de-facebook',
       ],
-      'timezone' =>  [
+      'timezone' => [
         'label' => 'Zona Horaria',
       ],
     ],
-    'index' =>  [
+    'index' => [
       'help' => 'Desde aquí puedes administrar todos los prestadores',
-      'msg'  =>  [
+      'msg'  => [
         'no_appointments' => 'No hay citas reservadas en este momento.',
       ],
       'register_business_help' => 'Si eres prestador y quieres dar citas online, es tu oportunidad!',
       'title'                  => 'Mis Prestaciones',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'Prestador removido',
       ],
-      'index' =>  [
+      'index' => [
         'only_one_found' => 'Sólo tienes este negocio registrado.',
       ],
-      'preferences' =>  [
+      'preferences' => [
         'success' => 'Actualizaste las preferencias Ok',
       ],
       'register' => 'Registrar prestación',
-      'store'    =>  [
+      'store'    => [
         'business_already_exists' => 'El prestador ya está registrado',
         'success'                 => 'Prestador registrado',
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Datos del prestador actualizados',
       ],
     ],
-    'preferences' =>  [
+    'preferences' => [
       'instructions' => 'Aquí puedes configurar las preferencias a las necesidades de tu negocio',
       'title'        => 'Preferencias del prestador',
     ],
-    'vacancies' =>  [
-      'btn' =>  [
+    'vacancies' => [
+      'btn' => [
         'update' => 'Actualizar Disponibilidad',
       ],
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'confirm_delete' => '¿Seguro querés eliminar el contacto?',
       'delete'         => 'Eliminar',
       'edit'           => 'Editar',
@@ -163,55 +163,55 @@ return  [
       'store'          => 'Guardar',
       'update'         => 'Actualizar',
     ],
-    'create' =>  [
+    'create' => [
       'title' => 'Contactos',
     ],
-    'form' =>  [
-      'birthdate' =>  [
+    'form' => [
+      'birthdate' => [
         'label' => 'Nacimiento',
       ],
-      'data' =>  [
+      'data' => [
         'label' => 'datos en formato CSV',
       ],
-      'description' =>  [
+      'description' => [
         'label' => 'Descripción',
       ],
-      'email' =>  [
+      'email' => [
         'label' => 'Email',
       ],
-      'firstname' =>  [
+      'firstname' => [
         'label'      => 'Nombre',
         'validation' => 'Se requiere su primer nombre',
       ],
-      'gender' =>  [
-        'female' =>  [
+      'gender' => [
+        'female' => [
           'label' => 'Femenino',
         ],
-        'male' =>  [
+        'male' => [
           'label' => 'Masculino',
         ],
       ],
-      'lastname' =>  [
+      'lastname' => [
         'label'      => 'Apellido',
         'validation' => 'Se requiere su apellido',
       ],
-      'mobile' =>  [
+      'mobile' => [
         'label' => 'Móvil',
       ],
-      'nin' =>  [
+      'nin' => [
         'label' => 'DNI',
       ],
-      'notes' =>  [
+      'notes' => [
         'label' => 'Notas',
       ],
-      'prerequisites' =>  [
+      'prerequisites' => [
         'label' => 'Prerequisitos',
       ],
     ],
-    'import' =>  [
+    'import' => [
       'title' => 'Importar contactos',
     ],
-    'label' =>  [
+    'label' => [
       'birthdate'    => 'Nacimiento',
       'email'        => 'Email',
       'member_since' => 'Suscripto desde',
@@ -219,11 +219,11 @@ return  [
       'nin'          => 'DNI',
       'notes'        => 'Notas',
     ],
-    'list' =>  [
-      'btn' =>  [
+    'list' => [
+      'btn' => [
         'filter' => 'Filtro',
       ],
-      'header' =>  [
+      'header' => [
         'email'     => 'Email',
         'firstname' => 'Nombre',
         'lastname'  => 'Apellidos',
@@ -231,68 +231,68 @@ return  [
         'quality'   => 'Puntaje',
         'username'  => 'Usuario',
       ],
-      'msg' =>  [
+      'msg' => [
         'filter_no_results' => 'Nada por aquí',
       ],
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => '¡Contacto eliminado!',
       ],
-      'import' =>  [
+      'import' => [
         'success' => ':count Contactos importados',
       ],
-      'store' =>  [
+      'store' => [
         'success'                          => '¡Contacto registrado Ok!',
         'warning_showing_existing_contact' => 'Encontramos el contacto ya registrado',
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Actualizado Ok',
       ],
     ],
     'title' => 'Mis Clientes',
   ],
-  'services' =>  [
-    'btn' =>  [
+  'services' => [
+    'btn' => [
       'create' => 'Agregar un servicio',
       'store'  => 'Guardar',
     ],
-    'create' =>  [
-      'alert' =>  [
+    'create' => [
+      'alert' => [
         'go_to_vacancies' => '¡Muy bien! Ya podés indicar tu disponibilidad y hacerla visible a tus clientes',
       ],
-      'btn' =>  [
+      'btn' => [
         'go_to_vacancies' => 'Publicar disponibilidad',
       ],
       'instructions' => 'Aquí puedes dar de alta los servicios que prestas. Cada uno podrá ser reservado para una y por la cantidad de citas que admitas',
       'title'        => 'Agregar un servicio',
     ],
-    'index' =>  [
+    'index' => [
       'instructions' => 'Estos son tus servicios',
       'title'        => 'Servicios',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => '¡Servicio eliminado!',
       ],
     ],
   ],
-  'vacancies' =>  [
-    'edit' =>  [
+  'vacancies' => [
+    'edit' => [
       'instructions' => 'Aquí puedes editar y publicar tu disponibilidad para cada servicio por cada fecha.',
       'title'        => 'Disponibilidades',
     ],
-    'msg' =>  [
-      'edit' =>  [
+    'msg' => [
+      'edit' => [
         'no_services' => 'No hay servicios registrados. Favor de registrar servicios para tu negocio.',
       ],
-      'store' =>  [
+      'store' => [
         'nothing_changed' => 'Debés completar tu disponibilidad para alguna fecha',
         'success'         => 'Disponibilidades registradas!',
       ],
     ],
-    'table' =>  [
-      'th' =>  [
+    'table' => [
+      'th' => [
         'date' => 'Fecha',
       ],
     ],

@@ -112,8 +112,8 @@ class SendBusinessReport extends Command
         Mail::send($viewKey, $mailParams, function ($mail) use ($business) {
             $mail->to($business->owners()->first()->email, $business->owners()->first()->name)
                  ->subject(trans('emails.manager.business.report.subject', [
-                    'date' => date('Y-m-d'),
-                    'business' => $business->name
+                    'date'     => date('Y-m-d'),
+                    'business' => $business->name,
                     ]));
         });
     }

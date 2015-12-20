@@ -40,8 +40,8 @@ class BusinessController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $concierge = new ConciergeService(new VacancyService);
-        
+        $concierge = new ConciergeService(new VacancyService());
+
         $concierge->setBusiness($business);
 
         $available = $concierge->isAvailable(auth()->user());

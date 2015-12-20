@@ -227,7 +227,7 @@ class Contact extends EloquentModel implements HasPresenter
             return $this->user->email;
         }
 
-        return null;
+        return;
     }
 
     /**

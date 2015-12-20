@@ -5,45 +5,45 @@
 
 return  [
   //==================================== Translations ====================================//
-  'appointments' =>  [
-    'alert' =>  [
+  'appointments' => [
+    'alert' => [
       'empty_list'   => 'You have no ongoing reservations by now.',
       'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
     ],
-    'btn' =>  [
+    'btn' => [
       'book'        => 'Book appointment',
       'book_in_biz' => 'Book appointment for :biz',
       'more_dates'  => 'Check more dates',
     ],
-    'form' =>  [
-      'btn' =>  [
+    'form' => [
+      'btn' => [
         'submit' => 'Confirm',
       ],
-      'comments' =>  [
+      'comments' => [
         'label' => 'Comments',
       ],
-      'date' =>  [
+      'date' => [
         'label' => 'Date',
       ],
-      'duration' =>  [
+      'duration' => [
         'label' => 'Duration',
       ],
-      'service' =>  [
+      'service' => [
         'label' => 'Service',
       ],
-      'time' =>  [
+      'time' => [
         'label' => 'Hour',
       ],
-      'timetable' =>  [
+      'timetable' => [
         'instructions' => 'Select a service to reserve',
-        'msg'          =>  [
+        'msg'          => [
           'no_vacancies' => 'There is no availability for this date',
         ],
         'title' => 'Reserve appointment',
       ],
     ],
-    'index' =>  [
-      'th' =>  [
+    'index' => [
+      'th' => [
         'business'    => 'Business',
         'calendar'    => 'Date',
         'code'        => 'Code',
@@ -58,9 +58,9 @@ return  [
       'title' => 'Appointments',
     ],
   ],
-  'booking' =>  [
-    'msg' =>  [
-      'store' =>  [
+  'booking' => [
+    'msg' => [
+      'store' => [
         'error'            => 'Sorry, there is no longer availability for the attempted reservation.',
         'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
         'success'          => 'Success! Your appointment was registered with code :code',
@@ -68,63 +68,63 @@ return  [
       'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
     ],
   ],
-  'business' =>  [
-    'btn' =>  [
+  'business' => [
+    'btn' => [
       'subscribe' => 'Subscribe',
     ],
   ],
-  'businesses' =>  [
-    'index' =>  [
-      'btn' =>  [
+  'businesses' => [
+    'index' => [
+      'btn' => [
         'create'       => 'Register business',
         'manage'       => 'My businesses',
         'power_create' => 'Register now',
       ],
       'title' => 'Available businesses',
     ],
-    'list' =>  [
+    'list' => [
       'no_businesses' => 'No businesses available.',
     ],
-    'subscriptions' =>  [
+    'subscriptions' => [
       'none_found' => 'No subscriptions available.',
       'title'      => 'Subscriptions',
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'store'  => 'Save',
       'update' => 'Update',
     ],
-    'create' =>  [
+    'create' => [
       'help'  => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
       'title' => 'My profile',
     ],
-    'msg' =>  [
-      'store' =>  [
+    'msg' => [
+      'store' => [
         'associated_existing_contact' => 'Your profile was attached to an existing one',
         'success'                     => 'Successfully saved',
-        'warning'                     =>  [
+        'warning'                     => [
           'already_registered' => 'This profile was already registered',
         ],
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Updated successfully',
       ],
     ],
   ],
-  'dashboard' =>  [
-    'card' =>  [
-      'agenda' =>  [
+  'dashboard' => [
+    'card' => [
+      'agenda' => [
         'button'      => 'See Agenda',
         'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
         'title'       => 'One appointment|[2,Inf] Your appointments',
       ],
-      'directory' =>  [
+      'directory' => [
         'button'      => 'Browse Directory',
         'description' => 'Browse the directory and book your service.',
         'title'       => 'Directory',
       ],
-      'subscriptions' =>  [
+      'subscriptions' => [
         'button'      => 'See Subscriptions',
         'description' => 'Manage your subscriptions to businesses.',
         'title'       => 'Subscriptions',

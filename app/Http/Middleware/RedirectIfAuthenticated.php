@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Http\RedirectResponse;
 
 class RedirectIfAuthenticated
 {
@@ -47,8 +46,8 @@ class RedirectIfAuthenticated
     /**
      * Redirect after authenticated.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  App\Models\User         $user
+     * @param \Illuminate\Http\Request $request
+     * @param App\Models\User          $user
      *
      * @return Illuminate\Support\Facades\Redirect
      */

@@ -6,17 +6,17 @@
 return  [
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/widgets/appointment/panel/_body.blade.php
-  'advice' =>  [
+  'advice' => [
     'annulation_deadline_past_due' => 'Esta cita ya no es anulable.',
   ],
   //==================================== Translations ====================================//
-  'status' =>  [
+  'status' => [
     'annulated' => 'Anulada',
     'confirmed' => 'Confirmada',
     'reserved'  => 'Reservada',
     'served'    => 'Servida',
   ],
-  'text' =>  [
+  'text' => [
     'minutes'  => 'minutos',
     'from'     => 'de',
     'to'       => 'a',

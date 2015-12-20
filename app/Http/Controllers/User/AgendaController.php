@@ -159,7 +159,7 @@ class AgendaController extends Controller
             return 'tomorrow';
         }
 
-        if($date->isPast() && !$includeToday){
+        if ($date->isPast() && !$includeToday) {
             return 'tomorrow';
         }
 

@@ -50,14 +50,14 @@ class SendAppointmentConfirmationNotification
     /**
      * Load localized email view and send email.
      *
-     * @param  array  $header
-     * @param  array  $params
-     * @param  string $view   Tail of view path after locale
-     * @param  string $locale
+     * @param array  $header
+     * @param array  $params
+     * @param string $view   Tail of view path after locale
+     * @param string $locale
+     *
+     * @throws \Exception 'Email view does not exist'
      *
      * @return void
-     *
-     * @throws  \Exception 'Email view does not exist'
      */
     protected function sendMail(array $header, array $params, $view, $locale = null)
     {

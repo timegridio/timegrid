@@ -6,12 +6,12 @@
 return  [
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'nav' =>  [
+  'nav' => [
     'dashboard' => 'Panel de Control',
     'login'     => 'Iniciar Sesión',
     'logout'    => 'Salir',
-    'manager'   =>  [
-      'business' =>  [
+    'manager'   => [
+      'business' => [
         'list'     => 'Listar',
         'menu'     => 'Mis Prestaciones',
         'register' => 'Registrar Prestación',
@@ -19,8 +19,8 @@ return  [
     ],
     'manual'   => 'Manual de usuario',
     'register' => 'Registrarme',
-    'user'     =>  [
-      'business' =>  [
+    'user'     => [
+      'business' => [
         'menu'             => 'Directorio',
         'my_appointments'  => 'Mis citas',
         'my_subscriptions' => 'Mis Suscripciones',
@@ -30,42 +30,42 @@ return  [
     'wizard' => 'Ayuda',
   ],
   //==================================== Translations ====================================//
-  'btn' =>  [
+  'btn' => [
     'update' => 'Actualizar',
   ],
-  'business' =>  [
-    'category' =>  [
+  'business' => [
+    'category' => [
       'doctor'      => 'Salud',
       'garage'      => 'Mecánica',
       'photography' => 'Fotografía',
     ],
   ],
-  'dateformat' =>  [
+  'dateformat' => [
     'carbon'         => 'd/m/Y',
     'datetimepicker' => 'DD/MM/YYYY',
   ],
-  'footer' =>  [
+  'footer' => [
     'demo'  => 'Recuerda que ésto es un DEMO',
     'local' => 'Estás en LOCAL',
   ],
-  'gender' =>  [
+  'gender' => [
     'F' => 'Mujer',
     'M' => 'Hombre',
   ],
-  'label' =>  [
+  'label' => [
     'attention'       => 'Tenga en cuenta',
     'select_timezone' => 'Zona horaria',
   ],
-  'msg' =>  [
-    'invalid_token' => 'Por favor envía el formulario nuevamente.',
+  'msg' => [
+    'invalid_token'     => 'Por favor envía el formulario nuevamente.',
     'general_exception' => 'Disculpas, hubo un problema. No te preocupes, estamos trabajando en ello ;)',
   ],
   'name'          => 'timegrid.io',
-  'notifications' =>  [
+  'notifications' => [
     'title' => 'Recientemente',
   ],
-  'search' =>  [
-    'msg' =>  [
+  'search' => [
+    'msg' => [
       'no_results' => 'Sin resultados',
     ],
     'placeholder' => 'Buscar',

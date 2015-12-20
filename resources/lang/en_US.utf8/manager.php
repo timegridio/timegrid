@@ -6,29 +6,29 @@
 return  [
   //============================== New strings to translate ==============================//
   // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
-  'service' =>  [
-    'form' =>  [
-      'duration' =>  [
+  'service' => [
+    'form' => [
+      'duration' => [
         'label' => 'Duration in minutes',
       ],
-      'name' =>  [
+      'name' => [
         'label' => 'Service name',
       ],
     ],
-    'btn' =>  [
+    'btn' => [
       'delete' => 'Delete',
       'update' => 'Update',
     ],
-    'msg' =>  [
-      'store' =>  [
+    'msg' => [
+      'store' => [
         'success' => 'Service stored successfully!',
       ],
     ],
   ],
   //==================================== Translations ====================================//
-  'business' =>  [
-    'btn' =>  [
-      'tooltip' =>  [
+  'business' => [
+    'btn' => [
+      'tooltip' => [
         'agenda'      => 'Reservations schedule',
         'contacts'    => 'Contact list',
         'edit'        => 'Edit business profile',
@@ -37,38 +37,38 @@ return  [
         'vacancies'   => 'Publish availability',
       ],
     ],
-    'hint' =>  [
+    'hint' => [
       'out_of_vacancies' => 'Publish your availability<br><br>For clients to begin taking reservations you need to publish your availability.',
       'set_services'     => 'Add the services you provide',
     ],
-    'service' =>  [
-      'msg' =>  [
-        'update' =>  [
+    'service' => [
+      'msg' => [
+        'update' => [
           'success' => 'Service updated!',
         ],
       ],
     ],
   ],
-  'businesses' =>  [
-    'btn' =>  [
+  'businesses' => [
+    'btn' => [
       'store'  => 'Register',
       'update' => 'Update',
     ],
-    'contacts' =>  [
-      'btn' =>  [
+    'contacts' => [
+      'btn' => [
         'create' => 'Add a contact',
         'import' => 'Import contacts',
       ],
     ],
-    'create' =>  [
+    'create' => [
       'title' => 'Register a business',
     ],
-    'dashboard' =>  [
-      'alert' =>  [
+    'dashboard' => [
+      'alert' => [
         'no_services_set'  => 'There are still no services added. Add them from here!',
         'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
       ],
-      'panel' =>  [
+      'panel' => [
         'title_appointments_active'    => 'Appointments Active',
         'title_appointments_annulated' => 'Appointments Annulated',
         'title_appointments_served'    => 'Appointments Served',
@@ -80,82 +80,82 @@ return  [
         'title_contacts_registered'    => 'Contacts Registered',
       ],
     ],
-    'edit' =>  [
+    'edit' => [
       'title' => 'Business profile edit',
     ],
-    'form' =>  [
-      'category' =>  [
+    'form' => [
+      'category' => [
         'label' => 'Industry',
       ],
-      'description' =>  [
+      'description' => [
         'label'       => 'Describe yourself',
         'placeholder' => 'Describe your business and the services you provide',
       ],
-      'name' =>  [
+      'name' => [
         'label'       => 'Name',
         'placeholder' => 'Commercial name',
         'validation'  => 'A name is required',
       ],
-      'phone' =>  [
+      'phone' => [
         'label'       => 'Mobile',
         'placeholder' => 'your mobile number',
       ],
-      'postal_address' =>  [
+      'postal_address' => [
         'label'       => 'Postal Address',
         'placeholder' => 'street name and number, area, city, country',
       ],
-      'slug' =>  [
+      'slug' => [
         'label'       => 'Alias',
         'placeholder' => 'this will be your timegrid URL',
         'validation'  => 'An alias is required',
       ],
-      'social_facebook' =>  [
+      'social_facebook' => [
         'label'       => 'Your Facebook Page URL',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ],
-      'timezone' =>  [
+      'timezone' => [
         'label' => 'TimeZone',
       ],
     ],
-    'index' =>  [
+    'index' => [
       'help' => 'From here you can manage all your businesses',
-      'msg'  =>  [
+      'msg'  => [
         'no_appointments' => 'There are no active appointments right now',
       ],
       'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
       'title'                  => 'My businesses',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'Business removed',
       ],
-      'index' =>  [
+      'index' => [
         'only_one_found' => 'You only have one business registered. Here your dashboard.',
       ],
-      'preferences' =>  [
+      'preferences' => [
         'success' => 'Successfully updated preferences!',
       ],
       'register' => 'Great! We are going to register your business with :plan plan',
-      'store'    =>  [
+      'store'    => [
         'business_already_exists' => 'The business is already registered',
         'success'                 => 'Business successfully registered',
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Updated business data',
       ],
     ],
-    'preferences' =>  [
+    'preferences' => [
       'instructions' => 'Here you can customize the business settings to your needs.',
       'title'        => 'Business preferences',
     ],
-    'vacancies' =>  [
-      'btn' =>  [
+    'vacancies' => [
+      'btn' => [
         'update' => 'Update availability',
       ],
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'confirm_delete' => 'Sure to delete contact?',
       'delete'         => 'Delete',
       'edit'           => 'Edit',
@@ -163,55 +163,55 @@ return  [
       'store'          => 'Save',
       'update'         => 'Update',
     ],
-    'create' =>  [
+    'create' => [
       'title' => 'Contacts',
     ],
-    'form' =>  [
-      'birthdate' =>  [
+    'form' => [
+      'birthdate' => [
         'label' => 'Birthdate',
       ],
-      'data' =>  [
+      'data' => [
         'label' => 'CSV data',
       ],
-      'description' =>  [
+      'description' => [
         'label' => 'Description',
       ],
-      'email' =>  [
+      'email' => [
         'label' => 'Email',
       ],
-      'firstname' =>  [
+      'firstname' => [
         'label'      => 'Name',
         'validation' => 'Name is required',
       ],
-      'gender' =>  [
-        'female' =>  [
+      'gender' => [
+        'female' => [
           'label' => 'Female',
         ],
-        'male' =>  [
+        'male' => [
           'label' => 'Male',
         ],
       ],
-      'lastname' =>  [
+      'lastname' => [
         'label'      => 'Last name',
         'validation' => 'Last name is required',
       ],
-      'mobile' =>  [
+      'mobile' => [
         'label' => 'Mobile',
       ],
-      'nin' =>  [
+      'nin' => [
         'label' => 'ID',
       ],
-      'notes' =>  [
+      'notes' => [
         'label' => 'Notes',
       ],
-      'prerequisites' =>  [
+      'prerequisites' => [
         'label' => 'Prerequisites',
       ],
     ],
-    'import' =>  [
+    'import' => [
       'title' => 'Import contacts',
     ],
-    'label' =>  [
+    'label' => [
       'birthdate'    => 'Birthdate',
       'email'        => 'Email',
       'member_since' => 'Subscribed since',
@@ -219,11 +219,11 @@ return  [
       'nin'          => 'ID',
       'notes'        => 'Notes',
     ],
-    'list' =>  [
-      'btn' =>  [
+    'list' => [
+      'btn' => [
         'filter' => 'Filter',
       ],
-      'header' =>  [
+      'header' => [
         'email'     => 'Email',
         'firstname' => 'Name',
         'lastname'  => 'Lastname',
@@ -231,68 +231,68 @@ return  [
         'quality'   => 'Score',
         'username'  => 'Username',
       ],
-      'msg' =>  [
+      'msg' => [
         'filter_no_results' => 'Nothing here',
       ],
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'Contact deleted!',
       ],
-      'import' =>  [
+      'import' => [
         'success' => ':count imported contacts',
       ],
-      'store' =>  [
+      'store' => [
         'success'                          => 'Contact registered successfully!',
         'warning_showing_existing_contact' => 'Advice: We found this existing contact',
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Updated successfully',
       ],
     ],
     'title' => 'My customers',
   ],
-  'services' =>  [
-    'btn' =>  [
+  'services' => [
+    'btn' => [
       'create' => 'Add a service',
       'store'  => 'Save',
     ],
-    'create' =>  [
-      'alert' =>  [
+    'create' => [
+      'alert' => [
         'go_to_vacancies' => 'Well done! Now you can publish your availability.',
       ],
-      'btn' =>  [
+      'btn' => [
         'go_to_vacancies' => 'Set and publish my availability',
       ],
       'instructions' => 'Give a name to your service, a wide description to help your customers be familiar with it.Add any instructions for your customers before they get to the appointment.',
       'title'        => 'Add a service',
     ],
-    'index' =>  [
+    'index' => [
       'instructions' => 'Add as many services as you provide to configure availability for each of them.',
       'title'        => 'Services',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'Service deleted!',
       ],
     ],
   ],
-  'vacancies' =>  [
-    'edit' =>  [
+  'vacancies' => [
+    'edit' => [
       'instructions' => 'Enter the appointments capacity for each service on each day day. This is, how may appointments can you handle per service per day?',
       'title'        => 'Availability',
     ],
-    'msg' =>  [
-      'edit' =>  [
+    'msg' => [
+      'edit' => [
         'no_services' => 'No services registered. Please register services for your business.',
       ],
-      'store' =>  [
+      'store' => [
         'nothing_changed' => 'You must indicate your availability at least for one date',
         'success'         => 'Availability registered successfully!',
       ],
     ],
-    'table' =>  [
-      'th' =>  [
+    'table' => [
+      'th' => [
         'date' => 'Date',
       ],
     ],

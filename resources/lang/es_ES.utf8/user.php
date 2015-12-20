@@ -5,45 +5,45 @@
 
 return  [
   //==================================== Translations ====================================//
-  'appointments' =>  [
-    'alert' =>  [
+  'appointments' => [
+    'alert' => [
       'empty_list'   => 'No tienes reservas en curso ahora.',
       'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
     ],
-    'btn' =>  [
+    'btn' => [
       'book'        => 'Reservar Cita',
       'book_in_biz' => 'Reservar cita en :biz',
       'more_dates'  => 'Ver más fechas',
     ],
-    'form' =>  [
-      'btn' =>  [
+    'form' => [
+      'btn' => [
         'submit' => 'Confirmar',
       ],
-      'comments' =>  [
+      'comments' => [
         'label' => 'Comentarios',
       ],
-      'date' =>  [
+      'date' => [
         'label' => 'Fecha',
       ],
-      'duration' =>  [
+      'duration' => [
         'label' => 'Duración',
       ],
-      'service' =>  [
+      'service' => [
         'label' => 'Servicio',
       ],
-      'time' =>  [
+      'time' => [
         'label' => 'Hora',
       ],
-      'timetable' =>  [
+      'timetable' => [
         'instructions' => 'Selecciona un servicio para reservar cita',
-        'msg'          =>  [
+        'msg'          => [
           'no_vacancies' => 'No hay disponibilidades para esta fecha',
         ],
         'title' => 'Reserva una cita',
       ],
     ],
-    'index' =>  [
-      'th' =>  [
+    'index' => [
+      'th' => [
         'business'    => 'Prestador',
         'calendar'    => 'Fecha',
         'code'        => 'Código',
@@ -58,9 +58,9 @@ return  [
       'title' => 'Citas',
     ],
   ],
-  'booking' =>  [
-    'msg' =>  [
-      'store' =>  [
+  'booking' => [
+    'msg' => [
+      'store' => [
         'error'            => 'Lo sentimos, no hay la disponibilidad está agotada para esta reserva.',
         'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
         'success'          => '¡Tomá nota! Reservamos tu cita bajo el código :code',
@@ -68,63 +68,63 @@ return  [
       'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
     ],
   ],
-  'business' =>  [
-    'btn' =>  [
+  'business' => [
+    'btn' => [
       'subscribe' => 'Suscribir',
     ],
   ],
-  'businesses' =>  [
-    'index' =>  [
-      'btn' =>  [
+  'businesses' => [
+    'index' => [
+      'btn' => [
         'create'       => 'Registrar Prestación',
         'manage'       => 'Mis Prestaciones',
         'power_create' => 'Registrá tu comercio ahora',
       ],
       'title' => 'Prestadores disponibles',
     ],
-    'list' =>  [
+    'list' => [
       'no_businesses' => 'No se econtraron prestadores.',
     ],
-    'subscriptions' =>  [
+    'subscriptions' => [
       'none_found' => 'No hay suscripciones disponibles.',
       'title'      => 'Suscripciones',
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'store'  => 'Guardar',
       'update' => 'Editar',
     ],
-    'create' =>  [
+    'create' => [
       'help'  => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
     ],
-    'msg' =>  [
-      'store' =>  [
+    'msg' => [
+      'store' => [
         'associated_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',
         'success'                     => 'Guardado',
-        'warning'                     =>  [
+        'warning'                     => [
           'already_registered' => 'Se asoció tu perfil a los datos ya registrados',
         ],
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Actualizado',
       ],
     ],
   ],
-  'dashboard' =>  [
-    'card' =>  [
-      'agenda' =>  [
+  'dashboard' => [
+    'card' => [
+      'agenda' => [
         'button'      => 'Ver Agenda',
         'description' => 'Revisa tu cita actual en agenda.|[2, Inf] Revisa tus citas actuales en agenda.',
         'title'       => 'Tu Cita|[2, Inf] Tus Citas',
       ],
-      'directory' =>  [
+      'directory' => [
         'button'      => 'Ver Directorio',
         'description' => 'Conoce los comercions en los que puedes reservar servicios.',
         'title'       => 'Directorio',
       ],
-      'subscriptions' =>  [
+      'subscriptions' => [
         'button'      => 'Mis Suscripciones',
         'description' => 'Revisa los comercios a los que ya estás suscripto.',
         'title'       => 'Suscripciones',

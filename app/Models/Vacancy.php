@@ -211,11 +211,11 @@ class Vacancy extends EloquentModel
     public function getRoomBetween(Carbon $startAt, Carbon $finishAt)
     {
         if (!($this->start_at <= $startAt && $this->finish_at >= $finishAt)) {
-            return null;
+            return;
         }
 
         $count = $this->appointments()->active()->affectingInterval($startAt, $finishAt)->count();
-        
+
         return $this->capacity - intval($count);
     }
 

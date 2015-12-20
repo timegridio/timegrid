@@ -65,7 +65,6 @@ class AppointmentPresenter extends BasePresenter
                     ->timezone($this->wrappedObject->business->timezone)
                     ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
     }
-    
 
     public function finishTime()
     {
