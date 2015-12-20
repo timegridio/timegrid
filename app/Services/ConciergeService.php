@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\BookingStrategy;
+use App\Events\AppointmentWasConfirmed;
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
@@ -184,6 +185,7 @@ class ConciergeService
                 break;
             case 'confirm':
                 $appointment->doConfirm();
+                event(new AppointmentWasConfirmed($user, $appointment));
                 break;
             case 'serve':
                 $appointment->doServe();

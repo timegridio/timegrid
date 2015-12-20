@@ -4,7 +4,8 @@ return [
   'user' => [
     'welcome'     => ['subject' => 'Bienvenido a timegrid.io'],
     'appointment' => [
-      'reserved' => ['subject' => 'Información de tu reserva'],
+      'reserved'  => ['subject' => 'Información de tu reserva'],
+      'confirmed' => ['subject' => 'Tu cita en :business fue confirmada'],
     ],
   ],
   'manager' => [

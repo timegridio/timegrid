@@ -217,7 +217,18 @@ class Contact extends EloquentModel implements HasPresenter
     // ACCESSORS //
     ///////////////
 
-    //
+    public function getEmailAttribute()
+    {
+        if ($email = array_get($this->attributes, 'email')) {
+            return $email;
+        }
+
+        if ($this->user) {
+            return $this->user->email;
+        }
+
+        return null;
+    }
 
     /**
      * link Contact to existing User if any.

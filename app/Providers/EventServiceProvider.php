@@ -23,6 +23,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\NewContactWasRegistered' => [
             'App\Handlers\Events\LinkContactToExistingUser',
         ],
+        'App\Events\AppointmentWasConfirmed' => [
+            'App\Handlers\Events\SendAppointmentConfirmationNotification',
+        ],
     ];
 
     /**
