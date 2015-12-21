@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
-use Illuminate\Support\Facades\Config;
 
 class Preference extends EloquentModel
 {
@@ -45,8 +44,8 @@ class Preference extends EloquentModel
     public static function getDefault($model, $key)
     {
         $class = get_class($model);
-        $value = Config::get("preferences.{$class}.{$key}.value");
-        $type = Config::get("preferences.{$class}.{$key}.type");
+        $value = config("preferences.{$class}.{$key}.value");
+        $type = config("preferences.{$class}.{$key}.type");
 
         return new self([
             'key'                 => $key,
