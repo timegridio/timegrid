@@ -50,7 +50,7 @@ class SendBookingNotification
             'name'  => $event->user->name,
             'email' => $event->user->email,
         ];
-        $this->transmail->locale($business->locale)
+        $this->transmail->locale($event->appointment->business->locale)
                         ->template('appointments.user._new')
                         ->subject('user.appointment.reserved.subject')
                         ->send($header, $params);

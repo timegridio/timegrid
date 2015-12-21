@@ -50,7 +50,7 @@ class SendAppointmentConfirmationNotification
             'name'  => $event->appointment->contact->firstname,
             'email' => $event->appointment->contact->email,
         ];
-        $this->transmail->locale($business->locale)
+        $this->transmail->locale($event->appointment->business->locale)
                         ->template('appointments.user._confirmed')
                         ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
                         ->send($header, $params);
