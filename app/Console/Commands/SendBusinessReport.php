@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\Business;
 use App\Services\ConciergeService;
+use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,13 +32,20 @@ class SendBusinessReport extends Command
     protected $concierge;
 
     /**
+     * @var TransMail
+     */
+    protected $transmail;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(ConciergeService $concierge, TransMail $transmail)
     {
         $this->concierge = $concierge;
+
+        $this->transmail = $transmail;
 
         parent::__construct();
     }
@@ -95,26 +103,21 @@ class SendBusinessReport extends Command
      */
     protected function sendBusinessReport(Business $business)
     {
+        $this->info(__METHOD__);
         $this->info("Sending to businessId:{$business->id}");
+        
         $appointments = $this->concierge->setBusiness($business)->getActiveAppointments();
 
-        $locale = $business->locale ?: app()->getLocale();
-        app()->setLocale($locale);
+        $owner = $business->owners()->first();
 
         // Mail to User
-        $mailParams = [
-            'business'     => $business,
-            'appointments' => $appointments,
+        $header = [
+            'email' => $owner->email,
+            'name' => $owner->name
         ];
-
-        $viewKey = "emails.{$locale}.appointments.manager._schedule";
-
-        Mail::send($viewKey, $mailParams, function ($mail) use ($business) {
-            $mail->to($business->owners()->first()->email, $business->owners()->first()->name)
-                 ->subject(trans('emails.manager.business.report.subject', [
-                    'date'     => date('Y-m-d'),
-                    'business' => $business->name,
-                    ]));
-        });
+        $this->transmail->locale($business->locale)
+                        ->template('appointments.manager._schedule')
+                        ->subject('manager.business.report.subject', ['date' => date('Y-m-d'), 'business' => $business->name])
+                        ->send($header, compact('business', 'appointments'));
     }
 }
