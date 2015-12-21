@@ -114,7 +114,10 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         $limit = Carbon::parse($endKey);
 
         while ($fromTime <= $limit) {
-            $times[$fromTime->timezone($vacancy->business->timezone)->toTimeString()] = $vacancy->getRoomBetween($fromTime, $toTime);
+            $key = $fromTime->timezone($vacancy->business->timezone)->toTimeString();
+            
+            $times[$key] = $vacancy->getRoomBetween($fromTime, $toTime);
+            
             $toTime->addMinutes($step);
             $fromTime->addMinutes($step);
         }
