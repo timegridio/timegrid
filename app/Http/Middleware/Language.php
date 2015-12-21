@@ -60,13 +60,13 @@ class Language implements Middleware
      * Search all AgentLangs aming app available Langs.
      *
      * @param array $agentPreferredLocale
-     * @param array $configAcceptedLocales
+     * @param array $appAcceptedLocales
      *
      * @return string
      */
-    protected function searchAgent($agentPreferredLocale, $configAcceptedLocales)
+    protected function searchAgent($agentPreferredLocale, $appAcceptedLocales)
     {
-        $availableLangs = $this->normalizeArrayKeys($configAcceptedLocales);
+        $availableLangs = $this->normalizeArrayKeys($appAcceptedLocales);
         $agentPreferredLocale = $this->normalizeArrayValues($agentPreferredLocale);
 
         foreach ($agentPreferredLocale as $agentLang) {
