@@ -14,7 +14,7 @@ if (!function_exists('setGlobalLocale')) {
     {
         app()->setLocale($posixLocale);
         setlocale(LC_TIME, $posixLocale);
-        Carbon::setLocale(\Locale::getPrimaryLanguage($posixLocale));
+        Carbon::setLocale(locale_get_primary_language($posixLocale));
     }
 }
 
