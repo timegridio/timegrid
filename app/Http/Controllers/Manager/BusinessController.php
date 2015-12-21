@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
 use App\Models\Business;
 use App\Models\Category;
-use App\SearchEngine;
 use App\Services\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
@@ -253,29 +252,6 @@ class BusinessController extends Controller
         flash()->success(trans('manager.businesses.msg.destroy.success'));
 
         return redirect()->route('manager.business.index');
-    }
-
-    ////////////
-    // SEARCH //
-    ////////////
-
-    /**
-     * search elements in a business.
-     *
-     * @param Request $request Search criteria
-     *
-     * @return Response View with results or redirect to default
-     */
-    public function postSearch(Business $business)
-    {
-        $this->authorize('manage', $business);
-
-        $criteria = Request::input('criteria');
-
-        $search = new SearchEngine($criteria);
-        $search->setBusinessScope([$business->id])->run();
-
-        return view('manager.search.index')->with(['results' => $search->results(), 'criteria' => $criteria]);
     }
 
     /////////////

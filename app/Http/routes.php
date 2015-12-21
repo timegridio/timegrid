@@ -243,7 +243,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
         // SEARCH
         Route::post('search', [
             'as'   => 'manager.search',
-            'uses' => 'BusinessController@postSearch',
+            'uses' => 'Search@postSearch',
         ]);
 
         // CONTACT RESOURCE
