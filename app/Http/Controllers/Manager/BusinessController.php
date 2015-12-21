@@ -289,9 +289,9 @@ class BusinessController extends Controller
 
         $this->getLocation();
 
-        logger()->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $this->location['timezone']));
+        logger()->info(sprintf('TIMEZONE FALLBACK="%s" GUESSED="%s"', $timezone, $this->location['timezone']));
 
-        $identifiers = \DateTimeZone::listIdentifiers();
+        $identifiers = timezone_identifiers_list();
 
         return in_array($this->location['timezone'], $identifiers) ? $this->location['timezone'] : $timezone;
     }
