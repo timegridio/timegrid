@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Service;
-use Flash;
 use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller
@@ -71,7 +70,7 @@ class BusinessServiceController extends Controller
 
         $this->log->info("Stored serviceId:{$service->id}");
 
-        Flash::success(trans('manager.service.msg.store.success'));
+        flash()->success(trans('manager.service.msg.store.success'));
 
         return redirect()->route('manager.business.service.index', [$business]);
     }
@@ -144,7 +143,7 @@ class BusinessServiceController extends Controller
             'prerequisites' => $request->get('prerequisites'),
         ]);
 
-        Flash::success(trans('manager.business.service.msg.update.success'));
+        flash()->success(trans('manager.business.service.msg.update.success'));
 
         return redirect()->route('manager.business.service.show', [$business, $service]);
     }
@@ -172,7 +171,7 @@ class BusinessServiceController extends Controller
 
         $service->forceDelete();
 
-        Flash::success(trans('manager.services.msg.destroy.success'));
+        flash()->success(trans('manager.services.msg.destroy.success'));
 
         return redirect()->route('manager.business.service.index', $business);
     }

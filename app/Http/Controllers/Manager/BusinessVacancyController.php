@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Services\VacancyService;
-use Flash;
 use Illuminate\Http\Request;
 
 class BusinessVacancyController extends Controller
@@ -47,7 +46,7 @@ class BusinessVacancyController extends Controller
         $dates = $this->vacancyService->generateAvailability($business->vacancies, 'today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
-            Flash::warning(trans('manager.vacancies.msg.edit.no_services'));
+            flash()->warning(trans('manager.vacancies.msg.edit.no_services'));
         }
 
         return view('manager.businesses.vacancies.edit', compact('business', 'dates'));
@@ -72,14 +71,14 @@ class BusinessVacancyController extends Controller
         if (!$this->vacancyService->update($business, $publishedVacancies)) {
             $this->log->warning('Nothing to update');
 
-            Flash::warning(trans('manager.vacancies.msg.store.nothing_changed'));
+            flash()->warning(trans('manager.vacancies.msg.store.nothing_changed'));
 
             return redirect()->back();
         }
 
         $this->log->info('Vacancies updated');
 
-        Flash::success(trans('manager.vacancies.msg.store.success'));
+        flash()->success(trans('manager.vacancies.msg.store.success'));
 
         return redirect()->route('manager.business.show', [$business]);
     }
@@ -106,7 +105,7 @@ class BusinessVacancyController extends Controller
                           ->buildTimetable($vacancies, 'today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
-            Flash::warning(trans('manager.vacancies.msg.edit.no_services'));
+            flash()->warning(trans('manager.vacancies.msg.edit.no_services'));
         }
 
         return view('manager.businesses.vacancies.show', compact('business', 'timetable'));

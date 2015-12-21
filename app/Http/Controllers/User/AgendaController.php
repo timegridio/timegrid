@@ -9,7 +9,6 @@ use App\Models\Service;
 use App\Services\ConciergeService;
 use Carbon;
 use Event;
-use Flash;
 use Illuminate\Http\Request;
 use Notifynder;
 
@@ -72,7 +71,7 @@ class AgendaController extends Controller
         if (!auth()->user()->getContactSubscribedTo($business)) {
             $this->log->info('  [ADVICE] User not subscribed to Business');
 
-            Flash::warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+            flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
 
             return redirect()->back();
         }
@@ -125,7 +124,7 @@ class AgendaController extends Controller
         if (false === $appointment) {
             $this->log->info('[ADVICE] Unable to book');
 
-            Flash::warning(trans('user.booking.msg.store.error'));
+            flash()->warning(trans('user.booking.msg.store.error'));
 
             return redirect()->back();
         }
@@ -133,7 +132,7 @@ class AgendaController extends Controller
         if (!$appointment->exists) {
             $this->log->info('[ADVICE] Appointment is duplicated');
 
-            Flash::warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+            flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
 
             return redirect()->route('user.agenda');
         }
@@ -142,7 +141,7 @@ class AgendaController extends Controller
 
         event(new NewAppointmentWasBooked($issuer, $appointment));
 
-        Flash::success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
+        flash()->success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
 
         return redirect()->route('user.agenda', '#'.$appointment->code);
     }

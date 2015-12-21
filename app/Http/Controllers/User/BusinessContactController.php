@@ -8,7 +8,6 @@ use App\Http\Requests\AlterContactRequest;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Services\ContactService;
-use Flash;
 use Notifynder;
 use Request;
 
@@ -56,7 +55,7 @@ class BusinessContactController extends Controller
                 $this->log->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
                 $newContact = $this->contactService->copyFrom(auth()->user(), $business, $existingContact);
 
-                Flash::success(trans('user.contacts.msg.store.associated_existing_contact'));
+                flash()->success(trans('user.contacts.msg.store.associated_existing_contact'));
 
                 return redirect()->route('user.business.contact.show', [$business, $newContact]);
             }
@@ -95,7 +94,7 @@ class BusinessContactController extends Controller
             if ($existingContact->isSubscribedTo($business)) {
                 auth()->user()->contacts()->save($existingContact);
 
-                Flash::warning(trans('user.contacts.msg.store.warning.already_registered'));
+                flash()->warning(trans('user.contacts.msg.store.warning.already_registered'));
 
                 return redirect()->route('user.business.contact.show', [$business, $existingContact]);
             }
@@ -107,7 +106,7 @@ class BusinessContactController extends Controller
 
         event(new NewContactWasRegistered($contact));
 
-        Flash::success(trans('user.contacts.msg.store.success'));
+        flash()->success(trans('user.contacts.msg.store.success'));
 
         return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
@@ -186,7 +185,7 @@ class BusinessContactController extends Controller
 
         $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
 
-        Flash::success(trans('user.contacts.msg.update.success'));
+        flash()->success(trans('user.contacts.msg.update.success'));
 
         return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
@@ -210,7 +209,7 @@ class BusinessContactController extends Controller
 
         $this->contactService->detach($business, $contact);
 
-        Flash::success(trans('manager.contacts.msg.destroy.success'));
+        flash()->success(trans('manager.contacts.msg.destroy.success'));
 
         return redirect()->route('manager.business.show', $business);
     }

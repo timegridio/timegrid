@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Contact;
-use Flash;
 use Notifynder;
 use Request;
 
@@ -83,7 +82,7 @@ class BusinessContactImportExportController extends Controller
                    ->extra(compact('count'))
                    ->send();
 
-        Flash::success(trans('manager.contacts.msg.import.success'));
+        flash()->success(trans('manager.contacts.msg.import.success'));
 
         return redirect()->route('manager.business.contact.index', [$business]);
     }

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Business;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Http\Request;
-use Laracasts\Flash\Flash;
 
 class BusinessPreferencesController extends Controller
 {
@@ -63,7 +62,7 @@ class BusinessPreferencesController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        Flash::success(trans('manager.businesses.msg.preferences.success'));
+        flash()->success(trans('manager.businesses.msg.preferences.success'));
 
         return redirect()->route('manager.business.show', $business);
     }

@@ -13,7 +13,6 @@ use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
 use GeoIP;
 use Illuminate\Support\Facades\Request;
-use Laracasts\Flash\Flash;
 
 class BusinessController extends Controller
 {
@@ -59,7 +58,7 @@ class BusinessController extends Controller
         if ($businesses->count() == 1) {
             $this->log->info('Only one business to show');
 
-            Flash::success(trans('manager.businesses.msg.index.only_one_found'));
+            flash()->success(trans('manager.businesses.msg.index.only_one_found'));
 
             return redirect()->route('manager.business.show', $businesses->first());
         }
@@ -115,7 +114,7 @@ class BusinessController extends Controller
         try {
             $business = $this->businessService->register(auth()->user(), $request->all(), $request->get('category'));
         } catch (BusinessAlreadyRegistered $exception) {
-            Flash::error(trans('manager.businesses.msg.store.business_already_exists'));
+            flash()->error(trans('manager.businesses.msg.store.business_already_exists'));
 
             return redirect()->back()->withInput(request()->all());
         }
@@ -130,7 +129,7 @@ class BusinessController extends Controller
             ->send();
 
         // Redirect success
-        Flash::success(trans('manager.businesses.msg.store.success'));
+        flash()->success(trans('manager.businesses.msg.store.success'));
 
         return redirect()->route('manager.business.service.create', $business);
     }
@@ -229,7 +228,7 @@ class BusinessController extends Controller
 
         $this->businessService->setCategory($business, $category);
 
-        Flash::success(trans('manager.businesses.msg.update.success'));
+        flash()->success(trans('manager.businesses.msg.update.success'));
 
         return redirect()->route('manager.business.show', compact('business'));
     }
@@ -252,7 +251,7 @@ class BusinessController extends Controller
 
         $this->businessService->deactivate();
 
-        Flash::success(trans('manager.businesses.msg.destroy.success'));
+        flash()->success(trans('manager.businesses.msg.destroy.success'));
 
         return redirect()->route('manager.business.index');
     }

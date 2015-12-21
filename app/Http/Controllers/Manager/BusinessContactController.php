@@ -7,7 +7,6 @@ use App\Http\Requests\ContactFormRequest;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Services\ContactService;
-use Laracasts\Flash\Flash;
 
 class BusinessContactController extends Controller
 {
@@ -90,12 +89,12 @@ class BusinessContactController extends Controller
         $contact = $this->contactService->register(auth()->user(), $business, $request->all());
 
         if (!$contact->wasRecentlyCreated) {
-            Flash::warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
+            flash()->warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 
             return redirect()->route('manager.business.contact.show', [$business, $contact]);
         }
 
-        Flash::success(trans('manager.contacts.msg.store.success'));
+        flash()->success(trans('manager.contacts.msg.store.success'));
 
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
@@ -180,7 +179,7 @@ class BusinessContactController extends Controller
 
         // FEATURE: If email was updated, user linking should be triggered (if contact is not owned)
 
-        Flash::success(trans('manager.contacts.msg.update.success'));
+        flash()->success(trans('manager.contacts.msg.update.success'));
 
         return redirect()->route('manager.business.contact.show', [$business, $contact]);
     }
@@ -206,7 +205,7 @@ class BusinessContactController extends Controller
 
         // FEATURE: If user is linked to contact, inform removal
 
-        Flash::success(trans('manager.contacts.msg.destroy.success'));
+        flash()->success(trans('manager.contacts.msg.destroy.success'));
 
         return redirect()->route('manager.business.contact.index', $business);
     }
