@@ -204,14 +204,14 @@ class Vacancy extends EloquentModel
     }
 
     /**
-     * get Room between time.
+     * Get available capacity between time.
      *
-     * @return bool There is more capacity than used
+     * @return int Available capacity
      */
-    public function getRoomBetween(Carbon $startAt, Carbon $finishAt)
+    public function getAvailableCapacityBetween(Carbon $startAt, Carbon $finishAt)
     {
         if (!($this->start_at <= $startAt && $this->finish_at >= $finishAt)) {
-            return;
+            return 0;
         }
 
         $count = $this->appointments()->active()->affectingInterval($startAt, $finishAt)->count();

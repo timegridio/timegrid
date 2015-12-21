@@ -116,7 +116,7 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         while ($fromTime <= $limit) {
             $key = $fromTime->timezone($vacancy->business->timezone)->toTimeString();
             
-            $times[$key] = $vacancy->getRoomBetween($fromTime, $toTime);
+            $times[$key] = $vacancy->getAvailableCapacityBetween($fromTime, $toTime);
             
             $toTime->addMinutes($step);
             $fromTime->addMinutes($step);
