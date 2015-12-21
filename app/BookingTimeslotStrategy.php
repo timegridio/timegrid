@@ -109,14 +109,14 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         $finishTime = $vacancy->business->pref('finish_at');
         $endKey = date('Y-m-d H:i', strtotime("{$vacancy->date} {$finishTime}")).' '.$vacancy->business->timezone;
 
-        $from = Carbon::parse($startKey);
-        $to = $from->copy()->addMinutes($step);
+        $fromTime = Carbon::parse($startKey);
+        $toTime = $fromTime->copy()->addMinutes($step);
         $limit = Carbon::parse($endKey);
 
-        while ($from <= $limit) {
-            $times[$from->timezone($vacancy->business->timezone)->toTimeString()] = $vacancy->getRoomBetween($from, $to);
-            $to->addMinutes($step);
-            $from->addMinutes($step);
+        while ($fromTime <= $limit) {
+            $times[$fromTime->timezone($vacancy->business->timezone)->toTimeString()] = $vacancy->getRoomBetween($fromTime, $toTime);
+            $toTime->addMinutes($step);
+            $fromTime->addMinutes($step);
         }
 
         return $times;
