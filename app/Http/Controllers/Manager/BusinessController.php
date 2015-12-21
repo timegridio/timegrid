@@ -47,14 +47,14 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         // BEGIN
 
         $businesses = auth()->user()->businesses;
 
         if ($businesses->count() == 1) {
-            $this->log->info('Only one business to show');
+            logger()->info('Only one business to show');
 
             flash()->success(trans('manager.businesses.msg.index.only_one_found'));
 
@@ -71,8 +71,8 @@ class BusinessController extends Controller
      */
     public function create($plan = 'free')
     {
-        $this->log->info(__METHOD__);
-        $this->log->info("plan:$plan");
+        logger()->info(__METHOD__);
+        logger()->info("plan:$plan");
 
         // BEGIN
 
@@ -105,7 +105,7 @@ class BusinessController extends Controller
      */
     public function store(BusinessFormRequest $request)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         // BEGIN
 
@@ -142,8 +142,8 @@ class BusinessController extends Controller
      */
     public function show(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);
 
@@ -176,8 +176,8 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('update', $business);
 
@@ -189,7 +189,7 @@ class BusinessController extends Controller
 
         $category = $business->category_id;
 
-        $this->log->info(sprintf('businessId:%s timezone:%s category:%s', $business->id, $timezone, $category));
+        logger()->info(sprintf('businessId:%s timezone:%s category:%s', $business->id, $timezone, $category));
 
         return view('manager.businesses.edit', compact('business', 'category', 'categories', 'timezone'));
     }
@@ -204,8 +204,8 @@ class BusinessController extends Controller
      */
     public function update(Business $business, BusinessFormRequest $request)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('update', $business);
 
@@ -240,8 +240,8 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('destroy', $business);
 
@@ -289,7 +289,7 @@ class BusinessController extends Controller
 
         $this->getLocation();
 
-        $this->log->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $this->location['timezone']));
+        logger()->info(sprintf('Fallback timezone:%s Guessed timezone:%s', $timezone, $this->location['timezone']));
 
         $identifiers = \DateTimeZone::listIdentifiers();
 
@@ -306,13 +306,13 @@ class BusinessController extends Controller
     protected function getLocation()
     {
         if ($this->location === null) {
-            $this->log->info('Getting location');
+            logger()->info('Getting location');
 
             $geoip = app('geoip');
 
             $this->location = $geoip->getLocation();
 
-            $this->log->info(serialize($this->location));
+            logger()->info(serialize($this->location));
         }
 
         return $this->location;

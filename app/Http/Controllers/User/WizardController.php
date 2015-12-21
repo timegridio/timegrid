@@ -19,16 +19,16 @@ class WizardController extends Controller
      */
     public function getWizard()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         if (auth()->user()->hasBusiness()) {
-            $this->log->info('User has Business');
+            logger()->info('User has Business');
 
             return redirect()->route('manager.business.index');
         }
 
         if (auth()->user()->hasContacts()) {
-            $this->log->info('User has Contacts');
+            logger()->info('User has Contacts');
 
             return redirect()->route('user.dashboard');
         }
@@ -43,7 +43,7 @@ class WizardController extends Controller
      */
     public function getDashboard(ConciergeService $concierge)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
 
@@ -57,7 +57,7 @@ class WizardController extends Controller
      */
     public function getWelcome()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         return view('wizard');
     }
@@ -69,7 +69,7 @@ class WizardController extends Controller
      */
     public function getPricing()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         return view('manager.pricing');
     }
@@ -81,7 +81,7 @@ class WizardController extends Controller
      */
     public function getTerms()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         return view('manager.terms');
     }

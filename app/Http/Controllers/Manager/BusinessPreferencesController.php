@@ -18,8 +18,8 @@ class BusinessPreferencesController extends Controller
      */
     public function getPreferences(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('managePreferences', $business);
 
@@ -41,8 +41,8 @@ class BusinessPreferencesController extends Controller
      */
     public function postPreferences(Business $business, Request $request)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('managePreferences', $business);
 
@@ -84,7 +84,7 @@ class BusinessPreferencesController extends Controller
 
         // Store each parameter key-value pair to the business preferences
         foreach ($mergedPreferences as $key => $value) {
-            $this->log->info(sprintf(
+            logger()->info(sprintf(
                 "set preference: businessId:%s key:%s='%s' type:%s",
                 $business->id,
                 $key,

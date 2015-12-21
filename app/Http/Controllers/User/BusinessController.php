@@ -25,8 +25,8 @@ class BusinessController extends Controller
      */
     public function getHome(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
 
         //////////////////
         // FOR REFACTOR //
@@ -58,7 +58,7 @@ class BusinessController extends Controller
      */
     public function getList()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         $businesses = Business::all();
 
@@ -76,7 +76,7 @@ class BusinessController extends Controller
      */
     public function getSubscriptions()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         $contacts = auth()->user()->contacts;
 

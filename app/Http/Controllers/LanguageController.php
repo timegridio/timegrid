@@ -13,7 +13,7 @@ class LanguageController extends Controller
      */
     public function switchLang($lang)
     {
-        $this->log->info(sprintf('%s: %s', __METHOD__, $lang));
+        logger()->info(sprintf('%s: %s', __METHOD__, $lang));
 
         if ($this->isValidLanguage($lang)) {
             $this->setSessionLanguage($lang);
@@ -51,6 +51,6 @@ class LanguageController extends Controller
         session()->set('language', $language);
         session()->set('applocale', $posixLocale);
 
-        $this->log->info("Language Switched: LANG='{$language}' POSIX='{$posixLocale}'");
+        logger()->info("Language Switched: LANG='{$language}' POSIX='{$posixLocale}'");
     }
 }

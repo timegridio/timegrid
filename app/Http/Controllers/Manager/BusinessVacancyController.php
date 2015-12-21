@@ -35,8 +35,8 @@ class BusinessVacancyController extends Controller
      */
     public function create(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageVacancies', $business);
 
@@ -59,8 +59,8 @@ class BusinessVacancyController extends Controller
      */
     public function store(Business $business, Request $request)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageVacancies', $business);
 
@@ -69,14 +69,14 @@ class BusinessVacancyController extends Controller
         $publishedVacancies = $request->get('vacancy');
 
         if (!$this->vacancyService->update($business, $publishedVacancies)) {
-            $this->log->warning('Nothing to update');
+            logger()->warning('Nothing to update');
 
             flash()->warning(trans('manager.vacancies.msg.store.nothing_changed'));
 
             return redirect()->back();
         }
 
-        $this->log->info('Vacancies updated');
+        logger()->info('Vacancies updated');
 
         flash()->success(trans('manager.vacancies.msg.store.success'));
 
@@ -90,8 +90,8 @@ class BusinessVacancyController extends Controller
      */
     public function show(Business $business)
     {
-        $this->log->info(__METHOD__);
-        $this->log->info(sprintf('businessId:%s', $business->id));
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageVacancies', $business);
 

@@ -39,7 +39,7 @@ class AgendaController extends Controller
      */
     public function getIndex()
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         $appointments = $this->concierge->getUnarchivedAppointmentsFor(auth()->user());
 
@@ -55,7 +55,7 @@ class AgendaController extends Controller
      */
     public function getAvailability(Business $business, Request $request)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         $date = $request->input('date', 'today');
         $days = $request->input('days', 7);
@@ -69,7 +69,7 @@ class AgendaController extends Controller
            ->send();
 
         if (!auth()->user()->getContactSubscribedTo($business)) {
-            $this->log->info('  [ADVICE] User not subscribed to Business');
+            logger()->info('  [ADVICE] User not subscribed to Business');
 
             flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
 
@@ -99,7 +99,7 @@ class AgendaController extends Controller
      */
     public function postStore(Request $request)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         //////////////////
         // FOR REFACTOR //
@@ -122,7 +122,7 @@ class AgendaController extends Controller
         $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 
         if (false === $appointment) {
-            $this->log->info('[ADVICE] Unable to book');
+            logger()->info('[ADVICE] Unable to book');
 
             flash()->warning(trans('user.booking.msg.store.error'));
 
@@ -130,14 +130,14 @@ class AgendaController extends Controller
         }
 
         if (!$appointment->exists) {
-            $this->log->info('[ADVICE] Appointment is duplicated');
+            logger()->info('[ADVICE] Appointment is duplicated');
 
             flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
 
             return redirect()->route('user.agenda');
         }
 
-        $this->log->info('Appointment saved successfully');
+        logger()->info('Appointment saved successfully');
 
         event(new NewAppointmentWasBooked($issuer, $appointment));
 

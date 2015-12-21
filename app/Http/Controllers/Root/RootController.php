@@ -14,8 +14,8 @@ class RootController extends Controller
      */
     public function getIndex()
     {
-        $this->log->info(__METHOD__);
-        $this->log->warning('[ROOT ACCESS]');
+        logger()->info(__METHOD__);
+        logger()->warning('[ROOT ACCESS]');
 
         //////////////////
         // FOR REFACTOR //
@@ -33,9 +33,9 @@ class RootController extends Controller
      */
     public function getSudo($userId)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
-        $this->log->warning("[!] ROOT SUDO userId:{$userId}");
+        logger()->warning("[!] ROOT SUDO userId:{$userId}");
         auth()->loginUsingId($userId);
 
         flash()->warning('ADVICE: THIS IS FOR AUTHORIZED USE ONLY AND YOUR ACTIONS ARE BEING RECORDERED !!!');

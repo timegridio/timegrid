@@ -34,9 +34,9 @@ class BookingController extends Controller
      */
     public function __construct(ConciergeService $concierge)
     {
-        $this->concierge = $concierge;
-
         parent::__construct();
+        
+        $this->concierge = $concierge;
     }
 
     /**
@@ -48,7 +48,7 @@ class BookingController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
-        $this->log->info(__METHOD__);
+        logger()->info(__METHOD__);
 
         //////////////////
         // FOR REFACOTR //
@@ -68,7 +68,7 @@ class BookingController extends Controller
         // OR
         //  (B) auth()->user() is issuer of $appointment
 
-        $this->log->info(sprintf(
+        logger()->info(sprintf(
             'postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
             $issuer->email,
             $action,
@@ -92,7 +92,7 @@ class BookingController extends Controller
         // Widgets MUST be rendered before being returned on Response as they need to be interpreted as HTML
         $html = view($viewKey, $contents)->render();
 
-        $this->log->info("postAction.response:[appointment:{$appointment->toJson()}]");
+        logger()->info("postAction.response:[appointment:{$appointment->toJson()}]");
 
         return response()->json(['code' => 'OK', 'html' => $html]);
     }
