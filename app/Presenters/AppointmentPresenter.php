@@ -37,25 +37,23 @@ class AppointmentPresenter extends BasePresenter
 
     public function arriveAt()
     {
-        $flexibleArrival = $this->wrappedObject->business->pref('appointment_flexible_arrival');
-
-        if (!$flexibleArrival) {
+        if (!$this->wrappedObject->business->pref('appointment_flexible_arrival')) {
             return $this->time;
         }
 
-        $from = $this->wrappedObject
-                    ->vacancy
-                    ->start_at
-                    ->timezone($this->wrappedObject->business->timezone)
-                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+        $fromTime = $this->wrappedObject
+                         ->vacancy
+                         ->start_at
+                         ->timezone($this->wrappedObject->business->timezone)
+                         ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
 
-        $to = $this->wrappedObject
-                   ->vacancy
-                   ->finish_at
-                   ->timezone($this->wrappedObject->business->timezone)
-                   ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+        $toTime = $this->wrappedObject
+                       ->vacancy
+                       ->finish_at
+                       ->timezone($this->wrappedObject->business->timezone)
+                       ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
 
-        return ucwords(trans('appointments.text.from_to', compact('from', 'to')));
+        return ucwords(trans('appointments.text.from_to', ['from' => $fromTime, 'to' => $toTime]));
     }
 
     public function time()
