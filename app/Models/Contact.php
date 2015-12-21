@@ -39,16 +39,6 @@ class Contact extends EloquentModel implements HasPresenter
     }
 
     /**
-     * indicates if contact belongs to Business.
-     *
-     * @return Illuminate\Database\Query Relationship Contact is part of Business' addressbook query
-     */
-    public function isOnAddressbookOf($businessId)
-    {
-        return $this->businesses()->contains($businessId);
-    }
-
-    /**
      * belongs to Business.
      *
      * @return Illuminate\Database\Query Relationship Contact is part of Businesses addressbooks query
