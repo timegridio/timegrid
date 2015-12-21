@@ -11,7 +11,6 @@ use App\SearchEngine;
 use App\Services\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
-use GeoIP;
 use Illuminate\Support\Facades\Request;
 
 class BusinessController extends Controller
@@ -333,7 +332,9 @@ class BusinessController extends Controller
         if ($this->location === null) {
             $this->log->info('Getting location');
 
-            $this->location = GeoIP::getLocation();
+            $geoip = app('geoip');
+
+            $this->location = $geoip->getLocation();
 
             $this->log->info(serialize($this->location));
         }
