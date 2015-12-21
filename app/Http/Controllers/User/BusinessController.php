@@ -8,12 +8,6 @@ use App\Services\ConciergeService;
 use App\Services\VacancyService;
 use Fenos\Notifynder\Facades\Notifynder;
 
-/**
- * FOR REFACTOR:
- *     - Access Notifynder with constructor dependency injection
- *     - Access Auth with constructor dependency injection
- *     - Access Business with dependency injection of a BusinessRepository.
- */
 class BusinessController extends Controller
 {
     /**
@@ -27,10 +21,6 @@ class BusinessController extends Controller
     {
         logger()->info(__METHOD__);
         logger()->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
-
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
 
         $businessName = $business->name;
         Notifynder::category('user.visitedShowroom')

@@ -11,13 +11,6 @@ use Carbon\Carbon;
 use Notifynder;
 use Widget;
 
-/**
- * FOR REFACTOR:
- *     - Access auth()->ith constructor dependency injection
- *     - Access Appointments with Appointments repository injected dependency
- *     - Access Notifynder with constructor dependency
- *     - Move switches to proper responsibility class.
- */
 class BookingController extends Controller
 {
     /**
