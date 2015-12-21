@@ -29,28 +29,28 @@ class LanguageController extends Controller
     /**
      * Determine if is a POSIX language string is accepted by app config.
      *
-     * @param string $posixLang Requested language
+     * @param string $posixLocale Requested language
      *
      * @return bool Is an accepted language for this app
      */
-    protected function isValidLanguage($posixLang)
+    protected function isValidLanguage($posixLocale)
     {
-        return array_key_exists($posixLang, config()->get('languages'));
+        return array_key_exists($posixLocale, config()->get('languages'));
     }
 
     /**
      * Set language to session based on the selected POSIX language string.
      *
-     * @param string $posixLang Requested language
+     * @param string $posixLocale Requested language
      */
-    protected function setSessionLanguage($posixLang)
+    protected function setSessionLanguage($posixLocale)
     {
-        $locale = \Locale::parseLocale($posixLang);
-        $language = array_get($locale, 'language');
+        $localeSubtags = locale_parse($posixLocale);
+        $language = array_get($localeSubtags, 'language');
 
         session()->set('language', $language);
-        session()->set('applocale', $posixLang);
+        session()->set('applocale', $posixLocale);
 
-        $this->log->info("Language Switched: LANG='{$language}' POSIX='{$posixLang}'");
+        $this->log->info("Language Switched: LANG='{$language}' POSIX='{$posixLocale}'");
     }
 }
