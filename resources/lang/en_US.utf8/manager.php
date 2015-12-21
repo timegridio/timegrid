@@ -57,7 +57,6 @@ return  [
     'contacts' => [
       'btn' => [
         'create' => 'Add a contact',
-        'import' => 'Import contacts',
       ],
     ],
     'create' => [
@@ -159,7 +158,6 @@ return  [
       'confirm_delete' => 'Sure to delete contact?',
       'delete'         => 'Delete',
       'edit'           => 'Edit',
-      'import'         => 'Import contacts',
       'store'          => 'Save',
       'update'         => 'Update',
     ],
@@ -208,9 +206,6 @@ return  [
         'label' => 'Prerequisites',
       ],
     ],
-    'import' => [
-      'title' => 'Import contacts',
-    ],
     'label' => [
       'birthdate'    => 'Birthdate',
       'email'        => 'Email',
@@ -238,9 +233,6 @@ return  [
     'msg' => [
       'destroy' => [
         'success' => 'Contact deleted!',
-      ],
-      'import' => [
-        'success' => ':count imported contacts',
       ],
       'store' => [
         'success'                          => 'Contact registered successfully!',

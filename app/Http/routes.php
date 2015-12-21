@@ -246,16 +246,6 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
             'uses' => 'BusinessController@postSearch',
         ]);
 
-        // CONTACT IMPORT
-        Route::get('contacts/import', [
-            'as'   => 'manager.business.contact.import',
-            'uses' => 'BusinessContactImportExportController@getImport',
-        ]);
-        Route::post('contacts/import', [
-            'as'   => 'manager.business.contact.import',
-            'uses' => 'BusinessContactImportExportController@postImport',
-        ]);
-
         // CONTACT RESOURCE
         Route::group(['prefix' => 'contact'], function () {
             Route::get('', [

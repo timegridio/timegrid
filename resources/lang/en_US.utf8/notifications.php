@@ -8,7 +8,6 @@ return [
     'subscribedBusiness'         => ':user subscribed to :businessName',
     'registeredBusiness'         => ':user registered to :businessName. Congrats!',
     'updatedBusinessPreferences' => ':user changed preferences of :businessName',
-    'importedContacts'           => ':user imported :count contacts',
   ],
   'appointment' => [
     'reserve'  => ':user reserved appointment :code of date :date',

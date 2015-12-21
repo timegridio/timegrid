@@ -111,7 +111,6 @@ $(document).ready(function(){
         </table>
     </div>
 {!! Button::withIcon(Icon::plus())->primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.business.contact.create', $business) )->large()->block() !!}
-{!! Button::withIcon(Icon::upload())->primary(trans('manager.businesses.contacts.btn.import'))->asLinkTo( route('manager.business.contact.import', $business) )->small()->block() !!}
 </div>
 
 @endsection

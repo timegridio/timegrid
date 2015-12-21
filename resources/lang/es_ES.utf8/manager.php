@@ -57,7 +57,6 @@ return  [
     'contacts' => [
       'btn' => [
         'create' => 'Agregar un contacto',
-        'import' => 'Importar contactos',
       ],
     ],
     'create' => [
@@ -159,7 +158,6 @@ return  [
       'confirm_delete' => '¿Seguro querés eliminar el contacto?',
       'delete'         => 'Eliminar',
       'edit'           => 'Editar',
-      'import'         => 'Importar Contactos',
       'store'          => 'Guardar',
       'update'         => 'Actualizar',
     ],
@@ -208,9 +206,6 @@ return  [
         'label' => 'Prerequisitos',
       ],
     ],
-    'import' => [
-      'title' => 'Importar contactos',
-    ],
     'label' => [
       'birthdate'    => 'Nacimiento',
       'email'        => 'Email',
@@ -238,9 +233,6 @@ return  [
     'msg' => [
       'destroy' => [
         'success' => '¡Contacto eliminado!',
-      ],
-      'import' => [
-        'success' => ':count Contactos importados',
       ],
       'store' => [
         'success'                          => '¡Contacto registrado Ok!',
