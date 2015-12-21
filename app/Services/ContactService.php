@@ -93,7 +93,7 @@ class ContactService
             return false;
         }
 
-        $existingContacts = Contact::whereNotNull('nin')->where(['nin' => $nin])->get();
+        $existingContacts = $business->contacts()->whereNotNull('nin')->where(['nin' => $nin])->get();
 
         foreach ($existingContacts as $existingContact) {
             logger()->info("[ADVICE] Found existing contactId:{$existingContact->id}");
