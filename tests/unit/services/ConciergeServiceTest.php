@@ -15,46 +15,16 @@ class ConciergeServiceTest extends TestCase
 {
     use DatabaseTransactions;
 
-    /**
-     * [$user description].
-     *
-     * @var [type]
-     */
     protected $user;
 
-    /**
-     * [$business description].
-     *
-     * @var [type]
-     */
     protected $business;
 
-    /**
-     * [$contact description].
-     *
-     * @var [type]
-     */
     protected $contact;
 
-    /**
-     * [$service description].
-     *
-     * @var [type]
-     */
     protected $service;
 
-    /**
-     * [$vacancy description].
-     *
-     * @var [type]
-     */
     protected $vacancy;
 
-    /**
-     * [$concierge description].
-     *
-     * @var [type]
-     */
     protected $concierge;
 
     /////////////
@@ -62,20 +32,19 @@ class ConciergeServiceTest extends TestCase
     /////////////
 
     /**
-     * arrange a fixed scenario for testing.
+     * Arrange a fixture for testing.
      *
      * @return void
      */
     protected function arrangeScenario()
     {
-        // Common Arrange
         $this->user = factory(User::class)->create();
 
         $this->business = factory(Business::class)->create();
 
-        $this->service = factory(Service::class)->make();
-
-        $this->business->services()->save($this->service);
+        $this->service = factory(Service::class)->create([
+            'business_id' => $this->business->id
+            ]);
 
         $this->concierge = new ConciergeService(new VacancyService());
 
@@ -104,37 +73,29 @@ class ConciergeServiceTest extends TestCase
     ///////////
 
     /**
-     * Test get vacancies from Concierge Service Layer.
-     *
-     * @covers     \App\Services\ConciergeService::getVacancies
-     *
-     * @return bool Vacancy found
+     * @covers \App\Services\ConciergeService::getVacancies
      * @test
      */
-    public function testConciergeGetVacancies()
+    public function it_returns_vacancies()
     {
         // Arrange
         $this->arrangeScenario();
 
         $this->vacancy = factory(Vacancy::class)->make();
-        $this->vacancy->business()->associate($this->business);
         $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
 
         // Act
-        $vacancies = $this->concierge->getVacancies($this->user);
+        $vacancies = $this->concierge->setBusiness($this->business)->getVacancies($this->user);
 
         // Assert
-        return $this->assertContainsOnly($this->vacancy, $vacancies[$this->vacancy->date]);
+        $this->assertContainsOnly($this->vacancy, $vacancies[$this->vacancy->date]);
     }
 
     /**
-     * Test get empty vacancies from Concierge Service Layer.
-     *
-     * @covers            \App\Services\ConciergeService::getVacancies
+     * @covers \App\Services\ConciergeService::getVacancies
      * @test
      */
-    public function testConciergeGetEmptyVacancies()
+    public function it_returns_empty_vacancies()
     {
         // Arrange
         $this->arrangeScenario();
@@ -149,18 +110,15 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * Test Make Successful Reservation.
-     *
-     * @covers            \App\Services\ConciergeService::makeReservation
+     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
-    public function testMakeSuccessfulReservation()
+    public function it_accepts_a_valid_booking()
     {
         // Arrange
         $this->arrangeScenario();
 
         $this->contact = factory(Contact::class)->create();
-        $this->business->contacts()->save($this->contact);
 
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->business()->associate($this->business);
@@ -188,12 +146,10 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * Test Make Successful Reservation.
-     *
-     * @covers            \App\Services\ConciergeService::makeReservation
+     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
-    public function testBlockOverbooking()
+    public function it_rejects_overbooking()
     {
         // Arrange
         $this->arrangeScenario();
@@ -203,7 +159,6 @@ class ConciergeServiceTest extends TestCase
         $this->business->vacancies()->save($this->vacancy);
 
         $this->contact = factory(Contact::class)->create();
-        $this->business->contacts()->save($this->contact);
 
         // Act
         $date = $this->makeDateTime(
@@ -242,18 +197,15 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * Test Attempt Bad Reservation.
-     *
-     * @covers            \App\Services\ConciergeService::makeReservation
+     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
-    public function testAttemptBadReservation()
+    public function it_rejects_invalid_booking()
     {
         // Arrange
         $this->arrangeScenario();
 
         $this->contact = factory(Contact::class)->create();
-        $this->business->contacts()->save($this->contact);
 
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->business()->associate($this->business);
@@ -281,7 +233,7 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers            \App\Services\ConciergeService::getUnservedAppointments
+     * @covers \App\Services\ConciergeService::getUnservedAppointments
      * @test
      */
     public function it_gets_the_unserved_appointments()
@@ -290,21 +242,13 @@ class ConciergeServiceTest extends TestCase
         $this->arrangeScenario();
 
         $this->contact = factory(Contact::class)->create();
-        $this->business->contacts()->save($this->contact);
-
-        $this->vacancy = factory(Vacancy::class)->make();
-        $this->vacancy->business()->associate($this->business);
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
 
         $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
         $appointment->contact()->associate($this->contact);
-        $appointment->issuer()->associate($this->user);
         $appointment->business()->associate($this->business);
         $appointment->save();
 
-        $this->concierge->setBusiness($this->business);
-        $appointments = $this->concierge->getUnservedAppointments();
+        $appointments = $this->concierge->setBusiness($this->business)->getUnservedAppointments();
 
         // Assert
         $this->assertInstanceOf(Collection::class, $appointments);
@@ -312,7 +256,7 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers            \App\Services\ConciergeService::getUnservedAppointments
+     * @covers \App\Services\ConciergeService::getUnservedAppointments
      * @test
      */
     public function it_gets_the_unserved_appointments_and_omits_those_served()
@@ -321,24 +265,98 @@ class ConciergeServiceTest extends TestCase
         $this->arrangeScenario();
 
         $this->contact = factory(Contact::class)->create();
-        $this->business->contacts()->save($this->contact);
-
-        $this->vacancy = factory(Vacancy::class)->make();
-        $this->vacancy->business()->associate($this->business);
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
 
         $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_SERVED]);
+
+        $appointments = $this->concierge
+                             ->setBusiness($this->business)
+                             ->getUnservedAppointments();
+
+        // Assert
+        $this->assertInstanceOf(Collection::class, $appointments);
+        $this->assertEquals(0, $appointments->count());
+    }
+
+    /**
+     * @covers \App\Services\ConciergeService::requestAction
+     * @test
+     */
+    public function it_annulates_an_appointment()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->business()->associate($this->business);
+
+        $appointment = $this->concierge
+                            ->setBusiness($this->business)
+                            ->requestAction($this->user, $appointment, 'annulate');
+
+        // Assert
+        $this->assertInstanceOf(Appointment::class, $appointment);
+        $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Services\ConciergeService::requestAction
+     * @test
+     */
+    public function it_confirms_an_appointment()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
         $appointment->contact()->associate($this->contact);
         $appointment->issuer()->associate($this->user);
         $appointment->business()->associate($this->business);
         $appointment->save();
 
-        $this->concierge->setBusiness($this->business);
-        $appointments = $this->concierge->getUnservedAppointments();
+        $this->expectsEvents(App\Events\AppointmentWasConfirmed::class);
+
+        $appointment = $this->concierge
+                            ->setBusiness($this->business)
+                            ->requestAction($this->user, $appointment, 'confirm');
 
         // Assert
-        $this->assertInstanceOf(Collection::class, $appointments);
-        $this->assertEquals(0, $appointments->count());
+        $this->assertInstanceOf(Appointment::class, $appointment);
+        $this->assertEquals(Appointment::STATUS_CONFIRMED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Services\ConciergeService::requestAction
+     * @test
+     */
+    public function it_serves_a_due_appointment()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        $appointment = factory(Appointment::class)->make([
+            'status' => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->subDays(1)
+            ]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->issuer()->associate($this->user);
+        $appointment->business()->associate($this->business);
+        $appointment->save();
+
+        $appointment = $this->concierge
+                            ->setBusiness($this->business)
+                            ->requestAction($this->user, $appointment, 'serve');
+
+        // Assert
+        $this->assertInstanceOf(Appointment::class, $appointment);
+        $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
     }
 }
