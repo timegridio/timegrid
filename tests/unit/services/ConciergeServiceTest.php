@@ -43,7 +43,7 @@ class ConciergeServiceTest extends TestCase
         $this->business = factory(Business::class)->create();
 
         $this->service = factory(Service::class)->create([
-            'business_id' => $this->business->id
+            'business_id' => $this->business->id,
             ]);
 
         $this->concierge = new ConciergeService(new VacancyService());
@@ -343,8 +343,8 @@ class ConciergeServiceTest extends TestCase
         $this->business->contacts()->save($this->contact);
 
         $appointment = factory(Appointment::class)->make([
-            'status' => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->subDays(1)
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->subDays(1),
             ]);
         $appointment->contact()->associate($this->contact);
         $appointment->issuer()->associate($this->user);

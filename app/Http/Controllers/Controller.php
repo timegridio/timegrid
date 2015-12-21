@@ -11,5 +11,7 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesCommands, ValidatesRequests;
 
-    public function __construct() { }
+    public function __construct()
+    {
+    }
 }

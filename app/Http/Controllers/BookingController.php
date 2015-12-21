@@ -35,7 +35,7 @@ class BookingController extends Controller
     public function __construct(ConciergeService $concierge)
     {
         parent::__construct();
-        
+
         $this->concierge = $concierge;
     }
 

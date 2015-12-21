@@ -2,11 +2,11 @@
 
 use Carbon\Carbon;
 
-if (! function_exists('setGlobalLocale')) {
+if (!function_exists('setGlobalLocale')) {
     /**
      * Set locale among all localizable contexts.
      *
-     * @param  string  $posixLocale
+     * @param string $posixLocale
      *
      * @return void
      */
@@ -18,7 +18,7 @@ if (! function_exists('setGlobalLocale')) {
     }
 }
 
-if (! function_exists('isAcceptedLocale')) {    
+if (!function_exists('isAcceptedLocale')) {
     /**
      * Determine if is a POSIX language string is accepted by app config.
      *
