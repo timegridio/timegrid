@@ -32,7 +32,7 @@ class SendMailUserWelcome
             'name'  => $event->user->name,
             'email' => $event->user->email,
         ];
-        $this->transmail->template('appointments.manager._new')
+        $this->transmail->template('welcome')
                         ->subject('user.welcome.subject')
                         ->send($header, $params);
     }
