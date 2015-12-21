@@ -58,16 +58,6 @@ class Contact extends EloquentModel implements HasPresenter
         return $this->hasMany('App\Models\Appointment');
     }
 
-    /**
-     * has Appointment.
-     *
-     * @return Illuminate\Database\Query Relationship Contact has first booked Appointment query
-     */
-    public function appointment()
-    {
-        return $this->appointments->first();
-    }
-
     /////////////////////
     // Soft Attributes //
     /////////////////////
