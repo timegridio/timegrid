@@ -15,13 +15,12 @@ class ContactService
     /**
      * Register a new Contact.
      *
-     * @param User     $user
      * @param Business $business
      * @param array    $data
      *
      * @return App\Models\Contact
      */
-    public function register(User $user, Business $business, $data)
+    public function register(Business $business, $data)
     {
         if (false === $contact = self::getExisting($business, $data['nin'])) {
             $contact = Contact::create($data);

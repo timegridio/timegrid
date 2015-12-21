@@ -100,7 +100,7 @@ class BusinessContactController extends Controller
             }
         }
 
-        $contact = $this->contactService->register(auth()->user(), $business, Request::all());
+        $contact = $this->contactService->register($business, Request::all());
 
         $this->contactService->linkToUser($contact, auth()->user());
 

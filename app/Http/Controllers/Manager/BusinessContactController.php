@@ -86,7 +86,7 @@ class BusinessContactController extends Controller
 
         // BEGIN //
 
-        $contact = $this->contactService->register(auth()->user(), $business, $request->all());
+        $contact = $this->contactService->register($business, $request->all());
 
         if (!$contact->wasRecentlyCreated) {
             flash()->warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
