@@ -34,7 +34,11 @@ Built with the [**Laravel 5.1 (LTS)**](http://laravel.com/docs/5.1) framework fo
 
 ## Live Demo
 
-Want action? Try the *beta-stable* [live demo](http://demo.timegrid.io/)
+You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
+
+> **ADVICE:** As timegrid has regular email notifications, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
+
+> All accounts will be deleted from the *demo* environment every 48hs.
 
 > **Hint:** To know which commit is in *demo*, you can hover the cursor on the leftmost label of the app footer.
 
