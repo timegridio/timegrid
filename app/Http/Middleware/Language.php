@@ -4,7 +4,6 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Contracts\Routing\Middleware;
-use Illuminate\Support\Facades\Config;
 use Jenssegers\Agent\Agent;
 
 class Language implements Middleware
@@ -28,17 +27,13 @@ class Language implements Middleware
 
     public function handle($request, Closure $next)
     {
-        $sessionAppLocale = session()->get('applocale');
+        $sessionAppLocale = session()->get('applocale', config('app.fallback_locale'));
 
-        if (session()->has('applocale') and array_key_exists($sessionAppLocale, Config::get('languages'))) {
+        if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
 
             return $next($request);
         }
-
-        $fallbackLocale = $this->getAgentLangOrFallback(Config::get('app.fallback_locale'));
-
-        setGlobalLocale($fallbackLocale);
 
         return $next($request);
     }
@@ -54,8 +49,8 @@ class Language implements Middleware
      */
     protected function getAgentLangOrFallback($fallbackLocale)
     {
-        if ($locale = $this->searchAgent($this->agent->languages(), Config::get('languages'))) {
-            return $locale;
+        if ($agentPreferredLocale = $this->searchAgent($this->agent->languages(), config('languages'))) {
+            return $agentPreferredLocale;
         }
 
         return $fallbackLocale;
@@ -64,19 +59,19 @@ class Language implements Middleware
     /**
      * Search all AgentLangs aming app available Langs.
      *
-     * @param array $agentPreferredLangs
-     * @param array $configAcceptedLangs
+     * @param array $agentPreferredLocale
+     * @param array $configAcceptedLocales
      *
      * @return string
      */
-    protected function searchAgent($agentPreferredLangs, $configAcceptedLangs)
+    protected function searchAgent($agentPreferredLocale, $configAcceptedLocales)
     {
-        $availableLangs = $this->normalizeArrayKeys($configAcceptedLangs);
-        $agentPreferredLangs = $this->normalizeArrayValues($agentPreferredLangs);
+        $availableLangs = $this->normalizeArrayKeys($configAcceptedLocales);
+        $agentPreferredLocale = $this->normalizeArrayValues($agentPreferredLocale);
 
-        foreach ($agentPreferredLangs as $agentLang) {
-            if ($locale = $this->compareAgentLang($availableLangs, $agentLang)) {
-                return $locale;
+        foreach ($agentPreferredLocale as $agentLang) {
+            if ($matchedLocale = $this->compareAgentLang($availableLangs, $agentLang)) {
+                return $matchedLocale;
             }
         }
     }

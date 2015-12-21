@@ -28,6 +28,6 @@ if (!function_exists('isAcceptedLocale')) {
      */
     function isAcceptedLocale($posixLocale)
     {
-        return array_key_exists($posixLocale, config()->get('languages'));
+        return array_key_exists($posixLocale, config('languages'));
     }
 }
