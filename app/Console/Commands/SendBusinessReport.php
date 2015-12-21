@@ -105,7 +105,7 @@ class SendBusinessReport extends Command
     {
         $this->info(__METHOD__);
         $this->info("Sending to businessId:{$business->id}");
-        
+
         $appointments = $this->concierge->setBusiness($business)->getActiveAppointments();
 
         $owner = $business->owners()->first();
@@ -113,7 +113,7 @@ class SendBusinessReport extends Command
         // Mail to User
         $header = [
             'email' => $owner->email,
-            'name' => $owner->name
+            'name'  => $owner->name,
         ];
         $this->transmail->locale($business->locale)
                         ->template('appointments.manager._schedule')

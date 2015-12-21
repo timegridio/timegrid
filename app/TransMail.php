@@ -49,7 +49,7 @@ class TransMail
     /**
      * Set the locale.
      *
-     * @param  string $posixLocale
+     * @param string $posixLocale
      *
      * @return $this
      */
@@ -57,8 +57,7 @@ class TransMail
     {
         $this->revertLocale = app()->getLocale();
 
-        if($posixLocale === null)
-        {
+        if ($posixLocale === null) {
             $posixLocale = $this->revertLocale;
         }
 
@@ -70,7 +69,7 @@ class TransMail
     /**
      * Set the template view path key.
      *
-     * @param  string $template
+     * @param string $template
      *
      * @return $this
      */
@@ -84,8 +83,8 @@ class TransMail
     /**
      * Set the subject trans key and parameters.
      *
-     * @param  string $key
-     * @param  array  $params
+     * @param string $key
+     * @param array  $params
      *
      * @return $this
      */
@@ -101,8 +100,8 @@ class TransMail
     /**
      * Switch application wide locale, send message, and restore locale.
      *
-     * @param  array  $header
-     * @param  array  $params
+     * @param array $header
+     * @param array $params
      *
      * @return void
      */
@@ -125,7 +124,7 @@ class TransMail
     /**
      * Switch Locale.
      *
-     * @param  string $posixLocale
+     * @param string $posixLocale
      *
      * @return void
      */
@@ -133,6 +132,7 @@ class TransMail
     {
         if (function_exists('setGlobalLocale')) {
             setGlobalLocale($posixLocale);
+
             return;
         }
 
@@ -148,8 +148,8 @@ class TransMail
      */
     protected function getViewKey()
     {
-        $key = $this->viewBase . '.' . $this->locale . '.' . $this->viewPath;
-        
+        $key = $this->viewBase.'.'.$this->locale.'.'.$this->viewPath;
+
         if (!view()->exists($key)) {
             throw new \Exception('Email view does not exist');
         }
