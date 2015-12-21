@@ -61,7 +61,7 @@ class ConciergeService
 
     public function getUnservedAppointments()
     {
-        return $appointments = $this->business
+        return $this->business
             ->bookings()->with('contact')
             ->with('business')
             ->with('service')
@@ -72,7 +72,7 @@ class ConciergeService
 
     public function getActiveAppointments()
     {
-        return $appointments = $this->business
+        return $this->business
             ->bookings()->with('contact')
             ->with('business')
             ->with('service')
