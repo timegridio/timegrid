@@ -82,7 +82,7 @@ class Language implements Middleware
      */
     protected function searchAgent($agentLangs, $availableLangs)
     {
-        foreach ($agentLangs as $agentKey => $agentLang) {
+        foreach ($agentLangs as $agentLang) {
             if ($locale = $this->compareAgentLang($availableLangs, $agentLang)) {
                 return $locale;
             }
