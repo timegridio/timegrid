@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -23,12 +24,19 @@ class SendRootReport extends Command
     protected $description = 'Send Root Email Report';
 
     /**
+     * @var App\TransMail
+     */
+    private $transmail;
+
+    /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(TransMail $transmail)
     {
+        $this->transmail = $transmail;
+
         parent::__construct();
     }
 
@@ -39,19 +47,22 @@ class SendRootReport extends Command
      */
     public function handle()
     {
-        $registeredUsersCount = DB::table('users')->count();
-        $locale = app()->getLocale();
-
         logger()->info('Generating Root Report');
+
+        $registeredUsersCount = DB::table('users')->count();
+
         logger()->info('Users Count: '.$registeredUsersCount);
 
-        // Mail to User
-        $mailParams = [
+        // Mail to Root
+        $params = [
             'registeredUsersCount' => $registeredUsersCount,
         ];
-        Mail::send("emails.{$locale}.root.report", $mailParams, function ($mail) {
-            $mail->to(env('ROOT_REPORT_MAIL'), 'Root')
-                 ->subject('Root Report');
-        });
+        $header = [
+            'name'  => 'Root',
+            'email' => env('ROOT_REPORT_MAIL'),
+        ];
+        $this->transmail->template('root.report')
+                        ->subject('root.report')
+                        ->send($header, $params);
     }
 }

@@ -3,11 +3,18 @@
 namespace App\Handlers\Events;
 
 use App\Events\AppointmentWasConfirmed;
+use App\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
-use Illuminate\Support\Facades\Mail;
 
 class SendAppointmentConfirmationNotification
 {
+    private $transmail;
+
+    public function __construct(TransMail $transmail)
+    {
+        $this->transmail = $transmail;
+    }
+
     /**
      * Handle the event.
      *
@@ -40,38 +47,12 @@ class SendAppointmentConfirmationNotification
             'appointment' => $event->appointment,
         ];
         $header = [
-            'toMail'  => $event->appointment->contact->email,
-            'toName'  => $event->appointment->contact->firstname,
-            'subject' => trans('emails.user.appointment.confirmed.subject', ['business' => $event->appointment->business->name]),
+            'name'  => $event->appointment->contact->firstname,
+            'email' => $event->appointment->contact->email,
         ];
-        $this->sendMail($header, $params, 'appointments.user._confirmed');
-    }
-
-    /**
-     * Load localized email view and send email.
-     *
-     * @param array  $header
-     * @param array  $params
-     * @param string $view   Tail of view path after locale
-     * @param string $locale
-     *
-     * @throws \Exception 'Email view does not exist'
-     *
-     * @return void
-     */
-    protected function sendMail(array $header, array $params, $view, $locale = null)
-    {
-        if ($locale === null) {
-            $locale = app()->getLocale();
-        }
-
-        $view = "emails.{$locale}.{$view}";
-        if (!view()->exists($view)) {
-            throw new \Exception('Email view does not exist');
-        }
-
-        Mail::send($view, $params, function ($mail) use ($header) {
-            $mail->to($header['toMail'], $header['toName'])->subject($header['subject']);
-        });
+        $this->transmail->locale($business->locale)
+                        ->template('appointments.user._confirmed')
+                        ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
+                        ->send($header, $params);
     }
 }

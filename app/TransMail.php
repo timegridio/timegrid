@@ -41,6 +41,11 @@ class TransMail
      */
     protected $subject = '';
 
+    public function __construct()
+    {
+        $this->locale();
+    }
+
     /**
      * Set the locale.
      *
@@ -48,9 +53,14 @@ class TransMail
      *
      * @return $this
      */
-    public function locale($posixLocale)
+    public function locale($posixLocale = null)
     {
         $this->revertLocale = app()->getLocale();
+
+        if($posixLocale === null)
+        {
+            $posixLocale = $this->revertLocale;
+        }
 
         $this->locale = $posixLocale;
 
@@ -132,11 +142,19 @@ class TransMail
     /**
      * Build and get the view path key.
      *
+     * @throws Exception 'Email view does not exist'
+     * 
      * @return string
      */
     protected function getViewKey()
     {
-        return $this->viewBase . '.' . $this->locale . '.' . $this->viewPath;
+        $key = $this->viewBase . '.' . $this->locale . '.' . $this->viewPath;
+        
+        if (!view()->exists($key)) {
+            throw new \Exception('Email view does not exist');
+        }
+
+        return $key;
     }
 
     /**

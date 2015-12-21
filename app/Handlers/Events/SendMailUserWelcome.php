@@ -3,10 +3,17 @@
 namespace App\Handlers\Events;
 
 use App\Events\NewUserWasRegistered;
-use Illuminate\Support\Facades\Mail;
+use App\TransMail;
 
 class SendMailUserWelcome
 {
+    private $transmail;
+
+    public function __construct(TransMail $transmail)
+    {
+        $this->transmail = $transmail;
+    }
+
     /**
      * Handle the event.
      *
@@ -17,15 +24,16 @@ class SendMailUserWelcome
     public function handle(NewUserWasRegistered $event)
     {
         logger()->info('Handle NewUserWasRegistered.SendMailUserWelcome()');
-        $locale = app()->getLocale();
 
-        //////////////////
-        // FOR REFACTOR //
-        //////////////////
-
-        Mail::send("emails.{$locale}.welcome", ['user' => $event->user], function ($mail) use ($event) {
-            $mail->to($event->user->email, $event->user->name)
-                 ->subject(trans('emails.user.welcome.subject'));
-        });
+        $params = [
+            'user' => $event->user,
+        ];
+        $header = [
+            'name'  => $event->user->name,
+            'email' => $event->user->email,
+        ];
+        $this->transmail->template('appointments.manager._new')
+                        ->subject('user.welcome.subject')
+                        ->send($header, $params);
     }
 }

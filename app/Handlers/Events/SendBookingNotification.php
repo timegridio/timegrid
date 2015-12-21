@@ -3,11 +3,18 @@
 namespace App\Handlers\Events;
 
 use App\Events\NewAppointmentWasBooked;
+use App\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
-use Illuminate\Support\Facades\Mail;
 
 class SendBookingNotification
 {
+    private $transmail;
+
+    public function __construct(TransMail $transmail)
+    {
+        $this->transmail = $transmail;
+    }
+
     /**
      * Handle the event.
      *
@@ -40,11 +47,13 @@ class SendBookingNotification
             'appointment' => $event->appointment,
         ];
         $header = [
-            'toMail'  => $event->user->email,
-            'toName'  => $event->user->name,
-            'subject' => trans('emails.user.appointment.reserved.subject'),
+            'name'  => $event->user->name,
+            'email' => $event->user->email,
         ];
-        $this->sendMail($header, $params, 'appointments.user._new');
+        $this->transmail->locale($business->locale)
+                        ->template('appointments.user._new')
+                        ->subject('user.appointment.reserved.subject')
+                        ->send($header, $params);
 
         // Mail to Owner
         $params = [
@@ -52,38 +61,12 @@ class SendBookingNotification
             'appointment' => $event->appointment,
         ];
         $header = [
-            'toMail'  => $event->appointment->business->owner()->email,
-            'toName'  => $event->appointment->business->owner()->name,
-            'subject' => trans('emails.manager.appointment.reserved.subject'),
+            'name'  => $event->appointment->business->owner()->name,
+            'email' => $event->appointment->business->owner()->email,
         ];
-        $this->sendMail($header, $params, 'appointments.manager._new', $event->appointment->business->locale);
-    }
-
-    /**
-     * Load localized email view and send email.
-     *
-     * @param array  $header
-     * @param array  $params
-     * @param string $view   Tail of view path after locale
-     * @param string $locale
-     *
-     * @throws \Exception 'Email view does not exist'
-     *
-     * @return void
-     */
-    protected function sendMail(array $header, array $params, $view, $locale = null)
-    {
-        if ($locale === null) {
-            $locale = app()->getLocale();
-        }
-
-        $view = "emails.{$locale}.{$view}";
-        if (!view()->exists($view)) {
-            throw new \Exception('Email view does not exist');
-        }
-
-        Mail::send($view, $params, function ($mail) use ($header) {
-            $mail->to($header['toMail'], $header['toName'])->subject($header['subject']);
-        });
+        $this->transmail->locale($event->appointment->business->locale)
+                        ->template('appointments.manager._new')
+                        ->subject('manager.appointment.reserved.subject')
+                        ->send($header, $params);
     }
 }
