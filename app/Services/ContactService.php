@@ -23,7 +23,7 @@ class ContactService
      */
     public function register(User $user, Business $business, $data)
     {
-        if (false === $contact = self::getExisting($user, $business, $data['nin'])) {
+        if (false === $contact = self::getExisting($business, $data['nin'])) {
             $contact = Contact::create($data);
 
             $business->contacts()->attach($contact);
@@ -82,13 +82,12 @@ class ContactService
     /**
      * Find an existing contact with the same NIN.
      *
-     * @param User     $user
      * @param Business $business
      * @param string   $nin
      *
      * @return App\Models\Contact
      */
-    public function getExisting(User $user, Business $business, $nin)
+    public function getExisting(Business $business, $nin)
     {
         if (trim($nin) == '') {
             return false;
