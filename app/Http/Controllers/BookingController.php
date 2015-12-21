@@ -120,12 +120,16 @@ class BookingController extends Controller
         ], 200);
     }
 
+    /////////////
+    // HELPERS //
+    /////////////
+
     protected function splitTimes($vacancies, $service)
     {
         $times = [];
         foreach ($vacancies as $vacancy) {
             $begin = $vacancy->start_at;
-            $end = $vacancy->finish_at;
+
             $testBeginTime = $begin->copy();
             $testEndTime = $begin->copy()->addMinutes($service->duration);
 
