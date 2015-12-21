@@ -196,11 +196,9 @@ class Vacancy extends EloquentModel
     {
         return $this->capacity > $this->appointments()
                                       ->active()
-                                      ->affectingInterval(
-                                        $startAt,
-                                        $finishAt)
+                                      ->affectingInterval($startAt, $finishAt)
                                       ->count() &&
-            $this->start_at <= $startAt && $this->finish_at >= $finishAt;
+            ($this->start_at <= $startAt && $this->finish_at >= $finishAt);
     }
 
     /**
