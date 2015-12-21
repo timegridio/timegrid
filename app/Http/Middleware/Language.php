@@ -2,7 +2,6 @@
 
 namespace App\Http\Middleware;
 
-use Carbon\Carbon;
 use Closure;
 use Illuminate\Contracts\Routing\Middleware;
 use Illuminate\Support\Facades\Config;
@@ -32,18 +31,14 @@ class Language implements Middleware
         $sessionAppLocale = session()->get('applocale');
 
         if (session()->has('applocale') and array_key_exists($sessionAppLocale, Config::get('languages'))) {
-            app()->setLocale($sessionAppLocale);
-            setlocale(LC_TIME, $sessionAppLocale);
-            Carbon::setLocale(\Locale::getPrimaryLanguage($sessionAppLocale));
+            setGlobalLocale($sessionAppLocale);
 
             return $next($request);
         }
 
         $fallbackLocale = $this->getAgentLangOrFallback(Config::get('app.fallback_locale'));
 
-        app()->setLocale($fallbackLocale);
-        setlocale(LC_TIME, $fallbackLocale);
-        Carbon::setLocale(\Locale::getPrimaryLanguage($fallbackLocale));
+        setGlobalLocale($fallbackLocale);
 
         return $next($request);
     }
@@ -59,13 +54,7 @@ class Language implements Middleware
      */
     protected function getAgentLangOrFallback($fallbackLocale)
     {
-        $configLangs = Config::get('languages');
-        $agentLangs = $this->agent->languages();
-
-        $availableLangs = $this->normalizeArrayKeys($configLangs);
-        $agentLangs = $this->normalizeArrayValues($agentLangs);
-
-        if ($locale = $this->searchAgent($agentLangs, $availableLangs)) {
+        if ($locale = $this->searchAgent($this->agent->languages(), Config::get('languages'))) {
             return $locale;
         }
 
@@ -75,14 +64,17 @@ class Language implements Middleware
     /**
      * Search all AgentLangs aming app available Langs.
      *
-     * @param array $agentLangs
-     * @param array $availableLangs
+     * @param array $agentPreferredLangs
+     * @param array $configAcceptedLangs
      *
      * @return string
      */
-    protected function searchAgent($agentLangs, $availableLangs)
+    protected function searchAgent($agentPreferredLangs, $configAcceptedLangs)
     {
-        foreach ($agentLangs as $agentLang) {
+        $availableLangs = $this->normalizeArrayKeys($configAcceptedLangs);
+        $agentPreferredLangs = $this->normalizeArrayValues($agentPreferredLangs);
+
+        foreach ($agentPreferredLangs as $agentLang) {
             if ($locale = $this->compareAgentLang($availableLangs, $agentLang)) {
                 return $locale;
             }

@@ -7,16 +7,16 @@ class LanguageController extends Controller
     /**
      * Switch Language.
      *
-     * @param string $lang Language iso code
+     * @param string $posixLocale Language iso code
      *
      * @return Redirect HTTP Redirect
      */
-    public function switchLang($lang)
+    public function switchLang($posixLocale)
     {
-        logger()->info(sprintf('%s: %s', __METHOD__, $lang));
+        logger()->info(sprintf('%s: %s', __METHOD__, $posixLocale));
 
-        if ($this->isValidLanguage($lang)) {
-            $this->setSessionLanguage($lang);
+        if (isAcceptedLocale($posixLocale)) {
+            $this->setSessionLanguage($posixLocale);
         }
 
         return redirect()->back();
@@ -25,18 +25,6 @@ class LanguageController extends Controller
     /////////////
     // HELPERS //
     /////////////
-
-    /**
-     * Determine if is a POSIX language string is accepted by app config.
-     *
-     * @param string $posixLocale Requested language
-     *
-     * @return bool Is an accepted language for this app
-     */
-    protected function isValidLanguage($posixLocale)
-    {
-        return array_key_exists($posixLocale, config()->get('languages'));
-    }
 
     /**
      * Set language to session based on the selected POSIX language string.
