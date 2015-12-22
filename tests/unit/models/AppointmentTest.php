@@ -244,7 +244,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doServed
+     * @covers \App\Models\Appointment::doServe
      * @test
      */
     public function it_changes_status_to_served()
