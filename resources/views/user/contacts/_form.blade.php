@@ -1,6 +1,6 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/intlTelInput/intlTelInput.css') }}">
@@ -77,7 +77,7 @@
 
 
 @section('footer_scripts')
-<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/moment-with-locales.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
 <script src="{{ asset('js/lib/utils.js') }}"></script>

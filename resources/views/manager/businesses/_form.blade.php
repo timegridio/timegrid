@@ -1,5 +1,5 @@
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/intlTelInput/intlTelInput.css') }}">
 <style type="text/css">
   .iti-flag {background-image: url("/img/intlTelInput/flags.png");}
@@ -108,7 +108,7 @@
 <script src="{{ asset('js/bootstrap-validator.min.js') }}"></script>
 <script src="{{ asset('js/speakingurl.min.js') }}"></script>
 <script src="{{ asset('js/slugify.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/lib/utils.js') }}"></script>
 <script src="{{ asset('js/intlTelInput/intlTelInput.min.js') }}"></script>
 <script type="text/javascript">

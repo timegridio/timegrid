@@ -20,10 +20,22 @@ elixir(function(mix) {
         './bower_components/tooltipster/js/jquery.tooltipster.min.js'
     ], 'public/js/app.js');
 
+    mix.copy([
+        './bower_components/bootstrap-select/dist/js/i18n/*.min.js',
+    ], 'public/js/bootstrap-select/i18n');
+
+    mix.scripts([
+        './bower_components/bootstrap-select/dist/js/bootstrap-select.min.js',
+    ], 'public/js/forms.js');
+
     mix.styles([
         './bower_components/tooltipster/css/themes/tooltipster-light.css',
         './bower_components/tooltipster/css/tooltipster.css',
         './bower_components/animate.css/animate.min.css',
     ], 'public/css/styles.css');
+
+    mix.styles([
+        './bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
+    ], 'public/css/forms.css');
 
 });

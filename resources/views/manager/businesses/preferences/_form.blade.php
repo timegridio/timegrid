@@ -1,5 +1,5 @@
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endsection
 {{-- $preferences->findBy(['key' => $key]) --}}
 
@@ -77,5 +77,5 @@ trans('preferences.App\Models\Business.start_at.label')
 
 @section('footer_scripts')
 @parent
-<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 @endsection

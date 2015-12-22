@@ -2,7 +2,7 @@
 
 @section('css')
 @parent
-<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endsection
 
 @section('content')
@@ -58,4 +58,9 @@
     </div>
 </div>
 {!! Form::close() !!}
+@endsection
+
+@section('footer_scripts')
+@parent
+<script src="{{ asset('js/forms.js') }}"></script>
 @endsection

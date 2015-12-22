@@ -1,5 +1,5 @@
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endsection
 
 {{-- Services Form Partial --}}
@@ -67,7 +67,7 @@
 
 @section('footer_scripts')
 @parent
-<script src="{{ asset('js/bootstrap-select.min.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
