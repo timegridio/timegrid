@@ -4,6 +4,7 @@ use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
 use App\Models\User;
+use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laracasts\TestDummy\Factory;
 
@@ -94,6 +95,79 @@ class AppointmentTest extends TestCase
         $finishAt = $appointment->finishAt;
 
         $this->assertEquals('2015-12-08 09:30:00', $finishAt);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::vacancy
+     * @test
+     */
+    public function it_gets_the_associated_vacancy()
+    {
+        $business = Factory::create(Business::class);
+
+        $vacancy = Factory::create(Vacancy::class, [
+            'business_id' => $business->id
+            ]);
+
+        $appointment = Factory::create(Appointment::class, [
+            'business_id' => $business->id,
+            'vacancy_id'  => $vacancy->id,
+            'startAt'     => Carbon::parse('2015-12-08 08:00:00 UTC'),
+            'duration'    => 90,
+            ]);
+
+        $this->assertInstanceOf(Vacancy::class, $appointment->vacancy);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::getDateAttribute
+     * @test
+     */
+    public function it_gets_the_date_attribute_at_000000utc()
+    {
+        $business = Factory::create(Business::class);
+
+        $appointment = Factory::create(Appointment::class, [
+            'business_id' => $business->id,
+            'startAt'     => Carbon::parse('2015-12-08 00:00:00 UTC'),
+            'duration'    => 90,
+            ]);
+
+        $this->assertEquals($appointment->start_at->timezone($business->timezone)->toDateString(), $appointment->date);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::getDateAttribute
+     * @test
+     */
+    public function it_gets_the_date_attribute_at_120000utc()
+    {
+        $business = Factory::create(Business::class);
+
+        $appointment = Factory::create(Appointment::class, [
+            'business_id' => $business->id,
+            'startAt'     => Carbon::parse('2015-12-08 12:00:00 UTC'),
+            'duration'    => 90,
+            ]);
+
+        $this->assertEquals($appointment->start_at->timezone($business->timezone)->toDateString(), $appointment->date);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::getDateAttribute
+     * @test
+     */
+    public function it_gets_the_date_attribute_at_235959utc()
+    {
+        $business = Factory::create(Business::class);
+
+        $appointment = Factory::create(Appointment::class, [
+            'business_id' => $business->id,
+            'startAt'     => Carbon::parse('2015-12-08 23:59:59 UTC'),
+            'duration'    => 90,
+            ]);
+
+        $this->assertEquals($appointment->start_at->timezone($business->timezone)->toDateString(), $appointment->date);
     }
 
     /////////////

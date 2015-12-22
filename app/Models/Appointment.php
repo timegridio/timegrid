@@ -213,7 +213,7 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function getDateAttribute()
     {
-        return $this->start_at->timezone('UTC')->toDateString();
+        return $this->start_at->timezone($this->business->timezone)->toDateString();
     }
 
     /**
