@@ -13,9 +13,9 @@ class UserBusinessContactControllerTest extends TestCase
     use DatabaseTransactions;
 
     /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::create
-     * @covers   App\Http\Controllers\User\BusinessContactController::store
-     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\BusinessContactController::create
+     * @covers \App\Http\Controllers\User\BusinessContactController::store
+     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription()
@@ -44,9 +44,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::create
-     * @covers   App\Http\Controllers\User\BusinessContactController::store
-     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\BusinessContactController::create
+     * @covers \App\Http\Controllers\User\BusinessContactController::store
+     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_reusing_existing_contact()
@@ -79,9 +79,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::create
-     * @covers   App\Http\Controllers\User\BusinessContactController::store
-     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\BusinessContactController::create
+     * @covers \App\Http\Controllers\User\BusinessContactController::store
+     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_copying_existing_contact()
@@ -114,9 +114,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::edit
-     * @covers   App\Http\Controllers\User\BusinessContactController::update
-     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\BusinessContactController::edit
+     * @covers \App\Http\Controllers\User\BusinessContactController::update
+     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_edits_a_contact()
@@ -145,9 +145,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\User\BusinessContactController::edit
-     * @covers   App\Http\Controllers\User\BusinessContactController::update
-     * @covers   App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\BusinessContactController::edit
+     * @covers \App\Http\Controllers\User\BusinessContactController::update
+     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_can_change_nin_of_a_contact()
@@ -175,6 +175,37 @@ class UserBusinessContactControllerTest extends TestCase
         $this->assertResponseOk();
         $this->see('Updated successfully')
              ->see($newNin);
+    }
+
+    /**
+     * @covers \App\Http\Controllers\User\BusinessContactController::destroy
+     * @test
+     */
+    public function it_detaches_a_contact_from_business()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        // I have a registered contact in Business
+        $contact = factory(Contact::class)->create([
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'nin' => '12345',
+            'email' => null
+            ]);
+        $contact->user()->associate($this->issuer);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+        $this->withoutMiddleware();
+
+        $this->assertCount(1, $this->business->fresh()->contacts);
+
+        $response = $this->call('DELETE', route('user.business.contact.destroy', [$this->business, $contact]));
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertCount(0, $this->business->fresh()->contacts);
     }
 
     /////////////
