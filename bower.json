@@ -16,6 +16,7 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.6",
+    "tooltipster": "~3.3.0",
     "jquery": "~2.1.4"
   }
 }
