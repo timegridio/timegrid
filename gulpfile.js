@@ -23,6 +23,7 @@ elixir(function(mix) {
     mix.styles([
         './bower_components/tooltipster/css/themes/tooltipster-light.css',
         './bower_components/tooltipster/css/tooltipster.css',
+        './bower_components/animate.css/animate.min.css',
     ], 'public/css/styles.css');
 
 });
