@@ -2,6 +2,7 @@
 /node_modules
 /tests/logs
 /build
+/bower_components
 .env
 .env.testing
 *.sublime-workspace
