@@ -28,6 +28,10 @@ elixir(function(mix) {
         './bower_components/bootstrap-select/dist/js/bootstrap-select.min.js',
     ], 'public/js/forms.js');
 
+    mix.scripts([
+        './bower_components/jquery-bootstrap-newsbox/dist/jquery.bootstrap.newsbox.min.js',
+    ], 'public/js/newsbox.js');
+
     mix.styles([
         './bower_components/tooltipster/css/themes/tooltipster-light.css',
         './bower_components/tooltipster/css/tooltipster.css',

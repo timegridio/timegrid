@@ -177,7 +177,7 @@
 
 @section('footer_scripts')
 @parent
-<script src="{{ asset('js/jquery.bootstrap.newsbox.min.js') }}"></script>
+<script src="{{ asset('js/newsbox.js') }}"></script>
 <script src="{{ asset('js/bootstrap-tour.min.js') }}"></script>
 <script type="text/javascript">
 (function() {

@@ -19,6 +19,7 @@
     "tooltipster": "~3.3.0",
     "jquery": "~2.1.4",
     "animate.css": "~3.5.0",
-    "bootstrap-select": "~1.9.3"
+    "bootstrap-select": "~1.9.3",
+    "jquery-bootstrap-newsbox": "~1.0.2"
   }
 }
