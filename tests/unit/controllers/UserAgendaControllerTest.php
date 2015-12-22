@@ -264,4 +264,44 @@ class UserAgendaControllerTest extends TestCase
         $this->see('Subscribe')
              ->see($business->name);
     }
+
+    /** @test */
+    public function it_makes_a_reservation()
+    {
+        // Given I am an authenticated user
+        $this->user = factory(User::class)->create();
+        $this->actingAs($this->user);
+
+        // And there exist a registered business that provides a service
+        $this->owner = factory(User::class)->create();
+        $business = factory(Business::class)->create(['name' => 'tosto this tosti']);
+        $business->owners()->save($this->owner);
+        
+        $service = factory(Service::class)->make();
+        $business->services()->save($service);
+
+        // And which I am subscribed-to as contact
+        $contact = factory(Contact::class)->create([
+            'user_id' => $this->user->id
+            ]);
+        $business->contacts()->save($contact);
+
+        // And there is vacancy for the service (OPTIONAL)
+        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        // And I submit the reservation form
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time' => '09:00:00',
+            '_date' => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments' => 'test comments',
+            ]);
+
+        // Then I should see Subscribe button for that business
+        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
+    }
 }
