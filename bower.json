@@ -20,6 +20,7 @@
     "jquery": "~2.1.4",
     "animate.css": "~3.5.0",
     "bootstrap-select": "~1.9.3",
-    "jquery-bootstrap-newsbox": "~1.0.2"
+    "jquery-bootstrap-newsbox": "~1.0.2",
+    "eonasdan-bootstrap-datetimepicker": "~4.17.37"
   }
 }

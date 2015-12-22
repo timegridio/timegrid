@@ -1,8 +1,7 @@
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/jquery-ui.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+<link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
 <link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
-<link rel="stylesheet" href="{{ asset('css/bootstrap-datetimepicker/bootstrap-datetimepicker.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/intlTelInput/intlTelInput.css') }}">
 <style type="text/css">
     .iti-flag { background-image: url("/img/intlTelInput/flags.png"); }
@@ -83,8 +82,7 @@
 
 @section('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
-<script src="{{ asset('js/moment-with-locales.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js') }}"></script>
+<script src="{{ asset('js/datetime.js') }}"></script>
 <script src="{{ asset('js/gender/gender.min.js') }}"></script>
 <script src="{{ asset('js/lib/utils.js') }}"></script>
 <script src="{{ asset('js/intlTelInput/intlTelInput.min.js') }}"></script>

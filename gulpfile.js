@@ -29,6 +29,16 @@ elixir(function(mix) {
     ], 'public/js/forms.js');
 
     mix.scripts([
+        './bower_components/moment/min/moment-with-locales.min.js',
+        './bower_components/moment-timezone/builds/moment-timezone.min.js',
+        './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+    ], 'public/js/datetime.js');
+
+    mix.styles([
+        './bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+    ], 'public/css/datetime.css');
+
+    mix.scripts([
         './bower_components/jquery-bootstrap-newsbox/dist/jquery.bootstrap.newsbox.min.js',
     ], 'public/js/newsbox.js');
 
