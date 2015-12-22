@@ -189,9 +189,9 @@ class UserBusinessContactControllerTest extends TestCase
         // I have a registered contact in Business
         $contact = factory(Contact::class)->create([
             'firstname' => 'John',
-            'lastname' => 'Doe',
-            'nin' => '12345',
-            'email' => null
+            'lastname'  => 'Doe',
+            'nin'       => '12345',
+            'email'     => null,
             ]);
         $contact->user()->associate($this->issuer);
         $this->business->contacts()->save($contact);

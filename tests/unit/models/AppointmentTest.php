@@ -106,7 +106,7 @@ class AppointmentTest extends TestCase
         $business = Factory::create(Business::class);
 
         $vacancy = Factory::create(Vacancy::class, [
-            'business_id' => $business->id
+            'business_id' => $business->id,
             ]);
 
         $appointment = Factory::create(Appointment::class, [
@@ -191,7 +191,7 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->addDays(1),
-            'status' => Appointment::STATUS_RESERVED,
+            'status'   => Appointment::STATUS_RESERVED,
             ]);
 
         $this->assertTrue($appointment->isPending());
@@ -205,7 +205,7 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->subDays(1),
-            'status' => Appointment::STATUS_RESERVED,
+            'status'   => Appointment::STATUS_RESERVED,
             ]);
 
         $this->assertFalse($appointment->isPending());
@@ -219,9 +219,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->addDays(1),
-            'status' => Appointment::STATUS_RESERVED,
+            'status'   => Appointment::STATUS_RESERVED,
             ]);
-        
+
         $appointment->doConfirm();
 
         $this->assertEquals(Appointment::STATUS_CONFIRMED, $appointment->status);
@@ -235,9 +235,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->addDays(1),
-            'status' => Appointment::STATUS_ANNULATED,
+            'status'   => Appointment::STATUS_ANNULATED,
             ]);
-        
+
         $appointment->doAnnulate();
 
         $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
@@ -251,9 +251,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->addDays(1),
-            'status' => Appointment::STATUS_SERVED,
+            'status'   => Appointment::STATUS_SERVED,
             ]);
-        
+
         $appointment->doAnnulate();
 
         $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
@@ -283,9 +283,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->subDays(1),
-            'status' => Appointment::STATUS_ANNULATED,
+            'status'   => Appointment::STATUS_ANNULATED,
             ]);
-        
+
         $appointment->doServe();
 
         $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
@@ -299,9 +299,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->subDays(1),
-            'status' => Appointment::STATUS_ANNULATED,
+            'status'   => Appointment::STATUS_ANNULATED,
             ]);
-        
+
         $appointment->doConfirm();
 
         $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
@@ -315,9 +315,9 @@ class AppointmentTest extends TestCase
     {
         $appointment = Factory::create(Appointment::class, [
             'start_at' => Carbon::now()->subDays(1),
-            'status' => Appointment::STATUS_SERVED,
+            'status'   => Appointment::STATUS_SERVED,
             ]);
-        
+
         $appointment->doServe();
 
         $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);

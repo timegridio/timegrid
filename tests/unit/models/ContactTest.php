@@ -90,13 +90,13 @@ class ContactTest extends TestCase
 
         $appointment1 = factory(Appointment::class)->create([
             'business_id' => $business->id,
-            'contact_id' => $contact->id,
-            'start_at' => Carbon::now()->addDays(1),
+            'contact_id'  => $contact->id,
+            'start_at'    => Carbon::now()->addDays(1),
             ]);
         $appointment2 = factory(Appointment::class)->create([
             'business_id' => $business->id,
-            'contact_id' => $contact->id,
-            'start_at' => Carbon::now()->addDays(2),
+            'contact_id'  => $contact->id,
+            'start_at'    => Carbon::now()->addDays(2),
             ]);
 
         $this->assertCount(2, $contact->appointments);
@@ -131,8 +131,8 @@ class ContactTest extends TestCase
         $user = $this->createUser(['email' => $userFallbackEmail]);
 
         $contact = $this->createContact([
-            'email' => $contactEmail,
-            'user_id' => $user->id
+            'email'   => $contactEmail,
+            'user_id' => $user->id,
             ]);
 
         $this->assertEquals($contactEmail, $contact->email);
@@ -152,8 +152,8 @@ class ContactTest extends TestCase
         $user = $this->createUser(['email' => $userFallbackEmail]);
 
         $contact = $this->createContact([
-            'email' => null,
-            'user_id' => $user->id
+            'email'   => null,
+            'user_id' => $user->id,
             ]);
 
         $this->assertEquals($userFallbackEmail, $contact->email);

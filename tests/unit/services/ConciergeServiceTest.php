@@ -384,7 +384,7 @@ class ConciergeServiceTest extends TestCase
 
         $appointment = $this->concierge
                             ->setBusiness($this->business)
-                            ->requestAction($this->user, $appointment, 'invalidRequest');    
+                            ->requestAction($this->user, $appointment, 'invalidRequest');
 
         // Assert
         $this->assertEquals(Appointment::STATUS_RESERVED, $appointment->status);

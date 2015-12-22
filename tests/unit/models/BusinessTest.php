@@ -90,7 +90,7 @@ class BusinessTest extends TestCase
     public function it_gets_the_business_owner()
     {
         $owner = factory(User::class)->create();
-        
+
         $business = factory(Business::class)->create();
         $business->owners()->save($owner);
 
@@ -106,9 +106,9 @@ class BusinessTest extends TestCase
     {
         $owner1 = factory(User::class)->create();
         $owner2 = factory(User::class)->create();
-        
+
         $business = factory(Business::class)->create();
-        
+
         $business->owners()->save($owner1);
         $business->owners()->save($owner2);
 

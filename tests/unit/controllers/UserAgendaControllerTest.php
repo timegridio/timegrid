@@ -276,13 +276,13 @@ class UserAgendaControllerTest extends TestCase
         $this->owner = factory(User::class)->create();
         $business = factory(Business::class)->create(['name' => 'tosto this tosti']);
         $business->owners()->save($this->owner);
-        
+
         $service = factory(Service::class)->make();
         $business->services()->save($service);
 
         // And which I am subscribed-to as contact
         $contact = factory(Contact::class)->create([
-            'user_id' => $this->user->id
+            'user_id' => $this->user->id,
             ]);
         $business->contacts()->save($contact);
 
@@ -296,9 +296,9 @@ class UserAgendaControllerTest extends TestCase
         $this->call('POST', route('user.booking.store', ['business' => $business]), [
             'businessId' => $business->id,
             'service_id' => $service->id,
-            '_time' => '09:00:00',
-            '_date' => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
-            'comments' => 'test comments',
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
             ]);
 
         // Then I should see Subscribe button for that business
