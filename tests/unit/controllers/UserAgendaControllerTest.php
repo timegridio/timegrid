@@ -287,7 +287,13 @@ class UserAgendaControllerTest extends TestCase
         $business->contacts()->save($contact);
 
         // And there is vacancy for the service (OPTIONAL)
-        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy = factory(Vacancy::class)->make([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
