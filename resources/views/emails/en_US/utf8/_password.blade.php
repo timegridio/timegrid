@@ -1,4 +1,4 @@
-@extends('emails.'.App::getLocale() . '.layout')
+@extends('emails.'.App::getLocale().'.layout')
 
 @section('content')
 <!-- 100% background wrapper (grey background) -->
