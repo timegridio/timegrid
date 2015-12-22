@@ -177,6 +177,10 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->assertEquals($contact->nin, $existingContact->nin);
     }
 
+    /////////////
+    // Fixture //
+    /////////////
+
     /**
      * arrange fixture.
      *

@@ -9,7 +9,7 @@ class LanguageControllerTest extends TestCase
      * @covers \App\Http\Controllers\LanguageController::switchLang
      * @test
      */
-    public function testSwitchLanguageToEnglish()
+    public function it_switches_language_to_english_us()
     {
         $applocale = 'en_US.utf8';
         $this->call('GET', "/lang/$applocale");
@@ -25,7 +25,7 @@ class LanguageControllerTest extends TestCase
      * @covers \App\Http\Controllers\LanguageController::switchLang
      * @test
      */
-    public function testSwitchLanguageToSpanishSpain()
+    public function it_switches_language_to_spanish_es()
     {
         $applocale = 'es_ES.utf8';
         $this->call('GET', "/lang/$applocale");

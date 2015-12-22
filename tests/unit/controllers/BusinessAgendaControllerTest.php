@@ -68,6 +68,10 @@ class BusinessAgendaControllerTest extends TestCase
         #$this->see($this->appointment->contact->firstname);
     }
 
+    /////////////
+    // Fixture //
+    /////////////
+
     /**
      * arrange fixture.
      *

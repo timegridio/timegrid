@@ -340,7 +340,7 @@ class BookingControllerTest extends TestCase
     }
 
     /////////////
-    // HELPERS //
+    // Fixture //
     /////////////
 
     protected function arrangeFixture()

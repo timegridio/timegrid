@@ -177,6 +177,10 @@ class UserBusinessContactControllerTest extends TestCase
              ->see($newNin);
     }
 
+    /////////////
+    // Fixture //
+    /////////////
+
     /**
      * arrange fixture.
      *
