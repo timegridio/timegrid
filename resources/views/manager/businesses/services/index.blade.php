@@ -18,6 +18,11 @@
                         {!! Button::normal()
                             ->withIcon(Icon::edit())
                             ->asLinkTo(route('manager.business.service.edit', [$business, $service->id]) ) !!}
+
+                        @if($service->type)
+                        {!! Button::normal($service->type->name) !!}
+                        @endif
+
                         {!! Button::normal($service->name)
                             ->asLinkTo( route('manager.business.service.show', [$business, $service->id]) ) !!}
                     </div>

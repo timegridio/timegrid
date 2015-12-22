@@ -79,6 +79,16 @@ class Business extends EloquentModel implements HasPresenter
     }
 
     /**
+     * provides Service types.
+     *
+     * @return Illuminate\Database\Query Relationship
+     */
+    public function servicetypes()
+    {
+        return $this->hasMany('App\Models\ServiceType');
+    }
+
+    /**
      * publishes Vacancies.
      *
      * @return Illuminate\Database\Query Relationship Business published Vacancies query

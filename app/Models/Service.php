@@ -11,7 +11,7 @@ class Service extends EloquentModel
      *
      * @var array
      */
-    protected $fillable = ['name', 'business_id', 'description', 'prerequisites', 'duration'];
+    protected $fillable = ['name', 'business_id', 'description', 'prerequisites', 'duration', 'type_id'];
 
     /**
      * The attributes that aren't mass assignable.
@@ -19,6 +19,31 @@ class Service extends EloquentModel
      * @var array
      */
     protected $guarded = ['id', 'slug'];
+
+    /**
+     * Belongs to service type.
+     *
+     * @return Illuminate\Database\Query Relationship Service belongs to type query
+     */
+    public function type()
+    {
+        return $this->belongsTo('App\Models\ServiceType');
+    }
+
+    /**
+     * Get service type name.
+     *
+     * @return string
+     */
+    public function getTypeNameAttribute()
+    {
+        if($this->type())
+        {
+            return $this->type->name;
+        }
+
+        return null;
+    }
 
     /**
      * belongs to Business.

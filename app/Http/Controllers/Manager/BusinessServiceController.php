@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Service;
+use App\Models\ServiceType;
 use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller
@@ -40,10 +41,12 @@ class BusinessServiceController extends Controller
 
         // BEGIN
 
+        $types = $business->servicetypes->lists('name', 'id');
+
         $service = new Service([
             'duration' => $business->pref('service_default_duration'),
         ]); // For Form Model Binding
-        return view('manager.businesses.services.create', compact('business', 'service'));
+        return view('manager.businesses.services.create', compact('business', 'service', 'types'));
     }
 
     /**
@@ -65,7 +68,13 @@ class BusinessServiceController extends Controller
         //////////////////
 
         $service = Service::firstOrNew($request->except('_token'));
+
         $service->business()->associate($business->id);
+
+        if ($request->get('type_id')) {
+            $service->type()->associate($request->get('type_id'));
+        }
+
         $service->save();
 
         logger()->info("Stored serviceId:{$service->id}");
@@ -111,8 +120,10 @@ class BusinessServiceController extends Controller
         $this->authorize('manageServices', $business);
 
         // BEGIN
+        
+        $types = $business->servicetypes->lists('name', 'id');
 
-        return view('manager.businesses.services.edit', compact('service'));
+        return view('manager.businesses.services.edit', compact('service', 'types'));
     }
 
     /**
@@ -135,13 +146,17 @@ class BusinessServiceController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
-
         $service->update([
             'name'          => $request->get('name'),
             'duration'      => $request->get('duration'),
             'description'   => $request->get('description'),
             'prerequisites' => $request->get('prerequisites'),
         ]);
+
+        if ($request->get('type_id')) {
+            $service->type()->associate($request->get('type_id'));
+            $service->save();
+        }
 
         flash()->success(trans('manager.business.service.msg.update.success'));
 

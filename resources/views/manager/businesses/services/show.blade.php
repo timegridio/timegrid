@@ -11,6 +11,11 @@
                 </div>
 
                 <ul class="list-group">
+                    @if($service->type)
+                    <li class="list-group-item">
+                        {{ $service->type->name }}
+                    </li>
+                    @endif
                     <li class="list-group-item">
                         <span class='glyphicon glyphicon-tag'></span>&nbsp;{{ $service->slug }}&nbsp;
                         &nbsp;&nbsp;
@@ -28,7 +33,7 @@
                         'data-toggle' => 'tooltip',
                         'data-original-title' => trans('manager.service.btn.delete'),
                         'data-method' => 'DELETE',
-                        'data-confirm' => 'Delete?']
+                        'data-confirm' => trans('manager.service.btn.delete').'?']
                     )->asLinkTo( route('manager.business.service.destroy', [$service->business, $service]) ) !!}
                 </div>
             </div>
