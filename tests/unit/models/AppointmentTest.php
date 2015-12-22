@@ -265,11 +265,11 @@ class AppointmentTest extends TestCase
      */
     public function it_sets_status_to_reserved()
     {
-        $appointment = Factory::create(Appointment::class, [
-            'start_at' => Carbon::now()->addDays(1),
-            'status' => null,
+        $appointment = factory(Appointment::class)->make([
+            'status'   => null,
+            'start_at' => Carbon::now()->addDays(5),
             ]);
-        
+
         $appointment->doReserve();
 
         $this->assertEquals(Appointment::STATUS_RESERVED, $appointment->status);
