@@ -1,0 +1,20 @@
+{
+  "name": "timegrid",
+  "version": "3.6.0-rc1",
+  "authors": [
+    "Ariel Vallese <alariva@gmail.com>"
+  ],
+  "description": "Online service booking app for businesses.",
+  "license": "MIT",
+  "homepage": "timegrid.io",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.6"
+  }
+}

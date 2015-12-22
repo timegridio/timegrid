@@ -7,11 +7,12 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
     <title>{{trans('app.name')}}</title>
 
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/tooltipster/themes/tooltipster-timegrid.css') }}">
     <link rel="stylesheet" href="{{ asset('css/tooltipster/tooltipster.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    
 
     @yield('css')
 
@@ -86,8 +87,7 @@
 @include('_footer')
 
 <!-- Scripts -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
 
 <script type="text/javascript">
