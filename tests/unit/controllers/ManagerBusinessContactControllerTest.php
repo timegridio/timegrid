@@ -74,28 +74,69 @@ class ManagerBusinessContactControllerTest extends TestCase
              ->see('NewLastName');
     }
 
-#    TEST NOT WORKING - VERIFY
-#    /**
-#     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
-#     * @covers   App\Http\Controllers\Manager\BusinessContactController::destroy
-#     * @test
-#     */
-#    public function it_removes_a_contact_from_addressbook()
-#    {
-#        // Given a fixture of
-#        $this->arrangeFixture();
-#        $contact = factory(Contact::class)->create(['firstname' => 'DeletemeFirst', 'lastname' => 'DeletemeLast', 'nin' => '1133224455']);
-#        $this->business->contacts()->save($contact);
-#
-#        // And I am authenticated as the business owner
-#        $this->actingAs($this->issuer);
-#
-#        // And I visit the business contact profile
-#        $this->call('DELETE', route('user.business.contact.destroy', ['_token' => csrf_token(), 'business' => $this->business->slug, 'contact' => $contact->id]));
-#
-#        // Then I see the contact not listed and message of confirmation
-#        $this->assertEquals(false, $this->business->fresh()->contacts->contains($contact));
-#    }
+    /**
+     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
+     * @test
+     */
+    public function it_detaches_a_contact_from_business()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        // I have a registered contact in Business
+        $contact = factory(Contact::class)->create([
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'nin' => '12345',
+            'email' => null
+            ]);
+        $contact->user()->associate($this->issuer);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->issuer);
+        $this->withoutMiddleware();
+
+        $this->assertCount(1, $this->business->fresh()->contacts);
+
+        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertCount(0, $this->business->fresh()->contacts);
+    }
+
+    /**
+     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
+     * @test
+     */
+    public function it_denies_detaching_a_contact_from_business_to_unauthorized_user()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        $unauthorizedUser = factory(User::class)->create();
+
+        // I have a registered contact in Business
+        $contact = factory(Contact::class)->create([
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'nin' => '12345',
+            'email' => null
+            ]);
+        $contact->user()->associate($this->issuer);
+        $this->business->contacts()->save($contact);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($unauthorizedUser);
+        $this->withoutMiddleware();
+
+        $this->assertCount(1, $this->business->fresh()->contacts);
+
+        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+
+        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertCount(1, $this->business->fresh()->contacts);
+    }
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
