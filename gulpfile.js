@@ -16,11 +16,13 @@ elixir(function(mix) {
 
     mix.scripts([
         './bower_components/jquery/dist/jquery.min.js',
-        './bower_components/bootstrap/dist/js/bootstrap.min.js'
+        './bower_components/bootstrap/dist/js/bootstrap.min.js',
+        './bower_components/tooltipster/js/jquery.tooltipster.min.js'
     ], 'public/js/app.js');
 
-//    mix.styles([
-//        './bower_components/bootstrap/dist/css/bootstrap.min.css',
-//    ], 'public/css/styles.css');
+    mix.styles([
+        './bower_components/tooltipster/css/themes/tooltipster-light.css',
+        './bower_components/tooltipster/css/tooltipster.css',
+    ], 'public/css/styles.css');
 
 });

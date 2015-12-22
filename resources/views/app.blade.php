@@ -8,11 +8,8 @@
     <title>{{trans('app.name')}}</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-    <link rel="stylesheet" href="{{ asset('css/tooltipster/themes/tooltipster-timegrid.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/tooltipster/tooltipster.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-    
 
     @yield('css')
 
@@ -88,11 +85,10 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
-<script src="{{ asset('js/jquery.tooltipster.min.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-timegrid'});
+    $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-light'});
 });
 </script>
 
