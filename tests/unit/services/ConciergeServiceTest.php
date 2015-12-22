@@ -359,4 +359,34 @@ class ConciergeServiceTest extends TestCase
         $this->assertInstanceOf(Appointment::class, $appointment);
         $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
     }
+
+    /**
+     * @covers \App\Services\ConciergeService::requestAction
+     * @expectedException \Exception
+     * @test
+     */
+    public function it_throws_exception_upon_invalid_request()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+        $this->business->contacts()->save($this->contact);
+
+        $appointment = factory(Appointment::class)->make([
+            'status'   => Appointment::STATUS_RESERVED,
+            'start_at' => Carbon::now()->subDays(1),
+            ]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->issuer()->associate($this->user);
+        $appointment->business()->associate($this->business);
+        $appointment->save();
+
+        $appointment = $this->concierge
+                            ->setBusiness($this->business)
+                            ->requestAction($this->user, $appointment, 'invalidRequest');    
+
+        // Assert
+        $this->assertEquals(Appointment::STATUS_RESERVED, $appointment->status);
+    }
 }
