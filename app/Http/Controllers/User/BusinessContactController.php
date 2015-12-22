@@ -204,13 +204,12 @@ class BusinessContactController extends Controller
         logger()->info(sprintf('businessId:%s contactId:%s', $business->id, $contact->id));
 
         $this->authorize('manage', $contact);
-
         // BEGIN
 
         $this->contactService->detach($business, $contact);
 
-        flash()->success(trans('manager.contacts.msg.destroy.success'));
+        flash()->success(trans('user.contacts.msg.destroy.success'));
 
-        return redirect()->route('manager.business.show', $business);
+        return redirect()->route('user.business.contact.show', $business);
     }
 }
