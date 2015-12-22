@@ -170,6 +170,159 @@ class AppointmentTest extends TestCase
         $this->assertEquals($appointment->start_at->timezone($business->timezone)->toDateString(), $appointment->date);
     }
 
+    /**
+     * @covers \App\Models\Appointment::isReserved
+     * @test
+     */
+    public function it_returns_is_reserved()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'status' => Appointment::STATUS_RESERVED,
+            ]);
+
+        $this->assertTrue($appointment->isReserved());
+    }
+
+    /**
+     * @covers \App\Models\Appointment::isPending
+     * @test
+     */
+    public function it_returns_is_pending()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->addDays(1),
+            'status' => Appointment::STATUS_RESERVED,
+            ]);
+
+        $this->assertTrue($appointment->isPending());
+    }
+
+    /**
+     * @covers \App\Models\Appointment::isPending
+     * @test
+     */
+    public function it_returns_is_not_pending()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->subDays(1),
+            'status' => Appointment::STATUS_RESERVED,
+            ]);
+
+        $this->assertFalse($appointment->isPending());
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doConfirm
+     * @test
+     */
+    public function it_changes_status_to_confirmed()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->addDays(1),
+            'status' => Appointment::STATUS_RESERVED,
+            ]);
+        
+        $appointment->doConfirm();
+
+        $this->assertEquals(Appointment::STATUS_CONFIRMED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doAnnulate
+     * @test
+     */
+    public function it_changes_status_to_annulated()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->addDays(1),
+            'status' => Appointment::STATUS_ANNULATED,
+            ]);
+        
+        $appointment->doAnnulate();
+
+        $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doServed
+     * @test
+     */
+    public function it_changes_status_to_served()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->addDays(1),
+            'status' => Appointment::STATUS_SERVED,
+            ]);
+        
+        $appointment->doAnnulate();
+
+        $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doReserve
+     * @test
+     */
+    public function it_sets_status_to_reserved()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->addDays(1),
+            'status' => null,
+            ]);
+        
+        $appointment->doReserve();
+
+        $this->assertEquals(Appointment::STATUS_RESERVED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doServe
+     * @test
+     */
+    public function it_cannot_serve_if_annulated()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->subDays(1),
+            'status' => Appointment::STATUS_ANNULATED,
+            ]);
+        
+        $appointment->doServe();
+
+        $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doServe
+     * @test
+     */
+    public function it_cannot_confirm_if_annulated()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->subDays(1),
+            'status' => Appointment::STATUS_ANNULATED,
+            ]);
+        
+        $appointment->doConfirm();
+
+        $this->assertEquals(Appointment::STATUS_ANNULATED, $appointment->status);
+    }
+
+    /**
+     * @covers \App\Models\Appointment::doServe
+     * @test
+     */
+    public function it_cannot_annulate_if_served()
+    {
+        $appointment = Factory::create(Appointment::class, [
+            'start_at' => Carbon::now()->subDays(1),
+            'status' => Appointment::STATUS_SERVED,
+            ]);
+        
+        $appointment->doServe();
+
+        $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
+    }
+
     /////////////
     // HELPERS //
     /////////////
