@@ -105,8 +105,6 @@
 
 @section('footer_scripts')
 @parent
-<script src="{{ asset('js/speakingurl.min.js') }}"></script>
-<script src="{{ asset('js/slugify.min.js') }}"></script>
 <script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/lib/utils.js') }}"></script>
 <script src="{{ asset('js/intlTelInput/intlTelInput.min.js') }}"></script>
