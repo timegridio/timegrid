@@ -108,7 +108,7 @@
 @endsection
 
 @section('footer_scripts')
-<script src="{{asset('js/bootstrap-validator.min.js')}}"></script>
+<script src="{{asset('js/forms.js')}}"></script>
 @parent
 <script type="text/javascript">
 $(document).ready(function(){

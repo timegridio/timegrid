@@ -105,7 +105,6 @@
 
 @section('footer_scripts')
 @parent
-<script src="{{ asset('js/bootstrap-validator.min.js') }}"></script>
 <script src="{{ asset('js/speakingurl.min.js') }}"></script>
 <script src="{{ asset('js/slugify.min.js') }}"></script>
 <script src="{{ asset('js/forms.js') }}"></script>
