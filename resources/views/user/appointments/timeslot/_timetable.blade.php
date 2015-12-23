@@ -13,7 +13,7 @@
     @endif
     </div>
     
-    <table id="timetable" class="table">
+    <table id="timetable" class="table hidden">
     @foreach ($dates as $date => $vacancies)
         @if (empty($vacancies))
         <tr class="daterow">
@@ -92,9 +92,12 @@ $(document).ready(function() {
         $('.service').hide();
         $('.service' + serviceId).show();
         $('#catalog').hide();
+        $('#timetable').show();
     });
 
+    $('#timetable').removeClass('hidden').hide();
     $('#extra').removeClass('hidden').hide();
+
     $('#timetable .btn.service').click(function(e){
         var service = $(this).data('service');
         console.log('Press ' + service);

@@ -18,7 +18,7 @@
             @include('user.appointments.timeslot._timetable', ['dates' => $availability])
         </div>
 
-        <div id="extra">
+        <div id="extra" class="hidden">
             <div class="row">
                 <div class="form-group col-sm-5">
                     {!! Form::label(trans('user.appointments.form.time.label')) !!}
