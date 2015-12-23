@@ -41,7 +41,6 @@
                 <div class="form-group col-sm-12">
                     {!! Form::label(trans('user.appointments.form.comments.label')) !!}
                     {!! Form::text('comments', null, [
-                        'required',
                         'class'=>'form-control',
                         'placeholder'=> trans('user.appointments.form.comments.label')
                         ]) !!}

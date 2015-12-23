@@ -25,4 +25,21 @@
 /*! jquery-slugify - v1.2.3 - 2015-12-23
 * Copyright (c) 2015 madflow; Licensed  */
 !function(a){a.fn.slugify=function(b,c){return this.each(function(){var d=a(this),e=a(b);d.on("keyup change",function(){""!==d.val()&&void 0!==d.val()?d.data("locked",!0):d.data("locked",!1)}),e.on("keyup change",function(){!0!==d.data("locked")&&(d.is("input")||d.is("textarea")?d.val(a.slugify(e.val(),c)):d.text(a.slugify(e.val(),c)))})})},a.slugify=function(b,c){return c=a.extend({},a.slugify.options,c),c.lang=c.lang||a("html").prop("lang"),"function"==typeof c.preSlug&&(b=c.preSlug(b)),b=c.slugFunc(b,c),"function"==typeof c.postSlug&&(b=c.postSlug(b)),b},a.slugify.options={preSlug:null,postSlug:null,slugFunc:function(a,b){return window.getSlug(a,b)}}}(jQuery);
+/* 
+ * bootstrap-list-filter v0.2.1 - 2015-09-07 
+ * 
+ * Copyright 2015 Stefano Cudini 
+ * stefano.cudini@gmail.com 
+ * http://labs.easyblog.it/ 
+ * 
+ * Licensed under the MIT license. 
+ * 
+ * Demos: 
+ * http://labs.easyblog.it/bootstrap-list-filter/ 
+ * 
+ * Source: 
+ * git@github.com:stefanocudini/bootstrap-list-filter.git 
+ * 
+ */
+!function(a){a.fn.btsListFilter=function(b,c){"use strict";function d(a,b){return a.replace(/\{ *([\w_]+) *\}/g,function(a,c){return b[c]||""})}function e(a,b){var c;return b=b||300,function(){var d=this,e=arguments;clearTimeout(c),c=setTimeout(function(){a.apply(d,Array.prototype.slice.call(e))},b)}}var f,g=this,h=a(this),i=a(b),j=h;return c=a.extend({delay:300,minLength:1,initial:!0,casesensitive:!1,eventKey:"keyup",resetOnBlur:!0,sourceData:null,sourceTmpl:'<a class="list-group-item" href="#"><span>{title}</span></a>',sourceNode:function(a){return d(c.sourceTmpl,a)},emptyNode:function(a){return'<a class="list-group-item well" href="#"><span>No Results</span></a>'},itemClassTmp:"bts-dynamic-item",itemEl:".list-group-item",itemChild:null,itemFilter:function(b,d){d=d&&d.replace(new RegExp("[({[^.$*+?\\]})]","g"),"");var e=a(b).text(),f=c.initial?"^":"",g=new RegExp(f+d,c.casesensitive?"":"i");return g.test(e)}},c),i.on(c.eventKey,e(function(b){var d=a(this).val();c.itemEl&&(j=h.find(c.itemEl)),c.itemChild&&(j=j.find(c.itemChild));var e=j.filter(function(){return c.itemFilter.call(g,this,d)}),i=j.not(e);c.itemChild&&(e=e.parents(c.itemEl),i=i.parents(c.itemEl).hide()),""!==d&&d.length>=c.minLength?(e.show(),i.hide(),"function"===a.type(c.sourceData)?(e.hide(),i.hide(),f&&(a.isFunction(f.abort)?f.abort():a.isFunction(f.stop)&&f.stop()),f=c.sourceData.call(g,d,function(b){if(f=null,e.hide(),i.hide(),h.find("."+c.itemClassTmp).remove(),b&&0!==b.length)for(var d in b)a(c.sourceNode.call(g,b[d])).addClass(c.itemClassTmp).appendTo(h);else a(c.emptyNode.call(g)).addClass(c.itemClassTmp).appendTo(h)})):(h.find("."+c.itemClassTmp).remove(),0===e.length&&a(c.emptyNode.call(g)).addClass(c.itemClassTmp).appendTo(h))):(e.show(),i.show(),h.find("."+c.itemClassTmp).remove())},c.delay)),c.resetOnBlur&&i.on("blur",function(b){a(this).val("").trigger(c.eventKey)}),h}}(jQuery);
 //# sourceMappingURL=forms.js.map

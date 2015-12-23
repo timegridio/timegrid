@@ -1,6 +1,17 @@
 <div id="panel" class="panel panel-default">
     <!-- Default panel contents -->
     <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
+
+    <div id="catalog">
+    @if($business->services->count() > 3)
+    <input id="filter" name="filter" class="form-control" value="" />
+    <div id="searchlist" class="list-group">
+        @foreach ($business->services as $service)
+        <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#"><span>{{ $service->name }}</span><i style="background:aquamarine" class="badge">&nbsp;</i></a>
+        @endforeach
+    </div>
+    @endif
+    </div>
     
     <table id="timetable" class="table">
     @foreach ($dates as $date => $vacancies)
@@ -23,8 +34,8 @@
         </tr>
         @else
         <tr class="daterow date_{{ $date }}">
-            <td class="dateslot success">
-                {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))
+            <td class="dateslot">
+                {!! Button::success(Carbon::parse($date)->formatLocalized('%A %d %B'))
                     ->block()
                     ->prependIcon(Icon::calendar())
                     ->withAttributes(['class' => 'btn-date']) !!}
@@ -73,6 +84,16 @@
 @parent
 <script type="text/javascript">
 $(document).ready(function() {
+
+    $('#searchlist').btsListFilter('#filter', {itemChild: 'span'});
+
+    $('.service-selector').click(function(e){
+        var serviceId = $(this).data('service-id');
+        $('.service').hide();
+        $('.service' + serviceId).show();
+        $('#catalog').hide();
+    });
+
     $('#extra').removeClass('hidden').hide();
     $('#timetable .btn.service').click(function(e){
         var service = $(this).data('service');
