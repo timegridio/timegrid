@@ -2,6 +2,7 @@
 
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
+<link rel="stylesheet" href="{{ asset('css/tour.css') }}">
 @parent
 <style type="text/css">
 .bizurl:hover {
@@ -178,7 +179,7 @@
 @section('footer_scripts')
 @parent
 <script src="{{ asset('js/newsbox.js') }}"></script>
-<script src="{{ asset('js/bootstrap-tour.min.js') }}"></script>
+<script src="{{ asset('js/tour.js') }}"></script>
 <script type="text/javascript">
 (function() {
 
