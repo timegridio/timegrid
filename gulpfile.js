@@ -52,4 +52,14 @@ elixir(function(mix) {
         './bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
     ], 'public/css/forms.css');
 
+    // Help & Tour
+
+    mix.scripts([
+        './bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js',
+    ], 'public/js/tour.js');
+
+    mix.styles([
+        './bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css',
+    ], 'public/css/tour.css');
+
 });
