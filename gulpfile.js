@@ -41,6 +41,7 @@ elixir(function(mix) {
         './bower_components/bootstrap-validator/dist/validator.min.js',
         './bower_components/speakingurl/speakingurl.min.js',
         './bower_components/jquery-slugify/dist/slugify.min.js',
+        './bower_components/bootstrap-list-filter/bootstrap-list-filter.min.js',
     ], 'public/js/forms.js');
 
     mix.copy([
