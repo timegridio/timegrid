@@ -38,6 +38,7 @@ return  [
       'doctor'      => 'Healthcare',
       'garage'      => 'Car Mechanic',
       'photography' => 'Photography',
+      'spa'         => 'Spa & Beauty',
     ],
   ],
   'dateformat' => [
