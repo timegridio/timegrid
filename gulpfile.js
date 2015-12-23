@@ -39,6 +39,8 @@ elixir(function(mix) {
     mix.scripts([
         './bower_components/bootstrap-select/dist/js/bootstrap-select.min.js',
         './bower_components/bootstrap-validator/dist/validator.min.js',
+        './bower_components/speakingurl/speakingurl.min.js',
+        './bower_components/jquery-slugify/dist/slugify.min.js',
     ], 'public/js/forms.js');
 
     mix.copy([
