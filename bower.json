@@ -22,6 +22,7 @@
     "bootstrap-select": "~1.9.3",
     "jquery-bootstrap-newsbox": "~1.0.2",
     "eonasdan-bootstrap-datetimepicker": "~4.17.37",
-    "bootstrap-tour": "~0.10.2"
+    "bootstrap-tour": "~0.10.2",
+    "bootstrap-validator": "~0.9.0"
   }
 }

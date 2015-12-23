@@ -26,6 +26,7 @@ elixir(function(mix) {
 
     mix.scripts([
         './bower_components/bootstrap-select/dist/js/bootstrap-select.min.js',
+        './bower_components/bootstrap-validator/dist/validator.min.js',
     ], 'public/js/forms.js');
 
     mix.scripts([
