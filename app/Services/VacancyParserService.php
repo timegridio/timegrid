@@ -136,7 +136,9 @@ class VacancyParserService
 
     public function milTimeToStandard($militaryTime)
     {
-        if (trim($militaryTime) == '') {
+        $militaryTime = trim($militaryTime);
+
+        if ($militaryTime == '') {
             return '';
         }
 
