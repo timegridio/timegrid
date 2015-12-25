@@ -52,6 +52,16 @@ elixir(function(mix) {
         './bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
     ], 'public/css/forms.css');
 
+    // Highlight
+
+    mix.scripts([
+        './bower_components/jquery-highlighttextarea/jquery.highlighttextarea.min.js',
+    ], 'public/js/highlight.js');
+
+    mix.styles([
+        './bower_components/jquery-highlighttextarea/jquery.highlighttextarea.min.css',
+    ], 'public/css/highlight.css');
+
     // Date & Time Helpers
 
     mix.scripts([
