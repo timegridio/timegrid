@@ -4,7 +4,7 @@ namespace App\Services;
 
 class VacancyParserService
 {
-    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\n\ (?P<days>.*)\n\ \ (?<hours>.*)/i';
+    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\r\n\ (?P<days>.*)\r\n\ \ (?<hours>.*)/i';
 
     /////////////////////
     // VACANCY PARSING //
@@ -28,7 +28,7 @@ class VacancyParserService
             foreach ($days as $day) {
                 foreach ($hourRanges as $hourRange) {
                     $ret[] = [
-                        'serivce' => $service['slug'],
+                        'service' => $service['slug'],
                         'date' => $day,
                         'startAt' => $hourRange['startAt'],
                         'finishAt' => $hourRange['finishAt'],
