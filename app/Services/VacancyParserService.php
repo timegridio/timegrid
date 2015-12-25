@@ -2,10 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Service;
-use App\Models\Vacancy;
-use Carbon\Carbon;
-
 class VacancyParserService
 {
     const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\n\ (?P<days>.*)\n\ \ (?<hours>.*)/i';
