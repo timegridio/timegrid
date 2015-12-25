@@ -4,7 +4,7 @@ namespace App\Services;
 
 class VacancyParserService
 {
-    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\r\n\ (?P<days>.*)\r\n\ \ (?<hours>.*)/i';
+    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\r\n\ (?P<days>.*)\r\n\ \ (?<hours>.*)/im';
 
     /////////////////////
     // VACANCY PARSING //
@@ -23,21 +23,37 @@ class VacancyParserService
         $days = $this->dates($vacancyParameters['days']);
         $hourRanges = $this->hours($vacancyParameters['hours']);
 
-        $ret = [];
+        $builtVacancies = [];
         foreach ($services as $service) {
             foreach ($days as $day) {
                 foreach ($hourRanges as $hourRange) {
-                    $ret[] = [
+                    $data = [
                         'service' => $service['slug'],
                         'date' => $day,
                         'startAt' => $hourRange['startAt'],
                         'finishAt' => $hourRange['finishAt'],
                         'capacity' => $service['capacity'],
                     ];
+                    // Avoid repeated sets
+                    $key = md5(implode('.', $data));
+                    $builtVacancies[$key] = $data;
                 }
             }
         }
-        return $ret;
+        return $builtVacancies;
+    }
+
+    public function parseStatements($stringStatements)
+    {
+        $vacancyStatements = $this->readVacancies($stringStatements);
+
+        $builtVacancies = [];
+        foreach($vacancyStatements as $vacancyStatement)
+        {
+            $builtVacancies = array_merge($builtVacancies, $this->buildVacancies($vacancyStatement));
+        }
+
+        return $builtVacancies;
     }
 
     /////////////////////

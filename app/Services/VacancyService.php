@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class VacancyService
 {
@@ -177,6 +178,59 @@ class VacancyService
                         break;
                 }
             }
+        }
+
+        return $changed;
+    }
+
+    /**
+     * Update vacancies from batch statements.
+     *
+     * @param Business $business
+     * @param array    $parsedStatements
+     *
+     * @return bool
+     */
+    public function updateBatch(Business $business, $parsedStatements)
+    {
+        $changed = false;
+        foreach ($parsedStatements as $statement) {
+            $startAt = Carbon::parse($statement['date'].' '.$statement['startAt'].' '.$business->timezone)->timezone('UTC');
+            $finishAt = Carbon::parse($statement['date'].' '.$statement['finishAt'].' '.$business->timezone)->timezone('UTC');
+
+            $service = Service::where('slug', $statement['service'])->get()->first();
+
+            if ($service === null) {
+                continue;
+            }
+
+            $vacancyValues = [
+                'business_id' => $business->id,
+                'service_id'  => $service->id,
+                'date'        => $statement['date'],
+                'capacity'    => intval($statement['capacity']),
+                'start_at'    => $startAt,
+                'finish_at'   => $finishAt,
+                ];
+
+            $vacancy = $business->vacancies()->forDateTime($startAt)->forService($service);
+ 
+            if($vacancy)
+            {
+                $vacancy->delete();
+            }
+
+#            try {
+#                DB::table('vacancies')->where($vacancyKeys)->delete();
+#            } catch (\Exception $exception) {
+#                // Omit update if Appointments are attached to Vacancy
+#                // TODO: Unlink appointments (SET NULL)
+#                continue;
+#            }
+
+            $vacancy = Vacancy::create($vacancyValues);
+
+            $changed = true;
         }
 
         return $changed;

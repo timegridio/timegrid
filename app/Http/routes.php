@@ -324,6 +324,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
                 'as'   => 'manager.business.vacancy.store',
                 'uses' => 'BusinessVacancyController@store',
             ]);
+            Route::post('', [
+                'as'   => 'manager.business.vacancy.storeBatch',
+                'uses' => 'BusinessVacancyController@storeBatch',
+            ]);
         });
 
     });
