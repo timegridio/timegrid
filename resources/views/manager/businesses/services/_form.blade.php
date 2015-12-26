@@ -58,7 +58,11 @@
 <div class="row">
     <div class="form-group col-xl-2 col-md-2 col-sm-2 col-xs-2">
         <div class="input-group color-picker">
-            <input name="color" type="text" value="" class="form-control" readonly />
+            {!! Form::text('color', null, [
+                'readonly',
+                'class'=>'form-control',
+                'placeholder'=> trans('manager.service.form.name.label')
+                ]) !!}
             <span class="input-group-addon"><i></i></span>
         </div>
     </div>
