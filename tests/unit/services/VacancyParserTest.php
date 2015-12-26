@@ -50,45 +50,17 @@ class VacancyParserTest extends TestCase
     {
         $vacancyString = <<<EOD
 massage:1
- mon, tue
-  8 - 12, 14 - 20
+ mon,tue
+  8-12,14-20
 
 massage:2
- mon, tue, fri
-  9 - 14
+ mon,tue,fri
+  9-14
 EOD;
 
-        $vacancies = $this->vacancyParser->readVacancies($vacancyString);
+        $parsedStatements = $this->vacancyParser->parseStatements($vacancyString);
 
-        foreach ($vacancies as $vacancyString) {
-            $vacancies = $this->vacancyParser->buildVacancies($vacancyString);
-        }
-
-        $array = [
-            [
-                "serivce" => "massage",
-                "date" => "2015-12-28",
-                "startAt" => "9:00",
-                "finishAt" => "14:00",
-                "capacity" => "2",
-            ],
-            [
-                "serivce" => "massage",
-                "date" => "2015-12-29",
-                "startAt" => "9:00",
-                "finishAt" => "14:00",
-                "capacity" => "2",
-            ],
-            [
-                "serivce" => "massage",
-                "date" => "2015-12-25",
-                "startAt" => "9:00",
-                "finishAt" => "14:00",
-                "capacity" => "2",
-            ]
-        ];
-
-        $this->assertEquals($vacancies, $array);
+        $this->assertCount(7, $parsedStatements);
     }
 
     /////////////////////

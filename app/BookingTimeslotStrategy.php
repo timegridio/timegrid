@@ -91,9 +91,15 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         }
 
         foreach ($vacancies as $vacancy) {
-            if (array_key_exists($vacancy->date, $dates)) {
-                $dates[$vacancy->date][$vacancy->service->slug] = $this->chunkTimeslots($vacancy);
+            if (!array_key_exists($vacancy->date, $dates)) {
+                $dates[$vacancy->date] = [];
             }
+
+            if (!array_key_exists($vacancy->service->slug, $dates[$vacancy->date])) {
+                $dates[$vacancy->date][$vacancy->service->slug] = $this->templateTimeslots();
+            }
+
+            $this->arrayKeySum($dates[$vacancy->date][$vacancy->service->slug], $this->chunkTimeslots($vacancy));
         }
 
         return $dates;
@@ -102,11 +108,11 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
     protected function chunkTimeslots(Vacancy $vacancy, $step = 30)
     {
         $times = [];
-        $startTime = $vacancy->business->pref('start_at');
+        $startTime = $vacancy->start_at->timezone($vacancy->business->timezone)->toTimeString();
 
         $startKey = date('Y-m-d H:i', strtotime("{$vacancy->date} {$startTime}")).' '.$vacancy->business->timezone;
 
-        $finishTime = $vacancy->business->pref('finish_at');
+        $finishTime = $vacancy->finish_at->timezone($vacancy->business->timezone)->toTimeString();
         $endKey = date('Y-m-d H:i', strtotime("{$vacancy->date} {$finishTime}")).' '.$vacancy->business->timezone;
 
         $fromTime = Carbon::parse($startKey);
@@ -114,14 +120,38 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         $limit = Carbon::parse($endKey);
 
         while ($fromTime <= $limit) {
-            $key = $fromTime->timezone($vacancy->business->timezone)->toTimeString();
+            $key = $fromTime->timezone($vacancy->business->timezone)->format('H:i');
 
-            $times[$key] = $vacancy->getAvailableCapacityBetween($fromTime, $toTime);
+            $capacity = $vacancy->getAvailableCapacityBetween($fromTime, $toTime);
+            if ($capacity > 0) {
+                $times[$key] = $capacity;
+            }
 
             $toTime->addMinutes($step);
             $fromTime->addMinutes($step);
         }
 
         return $times;
+    }
+
+    protected function templateTimeslots()
+    {
+        $times = [];
+
+        for ($i = 12; $i < 40; $i++) {
+            $minutes = 30 * $i;
+            $times[date('H:i', strtotime("today midnight +$minutes minutes"))] = 0;
+        }
+
+        return $times;
+    }
+
+    protected function arrayKeySum(array & $array1, array $array2)
+    {
+        foreach ($array2 as $key => $value) {
+            if (array_key_exists($key, $array1)) {
+                $array1[$key] += $array2[$key];
+            }
+        }
     }
 }

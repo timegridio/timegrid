@@ -4,7 +4,7 @@ namespace App\Services;
 
 class VacancyParserService
 {
-    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\r\n\ (?P<days>.*)\r\n\ \ (?<hours>.*)/im';
+    const REGEX_PATTERN_VACANCY = '/(?P<services>.*)\n\ (?P<days>.*)\n\ \ (?<hours>.*)/im';
 
     /////////////////////
     // VACANCY PARSING //

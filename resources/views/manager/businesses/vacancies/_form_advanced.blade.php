@@ -13,10 +13,7 @@
 </style>
 @endsection
 
-<textarea id="vacancies" name="vacancies" rows="10">
-sarasa:1
- mon
-  9-12, 15-19
+<textarea id="vacancies" name="vacancies" rows="8">
 </textarea>
 
 @if (!$business->services->isEmpty())
@@ -45,7 +42,7 @@ $(document).ready(function(){
                 words: ['sat', 'sun'],
                 color: '#D8B6B8'
             },{
-                words: ['today'],
+                words: ['today', 'tomorrow', 'week', 'month', 'next'],
                 color: '#EE8288'
             }
 

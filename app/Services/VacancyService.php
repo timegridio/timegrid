@@ -194,45 +194,82 @@ class VacancyService
     public function updateBatch(Business $business, $parsedStatements)
     {
         $changed = false;
-        foreach ($parsedStatements as $statement) {
-            $startAt = Carbon::parse($statement['date'].' '.$statement['startAt'].' '.$business->timezone)->timezone('UTC');
-            $finishAt = Carbon::parse($statement['date'].' '.$statement['finishAt'].' '.$business->timezone)->timezone('UTC');
+        $dates = $this->arrayGroupBy('date', $parsedStatements);
+        
+        foreach ($dates as $date => $statements) {
 
-            $service = Service::where('slug', $statement['service'])->get()->first();
+            $services = $this->arrayGroupBy('service', $statements);
+
+            $changed |= $this->processServiceStatements($business, $date, $services);
+        }
+
+        return $changed;
+    }
+
+    protected function processServiceStatements($business, $date, $services)
+    {
+        $changed = false;
+        foreach ($services as $serviceSlug => $statements) {
+
+            $service = Service::where('slug', $serviceSlug)->get()->first();
 
             if ($service === null) {
                 continue;
             }
+     
+            $vacancy = $business->vacancies()->forDate(Carbon::parse($date))->forService($service);
 
-            $vacancyValues = [
-                'business_id' => $business->id,
-                'service_id'  => $service->id,
-                'date'        => $statement['date'],
-                'capacity'    => intval($statement['capacity']),
-                'start_at'    => $startAt,
-                'finish_at'   => $finishAt,
-                ];
-
-            $vacancy = $business->vacancies()->forDateTime($startAt)->forService($service);
- 
-            if($vacancy)
-            {
+            if ($vacancy) {
                 $vacancy->delete();
             }
 
-#            try {
-#                DB::table('vacancies')->where($vacancyKeys)->delete();
-#            } catch (\Exception $exception) {
-#                // Omit update if Appointments are attached to Vacancy
-#                // TODO: Unlink appointments (SET NULL)
-#                continue;
-#            }
+            $changed |= $this->processStatements($business, $date, $service, $statements);
 
-            $vacancy = Vacancy::create($vacancyValues);
-
-            $changed = true;
         }
-
         return $changed;
+    }
+
+    protected function processStatements($business, $date, $service, $statements)
+    {
+        $changed = false;
+        foreach ($statements as $statement) {
+            $changed |= $this->publishVacancy($business, $date, $service, $statement);
+        }
+        return $changed;
+    }
+
+    protected function publishVacancy($business, $date, $service, $statement)
+    {
+        $date = $statement['date'];
+        $startAt = $statement['startAt'];
+        $finishAt = $statement['finishAt'];
+
+        $startAt = Carbon::parse("{$date} {$startAt} {$business->timezone}")->timezone('UTC');
+        $finishAt = Carbon::parse("{$date} {$finishAt} {$business->timezone}")->timezone('UTC');
+
+        $vacancyValues = [
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'date'        => $statement['date'],
+            'capacity'    => intval($statement['capacity']),
+            'start_at'    => $startAt,
+            'finish_at'   => $finishAt,
+            ];
+
+        $vacancy = Vacancy::create($vacancyValues);
+
+        return $vacancy !== null;
+    }
+
+    protected function arrayGroupBy($key, $array)
+    {
+        $grouped = [];
+        foreach ($array as $hash => $item) {
+            if (!array_key_exists($item[$key], $grouped)) {
+                $grouped[$item[$key]] = [];
+            }
+            $grouped[$item[$key]][] = $item;
+        }
+        return $grouped;
     }
 }
