@@ -35,6 +35,10 @@
                         'data-method' => 'DELETE',
                         'data-confirm' => trans('manager.service.btn.delete').'?']
                     )->asLinkTo( route('manager.business.service.destroy', [$service->business, $service]) ) !!}
+
+                    {!! Button::normal()
+                        ->withIcon(Icon::edit())
+                        ->asLinkTo(route('manager.business.service.edit', [$service->business, $service->id]) ) !!}
                 </div>
             </div>
         </div>
