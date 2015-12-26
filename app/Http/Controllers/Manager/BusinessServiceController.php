@@ -147,6 +147,7 @@ class BusinessServiceController extends Controller
         //////////////////
         $service->update([
             'name'          => $request->get('name'),
+            'color'         => $request->get('color'),
             'duration'      => $request->get('duration'),
             'description'   => $request->get('description'),
             'prerequisites' => $request->get('prerequisites'),

@@ -11,7 +11,7 @@ class Service extends EloquentModel
      *
      * @var array
      */
-    protected $fillable = ['name', 'business_id', 'description', 'prerequisites', 'duration', 'type_id'];
+    protected $fillable = ['name', 'business_id', 'description', 'prerequisites', 'duration', 'type_id', 'color'];
 
     /**
      * The attributes that aren't mass assignable.

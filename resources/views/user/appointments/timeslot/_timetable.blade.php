@@ -7,7 +7,7 @@
     <input id="filter" name="filter" class="form-control" value="" />
     <div id="searchlist" class="list-group">
         @foreach ($business->services as $service)
-        <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#"><span>{{ $service->name }}</span><i style="background:aquamarine" class="badge">&nbsp;</i></a>
+        <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#"><span>{{ $service->name }}</span><i style="background:{{ $service->color }}" class="badge">&nbsp;</i></a>
         @endforeach
     </div>
     @endif
