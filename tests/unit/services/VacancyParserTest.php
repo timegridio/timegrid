@@ -195,6 +195,18 @@ EOD;
     /**
      * @test
      */
+    public function it_converts_empty_military_time_to_empty_string()
+    {
+        $time = $this->vacancyParser->milTimeToStandard('');
+
+        $returns = '';
+
+        $this->assertEquals($time, $returns);
+    }
+
+    /**
+     * @test
+     */
     public function it_converts_military_time_to_standard()
     {
         $time = $this->vacancyParser->milTimeToStandard('830');
