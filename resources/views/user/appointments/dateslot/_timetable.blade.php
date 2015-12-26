@@ -52,8 +52,8 @@
         </tr>
         @else
         <tr class="daterow date_{{ $date }}">
-            <td class="dateslot success">
-                {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))
+            <td class="dateslot">
+                {!! Button::success(Carbon::parse($date)->formatLocalized('%A %d %B'))
                     ->block()
                     ->prependIcon(Icon::calendar())
                     ->withAttributes(['class' => 'btn-date']) !!}
