@@ -31,9 +31,9 @@ class Handler extends ExceptionHandler
     {
         if (app()->environment('local')) {
             Mail::raw($exception, function ($message) {
-                $message->subject(config('root.exceptions_subject'));
-                $message->from(config('root.from_address'), config('root.appname'));
-                $message->to(config('root.report_mail'));
+                $message->subject(config('root.report.exceptions_subject'));
+                $message->from(config('root.report.from_address'), config('root.appname'));
+                $message->to(config('root.report.to_mail'));
             });
         }
 

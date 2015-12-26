@@ -59,7 +59,7 @@ class SendRootReport extends Command
         ];
         $header = [
             'name'  => 'Root',
-            'email' => env('ROOT_REPORT_MAIL'),
+            'email' => config('root.report.to_mail'),
         ];
         $this->transmail->template('root.report')
                         ->subject('root.report')

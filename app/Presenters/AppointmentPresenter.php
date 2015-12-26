@@ -45,13 +45,13 @@ class AppointmentPresenter extends BasePresenter
                          ->vacancy
                          ->start_at
                          ->timezone($this->wrappedObject->business->timezone)
-                         ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+                         ->format(config('root.time.format'));
 
         $toTime = $this->wrappedObject
                        ->vacancy
                        ->finish_at
                        ->timezone($this->wrappedObject->business->timezone)
-                       ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+                       ->format(config('root.time.format'));
 
         return ucwords(trans('appointments.text.from_to', ['from' => $fromTime, 'to' => $toTime]));
     }
@@ -61,7 +61,7 @@ class AppointmentPresenter extends BasePresenter
         return $this->wrappedObject
                     ->start_at
                     ->timezone($this->wrappedObject->business->timezone)
-                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+                    ->format(config('root.time.format'));
     }
 
     public function finishTime()
@@ -69,7 +69,7 @@ class AppointmentPresenter extends BasePresenter
         return $this->wrappedObject
                     ->finish_at
                     ->timezone($this->wrappedObject->business->timezone)
-                    ->format(env('DISPLAY_TIME_FORMAT', 'h:i A'));
+                    ->format(config('root.time.format'));
     }
 
     public function diffForHumans()

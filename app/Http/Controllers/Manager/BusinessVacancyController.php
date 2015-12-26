@@ -48,7 +48,7 @@ class BusinessVacancyController extends Controller
             'services' => $business->services->lists('slug')->all(),
         ]);
 
-        $daysQuantity = $business->pref('vacancy_edit_days_quantity', env('DEFAULT_VACANCY_EDIT_DAYS_QUANTITY', 15));
+        $daysQuantity = $business->pref('vacancy_edit_days_quantity', config('root.vacancy_edit_days'));
 
         $dates = $this->vacancyService->generateAvailability($business->vacancies, 'today', $daysQuantity);
 
@@ -138,7 +138,7 @@ class BusinessVacancyController extends Controller
         $this->authorize('manageVacancies', $business);
 
         // BEGIN
-        $daysQuantity = $business->pref('vacancy_edit_days_quantity', env('DEFAULT_VACANCY_EDIT_DAYS_QUANTITY', 7));
+        $daysQuantity = $business->pref('vacancy_edit_days_quantity', config('root.vacancy_edit_days'));
 
         $vacancies = $business->vacancies()->with('Appointments')->get();
 
