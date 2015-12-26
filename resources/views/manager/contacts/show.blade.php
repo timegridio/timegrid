@@ -122,7 +122,6 @@
                                     </td>
                                     <td>{{ $contact->pivot->notes }}</td>
                                 </tr>
-                                 
                                 </tbody>
                             </table>
                         </div>

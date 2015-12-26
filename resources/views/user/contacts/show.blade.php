@@ -89,12 +89,10 @@
                                         <td>{{ (trim($contact->mobile) != '') ? $contact->mobile : '' }}</td>
                                     </tr>
                                     @endif
-                                    {{--
                                     <tr>
                                         <td class="text-right"><label class="control-label">{{ trans('manager.contacts.label.member_since') }}</label></td>
-                                        <td>{{ $memberSince->diffForHumans() }}</td>
+                                        <td>{{ $contact->created_at->diffForHumans() }}</td>
                                     </tr>
-                                    --}}
                                 </tbody>
                             </table>
                         </div>
@@ -103,8 +101,8 @@
                 <div class="panel-footer">
                     {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
 
-                    @if ($contact->username)
-                        {!! Button::success($contact->username)->withIcon(Icon::ok_circle()) !!}
+                    @if ($contact->user)
+                        {!! Button::success($contact->user->username)->withIcon(Icon::ok_circle()) !!}
                     @else
                         {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
                     @endif
