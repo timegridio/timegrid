@@ -98,6 +98,16 @@
                                     <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
                                 </tr>
                                 @endif
+                                @if ($contact->postal_address)
+                                <tr>
+                                    <td class="text-right">
+                                        <label class="control-label">
+                                            {{ trans('manager.contacts.label.postal_address') }}
+                                        </label>
+                                    </td>
+                                    <td>{{ $contact->postal_address }}</td>
+                                </tr>
+                                @endif
                                 <tr>
                                     <td class="text-right">
                                         <label class="control-label">

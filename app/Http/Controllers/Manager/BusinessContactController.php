@@ -173,6 +173,7 @@ class BusinessContactController extends Controller
             'birthdate'       => $request->get('birthdate'),
             'mobile'          => $request->get('mobile'),
             'mobile_country'  => $request->get('mobile_country'),
+            'postal_address'  => $request->get('postal_address'),
         ];
 
         $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));

@@ -168,6 +168,7 @@ class ContactService
         $contact->birthdate = $data['birthdate'];
         $contact->mobile = $data['mobile'];
         $contact->mobile_country = $data['mobile_country'];
+        $contact->postal_address = $data['postal_address'];
 
         $contact->save();
 

@@ -207,12 +207,13 @@ return  [
       ],
     ],
     'label' => [
-      'birthdate'    => 'Nacimiento',
-      'email'        => 'Email',
-      'member_since' => 'Suscripto desde',
-      'mobile'       => 'Móvil',
-      'nin'          => 'DNI',
-      'notes'        => 'Notas',
+      'birthdate'      => 'Nacimiento',
+      'email'          => 'Email',
+      'member_since'   => 'Suscripto desde',
+      'postal_address' => 'Dirección Postal',
+      'mobile'         => 'Móvil',
+      'nin'            => 'DNI',
+      'notes'          => 'Notas',
     ],
     'list' => [
       'btn' => [
