@@ -33,17 +33,23 @@ $(document).ready(function(){
     $('textarea').highlightTextarea({
         words: [
             {
+                words: ['([\\\d\\\:])+'],
+                color: '#18F818'
+            },{
                 words: ['\\\,'],
-                color: '#f0f0f0'
+                color: '#E4FDE4'
+            },{
+                words: timegrid.services,
+                color: '#CEF9CE'
             },{
                 words: ['mon', 'tue', 'wed', 'thu', 'fri'],
-                color: '#9DD766'
+                color: '#A1EEA1'
             },{
                 words: ['sat', 'sun'],
-                color: '#D8B6B8'
+                color: '#8BE68B'
             },{
                 words: ['today', 'tomorrow', 'week', 'month', 'next'],
-                color: '#EE8288'
+                color: '#8BE68B'
             }
 
         ]

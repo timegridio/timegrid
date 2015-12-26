@@ -7,6 +7,7 @@ use App\Models\Business;
 use App\Services\VacancyParserService;
 use App\Services\VacancyService;
 use Illuminate\Http\Request;
+use JavaScript;
 
 class BusinessVacancyController extends Controller
 {
@@ -42,6 +43,11 @@ class BusinessVacancyController extends Controller
         $this->authorize('manageVacancies', $business);
 
         // BEGIN
+
+        JavaScript::put([
+            'services' => $business->services->lists('slug')->all(),
+        ]);
+
         $daysQuantity = $business->pref('vacancy_edit_days_quantity', env('DEFAULT_VACANCY_EDIT_DAYS_QUANTITY', 15));
 
         $dates = $this->vacancyService->generateAvailability($business->vacancies, 'today', $daysQuantity);
