@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f2f409f558be97f9666474c83e79c466",
-    "content-hash": "82b0a7b3470d9f3332a3c75157c81ea5",
+    "hash": "ca27a45927e925ad28fe90b71c80e879",
+    "content-hash": "f870a38605ce4cfad6caba69877bd33f",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1523,6 +1523,50 @@
             ],
             "description": "Easy flash notifications",
             "time": "2015-12-22 15:52:08"
+        },
+        {
+            "name": "laracasts/utilities",
+            "version": "2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/PHP-Vars-To-Js-Transformer.git",
+                "reference": "4402a0ed774f8eb36ea7ba169341d9d5b6049378"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/PHP-Vars-To-Js-Transformer/zipball/4402a0ed774f8eb36ea7ba169341d9d5b6049378",
+                "reference": "4402a0ed774f8eb36ea7ba169341d9d5b6049378",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpspec/phpspec": "~2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Laracasts\\Utilities\\JavaScript\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Transform your PHP to JavaScript",
+            "keywords": [
+                "javascript",
+                "laravel"
+            ],
+            "time": "2015-10-01 05:16:28"
         },
         {
             "name": "laravel/framework",

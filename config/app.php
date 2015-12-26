@@ -161,6 +161,7 @@ return [
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         McCool\LaravelAutoPresenter\AutoPresenterServiceProvider::class,
         Propaganistas\LaravelPhone\LaravelPhoneServiceProvider::class,

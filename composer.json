@@ -46,7 +46,8 @@
         "torann/geoip": "dev-master",
         "twitter/typeahead.js": "^0.11.1",
         "webpatser/laravel-countries": "dev-master",
-        "jenssegers/agent": "^2.3"
+        "jenssegers/agent": "^2.3",
+        "laracasts/utilities": "^2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
