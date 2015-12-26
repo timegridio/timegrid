@@ -15,11 +15,12 @@
 
 <textarea id="vacancies" name="vacancies" rows="8">
 </textarea>
+<br>
 
 @if (!$business->services->isEmpty())
 <div class="row">
     <div class="form-group col-sm-12">
-        {!! Button::primary(trans('manager.businesses.btn.update'))->block()->large()->submit() !!}
+        {!! Button::success(trans('manager.businesses.btn.update'))->block()->large()->submit() !!}
     </div>
 </div>
 @endif
