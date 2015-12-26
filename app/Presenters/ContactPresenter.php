@@ -38,13 +38,14 @@ class ContactPresenter extends BasePresenter
             'birthdate'      => 5,
             'mobile'         => 20,
             'email'          => 15,
-            'postal_address' => 25,
+            'postal_address' => 15,
+            'user'           => 25,
         ];
         $totalScore = array_sum($propertiesScore);
 
         $qualityScore = 0;
         foreach ($propertiesScore as $property => $score) {
-            if (trim($this->wrappedObject->$property) != '') {
+            if (trim($this->wrappedObject->$property) !== '') {
                 $qualityScore += $score;
             }
         }

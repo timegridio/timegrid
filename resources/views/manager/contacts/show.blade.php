@@ -98,8 +98,8 @@
                      <div class="panel-footer">
                         {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
                         
-                        @if ($contact->username)
-                            {!! Button::success($contact->username)->withIcon(Icon::ok_circle()) !!}
+                        @if ($contact->user)
+                            {!! Button::success($contact->user->username)->withIcon(Icon::ok_circle()) !!}
                         @else
                             {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
                         @endif
