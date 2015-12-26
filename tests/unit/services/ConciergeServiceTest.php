@@ -278,6 +278,29 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
+     * @covers \App\Services\ConciergeService::getActiveAppointments
+     * @test
+     */
+    public function it_gets_the_active_appointments()
+    {
+        // Arrange
+        $this->arrangeScenario();
+
+        $this->contact = factory(Contact::class)->create();
+
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
+        $appointment->contact()->associate($this->contact);
+        $appointment->business()->associate($this->business);
+        $appointment->save();
+
+        $appointments = $this->concierge->setBusiness($this->business)->getActiveAppointments();
+
+        // Assert
+        $this->assertInstanceOf(Collection::class, $appointments);
+        $this->assertEquals(1, $appointments->count());
+    }
+
+    /**
      * @covers \App\Services\ConciergeService::requestAction
      * @test
      */
