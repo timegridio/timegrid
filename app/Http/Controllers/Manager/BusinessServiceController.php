@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Service;
-use App\Models\ServiceType;
 use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller
@@ -120,7 +119,7 @@ class BusinessServiceController extends Controller
         $this->authorize('manageServices', $business);
 
         // BEGIN
-        
+
         $types = $business->servicetypes->lists('name', 'id');
 
         return view('manager.businesses.services.edit', compact('service', 'types'));

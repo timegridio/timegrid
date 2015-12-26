@@ -37,12 +37,11 @@ class Service extends EloquentModel
      */
     public function getTypeNameAttribute()
     {
-        if($this->type())
-        {
+        if ($this->type()) {
             return $this->type->name;
         }
 
-        return null;
+        return;
     }
 
     /**

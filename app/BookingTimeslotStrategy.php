@@ -146,7 +146,7 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
         return $times;
     }
 
-    protected function arrayKeySum(array & $array1, array $array2)
+    protected function arrayKeySum(array &$array1, array $array2)
     {
         foreach ($array2 as $key => $value) {
             if (array_key_exists($key, $array1)) {

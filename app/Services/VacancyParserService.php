@@ -28,9 +28,9 @@ class VacancyParserService
             foreach ($days as $day) {
                 foreach ($hourRanges as $hourRange) {
                     $data = [
-                        'service' => $service['slug'],
-                        'date' => $day,
-                        'startAt' => $hourRange['startAt'],
+                        'service'  => $service['slug'],
+                        'date'     => $day,
+                        'startAt'  => $hourRange['startAt'],
                         'finishAt' => $hourRange['finishAt'],
                         'capacity' => $service['capacity'],
                     ];
@@ -40,6 +40,7 @@ class VacancyParserService
                 }
             }
         }
+
         return $builtVacancies;
     }
 
@@ -48,8 +49,7 @@ class VacancyParserService
         $vacancyStatements = $this->readVacancies($stringStatements);
 
         $builtVacancies = [];
-        foreach($vacancyStatements as $vacancyStatement)
-        {
+        foreach ($vacancyStatements as $vacancyStatement) {
             $builtVacancies = array_merge($builtVacancies, $this->buildVacancies($vacancyStatement));
         }
 
@@ -78,6 +78,7 @@ class VacancyParserService
         foreach ($services as $service) {
             $converted[] = $this->getServiceCapacity($service);
         }
+
         return $converted;
     }
 
@@ -87,6 +88,7 @@ class VacancyParserService
         if (strpos($service, ':') !== false) {
             list($service, $capacity) = explode(':', $service);
         }
+
         return ['slug' => $service, 'capacity' => $capacity];
     }
 
@@ -112,6 +114,7 @@ class VacancyParserService
         foreach ($days as $day) {
             $converted[] = $this->dayToDate($day);
         }
+
         return $converted;
     }
 
@@ -139,9 +142,10 @@ class VacancyParserService
             list($startAt, $finishAt) = preg_split('/\ *\-\ */', $range);
             $normalizedRanges[] = [
                 'startAt'  => $this->milTimeToStandard($startAt),
-                'finishAt' => $this->milTimeToStandard($finishAt)
+                'finishAt' => $this->milTimeToStandard($finishAt),
             ];
         }
+
         return $normalizedRanges;
     }
 
@@ -176,7 +180,7 @@ class VacancyParserService
             $parts[0] = substr($militaryTime, 0, 2);
             $parts[1] = substr($militaryTime, 2, 2);
         }
-        
+
         return implode(':', $parts);
     }
 }

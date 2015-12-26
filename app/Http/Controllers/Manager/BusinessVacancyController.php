@@ -89,8 +89,8 @@ class BusinessVacancyController extends Controller
     /**
      * Store vacancies from a command string.
      *
-     * @param  Business $business
-     * @param  Request  $request
+     * @param Business $business
+     * @param Request  $request
      *
      * @return Illuminate\Http\Response
      */

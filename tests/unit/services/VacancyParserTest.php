@@ -15,8 +15,8 @@ class VacancyParserTest extends TestCase
     public function setUp()
     {
         parent::setUp();
-        
-        $this->vacancyParser = new VacancyParserService;
+
+        $this->vacancyParser = new VacancyParserService();
 
         $this->setFixture();
     }
@@ -27,15 +27,15 @@ class VacancyParserTest extends TestCase
 
         $service1 = factory(Service::class)->create([
             'business_id' => $business->id,
-            'name' => 'Massage',
-            'slug' => 'massage',
-            'duration' => 30
+            'name'        => 'Massage',
+            'slug'        => 'massage',
+            'duration'    => 30,
         ]);
         $service2 = factory(Service::class)->create([
             'business_id' => $business->id,
-            'name' => 'Relax',
-            'slug' => 'relax',
-            'duration' => 30
+            'name'        => 'Relax',
+            'slug'        => 'relax',
+            'duration'    => 30,
         ]);
     }
 
@@ -112,7 +112,7 @@ EOD;
     {
         $dates = $this->vacancyParser->splitDates('mon,tue,wed,thu,fri,sat,sun');
 
-        $array = [ 'mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun' ];
+        $array = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 
         $this->assertEquals($dates, $array);
     }
@@ -164,7 +164,7 @@ EOD;
     public function it_splits_the_elements_by_date_timerange_service()
     {
         $hours = $this->vacancyParser->hours('830-1130,14-20,2215-2330,2330-2345');
-        
+
         $array = [
             ['startAt' =>  '8:30', 'finishAt' => '11:30'],
             ['startAt' => '14:00', 'finishAt' => '20:00'],
@@ -181,7 +181,7 @@ EOD;
     public function it_splits_the_elements_by_date_timerange_service_allowing_spaces()
     {
         $hours = $this->vacancyParser->hours('830 - 1130, 14 - 20, 2215 - 2330, 2330 - 2345');
-        
+
         $array = [
             ['startAt' =>  '8:30', 'finishAt' => '11:30'],
             ['startAt' => '14:00', 'finishAt' => '20:00'],

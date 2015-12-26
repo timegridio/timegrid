@@ -8,7 +8,6 @@ use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 
 class VacancyService
 {
@@ -195,9 +194,8 @@ class VacancyService
     {
         $changed = false;
         $dates = $this->arrayGroupBy('date', $parsedStatements);
-        
-        foreach ($dates as $date => $statements) {
 
+        foreach ($dates as $date => $statements) {
             $services = $this->arrayGroupBy('service', $statements);
 
             $changed |= $this->processServiceStatements($business, $date, $services);
@@ -210,13 +208,12 @@ class VacancyService
     {
         $changed = false;
         foreach ($services as $serviceSlug => $statements) {
-
             $service = Service::where('slug', $serviceSlug)->get()->first();
 
             if ($service === null) {
                 continue;
             }
-     
+
             $vacancy = $business->vacancies()->forDate(Carbon::parse($date))->forService($service);
 
             if ($vacancy) {
@@ -224,8 +221,8 @@ class VacancyService
             }
 
             $changed |= $this->processStatements($business, $date, $service, $statements);
-
         }
+
         return $changed;
     }
 
@@ -235,6 +232,7 @@ class VacancyService
         foreach ($statements as $statement) {
             $changed |= $this->publishVacancy($business, $date, $service, $statement);
         }
+
         return $changed;
     }
 
@@ -270,6 +268,7 @@ class VacancyService
             }
             $grouped[$item[$key]][] = $item;
         }
+
         return $grouped;
     }
 }
