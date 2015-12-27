@@ -29,4 +29,20 @@ class ServiceType extends Model
     {
         return $this->hasMany('App\Models\Service');
     }
+
+    /**
+     * TODO: Check slug setting can be moved to a more proper place.
+     *
+     * Save the model to the database.
+     *
+     * @param array $options
+     *
+     * @return bool
+     */
+    public function save(array $options = [])
+    {
+        $this->attributes['slug'] = str_slug($this->attributes['name']);
+
+        return parent::save($options);
+    }
 }

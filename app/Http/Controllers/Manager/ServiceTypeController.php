@@ -53,7 +53,12 @@ class ServiceTypeController extends Controller
 
         preg_match_all($regex, $servicetypeSheet, $matches, PREG_SET_ORDER);
 
-        $publishing = collect($matches)->map(function ($item) { return array_only($item, ['name', 'description']); });
+        $publishing = collect($matches)->map(
+            function ($item) {
+                $data = array_only($item, ['name', 'description']);
+                $data['slug'] = str_slug($data['name']);
+                return $data;
+            });
 
         foreach ($business->servicetypes as $servicetype) {
             if (!$this->isPublished($servicetype, $publishing)) {
