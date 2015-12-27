@@ -160,15 +160,15 @@ class ContactService
      */
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
-        $contact->firstname = $data['firstname'];
-        $contact->lastname = $data['lastname'];
-        $contact->email = $data['email'];
-        $contact->nin = $data['nin'];
-        $contact->gender = $data['gender'];
-        $contact->birthdate = $data['birthdate'];
-        $contact->mobile = $data['mobile'];
-        $contact->mobile_country = $data['mobile_country'];
-        $contact->postal_address = $data['postal_address'];
+        $contact->firstname = array_get($data, 'firstname');
+        $contact->lastname = array_get($data, 'lastname');
+        $contact->email = array_get($data, 'email');
+        $contact->nin = array_get($data, 'nin');
+        $contact->gender = array_get($data, 'gender');
+        $contact->birthdate = array_get($data, 'birthdate');
+        $contact->mobile = array_get($data, 'mobile');
+        $contact->mobile_country = array_get($data, 'mobile_country');
+        $contact->postal_address = array_get($data, 'postal_address');
 
         $contact->save();
 
