@@ -36,6 +36,10 @@
                     ->withIcon(Icon::plus())
                     ->asLinkTo( route('manager.business.service.create', [$business]) )
                     ->block() !!}
+
+                {!! Button::primary(trans('servicetype.btn.edit'))
+                    ->asLinkTo( route('manager.business.servicetype.edit', [$business]) )
+                    ->block() !!}
             </div>
 
         </div>

@@ -280,6 +280,19 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         // SERVICE RESOURCE
         Route::group(['prefix' => 'service'], function () {
+
+            // SERVICE TYPE
+            Route::group(['prefix' => 'type'], function () {
+                Route::get('edit', [
+                    'as'   => 'manager.business.servicetype.edit',
+                    'uses' => 'ServiceTypeController@edit',
+                ]);
+                Route::put('', [
+                    'as'   => 'manager.business.servicetype.update',
+                    'uses' => 'ServiceTypeController@update',
+                ]);
+            });
+
             Route::get('', [
                 'as'   => 'manager.business.service.index',
                 'uses' => 'BusinessServiceController@index',
@@ -308,6 +321,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
                 'as'   => 'manager.business.service.destroy',
                 'uses' => 'BusinessServiceController@destroy',
             ]);
+
         });
 
         // VACANCY RESOURCE
