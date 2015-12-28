@@ -4,17 +4,17 @@ return  [
 
   'btn' => [
     'edit'   => 'Editar Tipos de Servicio',
-    'update' => 'Actualizar'
+    'update' => 'Actualizar',
   ],
 
   'title' => [
-    'edit' => 'Editar Tipos de Servicio'
+    'edit' => 'Editar Tipos de Servicio',
   ],
 
   'msg' => [
     'update' => [
-        'success' => 'Tipos de servicio actualizados!'
-    ]
+        'success' => 'Tipos de servicio actualizados!',
+    ],
   ],
 
 ];

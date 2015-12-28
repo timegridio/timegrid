@@ -26,7 +26,7 @@ class ServiceTypeController extends Controller
 
         // BEGIN
         $servicetypes = $business->servicetypes->all();
-    
+
         return view('manager.businesses.servicetype.edit', compact('business', 'servicetypes'));
     }
 
@@ -34,7 +34,7 @@ class ServiceTypeController extends Controller
      * Update the business service types.
      *
      * @param Business $business
-     * @param Request $request
+     * @param Request  $request
      *
      * @return Response
      */
@@ -57,6 +57,7 @@ class ServiceTypeController extends Controller
             function ($item) {
                 $data = array_only($item, ['name', 'description']);
                 $data['slug'] = str_slug($data['name']);
+
                 return $data;
             });
 
@@ -77,14 +78,16 @@ class ServiceTypeController extends Controller
         return redirect()->route('manager.business.service.index', [$business]);
     }
 
-    protected function isPublished(ServiceType $servicetype, Collection & $publishing)
+    protected function isPublished(ServiceType $servicetype, Collection &$publishing)
     {
         foreach ($publishing as $key => $item) {
             if ($item['name'] == $servicetype->name) {
                 $publishing->forget($key);
+
                 return true;
             }
         }
+
         return false;
     }
 }

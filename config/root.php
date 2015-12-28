@@ -4,7 +4,7 @@
  * System administrator related.
  */
 return [
-    
+
     'appname' => env('SYSLOG_APPNAME', 'timegrid'),
 
     'report' => [
@@ -18,5 +18,5 @@ return [
 
     'time' => [
         'format' => env('DISPLAY_TIME_FORMAT', 'h:i A'),
-    ]
+    ],
 ];
