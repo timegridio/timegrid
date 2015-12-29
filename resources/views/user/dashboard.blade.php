@@ -20,7 +20,7 @@
         </div>
     @endif
 
-    @if($subscriptionsCount = auth()->user()->contacts->count() > 0)
+    @if($subscriptionsCount = $user->contacts->count() > 0)
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail panel">
                 <img src="{{asset('img/jumbo/contact.png')}}" alt="">

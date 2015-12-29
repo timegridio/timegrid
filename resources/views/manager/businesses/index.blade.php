@@ -10,7 +10,7 @@
                 <div class="panel-heading">{{ trans('manager.businesses.index.title') }}</div>
 
                 <div class="panel-body">
-                    @if(auth()->user()->hasBusiness())
+                    @if($user->hasBusiness())
                         {!! Alert::info(trans('manager.businesses.index.help')) !!}
                             
                         @foreach ($businesses as $business)
@@ -43,7 +43,7 @@
 </div>
 @endsection
 
-@if(!auth()->user()->hasBusiness())
+@if(!$user->hasBusiness())
     @section('footer_scripts')
     @parent
     {!! TidioChat::js() !!}

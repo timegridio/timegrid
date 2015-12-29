@@ -1,4 +1,4 @@
-@if(($business = Session::get('selected.business')) && auth()->user()->isOwner($business))
+@if(($business = Session::get('selected.business')) && $user->isOwner($business))
 
     <li id="btnAgenda" title="{{ trans('manager.business.btn.tooltip.agenda') }}" >
         <a href="{{ route('manager.business.agenda.index', $business) }}">{!! Icon::calendar() !!}</a>

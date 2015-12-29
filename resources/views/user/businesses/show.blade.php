@@ -7,7 +7,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    @if(auth()->user()->isOwner($business->id))
+                    @if($user->isOwner($business->id))
                         {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
                     @else
                         {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }}
@@ -68,7 +68,7 @@
 
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
-                            @if (auth()->user()->getContactSubscribedTo($business->id) === null)
+                            @if ($user->getContactSubscribedTo($business->id) === null)
                                 {!! Button::large()->primary(trans('user.business.btn.subscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
                             @else
                                 @if($available)

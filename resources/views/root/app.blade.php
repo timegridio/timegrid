@@ -49,7 +49,7 @@
                         </ul>
                     </li>
                     {{-- Language Switcher /--}}
-                    @if (auth()->guest())
+                    @if ($isGuest)
                         <li><a href="{{ url('/auth/login') }}">{{ trans('app.nav.login') }}</a></li>
                         <li><a href="{{ url('/auth/register') }}">{{ trans('app.nav.register') }}</a></li>
                     @else
