@@ -65,7 +65,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
 ## Official Documentation
 
-  * [![Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/) Developer Documentation in English
+  * ![Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/) Developer Documentation in English
 
 ## Installing
 
