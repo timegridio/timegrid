@@ -9,7 +9,7 @@ class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers   App\Http\Controllers\BookingController::postAction
@@ -29,7 +29,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -65,7 +65,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -102,7 +102,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -139,7 +139,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -174,7 +174,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -209,7 +209,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment
         $input = [
@@ -244,7 +244,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
@@ -278,7 +278,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
@@ -292,32 +292,5 @@ class BookingControllerTest extends TestCase
 
         // Then I receive a response with error code
         $this->seeJson(['code' => 'OK']);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    protected function arrangeFixture()
-    {
-        // Given there is...
-
-        // a Business owned by Me (User)
-        $this->issuer = $this->createUser();
-
-        $this->business = $this->createBusiness();
-        $this->business->owners()->save($this->issuer);
-
-        // And the Business provides a Service
-        $this->service = $this->makeService();
-        $this->business->services()->save($this->service);
-
-        // And the Service has Vacancies to be reserved
-        $this->vacancy = $this->makeVacancy();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
-
-        // And a Contact that holds an Appointment for that Service
-        $this->contact = $this->createContact();
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ManagerBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
@@ -30,7 +30,7 @@ class ManagerBusinessContactControllerTest extends TestCase
             ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('manager.business.contact.index', $this->business))
@@ -63,7 +63,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->business->contacts()->save($contact);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact edit form
         $this->visit(route('manager.business.contact.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
@@ -103,7 +103,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->business->contacts()->save($contact);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
         $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
@@ -170,7 +170,7 @@ class ManagerBusinessContactControllerTest extends TestCase
             ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('manager.business.contact.index', $this->business))
@@ -218,7 +218,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('manager.business.contact.index', $this->business))
@@ -235,34 +235,5 @@ class ManagerBusinessContactControllerTest extends TestCase
              ->see("{$contact->firstname} {$contact->lastname}");
         $this->assertEquals($contact->email, $existingContact->email);
         $this->assertEquals($contact->nin, $existingContact->nin);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    /**
-     * arrange fixture.
-     *
-     * @return void
-     */
-    protected function arrangeFixture()
-    {
-        // Given there is...
-
-        // a Business owned by Me (User)
-        $this->issuer = $this->createUser();
-
-        $this->business = $this->createBusiness();
-        $this->business->owners()->save($this->issuer);
-
-        // And the Business provides a Service
-        $this->service = $this->makeService();
-        $this->business->services()->save($this->service);
-
-        // And the Service has Vacancies to be reserved
-        $this->vacancy = $this->makeVacancy();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
     }
 }

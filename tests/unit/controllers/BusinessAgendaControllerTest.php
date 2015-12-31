@@ -9,7 +9,7 @@ class BusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessAgendaController::getIndex
@@ -53,7 +53,7 @@ class BusinessAgendaControllerTest extends TestCase
             ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         $this->visit(route('manager.business.agenda.index', $this->business));
 
@@ -62,37 +62,5 @@ class BusinessAgendaControllerTest extends TestCase
 
         // Then I see the appointment listed
         $this->see($this->appointment->code);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    /**
-     * arrange fixture.
-     *
-     * @return void
-     */
-    protected function arrangeFixture()
-    {
-        // Given there is...
-
-        // a Business owned by Me (User)
-        $this->issuer = $this->createUser();
-
-        $this->business = $this->createBusiness();
-        $this->business->owners()->save($this->issuer);
-
-        // And the Business provides a Service
-        $this->service = $this->makeService();
-        $this->business->services()->save($this->service);
-
-        // And the Service has Vacancies to be reserved
-        $this->vacancy = $this->makeVacancy();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
-
-        // And a Contact that holds an Appointment for that Service
-        $this->contact = $this->createContact();
     }
 }
