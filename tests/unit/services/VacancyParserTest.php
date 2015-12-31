@@ -1,15 +1,9 @@
 <?php
 
-use App\Models\Business;
-use App\Models\Service;
-use App\Models\Vacancy;
 use App\Services\VacancyParserService;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VacancyParserTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private $vacancyParser;
 
     public function setUp()
@@ -18,25 +12,6 @@ class VacancyParserTest extends TestCase
 
         $this->vacancyParser = new VacancyParserService();
 
-        $this->setFixture();
-    }
-
-    protected function setfixture()
-    {
-        $business = factory(Business::class)->create();
-
-        $service1 = factory(Service::class)->create([
-            'business_id' => $business->id,
-            'name'        => 'Massage',
-            'slug'        => 'massage',
-            'duration'    => 30,
-        ]);
-        $service2 = factory(Service::class)->create([
-            'business_id' => $business->id,
-            'name'        => 'Relax',
-            'slug'        => 'relax',
-            'duration'    => 30,
-        ]);
     }
 
     /////////////////////
