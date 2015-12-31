@@ -8,10 +8,6 @@ class GuestBusinessControllerTest extends TestCase
     use DatabaseTransactions;
     use CreateBusiness;
 
-    ///////////
-    // TESTS //
-    ///////////
-
     /** @test */
     public function it_presents_the_business_home()
     {
