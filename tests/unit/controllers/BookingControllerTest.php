@@ -1,11 +1,6 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
-use App\Models\User;
-use App\Models\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -14,7 +9,7 @@ class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers   App\Http\Controllers\BookingController::postAction
@@ -318,7 +313,7 @@ class BookingControllerTest extends TestCase
         $this->business->services()->save($this->service);
 
         // And the Service has Vacancies to be reserved
-        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy = $this->makeVacancy();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
 
