@@ -10,6 +10,11 @@ trait CreateBusiness
         return factory(Business::class)->create($overrides);
     }
 
+    private function createBusinesses($quantity = 2, $overrides = [])
+    {
+        return factory(Business::class, $quantity)->create($overrides);
+    }
+
     private function makeBusiness(User $owner, $overrides = [])
     {
         $business = factory(Business::class)->make($overrides);
