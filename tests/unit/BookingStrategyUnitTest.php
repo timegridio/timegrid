@@ -1,16 +1,14 @@
 <?php
 
 use App\BookingStrategy;
-use App\Models\Business;
-use App\Models\Service;
-use App\Models\User;
+use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BookingStrategyUnitTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateUser, CreateContact, CreateBusiness;
+    use CreateUser, CreateContact, CreateBusiness, CreateService;
 
     /**
      * @covers \App\BookingStrategy::generateAppointment
@@ -28,7 +26,8 @@ class BookingStrategyUnitTest extends TestCase
         $business = $this->makeBusiness($user, ['strategy' => 'dateslot']);
         $business->save();
 
-        $service = factory(Service::class)->make();
+        $service = $this->makeService();
+
         $business->services()->save($service);
 
         $bookingStrategy = new BookingStrategy($business->strategy);
@@ -44,12 +43,14 @@ class BookingStrategyUnitTest extends TestCase
             'test comments'
         );
 
-        $this->assertInstanceOf(\App\Models\Appointment::class, $appointment);
+        $this->assertInstanceOf(Appointment::class, $appointment);
+
         $this->assertEquals($appointment->issuer->id, $user->id);
         $this->assertEquals($appointment->contact->name, $contact->name);
         $this->assertEquals($appointment->service->name, $service->name);
         $this->assertEquals($appointment->date, $dateTime->toDateString());
         $this->assertEquals($appointment->comments, 'test comments');
-        $this->assertEquals(strlen($appointment->hash), 32);
+
+        $this->assertEquals(32, strlen($appointment->hash));
     }
 }
