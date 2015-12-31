@@ -5,7 +5,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-class BusinessAgendaControllerTest extends TestCase
+class ManagerBusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
