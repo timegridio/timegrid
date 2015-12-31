@@ -11,6 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
     /**
      * @covers \App\Http\Controllers\User\BusinessContactController::create
@@ -22,7 +23,10 @@ class UserBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe']);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -53,10 +57,17 @@ class UserBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $existingContact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'test@example.org',
+            ]);
         $this->business->contacts()->save($existingContact);
 
-        $contact = factory(Contact::class)->make(['firstname' => 'John2', 'lastname' => 'Doe2']);
+        $contact = $this->createContact([
+            'firstname' => 'John2',
+            'lastname'  => 'Doe2',
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -91,7 +102,11 @@ class UserBusinessContactControllerTest extends TestCase
 
         // I have a registered contact in Business A (other business)
         $otherBusiness = factory(Business::class)->create();
-        $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $existingContact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'test@example.org',
+            ]);
         $existingContact->user()->associate($this->issuer);
         $otherBusiness->contacts()->save($existingContact);
 
@@ -125,7 +140,12 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => null, 'email' => null]);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'nin'       => null,
+            'email'     => null,
+            ]);
         $contact->user()->associate($this->issuer);
         $this->business->contacts()->save($contact);
 
@@ -156,7 +176,12 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '12345', 'email' => null]);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'nin'       => '12345',
+            'email'     => null,
+            ]);
         $contact->user()->associate($this->issuer);
         $this->business->contacts()->save($contact);
 
@@ -187,7 +212,7 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -219,19 +244,19 @@ class UserBusinessContactControllerTest extends TestCase
      */
     protected function arrangeFixture()
     {
-        // A business owned by a user (me)
-        $this->owner = factory(User::class)->create();
+        // Given there is...
+        $this->owner = $this->createUser();
+        // a Business owned by Me (User)
+        $this->issuer = $this->createUser();
 
-        $this->issuer = factory(User::class)->create();
-
-        $this->business = factory(Business::class)->create();
+        $this->business = $this->createBusiness();
         $this->business->owners()->save($this->owner);
 
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
+        // And the Business provides a Service
+        $this->service = $this->makeService();
         $this->business->services()->save($this->service);
 
-        // And Service has vacancies to be reserved
+        // And the Service has Vacancies to be reserved
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
