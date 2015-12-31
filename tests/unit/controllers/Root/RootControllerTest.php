@@ -78,7 +78,7 @@ class RootControllerTest extends TestCase
      * @covers   App\Http\Controllers\Root\RootController::getSudo
      * @test
      */
-    public function it_fails_sudoing_as_user()
+    public function it_prevents_unauthorized_sudo()
     {
         // Given I am an authenticated user
         $nonRoot = $this->createUser();
