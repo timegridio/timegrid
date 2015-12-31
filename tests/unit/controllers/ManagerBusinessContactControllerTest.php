@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ManagerBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessContactController::index
@@ -22,7 +23,11 @@ class ManagerBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe']);
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname' => 'Doe'
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -50,7 +55,11 @@ class ManagerBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '1133224455']);
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe', 'nin' => '1133224455',
+            ]);
         $this->business->contacts()->save($contact);
 
         // And I am authenticated as the business owner
@@ -84,7 +93,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -114,10 +123,10 @@ class ManagerBusinessContactControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $unauthorizedUser = factory(User::class)->create();
+        $unauthorizedUser = $this->createUser();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -149,9 +158,16 @@ class ManagerBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingUser = factory(User::class)->create(['name' => 'John', 'email' => 'johndoe@example.org']);
+        $existingUser = $this->createUser([
+            'name' => 'John',
+            'email' => 'johndoe@example.org'
+            ]);
 
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'johndoe@example.org']);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname' => 'Doe',
+            'email' => 'johndoe@example.org'
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -180,9 +196,12 @@ class ManagerBusinessContactControllerTest extends TestCase
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingUser = factory(User::class)->create(['name' => 'John', 'email' => 'johndoe@example.org']);
+        $existingUser = $this->createUser([
+            'name' => 'John',
+            'email' => 'johndoe@example.org'
+            ]);
 
-        $existingContact = factory(Contact::class)->create([
+        $existingContact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'email'     => 'johndoe@example.org',
@@ -191,7 +210,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         // And the existing contact belongs to the business addressbok
         $this->business->contacts()->attach($existingContact);
 
-        $contact = factory(Contact::class)->make([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'email'     => 'johndoe@example.org',
@@ -229,17 +248,19 @@ class ManagerBusinessContactControllerTest extends TestCase
      */
     protected function arrangeFixture()
     {
-        // A business owned by a user (me)
-        $this->issuer = factory(User::class)->create();
+        // Given there is...
 
-        $this->business = factory(Business::class)->create();
+        // a Business owned by Me (User)
+        $this->issuer = $this->createUser();
+
+        $this->business = $this->createBusiness();
         $this->business->owners()->save($this->issuer);
 
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
+        // And the Business provides a Service
+        $this->service = $this->makeService();
         $this->business->services()->save($this->service);
 
-        // And Service has vacancies to be reserved
+        // And the Service has Vacancies to be reserved
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
