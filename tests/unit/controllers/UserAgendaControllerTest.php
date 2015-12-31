@@ -1,13 +1,12 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /** @test */
     public function it_shows_empty_reservations_list()
@@ -203,7 +202,7 @@ class UserAgendaControllerTest extends TestCase
         $business->services()->save($service);
 
         // And there is vacancy for the service
-        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy = $this->makeVacancy();
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
@@ -236,7 +235,7 @@ class UserAgendaControllerTest extends TestCase
         $business->services()->save($service);
 
         // And there is vacancy for the service (OPTIONAL)
-        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy = $this->makeVacancy();
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
@@ -272,7 +271,7 @@ class UserAgendaControllerTest extends TestCase
         $business->contacts()->save($contact);
 
         // And there is vacancy for the service (OPTIONAL)
-        $this->vacancy = factory(Vacancy::class)->make([
+        $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
