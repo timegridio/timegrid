@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ContactTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness;
 
     /**
      * @covers App\Models\Contact::autoLinkToUser
@@ -84,7 +85,7 @@ class ContactTest extends TestCase
      */
     public function it_gets_the_appointments()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $contact = $this->createContact();
 
@@ -108,7 +109,7 @@ class ContactTest extends TestCase
      */
     public function it_gets_the_native_contact_email()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $email = 'test@example.org';
 
@@ -123,7 +124,7 @@ class ContactTest extends TestCase
      */
     public function it_gets_the_native_contact_email_and_not_the_user_fallback()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $userFallbackEmail = 'tosto@example.org';
         $contactEmail = 'test@example.org';
@@ -144,7 +145,7 @@ class ContactTest extends TestCase
      */
     public function it_gets_the_user_fallback_contact_email()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $userFallbackEmail = 'tosto@example.org';
         $contactEmail = 'test@example.org';
@@ -157,23 +158,5 @@ class ContactTest extends TestCase
             ]);
 
         $this->assertEquals($userFallbackEmail, $contact->email);
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function createUser($overrides = [])
-    {
-        $user = factory(User::class)->create($overrides);
-
-        return $user;
-    }
-
-    private function createContact($overrides = [])
-    {
-        $contact = factory(Contact::class)->create($overrides);
-
-        return $contact;
     }
 }

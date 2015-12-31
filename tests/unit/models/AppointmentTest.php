@@ -2,8 +2,6 @@
 
 use App\Models\Appointment;
 use App\Models\Business;
-use App\Models\Contact;
-use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laracasts\TestDummy\Factory;
@@ -11,6 +9,7 @@ use Laracasts\TestDummy\Factory;
 class AppointmentTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness, CreateAppointment;
 
     /**
      * @test
@@ -28,9 +27,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_contact_user_of_appointment()
     {
-        $appointment = Factory::create('App\Models\Appointment');
-        $user = $this->makeUser();
-        $user->save();
+        $user = $this->createUser();
 
         $contact = $this->makeContact($user);
         $contact->save();
@@ -63,11 +60,9 @@ class AppointmentTest extends TestCase
      */
     public function it_detects_a_duplicate_appointment()
     {
-        $issuer = $this->makeUser();
-        $issuer->save();
+        $issuer = $this->createUser();
 
-        $contact = $this->makeContact();
-        $contact->save();
+        $contact = $this->createContact();
 
         $business = $this->makeBusiness($issuer);
         $business->save();
@@ -103,7 +98,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_associated_vacancy()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
         $vacancy = Factory::create(Vacancy::class, [
             'business_id' => $business->id,
@@ -125,7 +120,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_000000utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
         $appointment = Factory::create(Appointment::class, [
             'business_id' => $business->id,
@@ -142,7 +137,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_120000utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
         $appointment = Factory::create(Appointment::class, [
             'business_id' => $business->id,
@@ -159,7 +154,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_235959utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
         $appointment = Factory::create(Appointment::class, [
             'business_id' => $business->id,
@@ -321,47 +316,5 @@ class AppointmentTest extends TestCase
         $appointment->doServe();
 
         $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function makeUser()
-    {
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
-
-        return $user;
-    }
-
-    private function makeAppointment(Business $business, User $issuer, Contact $contact, $overrides = [])
-    {
-        $appointment = factory(Appointment::class)->make($overrides);
-        $appointment->contact()->associate($contact);
-        $appointment->issuer()->associate($issuer);
-        $appointment->business()->associate($business);
-
-        return $appointment;
-    }
-
-    private function makeContact(User $user = null)
-    {
-        $contact = factory(Contact::class)->make();
-        if ($user) {
-            $contact->user()->associate($user);
-        }
-
-        return $contact;
-    }
-
-    private function makeBusiness(User $owner, $overrides = [])
-    {
-        $business = factory(Business::class)->make($overrides);
-        $business->save();
-        $business->owners()->attach($owner);
-
-        return $business;
     }
 }

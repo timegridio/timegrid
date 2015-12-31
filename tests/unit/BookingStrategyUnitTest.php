@@ -2,7 +2,6 @@
 
 use App\BookingStrategy;
 use App\Models\Business;
-use App\Models\Contact;
 use App\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
@@ -11,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class BookingStrategyUnitTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness;
 
     /**
      * @covers \App\BookingStrategy::generateAppointment
@@ -51,37 +51,5 @@ class BookingStrategyUnitTest extends TestCase
         $this->assertEquals($appointment->date, $dateTime->toDateString());
         $this->assertEquals($appointment->comments, 'test comments');
         $this->assertEquals(strlen($appointment->hash), 32);
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function makeUser()
-    {
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
-
-        return $user;
-    }
-
-    private function makeContact(User $user = null)
-    {
-        $contact = factory(Contact::class)->make();
-        if ($user) {
-            $contact->user()->associate($user);
-        }
-
-        return $contact;
-    }
-
-    private function makeBusiness(User $owner, $overrides = [])
-    {
-        $business = factory(Business::class)->make($overrides);
-        $business->save();
-        $business->owners()->attach($owner);
-
-        return $business;
     }
 }

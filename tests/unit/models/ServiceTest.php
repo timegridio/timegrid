@@ -1,14 +1,12 @@
 <?php
 
-use App\Models\Business;
 use App\Models\Service;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ServiceTest extends TestCase
 {
     use DatabaseTransactions;
-
-    protected $service;
+    use CreateBusiness, CreateService;
 
     /**
      * @covers  App\Models\Service::scopeSlug
@@ -16,12 +14,12 @@ class ServiceTest extends TestCase
      */
     public function it_scopes_by_slug()
     {
-        $this->business = factory(Business::class)->create();
-        $this->service = factory(Service::class)->make();
+        $business = $this->createBusiness();
+        $service = $this->makeService();
 
-        $this->business->services()->save($this->service);
+        $business->services()->save($service);
 
-        $services = Service::slug($this->service->slug);
+        $services = Service::slug($service->slug);
         $count = $services->count();
         $service = $services->first();
 
