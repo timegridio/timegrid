@@ -8,10 +8,13 @@ use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use WithoutMiddleware;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessAgendaController::getIndex
@@ -44,16 +47,15 @@ class BusinessAgendaControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
+        $this->appointment = $this->createAppointment([
+            'issuer_id' => $this->issuer->id,
+            'business_id' => $this->business->id,
+            'service_id' => $this->service->id,
+            'contact_id' => $this->contact->id,
+            'vacancy_id' => $this->vacancy->id,
             'status'   => Appointment::STATUS_RESERVED,
             'start_at' => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
-        $this->appointment->save();
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -65,7 +67,6 @@ class BusinessAgendaControllerTest extends TestCase
 
         // Then I see the appointment listed
         $this->see($this->appointment->code);
-        #$this->see($this->appointment->contact->firstname);
     }
 
     /////////////
@@ -79,22 +80,24 @@ class BusinessAgendaControllerTest extends TestCase
      */
     protected function arrangeFixture()
     {
-        // A business owned by a user (me)
-        $this->issuer = factory(User::class)->create();
+        // Given there is...
 
-        $this->business = factory(Business::class)->create();
+        // a Business owned by Me (User)
+        $this->issuer = $this->createUser();
+
+        $this->business = $this->createBusiness();
         $this->business->owners()->save($this->issuer);
 
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
+        // And the Business provides a Service
+        $this->service = $this->makeService();
         $this->business->services()->save($this->service);
 
-        // And Service has vacancies to be reserved
+        // And the Service has Vacancies to be reserved
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
 
-        // And a Contact that holds an appointment for the service
-        $this->contact = factory(Contact::class)->create();
+        // And a Contact that holds an Appointment for that Service
+        $this->contact = $this->createContact();
     }
 }
