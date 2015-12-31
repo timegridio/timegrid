@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class GuestBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateBusiness;
 
     ///////////
     // TESTS //
@@ -15,7 +16,7 @@ class GuestBusinessControllerTest extends TestCase
     public function it_presents_the_business_home()
     {
         // Given I am a guest user
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         // And I visit the homepage
         $this->visit(route('guest.business.home', $business));
