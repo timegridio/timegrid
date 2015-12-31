@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers \App\Http\Controllers\User\BusinessContactController::create
@@ -101,7 +101,8 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business A (other business)
-        $otherBusiness = factory(Business::class)->create();
+        $otherBusiness = $this->createBusiness();
+
         $existingContact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
@@ -257,7 +258,7 @@ class UserBusinessContactControllerTest extends TestCase
         $this->business->services()->save($this->service);
 
         // And the Service has Vacancies to be reserved
-        $this->vacancy = factory(Vacancy::class)->make();
+        $this->vacancy = $this->makeVacancy();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
     }
