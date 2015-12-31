@@ -3,15 +3,13 @@
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
-use App\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserBusinessContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @covers \App\Http\Controllers\User\BusinessContactController::create
@@ -232,34 +230,5 @@ class UserBusinessContactControllerTest extends TestCase
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    /**
-     * arrange fixture.
-     *
-     * @return void
-     */
-    protected function arrangeFixture()
-    {
-        // Given there is...
-        $this->owner = $this->createUser();
-        // a Business owned by Me (User)
-        $this->issuer = $this->createUser();
-
-        $this->business = $this->createBusiness();
-        $this->business->owners()->save($this->owner);
-
-        // And the Business provides a Service
-        $this->service = $this->makeService();
-        $this->business->services()->save($this->service);
-
-        // And the Service has Vacancies to be reserved
-        $this->vacancy = $this->makeVacancy();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
     }
 }

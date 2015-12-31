@@ -29,7 +29,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -65,7 +65,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -102,7 +102,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -139,7 +139,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -174,7 +174,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -209,7 +209,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
@@ -244,7 +244,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
@@ -278,7 +278,7 @@ class BookingControllerTest extends TestCase
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->owner);
+        $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
