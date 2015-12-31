@@ -1,10 +1,6 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
-use App\Models\User;
 use App\Models\Vacancy;
 use App\Services\ConciergeService;
 use App\Services\VacancyService;
@@ -14,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ConciergeServiceTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness, CreateService, CreateAppointment;
 
     protected $user;
 
@@ -26,51 +23,6 @@ class ConciergeServiceTest extends TestCase
     protected $vacancy;
 
     protected $concierge;
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    /**
-     * Arrange a fixture for testing.
-     *
-     * @return void
-     */
-    protected function arrangeScenario()
-    {
-        $this->user = factory(User::class)->create();
-
-        $this->business = factory(Business::class)->create();
-
-        $this->service = factory(Service::class)->create([
-            'business_id' => $this->business->id,
-            ]);
-
-        $this->concierge = new ConciergeService(new VacancyService());
-
-        $this->concierge->setBusiness($this->business);
-    }
-
-    /**
-     * make date time object with timezone.
-     *
-     * @param string $date        Date
-     * @param string $time        Time
-     * @param string $timezone    TimeZone
-     * @param string $modificator Ex: +1 day
-     *
-     * @return Carbon DateTime
-     */
-    protected function makeDateTime($date, $time, $timezone, $modificator = '')
-    {
-        $strDateTime = date('Y-m-d H:i:s', strtotime("{$date} {$time} {$modificator}"));
-
-        return Carbon::parse($strDateTime, $timezone);
-    }
-
-    ///////////
-    // TESTS //
-    ///////////
 
     /**
      * @covers \App\Services\ConciergeService::getVacancies
@@ -118,7 +70,7 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->business()->associate($this->business);
@@ -158,7 +110,7 @@ class ConciergeServiceTest extends TestCase
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
         // Act
         $date = $this->makeDateTime(
@@ -205,7 +157,7 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->business()->associate($this->business);
@@ -241,11 +193,14 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->business()->associate($this->business);
+        $appointment = $this->makeAppointment(
+            $this->business,
+            $this->user,
+            $this->contact,
+            ['status' => Appointment::STATUS_RESERVED]
+            );
         $appointment->save();
 
         $appointments = $this->concierge->setBusiness($this->business)->getUnservedAppointments();
@@ -264,9 +219,14 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_SERVED]);
+        $appointment = $this->makeAppointment(
+            $this->business,
+            $this->user,
+            $this->contact,
+            ['status' => Appointment::STATUS_SERVED]
+            );
 
         $appointments = $this->concierge
                              ->setBusiness($this->business)
@@ -286,11 +246,14 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->business()->associate($this->business);
+        $appointment = $this->makeAppointment(
+            $this->business,
+            $this->user,
+            $this->contact,
+            ['status' => Appointment::STATUS_RESERVED]
+            );
         $appointment->save();
 
         $appointments = $this->concierge->setBusiness($this->business)->getActiveAppointments();
@@ -309,11 +272,14 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->business()->associate($this->business);
+        $appointment = $this->makeAppointment(
+            $this->business,
+            $this->user,
+            $this->contact,
+            ['status' => Appointment::STATUS_RESERVED]
+            );
 
         $appointment = $this->concierge
                             ->setBusiness($this->business)
@@ -333,13 +299,15 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
         $this->business->contacts()->save($this->contact);
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_RESERVED]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->issuer()->associate($this->user);
-        $appointment->business()->associate($this->business);
+        $appointment = $this->makeAppointment(
+            $this->business,
+            $this->user,
+            $this->contact,
+            ['status' => Appointment::STATUS_RESERVED]
+            );
         $appointment->save();
 
         $this->expectsEvents(App\Events\AppointmentWasConfirmed::class);
@@ -362,16 +330,13 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
         $this->business->contacts()->save($this->contact);
 
-        $appointment = factory(Appointment::class)->make([
+        $appointment = $this->makeAppointment($this->business, $this->user, $this->contact, [
             'status'   => Appointment::STATUS_RESERVED,
             'start_at' => Carbon::now()->subDays(1),
             ]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->issuer()->associate($this->user);
-        $appointment->business()->associate($this->business);
         $appointment->save();
 
         $appointment = $this->concierge
@@ -393,16 +358,13 @@ class ConciergeServiceTest extends TestCase
         // Arrange
         $this->arrangeScenario();
 
-        $this->contact = factory(Contact::class)->create();
+        $this->contact = $this->createContact();
         $this->business->contacts()->save($this->contact);
 
-        $appointment = factory(Appointment::class)->make([
+        $appointment = $this->makeAppointment($this->business, $this->user, $this->contact, [
             'status'   => Appointment::STATUS_RESERVED,
             'start_at' => Carbon::now()->subDays(1),
             ]);
-        $appointment->contact()->associate($this->contact);
-        $appointment->issuer()->associate($this->user);
-        $appointment->business()->associate($this->business);
         $appointment->save();
 
         $appointment = $this->concierge
@@ -411,5 +373,46 @@ class ConciergeServiceTest extends TestCase
 
         // Assert
         $this->assertEquals(Appointment::STATUS_RESERVED, $appointment->status);
+    }
+
+    /////////////
+    // HELPERS //
+    /////////////
+
+    /**
+     * Arrange a fixture for testing.
+     *
+     * @return void
+     */
+    protected function arrangeScenario()
+    {
+        $this->user = $this->createUser();
+
+        $this->business = $this->createBusiness();
+
+        $this->service = $this->createService([
+            'business_id' => $this->business->id,
+            ]);
+
+        $this->concierge = new ConciergeService(new VacancyService());
+
+        $this->concierge->setBusiness($this->business);
+    }
+
+    /**
+     * make date time object with timezone.
+     *
+     * @param string $date        Date
+     * @param string $time        Time
+     * @param string $timezone    TimeZone
+     * @param string $modificator Ex: +1 day
+     *
+     * @return Carbon DateTime
+     */
+    protected function makeDateTime($date, $time, $timezone, $modificator = '')
+    {
+        $strDateTime = date('Y-m-d H:i:s', strtotime("{$date} {$time} {$modificator}"));
+
+        return Carbon::parse($strDateTime, $timezone);
     }
 }
