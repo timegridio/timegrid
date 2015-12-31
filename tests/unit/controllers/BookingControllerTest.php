@@ -8,10 +8,13 @@ use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use WithoutMiddleware;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
     /**
      * @covers   App\Http\Controllers\BookingController::postAction
@@ -22,24 +25,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'annulate',
@@ -63,24 +61,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'annulate',
@@ -105,24 +98,19 @@ class BookingControllerTest extends TestCase
         $this->arrangeFixture();
 
         // And the appointment is reserved and past
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->subDays(1),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->subDays(1),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'serve',
@@ -147,24 +135,19 @@ class BookingControllerTest extends TestCase
         $this->arrangeFixture();
 
         // And the appointment is reserved but still future
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'serve',
@@ -175,7 +158,6 @@ class BookingControllerTest extends TestCase
 
         // Then I receive a response and see the appointment served
         $this->assertResponseOk();
-        $this->appointment = $this->appointment->fresh();
         $this->assertEquals(Appointment::STATUS_RESERVED, $this->appointment->status);
     }
 
@@ -188,24 +170,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_SERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_SERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'confirm',
@@ -216,7 +193,6 @@ class BookingControllerTest extends TestCase
 
         // Then I receive a response and see the appointment served
         $this->assertResponseOk();
-        $this->appointment = $this->appointment->fresh();
         $this->assertEquals(Appointment::STATUS_SERVED, $this->appointment->status);
     }
 
@@ -229,24 +205,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'some-invalid-action',
@@ -257,7 +228,6 @@ class BookingControllerTest extends TestCase
 
         // Then I receive a response and see the appointment with no changes
         $this->assertResponseOk();
-        $this->appointment = $this->appointment->fresh();
         $this->assertEquals(Appointment::STATUS_RESERVED, $this->appointment->status);
     }
 
@@ -270,24 +240,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'annulate',
@@ -309,24 +274,19 @@ class BookingControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $this->appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+        $this->appointment = $this->makeAppointment($this->business, $this->issuer, $this->contact, [
+            'service_id' => $this->service->id,
+            'vacancy_id' => $this->vacancy->id,
+            'status'     => Appointment::STATUS_RESERVED,
+            'start_at'   => Carbon::now()->addDays(5),
             ]);
-        $this->appointment->issuer()->associate($this->issuer);
-        $this->appointment->business()->associate($this->business);
-        $this->appointment->service()->associate($this->service);
-        $this->appointment->contact()->associate($this->contact);
-        $this->appointment->vacancy()->associate($this->vacancy);
         $this->appointment->save();
 
         // And I am authenticated
-        session()->start();
         $this->actingAs($this->issuer);
 
         // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
-            '_token'      => csrf_token(),
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'serve',
@@ -345,22 +305,24 @@ class BookingControllerTest extends TestCase
 
     protected function arrangeFixture()
     {
-        // A business owned by a user (me)
-        $this->issuer = factory(User::class)->create();
+        // Given there is...
 
-        $this->business = factory(Business::class)->create();
+        // a Business owned by Me (User)
+        $this->issuer = $this->createUser();
+
+        $this->business = $this->createBusiness();
         $this->business->owners()->save($this->issuer);
 
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
+        // And the Business provides a Service
+        $this->service = $this->makeService();
         $this->business->services()->save($this->service);
 
-        // And Service has vacancies to be reserved
+        // And the Service has Vacancies to be reserved
         $this->vacancy = factory(Vacancy::class)->make();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);
 
-        // And a Contact that holds an appointment for the service
-        $this->contact = factory(Contact::class)->create();
+        // And a Contact that holds an Appointment for that Service
+        $this->contact = $this->createContact();
     }
 }
