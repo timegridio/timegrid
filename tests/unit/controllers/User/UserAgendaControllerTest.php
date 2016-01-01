@@ -219,6 +219,20 @@ class UserAgendaControllerTest extends TestCase
     }
 
     /** @test */
+    public function it_prevents_showing_vacancies_to_unsubcribed_users()
+    {
+        $user = $this->createUser();
+        
+        $this->actingAs($user);
+
+        $business = $this->createBusiness(['name' => 'tosto this tosti']);
+
+        $this->visit(route('user.booking.book', ['business' => $business]));
+
+        $this->see('To be able to do a reservation you must subscribe the business first');
+    }
+
+    /** @test */
     public function it_tries_to_query_vacancies_without_subscription()
     {
         // Given I am an authenticated user

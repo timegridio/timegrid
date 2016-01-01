@@ -73,7 +73,7 @@ class AgendaController extends Controller
 
             flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
 
-            return redirect()->back();
+            return redirect()->route('user.businesses.home', compact('business'));
         }
 
         $includeToday = $business->pref('appointment_take_today');
