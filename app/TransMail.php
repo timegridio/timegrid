@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Mail;
 class TransMail
 {
     /**
+     * @var Mail
+     */
+    protected $mail = null;
+
+    /**
      * @var string
      */
     protected $locale = 'en_US.utf8';
@@ -41,8 +46,15 @@ class TransMail
      */
     protected $subject = '';
 
-    public function __construct()
+    /**
+     * Construct the class.
+     * 
+     * @param Mail|null $mail
+     */
+    public function __construct(Mail $mail = null)
     {
+        $this->mail = $mail ?: new Mail;
+
         $this->locale();
     }
 
@@ -151,7 +163,7 @@ class TransMail
         $key = $this->viewBase.'.'.$this->locale.'.'.$this->viewPath;
 
         if (!view()->exists($key)) {
-            throw new \Exception('Email view does not exist');
+            throw new \Exception('Email view does not exist: '.$key);
         }
 
         return $key;
