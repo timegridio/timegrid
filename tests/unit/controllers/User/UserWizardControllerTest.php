@@ -6,7 +6,27 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class UserWizardControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateUser;
+    use CreateUser, CreateBusiness;
+
+    /**
+     * @test
+     */
+    public function it_shows_the_default_wizard_for_business_owner()
+    {
+        $owner = $this->createUser();
+
+        $business = $this->createBusiness();
+
+        $business->owners()->save($owner);
+
+        $this->actingAs($owner);
+
+        $this->visit(route('home'));
+
+        $this->see($business->name);
+
+        $this->seePageIs($business->slug.'/manage/dashboard');
+    }
 
     /**
      * @test
