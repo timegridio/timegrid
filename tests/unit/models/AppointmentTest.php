@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Business;
 use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Laracasts\TestDummy\Factory;

@@ -2,9 +2,7 @@
 
 use App\Models\Business;
 use App\Models\Contact;
-use App\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ManagerBusinessContactControllerTest extends TestCase
@@ -26,7 +24,7 @@ class ManagerBusinessContactControllerTest extends TestCase
 
         $contact = $this->createContact([
             'firstname' => 'John',
-            'lastname' => 'Doe'
+            'lastname'  => 'Doe',
             ]);
 
         // And I am authenticated as the business owner
@@ -159,14 +157,14 @@ class ManagerBusinessContactControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
         $existingUser = $this->createUser([
-            'name' => 'John',
-            'email' => 'johndoe@example.org'
+            'name'  => 'John',
+            'email' => 'johndoe@example.org',
             ]);
 
         $contact = $this->createContact([
             'firstname' => 'John',
-            'lastname' => 'Doe',
-            'email' => 'johndoe@example.org'
+            'lastname'  => 'Doe',
+            'email'     => 'johndoe@example.org',
             ]);
 
         // And I am authenticated as the business owner
@@ -197,8 +195,8 @@ class ManagerBusinessContactControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
         $existingUser = $this->createUser([
-            'name' => 'John',
-            'email' => 'johndoe@example.org'
+            'name'  => 'John',
+            'email' => 'johndoe@example.org',
             ]);
 
         $existingContact = $this->createContact([

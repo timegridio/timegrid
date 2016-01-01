@@ -11,7 +11,6 @@ class VacancyParserTest extends TestCase
         parent::setUp();
 
         $this->vacancyParser = new VacancyParserService();
-
     }
 
     /////////////////////

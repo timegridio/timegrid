@@ -1,8 +1,6 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

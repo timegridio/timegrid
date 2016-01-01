@@ -3,49 +3,49 @@
 trait ArrangeFixture
 {
     /**
-     * Business Owner
+     * Business Owner.
      *
      * @var App\Models\User
      */
     protected $owner = null;
 
     /**
-     * Appointment Issuer
+     * Appointment Issuer.
      *
      * @var App\Models\User
      */
     protected $issuer = null;
 
     /**
-     * Appointment Contact
+     * Appointment Contact.
      *
      * @var App\Models\Contact
      */
     protected $contact = null;
 
     /**
-     * Business
+     * Business.
      *
      * @var App\Models\Business
      */
     protected $business = null;
 
     /**
-     * Serivce
+     * Serivce.
      *
      * @var App\Models\Service
      */
     protected $service = null;
 
     /**
-     * Business Vacancy
+     * Business Vacancy.
      *
      * @var App\Models\Vacancy
      */
     protected $vacancy = null;
 
     /**
-     * Arrange Fixture
+     * Arrange Fixture.
      *
      * @return void
      */

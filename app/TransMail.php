@@ -53,7 +53,7 @@ class TransMail
      */
     public function __construct(Mail $mail = null)
     {
-        $this->mail = $mail ?: new Mail;
+        $this->mail = $mail ?: new Mail();
 
         $this->locale();
     }

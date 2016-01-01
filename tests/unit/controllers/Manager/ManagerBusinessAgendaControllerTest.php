@@ -43,13 +43,13 @@ class ManagerBusinessAgendaControllerTest extends TestCase
         $this->arrangeFixture();
 
         $this->appointment = $this->createAppointment([
-            'issuer_id' => $this->issuer->id,
+            'issuer_id'   => $this->issuer->id,
             'business_id' => $this->business->id,
-            'service_id' => $this->service->id,
-            'contact_id' => $this->contact->id,
-            'vacancy_id' => $this->vacancy->id,
-            'status'   => Appointment::STATUS_RESERVED,
-            'start_at' => Carbon::now()->addDays(5),
+            'service_id'  => $this->service->id,
+            'contact_id'  => $this->contact->id,
+            'vacancy_id'  => $this->vacancy->id,
+            'status'      => Appointment::STATUS_RESERVED,
+            'start_at'    => Carbon::now()->addDays(5),
             ]);
 
         // And I am authenticated as the business owner
