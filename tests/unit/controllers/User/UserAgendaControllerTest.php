@@ -308,4 +308,203 @@ class UserAgendaControllerTest extends TestCase
         // Then I should see Subscribe button for that business
         $this->seeInDatabase('appointments', ['business_id' => $business->id]);
     }
+
+    /** @test */
+    public function it_prevents_a_duplicated_reservation()
+    {
+        $user = $this->createUser();
+
+        $business = $this->createBusiness();
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contact = $this->makeContact($user);
+        $business->contacts()->save($contact);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->withoutMiddleware();
+
+        $this->actingAs($user);
+
+        // This attempt gets accepted
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(1, $business->fresh()->bookings()->get());
+
+        // This attempt gets rejected
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(1, $business->fresh()->bookings()->get());
+    }
+
+    /** @test */
+    public function it_takes_multiple_reservations_on_same_vacancy()
+    {
+        $userOne = $this->createUser();
+        $userTwo = $this->createUser();
+
+        $business = $this->createBusiness();
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contactOne = $this->makeContact($userOne);
+        $contactTwo = $this->makeContact($userTwo);
+        $business->contacts()->save($contactOne);
+        $business->contacts()->save($contactTwo);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 2,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->withoutMiddleware();
+
+        $this->actingAs($userOne);
+
+        // This attempt gets accepted
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(1, $business->fresh()->bookings()->get());
+
+        $this->actingAs($userTwo);
+
+        // This attempt gets rejected
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(2, $business->fresh()->bookings()->get());
+    }
+
+    /** @test */
+    public function it_prevents_taking_a_reservation_over_capacity()
+    {
+        $userOne = $this->createUser();
+        $userTwo = $this->createUser();
+
+        $business = $this->createBusiness();
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contactOne = $this->makeContact($userOne);
+        $contactTwo = $this->makeContact($userTwo);
+        $business->contacts()->save($contactOne);
+        $business->contacts()->save($contactTwo);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->withoutMiddleware();
+
+        $this->actingAs($userOne);
+
+        // This attempt gets accepted
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(1, $business->fresh()->bookings()->get());
+
+        $this->actingAs($userTwo);
+
+        // This attempt gets rejected
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->assertCount(1, $business->fresh()->bookings()->get());
+    }
+
+    /** @test */
+    public function it_prevents_a_reservation_without_vacancy()
+    {
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $business = $this->createBusiness(['name' => 'tosto this tosti']);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contact = $this->makeContact($user);
+        $business->contacts()->save($contact);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $otherDayThanVacancy = $this->vacancy->start_at->addDays(7)->timezone($business->timezone)->toDateString();
+
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => '09:00:00',
+            '_date'      => $otherDayThanVacancy,
+            'comments'   => 'this is an invalid request',
+            ]);
+
+        $this->dontSeeInDatabase('appointments', ['business_id' => $business->id]);
+    }    
 }
