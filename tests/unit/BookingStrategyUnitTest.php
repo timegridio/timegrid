@@ -17,13 +17,12 @@ class BookingStrategyUnitTest extends TestCase
      */
     public function it_generates_a_dateslot_appointment()
     {
-        $user = $this->makeUser();
-        $user->save();
+        $owner = $this->createUser();
 
-        $contact = $this->makeContact($user);
+        $contact = $this->makeContact($owner);
         $contact->save();
 
-        $business = $this->makeBusiness($user, ['strategy' => 'dateslot']);
+        $business = $this->makeBusiness($owner, ['strategy' => 'dateslot']);
         $business->save();
 
         $service = $this->makeService();
@@ -35,7 +34,7 @@ class BookingStrategyUnitTest extends TestCase
         $dateTime = Carbon::now()->addDays(5);
 
         $appointment = $bookingStrategy->generateAppointment(
-            $user,
+            $owner,
             $business,
             $contact,
             $service,
@@ -45,7 +44,7 @@ class BookingStrategyUnitTest extends TestCase
 
         $this->assertInstanceOf(Appointment::class, $appointment);
 
-        $this->assertEquals($appointment->issuer->id, $user->id);
+        $this->assertEquals($appointment->issuer->id, $owner->id);
         $this->assertEquals($appointment->contact->name, $contact->name);
         $this->assertEquals($appointment->service->name, $service->name);
         $this->assertEquals($appointment->date, $dateTime->toDateString());
