@@ -172,31 +172,31 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
 
         Route::get('contact', [
             'as'   => 'business.contact.index',
-            'uses' => 'BusinessContactController@index',
+            'uses' => 'ContactController@index',
         ]);
         Route::get('contact/create', [
             'as'   => 'business.contact.create',
-            'uses' => 'BusinessContactController@create',
+            'uses' => 'ContactController@create',
         ]);
         Route::post('contact', [
             'as'   => 'business.contact.store',
-            'uses' => 'BusinessContactController@store',
+            'uses' => 'ContactController@store',
         ]);
         Route::get('contact/{contact}', [
             'as'   => 'business.contact.show',
-            'uses' => 'BusinessContactController@show',
+            'uses' => 'ContactController@show',
         ]);
         Route::get('contact/{contact}/edit', [
             'as'   => 'business.contact.edit',
-            'uses' => 'BusinessContactController@edit',
+            'uses' => 'ContactController@edit',
         ]);
         Route::put('contact/{contact}', [
             'as'   => 'business.contact.update',
-            'uses' => 'BusinessContactController@update',
+            'uses' => 'ContactController@update',
         ]);
         Route::delete('contact/{contact}', [
             'as'   => 'business.contact.destroy',
-            'uses' => 'BusinessContactController@destroy',
+            'uses' => 'ContactController@destroy',
         ]);
     });
 

@@ -6,15 +6,15 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserBusinessContactControllerTest extends TestCase
+class UserContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\ContactController::create
+     * @covers \App\Http\Controllers\User\ContactController::store
+     * @covers \App\Http\Controllers\User\ContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription()
@@ -46,9 +46,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\ContactController::create
+     * @covers \App\Http\Controllers\User\ContactController::store
+     * @covers \App\Http\Controllers\User\ContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_reusing_existing_contact()
@@ -88,9 +88,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\ContactController::create
+     * @covers \App\Http\Controllers\User\ContactController::store
+     * @covers \App\Http\Controllers\User\ContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_copying_existing_contact()
@@ -128,9 +128,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::edit
-     * @covers \App\Http\Controllers\User\BusinessContactController::update
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\ContactController::edit
+     * @covers \App\Http\Controllers\User\ContactController::update
+     * @covers \App\Http\Controllers\User\ContactController::show
      * @test
      */
     public function it_edits_a_contact()
@@ -164,9 +164,9 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::edit
-     * @covers \App\Http\Controllers\User\BusinessContactController::update
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
+     * @covers \App\Http\Controllers\User\ContactController::edit
+     * @covers \App\Http\Controllers\User\ContactController::update
+     * @covers \App\Http\Controllers\User\ContactController::show
      * @test
      */
     public function it_can_change_nin_of_a_contact()
@@ -202,7 +202,7 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::destroy
+     * @covers \App\Http\Controllers\User\ContactController::destroy
      * @test
      */
     public function it_detaches_a_contact_from_business()
