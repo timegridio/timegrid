@@ -106,7 +106,7 @@ class BusinessController extends Controller
     public function store(BusinessFormRequest $request)
     {
         logger()->info(__METHOD__);
-
+        
         // BEGIN
 
         try {
@@ -241,13 +241,13 @@ class BusinessController extends Controller
     public function destroy(Business $business)
     {
         logger()->info(__METHOD__);
-        logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('destroy', $business);
 
+        logger()->info(sprintf('Deactivating: businessId:%s', $business->id));
         // BEGIN
 
-        $this->businessService->deactivate();
+        $this->businessService->deactivate($business);
 
         flash()->success(trans('manager.businesses.msg.destroy.success'));
 
