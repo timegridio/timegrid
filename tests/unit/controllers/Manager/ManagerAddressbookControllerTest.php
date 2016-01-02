@@ -5,16 +5,16 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ManagerBusinessContactControllerTest extends TestCase
+class ManagerAddressbookControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::create
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
+     * @covers   App\Http\Controllers\Manager\AddressbookController::index
+     * @covers   App\Http\Controllers\Manager\AddressbookController::create
+     * @covers   App\Http\Controllers\Manager\AddressbookController::store
+     * @covers   App\Http\Controllers\Manager\AddressbookController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook()
@@ -44,9 +44,9 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::edit
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::update
+     * @covers   App\Http\Controllers\Manager\AddressbookController::index
+     * @covers   App\Http\Controllers\Manager\AddressbookController::edit
+     * @covers   App\Http\Controllers\Manager\AddressbookController::update
      * @test
      */
     public function it_edits_a_contact_of_addressbook()
@@ -82,7 +82,7 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
+     * @covers \App\Http\Controllers\Manager\AddressbookController::destroy
      * @test
      */
     public function it_detaches_a_contact_from_business()
@@ -113,7 +113,7 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
+     * @covers \App\Http\Controllers\Manager\AddressbookController::destroy
      * @test
      */
     public function it_denies_detaching_a_contact_from_business_to_unauthorized_user()
@@ -146,10 +146,10 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::create
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
+     * @covers   App\Http\Controllers\Manager\AddressbookController::index
+     * @covers   App\Http\Controllers\Manager\AddressbookController::create
+     * @covers   App\Http\Controllers\Manager\AddressbookController::store
+     * @covers   App\Http\Controllers\Manager\AddressbookController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook_that_links_to_existing_user()
@@ -186,8 +186,8 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
+     * @covers   App\Http\Controllers\Manager\AddressbookController::store
+     * @covers   App\Http\Controllers\Manager\AddressbookController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook_that_matches_an_existing_contact()

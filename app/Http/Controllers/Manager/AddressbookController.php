@@ -8,7 +8,7 @@ use App\Models\Business;
 use App\Models\Contact;
 use App\Services\ContactService;
 
-class BusinessContactController extends Controller
+class AddressbookController extends Controller
 {
     /**
      * Contact service implementation.
