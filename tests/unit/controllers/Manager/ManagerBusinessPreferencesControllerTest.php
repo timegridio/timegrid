@@ -21,7 +21,7 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
     protected $owner;
 
     /**
-     * @covers   App\Http\Controllers\Manager\ManagerBusinessPreferencesController::getPreferences
+     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::getPreferences
      * @test
      */
     public function it_shows_the_business_preferences_page()
@@ -37,7 +37,7 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\ManagerBusinessPreferencesController::postPreferences
+     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::postPreferences
      * @test
      */
     public function it_updates_the_business_preferences()
