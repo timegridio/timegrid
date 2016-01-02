@@ -5,7 +5,7 @@
     </li>
 
     <li id="btnContacts" title="{{ trans('manager.business.btn.tooltip.contacts') }}" >
-        <a href="{{ route('manager.business.contact.index', $business) }}">{!! Icon::user() !!}</a>
+        <a href="{{ route('manager.addressbook.index', $business) }}">{!! Icon::user() !!}</a>
     </li>
 
     <li id="btnVacancies" title="{{ trans('manager.business.btn.tooltip.vacancies') }}" >

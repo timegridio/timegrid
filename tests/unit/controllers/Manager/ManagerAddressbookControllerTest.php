@@ -31,7 +31,7 @@ class ManagerAddressbookControllerTest extends TestCase
         $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -64,7 +64,7 @@ class ManagerAddressbookControllerTest extends TestCase
         $this->actingAs($this->owner);
 
         // And I visit the business contact edit form
-        $this->visit(route('manager.business.contact.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
+        $this->visit(route('manager.addressbook.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
              ->see($contact->firstname)
              ->see($contact->lastname)
              ->see($contact->nin);
@@ -106,7 +106,7 @@ class ManagerAddressbookControllerTest extends TestCase
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
@@ -139,7 +139,7 @@ class ManagerAddressbookControllerTest extends TestCase
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(1, $this->business->fresh()->contacts);
@@ -171,7 +171,7 @@ class ManagerAddressbookControllerTest extends TestCase
         $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -219,7 +219,7 @@ class ManagerAddressbookControllerTest extends TestCase
         $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')

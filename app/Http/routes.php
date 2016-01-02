@@ -246,34 +246,34 @@ Route::group(['prefix' => '{business}', 'middleware' => ['auth']], function () {
             'uses' => 'Search@postSearch',
         ]);
 
-        // CONTACT RESOURCE
+        // ADDRESSBOOK / CONTACT RESOURCE
         Route::group(['prefix' => 'contact'], function () {
             Route::get('', [
-                'as'   => 'manager.business.contact.index',
+                'as'   => 'manager.addressbook.index',
                 'uses' => 'AddressbookController@index',
             ]);
             Route::get('create', [
-                'as'   => 'manager.business.contact.create',
+                'as'   => 'manager.addressbook.create',
                 'uses' => 'AddressbookController@create',
             ]);
             Route::post('', [
-                'as'   => 'manager.business.contact.store',
+                'as'   => 'manager.addressbook.store',
                 'uses' => 'AddressbookController@store',
             ]);
             Route::get('{contact}', [
-                'as'   => 'manager.business.contact.show',
+                'as'   => 'manager.addressbook.show',
                 'uses' => 'AddressbookController@show',
             ]);
             Route::get('{contact}/edit', [
-                'as'   => 'manager.business.contact.edit',
+                'as'   => 'manager.addressbook.edit',
                 'uses' => 'AddressbookController@edit',
             ]);
             Route::put('{contact}', [
-                'as'   => 'manager.business.contact.update',
+                'as'   => 'manager.addressbook.update',
                 'uses' => 'AddressbookController@update',
             ]);
             Route::delete('{contact}', [
-                'as'   => 'manager.business.contact.destroy',
+                'as'   => 'manager.addressbook.destroy',
                 'uses' => 'AddressbookController@destroy',
             ]);
         });

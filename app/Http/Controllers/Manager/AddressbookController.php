@@ -91,12 +91,12 @@ class AddressbookController extends Controller
         if (!$contact->wasRecentlyCreated) {
             flash()->warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 
-            return redirect()->route('manager.business.contact.show', [$business, $contact]);
+            return redirect()->route('manager.addressbook.show', [$business, $contact]);
         }
 
         flash()->success(trans('manager.contacts.msg.store.success'));
 
-        return redirect()->route('manager.business.contact.show', [$business, $contact]);
+        return redirect()->route('manager.addressbook.show', [$business, $contact]);
     }
 
     /**
@@ -182,7 +182,7 @@ class AddressbookController extends Controller
 
         flash()->success(trans('manager.contacts.msg.update.success'));
 
-        return redirect()->route('manager.business.contact.show', [$business, $contact]);
+        return redirect()->route('manager.addressbook.show', [$business, $contact]);
     }
 
     /**
@@ -208,6 +208,6 @@ class AddressbookController extends Controller
 
         flash()->success(trans('manager.contacts.msg.destroy.success'));
 
-        return redirect()->route('manager.business.contact.index', $business);
+        return redirect()->route('manager.addressbook.index', $business);
     }
 }
