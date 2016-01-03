@@ -10,12 +10,24 @@ class Domain extends EloquentModel
     use SoftDeletes;
 
     /**
+     * Fillable attributes.
+     *
+     * @var array
+     */
+    protected $fillable = ['slug', 'owner_id'];
+
+    /**
      * Has many businesses.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function businesses()
     {
-        return $this->hasMany(Business::class);
+        return $this->owner->businesses();
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'owner_id');
     }
 }
