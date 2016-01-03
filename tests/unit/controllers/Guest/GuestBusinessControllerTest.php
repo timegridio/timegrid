@@ -32,10 +32,10 @@ class GuestBusinessControllerTest extends TestCase
      * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
      * @test
      */
-    public function it_presents_the_domain_home_with_a_single_business()
+    public function it_presents_the_domain_home_with_a_single_business_to_user()
     {
         $owner = $this->createUser();
-        $guest = $this->createUser();
+        $user = $this->createUser();
 
         $businessOne = $this->makeBusiness($owner);
 
@@ -43,7 +43,7 @@ class GuestBusinessControllerTest extends TestCase
 
         $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
-        $this->actingAs($guest);
+        $this->actingAs($user);
 
         $this->visit('/'.$domain->slug);
 
@@ -54,10 +54,10 @@ class GuestBusinessControllerTest extends TestCase
      * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
      * @test
      */
-    public function it_presents_the_domain_home_with_multiple_businesses()
+    public function it_presents_the_domain_home_with_multiple_businesses_to_user()
     {
         $owner = $this->createUser();
-        $guest = $this->createUser();
+        $user = $this->createUser();
 
         $businessOne = $this->makeBusiness($owner);
         $businessTwo = $this->makeBusiness($owner);
@@ -69,7 +69,32 @@ class GuestBusinessControllerTest extends TestCase
 
         $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
-        $this->actingAs($guest);
+        $this->actingAs($user);
+
+        $this->visit('/'.$domain->slug);
+
+        $this->see($businessOne->name);
+        $this->see($businessTwo->name);
+        $this->see($businessThree->name);
+    }
+
+    /**
+     * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
+     * @test
+     */
+    public function it_presents_the_domain_home_with_multiple_businesses_to_guest()
+    {
+        $owner = $this->createUser();
+
+        $businessOne = $this->makeBusiness($owner);
+        $businessTwo = $this->makeBusiness($owner);
+        $businessThree = $this->makeBusiness($owner);
+
+        $businessOne->save();
+        $businessTwo->save();
+        $businessThree->save();
+
+        $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
         $this->visit('/'.$domain->slug);
 
