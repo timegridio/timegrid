@@ -54,7 +54,7 @@ class AuthController extends Controller
                 'g-recaptcha-response' => 'required|captcha',
             ];
 
-        if (app()->environment('local')) {
+        if (app()->environment('local') || app()->environment('testing')) {
             unset($rules['g-recaptcha-response']);
         }
 
