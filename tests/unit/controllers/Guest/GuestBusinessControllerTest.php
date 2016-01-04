@@ -9,7 +9,7 @@ class GuestBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
-    use CreateUser, CreateBusiness;
+    use CreateUser, CreateBusiness, CreateDomain;
 
     /**
      * @covers  \App\Http\Controllers\Guest\BusinessController::getHome
@@ -41,7 +41,7 @@ class GuestBusinessControllerTest extends TestCase
 
         $businessOne->save();
 
-        $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
+        $domain = $this->createDomain(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
         $this->actingAs($user);
 
@@ -67,7 +67,7 @@ class GuestBusinessControllerTest extends TestCase
         $businessTwo->save();
         $businessThree->save();
 
-        $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
+        $domain = $this->createDomain(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
         $this->actingAs($user);
 
@@ -94,7 +94,7 @@ class GuestBusinessControllerTest extends TestCase
         $businessTwo->save();
         $businessThree->save();
 
-        $domain = Domain::create(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
+        $domain = $this->createDomain(['slug' => 'test-that-thang', 'owner_id' => $owner->id]);
 
         $this->visit('/'.$domain->slug);
 
