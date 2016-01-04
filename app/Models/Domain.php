@@ -17,6 +17,13 @@ class Domain extends EloquentModel
     protected $fillable = ['slug', 'owner_id'];
 
     /**
+     * Guarded attributes.
+     * 
+     * @var array
+     */
+    protected $guarded = ['id'];
+
+    /**
      * Has many businesses.
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
