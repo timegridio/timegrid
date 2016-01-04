@@ -38,6 +38,7 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
 
     /**
      * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::postPreferences
+     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::setBusinessPreferences
      * @test
      */
     public function it_updates_the_business_preferences()
