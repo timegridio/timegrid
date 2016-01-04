@@ -57,7 +57,6 @@
         "mockery/mockery": "0.9.*",
         "laracasts/generators": "^1.1",
         "laracasts/integrated": "^0.15.6",
-        "laracasts/testdummy": "~2.0",
         "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~4.0",
         "phpunit/phpunit-selenium": ">=1.2",
