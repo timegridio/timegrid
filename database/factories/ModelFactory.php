@@ -109,3 +109,14 @@ $factory->define('App\Models\Appointment', function (Faker\Generator $faker) {
         'comments'    => $faker->sentence,
     ];
 });
+
+////////////
+// Domain //
+////////////
+
+$factory->define('App\Models\Domain', function ($faker) {
+    return [
+        'slug'     => str_slug($faker->name),
+        'owner_id' => factory(App\Models\User::class)->create()->id,
+    ];
+});
