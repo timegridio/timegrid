@@ -17,13 +17,6 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
     use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable;
 
     /**
-     * The database table used by the model.
-     *
-     * @var string
-     */
-    protected $table = 'users';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -131,7 +124,9 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function setUsernameAttribute($username)
     {
-        return $this->attributes['username'] = trim($username) != '' ? strtolower($username) : md5(time().uniqid());
+        $username = strtolower(trim($username));
+
+        return $this->attributes['username'] = $username == '' ? md5(time().uniqid()) : $username;
     }
 
     /**
@@ -156,21 +151,5 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
         return $this->contacts->filter(function ($contact) use ($businessId) {
             return $contact->isSubscribedTo($businessId);
         })->first();
-    }
-
-    /**
-     * Get the first record matching the email or create it.
-     *
-     * @param array $attributes
-     *
-     * @return self
-     */
-    public static function firstOrCreate(array $attributes)
-    {
-        if (!is_null($instance = static::where('email', $attributes['email'])->first())) {
-            return $instance;
-        }
-
-        return static::create($attributes);
     }
 }
