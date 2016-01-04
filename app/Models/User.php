@@ -173,24 +173,4 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
 
         return static::create($attributes);
     }
-
-    /**
-     * Link User to existing Contacts.
-     *
-     * @return bool The User was linked to at least one Contact
-     */
-    public function linkToContacts()
-    {
-        $contacts = Contact::where(['email' => $this->email])->whereNotNull('email')->whereNull('user_id')->get();
-
-        if ($contacts->isEmpty()) {
-            return false;
-        }
-
-        foreach ($contacts as $contact) {
-            $contact->user()->associate($this)->save();
-        }
-
-        return true;
-    }
 }
