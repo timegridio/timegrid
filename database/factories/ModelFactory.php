@@ -71,6 +71,7 @@ $factory->define('App\Models\Business', function (Faker\Generator $faker) {
 
 $factory->define('App\Models\Service', function (Faker\Generator $faker) {
     return [
+        'business_id' => factory(App\Models\Business::class)->create()->id,
         'name'          => $faker->sentence(2),
         'description'   => $faker->paragraph,
         'prerequisites' => $faker->paragraph,
@@ -86,6 +87,8 @@ $factory->define('App\Models\Vacancy', function (Faker\Generator $faker) {
     $date = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d');
 
     return [
+        'business_id' => factory(App\Models\Business::class)->create()->id,
+        'service_id' => factory(App\Models\Service::class)->create()->id,
         'date'      => date('Y-m-d', strtotime($date)),
         'start_at'  => date('Y-m-d 00:00:00', strtotime($date)),
         'finish_at' => date('Y-m-d 23:00:00', strtotime($date)),
@@ -99,10 +102,10 @@ $factory->define('App\Models\Vacancy', function (Faker\Generator $faker) {
 
 $factory->define('App\Models\Appointment', function (Faker\Generator $faker) {
     return [
-        'business_id' => factory(App\Models\Business::class)->make()->id,
-        'contact_id'  => factory(App\Models\Contact::class)->make()->id,
-        'service_id'  => factory(App\Models\Service::class)->make()->id,
-        'vacancy_id'  => null,
+        'business_id' => factory(App\Models\Business::class)->create()->id,
+        'contact_id'  => factory(App\Models\Contact::class)->create()->id,
+        'service_id'  => factory(App\Models\Service::class)->create()->id,
+        'vacancy_id'  => factory(App\Models\Vacancy::class)->create()->id,
         'status'      => $faker->randomElement(['R', 'C', 'A', 'S']),
         'start_at'    => Carbon::parse(date('Y-m-d 08:00:00', strtotime('today +2 days'))),
         'duration'    => $faker->randomElement([15, 30, 60, 120]),
