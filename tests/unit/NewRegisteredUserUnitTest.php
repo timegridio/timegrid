@@ -10,7 +10,6 @@ class NewUserWasRegisteredUnitTest extends TestCase
 
     /**
      * @covers App\Events\NewUserWasRegistered::__construct
-     * @covers App\Handlers\Events\LinkUserToExistingContacts::handle
      * @test
      */
     public function it_fires_event_and_links_user()
