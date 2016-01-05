@@ -147,8 +147,9 @@ class TransMail
 
             return;
         }
-
+        // @codeCoverageIgnoreStart
         app()->setLocale($posixLocale);
+        // @codeCoverageIgnoreEnd
     }
 
     /**
