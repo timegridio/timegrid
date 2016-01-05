@@ -4,7 +4,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 /**
- * @covers App\Http\Controllers\Manager\BusinessVacancyController
+ * @covers  App\Http\Controllers\Manager\BusinessVacancyController
  */
 class ManagerBusinessVacancyControllerTest extends TestCase
 {
@@ -206,7 +206,7 @@ EOD;
 
         $this->vacancy = $this->createVacancy([
             'business_id' => $this->business->id,
-            'service_id' => $this->serviceOne->id,
-            ]);        
+            'service_id'  => $this->serviceOne->id,
+            ]);
     }
 }

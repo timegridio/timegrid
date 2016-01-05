@@ -3,6 +3,9 @@
 use App\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers  App\Http\Controllers\Root\RootController
+ */
 class RootControllerTest extends TestCase
 {
     use DatabaseTransactions;

@@ -3,6 +3,9 @@
 use App\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers  App\Http\Controllers\User\AgendaController
+ */
 class UserAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;

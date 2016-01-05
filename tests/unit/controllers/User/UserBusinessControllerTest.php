@@ -5,6 +5,9 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers  App\Http\Controllers\User\BusinessController
+ */
 class UserBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;

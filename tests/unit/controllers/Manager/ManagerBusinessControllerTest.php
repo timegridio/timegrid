@@ -3,6 +3,9 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * @covers  App\Http\Controllers\Manager\BusinessController
+ */
 class ManagerBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;

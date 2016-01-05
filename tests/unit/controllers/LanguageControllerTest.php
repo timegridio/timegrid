@@ -1,6 +1,8 @@
 <?php
 
-
+/**
+ * @covers  App\Http\Controllers\LanguageController
+ */
 class LanguageControllerTest extends TestCase
 {
     /**

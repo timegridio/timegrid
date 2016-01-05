@@ -2,6 +2,9 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers App\Http\Controllers\User\WizardController
+ */
 class UserWizardControllerTest extends TestCase
 {
     use DatabaseTransactions;

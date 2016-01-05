@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * @covers  App\Http\Controllers\WelcomeController
+ */
 class WelcomeControllerTest extends TestCase
 {
     /** @test */

@@ -2,6 +2,9 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers  App\Http\Controllers\Auth\AuthController
+ */
 class UserRegisterTest extends TestCase
 {
     use DatabaseTransactions;

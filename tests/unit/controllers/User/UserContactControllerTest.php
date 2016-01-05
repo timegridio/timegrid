@@ -6,6 +6,9 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @covers  App\Http\Controllers\User\ContactController
+ */
 class UserContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
