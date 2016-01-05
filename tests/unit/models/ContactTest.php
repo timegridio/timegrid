@@ -1,14 +1,245 @@
 <?php
 
 use App\Models\Appointment;
+use App\Models\Business;
 use App\Models\User;
+use App\Presenters\ContactPresenter;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
+/**
+ * @cover App\Models\Contact
+ */
 class ContactTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateUser, CreateContact, CreateBusiness;
+    use CreateUser, CreateContact, CreateBusiness, CreateAppointment;
+
+    /**
+     * @test
+     */
+    public function it_belongs_to_a_user()
+    {
+        $user = $this->createUser();
+
+        $contact = $this->createContact(['user_id' => $user->id]);
+
+        $this->assertInstanceOf(BelongsTo::class, $contact->user());
+        $this->assertInstanceOf(User::class, $contact->user()->first());
+        $this->assertEquals($contact->user->id, $user->id);
+    }
+
+    /**
+     * @test
+     */
+    public function it_belongs_to_a_business_addressbook()
+    {
+        $business = $this->createBusiness();
+
+        $contact = $this->createContact();
+
+        $business->contacts()->save($contact);
+
+        $this->assertInstanceOf(BelongsToMany::class, $contact->businesses());
+        $this->assertInstanceOf(Business::class, $contact->businesses()->first());
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_appointments()
+    {
+        $appointment = $this->createAppointment();
+
+        $contact = $this->createContact();
+
+        $contact->appointments()->save($appointment);
+
+        $this->assertInstanceOf(HasMany::class, $contact->appointments());
+        $this->assertInstanceOf(Appointment::class, $contact->appointments()->first());
+    }
+
+    /**
+     * @test
+     */
+    public function it_checks_if_has_appointment()
+    {
+        $appointment = $this->createAppointment();
+
+        $contact = $this->createContact();
+
+        $contact->appointments()->save($appointment);
+
+        $this->assertTrue($contact->hasAppointment());
+
+        $contact->appointments()->delete();
+
+        $this->assertFalse($contact->fresh()->hasAppointment());
+    }
+
+    /**
+     * @test
+     */
+    public function it_uses_presenter()
+    {
+        $contact = $this->createContact();
+
+        $presenter = $contact->getPresenterClass();
+
+        $this->assertEquals(ContactPresenter::class, $presenter);
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_a_valid_mobile_number_or_null()
+    {
+        $contact = $this->createContact();
+
+        $myNumber = '0034651464218';
+
+        $contact->mobile = $myNumber;
+
+        $this->assertEquals($myNumber, $contact->mobile);
+
+        $myNumber = '';
+
+        $contact->mobile = $myNumber;
+
+        $this->assertNull($contact->mobile);
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_a_valid_mobile_country_or_null()
+    {
+        $contact = $this->createContact();
+
+        $myNumber = 'US';
+
+        $contact->mobile_country = $myNumber;
+
+        $this->assertEquals($myNumber, $contact->mobile_country);
+
+        $myNumber = '';
+
+        $contact->mobile_country = $myNumber;
+
+        $this->assertNull($contact->mobile_country);
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_a_valid_birthdate()
+    {
+        $contact = $this->createContact();
+
+        // Provide Formatted String
+
+        $contact->birthdate = '01/16/1985';
+
+        $this->assertInstanceOf(Carbon::class, $contact->birthdate);
+        $this->assertEquals('1985-01-16', $contact->birthdate->toDateString());
+
+        // Provide Carbon Instance
+
+        $contact->birthdate = Carbon::parse('01/16/1985');
+
+        $this->assertInstanceOf(Carbon::class, $contact->birthdate);
+        $this->assertEquals('1985-01-16', $contact->birthdate->toDateString());
+
+        // Provide Empty String
+
+        $contact->birthdate = '';
+
+        $this->assertNull($contact->birthdate);
+    }
+
+    /**
+     * @test
+     */
+    public function it_has_a_valid_email_or_null()
+    {
+        $contact = $this->createContact();
+
+        // Provide Formatted String
+
+        $contact->email = 'you.awesome@example.org';
+
+        $this->assertEquals('you.awesome@example.org', $contact->email);
+
+        // Provide Empty String
+
+        $contact->email = '';
+
+        $this->assertNull($contact->email);
+    }
+
+    /**
+     * @test
+     */
+    public function it_determines_if_is_contact_of_given_user()
+    {
+        $user = $this->createUser();
+
+        // Linked Profile
+
+        $contact = $this->createContact(['user_id' => $user->id]);
+
+        $this->assertTrue($contact->isProfileOf($user->id));
+
+        // Unlinked Profile
+
+        $contact->user()->dissociate()->save();
+
+        $this->assertFalse($contact->fresh()->isProfileOf($user->id));
+    }    
+
+    /**
+     * @test
+     */
+    public function it_subscribes_to_a_business()
+    {
+        $business = $this->createBusiness();
+
+        $contact = $this->createContact();
+
+        $business->contacts()->save($contact);
+        
+        // Subscribed Profile
+
+        $this->assertTrue($contact->isSubscribedTo($business->id));
+
+        // UnSubscribed Profile
+
+        $business->contacts()->detach();
+
+        $this->assertFalse($contact->fresh()->isSubscribedTo($business->id));
+    }    
+
+    /**
+     * @covers App\Models\Contact::autoLinkToUser
+     * @test
+     */
+    public function it_does_not_link_to_existing_user_for_empty_email()
+    {
+        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+
+        $contact = $this->createContact(['email' => '']);
+
+        $contact->autoLinkToUser();
+
+        $this->assertNull($contact->user);
+    }
+
+    //////////////////////
+    // Extra Test Cases //
+    //////////////////////
 
     /**
      * @covers App\Models\Contact::autoLinkToUser
