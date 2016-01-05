@@ -4,9 +4,6 @@ use App\Models\Business;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-/**
- * @covers  App\Http\Controllers\Manager\BusinessPreferencesController
- */
 class ManagerBusinessPreferencesControllerTest extends TestCase
 {
     use DatabaseTransactions;
@@ -24,7 +21,6 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
     protected $owner;
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::getPreferences
      * @test
      */
     public function it_shows_the_business_preferences_page()
@@ -40,8 +36,6 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::postPreferences
-     * @covers   App\Http\Controllers\Manager\BusinessPreferencesController::setBusinessPreferences
      * @test
      */
     public function it_updates_the_business_preferences()

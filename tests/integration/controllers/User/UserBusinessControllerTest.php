@@ -5,15 +5,14 @@ use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/**
- * @covers  App\Http\Controllers\User\BusinessController
- */
 class UserBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_businesses_listing()
     {
         // Given I am an authenticated user
@@ -27,7 +26,9 @@ class UserBusinessControllerTest extends TestCase
         $this->see('Available businesses');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_lists_some_businesses()
     {
         // Given I am an authenticated user
@@ -46,7 +47,9 @@ class UserBusinessControllerTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_home()
     {
         // Given I am an authenticated user
@@ -65,7 +68,9 @@ class UserBusinessControllerTest extends TestCase
              ->see(substr($businesses[1]->description, 0, 10));
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_home_with_subscribe_button()
     {
         // Given I am an authenticated user
@@ -85,7 +90,9 @@ class UserBusinessControllerTest extends TestCase
              ->see('subscribe');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_subscription_form()
     {
         // Given I am an authenticated user
@@ -107,7 +114,9 @@ class UserBusinessControllerTest extends TestCase
              ->see('save');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_lists_businesses_subscriptions()
     {
         // Given I am an authenticated user
@@ -138,7 +147,9 @@ class UserBusinessControllerTest extends TestCase
     // BUSINESS REGISTRATION //
     ///////////////////////////
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_registers_a_new_business_with_minimal_setup()
     {
         // Given I am an authenticated user

@@ -3,9 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-/**
- * @covers  App\Http\Controllers\Manager\BusinessController
- */
 class ManagerBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
@@ -23,7 +20,6 @@ class ManagerBusinessControllerTest extends TestCase
     protected $owner;
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::index
      * @test
      */
     public function it_displays_the_unique_existing_business_dashboard()
@@ -39,7 +35,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::index
      * @test
      */
     public function it_displays_the_business_listing()
@@ -63,7 +58,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::store
      * @test
      */
     public function it_stores_a_business_registration()
@@ -89,7 +83,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::store
      * @test
      */
     public function it_prevents_storing_a_duplicated_business_registration()
@@ -120,7 +113,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::edit
      * @test
      */
     public function it_displays_the_business_edit_page()
@@ -136,7 +128,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::update
      * @test
      */
     public function it_updates_the_business_profile()
@@ -153,7 +144,6 @@ class ManagerBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Manager\BusinessController::destroy
      * @test
      */
     public function it_deactivates_the_business()

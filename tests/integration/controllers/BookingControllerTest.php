@@ -5,9 +5,6 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-/**
- * @covers  App\Http\Controllers\BookingController
- */
 class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
@@ -15,7 +12,6 @@ class BookingControllerTest extends TestCase
     use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_annulates_an_existing_appointment()
@@ -51,7 +47,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_annulates_an_existing_appointment_with_panel_widget()
@@ -87,7 +82,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_serves_an_existing_appointment_with_panel_widget()
@@ -124,7 +118,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_prevents_to_serve_an_existing_future_appointment()
@@ -160,7 +153,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_annulates_fails_to_activate_a_served_appointment()
@@ -195,7 +187,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_tries_invalid_action_on_an_existing_appointment()
@@ -230,7 +221,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_requests_an_invalid_widget()
@@ -264,7 +254,6 @@ class BookingControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\BookingController::postAction
      * @test
      */
     public function it_serves_an_appointment_and_requests_row_widget()

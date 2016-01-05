@@ -12,7 +12,6 @@ class GuestBusinessControllerTest extends TestCase
     use CreateUser, CreateBusiness, CreateDomain;
 
     /**
-     * @covers  \App\Http\Controllers\Guest\BusinessController::getHome
      * @test
      */
     public function it_presents_the_business_home()
@@ -29,7 +28,6 @@ class GuestBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
      * @test
      */
     public function it_presents_the_domain_home_with_a_single_business_to_user()
@@ -51,7 +49,6 @@ class GuestBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
      * @test
      */
     public function it_presents_the_domain_home_with_multiple_businesses_to_user()
@@ -79,7 +76,6 @@ class GuestBusinessControllerTest extends TestCase
     }
 
     /**
-     * @covers  \App\Http\Controllers\Guest\BusinessController::getDomain
      * @test
      */
     public function it_presents_the_domain_home_with_multiple_businesses_to_guest()

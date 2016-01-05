@@ -3,9 +3,6 @@
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
-/**
- * @covers  App\Http\Controllers\Manager\BusinessServiceController
- */
 class ManagerBusinessServiceControllerTest extends TestCase
 {
     use DatabaseTransactions;
@@ -23,7 +20,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     protected $owner;
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::index
      * @test
      */
     public function it_lists_the_business_services_for_management()
@@ -44,7 +40,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::store
      * @test
      */
     public function it_stores_a_new_business_service()
@@ -61,7 +56,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::show
      * @test
      */
     public function it_shows_the_business_service_page_for_management()
@@ -83,7 +77,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::edit
      * @test
      */
     public function it_shows_the_business_service_edit_page_for_management()
@@ -105,7 +98,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::update
      * @test
      */
     public function it_updates_the_business_service()
@@ -130,7 +122,6 @@ class ManagerBusinessServiceControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessServiceController::destroy
      * @test
      */
     public function it_removes_the_business_service()

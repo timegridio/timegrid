@@ -1,12 +1,8 @@
 <?php
 
-/**
- * @covers  App\Http\Controllers\LanguageController
- */
 class LanguageControllerTest extends TestCase
 {
     /**
-     * @covers \App\Http\Controllers\LanguageController::switchLang
      * @test
      */
     public function it_switches_language_to_english_us()
@@ -20,7 +16,6 @@ class LanguageControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\LanguageController::switchLang
      * @test
      */
     public function it_switches_language_to_spanish_es()

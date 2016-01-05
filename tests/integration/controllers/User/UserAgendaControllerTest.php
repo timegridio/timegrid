@@ -3,15 +3,14 @@
 use App\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/**
- * @covers  App\Http\Controllers\User\AgendaController
- */
 class UserAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_shows_empty_reservations_list()
     {
         // Given I am an authenticated user
@@ -25,7 +24,9 @@ class UserAgendaControllerTest extends TestCase
         $this->see('You have no ongoing reservations by now');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_shows_reservations_list_with_a_reserved_appointment()
     {
         // Given I am an authenticated user
@@ -63,7 +64,9 @@ class UserAgendaControllerTest extends TestCase
             ->see($appointment->business->name);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_shows_reservations_list_with_an_annulated_appointment()
     {
         // Given I am an authenticated user
@@ -101,7 +104,9 @@ class UserAgendaControllerTest extends TestCase
             ->see($appointment->business->name);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_does_not_show_an_inactive_appointment_on_reservations_list()
     {
         // Given I am an authenticated user
@@ -143,7 +148,9 @@ class UserAgendaControllerTest extends TestCase
              #->dontSee($appointment->business->name);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_does_show_an_old_but_active_appointment_on_reservations_list()
     {
         // Given I am an authenticated user
@@ -184,7 +191,9 @@ class UserAgendaControllerTest extends TestCase
             ->see($appointment->business->name);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_queries_vacancies()
     {
         // Given I am an authenticated user
@@ -221,7 +230,9 @@ class UserAgendaControllerTest extends TestCase
              ->see('Confirm');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_showing_vacancies_to_unsubcribed_users()
     {
         $user = $this->createUser();
@@ -235,7 +246,9 @@ class UserAgendaControllerTest extends TestCase
         $this->see('To be able to do a reservation you must subscribe the business first');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_tries_to_query_vacancies_without_subscription()
     {
         // Given I am an authenticated user
@@ -270,7 +283,9 @@ class UserAgendaControllerTest extends TestCase
     // DATESLOT //
     //////////////
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_makes_a_reservation()
     {
         // Given I am an authenticated user
@@ -316,7 +331,9 @@ class UserAgendaControllerTest extends TestCase
         $this->seeInDatabase('appointments', ['business_id' => $business->id]);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_reservation()
     {
         $user = $this->createUser();
@@ -366,7 +383,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(1, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_takes_multiple_reservations_on_same_vacancy()
     {
         $userOne = $this->createUser();
@@ -421,7 +440,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(2, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_taking_a_reservation_over_capacity()
     {
         $userOne = $this->createUser();
@@ -476,7 +497,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(1, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_a_reservation_without_vacancy()
     {
         $user = $this->createUser();
@@ -519,7 +542,9 @@ class UserAgendaControllerTest extends TestCase
     // TIMESLOT //
     //////////////
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_makes_a_reservation_with_timeslot()
     {
         // Given I am an authenticated user
@@ -565,7 +590,9 @@ class UserAgendaControllerTest extends TestCase
         $this->seeInDatabase('appointments', ['business_id' => $business->id]);
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_reservation_with_timeslot()
     {
         $user = $this->createUser();
@@ -615,7 +642,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(1, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_takes_multiple_reservations_on_same_vacancy_with_timeslot()
     {
         $userOne = $this->createUser();
@@ -670,7 +699,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(2, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_taking_a_reservation_over_capacity_with_timeslot()
     {
         $userOne = $this->createUser();
@@ -725,7 +756,9 @@ class UserAgendaControllerTest extends TestCase
         $this->assertCount(1, $business->fresh()->bookings()->get());
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_prevents_a_reservation_without_vacancy_with_timeslot()
     {
         $user = $this->createUser();

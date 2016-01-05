@@ -2,17 +2,12 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/**
- * @covers  App\Http\Controllers\Auth\AuthController
- */
 class UserLoginTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateUser;
 
     /**
-     * @covers  App\Http\Controllers\Auth\AuthController::getLogin
-     * @covers  App\Http\Controllers\Auth\AuthController::postLogin
      * @test
      */
     public function it_provides_successful_login()
@@ -34,8 +29,6 @@ class UserLoginTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Auth\AuthController::getLogin
-     * @covers  App\Http\Controllers\Auth\AuthController::postLogin
      * @test
      */
     public function it_denies_bad_login()

@@ -3,16 +3,12 @@
 use App\Models\Role;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/**
- * @covers  App\Http\Controllers\Root\RootController
- */
 class RootControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateUser;
 
     /**
-     * @covers   App\Http\Controllers\Root\RootController::getIndex
      * @test
      */
     public function it_gets_to_root_dashboard()
@@ -34,7 +30,6 @@ class RootControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Root\RootController::getIndex
      * @test
      */
     public function it_rejects_root_dashboard_to_unauthorized()
@@ -54,7 +49,6 @@ class RootControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Root\RootController::getSudo
      * @test
      */
     public function it_sudoes_as_user()
@@ -78,7 +72,6 @@ class RootControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Root\RootController::getSudo
      * @test
      */
     public function it_prevents_unauthorized_sudo()

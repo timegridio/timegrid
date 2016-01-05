@@ -2,20 +2,12 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-/**
- * @covers  App\Http\Controllers\Auth\AuthController
- */
 class UserRegisterTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateUser;
 
     /**
-     * @covers  App\Http\Controllers\Auth\AuthController::__construct
-     * @covers  App\Http\Controllers\Auth\AuthController::validator
-     * @covers  App\Http\Controllers\Auth\AuthController::create
-     * @covers  App\Http\Controllers\Auth\AuthController::getRegister
-     * @covers  App\Http\Controllers\Auth\AuthController::postRegister
      * @test
      */
     public function it_provides_successful_registration()
@@ -38,10 +30,6 @@ class UserRegisterTest extends TestCase
     }
 
     /**
-     * @covers  App\Http\Controllers\Auth\AuthController::__construct
-     * @covers  App\Http\Controllers\Auth\AuthController::validator
-     * @covers  App\Http\Controllers\Auth\AuthController::getRegister
-     * @covers  App\Http\Controllers\Auth\AuthController::postRegister
      * @test
      */
     public function it_denies_no_password_registration()
