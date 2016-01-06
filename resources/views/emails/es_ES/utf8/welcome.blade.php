@@ -96,7 +96,7 @@
 
             Disfrutá tu tiempo ahorrado con un paseo al parque! :)<br><br>
 
-            <a href="{!! route('user.businesses.home') !!}" style="color:#aaaaaa">Ir a timegrid.io</a><br>
+            <a href="{!! route('home') !!}" style="color:#aaaaaa">Ir a timegrid.io</a><br>
         </div>
 
         <br>

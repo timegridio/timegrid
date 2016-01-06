@@ -30,19 +30,17 @@ class Handler extends ExceptionHandler
      *
      * This is a great spot to send exceptions to Sentry, Bugsnag, etc.
      *
-     * @param \Exception $exception
-     *
+     * @param  \Exception  $exception
      * @return void
      */
     public function report(Exception $exception)
     {
-        if (app()->environment('local')) {
-            Mail::raw($exception, function ($message) {
-                $message->subject(config('root.report.exceptions_subject'));
-                $message->from(config('root.report.from_address'), config('root.appname'));
-                $message->to(config('root.report.to_mail'));
-            });
-        }
+
+		Mail::raw($exception, function ($message) {
+			$message->subject(config('root.report.exceptions_subject'));
+			$message->from(config('root.report.from_address'), config('root.appname'));
+			$message->to(config('root.report.to_mail'));
+		});
 
         return parent::report($exception);
     }
@@ -50,21 +48,24 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \Exception               $exception
-     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
-        // Catch TokenMismatchException to show a friendly error message
-        if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
-            return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
-        }
+        if(app()->environment('production') || app()->environment('demo'))
+        {
+            // Catch TokenMismatchException to show a friendly error message
+            if ($exception instanceof \Illuminate\Session\TokenMismatchException) {
+                return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
+            }
 
-        // Catch General exceptios to show a friendly error message
-        if ($exception instanceof Exception) {
-            return redirect(route('user.dashboard'))->withErrors(trans('app.msg.general_exception'));
+            // Catch General exceptios to show a friendly error message
+            if ($exception instanceof Exception) {
+                return redirect(route('user.dashboard'))->withErrors(trans('app.msg.general_exception'));
+            }
+
         }
 
         // Handle any other case

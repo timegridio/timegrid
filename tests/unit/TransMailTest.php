@@ -61,7 +61,7 @@ class TransMailTest extends TestCase
     {
         $this->mail = new Mail();
 
-        $this->transmail = new TransMail($this->mail);
+        $this->transmail = Mockery::mock(new TransMail($this->mail));
 
         $this->header = [
             'email' => 'test@example.org',

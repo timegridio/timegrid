@@ -68,7 +68,7 @@ class RootControllerTest extends TestCase
 
         // Then I should see the Root access warning
         $this->see('AUTHORIZED USE ONLY');
-        $this->assertEquals($user->id, Auth::user()->id);
+        $this->assertEquals($user->id, auth()->user()->id);
     }
 
     /**
@@ -89,6 +89,6 @@ class RootControllerTest extends TestCase
 
         // Then I should see the Root access warning
         $this->dontSee('AUTHORIZED USE ONLY');
-        $this->assertNotEquals($user->id, Auth::user()->id);
+        $this->assertNotEquals($user->id, auth()->user()->id);
     }
 }

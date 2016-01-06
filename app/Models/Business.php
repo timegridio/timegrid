@@ -138,7 +138,7 @@ class Business extends EloquentModel implements HasPresenter
     public function owners()
     {
         /* TODO: Use cache here? */
-        return $this->belongsToMany(config('auth.model'))->withTimestamps();
+        return $this->belongsToMany(config('auth.providers.users.model'))->withTimestamps();
     }
 
     /**

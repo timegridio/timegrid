@@ -132,7 +132,7 @@ class ManagerAddressbookControllerTest extends TestCase
 
         $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
 
-        $this->assertEquals(302, $response->getStatusCode());
+        $this->assertEquals(403, $response->getStatusCode());
         $this->assertCount(1, $this->business->fresh()->contacts);
     }
 

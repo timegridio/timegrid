@@ -3,13 +3,13 @@
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+#use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
-    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+    # use WithoutMiddleware;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
      * @test
@@ -23,27 +23,26 @@ class BookingControllerTest extends TestCase
             'service_id' => $this->service->id,
             'vacancy_id' => $this->vacancy->id,
             'status'     => Appointment::STATUS_RESERVED,
-            'start_at'   => Carbon::now()->addDays(5),
+            'start_at'   => Carbon::now()->addDays(7),
             ]);
         $this->appointment->save();
 
         // And I am authenticated
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->appointment->issuer);
 
         // And I request the annulation of the appointment
         $input = [
-            'business'    => $this->business->id,
+            'business'    => $this->appointment->business->id,
             'appointment' => $this->appointment->id,
             'action'      => 'annulate',
             'widget'      => 'row',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
-        $this->appointment = $this->appointment->fresh();
-        $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->status);
+        $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->fresh()->status);
     }
 
     /**
@@ -73,7 +72,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'panel',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
@@ -109,7 +108,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'panel',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment served
         $this->assertResponseOk();
@@ -145,7 +144,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'panel',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment served
         $this->assertResponseOk();
@@ -179,7 +178,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'row',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment served
         $this->assertResponseOk();
@@ -213,7 +212,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'row',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response and see the appointment with no changes
         $this->assertResponseOk();
@@ -247,7 +246,7 @@ class BookingControllerTest extends TestCase
             'widget'      => 'InvalidWidgetType',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response with error code
         $this->seeJson(['code' => 'ERROR']);
@@ -280,9 +279,40 @@ class BookingControllerTest extends TestCase
             'widget'      => 'row',
             ];
 
-        $this->post('/api/booking/action', $input);
+        $this->post(route('api.booking.action'), $input);
 
         // Then I receive a response with error code
         $this->seeJson(['code' => 'OK']);
+    }
+
+    /**
+     * Arrange Fixture.
+     *
+     * @return void
+     */
+    protected function arrangeFixture()
+    {
+        // Given there is...
+
+        // a Business owned by Me (User)
+        $this->owner = $this->createUser();
+
+        $this->issuer = $this->createUser();
+
+        $this->business = $this->createBusiness();
+        $this->business->owners()->save($this->owner);
+
+        $this->contact = $this->createContact();
+
+        $this->contact->user()->associate($this->issuer);        
+
+        // And the Business provides a Service
+        $this->service = $this->makeService();
+        $this->business->services()->save($this->service);
+
+        // And the Service has Vacancies to be reserved
+        $this->vacancy = $this->makeVacancy();
+        $this->vacancy->service()->associate($this->service);
+        $this->business->vacancies()->save($this->vacancy);
     }
 }

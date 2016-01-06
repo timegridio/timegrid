@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-{!! Form::open(['route' => 'user.booking.store', 'class' => 'form']) !!}
+{!! Form::open(['route' => ['user.booking.store', $business], 'class' => 'form']) !!}
 {!! Form::hidden('businessId', $business->id, ['required'] ) !!}
 <div class="container">
     <div class="col-md-8 col-md-offset-2">

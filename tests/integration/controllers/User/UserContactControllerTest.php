@@ -210,7 +210,7 @@ class UserContactControllerTest extends TestCase
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('user.business.contact.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('user.business.contact.destroy', ['business' => $this->business, 'contact' => $contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);

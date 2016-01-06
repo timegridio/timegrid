@@ -97,7 +97,7 @@
 
   Now, enjoy! :)<br><br>
 
-  <a href="{!! route('user.businesses.home') !!}" style="color:#aaaaaa">Go to timegrid.io</a><br>
+  <a href="{!! route('home') !!}" style="color:#aaaaaa">Go to timegrid.io</a><br>
 </div>
 
 <br>

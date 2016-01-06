@@ -28,7 +28,7 @@
         "camroncade/timezone": "0.1",
         "creativeorange/gravatar": "~1.0",
         "fenos/notifynder": "3.*",
-        "guzzlehttp/guzzle": "~5.0",
+        "guzzlehttp/guzzle": "~6.0",
         "intervention/image": "^2.2",
         "intervention/imagecache": "^2.2",
         "ipunkt/laravel-analytics": "~1.1",
@@ -59,7 +59,8 @@
         "phpunit/phpunit-selenium": ">=1.2",
         "potsky/laravel-localization-helpers" : "~1.1",
         "symfony/css-selector": "~3.0",
-        "symfony/dom-crawler": "~3.0"
+        "symfony/dom-crawler": "~3.0",
+        "mockery/mockery": "^0.9.4"
     },
     "autoload": {
         "classmap": [

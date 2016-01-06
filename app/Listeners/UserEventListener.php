@@ -3,27 +3,29 @@
 namespace App\Listeners;
 
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Login;
+use Illuminate\Auth\Events\Logout;
 
 class UserEventListener
 {
     /**
      * Handle user login events.
      */
-    public function onUserLogin($user)
+    public function onUserLogin(Login $login)
     {
-        $user->last_ip = request()->ip();
-        $user->last_login_at = Carbon::now();
-        $user->save();
+        $login->user->last_ip = request()->ip();
+        $login->user->last_login_at = Carbon::now();
+        $login->user->save();
 
-        logger()->info("User logged in: UserId:{$user->id}");
+        logger()->info("User logged in: UserId:{$login->user->id}");
     }
 
     /**
      * Handle user logout events.
      */
-    public function onUserLogout($user)
+    public function onUserLogout(Logout $logout)
     {
-        logger()->info("User logged out: UserId:{$user->id}");
+        logger()->info("User logged out");
     }
 
     /**

@@ -11,16 +11,18 @@
 |
 */
 
-///////////////
-// API CALLS //
-///////////////
+////////////////
+// AJAX CALLS //
+////////////////
 
 Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
 
+    // TODO: 'booking' should be moved out of api into the proper group.
     Route::post('booking', [
         'as'   => 'api.booking.action',
         'uses' => 'BookingController@postAction',
     ]);
+
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
         'uses' => 'BookingController@getTimes',
     ]);
@@ -47,7 +49,7 @@ Route::group(
         'as'         => 'root.',
         'prefix'     => 'root',
         'namespace'  => 'Root',
-        'middleware' => ['auth', 'role:root'],
+        'middleware' => ['web', 'role:root'],
     ],
     function () {
         Route::get('dashboard', [
@@ -62,37 +64,49 @@ Route::group(
     }
 );
 
-///////////////////////
-// LANGUAGE SWITCHER //
-///////////////////////
-
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
-
 //////////////////
 // REGULAR AUTH //
 //////////////////
 
-Route::controllers([
-    'auth'     => 'Auth\AuthController',
-    'password' => 'Auth\PasswordController',
-]);
+Route::group(['prefix' => 'auth', 'middleware' => 'web'], function () {
+    Route::auth();
+});
 
-/////////////////
-// SOCIAL AUTH //
-/////////////////
+///////////////////
+// GUEST CONTEXT //
+///////////////////
 
-Route::get('social/login/redirect/{provider}', [
-    'as'   => 'social.login',
-    'uses' => 'Auth\OAuthController@redirectToProvider',
-]);
+Route::group(['middleware' => 'web'], function () {
 
-Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
+    ///////////////////////////
+    // PRIVATE HOME / WIZARD //
+    ///////////////////////////
 
-///////////////////////////
-// PRIVATE HOME / WIZARD //
-///////////////////////////
+    Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWizard']);
 
-Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWizard']);
+    ///////////////////////
+    // LANGUAGE SWITCHER //
+    ///////////////////////
+
+    Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
+    /////////////////
+    // SOCIAL AUTH //
+    /////////////////
+
+    Route::get('social/login/redirect/{provider}', [
+        'as'   => 'social.login',
+        'uses' => 'Auth\OAuthController@redirectToProvider',
+    ]);
+
+    Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
+
+    /////////////////
+    // PUBLIC HOME //
+    /////////////////
+
+    Route::get('/', 'WelcomeController@index');
+});
 
 //////////////////
 // USER CONTEXT //
@@ -159,7 +173,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
     // BUSINESS USER CONTEXT //
     ///////////////////////////
 
-    Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['web']], function () {
+    Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User'], function () {
 
         // BOOKINGS
         Route::group(['prefix' => 'agenda', 'as' => 'booking.'], function () {
@@ -187,7 +201,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
     // USER RESOURCES //
     ////////////////////
 
-    Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User', 'middleware' => ['web']], function () {
+    Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User'], function () {
 
         Route::get('contact', [
             'as'   => 'business.contact.index',
@@ -223,7 +237,7 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
     // BUSINESS MANAGER CONTEXT //
     //////////////////////////////
 
-    Route::group(['prefix' => 'manage', 'namespace' => 'Manager', 'middleware' => ['web']], function () {
+    Route::group(['prefix' => 'manage', 'namespace' => 'Manager'], function () {
 
         // BUSINESS PREFERENCES
         Route::get('preferences', [
@@ -366,13 +380,8 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
     });
 });
 
-/////////////////
-// PUBLIC HOME //
-/////////////////
-
-Route::get('/', 'WelcomeController@index');
-
 Route::get('{slug}', [
     'as'   => 'guest.business.home',
     'uses' => 'Guest\BusinessController@getHome',
-])->where('slug', '[^_]+.*');
+])->where('slug', '[^_]+.*')->middleware('web');
+

@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-{!! Form::open(['route' => 'user.booking.store', 'class' => 'form']) !!}
+{!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form']) !!}
 {!! Form::hidden('businessId', $business->id, ['required', 'id' => 'business']) !!}
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}

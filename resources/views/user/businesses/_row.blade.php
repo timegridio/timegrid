@@ -12,7 +12,7 @@
 <div class="row">
 
     <div class="col-md-2 col-sm-3 text-left">
-        <a href="{{route('user.businesses.home', ['business' => $business])}}">
+        <a href="{{route('user.businesses.home', compact('business'))}}">
             {!! $business->facebookImg('normal') !!}
         </a>
     </div>
@@ -20,7 +20,7 @@
     <div class="col-md-10 col-sm-9">
 
         <h3>
-            <a href="{{route('user.businesses.home', ['business' => $business])}}">
+            <a href="{{route('user.businesses.home', compact('business'))}}">
                 {{ str_limit($business->name, 50) }}
             </a>
             &nbsp;

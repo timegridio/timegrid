@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('auth.login.title') }}</div>
                 <div class="panel-body">
-                    @if (count($errors) > 0)
+                    @if (isset($errors))
                         <div class="alert alert-danger">
                             <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
                             <ul>
