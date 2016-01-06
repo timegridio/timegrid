@@ -411,14 +411,12 @@ class Appointment extends EloquentModel implements HasPresenter
      */
     public function scopeUnarchived($query)
     {
-        $todayMidnight = Carbon::parse('today midnight')->timezone('UTC');
-
         return $query
             ->where(function ($query) {
                 $query->whereIn('status', [Self::STATUS_RESERVED, Self::STATUS_CONFIRMED])
-                    ->where('start_at', '<=', $todayMidnight)
+                    ->where('start_at', '<=', Carbon::parse('today midnight')->timezone('UTC'))
                     ->orWhere(function ($query) {
-                        $query->where('start_at', '>=', $todayMidnight);
+                        $query->where('start_at', '>=', Carbon::parse('today midnight')->timezone('UTC'));
                     });
             });
     }
