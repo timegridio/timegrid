@@ -30,15 +30,36 @@ class Business extends EloquentModel implements HasPresenter
     protected $dates = ['deleted_at'];
 
     /**
+     * Define model events.
+     * 
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($business){
+
+            $business->slug = $business->makeSlug($business->name);
+
+        });
+    }
+
+    protected function makeSlug($name)
+    {
+        return str_slug($name);
+    }
+
+    /**
      * Create Business model.
      *
      * @param array $attributes Attributes for filling the model
      */
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->setSlugAttribute();
-    }
+#    public function __construct(array $attributes = [])
+#    {
+#        parent::__construct($attributes);
+#        $this->setSlugAttribute();
+#    }
 
     ///////////////////
     // Relationships //

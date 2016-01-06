@@ -12,6 +12,16 @@ class BusinessTest extends TestCase
     use CreateUser, CreateBusiness;
 
     /**
+     * @test
+     */
+    public function a_business_automatically_sets_a_slug_on_create()
+    {
+        $business = $this->createBusiness(['name' => 'My Awesome Biz']);
+
+        $this->assertEquals('my-awesome-biz', $business->slug);
+    }
+
+    /**
      * @covers \App\Models\Business::__construct
      * @test
      */
