@@ -1,23 +1,20 @@
 <?php
 
 use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\User;
 use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Laracasts\TestDummy\Factory;
 
 class AppointmentTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness, CreateAppointment, CreateVacancy;
 
     /**
      * @test
      */
     public function it_creates_an_appointment()
     {
-        $appointment = Factory::create('App\Models\Appointment');
+        $appointment = $this->createAppointment();
 
         $this->assertInstanceOf(Appointment::class, $appointment);
     }
@@ -28,9 +25,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_contact_user_of_appointment()
     {
-        $appointment = Factory::create('App\Models\Appointment');
-        $user = $this->makeUser();
-        $user->save();
+        $user = $this->createUser();
 
         $contact = $this->makeContact($user);
         $contact->save();
@@ -63,11 +58,9 @@ class AppointmentTest extends TestCase
      */
     public function it_detects_a_duplicate_appointment()
     {
-        $issuer = $this->makeUser();
-        $issuer->save();
+        $issuer = $this->createUser();
 
-        $contact = $this->makeContact();
-        $contact->save();
+        $contact = $this->createContact();
 
         $business = $this->makeBusiness($issuer);
         $business->save();
@@ -75,7 +68,7 @@ class AppointmentTest extends TestCase
         $appointment = $this->makeAppointment($business, $issuer, $contact);
         $appointment->save();
 
-        $appointmentDuplicate = $this->makeAppointment($business, $issuer, $contact);
+        $appointmentDuplicate = $appointment->replicate();
 
         $this->assertTrue($appointmentDuplicate->duplicates());
     }
@@ -86,7 +79,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_finish_datetime_of_appointment()
     {
-        $appointment = Factory::create('App\Models\Appointment', [
+        $appointment = $this->createAppointment([
             'startAt'  => Carbon::parse('2015-12-08 08:00:00 UTC'),
             'duration' => 90,
         ]);
@@ -103,15 +96,7 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_associated_vacancy()
     {
-        $business = Factory::create(Business::class);
-
-        $vacancy = Factory::create(Vacancy::class, [
-            'business_id' => $business->id,
-            ]);
-
-        $appointment = Factory::create(Appointment::class, [
-            'business_id' => $business->id,
-            'vacancy_id'  => $vacancy->id,
+        $appointment = $this->createAppointment([
             'startAt'     => Carbon::parse('2015-12-08 08:00:00 UTC'),
             'duration'    => 90,
             ]);
@@ -125,9 +110,9 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_000000utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'business_id' => $business->id,
             'startAt'     => Carbon::parse('2015-12-08 00:00:00 UTC'),
             'duration'    => 90,
@@ -142,9 +127,9 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_120000utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'business_id' => $business->id,
             'startAt'     => Carbon::parse('2015-12-08 12:00:00 UTC'),
             'duration'    => 90,
@@ -159,9 +144,9 @@ class AppointmentTest extends TestCase
      */
     public function it_gets_the_date_attribute_at_235959utc()
     {
-        $business = Factory::create(Business::class);
+        $business = $this->createBusiness();
 
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'business_id' => $business->id,
             'startAt'     => Carbon::parse('2015-12-08 23:59:59 UTC'),
             'duration'    => 90,
@@ -176,7 +161,7 @@ class AppointmentTest extends TestCase
      */
     public function it_returns_is_reserved()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'status' => Appointment::STATUS_RESERVED,
             ]);
 
@@ -189,7 +174,7 @@ class AppointmentTest extends TestCase
      */
     public function it_returns_is_pending()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->addDays(1),
             'status'   => Appointment::STATUS_RESERVED,
             ]);
@@ -203,7 +188,7 @@ class AppointmentTest extends TestCase
      */
     public function it_returns_is_not_pending()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->subDays(1),
             'status'   => Appointment::STATUS_RESERVED,
             ]);
@@ -217,7 +202,7 @@ class AppointmentTest extends TestCase
      */
     public function it_changes_status_to_confirmed()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->addDays(1),
             'status'   => Appointment::STATUS_RESERVED,
             ]);
@@ -233,7 +218,7 @@ class AppointmentTest extends TestCase
      */
     public function it_changes_status_to_annulated()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->addDays(1),
             'status'   => Appointment::STATUS_ANNULATED,
             ]);
@@ -249,7 +234,7 @@ class AppointmentTest extends TestCase
      */
     public function it_changes_status_to_served()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->addDays(1),
             'status'   => Appointment::STATUS_SERVED,
             ]);
@@ -265,7 +250,7 @@ class AppointmentTest extends TestCase
      */
     public function it_sets_status_to_reserved()
     {
-        $appointment = factory(Appointment::class)->make([
+        $appointment = $this->makeAppointment($this->createBusiness(), $this->createUser(), $this->createContact(), [
             'status'   => null,
             'start_at' => Carbon::now()->addDays(5),
             ]);
@@ -281,7 +266,7 @@ class AppointmentTest extends TestCase
      */
     public function it_cannot_serve_if_annulated()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->subDays(1),
             'status'   => Appointment::STATUS_ANNULATED,
             ]);
@@ -297,7 +282,7 @@ class AppointmentTest extends TestCase
      */
     public function it_cannot_confirm_if_annulated()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->subDays(1),
             'status'   => Appointment::STATUS_ANNULATED,
             ]);
@@ -313,7 +298,7 @@ class AppointmentTest extends TestCase
      */
     public function it_cannot_annulate_if_served()
     {
-        $appointment = Factory::create(Appointment::class, [
+        $appointment = $this->createAppointment([
             'start_at' => Carbon::now()->subDays(1),
             'status'   => Appointment::STATUS_SERVED,
             ]);
@@ -321,47 +306,5 @@ class AppointmentTest extends TestCase
         $appointment->doServe();
 
         $this->assertEquals(Appointment::STATUS_SERVED, $appointment->status);
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function makeUser()
-    {
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
-
-        return $user;
-    }
-
-    private function makeAppointment(Business $business, User $issuer, Contact $contact, $overrides = [])
-    {
-        $appointment = factory(Appointment::class)->make($overrides);
-        $appointment->contact()->associate($contact);
-        $appointment->issuer()->associate($issuer);
-        $appointment->business()->associate($business);
-
-        return $appointment;
-    }
-
-    private function makeContact(User $user = null)
-    {
-        $contact = factory(Contact::class)->make();
-        if ($user) {
-            $contact->user()->associate($user);
-        }
-
-        return $contact;
-    }
-
-    private function makeBusiness(User $owner, $overrides = [])
-    {
-        $business = factory(Business::class)->make($overrides);
-        $business->save();
-        $business->owners()->attach($owner);
-
-        return $business;
     }
 }

@@ -13,7 +13,7 @@
 
 <div class="row">
     <div class="form-group col-xs-6">
-        {!! Form::text('firstname', auth()->user()->name, [
+        {!! Form::text('firstname', $user->name, [
             'required',
             'class'=>'form-control',
             'placeholder'=> trans('manager.contacts.form.firstname.label'),

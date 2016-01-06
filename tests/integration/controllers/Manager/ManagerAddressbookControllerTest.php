@@ -2,33 +2,32 @@
 
 use App\Models\Business;
 use App\Models\Contact;
-use App\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ManagerBusinessContactControllerTest extends TestCase
+class ManagerAddressbookControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::create
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe']);
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -41,23 +40,24 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::edit
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::update
      * @test
      */
     public function it_edits_a_contact_of_addressbook()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '1133224455']);
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe', 'nin' => '1133224455',
+            ]);
         $this->business->contacts()->save($contact);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact edit form
-        $this->visit(route('manager.business.contact.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
+        $this->visit(route('manager.addressbook.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
              ->see($contact->firstname)
              ->see($contact->lastname)
              ->see($contact->nin);
@@ -75,7 +75,6 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
      * @test
      */
     public function it_detaches_a_contact_from_business()
@@ -84,7 +83,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -94,19 +93,18 @@ class ManagerBusinessContactControllerTest extends TestCase
         $this->business->contacts()->save($contact);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
         $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
     }
 
     /**
-     * @covers \App\Http\Controllers\Manager\BusinessContactController::destroy
      * @test
      */
     public function it_denies_detaching_a_contact_from_business_to_unauthorized_user()
@@ -114,10 +112,10 @@ class ManagerBusinessContactControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        $unauthorizedUser = factory(User::class)->create();
+        $unauthorizedUser = $this->createUser();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -132,32 +130,35 @@ class ManagerBusinessContactControllerTest extends TestCase
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.business.contact.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(1, $this->business->fresh()->contacts);
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::index
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::create
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook_that_links_to_existing_user()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingUser = factory(User::class)->create(['name' => 'John', 'email' => 'johndoe@example.org']);
+        $existingUser = $this->createUser([
+            'name'  => 'John',
+            'email' => 'johndoe@example.org',
+            ]);
 
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'johndoe@example.org']);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'johndoe@example.org',
+            ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -172,17 +173,18 @@ class ManagerBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::store
-     * @covers   App\Http\Controllers\Manager\BusinessContactController::show
      * @test
      */
     public function it_adds_a_contact_to_addressbook_that_matches_an_existing_contact()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingUser = factory(User::class)->create(['name' => 'John', 'email' => 'johndoe@example.org']);
+        $existingUser = $this->createUser([
+            'name'  => 'John',
+            'email' => 'johndoe@example.org',
+            ]);
 
-        $existingContact = factory(Contact::class)->create([
+        $existingContact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'email'     => 'johndoe@example.org',
@@ -191,7 +193,7 @@ class ManagerBusinessContactControllerTest extends TestCase
         // And the existing contact belongs to the business addressbok
         $this->business->contacts()->attach($existingContact);
 
-        $contact = factory(Contact::class)->make([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'email'     => 'johndoe@example.org',
@@ -199,10 +201,10 @@ class ManagerBusinessContactControllerTest extends TestCase
         ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->owner);
 
         // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.business.contact.index', $this->business))
+        $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
              ->type($contact->lastname, 'lastname')
@@ -216,32 +218,5 @@ class ManagerBusinessContactControllerTest extends TestCase
              ->see("{$contact->firstname} {$contact->lastname}");
         $this->assertEquals($contact->email, $existingContact->email);
         $this->assertEquals($contact->nin, $existingContact->nin);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    /**
-     * arrange fixture.
-     *
-     * @return void
-     */
-    protected function arrangeFixture()
-    {
-        // A business owned by a user (me)
-        $this->issuer = factory(User::class)->create();
-
-        $this->business = factory(Business::class)->create();
-        $this->business->owners()->save($this->issuer);
-
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
-        $this->business->services()->save($this->service);
-
-        // And Service has vacancies to be reserved
-        $this->vacancy = factory(Vacancy::class)->make();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
     }
 }

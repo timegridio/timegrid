@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser;
 
     /** @test */
     public function it_creates_a_user_without_username()
@@ -22,16 +22,5 @@ class UserTest extends TestCase
         $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest'), 'username' => 'alariva']);
 
         $this->seeInDatabase('users', ['email' => $user->email, 'id' => $user->id, 'username' => $user->username]);
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function createUser($overrides = [])
-    {
-        $user = factory(User::class)->create($overrides);
-
-        return $user;
     }
 }

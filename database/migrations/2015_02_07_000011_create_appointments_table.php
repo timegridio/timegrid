@@ -22,12 +22,12 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->string('hash', 32)->unique();
             $table->enum('status', ['R', 'C', 'A', 'S']); // Reserved, Confirmed, Annulated, Served
-            $table->timestamp('start_at')->index();
+            $table->timestamp('start_at')->nullable()->index();
             $table->integer('duration')->nullable();
             $table->integer('service_id')->unsigned()->nullable();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->string('comments')->nullable();
-            $table->timestamps();
+            $table->nullableTimestamps();
             $table->softDeletes();
         });
     }

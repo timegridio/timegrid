@@ -22,7 +22,7 @@ class CreateVacanciesTable extends Migration
             $table->integer('service_id')->unsigned();
             $table->foreign('service_id')->references('id')->on('services')->onDelete('cascade');
             $table->integer('capacity')->unsigned()->default(1);
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

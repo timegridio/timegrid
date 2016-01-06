@@ -19,7 +19,7 @@ class CreatePreferencesTable extends Migration
             $table->enum('type', ['string', 'bool', 'int', 'float', 'array', 'time', 'json'])->default('string');
             $table->string('preferenceable_type');
             $table->integer('preferenceable_id')->unsigned();
-            $table->timestamps();
+            $table->nullableTimestamps();
 
             $table->unique(['key', 'preferenceable_type', 'preferenceable_id']);
         });

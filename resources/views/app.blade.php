@@ -24,7 +24,7 @@
 <body>
 {!! Analytics::render() !!}
 
-@if (env('APP_ENV') == 'demo')
+@if (config('env') == 'demo')
 <a target="_blank" href="https://github.com/alariva/timegrid">
     <img style="position: absolute; top: 0; left: 0; border: 0; z-index:99999" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
 </a>
@@ -44,7 +44,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                @if (!empty(auth()->user()))
+                @if ($user)
                 @include('manager/_navmenu')
                 @endif
             </ul>
@@ -54,12 +54,12 @@
 
                 @include('_navi18n')
 
-                @if (auth()->guest())
+                @if ($isGuest)
                 <li><a href="{{ url('/auth/login') }}">{{ trans('app.nav.login') }}</a></li>
                 <li><a href="{{ url('/auth/register') }}">{{ trans('app.nav.register') }}</a></li>
                 @else
                 <li id="navProfile" class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ auth()->user()->name }} <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ $user->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="{{ route('user.dashboard') }}">{{ trans('app.nav.dashboard') }}</a></li>
                         <li class="nav-divider"></li>

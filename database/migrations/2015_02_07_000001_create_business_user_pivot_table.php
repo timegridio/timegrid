@@ -17,7 +17,7 @@ class CreateBusinessUserPivotTable extends Migration
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

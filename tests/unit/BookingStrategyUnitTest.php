@@ -1,34 +1,32 @@
 <?php
 
 use App\BookingStrategy;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
-use App\Models\User;
+use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class BookingStrategyUnitTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness, CreateService;
 
     /**
-     * @covers \App\BookingStrategy::generateAppointment
-     * @covers \App\BookingDateslotStrategy::generateAppointment
+     * @covers  App\BookingStrategy::generateAppointment
+     * @covers  App\BookingDateslotStrategy::generateAppointment
      * @test
      */
     public function it_generates_a_dateslot_appointment()
     {
-        $user = $this->makeUser();
-        $user->save();
+        $owner = $this->createUser();
 
-        $contact = $this->makeContact($user);
+        $contact = $this->makeContact($owner);
         $contact->save();
 
-        $business = $this->makeBusiness($user, ['strategy' => 'dateslot']);
+        $business = $this->makeBusiness($owner, ['strategy' => 'dateslot']);
         $business->save();
 
-        $service = factory(Service::class)->make();
+        $service = $this->makeService();
+
         $business->services()->save($service);
 
         $bookingStrategy = new BookingStrategy($business->strategy);
@@ -36,7 +34,7 @@ class BookingStrategyUnitTest extends TestCase
         $dateTime = Carbon::now()->addDays(5);
 
         $appointment = $bookingStrategy->generateAppointment(
-            $user,
+            $owner,
             $business,
             $contact,
             $service,
@@ -44,44 +42,57 @@ class BookingStrategyUnitTest extends TestCase
             'test comments'
         );
 
-        $this->assertInstanceOf(\App\Models\Appointment::class, $appointment);
-        $this->assertEquals($appointment->issuer->id, $user->id);
+        $this->assertInstanceOf(Appointment::class, $appointment);
+
+        $this->assertEquals($appointment->issuer->id, $owner->id);
         $this->assertEquals($appointment->contact->name, $contact->name);
         $this->assertEquals($appointment->service->name, $service->name);
         $this->assertEquals($appointment->date, $dateTime->toDateString());
         $this->assertEquals($appointment->comments, 'test comments');
-        $this->assertEquals(strlen($appointment->hash), 32);
+
+        $this->assertEquals(32, strlen($appointment->hash));
     }
 
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function makeUser()
+   /**
+     * @covers  App\BookingStrategy::generateAppointment
+     * @covers  App\BookingDateslotStrategy::generateAppointment
+     * @test
+     */
+    public function it_generates_a_timeslot_appointment()
     {
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
+        $owner = $this->createUser();
 
-        return $user;
-    }
+        $contact = $this->makeContact($owner);
+        $contact->save();
 
-    private function makeContact(User $user = null)
-    {
-        $contact = factory(Contact::class)->make();
-        if ($user) {
-            $contact->user()->associate($user);
-        }
-
-        return $contact;
-    }
-
-    private function makeBusiness(User $owner, $overrides = [])
-    {
-        $business = factory(Business::class)->make($overrides);
+        $business = $this->makeBusiness($owner, ['strategy' => 'timeslot']);
         $business->save();
-        $business->owners()->attach($owner);
 
-        return $business;
+        $service = $this->makeService();
+
+        $business->services()->save($service);
+
+        $bookingStrategy = new BookingStrategy($business->strategy);
+
+        $dateTime = Carbon::now()->addDays(5);
+
+        $appointment = $bookingStrategy->generateAppointment(
+            $owner,
+            $business,
+            $contact,
+            $service,
+            $dateTime,
+            'test comments'
+        );
+
+        $this->assertInstanceOf(Appointment::class, $appointment);
+
+        $this->assertEquals($appointment->issuer->id, $owner->id);
+        $this->assertEquals($appointment->contact->name, $contact->name);
+        $this->assertEquals($appointment->service->name, $service->name);
+        $this->assertEquals($appointment->date, $dateTime->toDateString());
+        $this->assertEquals($appointment->comments, 'test comments');
+
+        $this->assertEquals(32, strlen($appointment->hash));
     }
 }

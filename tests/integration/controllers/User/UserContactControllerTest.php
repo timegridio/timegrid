@@ -3,26 +3,25 @@
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Contact;
-use App\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class UserBusinessContactControllerTest extends TestCase
+class UserContactControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $contact = factory(Contact::class)->make(['firstname' => 'John', 'lastname' => 'Doe']);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -44,19 +43,23 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_reusing_existing_contact()
     {
         // Given a fixture of
         $this->arrangeFixture();
-        $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $existingContact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'test@example.org',
+            ]);
         $this->business->contacts()->save($existingContact);
 
-        $contact = factory(Contact::class)->make(['firstname' => 'John2', 'lastname' => 'Doe2']);
+        $contact = $this->createContact([
+            'firstname' => 'John2',
+            'lastname'  => 'Doe2',
+            ]);
 
         // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
@@ -79,9 +82,6 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::create
-     * @covers \App\Http\Controllers\User\BusinessContactController::store
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_creates_a_contact_subscription_copying_existing_contact()
@@ -90,8 +90,13 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business A (other business)
-        $otherBusiness = factory(Business::class)->create();
-        $existingContact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'email' => 'test@example.org']);
+        $otherBusiness = $this->createBusiness();
+
+        $existingContact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'test@example.org',
+            ]);
         $existingContact->user()->associate($this->issuer);
         $otherBusiness->contacts()->save($existingContact);
 
@@ -114,9 +119,6 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::edit
-     * @covers \App\Http\Controllers\User\BusinessContactController::update
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_edits_a_contact()
@@ -125,7 +127,12 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => null, 'email' => null]);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'nin'       => null,
+            'email'     => null,
+            ]);
         $contact->user()->associate($this->issuer);
         $this->business->contacts()->save($contact);
 
@@ -145,9 +152,6 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::edit
-     * @covers \App\Http\Controllers\User\BusinessContactController::update
-     * @covers \App\Http\Controllers\User\BusinessContactController::show
      * @test
      */
     public function it_can_change_nin_of_a_contact()
@@ -156,7 +160,12 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create(['firstname' => 'John', 'lastname' => 'Doe', 'nin' => '12345', 'email' => null]);
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'nin'       => '12345',
+            'email'     => null,
+            ]);
         $contact->user()->associate($this->issuer);
         $this->business->contacts()->save($contact);
 
@@ -178,7 +187,6 @@ class UserBusinessContactControllerTest extends TestCase
     }
 
     /**
-     * @covers \App\Http\Controllers\User\BusinessContactController::destroy
      * @test
      */
     public function it_detaches_a_contact_from_business()
@@ -187,7 +195,7 @@ class UserBusinessContactControllerTest extends TestCase
         $this->arrangeFixture();
 
         // I have a registered contact in Business
-        $contact = factory(Contact::class)->create([
+        $contact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'nin'       => '12345',
@@ -206,34 +214,5 @@ class UserBusinessContactControllerTest extends TestCase
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
-    }
-
-    /////////////
-    // Fixture //
-    /////////////
-
-    /**
-     * arrange fixture.
-     *
-     * @return void
-     */
-    protected function arrangeFixture()
-    {
-        // A business owned by a user (me)
-        $this->owner = factory(User::class)->create();
-
-        $this->issuer = factory(User::class)->create();
-
-        $this->business = factory(Business::class)->create();
-        $this->business->owners()->save($this->owner);
-
-        // And the business provides a Service
-        $this->service = factory(Service::class)->make();
-        $this->business->services()->save($this->service);
-
-        // And Service has vacancies to be reserved
-        $this->vacancy = factory(Vacancy::class)->make();
-        $this->vacancy->service()->associate($this->service);
-        $this->business->vacancies()->save($this->vacancy);
     }
 }

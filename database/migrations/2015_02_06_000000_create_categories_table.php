@@ -19,7 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('description');
             $table->string('strategy', 15)->default('dateslot'); /* Appointment Booking Strategy */
             $table->softDeletes();
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

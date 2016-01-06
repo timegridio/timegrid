@@ -80,7 +80,7 @@ $(document).ready(function(){
 
 @section('content')
 <div class="container">
-{!! Button::withIcon(Icon::plus())->normal(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.business.contact.create', $business) )->block() !!}
+{!! Button::withIcon(Icon::plus())->normal(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.addressbook.create', $business) )->block() !!}
     {!! $business->contacts()->paginate(300)->render() !!}
     <div class="panel panel-primary filterable">
         <div class="panel-heading">
@@ -102,7 +102,7 @@ $(document).ready(function(){
                 @foreach ($contacts as $contact)
                     <tr>
                         <td>{{ $contact->lastname }}</td>
-                        <td>{!! link_to( route('manager.business.contact.show', [$business, $contact->id]), $contact->firstname) !!}</td>
+                        <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                         <td>{{ $contact->email }}</td>
                         <td>{{ $contact->mobile }}</td>
                     </tr>
@@ -110,7 +110,7 @@ $(document).ready(function(){
             </tbody>
         </table>
     </div>
-{!! Button::withIcon(Icon::plus())->primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.business.contact.create', $business) )->large()->block() !!}
+{!! Button::withIcon(Icon::plus())->primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.addressbook.create', $business) )->large()->block() !!}
 </div>
 
 @endsection

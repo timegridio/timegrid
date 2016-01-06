@@ -1,13 +1,12 @@
 <?php
 
 use App\Events\NewContactWasRegistered;
-use App\Models\Contact;
-use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class NewContactWasRegisteredUnitTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact;
 
     /**
      * @covers App\Events\NewContactWasRegistered::__construct
@@ -36,23 +35,5 @@ class NewContactWasRegisteredUnitTest extends TestCase
         $event = new NewContactWasRegistered($contact);
 
         $this->assertEquals([], $event->broadcastOn());
-    }
-
-    /////////////
-    // HELPERS //
-    /////////////
-
-    private function createUser($overrides = [])
-    {
-        $user = factory(User::class)->create($overrides);
-
-        return $user;
-    }
-
-    private function createContact($overrides = [])
-    {
-        $contact = factory(Contact::class)->create($overrides);
-
-        return $contact;
     }
 }

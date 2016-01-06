@@ -26,7 +26,7 @@ class CreateBusinessesTable extends Migration
             $table->string('strategy', 15)->default('timeslot'); /* Appointment Booking Strategy */
             $table->string('plan', 20);
             $table->softDeletes();
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 

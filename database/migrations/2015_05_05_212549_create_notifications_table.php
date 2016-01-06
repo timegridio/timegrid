@@ -22,7 +22,7 @@ class CreateNotificationsTable extends Migration
             $table->string('url');
             $table->string('extra')->nullable();
             $table->tinyInteger('read')->default(0);
-            $table->timestamps();
+            $table->nullableTimestamps();
 
             $table->foreign('category_id')->references('id')
                   ->on('notification_categories');

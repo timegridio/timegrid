@@ -2,7 +2,9 @@
 
 class WelcomeControllerTest extends TestCase
 {
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_welcome_page()
     {
         // Given I am a not authenticated user (guest)
@@ -16,7 +18,9 @@ class WelcomeControllerTest extends TestCase
              ->see('Login');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_login_page()
     {
         // Given I am a not authenticated user (guest)
@@ -35,7 +39,9 @@ class WelcomeControllerTest extends TestCase
              ->see('Google');  // oAuth button
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_register_page()
     {
         // Given I am a not authenticated user (guest)
@@ -53,7 +59,9 @@ class WelcomeControllerTest extends TestCase
              ->see('Register');       // Submit button
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_register_page_through_login()
     {
         // Given I am a not authenticated user (guest)

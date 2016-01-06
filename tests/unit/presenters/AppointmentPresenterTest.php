@@ -10,6 +10,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class AppointmentPresenterTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateContact, CreateBusiness, CreateAppointment;
 
     protected $user;
 
@@ -119,43 +120,5 @@ class AppointmentPresenterTest extends TestCase
 
         $this->business = $this->makeBusiness($this->user);
         $this->business->save();
-    }
-
-    private function makeUser()
-    {
-        $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
-
-        return $user;
-    }
-
-    private function makeAppointment(Business $business, User $issuer, Contact $contact, $override = [])
-    {
-        $appointment = factory(Appointment::class)->make($override);
-        $appointment->contact()->associate($contact);
-        $appointment->issuer()->associate($issuer);
-        $appointment->business()->associate($business);
-
-        return $appointment;
-    }
-
-    private function makeContact(User $user = null)
-    {
-        $contact = factory(Contact::class)->make();
-        if ($user) {
-            $contact->user()->associate($user);
-        }
-
-        return $contact;
-    }
-
-    private function makeBusiness(User $owner, $overrides = [])
-    {
-        $business = factory(Business::class)->make($overrides);
-        $business->save();
-        $business->owners()->attach($owner);
-
-        return $business;
     }
 }

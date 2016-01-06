@@ -140,7 +140,7 @@
                 <span class="pull-right">
                 {!! Button::warning()
                     ->withIcon(Icon::edit())
-                    ->asLinkTo( route('manager.business.contact.edit', [$business, $contact]) )
+                    ->asLinkTo( route('manager.addressbook.edit', [$business, $contact]) )
                     ->withAttributes([
                         'data-for' => 'edit',
                         'data-toggle' => 'tooltip',
@@ -149,7 +149,7 @@
 
                 {!! Button::danger()
                     ->withIcon(Icon::trash())
-                    ->asLinkTo( route('manager.business.contact.destroy', [$business, $contact]) )
+                    ->asLinkTo( route('manager.addressbook.destroy', [$business, $contact]) )
                     ->withAttributes([
                         'id' => 'delete-btn',
                         'type' => 'button',

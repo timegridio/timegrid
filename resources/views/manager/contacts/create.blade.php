@@ -9,7 +9,7 @@
             <div class="panel-body">
                 @include('_errors')
 
-                {!! Form::model($contact, ['route' => ['manager.business.contact.store', $business]]) !!}
+                {!! Form::model($contact, ['route' => ['manager.addressbook.store', $business]]) !!}
                     @include('manager.contacts._form',['submitLabel' => trans('manager.contacts.btn.store'), 'contact' => $contact])
                 {!! Form::close() !!}
             </div>

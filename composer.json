@@ -21,7 +21,6 @@
     },
     "type": "project",
     "require": {
-        "alariva/tidiochat": "^1.1",
         "anhskohbo/no-captcha": "2.*",
         "barryvdh/laravel-snappy": "~0.2",
         "bassjobsen/bootstrap-3-typeahead": "^3.1",
@@ -55,9 +54,6 @@
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",
-        "laracasts/integrated": "^0.15.6",
-        "laracasts/testdummy": "~2.0",
-        "mockery/mockery": "0.9.*",
         "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~4.0",
         "phpunit/phpunit-selenium": ">=1.2",
@@ -79,7 +75,8 @@
     },
     "autoload-dev": {
         "classmap": [
-            "tests/TestCase.php"
+            "tests/TestCase.php",
+            "tests/helpers/"
         ]
     },
     "scripts": {

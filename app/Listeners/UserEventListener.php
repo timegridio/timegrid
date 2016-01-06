@@ -34,12 +34,12 @@ class UserEventListener
     public function subscribe($events)
     {
         $events->listen(
-            'auth.login',
+            'Illuminate\Auth\Events\Login',
             'App\Listeners\UserEventListener@onUserLogin'
         );
 
         $events->listen(
-            'auth.logout',
+            'Illuminate\Auth\Events\Logout',
             'App\Listeners\UserEventListener@onUserLogout'
         );
     }

@@ -27,10 +27,20 @@ class Language implements Middleware
 
     public function handle($request, Closure $next)
     {
-        $sessionAppLocale = session()->get('applocale', config('app.fallback_locale'));
+        logger()->info(__METHOD__);
+
+        $sessionAppLocale = session()->get('applocale', null);
+
+        if($sessionAppLocale == null)
+        {
+            $sessionAppLocale = $this->getAgentLangOrFallback(config('app.fallback_locale'));
+        }
+
+        logger()->info("sessionAppLocale:$sessionAppLocale");
 
         if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
+            logger()->info("setGlobalLocale set");
 
             return $next($request);
         }
@@ -49,9 +59,19 @@ class Language implements Middleware
      */
     protected function getAgentLangOrFallback($fallbackLocale)
     {
-        if ($agentPreferredLocale = $this->searchAgent($this->agent->languages(), config('languages'))) {
+        $agentLanguages = $this->agent->languages();
+        $configLanguages = config('languages');
+
+        logger()->info("Agent Languages: ".serialize($agentLanguages));
+        logger()->info("Config Languages: ".serialize($configLanguages));
+
+        if ($agentPreferredLocale = $this->searchAgent($agentLanguages, $configLanguages)) {
+
+            logger()->info("Agent Preferred Locale: $agentPreferredLocale");
             return $agentPreferredLocale;
         }
+
+        logger()->info("Using Fallback: $fallbackLocale");
 
         return $fallbackLocale;
     }

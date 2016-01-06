@@ -9,6 +9,17 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class BusinessTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateUser, CreateBusiness;
+
+    /**
+     * @test
+     */
+    public function a_business_automatically_sets_a_slug_on_create()
+    {
+        $business = $this->createBusiness(['name' => 'My Awesome Biz']);
+
+        $this->assertEquals('my-awesome-biz', $business->slug);
+    }
 
     /**
      * @covers \App\Models\Business::__construct
@@ -16,7 +27,7 @@ class BusinessTest extends TestCase
      */
     public function it_creates_a_business()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $this->assertInstanceOf(Business::class, $business);
     }
@@ -28,7 +39,7 @@ class BusinessTest extends TestCase
      */
     public function it_creates_a_business_that_appears_in_db()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $this->seeInDatabase('businesses', ['slug' => $business->slug]);
     }
@@ -41,7 +52,7 @@ class BusinessTest extends TestCase
      */
     public function it_generates_slug_from_name()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $slug = str_slug($business->name);
 
@@ -54,7 +65,7 @@ class BusinessTest extends TestCase
      */
     public function it_gets_business_presenter()
     {
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $businessPresenter = $business->getPresenterClass();
 
@@ -67,7 +78,7 @@ class BusinessTest extends TestCase
      */
     public function it_sets_empty_phone_attribute()
     {
-        $business = factory(Business::class)->make(['phone' => '']);
+        $business = $this->createBusiness(['phone' => '']);
 
         $this->assertNull($business->phone);
     }
@@ -78,7 +89,7 @@ class BusinessTest extends TestCase
      */
     public function it_sets_empty_postal_address_attribute()
     {
-        $business = factory(Business::class)->make(['postal_address' => '']);
+        $business = $this->createBusiness(['postal_address' => '']);
 
         $this->assertNull($business->postal_address);
     }
@@ -89,9 +100,9 @@ class BusinessTest extends TestCase
      */
     public function it_gets_the_business_owner()
     {
-        $owner = factory(User::class)->create();
+        $owner = $this->createUser();
 
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
         $business->owners()->save($owner);
 
         $this->assertInstanceOf(User::class, $business->owner());
@@ -104,10 +115,10 @@ class BusinessTest extends TestCase
      */
     public function it_gets_the_business_owners()
     {
-        $owner1 = factory(User::class)->create();
-        $owner2 = factory(User::class)->create();
+        $owner1 = $this->createUser();
+        $owner2 = $this->createUser();
 
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
 
         $business->owners()->save($owner1);
         $business->owners()->save($owner2);

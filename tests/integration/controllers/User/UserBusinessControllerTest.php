@@ -8,24 +8,16 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class UserBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
+    use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService;
 
     /**
-     * user.
-     *
-     * @var User user
+     * @test
      */
-    private $user;
-
-    ///////////
-    // TESTS //
-    ///////////
-
-    /** @test */
     public function it_presents_the_businesses_listing()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And I visit the homepage
         $this->visit('/')->click('Browse');
@@ -34,15 +26,17 @@ class UserBusinessControllerTest extends TestCase
         $this->see('Available businesses');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_lists_some_businesses()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And there exist some registered businesses
-        $businesses = factory(Business::class, 30)->create();
+        $businesses = $this->createBusinesses(30);
 
         // And I visit the homepage
         $this->visit('/')->click('Browse');
@@ -53,15 +47,17 @@ class UserBusinessControllerTest extends TestCase
         }
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_home()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And there exist some registered businesses
-        $businesses = factory(Business::class, 15)->create();
+        $businesses = $this->createBusinesses(15);
 
         // And I click the business
         $this->visit('/')->click('Browse')
@@ -72,16 +68,18 @@ class UserBusinessControllerTest extends TestCase
              ->see(substr($businesses[1]->description, 0, 10));
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_home_with_subscribe_button()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And there exist some registered businesses
-        $business = factory(Business::class)->create();
         // And which I am not subscribed
+        $business = $this->createBusiness();
 
         // And I click one business
         $this->visit('/')->click('Browse')
@@ -92,15 +90,17 @@ class UserBusinessControllerTest extends TestCase
              ->see('subscribe');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_presents_the_business_subscription_form()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And there exist some registered businesses
-        $business = factory(Business::class)->create();
+        $business = $this->createBusiness();
         // And which I am not subscribed
 
         // And I click one business
@@ -114,20 +114,21 @@ class UserBusinessControllerTest extends TestCase
              ->see('save');
     }
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_lists_businesses_subscriptions()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $user = $this->createUser();
+        $this->actingAs($user);
 
         // And there exist a registered business
-        $business = factory(Business::class)->create(['name' => 'tosto']);
+        $business = $this->createBusiness(['name' => 'tosto']);
 
         // And which I am subscribed as contact
-        $contact = factory(Contact::class)->create();
-        $contact->user()->associate($this->user);
-        $contact->save();
+        $contact = $this->makeContact($user);
+
         $business->contacts()->save($contact);
 
         // And I go to subscriptions (favourites) section
@@ -146,14 +147,16 @@ class UserBusinessControllerTest extends TestCase
     // BUSINESS REGISTRATION //
     ///////////////////////////
 
-    /** @test */
+    /**
+     * @test
+     */
     public function it_registers_a_new_business_with_minimal_setup()
     {
         // Given I am an authenticated user
-        $this->user = factory(User::class)->create();
-        $this->actingAs($this->user);
+        $ownerUser = $this->createUser();
+        $this->actingAs($ownerUser);
 
-        $business = factory(Business::class)->make(['name' => 'tosto']);
+        $business = $this->makeBusiness($ownerUser, ['name' => 'tosto']);
 
         // And I go to register a new Business
         $this->visit(route('manager.business.register'));

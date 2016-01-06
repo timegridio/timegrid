@@ -17,7 +17,7 @@ class CreateDomainsTable extends Migration
             $table->string('slug', 50)->unique();
             $table->integer('owner_id')->unsigned();
             $table->foreign('owner_id')->references('id')->on('users')->onDelete('cascade');
-            $table->timestamps();
+            $table->nullableTimestamps();
             $table->softdeletes();
         });
     }

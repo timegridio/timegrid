@@ -11,7 +11,7 @@ use App\Services\ContactService;
 use Notifynder;
 use Request;
 
-class BusinessContactController extends Controller
+class ContactController extends Controller
 {
     /**
      * Contact service implementation.

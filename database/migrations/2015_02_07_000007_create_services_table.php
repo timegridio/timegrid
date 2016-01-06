@@ -22,7 +22,7 @@ class CreateServicesTable extends Migration
             $table->string('description');
             $table->string('prerequisites')->nullable();
             $table->softDeletes();
-            $table->timestamps();
+            $table->nullableTimestamps();
 
             $table->unique(['business_id', 'slug']);
         });

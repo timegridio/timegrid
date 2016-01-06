@@ -37,7 +37,7 @@ $(document).ready(function(){
         if(count == 5) {
             var script = document.createElement( 'script' );
             script.type = 'text/javascript';
-            script.src = '{{ TidioChat::src() }}';
+            script.src = '/* TidioChat */';
             $("body").append( script );
             alert('{!! trans('auth.register.need_help') !!}');
         }

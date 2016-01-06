@@ -40,7 +40,7 @@ class BusinessServiceController extends Controller
 
         // BEGIN
 
-        $types = $business->servicetypes->lists('name', 'id');
+        $types = $business->servicetypes->pluck('name', 'id');
 
         $service = new Service([
             'duration' => $business->pref('service_default_duration'),
@@ -120,7 +120,7 @@ class BusinessServiceController extends Controller
 
         // BEGIN
 
-        $types = $business->servicetypes->lists('name', 'id');
+        $types = $business->servicetypes->pluck('name', 'id');
 
         return view('manager.businesses.services.edit', compact('service', 'types'));
     }
