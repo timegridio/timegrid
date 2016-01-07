@@ -3,13 +3,13 @@
 use Laracasts\Integrated\Extensions\Selenium as IntegrationTest;
 use Laracasts\Integrated\Services\Laravel\DatabaseTransactions;
 
-# use Illuminate\Foundation\Testing\DatabaseTransactions;
+// use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserRegistrationProcessTest extends IntegrationTest
 {
     use DatabaseTransactions;
 
-    # protected $baseUrl = 'http://localhost:8000';
+    // protected $baseUrl = 'http://localhost:8000';
 
     protected function setLanguageAndGoToRegister()
     {

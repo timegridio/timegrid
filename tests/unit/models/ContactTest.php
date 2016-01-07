@@ -198,7 +198,7 @@ class ContactTest extends TestCase
         $contact->user()->dissociate()->save();
 
         $this->assertFalse($contact->fresh()->isProfileOf($user->id));
-    }    
+    }
 
     /**
      * @test
@@ -210,7 +210,7 @@ class ContactTest extends TestCase
         $contact = $this->createContact();
 
         $business->contacts()->save($contact);
-        
+
         // Subscribed Profile
 
         $this->assertTrue($contact->isSubscribedTo($business->id));
@@ -220,7 +220,7 @@ class ContactTest extends TestCase
         $business->contacts()->detach();
 
         $this->assertFalse($contact->fresh()->isSubscribedTo($business->id));
-    }    
+    }
 
     /**
      * @covers App\Models\Contact::autoLinkToUser

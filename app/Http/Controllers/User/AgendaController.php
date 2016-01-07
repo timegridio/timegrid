@@ -119,11 +119,11 @@ class AgendaController extends Controller
 
         $this->concierge->setBusiness($business);
 
-        logger()->info("issuer:".$issuer->id);
-        logger()->info("business:".$business->id);
-        logger()->info("contact:".$contact->id);
-        logger()->info("service:".$service->id);
-        logger()->info("datetime:".$datetime);
+        logger()->info('issuer:'.$issuer->id);
+        logger()->info('business:'.$business->id);
+        logger()->info('contact:'.$contact->id);
+        logger()->info('service:'.$service->id);
+        logger()->info('datetime:'.$datetime);
 
         $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
 

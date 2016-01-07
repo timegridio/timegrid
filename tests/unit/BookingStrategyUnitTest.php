@@ -53,7 +53,7 @@ class BookingStrategyUnitTest extends TestCase
         $this->assertEquals(32, strlen($appointment->hash));
     }
 
-   /**
+    /**
      * @covers  App\BookingStrategy::generateAppointment
      * @covers  App\BookingDateslotStrategy::generateAppointment
      * @test

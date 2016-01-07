@@ -71,7 +71,7 @@ $factory->define('App\Models\Business', function (Faker\Generator $faker) {
 
 $factory->define('App\Models\Service', function (Faker\Generator $faker) {
     return [
-        'business_id' => factory(App\Models\Business::class)->create()->id,
+        'business_id'   => factory(App\Models\Business::class)->create()->id,
         'name'          => $faker->sentence(2),
         'description'   => $faker->paragraph,
         'prerequisites' => $faker->paragraph,
@@ -88,11 +88,11 @@ $factory->define('App\Models\Vacancy', function (Faker\Generator $faker) {
 
     return [
         'business_id' => factory(App\Models\Business::class)->create()->id,
-        'service_id' => factory(App\Models\Service::class)->create()->id,
-        'date'      => date('Y-m-d', strtotime($date)),
-        'start_at'  => date('Y-m-d 00:00:00', strtotime($date)),
-        'finish_at' => date('Y-m-d 23:00:00', strtotime($date)),
-        'capacity'  => 1,
+        'service_id'  => factory(App\Models\Service::class)->create()->id,
+        'date'        => date('Y-m-d', strtotime($date)),
+        'start_at'    => date('Y-m-d 00:00:00', strtotime($date)),
+        'finish_at'   => date('Y-m-d 23:00:00', strtotime($date)),
+        'capacity'    => 1,
     ];
 });
 

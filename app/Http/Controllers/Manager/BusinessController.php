@@ -106,7 +106,7 @@ class BusinessController extends Controller
     public function store(BusinessFormRequest $request)
     {
         logger()->info(__METHOD__);
-        
+
         // BEGIN
 
         try {

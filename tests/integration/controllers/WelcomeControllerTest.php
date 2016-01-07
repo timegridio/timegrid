@@ -79,7 +79,7 @@ class WelcomeControllerTest extends TestCase
              ->see('Register');       // Submit button
     }
 
-    /**
+    /*
      * TODO: Re-enable test for Laravel 5.2
      *       As L5.2 disables middleware by default, it's needed to force
      *       middleware execution for this case.

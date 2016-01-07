@@ -38,7 +38,7 @@ class Business extends EloquentModel implements HasPresenter
     {
         parent::boot();
 
-        static::creating(function($business){
+        static::creating(function ($business) {
 
             $business->slug = $business->makeSlug($business->name);
 
@@ -55,11 +55,11 @@ class Business extends EloquentModel implements HasPresenter
      *
      * @param array $attributes Attributes for filling the model
      */
-#    public function __construct(array $attributes = [])
-#    {
-#        parent::__construct($attributes);
-#        $this->setSlugAttribute();
-#    }
+//    public function __construct(array $attributes = [])
+//    {
+//        parent::__construct($attributes);
+//        $this->setSlugAttribute();
+//    }
 
     ///////////////////
     // Relationships //

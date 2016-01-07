@@ -51,9 +51,9 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
      */
     public function removeBookedVacancies(Collection $vacancies)
     {
-        #$vacancies = $vacancies->reject(function ($vacancy) {
-        #    return $vacancy->isFull();
-        #});
+        //$vacancies = $vacancies->reject(function ($vacancy) {
+        //    return $vacancy->isFull();
+        //});
 
         return $vacancies;
     }
@@ -67,9 +67,9 @@ class BookingTimeslotStrategy implements BookingStrategyInterface
      */
     public function removeSelfBooked(Collection $vacancies, User $user)
     {
-        #$vacancies = $vacancies->reject(function ($vacancy) use ($user) {
-        #    return $vacancy->isHoldingAnyFor($user);
-        #});
+        //$vacancies = $vacancies->reject(function ($vacancy) use ($user) {
+        //    return $vacancy->isHoldingAnyFor($user);
+        //});
 
         return $vacancies;
     }

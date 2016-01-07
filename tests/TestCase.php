@@ -25,8 +25,8 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
     public function setupDatabase()
     {
-        # Artisan::call('migrate:reset');
-        # Artisan::call('db:seed', array('--class'=>'TestingDatabaseSeeder'));
+        // Artisan::call('migrate:reset');
+        // Artisan::call('db:seed', array('--class'=>'TestingDatabaseSeeder'));
     }
 
     public function setUp()

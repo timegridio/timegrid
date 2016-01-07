@@ -65,12 +65,12 @@ class ManagerBusinessControllerTest extends TestCase
         $this->owner = $this->createUser();
 
         $businessData = [
-            "name" => "Tosto",
-            "slug" => "tosto",
-            "category" => "1",
-            "description" => "Tosto this tosti to say",
-            "locale" => "en_US.utf8",
-            "strategy" => "dateslot",
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '1',
+            'description' => 'Tosto this tosti to say',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'dateslot',
         ];
 
         $this->assertCount(0, $this->owner->fresh()->businesses);
@@ -90,12 +90,12 @@ class ManagerBusinessControllerTest extends TestCase
         $this->owner = $this->createUser();
 
         $businessData = [
-            "name" => "Tosto",
-            "slug" => "tosto",
-            "category" => "1",
-            "description" => "Tosto this tosti to say",
-            "locale" => "en_US.utf8",
-            "strategy" => "dateslot",
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '1',
+            'description' => 'Tosto this tosti to say',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'dateslot',
         ];
 
         $this->assertCount(0, $this->owner->fresh()->businesses);

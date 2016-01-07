@@ -151,7 +151,7 @@ class ConciergeService
 
         if ($appointment->duplicates()) {
             return $appointment;
-            # throw new \Exception('Duplicated Appointment Attempted');
+            // throw new \Exception('Duplicated Appointment Attempted');
         }
 
         $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);

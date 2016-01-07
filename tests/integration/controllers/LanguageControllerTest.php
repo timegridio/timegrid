@@ -28,7 +28,7 @@ class LanguageControllerTest extends TestCase
         $this->assertResponseStatus(302);
     }
 
-    /**
+    /*
      * TODO: For some reason the custom header is not working, thus the test not
      * feasible by now.
      * 

@@ -384,4 +384,3 @@ Route::get('{slug}', [
     'as'   => 'guest.business.home',
     'uses' => 'Guest\BusinessController@getHome',
 ])->where('slug', '[^_]+.*')->middleware('web');
-

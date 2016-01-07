@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
-# use Illuminate\Contracts\Routing\Middleware;
+// use Illuminate\Contracts\Routing\Middleware;
 use Jenssegers\Agent\Agent;
 
 class Language
@@ -31,8 +31,7 @@ class Language
 
         $sessionAppLocale = session()->get('applocale', null);
 
-        if($sessionAppLocale == null)
-        {
+        if ($sessionAppLocale == null) {
             $sessionAppLocale = $this->getAgentLangOrFallback(config('app.fallback_locale'));
         }
 
@@ -40,7 +39,7 @@ class Language
 
         if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
-            logger()->info("setGlobalLocale set");
+            logger()->info('setGlobalLocale set');
 
             return $next($request);
         }
@@ -62,12 +61,12 @@ class Language
         $agentLanguages = $this->agent->languages();
         $configLanguages = config('languages');
 
-        logger()->info("Agent Languages: ".serialize($agentLanguages));
-        logger()->info("Config Languages: ".serialize($configLanguages));
+        logger()->info('Agent Languages: '.serialize($agentLanguages));
+        logger()->info('Config Languages: '.serialize($configLanguages));
 
         if ($agentPreferredLocale = $this->searchAgent($agentLanguages, $configLanguages)) {
-
             logger()->info("Agent Preferred Locale: $agentPreferredLocale");
+
             return $agentPreferredLocale;
         }
 

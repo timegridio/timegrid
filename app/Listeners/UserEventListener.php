@@ -25,7 +25,7 @@ class UserEventListener
      */
     public function onUserLogout(Logout $logout)
     {
-        logger()->info("User logged out");
+        logger()->info('User logged out');
     }
 
     /**

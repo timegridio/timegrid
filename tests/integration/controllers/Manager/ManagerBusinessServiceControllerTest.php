@@ -114,7 +114,7 @@ class ManagerBusinessServiceControllerTest extends TestCase
 
         $this->call('PUT', route('manager.business.service.update', [
             'business' => $this->business,
-            'service' => $service]),
+            'service'  => $service, ]),
             $service->toArray()
             );
 
@@ -138,7 +138,7 @@ class ManagerBusinessServiceControllerTest extends TestCase
 
         $this->call('DELETE', route('manager.business.service.destroy', [
             'business' => $this->business,
-            'service' => $service])
+            'service'  => $service, ])
             );
 
         $this->assertCount(0, $this->business->fresh()->services);

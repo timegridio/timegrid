@@ -3,12 +3,13 @@
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-#use Illuminate\Foundation\Testing\WithoutMiddleware;
+
+//use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class BookingControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    # use WithoutMiddleware;
+    // use WithoutMiddleware;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
@@ -304,7 +305,7 @@ class BookingControllerTest extends TestCase
 
         $this->contact = $this->createContact();
 
-        $this->contact->user()->associate($this->issuer);        
+        $this->contact->user()->associate($this->issuer);
 
         // And the Business provides a Service
         $this->service = $this->makeService();

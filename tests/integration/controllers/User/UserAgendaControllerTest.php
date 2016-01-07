@@ -144,8 +144,8 @@ class UserAgendaControllerTest extends TestCase
         // and the reservation details
         $this->see('You have no ongoing reservations')
              ->dontSee('Annulated');
-             #->dontSee($appointment->code)
-             #->dontSee($appointment->business->name);
+             //->dontSee($appointment->code)
+             //->dontSee($appointment->business->name);
     }
 
     /**

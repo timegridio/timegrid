@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\Business;
-use App\Models\Domain;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
