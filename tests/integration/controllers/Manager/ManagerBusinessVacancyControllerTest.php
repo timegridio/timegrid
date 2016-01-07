@@ -68,6 +68,28 @@ class ManagerBusinessVacancyControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_displays_the_vacancy_management_simple_form_with_no_services_warning()
+    {
+        $this->arrangeBusinessWithOwner();
+
+        $this->business->services()->delete();
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.create', $this->business));
+
+        $this->seePageIs($this->business->slug.'/manage/vacancy/create');
+        $this->see('Enter the appointments capacity for each service on each day');
+        $this->see('No services registered. Please register services for your business');
+        
+        $this->dontSee($this->serviceOne->name);
+        $this->dontSee($this->serviceTwo->name);
+        $this->dontSee($this->serviceThree->name);
+    }
+
+    /**
+     * @test
+     */
     public function it_displays_the_vacancy_management_advanced_form()
     {
         $this->arrangeBusinessWithOwner();
