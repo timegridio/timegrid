@@ -81,7 +81,7 @@ class ManagerBusinessVacancyControllerTest extends TestCase
         $this->seePageIs($this->business->slug.'/manage/vacancy/create');
         $this->see('Enter the appointments capacity for each service on each day');
         $this->see('No services registered. Please register services for your business');
-        
+
         $this->dontSee($this->serviceOne->name);
         $this->dontSee($this->serviceTwo->name);
         $this->dontSee($this->serviceThree->name);
