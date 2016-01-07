@@ -4,9 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f7d602a9559d31f036bcc99b5e8fa863",
-    "content-hash": "454d3606de670fb101949f8734459bde",
+    "hash": "3ad2d5eaa174a85c804eb10bd8e6ce69",
+    "content-hash": "c49e839c14036c5212e2ad2e06adc539",
     "packages": [
+        {
+            "name": "alariva/tidiochat",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alariva/tidiochat-laravel-5-package.git",
+                "reference": "d8118669dfe5f070bc98513544dcde9774f30996"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alariva/tidiochat-laravel-5-package/zipball/d8118669dfe5f070bc98513544dcde9774f30996",
+                "reference": "d8118669dfe5f070bc98513544dcde9774f30996",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/config": "~5.2",
+                "illuminate/support": "~5.2",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Alariva\\Tidiochat\\": "src\\"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Vallese",
+                    "email": "alariva@gmail.com"
+                }
+            ],
+            "description": "A minimal package for integrating TidioChat.com to your webapp",
+            "homepage": "http://xbooking.com.ar/",
+            "time": "2016-01-07 16:54:30"
+        },
         {
             "name": "anhskohbo/no-captcha",
             "version": "2.1",

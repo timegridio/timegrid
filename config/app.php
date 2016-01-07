@@ -175,6 +175,8 @@ return [
         Stevebauman\Location\LocationServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,
+
+        Alariva\Tidiochat\TidioChatServiceProvider::class,
     ],
 
     /*
@@ -264,7 +266,7 @@ return [
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         'PDF'        => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'Socialite'  => Laravel\Socialite\Facades\Socialite::class,
-        'TidioChat'  => alariva\tidiochat\TidioChatFacade::class,
+        'TidioChat'  => Alariva\Tidiochat\Facades\TidioChat::class,
         'Widget'     => Caffeinated\Widgets\Facades\Widget::class,
     ],
 
