@@ -21,19 +21,6 @@ class BusinessPolicy
     }
 
     /**
-     * Determine if the given business can be shown to the user.
-     *
-     * @param User     $user
-     * @param Business $business
-     *
-     * @return bool
-     */
-    public function show(User $user, Business $business)
-    {
-        return $user->isOwner($business);
-    }
-
-    /**
      * Determine if the given business can be updated by the user.
      *
      * @param User     $user
