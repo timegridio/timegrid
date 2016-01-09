@@ -24,7 +24,7 @@
 <a name="step3"></a>
 ## Step 3: Create the Database
 
-Once you finished the first three steps, you can create the *MySQL* database server. You must create the database with `utf-8` collation (`utf8_general_ci`), for the application to work.
+Once you finished the first two steps, you can create the *MySQL* database server. You must create the database with `utf-8` collation (`utf8_general_ci`), for the application to work.
 
 -----
 <a name="step4"></a>
