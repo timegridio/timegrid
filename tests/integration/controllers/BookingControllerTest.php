@@ -286,6 +286,25 @@ class BookingControllerTest extends TestCase
         $this->seeJson(['code' => 'OK']);
     }
 
+    //////////
+    // AJAX //
+    //////////
+
+    /**
+     * @test
+     */
+    public function it_provides_available_times_for_requested_service_date()
+    {
+        $this->arrangeFixture();
+
+        $this->actingAs($this->issuer);
+
+        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
+
+        $this->assertResponseOk();
+        $this->seeJson();
+    }
+
     /**
      * Arrange Fixture.
      *
