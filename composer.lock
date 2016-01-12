@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3ad2d5eaa174a85c804eb10bd8e6ce69",
+    "hash": "7776cb24f217387fb5af7675a0cbf888",
     "content-hash": "c49e839c14036c5212e2ad2e06adc539",
     "packages": [
         {
@@ -571,16 +571,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.2.2",
+            "version": "7.2.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64"
+                "reference": "43a2132bd4fbd5453d412d15df1504824e5a058f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64",
-                "reference": "8b64ea2ecd4080f9ce75cf688dda0c4afedb6b64",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/43a2132bd4fbd5453d412d15df1504824e5a058f",
+                "reference": "43a2132bd4fbd5453d412d15df1504824e5a058f",
                 "shasum": ""
             },
             "require": {
@@ -630,7 +630,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2015-12-15 17:24:20"
+            "time": "2016-01-08 14:15:34"
         },
         {
             "name": "guzzle/guzzle",
@@ -1465,16 +1465,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.6",
+            "version": "v5.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "b774c304ee81fcf5402fa06b261b364ba8f29cf0"
+                "reference": "26cd65eaa4bcc0fb0be381cfb7cfdcda06a3c2b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/b774c304ee81fcf5402fa06b261b364ba8f29cf0",
-                "reference": "b774c304ee81fcf5402fa06b261b364ba8f29cf0",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/26cd65eaa4bcc0fb0be381cfb7cfdcda06a3c2b4",
+                "reference": "26cd65eaa4bcc0fb0be381cfb7cfdcda06a3c2b4",
                 "shasum": ""
             },
             "require": {
@@ -1589,7 +1589,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2015-12-31 17:41:58"
+            "time": "2016-01-07 13:54:34"
         },
         {
             "name": "laravel/socialite",
@@ -2233,16 +2233,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "1.1.4",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47"
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/d762ee5b099a29044603cd4649851e81aa66cb47",
-                "reference": "d762ee5b099a29044603cd4649851e81aa66cb47",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
+                "reference": "dd8998b7c846f6909f4e7a5f67fabebfc412a4f7",
                 "shasum": ""
             },
             "require": {
@@ -2277,7 +2277,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2015-12-10 14:48:13"
+            "time": "2016-01-06 13:31:20"
         },
         {
             "name": "patricktalmadge/bootstrapper",
@@ -3800,16 +3800,16 @@
         },
         {
             "name": "caouecs/laravel4-lang",
-            "version": "2.0.28",
+            "version": "2.0.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "46e4754a0ff40c0d7ebd9bf7dc1d23cb407f440d"
+                "reference": "b4bf844b3f78cc6be63f35c8aeeaaa075cb17bc7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/46e4754a0ff40c0d7ebd9bf7dc1d23cb407f440d",
-                "reference": "46e4754a0ff40c0d7ebd9bf7dc1d23cb407f440d",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/b4bf844b3f78cc6be63f35c8aeeaaa075cb17bc7",
+                "reference": "b4bf844b3f78cc6be63f35c8aeeaaa075cb17bc7",
                 "shasum": ""
             },
             "require-dev": {
@@ -3836,7 +3836,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2015-11-27 13:53:54"
+            "time": "2016-01-11 07:08:20"
         },
         {
             "name": "codeclimate/php-test-reporter",
