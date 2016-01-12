@@ -167,7 +167,7 @@ class AgendaController extends Controller
     /**
      * Sanitize Date String.
      *
-     * @param  string $dateString
+     * @param string $dateString
      *
      * @return Carbon\Carbon
      */
