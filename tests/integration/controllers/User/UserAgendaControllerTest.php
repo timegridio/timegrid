@@ -75,7 +75,7 @@ class UserAgendaControllerTest extends TestCase
 
         $appointment = $this->makeAppointment($business, $user, $contact, [
             'status'   => Appointment::STATUS_SERVED,
-            'start_at' => Carbon::now()->subDays(5)
+            'start_at' => Carbon::now()->subDays(5),
             ]);
         $appointment->service()->associate($service);
         $appointment->save();
