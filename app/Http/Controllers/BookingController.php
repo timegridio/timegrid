@@ -89,6 +89,19 @@ class BookingController extends Controller
         return response()->json(['code' => 'OK', 'html' => $html]);
     }
 
+    //////////
+    // AJAX //
+    //////////
+
+    /**
+     * Get available times.
+     *
+     * @param  int $businessId
+     * @param  int $serviceId
+     * @param  string $date
+     *
+     * @return Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function getTimes($businessId, $serviceId, $date)
     {
         logger()->info(__METHOD__);
