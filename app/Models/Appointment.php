@@ -560,22 +560,6 @@ class Appointment extends EloquentModel implements HasPresenter
             });
     }
 
-    /////////////
-    // Sorting //
-    /////////////
-
-    /**
-     * Sort oldest first.
-     *
-     * @param Illuminate\Database\Query $query
-     *
-     * @return Illuminate\Database\Query
-     */
-    public function scopeOldest($query)
-    {
-        return $query->orderBy('start_at', 'ASC');
-    }
-
     //////////////////////////
     // Soft Status Checkers //
     //////////////////////////
