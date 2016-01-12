@@ -67,6 +67,39 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_shows_reservations_list_omitting_archived_appointments()
+    {
+        $owner = $this->createUser();
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $business = $this->createBusiness(['name' => 'tosto this tosti']);
+        $business->owners()->save($owner);
+
+        $contact = $this->makeContact($user);
+
+        $business->contacts()->save($contact);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $appointment = $this->makeAppointment($business, $user, $contact, [
+            'status'   => Appointment::STATUS_SERVED,
+            'start_at' => Carbon::now()->subDays(5)
+            ]);
+        $appointment->service()->associate($service);
+        $appointment->save();
+
+        $this->visit('/')->click('My Reservations');
+
+        $this->dontSee('Reserved')
+             ->dontSee($appointment->code)
+             ->dontSee($appointment->business->name);
+    }
+
+    /**
+     * @test
+     */
     public function it_shows_reservations_list_with_an_annulated_appointment()
     {
         // Given I am an authenticated user
