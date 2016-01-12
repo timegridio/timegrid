@@ -76,13 +76,21 @@ class AgendaController extends Controller
             return redirect()->route('user.businesses.home', compact('business'));
         }
 
+        $startFromDate = $this->sanitizeDate($date);
+
+        if ($startFromDate->isPast()) {
+            $startFromDate = $this->sanitizeDate('today');
+        }
+
         $includeToday = $business->pref('appointment_take_today');
 
-        $startFromDate = $this->sanitizeDate($date, $includeToday);
+        if ($startFromDate->isToday() && !$includeToday) {
+            $startFromDate = $this->sanitizeDate('tomorrow');
+        }
 
         $this->concierge->setBusiness($business);
 
-        $availability = $this->concierge->getVacancies(auth()->user(), $startFromDate, $days);
+        $availability = $this->concierge->getVacancies(auth()->user(), $startFromDate->toDateString(), $days);
 
         return view(
             'user.appointments.'.$business->strategy.'.book',
@@ -156,18 +164,22 @@ class AgendaController extends Controller
     // HELPERS //
     /////////////
 
-    protected function sanitizeDate($dateString, $includeToday)
+    /**
+     * Sanitize Date String.
+     *
+     * @param  string $dateString
+     *
+     * @return Carbon\Carbon
+     */
+    protected function sanitizeDate($dateString)
     {
         try {
             $date = Carbon::parse($dateString);
-        } catch (Exception $e) {
-            return 'tomorrow';
+        } catch (\Exception $e) {
+            logger()->warning('Unexpected date string: '.$dateString);
+            $date = Carbon::now();
         }
 
-        if ($date->isPast() && !$includeToday) {
-            return 'tomorrow';
-        }
-
-        return $date->toDateString();
+        return $date;
     }
 }
