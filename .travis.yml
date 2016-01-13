@@ -5,13 +5,15 @@ php:
   - 5.6
   - '7'
 
+install:
+  - composer self-update
+
 before_script:
   - cp .env.travis .env
   - cp travis.phpunit.xml phpunit.xml
   - mkdir /tmp/timegrid
   - mysql -e 'create database test_timegrid;'
-  - composer self-update
-  - composer install --no-interaction
+  - composer install --dev --no-interaction
   - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
@@ -21,4 +23,4 @@ script:
   - vendor/bin/phpunit
 
 after_script:
-  - ./travis-codeclimate-report.sh
+  - php vendor/bin/test-reporter
