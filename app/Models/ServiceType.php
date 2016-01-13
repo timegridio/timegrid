@@ -11,7 +11,7 @@ class ServiceType extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'business_id'];
 
     /**
      * The attributes that aren't mass assignable.
@@ -28,6 +28,16 @@ class ServiceType extends Model
     public function services()
     {
         return $this->hasMany('App\Models\Service');
+    }
+
+    /**
+     * Belongs to Business.
+     *
+     * @return Illuminate\Database\Query Relationship
+     */
+    public function business()
+    {
+        return $this->belongsTo('App\Models\Business');
     }
 
     /**

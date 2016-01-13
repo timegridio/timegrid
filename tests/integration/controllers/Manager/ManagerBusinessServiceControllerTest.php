@@ -7,7 +7,7 @@ class ManagerBusinessServiceControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
-    use CreateBusiness, CreateUser, CreateService;
+    use CreateBusiness, CreateUser, CreateService, CreateServiceType;
 
     /**
      * @var App\Models\Business
@@ -42,7 +42,7 @@ class ManagerBusinessServiceControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_stores_a_new_business_service()
+    public function it_stores_a_new_business_service_without_type_id()
     {
         $this->arrangeBusinessWithOwner();
 
@@ -51,6 +51,32 @@ class ManagerBusinessServiceControllerTest extends TestCase
         $this->actingAs($this->owner);
 
         $this->call('POST', route('manager.business.service.store', $this->business), $service->toArray());
+
+        $this->assertCount(1, $this->business->fresh()->services);
+    }
+
+    /**
+     * @test
+     */
+    public function it_stores_a_new_business_service_with_type_id()
+    {
+        $this->arrangeBusinessWithOwner();
+
+        $service = $this->makeService();
+
+        $serviceType = $this->makeServiceType();
+
+        $serviceType->business()->associate($this->business);
+
+        $serviceType->save();
+
+        $this->actingAs($this->owner);
+
+        $input = $service->toArray();
+
+        $input['type_id'] = $serviceType->id;
+
+        $this->call('POST', route('manager.business.service.store', $this->business), $input);
 
         $this->assertCount(1, $this->business->fresh()->services);
     }
@@ -116,6 +142,40 @@ class ManagerBusinessServiceControllerTest extends TestCase
             'business' => $this->business,
             'service'  => $service, ]),
             $service->toArray()
+            );
+
+        $this->assertEquals($service->name, $this->business->fresh()->services()->whereId($service->id)->first()->name);
+    }
+
+    /**
+     * @test
+     */
+    public function it_updates_the_business_service_with_type_id()
+    {
+        $this->arrangeBusinessWithOwner();
+
+        $service = $this->makeService();
+
+        $serviceType = $this->makeServiceType();
+
+        $serviceType->business()->associate($this->business);
+
+        $serviceType->save();
+
+        $this->business->services()->save($service);
+
+        $this->actingAs($this->owner);
+
+        $service->name = 'New Name';
+
+        $input = $service->toArray();
+
+        $input['type_id'] = $serviceType->id;
+
+        $this->call('PUT', route('manager.business.service.update', [
+            'business' => $this->business,
+            'service'  => $service, ]),
+            $input
             );
 
         $this->assertEquals($service->name, $this->business->fresh()->services()->whereId($service->id)->first()->name);

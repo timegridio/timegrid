@@ -65,6 +65,18 @@ $factory->define('App\Models\Business', function (Faker\Generator $faker) {
     ];
 });
 
+//////////////////
+// Service Type //
+//////////////////
+
+$factory->define('App\Models\ServiceType', function (Faker\Generator $faker) {
+    return [
+        'business_id' => factory(App\Models\Business::class)->create()->id,
+        'name'        => $faker->sentence(3),
+        'description' => $faker->paragraph,
+    ];
+});
+
 /////////////
 // Service //
 /////////////
