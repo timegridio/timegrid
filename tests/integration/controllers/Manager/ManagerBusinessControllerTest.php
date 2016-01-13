@@ -85,6 +85,77 @@ class ManagerBusinessControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_prevents_a_duplicated_business_registration()
+    {
+        $this->owner = $this->createUser();
+
+        $businessData = [
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '1',
+            'description' => 'Tosto this tosti to say',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'dateslot',
+        ];
+
+        $this->assertCount(0, $this->owner->fresh()->businesses);
+
+        $this->actingAs($this->owner);
+
+        $this->call('POST', route('manager.business.store'), $businessData);
+
+        $this->assertCount(1, $this->owner->fresh()->businesses);
+
+        $this->call('POST', route('manager.business.store'), $businessData);
+
+        $this->assertCount(1, $this->owner->fresh()->businesses);
+    }
+
+    /**
+     * @test
+     */
+    public function it_prevents_registering_an_existing_business_slug()
+    {
+        $ownerOne = $this->createUser();
+
+        $ownerTwo = $this->createUser();
+
+        $businessDataOne = [
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '1',
+            'description' => 'Tosto this tosti to say',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'dateslot',
+        ];
+
+        $businessDataTwo = [
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '2',
+            'description' => 'This some other business',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'timeslot',
+        ];
+
+        $this->assertCount(0, $ownerOne->fresh()->businesses);
+
+        $this->actingAs($ownerOne);
+
+        $this->call('POST', route('manager.business.store'), $businessDataOne);
+
+        $this->assertCount(1, $ownerOne->fresh()->businesses);
+
+        $this->actingAs($ownerTwo);
+
+        $this->call('POST', route('manager.business.store'), $businessDataTwo);
+
+        $this->assertCount(0, $ownerTwo->fresh()->businesses);
+    }
+
+    /**
+     * @test
+     */
     public function it_prevents_storing_a_duplicated_business_registration()
     {
         $this->owner = $this->createUser();
