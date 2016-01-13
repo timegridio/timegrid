@@ -211,6 +211,10 @@ class VacancyService
             $service = Service::where('slug', $serviceSlug)->get()->first();
 
             if ($service === null) {
+
+                //  Invalid services are skipped to avoid user frustration.
+                //  TODO: Still, a user-level WARNING should be raised with no fatal error
+
                 continue;
             }
 

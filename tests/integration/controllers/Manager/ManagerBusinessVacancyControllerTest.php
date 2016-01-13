@@ -173,6 +173,41 @@ EOD;
     /**
      * @test
      */
+    public function it_updates_the_vacancy_in_advanced_mode_and_omits_invalid_services()
+    {
+        $this->arrangeBusinessWithOwner();
+        $serviceFour = $this->createService();
+        $serviceFive = $this->createService();
+        $serviceSix = $this->createService();
+
+        $this->business->services()->save($serviceFour);
+        $this->business->services()->save($serviceFive);
+        $this->business->services()->save($serviceSix);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.create', $this->business));
+
+        $vacanciesCountBeforeUpdate = $this->business->vacancies->count();
+
+        $newCapacity = 2;
+
+        $sheet =
+<<<EOD
+{$serviceFour->slug}:$newCapacity, anInvalidService:1
+ mon, tue, thu
+  9 - 14, 15:30 - 18:30
+EOD;
+        $this->type($sheet, 'vacancies');
+
+        $this->press('Update');
+
+        $this->assertCount($vacanciesCountBeforeUpdate + 6, $this->business->fresh()->vacancies);
+    }
+
+    /**
+     * @test
+     */
     public function it_displays_the_vacancy_management_table_on_timeslot()
     {
         $this->arrangeBusinessWithOwner();
