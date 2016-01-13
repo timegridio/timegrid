@@ -250,6 +250,9 @@ class UserAgendaControllerTest extends TestCase
              ->see('Confirm');
     }
 
+    /**
+     * @test
+     */
     public function it_queries_vacancies_forcing_from_tomorrow()
     {
         $owner = $this->createUser();
@@ -268,6 +271,35 @@ class UserAgendaControllerTest extends TestCase
         $business->services()->save($service);
 
         $this->visit(route('user.booking.book', ['business' => $business, 'date' => 'today']));
+
+        $this->see(Carbon::parse('tomorrow')->formatLocalized('%A %d %B'));
+
+        $this->see('Select a service to reserve')
+             ->see($service->name)
+             ->see('Confirm');
+    }
+
+    /**
+     * @test
+     */
+    public function it_queries_vacancies_skipping_invalid_date_parameter()
+    {
+        $owner = $this->createUser();
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $business = $this->createBusiness();
+        $business->owners()->save($owner);
+
+        $business->pref('appointment_take_today', false);
+
+        $contact = $this->makeContact($user);
+        $business->contacts()->save($contact);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $this->visit(route('user.booking.book', ['business' => $business, 'date' => 'an invalid date string']));
 
         $this->see(Carbon::parse('tomorrow')->formatLocalized('%A %d %B'));
 
