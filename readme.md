@@ -83,6 +83,7 @@ I'm open to help out! Just [drop me your feedback](https://timegrid.slack.com/me
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
   * [Jose V Herrera](https://github.com/josevh) for contributions
+  * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
 
 ### License
 
