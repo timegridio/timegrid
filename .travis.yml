@@ -16,10 +16,9 @@ before_script:
   - php artisan migrate
   - php artisan db:seed
   - php artisan geoip:update
-  - php artisan serve &
 
 script:
   - vendor/bin/phpunit
 
 after_script:
-  - vendor/bin/test-reporter
+  - ./travis-codeclimate-report.sh
