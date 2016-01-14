@@ -1,7 +1,7 @@
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ trans('app.nav.user.business.menu') }} <b class="caret"></b></a>
     <ul class="dropdown-menu">
-    @if($business = session()->get('selected.business'))
+    @if($business)
         <li>
             <a href="{{ route('user.businesses.home', compact('business')) }}">{!! Icon::map_marker() !!}&nbsp;{{ $business->name }}</a>
         </li>

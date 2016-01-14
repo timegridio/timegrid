@@ -16,6 +16,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             '_navi18n', 'App\Http\ViewComposers\NavLanguageComposer'
         );
+
+        view()->composer(
+            ['user._navmenu', 'manager._navmenu'], 'App\Http\ViewComposers\NavComposer'
+        );
     }
 
     /**
