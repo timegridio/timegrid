@@ -11,8 +11,8 @@ timegrid
 [![Code Climate](https://codeclimate.com/github/alariva/timegrid/badges/gpa.svg)](https://codeclimate.com/github/alariva/timegrid)
 [![Test Coverage](https://codeclimate.com/github/alariva/timegrid/badges/coverage.svg)](https://codeclimate.com/github/alariva/timegrid/coverage)
 [![StyleCI](https://styleci.io/repos/45974720/shield)](https://styleci.io/repos/45974720)
-[![Current Stable](https://img.shields.io/badge/stable-3.6.0-green.svg?style=flat-square)](http://timegrid.io/)
-[![Current Beta](https://img.shields.io/badge/dev--beta-4.0--dev-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Current Stable](https://img.shields.io/badge/beta--stable-4.1.0-green.svg?style=flat-square)](http://timegrid.io/)
+[![Current Beta](https://img.shields.io/badge/dev--alpha-4.x-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
 **The problem**
@@ -21,7 +21,7 @@ Small and medium scale businesses wish to provide online service booking for the
 
 **The Solution**
 
-Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. Like a **CRM**, but *Simple*, *Useful*, and *Fast*.
+Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. *Simple*, *Useful*, and *Fast*.
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
@@ -53,6 +53,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
     * Availability management
     * Items Search
   * Service Reservation
+  * Email reports
 
 ### Coming Soon
 
