@@ -32,11 +32,8 @@
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
     <filter>
-      <whitelist processUncoveredFilesFromWhitelist="true">
+      <whitelist>
         <directory suffix=".php">app/</directory>
-        <directory suffix=".php">database/migrations/</directory>
-        <directory suffix=".php">bootstrap/</directory>
-        <directory suffix=".php">config/</directory>
         <exclude>
           <directory suffix=".js">public/</directory>
         </exclude>

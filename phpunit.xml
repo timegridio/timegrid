@@ -7,13 +7,13 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
+         stopOnFailure="true"
          syntaxCheck="false">
-<!--
+
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
     </logging>
--->
+
     <testsuites>
         <testsuite name="Application Test Suite">
             <directory>./tests/unit/</directory>
@@ -34,9 +34,6 @@
     <filter>
       <whitelist processUncoveredFilesFromWhitelist="true">
         <directory suffix=".php">app/</directory>
-        <directory suffix=".php">database/migrations/</directory>
-        <directory suffix=".php">bootstrap/</directory>
-        <directory suffix=".php">config/</directory>
         <exclude>
           <directory suffix=".js">public/</directory>
         </exclude>
