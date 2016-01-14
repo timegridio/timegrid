@@ -95,9 +95,9 @@ class BookingController extends Controller
     /**
      * Get available times.
      *
-     * @param  int $businessId
-     * @param  int $serviceId
-     * @param  string $date
+     * @param int    $businessId
+     * @param int    $serviceId
+     * @param string $date
      *
      * @return Symfony\Component\HttpFoundation\JsonResponse
      */
