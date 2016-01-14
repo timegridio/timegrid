@@ -47,7 +47,11 @@ class WizardController extends Controller
 
         $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
 
-        return view('user.dashboard', ['appointments' => $appointments]);
+        $appointmentsCount = $appointments->count();
+
+        $subscriptionsCount = auth()->user()->contacts->count();
+
+        return view('user.dashboard', compact('appointments', 'appointmentsCount', 'subscriptionsCount'));
     }
 
     /**

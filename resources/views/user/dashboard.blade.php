@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
 
-    @if($appointmentsCount = $appointments->count() > 0)
+    @if($appointmentsCount > 0)
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail panel">
                 <img src="{{asset('img/jumbo/do.png')}}" alt="">
@@ -14,13 +14,14 @@
                     {!! Button::info(trans('user.dashboard.card.agenda.button'))
                         ->large()
                         ->block()
-                        ->asLinkTo( route('user.agenda') ) !!}
+                        ->asLinkTo(route('user.agenda'))
+                        !!}
                 </div>
             </div>
         </div>
     @endif
 
-    @if($subscriptionsCount = $user->contacts->count() > 0)
+    @if($subscriptionsCount > 0)
         <div class="col-md-3 col-sm-6 hero-feature">
             <div class="thumbnail panel">
                 <img src="{{asset('img/jumbo/contact.png')}}" alt="">
@@ -30,7 +31,8 @@
                     {!! Button::info(trans('user.dashboard.card.subscriptions.button'))
                         ->large()
                         ->block()
-                        ->asLinkTo( route('user.subscriptions') )!!}
+                        ->asLinkTo(route('user.subscriptions'))
+                        !!}
                 </div>
             </div>
         </div>
@@ -46,7 +48,8 @@
                     {!! Button::info(trans('user.dashboard.card.directory.button'))
                         ->large()
                         ->block()
-                        ->asLinkTo( route('user.directory.list') )!!}
+                        ->asLinkTo(route('user.directory.list'))
+                        !!}
                 </div>
             </div>
         </div>
