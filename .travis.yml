@@ -19,8 +19,5 @@ before_script:
   - php artisan db:seed
   - php artisan geoip:update
 
-script:
-  - ./vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-
-after_script:
-  - ./vendor/bin/test-reporter
+after_success:
+  - ./travis-codeclimate-report.sh
