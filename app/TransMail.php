@@ -17,6 +17,13 @@ class TransMail
     protected $locale = 'en_US.utf8';
 
     /**
+     * Locale Switch Function name.
+     *
+     * @var string
+     */
+    protected $localeSwitchFunction = 'setGlobalLocale';
+
+    /**
      * @var string
      */
     protected $revertLocale = 'en_US.utf8';
@@ -48,7 +55,7 @@ class TransMail
 
     /**
      * Construct the class.
-     * 
+     *
      * @param Mail|null $mail
      */
     public function __construct(Mail $mail = null)
@@ -56,6 +63,20 @@ class TransMail
         $this->mail = $mail ?: new Mail();
 
         $this->locale();
+    }
+
+    /**
+     * Use switch locale function name.
+     *
+     * @param  string $functionName
+     *
+     * @return $this
+     */
+    public function useFunction($functionName)
+    {
+        $this->localeSwitchFunction = $functionName;
+
+        return $this;
     }
 
     /**
@@ -142,21 +163,20 @@ class TransMail
      */
     protected function switchLocale($posixLocale)
     {
-        if (function_exists('setGlobalLocale')) {
-            setGlobalLocale($posixLocale);
+        if (function_exists($this->localeSwitchFunction)) {
+            call_user_func($this->localeSwitchFunction, $posixLocale);
 
-            return;
+            return $this;
         }
-        // @codeCoverageIgnoreStart
-        app()->setLocale($posixLocale);
-        // @codeCoverageIgnoreEnd
+
+        return false;
     }
 
     /**
      * Build and get the view path key.
      *
      * @throws Exception 'Email view does not exist'
-     * 
+     *
      * @return string
      */
     protected function getViewKey()

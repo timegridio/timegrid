@@ -24,13 +24,18 @@ class TransMailTest extends TestCase
      */
     protected $params = [];
 
+    public function setUp()
+    {
+        parent::setUp();
+
+        $this->arrangeScenario();
+    }
+
     /**
      * @test
      */
     public function it_sends_a_localized_email()
     {
-        $this->arrangeScenario();
-
         $this->mail->shouldReceive('send');
 
         $this->transmail->locale('en_US.utf8')
@@ -45,8 +50,6 @@ class TransMailTest extends TestCase
      */
     public function it_throws_exception_on_unexisting_view()
     {
-        $this->arrangeScenario();
-
         $this->transmail->locale('en_US.utf8')
                         ->template('!!!UNEXISTING!!!')
                         ->subject('welcome')
@@ -61,7 +64,7 @@ class TransMailTest extends TestCase
     {
         $this->mail = new Mail();
 
-        $this->transmail = Mockery::mock(new TransMail($this->mail));
+        $this->transmail = new TransMail($this->mail);
 
         $this->header = [
             'email' => 'test@example.org',
@@ -70,7 +73,7 @@ class TransMailTest extends TestCase
 
         $this->params = [
             'example_field_one' => 'beer anytime you damn well, please',
-            'example_field_two' => 'I am your father',
+            'example_field_two' => 'Luke, I am your father',
         ];
     }
 }
