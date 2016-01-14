@@ -5,10 +5,14 @@
 
     {!! Alert::info(trans('manager.businesses.msg.register', ['plan' => trans($plan)])) !!}
 
-
     <div class="panel panel-default">
 
-        <div class="panel-heading">{{ trans('manager.businesses.create.title') }}</div>
+        <div class="panel-heading">
+        {{ trans('manager.businesses.create.title') }}
+            <span class="bizurl pull-right">
+                <span>{{ url('/') }}/</span><span id="slug"></span>
+            </span>
+        </div>
 
         <div class="panel-body">
             @include('_errors')

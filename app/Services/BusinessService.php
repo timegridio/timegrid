@@ -24,7 +24,11 @@ class BusinessService
      */
     public function register(User $user, $data, $category)
     {
-        if (false === $business = self::getExisting($user, $data['slug'])) {
+        $slug = str_slug($data['name']);
+
+        $business = self::getExisting($user, $slug);
+
+        if (false === $business) {
             $business = new Business($data);
 
             $category = Category::find($category);

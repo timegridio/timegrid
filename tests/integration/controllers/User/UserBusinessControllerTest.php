@@ -167,7 +167,6 @@ class UserBusinessControllerTest extends TestCase
 
         // And I fill in the fields and submit
         $this->type($business->name, 'name')
-             ->type($business->slug, 'slug')
              ->type($business->description, 'description')
              ->press('Register');
 

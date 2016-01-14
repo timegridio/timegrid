@@ -4,6 +4,14 @@
 <style type="text/css">
   .iti-flag {background-image: url("/img/intlTelInput/flags.png");}
   .intl-tel-input {width: 100%;}
+
+.bizurl:hover {
+    color: #444;
+}
+.bizurl {
+    font-family: monospace;
+    color: #666;
+}
 </style>
 @endsection
 
@@ -15,7 +23,7 @@
 --}}
 
 <div class="row">
-    <div class="form-group col-sm-3">
+    <div class="form-group col-sm-6">
         {!! Form::label( trans('manager.businesses.form.name.label') ) !!}
         {!! Form::text('name', null, [
             'required',
@@ -26,18 +34,6 @@
             'oninput' => 'this.setCustomValidity("")'
             ]) !!}
         <div class="help-block with-errors"></div>
-    </div>
-    <div class="form-group col-sm-3">
-        {!! Form::label( trans('manager.businesses.form.slug.label') ) !!}
-        {!! Form::text('slug', null, [
-            'required',
-            'readonly' => 'true',
-            'id' => 'slug',
-            'class' => 'form-control',
-            'placeholder'=> trans('manager.businesses.form.slug.placeholder'),
-            'oninvalid' => 'this.setCustomValidity( "'.trans('manager.businesses.form.slug.validation').'" )',
-            'oninput' => 'this.setCustomValidity("")' 
-            ]) !!}
     </div>
     <div class="form-group col-sm-3">
         {!! Form::label( trans('manager.businesses.form.timezone.label') ) !!}<br>
