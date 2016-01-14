@@ -20,7 +20,7 @@ before_script:
   - php artisan geoip:update
 
 script:
-  - vendor/bin/phpunit
+  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_script:
   - php vendor/bin/test-reporter
