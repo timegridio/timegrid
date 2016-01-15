@@ -4,10 +4,21 @@
 #  This script is intended to be run by TravisCI only #
 #######################################################
 
-echo "Submitting CodeClimate report"
+echo "Submitting Test Coverage Report to CodeClimate..."
 
-php vendor/bin/test-reporter --stdout > codeclimate.json
+BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
-curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
+# Only publish coverage to CodeClimate if the current branch is Master branch
 
-echo Finish with status $?
+if [ "$BRANCH" == "master" ]
+then
+
+    php vendor/bin/test-reporter --stdout > codeclimate.json
+
+    curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
+
+    echo Finish with status $?
+
+else
+    echo "Not in Master branch. Will not publish coverage.\n\n"
+fi
