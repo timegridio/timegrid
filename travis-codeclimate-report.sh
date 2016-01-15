@@ -6,19 +6,18 @@
 
 echo "Submitting Test Coverage Report to CodeClimate..."
 
-BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+## Should only be called for Master branch
 
-# Only publish coverage to CodeClimate if the current branch is Master branch
+## Method I
 
-if [ "$BRANCH" = "master" ]
-then
+php vendor/bin/test-reporter
 
-    php vendor/bin/test-reporter --stdout > codeclimate.json
+## Method II
 
-    curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
+# php vendor/bin/test-reporter --stdout > codeclimate.json
 
-    echo Finish with status $?
+# curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports
 
-else
-    echo "Not in Master branch. Will not publish coverage.\n\n"
-fi
+## Finish
+
+echo Finish with status $?

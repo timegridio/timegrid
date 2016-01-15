@@ -18,5 +18,8 @@ before_script:
   - php artisan db:seed
   - php artisan geoip:update
 
-after_success:
-  - ./travis-codeclimate-report.sh
+deploy:
+  provider: script
+  script: ./travis-codeclimate-report.sh
+  on:
+    branch: master
