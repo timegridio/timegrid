@@ -68,7 +68,7 @@ class TransMail
     /**
      * Use switch locale function name.
      *
-     * @param  string $functionName
+     * @param string $functionName
      *
      * @return $this
      */

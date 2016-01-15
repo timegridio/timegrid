@@ -48,4 +48,18 @@ class UserLoginTest extends TestCase
 
         $this->see('These credentials do not match our records');
     }
+
+    /**
+     * @test
+     */
+    public function it_requests_login_when_attempting_to_access_a_protected_page()
+    {
+        $this->visit(route('user.agenda'));
+
+        $this->seePageIs('/auth/login');
+        
+        $this->see('Login');
+        $this->see('Password');
+        $this->see('Remember me');
+    }
 }
