@@ -10,7 +10,7 @@ BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 
 # Only publish coverage to CodeClimate if the current branch is Master branch
 
-if [ "$BRANCH" == "master" ]
+if [ "$BRANCH" = "master" ]
 then
 
     php vendor/bin/test-reporter --stdout > codeclimate.json
