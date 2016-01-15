@@ -15,7 +15,7 @@
 // AJAX CALLS //
 ////////////////
 
-Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
 
     // TODO: 'booking' should be moved out of api into the proper group.
     Route::post('booking', [
@@ -68,7 +68,7 @@ Route::group(
 // REGULAR AUTH //
 //////////////////
 
-Route::group(['prefix' => 'auth', 'middleware' => 'web'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth'], function () {
     Route::auth();
 });
 
@@ -76,7 +76,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'web'], function () {
 // GUEST CONTEXT //
 ///////////////////
 
-Route::group(['middleware' => 'web'], function () {
+Route::group(['middleware' => 'web', 'auth'], function () {
 
     ///////////////////////////
     // PRIVATE HOME / WIZARD //
@@ -112,7 +112,7 @@ Route::group(['middleware' => 'web'], function () {
 // USER CONTEXT //
 //////////////////
 
-Route::group(['prefix' => 'user', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
 
     Route::get('agenda', [
         'as'   => 'user.agenda',
@@ -167,7 +167,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web']], function () {
 // SELECTED BUSINESS SLUG CONTEXT //
 ////////////////////////////////////
 
-Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
+Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], function () {
 
     ///////////////////////////
     // BUSINESS USER CONTEXT //
