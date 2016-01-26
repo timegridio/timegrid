@@ -62,7 +62,7 @@ class SendRootReport extends Command
             'email' => config('root.report.to_mail'),
         ];
         $this->transmail->template('root.report')
-                        ->subject('root.report')
+                        ->subject('root.report.exceptions_subject')
                         ->send($header, $params);
     }
 }
