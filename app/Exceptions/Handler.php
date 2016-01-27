@@ -61,6 +61,10 @@ class Handler extends ExceptionHandler
                 return redirect($request->fullUrl())->withErrors(trans('app.msg.invalid_token'));
             }
 
+            if ($exception instanceof \Illuminate\Http\Exception\HttpResponseException) {
+                return redirect(route('user.directory.list'))->withErrors(trans('app.msg.invalid_url'));
+            }
+
             // Catch General exceptios to show a friendly error message
             if ($exception instanceof Exception) {
                 return redirect(route('user.dashboard'))->withErrors(trans('app.msg.general_exception'));

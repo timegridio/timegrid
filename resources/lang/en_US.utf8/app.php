@@ -60,6 +60,7 @@ return  [
   'msg' => [
     'invalid_token'     => 'We found some validation problems, please submit your form again.',
     'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
+    'invalid_url'       => 'The link you try to access does not exist, try browsing the directory.',
   ],
   'name'          => 'timegrid.io',
   'notifications' => [
