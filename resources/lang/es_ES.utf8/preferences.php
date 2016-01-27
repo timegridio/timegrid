@@ -1,9 +1,10 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:50:54 
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
-return  [
+return [
+  //==================================== Translations ====================================//
   'App\\Models\\Business' => [
     'appointment_annulation_pre_hs' => [
       'format' => 'Cantida de horas',
@@ -19,11 +20,6 @@ return  [
       'format' => 'Cantidad de horas',
       'help'   => 'Permitir que se tomen citas en el mismo día',
       'label'  => 'Recibir citas en el día',
-    ],
-    'appointment_flexible_arrival' => [
-      'format' => 'Si/No',
-      'help'   => 'Permitir a los clientes llegar entre los horarios de atención',
-      'label'  => 'Horario de Llegada Flexible',
     ],
     'show_map' => [
       'format' => 'Si/No',
@@ -45,6 +41,16 @@ return  [
       'help'   => 'Horario en que comienzas a recibir citas',
       'label'  => 'Hora de Apertura',
     ],
+    'annulation_policy_advice' => [
+      'format' => 'ejemplo: Podrás anular la cita sin cargo hasta el %s',
+      'help'   => 'Escribe un breve texto de tu política de anulación de citas',
+      'label'  => 'Política de Anulación de Citas',
+    ],
+    'appointment_flexible_arrival' => [
+      'format' => 'Si/No',
+      'help'   => 'Permitir a los clientes llegar entre los horarios de atención',
+      'label'  => 'Horario de Llegada Flexible',
+    ],
     'finish_at' => [
       'format' => 'hh:mm:ss',
       'help'   => 'Horario en que no recibes más citas',
@@ -55,11 +61,6 @@ return  [
       'help'   => 'La duración por defecto de tus servicios',
       'label'  => 'Duración Predeterminada de Servicios (minutos)',
     ],
-    'annulation_policy_advice' => [
-      'format' => 'ejemplo: Podrás anular la cita sin cargo hasta el %s',
-      'help'   => 'Escribe un breve texto de tu política de anulación de citas',
-      'label'  => 'Política de Anulación de Citas',
-    ],
   ],
   'controls' => [
     'select' => [
@@ -67,4 +68,5 @@ return  [
       'yes' => 'Sí',
     ],
   ],
+  //================================== Obsolete strings ==================================//
 ];

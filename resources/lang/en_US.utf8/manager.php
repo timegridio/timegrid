@@ -1,30 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
-return  [
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
-  'service' => [
-    'form' => [
-      'duration' => [
-        'label' => 'Duration in minutes',
-      ],
-      'name' => [
-        'label' => 'Service name',
-      ],
-    ],
-    'btn' => [
-      'delete' => 'Delete',
-      'update' => 'Update',
-    ],
-    'msg' => [
-      'store' => [
-        'success' => 'Service stored successfully!',
-      ],
-    ],
-  ],
+return [
   //==================================== Translations ====================================//
   'business' => [
     'btn' => [
@@ -74,9 +53,9 @@ return  [
         'title_appointments_today'     => 'Today',
         'title_appointments_tomorrow'  => 'Tomorrow',
         'title_appointments_total'     => 'Total Appointments',
-        'title_total'                  => 'Total',
         'title_contacts_active'        => 'Contacts Subscribed',
         'title_contacts_registered'    => 'Contacts Registered',
+        'title_total'                  => 'Total',
       ],
     ],
     'edit' => [
@@ -103,17 +82,17 @@ return  [
         'label'       => 'Postal Address',
         'placeholder' => 'street name and number, area, city, country',
       ],
-      'slug' => [
-        'label'       => 'Alias',
-        'placeholder' => 'this will be your timegrid URL',
-        'validation'  => 'An alias is required',
-      ],
       'social_facebook' => [
         'label'       => 'Your Facebook Page URL',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ],
       'timezone' => [
         'label' => 'TimeZone',
+      ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'this will be your timegrid URL',
+        'validation'  => 'An alias is required',
       ],
     ],
     'index' => [
@@ -168,9 +147,6 @@ return  [
       'birthdate' => [
         'label' => 'Birthdate',
       ],
-      'data' => [
-        'label' => 'CSV data',
-      ],
       'description' => [
         'label' => 'Description',
       ],
@@ -202,18 +178,25 @@ return  [
       'notes' => [
         'label' => 'Notes',
       ],
+      'postal_address' => [
+        'label'      => 'TODO: label',
+        'validation' => 'TODO: validation',
+      ],
       'prerequisites' => [
         'label' => 'Prerequisites',
+      ],
+      'data' => [
+        'label' => 'CSV data',
       ],
     ],
     'label' => [
       'birthdate'      => 'Birthdate',
       'email'          => 'Email',
       'member_since'   => 'Subscribed since',
-      'postal_address' => 'Postal Address',
       'mobile'         => 'Mobile',
       'nin'            => 'ID',
       'notes'          => 'Notes',
+      'postal_address' => 'Postal Address',
     ],
     'list' => [
       'btn' => [
@@ -224,8 +207,8 @@ return  [
         'firstname' => 'Name',
         'lastname'  => 'Lastname',
         'mobile'    => 'Mobile',
-        'quality'   => 'Score',
         'username'  => 'Username',
+        'quality'   => 'Score',
       ],
       'msg' => [
         'filter_no_results' => 'Nothing here',
@@ -244,6 +227,25 @@ return  [
       ],
     ],
     'title' => 'My customers',
+  ],
+  'service' => [
+    'btn' => [
+      'delete' => 'Delete',
+      'update' => 'Update',
+    ],
+    'form' => [
+      'duration' => [
+        'label' => 'Duration in minutes',
+      ],
+      'name' => [
+        'label' => 'Service name',
+      ],
+    ],
+    'msg' => [
+      'store' => [
+        'success' => 'Service stored successfully!',
+      ],
+    ],
   ],
   'services' => [
     'btn' => [

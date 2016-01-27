@@ -1,34 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:50:37
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
-return  [
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'nav' => [
-    'dashboard' => 'Dashboard',
-    'login'     => 'Login',
-    'logout'    => 'Logout',
-    'manager'   => [
-      'business' => [
-        'list'     => 'List',
-        'menu'     => 'My Businesses',
-        'register' => 'SignUp Business',
-      ],
-    ],
-    'manual'   => 'User Manual',
-    'register' => 'Register',
-    'user'     => [
-      'business' => [
-        'menu'             => 'Directory',
-        'my_appointments'  => 'My Reservations',
-        'my_subscriptions' => 'My Subscriptions',
-        'selector'         => 'Browse',
-      ],
-    ],
-    'wizard' => 'Help',
-  ],
+return [
   //==================================== Translations ====================================//
   'btn' => [
     'update' => 'Update',
@@ -62,7 +37,30 @@ return  [
     'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
     'invalid_url'       => 'The link you try to access does not exist, try browsing the directory.',
   ],
-  'name'          => 'timegrid.io',
+  'name' => 'timegrid.io',
+  'nav'  => [
+    'dashboard' => 'Dashboard',
+    'login'     => 'Login',
+    'logout'    => 'Logout',
+    'manager'   => [
+      'business' => [
+        'register' => 'SignUp Business',
+        'list'     => 'List',
+        'menu'     => 'My Businesses',
+      ],
+    ],
+    'manual'   => 'User Manual',
+    'register' => 'Register',
+    'user'     => [
+      'business' => [
+        'menu'             => 'Directory',
+        'my_appointments'  => 'My Reservations',
+        'my_subscriptions' => 'My Subscriptions',
+        'selector'         => 'Browse',
+      ],
+    ],
+    'wizard' => 'Help',
+  ],
   'notifications' => [
     'title' => 'Recently',
   ],
@@ -72,4 +70,5 @@ return  [
     ],
     'placeholder' => 'search',
   ],
+  //================================== Obsolete strings ==================================//
 ];

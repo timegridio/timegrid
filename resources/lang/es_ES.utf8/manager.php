@@ -1,30 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
-return  [
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/manager/businesses/services/_form.blade.php
-  'service' => [
-    'form' => [
-      'duration' => [
-        'label' => 'Duración en minutos',
-      ],
-      'name' => [
-        'label' => 'Nombre del servicio',
-      ],
-    ],
-    'btn' => [
-      'delete' => 'Eliminar',
-      'update' => 'Actualizar',
-    ],
-    'msg' => [
-      'store' => [
-        'success' => '¡Servicio Guardado!',
-      ],
-    ],
-  ],
+return [
   //==================================== Translations ====================================//
   'business' => [
     'btn' => [
@@ -74,9 +53,9 @@ return  [
         'title_appointments_today'     => 'Hoy',
         'title_appointments_tomorrow'  => 'Mañana',
         'title_appointments_total'     => 'Citas Totales',
-        'title_total'                  => 'Total',
         'title_contacts_active'        => 'Contactos Suscriptos',
         'title_contacts_registered'    => 'Contactos Registrados',
+        'title_total'                  => 'Total',
       ],
     ],
     'edit' => [
@@ -103,17 +82,17 @@ return  [
         'label'       => 'Dirección Postal',
         'placeholder' => 'altura calle, barrio, ciudad, país',
       ],
-      'slug' => [
-        'label'       => 'Alias',
-        'placeholder' => 'así será el link en la web',
-        'validation'  => 'Se requiere un alias',
-      ],
       'social_facebook' => [
         'label'       => 'URL Página de Facebook',
         'placeholder' => 'https://facebook.com/tu-pagina-de-facebook',
       ],
       'timezone' => [
         'label' => 'Zona Horaria',
+      ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'así será el link en la web',
+        'validation'  => 'Se requiere un alias',
       ],
     ],
     'index' => [
@@ -168,9 +147,6 @@ return  [
       'birthdate' => [
         'label' => 'Nacimiento',
       ],
-      'data' => [
-        'label' => 'datos en formato CSV',
-      ],
       'description' => [
         'label' => 'Descripción',
       ],
@@ -202,18 +178,25 @@ return  [
       'notes' => [
         'label' => 'Notas',
       ],
+      'postal_address' => [
+        'label'      => 'TODO: label',
+        'validation' => 'TODO: validation',
+      ],
       'prerequisites' => [
         'label' => 'Prerequisitos',
+      ],
+      'data' => [
+        'label' => 'datos en formato CSV',
       ],
     ],
     'label' => [
       'birthdate'      => 'Nacimiento',
       'email'          => 'Email',
       'member_since'   => 'Suscripto desde',
-      'postal_address' => 'Dirección Postal',
       'mobile'         => 'Móvil',
       'nin'            => 'DNI',
       'notes'          => 'Notas',
+      'postal_address' => 'Dirección Postal',
     ],
     'list' => [
       'btn' => [
@@ -224,8 +207,8 @@ return  [
         'firstname' => 'Nombre',
         'lastname'  => 'Apellidos',
         'mobile'    => 'Móvil',
-        'quality'   => 'Puntaje',
         'username'  => 'Usuario',
+        'quality'   => 'Puntaje',
       ],
       'msg' => [
         'filter_no_results' => 'Nada por aquí',
@@ -244,6 +227,25 @@ return  [
       ],
     ],
     'title' => 'Mis Clientes',
+  ],
+  'service' => [
+    'btn' => [
+      'delete' => 'Eliminar',
+      'update' => 'Actualizar',
+    ],
+    'form' => [
+      'duration' => [
+        'label' => 'Duración en minutos',
+      ],
+      'name' => [
+        'label' => 'Nombre del servicio',
+      ],
+    ],
+    'msg' => [
+      'store' => [
+        'success' => '¡Servicio Guardado!',
+      ],
+    ],
   ],
   'services' => [
     'btn' => [

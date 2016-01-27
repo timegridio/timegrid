@@ -1,34 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/12 14:50:38
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
-return  [
-  //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/app.blade.php
-  'nav' => [
-    'dashboard' => 'Panel de Control',
-    'login'     => 'Iniciar Sesión',
-    'logout'    => 'Salir',
-    'manager'   => [
-      'business' => [
-        'list'     => 'Listar',
-        'menu'     => 'Mis Prestaciones',
-        'register' => 'Registrar Prestación',
-      ],
-    ],
-    'manual'   => 'Manual de usuario',
-    'register' => 'Registrarme',
-    'user'     => [
-      'business' => [
-        'menu'             => 'Directorio',
-        'my_appointments'  => 'Mis citas',
-        'my_subscriptions' => 'Mis Suscripciones',
-        'selector'         => 'Buscar',
-      ],
-    ],
-    'wizard' => 'Ayuda',
-  ],
+return [
   //==================================== Translations ====================================//
   'btn' => [
     'update' => 'Actualizar',
@@ -62,7 +37,30 @@ return  [
     'general_exception' => 'Disculpas, hubo un problema. No te preocupes, estamos trabajando en ello ;)',
     'invalid_url'       => 'El vínculo que intentas acceder no existe. Intenta examinando el directorio.',
   ],
-  'name'          => 'timegrid.io',
+  'name' => 'timegrid.io',
+  'nav'  => [
+    'dashboard' => 'Panel de Control',
+    'login'     => 'Iniciar Sesión',
+    'logout'    => 'Salir',
+    'manager'   => [
+      'business' => [
+        'register' => 'Registrar Prestación',
+        'list'     => 'Listar',
+        'menu'     => 'Mis Prestaciones',
+      ],
+    ],
+    'manual'   => 'Manual de usuario',
+    'register' => 'Registrarme',
+    'user'     => [
+      'business' => [
+        'menu'             => 'Directorio',
+        'my_appointments'  => 'Mis citas',
+        'my_subscriptions' => 'Mis Suscripciones',
+        'selector'         => 'Buscar',
+      ],
+    ],
+    'wizard' => 'Ayuda',
+  ],
   'notifications' => [
     'title' => 'Recientemente',
   ],
@@ -72,4 +70,5 @@ return  [
     ],
     'placeholder' => 'Buscar',
   ],
+  //================================== Obsolete strings ==================================//
 ];

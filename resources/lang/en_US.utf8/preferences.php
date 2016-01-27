@@ -1,9 +1,10 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:50:54
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
 *************************************************************************/
 
 return [
+  //==================================== Translations ====================================//
   'App\\Models\\Business' => [
     'appointment_annulation_pre_hs' => [
       'format' => 'Number of hours',
@@ -19,11 +20,6 @@ return [
       'format' => 'Number of hours',
       'help'   => 'Permit booking on the same day the reservation takes place',
       'label'  => 'Permit booking on same day',
-    ],
-    'appointment_flexible_arrival' => [
-      'format' => 'Yes/No',
-      'help'   => 'Let clients arrive between opening and closing hours',
-      'label'  => 'Flexible Arrival Time',
     ],
     'show_map' => [
       'format' => 'Yes/No',
@@ -45,6 +41,16 @@ return [
       'help'   => 'The time your business opens for receiving appointments',
       'label'  => 'Opening Hour',
     ],
+    'annulation_policy_advice' => [
+      'format' => 'example: You may annulate this appointment charge-free until %s',
+      'help'   => 'Write an advice text your clients will see about your appointment annulation policy',
+      'label'  => 'Annulation Policy Advice Text',
+    ],
+    'appointment_flexible_arrival' => [
+      'format' => 'Yes/No',
+      'help'   => 'Let clients arrive between opening and closing hours',
+      'label'  => 'Flexible Arrival Time',
+    ],
     'finish_at' => [
       'format' => 'hh:mm:ss',
       'help'   => 'The time your business closes for receiving appointments',
@@ -55,11 +61,6 @@ return [
       'help'   => 'The default duration of any service you provide',
       'label'  => 'Default service duration (minutes)',
     ],
-    'annulation_policy_advice' => [
-      'format' => 'example: You may annulate this appointment charge-free until %s',
-      'help'   => 'Write an advice text your clients will see about your appointment annulation policy',
-      'label'  => 'Annulation Policy Advice Text',
-    ],
   ],
   'controls' => [
     'select' => [
@@ -67,4 +68,5 @@ return [
       'yes' => 'Yes',
     ],
   ],
+  //================================== Obsolete strings ==================================//
 ];

@@ -1,135 +1,176 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/16 18:22:37 
+ Generated via "php artisan localization:missing" at 2016/01/27 01:07:13 
 *************************************************************************/
 
-return  [
-  //==================================== Translations ====================================//
-  'appointments' => [
-    'alert' => [
-      'empty_list'   => 'You have no ongoing reservations by now.',
-      'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
-    ],
-    'btn' => [
-      'book'        => 'Book appointment',
-      'book_in_biz' => 'Book appointment for :biz',
-      'more_dates'  => 'Check more dates',
-    ],
-    'form' => [
-      'btn' => [
-        'submit' => 'Confirm',
-      ],
-      'comments' => [
-        'label' => 'Comments',
-      ],
-      'date' => [
-        'label' => 'Date',
-      ],
-      'duration' => [
-        'label' => 'Duration',
-      ],
-      'service' => [
-        'label' => 'Service',
-      ],
-      'time' => [
-        'label' => 'Hour',
-      ],
-      'timetable' => [
-        'instructions' => 'Select a service to reserve',
-        'msg'          => [
-          'no_vacancies' => 'There is no availability for this date',
-        ],
-        'title' => 'Reserve appointment',
-      ],
-    ],
-    'index' => [
-      'th' => [
-        'business'    => 'Business',
-        'calendar'    => 'Date',
-        'code'        => 'Code',
-        'contact'     => 'Client',
-        'duration'    => 'Duration',
-        'finish_time' => 'Finishes',
-        'remaining'   => 'Within',
-        'service'     => 'Service',
-        'start_time'  => 'Begins',
-        'status'      => 'Status',
-      ],
-      'title' => 'Appointments',
-    ],
-  ],
-  'booking' => [
-    'msg' => [
-      'store' => [
-        'error'            => 'Sorry, there is no longer availability for the attempted reservation.',
-        'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
-        'success'          => 'Success! Your appointment was registered with code :code',
-      ],
-      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
-    ],
-  ],
-  'business' => [
-    'btn' => [
-      'subscribe' => 'Subscribe',
-    ],
-  ],
-  'businesses' => [
-    'index' => [
-      'btn' => [
-        'create'       => 'Register business',
-        'manage'       => 'My businesses',
-        'power_create' => 'Register now',
-      ],
-      'title' => 'Available businesses',
-    ],
-    'list' => [
-      'no_businesses' => 'No businesses available.',
-    ],
-    'subscriptions' => [
-      'none_found' => 'No subscriptions available.',
-      'title'      => 'Subscriptions',
-    ],
-  ],
-  'contacts' => [
-    'btn' => [
-      'store'  => 'Save',
-      'update' => 'Update',
-    ],
-    'create' => [
-      'help'  => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
-      'title' => 'My profile',
-    ],
-    'msg' => [
-      'store' => [
+return array (
+  //============================== New strings to translate ==============================//
+  // Defined in file /home/alariva/timegrid.io/app/app/Http/Controllers/User/ContactController.php
+  'contacts' => 
+  array (
+    'msg' => 
+    array (
+      'destroy' => 
+      array (
+        'success' => 'TODO: success',
+      ),
+      'store' => 
+      array (
         'associated_existing_contact' => 'Your profile was attached to an existing one',
-        'success'                     => 'Successfully saved',
-        'warning'                     => [
+        'success' => 'Successfully saved',
+        'warning' => 
+        array (
           'already_registered' => 'This profile was already registered',
-        ],
-      ],
-      'update' => [
+        ),
+      ),
+      'update' => 
+      array (
         'success' => 'Updated successfully',
-      ],
-    ],
-  ],
-  'dashboard' => [
-    'card' => [
-      'agenda' => [
-        'button'      => 'See Agenda',
+      ),
+    ),
+    'btn' => 
+    array (
+      'store' => 'Save',
+      'update' => 'Update',
+    ),
+    'create' => 
+    array (
+      'help' => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
+      'title' => 'My profile',
+    ),
+  ),
+  //==================================== Translations ====================================//
+  'appointments' => 
+  array (
+    'alert' => 
+    array (
+      'empty_list' => 'You have no ongoing reservations by now.',
+      'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
+    ),
+    'btn' => 
+    array (
+      'book' => 'Book appointment',
+      'book_in_biz' => 'Book appointment for :biz',
+      'more_dates' => 'Check more dates',
+    ),
+    'form' => 
+    array (
+      'btn' => 
+      array (
+        'submit' => 'Confirm',
+      ),
+      'comments' => 
+      array (
+        'label' => 'Comments',
+      ),
+      'date' => 
+      array (
+        'label' => 'Date',
+      ),
+      'duration' => 
+      array (
+        'label' => 'Duration',
+      ),
+      'service' => 
+      array (
+        'label' => 'Service',
+      ),
+      'time' => 
+      array (
+        'label' => 'Hour',
+      ),
+      'timetable' => 
+      array (
+        'instructions' => 'Select a service to reserve',
+        'msg' => 
+        array (
+          'no_vacancies' => 'There is no availability for this date',
+        ),
+        'title' => 'Reserve appointment',
+      ),
+    ),
+    'index' => 
+    array (
+      'th' => 
+      array (
+        'business' => 'Business',
+        'calendar' => 'Date',
+        'code' => 'Code',
+        'contact' => 'Client',
+        'duration' => 'Duration',
+        'finish_time' => 'Finishes',
+        'remaining' => 'Within',
+        'service' => 'Service',
+        'start_time' => 'Begins',
+        'status' => 'Status',
+      ),
+      'title' => 'Appointments',
+    ),
+  ),
+  'booking' => 
+  array (
+    'msg' => 
+    array (
+      'store' => 
+      array (
+        'error' => 'Sorry, there is no longer availability for the attempted reservation.',
+        'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
+        'success' => 'Success! Your appointment was registered with code :code',
+      ),
+      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
+    ),
+  ),
+  'business' => 
+  array (
+    'btn' => 
+    array (
+      'subscribe' => 'Subscribe',
+    ),
+  ),
+  'businesses' => 
+  array (
+    'index' => 
+    array (
+      'btn' => 
+      array (
+        'create' => 'Register business',
+        'manage' => 'My businesses',
+        'power_create' => 'Register now',
+      ),
+      'title' => 'Available businesses',
+    ),
+    'list' => 
+    array (
+      'no_businesses' => 'No businesses available.',
+    ),
+    'subscriptions' => 
+    array (
+      'none_found' => 'No subscriptions available.',
+      'title' => 'Subscriptions',
+    ),
+  ),
+  'dashboard' => 
+  array (
+    'card' => 
+    array (
+      'agenda' => 
+      array (
+        'button' => 'See Agenda',
         'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
-        'title'       => 'One appointment|[2,Inf] Your appointments',
-      ],
-      'directory' => [
-        'button'      => 'Browse Directory',
+        'title' => 'One appointment|[2,Inf] Your appointments',
+      ),
+      'directory' => 
+      array (
+        'button' => 'Browse Directory',
         'description' => 'Browse the directory and book your service.',
-        'title'       => 'Directory',
-      ],
-      'subscriptions' => [
-        'button'      => 'See Subscriptions',
+        'title' => 'Directory',
+      ),
+      'subscriptions' => 
+      array (
+        'button' => 'See Subscriptions',
         'description' => 'Manage your subscriptions to businesses.',
-        'title'       => 'Subscriptions',
-      ],
-    ],
-  ],
-  //================================== Obsolete strings ==================================//
-];
+        'title' => 'Subscriptions',
+      ),
+    ),
+  ),
+);
