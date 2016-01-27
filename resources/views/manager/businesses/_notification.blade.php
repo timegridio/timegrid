@@ -21,7 +21,7 @@
         @else
             {{trans('notifications.'.$notification['body']['name'], ['user' => $notification['from']['name']]) }}
         @endif
-        &nbsp;<small class="text-muted">{{Carbon::parse($notification['created_at'])->timezone($business->timezone)->diffForHumans() }}</small>
+        &nbsp;<small class="text-muted" title="{{$timestamp->toDateTimeString()}}">{{$timestamp->diffForHumans() }}</small>
     </td>
 </tr>
 </table>

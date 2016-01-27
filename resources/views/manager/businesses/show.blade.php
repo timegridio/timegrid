@@ -168,6 +168,7 @@
                 {!! Button::withIcon(Icon::cog())->normal()->withAttributes(['id' => 'btnPreferences', 'title' => trans('manager.business.btn.tooltip.preferences')])->asLinkTo( route('manager.business.preferences', $business) ) !!}
                 {!! Button::withIcon(Icon::edit())->normal()->withAttributes(['id' => 'btnEdit', 'title' => trans('manager.business.btn.tooltip.edit')])->asLinkTo( route('manager.business.edit', $business) ) !!}
                 {!! Button::withIcon(Icon::time())->normal()->withAttributes(['title' => trans('manager.business.btn.tooltip.vacancies')])->asLinkTo( route('manager.business.vacancy.show', $business) ) !!}
+                {!! Button::withIcon(Icon::bullhorn())->normal()->withAttributes(['title' => trans('manager.business.btn.tooltip.notifications')])->asLinkTo( route('manager.business.notifications.show', $business) ) !!}
             </span>
         </div>
 

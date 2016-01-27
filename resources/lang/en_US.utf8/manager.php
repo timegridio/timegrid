@@ -8,12 +8,13 @@ return [
   'business' => [
     'btn' => [
       'tooltip' => [
-        'agenda'      => 'Reservations schedule',
-        'contacts'    => 'Contact list',
-        'edit'        => 'Edit business profile',
-        'preferences' => 'Change preferences',
-        'services'    => 'Manage services',
-        'vacancies'   => 'Publish availability',
+        'agenda'        => 'Reservations schedule',
+        'contacts'      => 'Contact list',
+        'edit'          => 'Edit business profile',
+        'preferences'   => 'Change preferences',
+        'services'      => 'Manage services',
+        'vacancies'     => 'Publish availability',
+        'notifications' => 'Read notifications',
       ],
     ],
     'hint' => [

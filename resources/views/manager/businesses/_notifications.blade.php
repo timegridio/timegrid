@@ -7,7 +7,7 @@
             <div class="col-xs-12">
                 <ul class="demo">
                     @foreach ($notifications as $notification)
-                    @include('manager.businesses._notification', ['notification' => $notification->toArray()])
+                    @include('manager.businesses._notification', ['notification' => $notification->toArray(), 'timestamp' => Carbon::parse($notification['created_at'])->timezone($business->timezone)])
                     @endforeach
                 </ul>
             </div>

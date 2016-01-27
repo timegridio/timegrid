@@ -8,12 +8,13 @@ return [
   'business' => [
     'btn' => [
       'tooltip' => [
-        'agenda'      => 'Agenda de Citas',
-        'contacts'    => 'Lista de Contactos',
-        'edit'        => 'Editar datos del Prestador',
-        'preferences' => 'Cambiar Preferencias',
-        'services'    => 'Gestionar Servicios',
-        'vacancies'   => 'Publicar Disponibilidad',
+        'agenda'        => 'Agenda de Citas',
+        'contacts'      => 'Lista de Contactos',
+        'edit'          => 'Editar datos del Prestador',
+        'preferences'   => 'Cambiar Preferencias',
+        'services'      => 'Gestionar Servicios',
+        'vacancies'     => 'Publicar Disponibilidad',
+        'notifications' => 'Leer notificaciones',
       ],
     ],
     'hint' => [

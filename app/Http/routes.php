@@ -273,6 +273,12 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             'uses' => 'BusinessController@destroy',
         ]);
 
+        // BUSINESS NOTIFICATIONS
+        Route::get('notifications', [
+            'as'   => 'manager.business.notifications.show',
+            'uses' => 'BusinessNotificationsController@show',
+            ]);
+
         // SEARCH
         Route::post('search', [
             'as'   => 'manager.search',
