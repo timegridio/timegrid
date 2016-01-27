@@ -1,4 +1,4 @@
-@extends('app')
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid">
@@ -51,7 +51,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">{{ trans('auth.login.login') }}</button>
 
-                                <a class="btn btn-link" href="{{ url('/password/email') }}">{{ trans('auth.login.forgot') }}</a>
+                                <a class="btn btn-link" href="{{ url('/auth/password/reset') }}">{{ trans('auth.login.forgot') }}</a>
                             </div>
                         </div>
                     </form>
