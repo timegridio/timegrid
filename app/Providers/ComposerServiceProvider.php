@@ -20,6 +20,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             ['user._navmenu', 'manager._navmenu'], 'App\Http\ViewComposers\NavComposer'
         );
+
+        view()->composer(
+            ['layouts.app'], 'App\Http\ViewComposers\AuthComposer'
+        );
     }
 
     /**
