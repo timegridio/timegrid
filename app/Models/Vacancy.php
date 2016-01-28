@@ -109,13 +109,13 @@ class Vacancy extends EloquentModel
      * Scope For Service.
      *
      * @param Illuminate\Database\Query $query
-     * @param Service                   $service Inquired Service to filter
+     * @param int serviceId  $service Inquired Service to filter
      *
      * @return Illuminate\Database\Query Scoped query
      */
-    public function scopeForService($query, Service $service)
+    public function scopeForService($query, $serviceId)
     {
-        return $query->where('service_id', '=', $service->id);
+        return $query->where('service_id', '=', $serviceId);
     }
 
     /////////////////////

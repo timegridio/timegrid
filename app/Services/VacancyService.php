@@ -124,16 +124,16 @@ class VacancyService
      * Get a Vacancy for a given DateTime and Service combination.
      *
      * @param Carbon  $targetDateTime
-     * @param Service $service
+     * @param int  $serviceId
      *
      * @return App\Models\Vacancy
      */
-    public function getSlotFor(Carbon $targetDateTime, Service $service)
+    public function getSlotFor(Carbon $targetDateTime, $serviceId)
     {
         return $this->business
             ->vacancies()
             ->forDateTime($targetDateTime)
-            ->forService($service)
+            ->forService($serviceId)
             ->first();
     }
 

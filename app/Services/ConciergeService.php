@@ -154,7 +154,7 @@ class ConciergeService
             // throw new \Exception('Duplicated Appointment Attempted');
         }
 
-        $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service);
+        $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service->id);
 
         if ($vacancy != null && $bookingStrategy->hasRoom($appointment, $vacancy)) {
             $appointment->vacancy()->associate($vacancy);
