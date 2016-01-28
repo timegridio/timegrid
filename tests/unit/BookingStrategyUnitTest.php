@@ -1,6 +1,6 @@
 <?php
 
-use App\BookingStrategy;
+use Concierge\Booking\Strategies\BookingStrategy;
 use App\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

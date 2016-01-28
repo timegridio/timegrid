@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Concierge\Booking\Strategies;
 
 use App\Models\Appointment;
 use App\Models\Business;

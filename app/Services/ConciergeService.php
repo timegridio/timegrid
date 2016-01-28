@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\BookingStrategy;
+use Concierge\Booking\Strategies\BookingStrategy;
 use App\Events\AppointmentWasConfirmed;
 use App\Models\Appointment;
 use App\Models\Business;

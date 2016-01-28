@@ -2,12 +2,12 @@
 
 namespace App\Services;
 
-use App\BookingStrategy;
 use App\Models\Business;
 use App\Models\Service;
 use App\Models\User;
 use App\Models\Vacancy;
 use Carbon\Carbon;
+use Concierge\Booking\Strategies\BookingStrategy;
 
 class VacancyService
 {
