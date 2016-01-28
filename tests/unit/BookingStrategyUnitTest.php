@@ -11,8 +11,8 @@ class BookingStrategyUnitTest extends TestCase
     use CreateUser, CreateContact, CreateBusiness, CreateService;
 
     /**
-     * @covers  App\BookingStrategy::generateAppointment
-     * @covers  App\BookingDateslotStrategy::generateAppointment
+     * @covers  Concierge\Booking\Strategies\BookingStrategy::generateAppointment
+     * @covers  Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
      * @test
      */
     public function it_generates_a_dateslot_appointment()
@@ -54,8 +54,8 @@ class BookingStrategyUnitTest extends TestCase
     }
 
     /**
-     * @covers  App\BookingStrategy::generateAppointment
-     * @covers  App\BookingDateslotStrategy::generateAppointment
+     * @covers  Concierge\Booking\Strategies\BookingStrategy::generateAppointment
+     * @covers  Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
      * @test
      */
     public function it_generates_a_timeslot_appointment()
