@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "58dd78cb6fe798cee64bc63a9fdce9be",
-    "content-hash": "57dc9a8f97e848329d4837446037f3db",
+    "hash": "d5d43cef7998d0e759382ed5a53e4580",
+    "content-hash": "34567de53ee8dc6f0e5e15e60fb688b0",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -571,16 +571,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.2.3",
+            "version": "7.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "43a2132bd4fbd5453d412d15df1504824e5a058f"
+                "reference": "0c9608d59541e8360794f42dc3e18d64e031a39f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/43a2132bd4fbd5453d412d15df1504824e5a058f",
-                "reference": "43a2132bd4fbd5453d412d15df1504824e5a058f",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/0c9608d59541e8360794f42dc3e18d64e031a39f",
+                "reference": "0c9608d59541e8360794f42dc3e18d64e031a39f",
                 "shasum": ""
             },
             "require": {
@@ -588,12 +588,12 @@
             },
             "require-dev": {
                 "pear/pear-core-minimal": "^1.9",
-                "pear/pear_exception": "*",
+                "pear/pear_exception": "^1.0",
                 "pear/versioncontrol_git": "dev-master",
                 "phing/phing": "~2.7",
                 "phpunit/phpunit": "~4.0",
                 "satooshi/php-coveralls": "~0.6",
-                "symfony/console": "~2.4"
+                "symfony/console": "^2.5"
             },
             "suggest": {
                 "ext-intl": "To use the geocoder and carrier mapping"
@@ -630,7 +630,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2016-01-08 14:15:34"
+            "time": "2016-01-28 10:46:45"
         },
         {
             "name": "guzzle/guzzle",
@@ -1647,16 +1647,16 @@
         },
         {
             "name": "laravelcollective/html",
-            "version": "v5.2.3",
+            "version": "v5.2.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/LaravelCollective/html.git",
-                "reference": "7ec0ca55cab54cc6d331007d86ec068b61f46aad"
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/7ec0ca55cab54cc6d331007d86ec068b61f46aad",
-                "reference": "7ec0ca55cab54cc6d331007d86ec068b61f46aad",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/3a312d39ffe37da0f57b602618b61fd07c1fcec5",
+                "reference": "3a312d39ffe37da0f57b602618b61fd07c1fcec5",
                 "shasum": ""
             },
             "require": {
@@ -1697,7 +1697,7 @@
             ],
             "description": "HTML and Form Builders for the Laravel Framework",
             "homepage": "http://laravelcollective.com",
-            "time": "2016-01-20 18:28:21"
+            "time": "2016-01-27 22:29:54"
         },
         {
             "name": "league/flysystem",
