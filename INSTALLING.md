@@ -1,8 +1,10 @@
-# Installating
+# Installing
 
-> Advice: the current version is still considered to be not production ready. If you want to install for production you must first
-perform all sort of tests (including unit and acceptance) and make sure the implementation fits your needs. Your feedback is as well
-welcome in order to enhance the documentation and codebase.
+> Advice: the current version is still considered to be not production ready. If
+ you want to install for production you must first perform all sort of tests 
+ (including unit and acceptance) and make sure the implementation fits your 
+ needs. Your feedback is as well welcome in order to enhance the documentation 
+ and codebase.
 
 * [Step 1: Get the code](#step1)
 * [Step 2: Use Composer to install dependencies](#step2)
@@ -10,6 +12,7 @@ welcome in order to enhance the documentation and codebase.
 * [Step 4: Install](#step4)
 * [Step 5: Start Page](#step5)
 * [Optional: Populate DB with a Demo Fixture](#demosandbox)
+* [Troubleshooting](TROUBLESHOOTING.md)
 
 <a name="step1"></a>
 ## Step 1: Get the code
@@ -22,7 +25,7 @@ welcome in order to enhance the documentation and codebase.
 <a name="step2"></a>
 ## Step 2: Install dependencies with Composer
 
-    composer install
+    composer install --dev
 
 -----
 <a name="step3"></a>
