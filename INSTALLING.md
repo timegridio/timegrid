@@ -6,6 +6,7 @@
  needs. Your feedback is as well welcome in order to enhance the documentation 
  and codebase.
 
+* [Read the Requirements](REQUIREMENTS.md)
 * [Step 1: Get the code](#step1)
 * [Step 2: Use Composer to install dependencies](#step2)
 * [Step 3: Create database](#step3)
