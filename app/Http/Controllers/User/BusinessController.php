@@ -4,8 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Business;
-use App\Services\ConciergeService;
-use App\Services\VacancyService;
+use Concierge\Concierge;
+use Concierge\VacancyManager;
 use Fenos\Notifynder\Facades\Notifynder;
 
 class BusinessController extends Controller
@@ -30,7 +30,7 @@ class BusinessController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $concierge = new ConciergeService(new VacancyService());
+        $concierge = new Concierge(new VacancyManager());
 
         $concierge->setBusiness($business);
 

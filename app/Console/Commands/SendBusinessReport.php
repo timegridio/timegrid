@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Business;
-use App\Services\ConciergeService;
+use Concierge\Concierge;
 use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
@@ -27,7 +27,7 @@ class SendBusinessReport extends Command
     /**
      * Concierge Service.
      *
-     * @var ConciergeService
+     * @var Concierge
      */
     protected $concierge;
 
@@ -41,7 +41,7 @@ class SendBusinessReport extends Command
      *
      * @return void
      */
-    public function __construct(ConciergeService $concierge, TransMail $transmail)
+    public function __construct(Concierge $concierge, TransMail $transmail)
     {
         $this->concierge = $concierge;
 

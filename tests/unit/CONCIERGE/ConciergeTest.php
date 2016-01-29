@@ -2,12 +2,12 @@
 
 use App\Models\Appointment;
 use App\Models\Vacancy;
-use App\Services\ConciergeService;
-use App\Services\VacancyService;
+use Concierge\Concierge;
+use Concierge\VacancyManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ConciergeServiceTest extends TestCase
+class ConciergeTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateUser, CreateContact, CreateBusiness, CreateService, CreateAppointment;
@@ -25,7 +25,6 @@ class ConciergeServiceTest extends TestCase
     protected $concierge;
 
     /**
-     * @covers \App\Services\ConciergeService::getVacancies
      * @test
      */
     public function it_returns_vacancies()
@@ -44,7 +43,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::getVacancies
      * @test
      */
     public function it_returns_empty_vacancies()
@@ -62,7 +60,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
     public function it_accepts_a_valid_booking()
@@ -98,7 +95,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
     public function it_rejects_overbooking()
@@ -149,7 +145,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::makeReservation
      * @test
      */
     public function it_rejects_invalid_booking()
@@ -185,7 +180,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::getUnservedAppointments
      * @test
      */
     public function it_gets_the_unserved_appointments()
@@ -211,7 +205,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::getUnservedAppointments
      * @test
      */
     public function it_gets_the_unserved_appointments_and_omits_those_served()
@@ -238,7 +231,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::getActiveAppointments
      * @test
      */
     public function it_gets_the_active_appointments()
@@ -264,7 +256,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::requestAction
      * @test
      */
     public function it_annulates_an_appointment()
@@ -291,7 +282,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::requestAction
      * @test
      */
     public function it_confirms_an_appointment()
@@ -322,7 +312,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::requestAction
      * @test
      */
     public function it_serves_a_due_appointment()
@@ -349,7 +338,6 @@ class ConciergeServiceTest extends TestCase
     }
 
     /**
-     * @covers \App\Services\ConciergeService::requestAction
      * @expectedException \Exception
      * @test
      */
@@ -394,7 +382,7 @@ class ConciergeServiceTest extends TestCase
             'business_id' => $this->business->id,
             ]);
 
-        $this->concierge = new ConciergeService(new VacancyService());
+        $this->concierge = new Concierge(new VacancyManager());
 
         $this->concierge->setBusiness($this->business);
     }

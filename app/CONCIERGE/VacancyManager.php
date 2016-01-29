@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace Concierge;
 
 use App\Models\Business;
 use App\Models\Service;
@@ -9,7 +9,7 @@ use App\Models\Vacancy;
 use Carbon\Carbon;
 use Concierge\Booking\Strategies\BookingStrategy;
 
-class VacancyService
+class VacancyManager
 {
     /**
      * Business to operate on.

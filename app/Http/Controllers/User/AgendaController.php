@@ -6,7 +6,7 @@ use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Models\Service;
-use App\Services\ConciergeService;
+use Concierge\Concierge;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;
@@ -17,16 +17,16 @@ class AgendaController extends Controller
     /**
      * Concierge service implementation.
      *
-     * @var App\Services\ConciergeService
+     * @var Concierge\Concierge
      */
     private $concierge;
 
     /**
      * Create Controller.
      *
-     * @param App\Services\ConciergeService $concierge
+     * @param Concierge\Concierge $concierge
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(Concierge $concierge)
     {
         $this->concierge = $concierge;
         parent::__construct();

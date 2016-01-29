@@ -6,7 +6,7 @@ use App\Http\Requests\AlterAppointmentRequest;
 use App\Models\Appointment;
 use App\Models\Business;
 use App\Models\Service;
-use App\Services\ConciergeService;
+use Concierge\Concierge;
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -14,16 +14,16 @@ class BookingController extends Controller
     /**
      * Concierge service implementation.
      *
-     * @var App\Services\ConciergeService
+     * @var Concierge\Concierge
      */
     private $concierge;
 
     /**
      * Create controller.
      *
-     * @param ConciergeService $concierge
+     * @param Concierge $concierge
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(Concierge $concierge)
     {
         parent::__construct();
 

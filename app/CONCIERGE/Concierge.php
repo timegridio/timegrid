@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services;
+namespace Concierge;
 
 use Concierge\Booking\Strategies\BookingStrategy;
 use App\Events\AppointmentWasConfirmed;
@@ -16,32 +16,32 @@ use Fenos\Notifynder\Facades\Notifynder;
  * Concierge Service Layer
  *     High level booking manager
  ******************************************************************************/
-class ConciergeService
+class Concierge
 {
     /**
-     * [$vacancyService description].
+     * [$vacancyManager description].
      *
      * @var [type]
      */
-    private $vacancyService;
+    private $vacancyManager;
 
     private $business;
 
     /**
      * [__construct description].
      *
-     * @param VacancyService|null $vacancyService [description]
+     * @param VacancyManager|null $vacancyManager [description]
      */
-    public function __construct(VacancyService $vacancyService = null)
+    public function __construct(VacancyManager $vacancyManager = null)
     {
-        $this->vacancyService = $vacancyService;
+        $this->vacancyManager = $vacancyManager;
     }
 
     public function setBusiness(Business $business)
     {
         $this->business = $business;
 
-        $this->vacancyService->setBusiness($business);
+        $this->vacancyManager->setBusiness($business);
 
         return $this;
     }
@@ -56,7 +56,7 @@ class ConciergeService
      */
     public function isAvailable(User $user, $limit = 7)
     {
-        return $this->vacancyService->isAvailable($user, $limit);
+        return $this->vacancyManager->isAvailable($user, $limit);
     }
 
     public function getUnservedAppointments()
@@ -91,7 +91,7 @@ class ConciergeService
      */
     public function getVacancies(User $user, $starting = 'today', $limit = 7)
     {
-        return $this->vacancyService->getVacanciesFor($user, $starting, $limit);
+        return $this->vacancyManager->getVacanciesFor($user, $starting, $limit);
     }
 
     /**
@@ -154,7 +154,7 @@ class ConciergeService
             // throw new \Exception('Duplicated Appointment Attempted');
         }
 
-        $vacancy = $this->vacancyService->getSlotFor($appointment->start_at, $appointment->service->id);
+        $vacancy = $this->vacancyManager->getSlotFor($appointment->start_at, $appointment->service->id);
 
         if ($vacancy != null && $bookingStrategy->hasRoom($appointment, $vacancy)) {
             $appointment->vacancy()->associate($vacancy);

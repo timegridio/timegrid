@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\ConciergeService;
+use Concierge\Concierge;
 
 /*******************************************************************************
  * The Wizard will present either a guided step-by-step configuration for
@@ -41,7 +41,7 @@ class WizardController extends Controller
      *
      * @return Response Rendered view for Wizard
      */
-    public function getDashboard(ConciergeService $concierge)
+    public function getDashboard(Concierge $concierge)
     {
         logger()->info(__METHOD__);
 
