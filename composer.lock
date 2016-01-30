@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d5d43cef7998d0e759382ed5a53e4580",
-    "content-hash": "34567de53ee8dc6f0e5e15e60fb688b0",
+    "hash": "7bef4307b31054994f146042842bd44a",
+    "content-hash": "032028489abe27d12fae093be516ac83",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1312,6 +1312,54 @@
             "time": "2015-12-05 17:17:57"
         },
         {
+            "name": "jeroen-g/laravel-packager",
+            "version": "v1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Jeroen-G/laravel-packager.git",
+                "reference": "b327387efa89f6ad9741d4b631f72189e4a3e323"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Jeroen-G/laravel-packager/zipball/b327387efa89f6ad9741d4b631f72189e4a3e323",
+                "reference": "b327387efa89f6ad9741d4b631f72189e4a3e323",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/console": "~5",
+                "illuminate/filesystem": "~5",
+                "illuminate/support": "~5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JeroenG\\Packager\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "EUPL-1.1"
+            ],
+            "authors": [
+                {
+                    "name": "JeroenG",
+                    "email": "jeroengjeroeng@gmail.com",
+                    "homepage": "https://github.com/Jeroen-G"
+                }
+            ],
+            "description": "A cli tool for creating Laravel packages.",
+            "homepage": "https://github.com/Jeroen-G/laravel-packager",
+            "keywords": [
+                "Skeleton",
+                "github",
+                "laravel",
+                "package",
+                "packager"
+            ],
+            "time": "2015-11-17 16:22:28"
+        },
+        {
             "name": "knplabs/knp-snappy",
             "version": "0.4.3",
             "source": {
@@ -1906,7 +1954,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel-auto-presenter/laravel-auto-presenter/zipball/48649d3f98e369c2e0922ef37190dd15812a292a",
+                "url": "https://api.github.com/repos/laravel-auto-presenter/laravel-auto-presenter/zipball/c385b113696dfc564869c54f5c4baba5e116a3be",
                 "reference": "48649d3f98e369c2e0922ef37190dd15812a292a",
                 "shasum": ""
             },
