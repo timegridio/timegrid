@@ -41,30 +41,6 @@ Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
 */
 
 //////////////////
-// ROOT CONTEXT //
-//////////////////
-
-Route::group(
-    [
-        'as'         => 'root.',
-        'prefix'     => 'root',
-        'namespace'  => 'Root',
-        'middleware' => ['web', 'role:root'],
-    ],
-    function () {
-        Route::get('dashboard', [
-            'as'   => 'dashboard',
-            'uses' => 'RootController@getIndex',
-        ]);
-
-        Route::get('sudo/{userId}', [
-            'as'   => 'sudo',
-            'uses' => 'RootController@getSudo',
-        ])->where('userId', '\d*');
-    }
-);
-
-//////////////////
 // REGULAR AUTH //
 //////////////////
 
@@ -167,7 +143,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 // SELECTED BUSINESS SLUG CONTEXT //
 ////////////////////////////////////
 
-Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'biz/{business}', 'middleware' => ['web', 'auth']], function () {
 
     ///////////////////////////
     // BUSINESS USER CONTEXT //

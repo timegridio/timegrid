@@ -58,7 +58,7 @@ class ManagerBusinessVacancyControllerTest extends TestCase
 
         $this->visit(route('manager.business.vacancy.create', $this->business));
 
-        $this->seePageIs($this->business->slug.'/manage/vacancy/create');
+        $this->seePageIs('biz/'.$this->business->slug.'/manage/vacancy/create');
         $this->see('Enter the appointments capacity for each service on each day');
         $this->see($this->serviceOne->name);
         $this->see($this->serviceTwo->name);
@@ -78,7 +78,7 @@ class ManagerBusinessVacancyControllerTest extends TestCase
 
         $this->visit(route('manager.business.vacancy.create', $this->business));
 
-        $this->seePageIs($this->business->slug.'/manage/vacancy/create');
+        $this->seePageIs('biz/'.$this->business->slug.'/manage/vacancy/create');
         $this->see('Enter the appointments capacity for each service on each day');
         $this->see('No services registered. Please register services for your business');
 
@@ -105,7 +105,7 @@ class ManagerBusinessVacancyControllerTest extends TestCase
 
         $this->visit(route('manager.business.vacancy.create', $this->business));
 
-        $this->seePageIs($this->business->slug.'/manage/vacancy/create');
+        $this->seePageIs('biz/'.$this->business->slug.'/manage/vacancy/create');
         $this->see('Enter the appointments capacity for each service on each day');
         $this->dontSee($this->serviceOne->name);
         $this->dontSee($this->serviceTwo->name);
@@ -218,7 +218,7 @@ EOD;
 
         $this->visit(route('manager.business.vacancy.show', $this->business));
 
-        $this->seePageIs($this->business->slug.'/manage/vacancy/show');
+        $this->seePageIs('biz/'.$this->business->slug.'/manage/vacancy/show');
         $this->see($this->vacancy->service->slug);
     }
 

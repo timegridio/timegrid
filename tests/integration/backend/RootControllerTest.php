@@ -64,7 +64,7 @@ class RootControllerTest extends TestCase
         $this->actingAs($root);
 
         // And I go to root dashboard
-        $this->visit("/root/sudo/{$user->id}");
+        $this->visit("/_root/sudo/{$user->id}");
 
         // Then I should see the Root access warning
         $this->see('AUTHORIZED USE ONLY');
@@ -85,7 +85,7 @@ class RootControllerTest extends TestCase
         $this->actingAs($nonRoot);
 
         // And I go to root dashboard
-        $this->visit("/root/sudo/{$user->id}");
+        $this->visit("/_root/sudo/{$user->id}");
 
         // Then I should see the Root access warning
         $this->dontSee('AUTHORIZED USE ONLY');
