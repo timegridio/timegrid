@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7bef4307b31054994f146042842bd44a",
-    "content-hash": "032028489abe27d12fae093be516ac83",
+    "hash": "65bfcb7bc7e1a42eab01bd373ef12a16",
+    "content-hash": "af60cbc4ef763aa305b8e426b073ae6c",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3546,6 +3546,60 @@
             "time": "2015-12-05 11:13:14"
         },
         {
+            "name": "timegridio/backend",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timegridio/backend.git",
+                "reference": "a6c7328c494560f718ca9b578cddee998455e4b9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timegridio/backend/zipball/a6c7328c494560f718ca9b578cddee998455e4b9",
+                "reference": "a6c7328c494560f718ca9b578cddee998455e4b9",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.2",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Timegridio\\Backend\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "AGPL"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Vallese",
+                    "email": "alariva@timegrid.io",
+                    "homepage": "http://timegrid.io",
+                    "role": "Founder & Developer"
+                }
+            ],
+            "description": "Backend package for timegrid booking app",
+            "homepage": "https://github.com/timegridio/backend",
+            "keywords": [
+                "Timegrid Backend",
+                "alariva"
+            ],
+            "time": "2016-01-31 05:36:43"
+        },
+        {
             "name": "torann/geoip",
             "version": "dev-master",
             "source": {
@@ -5820,6 +5874,7 @@
     "stability-flags": {
         "torann/geoip": 20,
         "webpatser/laravel-countries": 20,
+        "timegridio/backend": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,
