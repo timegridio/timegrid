@@ -148,6 +148,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Timegridio\Backend\TimegridioBackendServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -179,7 +181,6 @@ return [
         JeroenG\Packager\PackagerServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
-        Timegridio\Backend\TimegridioBackendServiceProvider::class,
     ],
 
     /*
