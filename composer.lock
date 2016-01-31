@@ -3551,12 +3551,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/backend.git",
-                "reference": "a6c7328c494560f718ca9b578cddee998455e4b9"
+                "reference": "e7fa9a1bb2d701746bef166c790b22c518e6323b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/backend/zipball/a6c7328c494560f718ca9b578cddee998455e4b9",
-                "reference": "a6c7328c494560f718ca9b578cddee998455e4b9",
+                "url": "https://api.github.com/repos/timegridio/backend/zipball/e7fa9a1bb2d701746bef166c790b22c518e6323b",
+                "reference": "e7fa9a1bb2d701746bef166c790b22c518e6323b",
                 "shasum": ""
             },
             "require": {
@@ -3597,7 +3597,7 @@
                 "Timegrid Backend",
                 "alariva"
             ],
-            "time": "2016-01-31 05:36:43"
+            "time": "2016-01-31 15:37:21"
         },
         {
             "name": "torann/geoip",
