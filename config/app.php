@@ -179,7 +179,7 @@ return [
         JeroenG\Packager\PackagerServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
-        Alariva\TimegridBackend\TimegridBackendServiceProvider::class,
+        Timegridio\Backend\TimegridioBackendServiceProvider::class,
     ],
 
     /*

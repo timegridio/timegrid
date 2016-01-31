@@ -71,7 +71,7 @@
         "psr-4": {
             "App\\": "app/",
             "Concierge\\": "app/CONCIERGE/",
-            "Alariva\\TimegridBackend\\": "packages/Alariva/TimegridBackend/src"
+            "Timegridio\\Backend\\": "packages/timegridio/backend/src"
         },
         "files": [
             "app/Http/helpers.php"
