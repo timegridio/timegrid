@@ -1,9 +1,9 @@
-/vendor_local
 /vendor
 /node_modules
 /tests/logs
 /build
 /bower_components
+/packages
 .env
 .env.testing
 *.sublime-workspace

@@ -24,7 +24,7 @@ class UserWizardControllerTest extends TestCase
 
         $this->see($business->name);
 
-        $this->seePageIs($business->slug.'/manage/dashboard');
+        $this->seePageIs('biz/'.$business->slug.'/manage/dashboard');
     }
 
     /**

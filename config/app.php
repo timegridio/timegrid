@@ -148,6 +148,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Timegridio\Backend\TimegridioBackendServiceProvider::class,
+
         /*
          * Application Service Providers...
          */
@@ -176,6 +178,7 @@ return [
         Stevebauman\Location\LocationServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,
+        JeroenG\Packager\PackagerServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
     ],

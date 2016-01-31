@@ -47,7 +47,9 @@
         "webpatser/laravel-countries": "dev-master",
         "jenssegers/agent": "^2.3",
         "laracasts/utilities": "^2.1",
-        "alariva/tidiochat": "^2.0"
+        "alariva/tidiochat": "^2.0",
+        "timegridio/backend": "dev-master",
+        "jeroen-g/laravel-packager": "^1.3"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
