@@ -2,13 +2,13 @@
 
 namespace App\Traits;
 
-use App\Models\Preference;
+use Timegridio\Concierge\Models\Preference;
 
 trait Preferenceable
 {
     public function preferences()
     {
-        return $this->morphMany('App\Models\Preference', 'preferenceable');
+        return $this->morphMany('Timegridio\Concierge\Models\Preference', 'preferenceable');
     }
 
     public function pref($key, $value = null, $type = 'string')

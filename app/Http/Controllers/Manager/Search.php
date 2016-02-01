@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\SearchEngine;
 use Illuminate\Support\Facades\Request;
 
@@ -12,7 +12,7 @@ class Search extends Controller
     /**
      * Search for elements within a Business.
      *
-     * @param App\Models\Business $business
+     * @param Timegridio\Concierge\Models\Business $business
      *
      * @return Illuminate\View\View
      */

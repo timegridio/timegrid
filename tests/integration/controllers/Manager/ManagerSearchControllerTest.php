@@ -8,7 +8,7 @@ class ManagerSearchControllerTest extends TestCase
     use CreateUser, CreateBusiness, CreateService, CreateContact, CreateAppointment;
 
     /**
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business;
 
@@ -20,49 +20,49 @@ class ManagerSearchControllerTest extends TestCase
     /**
      * Service One.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceOne;
 
     /**
      * Service Two.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceTwo;
 
     /**
      * Service Three.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceThree;
 
     /**
      * Contact One.
      *
-     * @var App\Models\Contact
+     * @var Timegridio\Concierge\Models\Contact
      */
     protected $contactOne;
 
     /**
      * Contact Two.
      *
-     * @var App\Models\Contact
+     * @var Timegridio\Concierge\Models\Contact
      */
     protected $contactTwo;
 
     /**
      * Contact Three.
      *
-     * @var App\Models\Contact
+     * @var Timegridio\Concierge\Models\Contact
      */
     protected $contactThree;
 
     /**
      * Appointment.
      *
-     * @var App\Models\Appointment
+     * @var Timegridio\Concierge\Models\Appointment
      */
     protected $appointment;
 

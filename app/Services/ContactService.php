@@ -3,8 +3,8 @@
 namespace App\Services;
 
 use App\Events\NewContactWasRegistered;
-use App\Models\Business;
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
 
 /*******************************************************************************
@@ -18,7 +18,7 @@ class ContactService
      * @param Business $business
      * @param array    $data
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function register(Business $business, $data)
     {
@@ -47,7 +47,7 @@ class ContactService
      * @param Business $business
      * @param Contact  $existingContact
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function copyFrom(User $user, Business $business, Contact $existingContact)
     {
@@ -68,7 +68,7 @@ class ContactService
      * @param Contact $contact
      * @param User    $user
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function linkToUser(Contact $contact, User $user)
     {
@@ -84,7 +84,7 @@ class ContactService
      * @param Business $business
      * @param string   $nin
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function getExisting(Business $business, $nin)
     {
@@ -141,7 +141,7 @@ class ContactService
      * @param Business $business
      * @param Contact  $contact
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function find(Business $business, Contact $contact)
     {

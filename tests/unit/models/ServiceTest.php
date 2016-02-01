@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Service;
+use Timegridio\Concierge\Models\Service;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ServiceTest extends TestCase
@@ -9,7 +9,7 @@ class ServiceTest extends TestCase
     use CreateBusiness, CreateService;
 
     /**
-     * @covers  App\Models\Service::scopeSlug
+     * @covers  Timegridio\Concierge\Models\Service::scopeSlug
      * @test
      */
     public function it_scopes_by_slug()

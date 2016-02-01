@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Appointment;
+use Timegridio\Concierge\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;

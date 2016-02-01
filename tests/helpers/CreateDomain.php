@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Domain;
+use Timegridio\Concierge\Models\Domain;
 use App\Models\User;
 
 trait CreateDomain

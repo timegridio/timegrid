@@ -1,7 +1,7 @@
 <?php
 
-use Concierge\Booking\Strategies\BookingStrategy;
-use App\Models\Appointment;
+use Timegridio\Concierge\Booking\Strategies\BookingStrategy;
+use Timegridio\Concierge\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -11,8 +11,8 @@ class BookingStrategyUnitTest extends TestCase
     use CreateUser, CreateContact, CreateBusiness, CreateService;
 
     /**
-     * @covers  Concierge\Booking\Strategies\BookingStrategy::generateAppointment
-     * @covers  Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
+     * @covers  Timegridio\Concierge\Booking\Strategies\BookingStrategy::generateAppointment
+     * @covers  Timegridio\Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
      * @test
      */
     public function it_generates_a_dateslot_appointment()
@@ -54,8 +54,8 @@ class BookingStrategyUnitTest extends TestCase
     }
 
     /**
-     * @covers  Concierge\Booking\Strategies\BookingStrategy::generateAppointment
-     * @covers  Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
+     * @covers  Timegridio\Concierge\Booking\Strategies\BookingStrategy::generateAppointment
+     * @covers  Timegridio\Concierge\Booking\Strategies\BookingDateslotStrategy::generateAppointment
      * @test
      */
     public function it_generates_a_timeslot_appointment()

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use Illuminate\Http\Request;
 
 class BusinessNotificationsController extends Controller

@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Appointment;
+use Timegridio\Concierge\Models\Appointment;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Category;
+use Timegridio\Concierge\Models\Category;
 use Illuminate\Database\Seeder;
 
 class CategoriesSeeder extends Seeder

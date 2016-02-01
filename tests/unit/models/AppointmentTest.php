@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AppointmentTest extends TestCase
@@ -20,7 +20,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::user
+     * @covers \Timegridio\Concierge\Models\Appointment::user
      * @test
      */
     public function it_gets_the_contact_user_of_appointment()
@@ -39,7 +39,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::user
+     * @covers \Timegridio\Concierge\Models\Appointment::user
      * @test
      */
     public function it_gets_no_user_from_contact_of_appointment()
@@ -53,7 +53,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::duplicates
+     * @covers \Timegridio\Concierge\Models\Appointment::duplicates
      * @test
      */
     public function it_detects_a_duplicate_appointment()
@@ -74,7 +74,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::getFinishAtAttribute
+     * @covers \Timegridio\Concierge\Models\Appointment::getFinishAtAttribute
      * @test
      */
     public function it_gets_the_finish_datetime_of_appointment()
@@ -91,7 +91,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::vacancy
+     * @covers \Timegridio\Concierge\Models\Appointment::vacancy
      * @test
      */
     public function it_gets_the_associated_vacancy()
@@ -105,7 +105,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::getDateAttribute
+     * @covers \Timegridio\Concierge\Models\Appointment::getDateAttribute
      * @test
      */
     public function it_gets_the_date_attribute_at_000000utc()
@@ -122,7 +122,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::getDateAttribute
+     * @covers \Timegridio\Concierge\Models\Appointment::getDateAttribute
      * @test
      */
     public function it_gets_the_date_attribute_at_120000utc()
@@ -139,7 +139,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::getDateAttribute
+     * @covers \Timegridio\Concierge\Models\Appointment::getDateAttribute
      * @test
      */
     public function it_gets_the_date_attribute_at_235959utc()
@@ -156,7 +156,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::isReserved
+     * @covers \Timegridio\Concierge\Models\Appointment::isReserved
      * @test
      */
     public function it_returns_is_reserved()
@@ -169,7 +169,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::isPending
+     * @covers \Timegridio\Concierge\Models\Appointment::isPending
      * @test
      */
     public function it_returns_is_pending()
@@ -183,7 +183,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::isPending
+     * @covers \Timegridio\Concierge\Models\Appointment::isPending
      * @test
      */
     public function it_returns_is_not_pending()
@@ -197,7 +197,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doConfirm
+     * @covers \Timegridio\Concierge\Models\Appointment::doConfirm
      * @test
      */
     public function it_changes_status_to_confirmed()
@@ -213,7 +213,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doAnnulate
+     * @covers \Timegridio\Concierge\Models\Appointment::doAnnulate
      * @test
      */
     public function it_changes_status_to_annulated()
@@ -229,7 +229,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doServe
+     * @covers \Timegridio\Concierge\Models\Appointment::doServe
      * @test
      */
     public function it_changes_status_to_served()
@@ -245,7 +245,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doReserve
+     * @covers \Timegridio\Concierge\Models\Appointment::doReserve
      * @test
      */
     public function it_sets_status_to_reserved()
@@ -261,7 +261,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doServe
+     * @covers \Timegridio\Concierge\Models\Appointment::doServe
      * @test
      */
     public function it_cannot_serve_if_annulated()
@@ -277,7 +277,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doServe
+     * @covers \Timegridio\Concierge\Models\Appointment::doServe
      * @test
      */
     public function it_cannot_confirm_if_annulated()
@@ -293,7 +293,7 @@ class AppointmentTest extends TestCase
     }
 
     /**
-     * @covers \App\Models\Appointment::doServe
+     * @covers \Timegridio\Concierge\Models\Appointment::doServe
      * @test
      */
     public function it_cannot_annulate_if_served()

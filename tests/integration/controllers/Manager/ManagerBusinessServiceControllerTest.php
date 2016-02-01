@@ -10,7 +10,7 @@ class ManagerBusinessServiceControllerTest extends TestCase
     use CreateBusiness, CreateUser, CreateService, CreateServiceType;
 
     /**
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business;
 

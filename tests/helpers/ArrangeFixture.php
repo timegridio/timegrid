@@ -19,28 +19,28 @@ trait ArrangeFixture
     /**
      * Appointment Contact.
      *
-     * @var App\Models\Contact
+     * @var Timegridio\Concierge\Models\Contact
      */
     protected $contact = null;
 
     /**
      * Business.
      *
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business = null;
 
     /**
      * Serivce.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $service = null;
 
     /**
      * Business Vacancy.
      *
-     * @var App\Models\Vacancy
+     * @var Timegridio\Concierge\Models\Vacancy
      */
     protected $vacancy = null;
 

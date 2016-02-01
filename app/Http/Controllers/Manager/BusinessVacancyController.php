@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Services\VacancyParserService;
-use Concierge\VacancyManager;
+use Timegridio\Concierge\VacancyManager;
 use Illuminate\Http\Request;
 use JavaScript;
 
@@ -14,14 +14,14 @@ class BusinessVacancyController extends Controller
     /**
      * Vacancy service implementation.
      *
-     * @var Concierge\VacancyManager
+     * @var use Timegridio\Timegridio\Concierge\VacancyManager
      */
     private $vacancyManager;
 
     /**
      * Create controller.
      *
-     * @param Concierge\VacancyManager $vacancyManager
+     * @param use Timegridio\Timegridio\Concierge\VacancyManager $vacancyManager
      */
     public function __construct(VacancyManager $vacancyManager)
     {

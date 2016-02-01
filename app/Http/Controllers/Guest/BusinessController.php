@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
-use App\Models\Domain;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Domain;
 
 class BusinessController extends Controller
 {

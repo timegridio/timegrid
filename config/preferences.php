@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'App\Models\Business' => [
+    'Timegridio\Concierge\Models\Business' => [
         'start_at'                      => ['type' => 'time', 'value' => '08:00:00'],
         'finish_at'                     => ['type' => 'time', 'value' => '19:00:00'],
         'show_map'                      => ['type' => 'bool', 'value' => false],

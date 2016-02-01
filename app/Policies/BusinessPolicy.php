@@ -2,7 +2,7 @@
 
 namespace App\Policies;
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 

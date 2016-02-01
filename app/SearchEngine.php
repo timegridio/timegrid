@@ -2,9 +2,9 @@
 
 namespace App;
 
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
 use Illuminate\Support\Facades\Auth;
 
 class SearchEngine

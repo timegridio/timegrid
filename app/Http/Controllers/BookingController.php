@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AlterAppointmentRequest;
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Service;
-use Concierge\Concierge;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
+use Timegridio\Concierge\Alfred as Concierge;
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -14,7 +14,7 @@ class BookingController extends Controller
     /**
      * Concierge service implementation.
      *
-     * @var Concierge\Concierge
+     * @var Timegridio\Concierge\Alfred
      */
     private $concierge;
 

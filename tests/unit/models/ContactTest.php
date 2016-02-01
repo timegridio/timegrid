@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
 use App\Models\User;
 use App\Presenters\ContactPresenter;
 use Carbon\Carbon;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * @cover App\Models\Contact
+ * @cover Timegridio\Concierge\Models\Contact
  */
 class ContactTest extends TestCase
 {
@@ -223,7 +223,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::autoLinkToUser
+     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
      * @test
      */
     public function it_does_not_link_to_existing_user_for_empty_email()
@@ -242,7 +242,7 @@ class ContactTest extends TestCase
     //////////////////////
 
     /**
-     * @covers App\Models\Contact::autoLinkToUser
+     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
      * @test
      */
     public function it_links_to_existing_user()
@@ -257,7 +257,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::autoLinkToUser
+     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
      * @test
      */
     public function it_links_another_to_existing_user()
@@ -280,7 +280,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::autoLinkToUser
+     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
      * @test
      */
     public function it_unlinks_removed_user()
@@ -309,7 +309,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::appointments
+     * @covers Timegridio\Concierge\Models\Contact::appointments
      * @test
      */
     public function it_gets_the_appointments()
@@ -333,7 +333,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::getEmailAttribute
+     * @covers Timegridio\Concierge\Models\Contact::getEmailAttribute
      * @test
      */
     public function it_gets_the_native_contact_email()
@@ -348,7 +348,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::getEmailAttribute
+     * @covers Timegridio\Concierge\Models\Contact::getEmailAttribute
      * @test
      */
     public function it_gets_the_native_contact_email_and_not_the_user_fallback()
@@ -369,7 +369,7 @@ class ContactTest extends TestCase
     }
 
     /**
-     * @covers App\Models\Contact::getEmailAttribute
+     * @covers Timegridio\Concierge\Models\Contact::getEmailAttribute
      * @test
      */
     public function it_gets_the_user_fallback_contact_email()

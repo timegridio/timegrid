@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
 
 trait CreateContact

@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
+use Timegridio\Concierge\Models\Service;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Routing\Router;
 

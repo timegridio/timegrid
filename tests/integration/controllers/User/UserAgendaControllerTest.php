@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Appointment;
+use Timegridio\Concierge\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserAgendaControllerTest extends TestCase

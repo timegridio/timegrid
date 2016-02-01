@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Business;
-use Concierge\Concierge;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Alfred as Concierge;
 use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;

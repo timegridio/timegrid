@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Vacancy;
 
 trait CreateVacancy
 {

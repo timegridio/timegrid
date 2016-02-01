@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
-use App\Models\Business;
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 use App\Services\ContactService;
 
 class AddressbookController extends Controller

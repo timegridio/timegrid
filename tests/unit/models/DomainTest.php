@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 /**
- * @covers App\Models\Domain
+ * @covers Timegridio\Concierge\Models\Domain
  */
 class DomainTest extends TestCase
 {

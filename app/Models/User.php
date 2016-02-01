@@ -48,7 +48,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function businesses()
     {
-        return $this->belongsToMany('App\Models\Business')->withTimestamps();
+        return $this->belongsToMany('Timegridio\Concierge\Models\Business')->withTimestamps();
     }
 
     /**
@@ -60,7 +60,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function contacts()
     {
-        return $this->hasMany('App\Models\Contact');
+        return $this->hasMany('Timegridio\Concierge\Models\Contact');
     }
 
     /**
@@ -72,7 +72,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function appointments()
     {
-        return $this->hasManyThrough('App\Models\Appointment', 'App\Models\Contact');
+        return $this->hasManyThrough('Timegridio\Concierge\Models\Appointment', 'Timegridio\Concierge\Models\Contact');
     }
 
     /////////////////////

@@ -2,7 +2,7 @@
 
 namespace App\Presenters;
 
-use App\Models\Appointment;
+use Timegridio\Concierge\Models\Appointment;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class AppointmentPresenter extends BasePresenter

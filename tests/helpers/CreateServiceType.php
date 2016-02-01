@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\ServiceType;
+use Timegridio\Concierge\Models\ServiceType;
 
 trait CreateServiceType
 {

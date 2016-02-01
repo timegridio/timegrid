@@ -1,11 +1,11 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
+use Timegridio\Concierge\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Vacancy;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class VacancyTest extends TestCase
@@ -15,7 +15,7 @@ class VacancyTest extends TestCase
     protected $business;
 
     /**
-     * @covers  \App\Models\Vacancy::isHoldingAnyFor
+     * @covers  \Timegridio\Concierge\Models\Vacancy::isHoldingAnyFor
      * @test
      */
     public function it_verifies_a_vacancy_holds_appointment_for_a_user()
@@ -46,11 +46,11 @@ class VacancyTest extends TestCase
         $appointment->save();
 
         /* Perform Test */
-        $this->assertTrue($vacancy->isHoldingAnyFor($issuer));
+        $this->assertTrue($vacancy->isHoldingAnyFor($issuer->id));
     }
 
     /**
-     * @covers            \App\Models\Vacancy::isHoldingAnyFor
+     * @covers            \Timegridio\Concierge\Models\Vacancy::isHoldingAnyFor
      * @test
      */
     public function it_verifies_a_vacancy_doesnt_hold_appointment_for_a_user()
@@ -79,6 +79,6 @@ class VacancyTest extends TestCase
         $appointment->save();
 
         /* Perform Test */
-        $this->assertFalse($vacancy->isHoldingAnyFor($issuer));
+        $this->assertFalse($vacancy->isHoldingAnyFor($issuer->id));
     }
 }

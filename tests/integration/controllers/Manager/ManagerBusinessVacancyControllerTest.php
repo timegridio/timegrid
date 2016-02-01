@@ -10,7 +10,7 @@ class ManagerBusinessVacancyControllerTest extends TestCase
     use CreateUser, CreateBusiness, CreateService, CreateVacancy;
 
     /**
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business;
 
@@ -22,28 +22,28 @@ class ManagerBusinessVacancyControllerTest extends TestCase
     /**
      * Service One.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceOne;
 
     /**
      * Service Two.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceTwo;
 
     /**
      * Service Three.
      *
-     * @var App\Models\Service
+     * @var Timegridio\Concierge\Models\Service
      */
     protected $serviceThree;
 
     /**
      * Vacancy.
      *
-     * @var App\Models\Vacancy
+     * @var Timegridio\Concierge\Models\Vacancy
      */
     protected $vacancy;
 

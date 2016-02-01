@@ -148,6 +148,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
+        Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
         Timegridio\Backend\TimegridioBackendServiceProvider::class,
 
         /*

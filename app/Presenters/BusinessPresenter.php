@@ -2,7 +2,7 @@
 
 namespace App\Presenters;
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class BusinessPresenter extends BasePresenter

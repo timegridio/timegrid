@@ -71,7 +71,7 @@
         ],
         "psr-4": {
             "App\\": "app/",
-            "Concierge\\": "app/CONCIERGE/"
+            "Timegridio\\Concierge\\": "packages/timegridio/concierge/src"
         },
         "files": [
             "app/Http/helpers.php"

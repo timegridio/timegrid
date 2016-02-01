@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
 use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller

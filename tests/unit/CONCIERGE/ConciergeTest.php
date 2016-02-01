@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Vacancy;
-use Concierge\Concierge;
-use Concierge\VacancyManager;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Vacancy;
+use Timegridio\Concierge\Alfred;
+use Timegridio\Concierge\VacancyManager;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -382,7 +382,7 @@ class ConciergeTest extends TestCase
             'business_id' => $this->business->id,
             ]);
 
-        $this->concierge = new Concierge(new VacancyManager());
+        $this->concierge = new Alfred(new VacancyManager());
 
         $this->concierge->setBusiness($this->business);
     }

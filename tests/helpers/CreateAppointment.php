@@ -1,8 +1,8 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
 
 trait CreateAppointment

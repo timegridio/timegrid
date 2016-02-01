@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Models\User;
 
 trait CreateBusiness
