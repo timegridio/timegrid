@@ -58,8 +58,7 @@ class VacancyManager
      */
     public function isAvailable(User $user)
     {
-        $vacancies = $this->strategy->removeBookedVacancies($this->business->vacancies);
-        $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
+        $vacancies = $this->removeAllBookedVacancies($user, $this->business->vacancies);
 
         return !$vacancies->isEmpty();
     }
@@ -73,12 +72,19 @@ class VacancyManager
      *
      * @return array
      */
-    public function getVacanciesFor($user, $starting = 'today', $limit = 7)
+    public function getVacanciesFor(User $user, $starting = 'today', $limit = 7)
     {
-        $vacancies = $this->strategy->removeBookedVacancies($this->business->vacancies);
-        $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
+        $vacancies = $this->removeAllBookedVacancies($user, $this->business->vacancies);
 
         return $this->generateAvailability($vacancies, $starting, $limit);
+    }
+
+    protected function removeAllBookedVacancies(User $user, $vacancies)
+    {
+        $vacancies = $this->strategy->removeBookedVacancies($vacancies);
+        $vacancies = $this->strategy->removeSelfBooked($vacancies, $user);
+
+        return $vacancies;
     }
 
     /**
