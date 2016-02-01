@@ -13,11 +13,11 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/alariva/timegrid/issues",
+        "issues": "https://github.com/timegridio/timegrid/issues",
         "email": "alariva@timegrid.io",
-        "wiki": "https://github.com/alariva/timegrid/wiki",
+        "wiki": "https://github.com/timegridio/timegrid/wiki",
         "irc": "https://gitter.im/alariva/timegridDevelopment",
-        "source": "https://github.com/alariva/timegrid"
+        "source": "https://github.com/timegridio/timegrid"
     },
     "type": "project",
     "require": {

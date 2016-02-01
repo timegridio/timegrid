@@ -84,7 +84,7 @@ class WelcomeControllerTest extends TestCase
      *       As L5.2 disables middleware by default, it's needed to force
      *       middleware execution for this case.
      * 
-     * Regresion for https://github.com/alariva/timegrid/issues/39.
+     * Regresion for https://github.com/timegridio/timegrid/issues/39.
      *
      * @test
      */

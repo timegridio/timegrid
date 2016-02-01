@@ -21,7 +21,7 @@ Run `composer install --dev` instead of `composer install`
 
 ### Reference
 
-[See Issue Report](https://github.com/alariva/timegrid/issues/52)
+[See Issue Report](https://github.com/timegridio/timegrid/issues/52)
 
 ## Call to undefined function locale_get_primary_language()
 

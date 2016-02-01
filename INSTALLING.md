@@ -18,7 +18,7 @@
 <a name="step1"></a>
 ## Step 1: Get the code
 
-    git clone https://github.com/alariva/timegrid.git
+    git clone https://github.com/timegridio/timegrid.git
 
     cd timegrid
 
