@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a591068207744f74bb155df82a86dd89",
+    "hash": "4306ff2d8723ca663df4716763bc6279",
     "content-hash": "79b053c002a9ed4ac9a9cbfc8579f5a4",
     "packages": [
         {
@@ -3605,12 +3605,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "2c243efdc06855effcdb9d0bc09217b14dde9add"
+                "reference": "be9b9fbf4acc9967a5d668a3454042b40001f2de"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/2c243efdc06855effcdb9d0bc09217b14dde9add",
-                "reference": "2c243efdc06855effcdb9d0bc09217b14dde9add",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/be9b9fbf4acc9967a5d668a3454042b40001f2de",
+                "reference": "be9b9fbf4acc9967a5d668a3454042b40001f2de",
                 "shasum": ""
             },
             "require": {
@@ -3655,10 +3655,11 @@
             "keywords": [
                 "booking",
                 "concierge",
+                "laravel",
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-02-02 20:27:17"
+            "time": "2016-02-02 22:19:40"
         },
         {
             "name": "torann/geoip",
