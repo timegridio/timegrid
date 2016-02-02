@@ -19,7 +19,6 @@ class AppointmentPresenterTest extends TestCase
     protected $contact;
 
     /**
-     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_reserved()
@@ -41,7 +40,6 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
-     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_confirmed()
@@ -63,7 +61,6 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
-     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_annulated()
@@ -85,7 +82,6 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
-     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_served()
