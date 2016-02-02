@@ -68,7 +68,7 @@ class BookingController extends Controller
         ));
 
         try {
-            $appointment = $this->concierge->requestAction(auth()->user(), $appointment, $action);
+            $appointment = $this->concierge->requestAction(auth()->user()->id, $appointment, $action);
         } catch (\Exception $e) {
             return response()->json(['code' => 'ERROR', 'html' => '']);
         }

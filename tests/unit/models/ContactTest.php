@@ -222,91 +222,95 @@ class ContactTest extends TestCase
         $this->assertFalse($contact->fresh()->isSubscribedTo($business->id));
     }
 
-    /**
-     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
-     * @test
-     */
-    public function it_does_not_link_to_existing_user_for_empty_email()
-    {
-        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
 
-        $contact = $this->createContact(['email' => '']);
-
-        $contact->autoLinkToUser();
-
-        $this->assertNull($contact->user);
-    }
+// DEPRECATED: autoLinkToUser removed from Contact model
+//    /**
+//     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
+//     * @test
+//     */
+//    public function it_does_not_link_to_existing_user_for_empty_email()
+//    {
+//        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+//
+//        $contact = $this->createContact(['email' => '']);
+//
+//        $contact->autoLinkToUser();
+//
+//        $this->assertNull($contact->user);
+//    }
 
     //////////////////////
     // Extra Test Cases //
     //////////////////////
 
-    /**
-     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
-     * @test
-     */
-    public function it_links_to_existing_user()
-    {
-        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+// DEPRECATED: autoLinkToUser removed from Contact model
+//    /**
+//     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
+//     * @test
+//     */
+//    public function it_links_to_existing_user()
+//    {
+//        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+//
+//        $contact = $this->createContact(['email' => 'guest@example.org']);
+//
+//        $contact->autoLinkToUser();
+//
+//        $this->assertEquals($user->email, $contact->user->email);
+//    }
 
-        $contact = $this->createContact(['email' => 'guest@example.org']);
+// DEPRECATED: autoLinkToUser removed from Contact model
+//    /**
+//     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
+//     * @test
+//     */
+//    public function it_links_another_to_existing_user()
+//    {
+//        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+//
+//        $contactFirst = $this->createContact(['email' => 'guest@example.org']);
+//
+//        $contactFirst->autoLinkToUser();
+//
+//        $this->assertEquals($user->email, $contactFirst->user->email);
+//
+//        $contactSecond = $this->createContact(['email' => 'guest@example.org']);
+//
+//        $contactSecond->autoLinkToUser();
+//
+//        $this->assertEquals($user->email, $contactSecond->user->email);
+//
+//        $this->assertEquals(2, $user->contacts()->count());
+//    }
 
-        $contact->autoLinkToUser();
-
-        $this->assertEquals($user->email, $contact->user->email);
-    }
-
-    /**
-     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
-     * @test
-     */
-    public function it_links_another_to_existing_user()
-    {
-        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
-
-        $contactFirst = $this->createContact(['email' => 'guest@example.org']);
-
-        $contactFirst->autoLinkToUser();
-
-        $this->assertEquals($user->email, $contactFirst->user->email);
-
-        $contactSecond = $this->createContact(['email' => 'guest@example.org']);
-
-        $contactSecond->autoLinkToUser();
-
-        $this->assertEquals($user->email, $contactSecond->user->email);
-
-        $this->assertEquals(2, $user->contacts()->count());
-    }
-
-    /**
-     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
-     * @test
-     */
-    public function it_unlinks_removed_user()
-    {
-        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
-
-        $contactFirst = $this->createContact(['email' => 'guest@example.org']);
-
-        $contactFirst->autoLinkToUser();
-
-        $this->assertEquals($user->email, $contactFirst->user->email);
-
-        $contactSecond = $this->createContact(['email' => 'guest@example.org']);
-
-        $contactSecond->autoLinkToUser();
-
-        $this->assertEquals($user->email, $contactSecond->user->email);
-
-        $user->email = 'changed@example.org';
-        $user->save();
-
-        $contactFirst->autoLinkToUser();
-        $contactSecond->autoLinkToUser();
-
-        $this->assertEquals(0, $user->contacts()->count());
-    }
+//    /**
+//     * @covers Timegridio\Concierge\Models\Contact::autoLinkToUser
+//     * @test
+//     */
+//    public function it_unlinks_removed_user()
+//    {
+//        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
+//
+//        $contactFirst = $this->createContact(['email' => 'guest@example.org']);
+//
+//        $contactFirst->autoLinkToUser();
+//
+//        $this->assertEquals($user->email, $contactFirst->user->email);
+//
+//        $contactSecond = $this->createContact(['email' => 'guest@example.org']);
+//
+//        $contactSecond->autoLinkToUser();
+//
+//        $this->assertEquals($user->email, $contactSecond->user->email);
+//
+//        $user->email = 'changed@example.org';
+//        $user->save();
+//
+//        $contactFirst->autoLinkToUser();
+//        $contactSecond->autoLinkToUser();
+//
+//        $this->assertEquals(0, $user->contacts()->count());
+//    }
 
     /**
      * @covers Timegridio\Concierge\Models\Contact::appointments

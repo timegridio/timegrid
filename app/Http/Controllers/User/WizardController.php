@@ -45,7 +45,7 @@ class WizardController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
+        $appointments = $concierge->getUnarchivedAppointments(auth()->user()->appointments());
 
         $appointmentsCount = $appointments->count();
 

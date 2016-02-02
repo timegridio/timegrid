@@ -41,7 +41,7 @@ class AgendaController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $appointments = $this->concierge->getUnarchivedAppointmentsFor(auth()->user());
+        $appointments = $this->concierge->getUnarchivedAppointments(auth()->user()->appointments());
 
         return view('user.appointments.index', compact('appointments'));
     }
