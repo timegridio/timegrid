@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "65bfcb7bc7e1a42eab01bd373ef12a16",
-    "content-hash": "af60cbc4ef763aa305b8e426b073ae6c",
+    "hash": "a591068207744f74bb155df82a86dd89",
+    "content-hash": "79b053c002a9ed4ac9a9cbfc8579f5a4",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3600,6 +3600,67 @@
             "time": "2016-01-31 15:37:21"
         },
         {
+            "name": "timegridio/concierge",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timegridio/concierge.git",
+                "reference": "2c243efdc06855effcdb9d0bc09217b14dde9add"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/2c243efdc06855effcdb9d0bc09217b14dde9add",
+                "reference": "2c243efdc06855effcdb9d0bc09217b14dde9add",
+                "shasum": ""
+            },
+            "require": {
+                "fenos/notifynder": "3.*",
+                "illuminate/support": "5.*",
+                "mccool/laravel-auto-presenter": "^4.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "laracasts/testdummy": "~2.3",
+                "laravel/framework": "5.2.*",
+                "orchestra/testbench": "~3.2.0",
+                "phpspec/phpspec": "~2.1",
+                "phpunit/phpunit": "~4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-4": {
+                    "Timegridio\\Concierge\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Vallese",
+                    "email": "alariva@gmail.com",
+                    "homepage": "http://timegrid.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel 5.x reservation library",
+            "homepage": "https://github.com/timegridio/concierge",
+            "keywords": [
+                "booking",
+                "concierge",
+                "reservation",
+                "timegrid"
+            ],
+            "time": "2016-02-02 20:27:17"
+        },
+        {
             "name": "torann/geoip",
             "version": "dev-master",
             "source": {
@@ -5875,6 +5936,7 @@
         "torann/geoip": 20,
         "webpatser/laravel-countries": 20,
         "timegridio/backend": 20,
+        "timegridio/concierge": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,

@@ -6,7 +6,7 @@ use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Timegridio\Concierge\Alfred as Concierge;
+use Timegridio\Concierge\Concierge;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;

@@ -4,7 +4,7 @@ use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
-use App\Presenters\AppointmentPresenter;
+use Timegridio\Concierge\Presenters\AppointmentPresenter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AppointmentPresenterTest extends TestCase

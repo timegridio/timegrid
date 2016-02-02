@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Alfred as Concierge;
+use Timegridio\Concierge\Concierge;
 use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;

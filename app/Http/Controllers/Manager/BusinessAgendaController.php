@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Alfred as Concierge;
+use Timegridio\Concierge\Concierge;
 
 class BusinessAgendaController extends Controller
 {

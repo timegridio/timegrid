@@ -25,6 +25,10 @@ Timegrid is a single platform holding all *businesses* and *customers* while let
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
+**Library**
+
+If you are looking for a reservation library please refer to [Concierge package](https://github.com/timegridio/concierge)
+
 ## Screenshots
 
 ![Dashboard Example Screenshot](http://i.imgur.com/I7i4kLl.png)

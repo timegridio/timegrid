@@ -6,7 +6,7 @@ use App\Http\Requests\AlterAppointmentRequest;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Timegridio\Concierge\Alfred as Concierge;
+use Timegridio\Concierge\Concierge;
 use Carbon\Carbon;
 
 class BookingController extends Controller

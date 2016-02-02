@@ -4,7 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Alfred as Concierge;
+use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\VacancyManager;
 use Fenos\Notifynder\Facades\Notifynder;
 
