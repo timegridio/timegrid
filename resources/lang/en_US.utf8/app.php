@@ -10,10 +10,11 @@ return [
   ],
   'business' => [
     'category' => [
-      'doctor'      => 'Healthcare',
-      'garage'      => 'Car Mechanic',
-      'photography' => 'Photography',
-      'spa'         => 'Spa & Beauty',
+      'doctor'       => 'Healthcare',
+      'garage'       => 'Car Mechanic',
+      'photography'  => 'Photography',
+      'spa'          => 'Spa & Beauty',
+      'martial-arts' => 'Martial Arts',
     ],
   ],
   'dateformat' => [
