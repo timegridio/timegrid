@@ -68,11 +68,8 @@ class BusinessPresenter extends BasePresenter
      */
     public function industryIcon()
     {
-        if (!isset($this->wrappedObject)) {
-            return '';
-        }
-
-        $src = asset('/img/industries/'.$this->wrappedObject->category->slug.'.png');
+        $src = ($this->wrappedObject->pref('cover_photo_url')) ?:
+            asset('/img/industries/'.$this->wrappedObject->category->slug.'.png');
 
         return "<img class=\"img-responsive center-block\" src=\"{$src}\"/>";
     }
