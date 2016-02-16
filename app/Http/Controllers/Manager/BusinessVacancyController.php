@@ -56,7 +56,7 @@ class BusinessVacancyController extends Controller
             flash()->warning(trans('manager.vacancies.msg.edit.no_services'));
         }
 
-        $advanced = $business->services->count() > 3;
+        $advanced = $business->services->count() > 3 || $business->pref('vacancy_edit_advanced_mode');
 
         return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'advanced'));
     }
