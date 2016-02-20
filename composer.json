@@ -28,6 +28,7 @@
         "camroncade/timezone": "0.1",
         "creativeorange/gravatar": "~1.0",
         "fenos/notifynder": "3.*",
+        "graham-campbell/markdown": "^6.0",
         "guzzlehttp/guzzle": "~6.0",
         "intervention/image": "^2.2",
         "intervention/imagecache": "^2.2",
