@@ -15,6 +15,7 @@ return [
       'photography'  => 'Fotografía',
       'spa'          => 'Spa & Belleza',
       'martial-arts' => 'Artes Marciales',
+      'yoga'         => 'Yoga',
     ],
   ],
   'dateformat' => [
