@@ -4,10 +4,10 @@ namespace App\Services;
 
 use App\BookingStrategy;
 use App\Events\AppointmentWasConfirmed;
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
+use Timegridio\Concierge\Models\Service;
 use App\Models\User;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
@@ -111,7 +111,7 @@ class ConciergeService
      *
      * @param $contacts
      *
-     * @return App\Models\Appointment|null
+     * @return Timegridio\Concierge\Models\Appointment|null
      */
     public function getNextAppointmentFor($contacts)
     {
@@ -175,7 +175,7 @@ class ConciergeService
      *
      * @throws Exception
      *
-     * @return App\Models\Appointment
+     * @return Timegridio\Concierge\Models\Appointment
      */
     public function requestAction(User $user, Appointment $appointment, $action)
     {
@@ -203,7 +203,7 @@ class ConciergeService
         $code = $appointment->code;
         Notifynder::category('appointment.'.$action)
                    ->from('App\Models\User', $user->id)
-                   ->to('App\Models\Business', $appointment->business->id)
+                   ->to('Timegridio\Concierge\Models\Business', $appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('code', 'action', 'date'))
                    ->send();

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\User;
 
 use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
-use App\Models\Business;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
 use App\Services\ConciergeService;
 use Carbon;
 use Event;
@@ -64,7 +64,7 @@ class AgendaController extends Controller
 
         Notifynder::category('user.checkingVacancies')
            ->from('App\Models\User', auth()->user()->id)
-           ->to('App\Models\Business', $business->id)
+           ->to('Timegridio\Concierge\Models\Business', $business->id)
            ->url('http://localhost')
            ->send();
 

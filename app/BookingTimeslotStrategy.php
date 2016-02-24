@@ -2,12 +2,12 @@
 
 namespace App;
 
-use App\Models\Appointment;
-use App\Models\Business;
-use App\Models\Contact;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
+use Timegridio\Concierge\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Vacancy;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

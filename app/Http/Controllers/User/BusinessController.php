@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Services\ConciergeService;
 use App\Services\VacancyService;
 use Fenos\Notifynder\Facades\Notifynder;
@@ -25,7 +25,7 @@ class BusinessController extends Controller
         $businessName = $business->name;
         Notifynder::category('user.visitedShowroom')
                    ->from('App\Models\User', auth()->user()->id)
-                   ->to('App\Models\Business', $business->id)
+                   ->to('Timegridio\Concierge\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))
                    ->send();

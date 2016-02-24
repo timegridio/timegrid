@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 

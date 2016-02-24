@@ -179,6 +179,7 @@ return [
         Webpatser\Countries\CountriesServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
+        Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
     ],
 
     /*

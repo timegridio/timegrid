@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 
@@ -11,7 +11,7 @@ class ManagerBusinessPreferencesControllerTest extends TestCase
     use CreateBusiness, CreateUser, CreateService;
 
     /**
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business;
 

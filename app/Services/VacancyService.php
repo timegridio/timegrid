@@ -3,10 +3,10 @@
 namespace App\Services;
 
 use App\BookingStrategy;
-use App\Models\Business;
-use App\Models\Service;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
 use App\Models\User;
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Vacancy;
 use Carbon\Carbon;
 
 class VacancyService
@@ -14,7 +14,7 @@ class VacancyService
     /**
      * Business to operate on.
      *
-     * @var App\Models\Business
+     * @var Timegridio\Concierge\Models\Business
      */
     protected $business;
 
@@ -28,7 +28,7 @@ class VacancyService
     /**
      * Create the Vacancy Service object.
      *
-     * @param App\Models\Business $business
+     * @param Timegridio\Concierge\Models\Business $business
      */
     public function __construct()
     {
@@ -38,7 +38,7 @@ class VacancyService
     /**
      * Set Business.
      *
-     * @param App\Models\Business $business
+     * @param Timegridio\Concierge\Models\Business $business
      */
     public function setBusiness(Business $business)
     {
@@ -126,14 +126,14 @@ class VacancyService
      * @param Carbon  $targetDateTime
      * @param Service $service
      *
-     * @return App\Models\Vacancy
+     * @return Timegridio\Concierge\Models\Vacancy
      */
     public function getSlotFor(Carbon $targetDateTime, Service $service)
     {
         return $this->business
             ->vacancies()
             ->forDateTime($targetDateTime)
-            ->forService($service)
+            ->forService($service->id)
             ->first();
     }
 
@@ -218,7 +218,7 @@ class VacancyService
                 continue;
             }
 
-            $vacancy = $business->vacancies()->forDate(Carbon::parse($date))->forService($service);
+            $vacancy = $business->vacancies()->forDate(Carbon::parse($date))->forService($service->id);
 
             if ($vacancy) {
                 $vacancy->delete();

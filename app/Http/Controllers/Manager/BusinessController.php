@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Models\Category;
 use App\Services\BusinessService;
 use Carbon\Carbon;
@@ -121,7 +121,7 @@ class BusinessController extends Controller
         $businessName = $business->name;
         Notifynder::category('user.registeredBusiness')
             ->from('App\Models\User', auth()->user()->id)
-            ->to('App\Models\Business', $business->id)
+            ->to('Timegridio\Concierge\Models\Business', $business->id)
             ->url('http://localhost')
             ->extra(compact('businessName'))
             ->send();
@@ -150,8 +150,11 @@ class BusinessController extends Controller
         // BEGIN
 
         session()->set('selected.business', $business);
-        $notifications = $business->getNotificationsNotRead(20);
-        $business->readAllNotifications();
+        // $notifications = $business->getNotificationsNotRead(20);
+        // $business->readAllNotifications();
+        
+        $notifications = [];
+        //$business->readAllNotifications();
 
         // Build Dashboard Report
         $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate(Carbon::now())->get()->count();

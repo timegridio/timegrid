@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Appointment;
-use App\Models\Vacancy;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Vacancy;
 use App\Services\ConciergeService;
 use App\Services\VacancyService;
 use Illuminate\Database\Eloquent\Collection;

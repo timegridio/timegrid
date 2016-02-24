@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Services\ConciergeService;
 use App\TransMail;
 use Illuminate\Console\Command;

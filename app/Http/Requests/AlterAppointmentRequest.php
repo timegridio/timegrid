@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Appointment;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Appointment;
+use Timegridio\Concierge\Models\Business;
 use Auth;
 
 class AlterAppointmentRequest extends Request

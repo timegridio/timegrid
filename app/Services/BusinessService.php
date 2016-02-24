@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Exceptions\BusinessAlreadyRegistered;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Models\Category;
 use App\Models\User;
 
@@ -20,7 +20,7 @@ class BusinessService
      * @param array $data
      * @param int   $category
      *
-     * @return App\Models\Business
+     * @return Timegridio\Concierge\Models\Business
      */
     public function register(User $user, $data, $category)
     {
@@ -96,7 +96,7 @@ class BusinessService
      * @param Business $business
      * @param array    $data
      *
-     * @return App\Models\Business
+     * @return Timegridio\Concierge\Models\Business
      */
     public function update(Business $business, $data)
     {
@@ -111,7 +111,7 @@ class BusinessService
      * @param Business $business
      * @param int      $category
      *
-     * @return App\Models\Business
+     * @return Timegridio\Concierge\Models\Business
      */
     public function setCategory(Business $business, $category)
     {

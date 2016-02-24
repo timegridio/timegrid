@@ -83,7 +83,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function contacts()
     {
-        return $this->belongsToMany('App\Models\Contact')
+        return $this->belongsToMany('Timegridio\Concierge\Models\Contact')
                     ->with('user')
                     ->withPivot('notes')
                     ->withTimestamps();
@@ -96,7 +96,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function services()
     {
-        return $this->hasMany('App\Models\Service');
+        return $this->hasMany('Timegridio\Concierge\Models\Service');
     }
 
     /**
@@ -106,7 +106,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function servicetypes()
     {
-        return $this->hasMany('App\Models\ServiceType');
+        return $this->hasMany('Timegridio\Concierge\Models\ServiceType');
     }
 
     /**
@@ -116,7 +116,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function vacancies()
     {
-        return $this->hasMany('App\Models\Vacancy');
+        return $this->hasMany('Timegridio\Concierge\Models\Vacancy');
     }
 
     /**
@@ -127,7 +127,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function bookings()
     {
-        return $this->hasMany('App\Models\Appointment');
+        return $this->hasMany('Timegridio\Concierge\Models\Appointment');
     }
 
     /**
@@ -159,7 +159,7 @@ class Business extends EloquentModel implements HasPresenter
      */
     public function subscriptionsCount()
     {
-        return $this->belongsToMany('App\Models\Contact')
+        return $this->belongsToMany('Timegridio\Concierge\Models\Contact')
                     ->selectRaw('id, count(*) as aggregate')
                     ->whereNotNull('user_id')
                     ->groupBy('business_id');

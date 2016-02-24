@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Service;
+use Timegridio\Concierge\Models\Service;
 
 trait CreateService
 {

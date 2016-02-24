@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Events\NewContactWasRegistered;
-use App\Models\Business;
-use App\Models\Contact;
 use App\Models\User;
+use Carbon\Carbon;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 
 /*******************************************************************************
  * Contact Service Layer
@@ -18,11 +19,14 @@ class ContactService
      * @param Business $business
      * @param array    $data
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function register(Business $business, $data)
     {
         if (false === $contact = self::getExisting($business, $data['nin'])) {
+            
+            $data['birthdate'] = Carbon::parse($data['birthdate']);
+
             $contact = Contact::create($data);
 
             $business->contacts()->attach($contact);
@@ -47,11 +51,17 @@ class ContactService
      * @param Business $business
      * @param Contact  $existingContact
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function copyFrom(User $user, Business $business, Contact $existingContact)
     {
-        $contact = Contact::create($existingContact->toArray());
+        $existingContactData = $existingContact->toArray();
+
+        $existingContactData['birthdate'] = $existingContactData['birthdate']
+            ? Carbon::parse($existingContactData['birthdate'])
+            : null;
+
+        $contact = Contact::create($existingContactData);
         $contact->user()->associate($user->id);
         $contact->businesses()->detach();
         $contact->save();
@@ -68,7 +78,7 @@ class ContactService
      * @param Contact $contact
      * @param User    $user
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function linkToUser(Contact $contact, User $user)
     {
@@ -84,7 +94,7 @@ class ContactService
      * @param Business $business
      * @param string   $nin
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function getExisting(Business $business, $nin)
     {
@@ -141,7 +151,7 @@ class ContactService
      * @param Business $business
      * @param Contact  $contact
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function find(Business $business, Contact $contact)
     {
@@ -165,7 +175,7 @@ class ContactService
         $contact->email = array_get($data, 'email');
         $contact->nin = array_get($data, 'nin');
         $contact->gender = array_get($data, 'gender');
-        $contact->birthdate = array_get($data, 'birthdate');
+        $contact->birthdate = Carbon::parse(array_get($data, 'birthdate'));
         $contact->mobile = array_get($data, 'mobile');
         $contact->mobile_country = array_get($data, 'mobile_country');
         $contact->postal_address = array_get($data, 'postal_address');

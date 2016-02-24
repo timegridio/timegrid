@@ -45,7 +45,7 @@ class Contact extends EloquentModel implements HasPresenter
      */
     public function businesses()
     {
-        return $this->belongsToMany('App\Models\Business');
+        return $this->belongsToMany('Timegridio\Concierge\Models\Business');
     }
 
     /**
@@ -55,7 +55,7 @@ class Contact extends EloquentModel implements HasPresenter
      */
     public function appointments()
     {
-        return $this->hasMany('App\Models\Appointment');
+        return $this->hasMany('Timegridio\Concierge\Models\Appointment');
     }
 
     /////////////////////
@@ -82,7 +82,7 @@ class Contact extends EloquentModel implements HasPresenter
     public function appointmentsCount()
     {
         return $this
-            ->hasMany('App\Models\Appointment')
+            ->hasMany('Timegridio\Concierge\Models\Appointment')
             ->selectRaw('contact_id, count(*) as aggregate')
             ->groupBy('contact_id');
     }

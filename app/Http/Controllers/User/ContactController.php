@@ -5,8 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Events\NewContactWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterContactRequest;
-use App\Models\Business;
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 use App\Services\ContactService;
 use Notifynder;
 use Request;
@@ -83,7 +83,7 @@ class ContactController extends Controller
         $businessName = $business->name;
         Notifynder::category('user.subscribedBusiness')
                    ->from('App\Models\User', auth()->user()->id)
-                   ->to('App\Models\Business', $business->id)
+                   ->to('Timegridio\Concierge\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))
                    ->send();

@@ -27,7 +27,7 @@ class Service extends EloquentModel
      */
     public function type()
     {
-        return $this->belongsTo('App\Models\ServiceType');
+        return $this->belongsTo('Timegridio\Concierge\Models\ServiceType');
     }
 
     /**
@@ -51,7 +51,7 @@ class Service extends EloquentModel
      */
     public function business()
     {
-        return $this->belongsTo('App\Models\Business');
+        return $this->belongsTo('Timegridio\Concierge\Models\Business');
     }
 
     /**

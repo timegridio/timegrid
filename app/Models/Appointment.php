@@ -91,42 +91,42 @@ class Appointment extends EloquentModel implements HasPresenter
     /**
      * Get the target Contact (for whom is reserved the Appointment).
      *
-     * @return App\Models\Contact
+     * @return Timegridio\Concierge\Models\Contact
      */
     public function contact()
     {
-        return $this->belongsTo('App\Models\Contact');
+        return $this->belongsTo('Timegridio\Concierge\Models\Contact');
     }
 
     /**
      * Get the holding Business (that has taken the reservation).
      *
-     * @return App\Models\Business
+     * @return Timegridio\Concierge\Models\Business
      */
     public function business()
     {
-        return $this->belongsTo('App\Models\Business');
+        return $this->belongsTo('Timegridio\Concierge\Models\Business');
     }
 
     /**
      * Get the reserved Service.
      *
-     * @return App\Models\Service
+     * @return Timegridio\Concierge\Models\Service
      */
     public function service()
     {
-        return $this->belongsTo('App\Models\Service');
+        return $this->belongsTo('Timegridio\Concierge\Models\Service');
     }
 
     /**
      * Get the Vacancy (that justifies the availability of resources for the
      * Appointment generation).
      *
-     * @return App\Models\Vacancy
+     * @return Timegridio\Concierge\Models\Vacancy
      */
     public function vacancy()
     {
-        return $this->belongsTo('App\Models\Vacancy');
+        return $this->belongsTo('Timegridio\Concierge\Models\Vacancy');
     }
 
     ///////////

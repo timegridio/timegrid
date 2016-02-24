@@ -32,7 +32,7 @@ class SendAppointmentConfirmationNotification
 
         Notifynder::category('appointment.confirm')
                    ->from('App\Models\User', $event->user->id)
-                   ->to('App\Models\Business', $event->appointment->business->id)
+                   ->to('Timegridio\Concierge\Models\Business', $event->appointment->business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName', 'code', 'date'))
                    ->send();

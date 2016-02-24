@@ -20,6 +20,6 @@ class Category extends EloquentModel
      */
     public function businesses()
     {
-        return $this->hasMany('App\Models\Business')->withTimestamps();
+        return $this->hasMany('Timegridio\Concierge\Models\Business')->withTimestamps();
     }
 }

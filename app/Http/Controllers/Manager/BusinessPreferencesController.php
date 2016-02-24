@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Http\Request;
 
@@ -25,7 +25,7 @@ class BusinessPreferencesController extends Controller
 
         // BEGIN
 
-        $parameters = config()->get('preferences.App\Models\Business');
+        $parameters = config()->get('preferences.Timegridio\Concierge\Models\Business');
         $preferences = $business->preferences;
 
         return view('manager.businesses.preferences.edit', compact('business', 'preferences', 'parameters'));
@@ -57,7 +57,7 @@ class BusinessPreferencesController extends Controller
         $businessName = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
                    ->from('App\Models\User', auth()->user()->id)
-                   ->to('App\Models\Business', $business->id)
+                   ->to('Timegridio\Concierge\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))
                    ->send();
@@ -74,7 +74,7 @@ class BusinessPreferencesController extends Controller
     protected function setBusinessPreferences(Business $business, $preferences)
     {
         // Get parameters from app configuration
-        $parameters = config()->get('preferences.App\Models\Business');
+        $parameters = config()->get('preferences.Timegridio\Concierge\Models\Business');
 
         // Get the keys of the parameters
         $parametersKeys = array_flip(array_keys($parameters));

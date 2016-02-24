@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Contact;
 use Illuminate\Queue\SerializesModels;
 
 class NewContactWasRegistered extends Event

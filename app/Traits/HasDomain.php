@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\Domain;
+use Timegridio\Concierge\Models\Domain;
 
 trait HasDomain
 {

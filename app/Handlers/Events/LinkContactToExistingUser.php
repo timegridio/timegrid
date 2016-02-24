@@ -3,6 +3,8 @@
 namespace App\Handlers\Events;
 
 use App\Events\NewContactWasRegistered;
+use App\Models\User;
+use Timegridio\Concierge\Models\Contact;
 
 class LinkContactToExistingUser
 {
@@ -18,6 +20,27 @@ class LinkContactToExistingUser
         logger()->info(__METHOD__);
         logger()->info("Linking <{$event->contact->email}> to user");
 
-        $event->contact->autolinkToUser();
+        $this->linkContactToUser($event->contact);
+    }
+
+    protected function linkContactToUser(Contact $contact)
+    {
+        if ($contact->email === null) {
+            return $this;
+        }
+
+        $user = User::where(['email' => $contact->email])->first();
+
+        if ($user === null) {
+            $contact->user()->dissociate();
+            $contact->save();
+
+            return $this;
+        }
+
+        $contact->user()->associate($user);
+        $contact->save();
+
+        return $this;
     }
 }

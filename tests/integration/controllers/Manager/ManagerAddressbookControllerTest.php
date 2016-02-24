@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\Business;
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
@@ -82,23 +82,13 @@ class ManagerAddressbookControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        // I have a registered contact in Business
-        $contact = $this->createContact([
-            'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'nin'       => '12345',
-            'email'     => null,
-            ]);
-        $contact->user()->associate($this->issuer);
-        $this->business->contacts()->save($contact);
-
         // And I am authenticated as the business owner
         $this->actingAs($this->owner);
         $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $this->contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
@@ -114,23 +104,13 @@ class ManagerAddressbookControllerTest extends TestCase
 
         $unauthorizedUser = $this->createUser();
 
-        // I have a registered contact in Business
-        $contact = $this->createContact([
-            'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'nin'       => '12345',
-            'email'     => null,
-            ]);
-        $contact->user()->associate($this->issuer);
-        $this->business->contacts()->save($contact);
-
         // And I am authenticated as the business owner
         $this->actingAs($unauthorizedUser);
         $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $contact]));
+        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $this->contact]));
 
         $this->assertEquals(403, $response->getStatusCode());
         $this->assertCount(1, $this->business->fresh()->contacts);

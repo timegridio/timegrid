@@ -39,7 +39,7 @@ class Vacancy extends EloquentModel
      */
     public function business()
     {
-        return $this->belongsTo('App\Models\Business');
+        return $this->belongsTo('Timegridio\Concierge\Models\Business');
     }
 
     /**
@@ -49,7 +49,7 @@ class Vacancy extends EloquentModel
      */
     public function service()
     {
-        return $this->belongsTo('App\Models\Service');
+        return $this->belongsTo('Timegridio\Concierge\Models\Service');
     }
 
     /**
@@ -59,7 +59,7 @@ class Vacancy extends EloquentModel
      */
     public function appointments()
     {
-        return $this->hasMany('App\Models\Appointment');
+        return $this->hasMany('Timegridio\Concierge\Models\Appointment');
     }
 
     ////////////
@@ -113,9 +113,9 @@ class Vacancy extends EloquentModel
      *
      * @return Illuminate\Database\Query Scoped query
      */
-    public function scopeForService($query, Service $service)
+    public function scopeForService($query, $serviceId)
     {
-        return $query->where('service_id', '=', $service->id);
+        return $query->where('service_id', '=', $serviceId);
     }
 
     /////////////////////

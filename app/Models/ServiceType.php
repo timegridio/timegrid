@@ -27,7 +27,7 @@ class ServiceType extends Model
      */
     public function services()
     {
-        return $this->hasMany('App\Models\Service');
+        return $this->hasMany('Timegridio\Concierge\Models\Service');
     }
 
     /**
@@ -37,7 +37,7 @@ class ServiceType extends Model
      */
     public function business()
     {
-        return $this->belongsTo('App\Models\Business');
+        return $this->belongsTo('Timegridio\Concierge\Models\Business');
     }
 
     /**

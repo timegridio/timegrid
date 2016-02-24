@@ -2,7 +2,7 @@
 
 namespace App\Presenters;
 
-use App\Models\Contact;
+use Timegridio\Concierge\Models\Contact;
 use McCool\LaravelAutoPresenter\BasePresenter;
 
 class ContactPresenter extends BasePresenter

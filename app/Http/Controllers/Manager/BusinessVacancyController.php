@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Models\Business;
+use Timegridio\Concierge\Models\Business;
 use App\Services\VacancyParserService;
 use App\Services\VacancyService;
 use Illuminate\Http\Request;
