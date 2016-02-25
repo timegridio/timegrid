@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6b62649c3d53886732a8443d331518e8",
-    "content-hash": "18dd7c783049dde682e90f091c1bdf53",
+    "hash": "e56065634c820206a42241d24ecad99e",
+    "content-hash": "7f86d9011e5cfa4b1abffc564987c548",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3892,7 +3892,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webpatser/laravel-countries/zipball/e29dcce821f2c4a522e35483c38632ca534db4ee",
+                "url": "https://api.github.com/repos/webpatser/laravel-countries/zipball/2a310c0ff1b112d3710223d3bd51e8a30c5a304d",
                 "reference": "e29dcce821f2c4a522e35483c38632ca534db4ee",
                 "shasum": ""
             },
@@ -5114,54 +5114,6 @@
                 "xunit"
             ],
             "time": "2016-01-04 12:16:49"
-        },
-        {
-            "name": "potsky/laravel-localization-helpers",
-            "version": "v2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/potsky/laravel-localization-helpers.git",
-                "reference": "23550208c07d592c24e86f273f3a1a2ab4c30ee4"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/23550208c07d592c24e86f273f3a1a2ab4c30ee4",
-                "reference": "23550208c07d592c24e86f273f3a1a2ab4c30ee4",
-                "shasum": ""
-            },
-            "require": {
-                "fabpot/php-cs-fixer": "^1.11",
-                "laravel/framework": "5.2.*",
-                "potsky/microsoft-translator-php-sdk": "*"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9",
-                "orchestra/testbench": "3.2.*",
-                "phpunit/phpunit": "^4.0|^5.0",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-3.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Potsky",
-                    "email": "potsky@me.com",
-                    "homepage": "http://www.potsky.com"
-                }
-            ],
-            "description": "An artisan command package for easy translation management",
-            "time": "2016-01-19 11:20:43"
         },
         {
             "name": "potsky/microsoft-translator-php-sdk",

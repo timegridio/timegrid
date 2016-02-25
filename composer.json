@@ -60,7 +60,6 @@
         "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~4.0",
         "phpunit/phpunit-selenium": ">=1.2",
-        "potsky/laravel-localization-helpers" : "2.3.*",
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "^0.9.4"
