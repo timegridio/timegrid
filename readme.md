@@ -7,9 +7,9 @@ timegrid
 
 > Online service booking made easy.
 
-[![Build Status](https://travis-ci.org/alariva/timegrid.svg?branch=development)](https://travis-ci.org/alariva/timegrid)
-[![Code Climate](https://codeclimate.com/github/alariva/timegrid/badges/gpa.svg)](https://codeclimate.com/github/alariva/timegrid)
-[![Test Coverage](https://codeclimate.com/github/alariva/timegrid/badges/coverage.svg)](https://codeclimate.com/github/alariva/timegrid/coverage)
+[![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
+[![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
+[![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
 [![StyleCI](https://styleci.io/repos/45974720/shield)](https://styleci.io/repos/45974720)
 [![Current Stable](https://img.shields.io/badge/beta--stable-4.1.0-green.svg?style=flat-square)](http://timegrid.io/)
 [![Current Beta](https://img.shields.io/badge/dev--alpha-4.x-orange.svg?style=flat-square)](http://demo.timegrid.io/)
@@ -30,7 +30,7 @@ Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**P
 ![Dashboard Example Screenshot](http://i.imgur.com/I7i4kLl.png)
 ![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
 
-[Wanna see more?](https://github.com/alariva/timegrid/wiki/Screenshots)
+[Wanna see more?](https://github.com/timegridio/timegrid/wiki/Screenshots)
 
 ## Live Demo
 
