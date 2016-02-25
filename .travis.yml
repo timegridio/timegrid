@@ -12,7 +12,7 @@ before_script:
   - cp travis.phpunit.xml phpunit.xml
   - mkdir /tmp/timegrid
   - mysql -e 'create database test_timegrid;'
-  - composer install --dev --no-interaction
+  - composer install --no-dev --no-interaction
   - php artisan key:generate
   - php artisan migrate
   - php artisan db:seed
