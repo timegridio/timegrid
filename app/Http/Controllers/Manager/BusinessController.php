@@ -6,7 +6,7 @@ use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
 use Timegridio\Concierge\Models\Business;
-use App\Models\Category;
+use Timegridio\Concierge\Models\Category;
 use App\Services\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;

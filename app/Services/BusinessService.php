@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\BusinessAlreadyRegistered;
 use Timegridio\Concierge\Models\Business;
-use App\Models\Category;
+use Timegridio\Concierge\Models\Category;
 use App\Models\User;
 
 /*******************************************************************************

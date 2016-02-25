@@ -61,7 +61,16 @@ $factory->define(Timegridio\Concierge\Models\Business::class, function (Faker\Ge
         'social_facebook' => 'https://www.facebook.com/example?fref=ts',
         'strategy'        => 'dateslot',
         'plan'            => 'free',
-        'category_id'     => $faker->randomElement([1, 2, 3]),
+        'category_id'     => factory(Timegridio\Concierge\Models\Category::class)->create()->id,
+    ];
+});
+
+$factory->define(Timegridio\Concierge\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name'        => $faker->sentence(3),
+        'slug'        => str_slug($faker->name),
+        'description' => $faker->paragraph,
+        'strategy'    => 'dateslot',
     ];
 });
 
