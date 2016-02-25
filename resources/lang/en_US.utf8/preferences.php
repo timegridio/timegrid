@@ -61,6 +61,11 @@ return [
       'help'   => 'The default duration of any service you provide',
       'label'  => 'Default service duration (minutes)',
     ],
+    'vacancy_edit_advanced_mode' => [
+      'format' => 'Yes/No',
+      'help'   => 'Use advanced mode to publish vacancies',
+      'label'  => 'Use advanced mode to publish vacancies',
+    ],
   ],
   'controls' => [
     'select' => [

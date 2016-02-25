@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\User;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
 use Timegridio\Concierge\Models\Service;
+use App\Models\User;
 use Timegridio\Concierge\Models\Vacancy;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Seeder;

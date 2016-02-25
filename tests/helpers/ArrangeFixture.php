@@ -72,5 +72,7 @@ trait ArrangeFixture
 
         // And a Contact that holds an Appointment for that Service
         $this->contact = $this->createContact();
+        $this->contact->user()->associate($this->issuer->id);
+        $this->business->contacts()->save($this->contact);
     }
 }

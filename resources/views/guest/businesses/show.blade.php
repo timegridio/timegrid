@@ -24,9 +24,9 @@
                                     <a href="#">{!! $business->facebookImg('normal') !!}</a>
                                   </div>
                                   <div class="media-body">
-                                    <h4 class="media-heading">{{ $business->name }}</h4>
-                                    <blockquote>{!! nl2br(e($business->description)) !!}</blockquote>
-                                  </div>
+                                    <div class="{{ $business->pref('description_div_class') }}">
+                                        <h5>{!! Markdown::convertToHtml($business->description) !!}</h5>
+                                    </div>
                                 </div>
                             </div>
                             </div>

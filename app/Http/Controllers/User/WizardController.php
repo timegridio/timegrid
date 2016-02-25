@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Timegridio\Concierge\Concierge;
+use App\Services\ConciergeService;
 
 /*******************************************************************************
  * The Wizard will present either a guided step-by-step configuration for
@@ -41,11 +41,11 @@ class WizardController extends Controller
      *
      * @return Response Rendered view for Wizard
      */
-    public function getDashboard(Concierge $concierge)
+    public function getDashboard(ConciergeService $concierge)
     {
         logger()->info(__METHOD__);
 
-        $appointments = $concierge->getUnarchivedAppointments(auth()->user()->appointments());
+        $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
 
         $appointmentsCount = $appointments->count();
 

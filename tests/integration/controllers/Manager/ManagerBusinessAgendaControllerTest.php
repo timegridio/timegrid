@@ -47,7 +47,9 @@ class ManagerBusinessAgendaControllerTest extends TestCase
             'contact_id'  => $this->contact->id,
             'vacancy_id'  => $this->vacancy->id,
             'status'      => Appointment::STATUS_RESERVED,
-            'start_at'    => Carbon::now()->addDays(5),
+            'duration'    => 30,
+            'start_at'    => $this->vacancy->start_at,
+            'finish_at'   => $this->vacancy->start_at->addHours(1),
             ]);
 
         // And I am authenticated as the business owner
@@ -55,10 +57,8 @@ class ManagerBusinessAgendaControllerTest extends TestCase
 
         $this->visit(route('manager.business.agenda.index', $this->business));
 
-        // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
 
-        // Then I see the appointment listed
         $this->see($this->appointment->code);
     }
 }

@@ -4,7 +4,7 @@ use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
-use Timegridio\Concierge\Presenters\AppointmentPresenter;
+use App\Presenters\AppointmentPresenter;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class AppointmentPresenterTest extends TestCase
@@ -19,6 +19,7 @@ class AppointmentPresenterTest extends TestCase
     protected $contact;
 
     /**
+     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_reserved()
@@ -40,6 +41,7 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
+     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_confirmed()
@@ -61,6 +63,7 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
+     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_annulated()
@@ -82,6 +85,7 @@ class AppointmentPresenterTest extends TestCase
     }
 
     /**
+     * @covers App\Presenters\AppointmentPresenter::statusToCssClass
      * @test
      */
     public function it_gets_the_appointment_css_class_for_served()

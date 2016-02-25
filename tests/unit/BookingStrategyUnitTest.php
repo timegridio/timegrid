@@ -1,6 +1,6 @@
 <?php
 
-use Timegridio\Concierge\Booking\Strategies\BookingStrategy;
+use App\BookingStrategy;
 use Timegridio\Concierge\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;

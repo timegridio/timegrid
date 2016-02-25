@@ -81,7 +81,7 @@ class ManagerSearchControllerTest extends TestCase
 
         $criteria = $this->serviceOne->name;
 
-        $this->post('biz/'.$this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
+        $this->post($this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
 
         $this->see($this->serviceOne->name);
     }
@@ -101,7 +101,7 @@ class ManagerSearchControllerTest extends TestCase
 
         $criteria = $this->contactOne->email;
 
-        $this->post('biz/'.$this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
+        $this->post($this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
 
         $this->see($this->contactOne->name);
     }
@@ -117,7 +117,7 @@ class ManagerSearchControllerTest extends TestCase
 
         $criteria = $this->contactOne->name;
 
-        $this->post('biz/'.$this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
+        $this->post($this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
 
         $this->see($this->contactOne->name);
     }
@@ -137,7 +137,7 @@ class ManagerSearchControllerTest extends TestCase
 
         $criteria = $this->appointment->code;
 
-        $this->post('biz/'.$this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
+        $this->post($this->business->slug.'/manage/search/', ['business' => $this->business, 'criteria' => $criteria]);
 
         $this->see($this->appointment->date);
     }

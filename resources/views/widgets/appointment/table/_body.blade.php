@@ -13,6 +13,7 @@
         </tr>
     </thead>
     <tbody class="searchable">
+
         @foreach ($appointments as $appointment)
         {!! $appointment->row !!}
         @endforeach

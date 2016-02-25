@@ -6,7 +6,7 @@ use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Timegridio\Concierge\Concierge;
+use App\Services\ConciergeService;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;
@@ -17,16 +17,16 @@ class AgendaController extends Controller
     /**
      * Concierge service implementation.
      *
-     * @var Timegridio\Concierge\Alfred
+     * @var App\Services\ConciergeService
      */
     private $concierge;
 
     /**
      * Create Controller.
      *
-     * @param Timegridio\Concierge\Alfred $concierge
+     * @param App\Services\ConciergeService $concierge
      */
-    public function __construct(Concierge $concierge)
+    public function __construct(ConciergeService $concierge)
     {
         $this->concierge = $concierge;
         parent::__construct();
@@ -41,7 +41,7 @@ class AgendaController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $appointments = $this->concierge->getUnarchivedAppointments(auth()->user()->appointments());
+        $appointments = $this->concierge->getUnarchivedAppointmentsFor(auth()->user());
 
         return view('user.appointments.index', compact('appointments'));
     }

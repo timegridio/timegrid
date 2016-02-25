@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
 use App\Services\VacancyParserService;
-use Timegridio\Concierge\VacancyManager;
+use App\Services\VacancyService;
 use Illuminate\Http\Request;
 use JavaScript;
 
@@ -14,18 +14,18 @@ class BusinessVacancyController extends Controller
     /**
      * Vacancy service implementation.
      *
-     * @var use Timegridio\Timegridio\Concierge\VacancyManager
+     * @var App\Services\VacancyService
      */
-    private $vacancyManager;
+    private $vacancyService;
 
     /**
      * Create controller.
      *
-     * @param use Timegridio\Timegridio\Concierge\VacancyManager $vacancyManager
+     * @param App\Services\VacancyService $vacancyService
      */
-    public function __construct(VacancyManager $vacancyManager)
+    public function __construct(VacancyService $vacancyService)
     {
-        $this->vacancyManager = $vacancyManager;
+        $this->vacancyService = $vacancyService;
 
         parent::__construct();
     }
@@ -50,13 +50,13 @@ class BusinessVacancyController extends Controller
 
         $daysQuantity = $business->pref('vacancy_edit_days_quantity', config('root.vacancy_edit_days'));
 
-        $dates = $this->vacancyManager->generateAvailability($business->vacancies, 'today', $daysQuantity);
+        $dates = $this->vacancyService->generateAvailability($business->vacancies, 'today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
             flash()->warning(trans('manager.vacancies.msg.edit.no_services'));
         }
 
-        $advanced = $business->services->count() > 3;
+        $advanced = $business->services->count() > 3 || $business->pref('vacancy_edit_advanced_mode');
 
         return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'advanced'));
     }
@@ -77,7 +77,7 @@ class BusinessVacancyController extends Controller
 
         $publishedVacancies = $request->get('vacancy');
 
-        if (!$this->vacancyManager->update($business, $publishedVacancies)) {
+        if (!$this->vacancyService->update($business, $publishedVacancies)) {
             logger()->warning('Nothing to update');
 
             flash()->warning(trans('manager.vacancies.msg.store.nothing_changed'));
@@ -110,7 +110,7 @@ class BusinessVacancyController extends Controller
         // BEGIN
         $publishedVacancies = $vacancyParser->parseStatements($request->input('vacancies'));
 
-        if (!$this->vacancyManager->updateBatch($business, $publishedVacancies)) {
+        if (!$this->vacancyService->updateBatch($business, $publishedVacancies)) {
             logger()->warning('Nothing to update');
 
             flash()->warning(trans('manager.vacancies.msg.store.nothing_changed'));
@@ -142,7 +142,7 @@ class BusinessVacancyController extends Controller
 
         $vacancies = $business->vacancies()->with('Appointments')->get();
 
-        $timetable = $this->vacancyManager
+        $timetable = $this->vacancyService
                           ->setBusiness($business)
                           ->buildTimetable($vacancies, 'today', $daysQuantity);
 

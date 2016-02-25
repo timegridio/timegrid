@@ -148,9 +148,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
-        Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
-        Timegridio\Backend\TimegridioBackendServiceProvider::class,
-
         /*
          * Application Service Providers...
          */
@@ -167,6 +164,7 @@ return [
         Camroncade\Timezone\TimezoneServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
+        GrahamCampbell\Markdown\MarkdownServiceProvider::class,
         Fenos\Notifynder\NotifynderServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
@@ -179,9 +177,9 @@ return [
         Stevebauman\Location\LocationServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,
-        JeroenG\Packager\PackagerServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
+        Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
     ],
 
     /*
@@ -268,6 +266,7 @@ return [
         'Image'      => Intervention\Image\Facades\Image::class,
         //'Image'      => Barryvdh\Snappy\Facades\SnappyImage::class,
         'Location'   => Stevebauman\Location\Facades\Location::class,
+        'Markdown'   => GrahamCampbell\Markdown\Facades\Markdown::class,
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         'PDF'        => Barryvdh\Snappy\Facades\SnappyPdf::class,
         'Socialite'  => Laravel\Socialite\Facades\Socialite::class,

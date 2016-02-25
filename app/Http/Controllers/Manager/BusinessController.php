@@ -150,8 +150,11 @@ class BusinessController extends Controller
         // BEGIN
 
         session()->set('selected.business', $business);
-        $notifications = $business->getNotificationsNotRead(20);
-        $business->readAllNotifications();
+        // $notifications = $business->getNotificationsNotRead(20);
+        // $business->readAllNotifications();
+        
+        $notifications = [];
+        //$business->readAllNotifications();
 
         // Build Dashboard Report
         $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate(Carbon::now())->get()->count();

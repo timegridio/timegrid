@@ -3,9 +3,10 @@
 namespace App\Services;
 
 use App\Events\NewContactWasRegistered;
+use App\Models\User;
+use Carbon\Carbon;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
-use App\Models\User;
 
 /*******************************************************************************
  * Contact Service Layer
@@ -23,6 +24,9 @@ class ContactService
     public function register(Business $business, $data)
     {
         if (false === $contact = self::getExisting($business, $data['nin'])) {
+            
+            $data['birthdate'] = Carbon::parse($data['birthdate']);
+
             $contact = Contact::create($data);
 
             $business->contacts()->attach($contact);
@@ -51,7 +55,13 @@ class ContactService
      */
     public function copyFrom(User $user, Business $business, Contact $existingContact)
     {
-        $contact = Contact::create($existingContact->toArray());
+        $existingContactData = $existingContact->toArray();
+
+        $existingContactData['birthdate'] = $existingContactData['birthdate']
+            ? Carbon::parse($existingContactData['birthdate'])
+            : null;
+
+        $contact = Contact::create($existingContactData);
         $contact->user()->associate($user->id);
         $contact->businesses()->detach();
         $contact->save();
@@ -165,7 +175,7 @@ class ContactService
         $contact->email = array_get($data, 'email');
         $contact->nin = array_get($data, 'nin');
         $contact->gender = array_get($data, 'gender');
-        $contact->birthdate = array_get($data, 'birthdate');
+        $contact->birthdate = Carbon::parse(array_get($data, 'birthdate'));
         $contact->mobile = array_get($data, 'mobile');
         $contact->mobile_country = array_get($data, 'mobile_country');
         $contact->postal_address = array_get($data, 'postal_address');

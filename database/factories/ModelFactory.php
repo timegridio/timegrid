@@ -31,13 +31,13 @@ $factory->define('App\Models\Role', function (Faker\Generator $faker) {
 // Contact //
 /////////////
 
-$factory->define('Timegridio\Concierge\Models\Contact', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\Contact::class, function (Faker\Generator $faker) {
     return [
         'firstname'      => $faker->firstName,
         'lastname'       => $faker->lastName,
         'nin'            => $faker->numberBetween(25000000, 50000000),
         'email'          => $faker->safeEmail,
-        'birthdate'      => \Carbon\Carbon::now()->subYears(30)->format('m/d/Y'),
+        'birthdate'      => \Carbon\Carbon::now()->subYears(30),
         'mobile'         => null,
         'mobile_country' => null,
         'gender'         => $faker->randomElement(['M', 'F']),
@@ -51,7 +51,7 @@ $factory->define('Timegridio\Concierge\Models\Contact', function (Faker\Generato
 // Business //
 //////////////
 
-$factory->define('Timegridio\Concierge\Models\Business', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\Business::class, function (Faker\Generator $faker) {
     return [
         'name'            => $faker->sentence(3),
         'description'     => $faker->paragraph,
@@ -61,7 +61,16 @@ $factory->define('Timegridio\Concierge\Models\Business', function (Faker\Generat
         'social_facebook' => 'https://www.facebook.com/example?fref=ts',
         'strategy'        => 'dateslot',
         'plan'            => 'free',
-        'category_id'     => $faker->randomElement([1, 2, 3]),
+        'category_id'     => factory(Timegridio\Concierge\Models\Category::class)->create()->id,
+    ];
+});
+
+$factory->define(Timegridio\Concierge\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+        'name'        => $faker->sentence(3),
+        'slug'        => str_slug($faker->name),
+        'description' => $faker->paragraph,
+        'strategy'    => 'dateslot',
     ];
 });
 
@@ -69,7 +78,7 @@ $factory->define('Timegridio\Concierge\Models\Business', function (Faker\Generat
 // Service Type //
 //////////////////
 
-$factory->define('Timegridio\Concierge\Models\ServiceType', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\ServiceType::class, function (Faker\Generator $faker) {
     return [
         'business_id' => factory(Timegridio\Concierge\Models\Business::class)->create()->id,
         'name'        => $faker->sentence(3),
@@ -81,7 +90,7 @@ $factory->define('Timegridio\Concierge\Models\ServiceType', function (Faker\Gene
 // Service //
 /////////////
 
-$factory->define('Timegridio\Concierge\Models\Service', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\Service::class, function (Faker\Generator $faker) {
     return [
         'business_id'   => factory(Timegridio\Concierge\Models\Business::class)->create()->id,
         'name'          => $faker->sentence(2),
@@ -95,7 +104,7 @@ $factory->define('Timegridio\Concierge\Models\Service', function (Faker\Generato
 // Vacancy //
 /////////////
 
-$factory->define('Timegridio\Concierge\Models\Vacancy', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\Vacancy::class, function (Faker\Generator $faker) {
     $date = $faker->dateTimeBetween('today', 'today +7 days')->format('Y-m-d');
 
     return [
@@ -112,7 +121,7 @@ $factory->define('Timegridio\Concierge\Models\Vacancy', function (Faker\Generato
 // Appointment //
 /////////////////
 
-$factory->define('Timegridio\Concierge\Models\Appointment', function (Faker\Generator $faker) {
+$factory->define(Timegridio\Concierge\Models\Appointment::class, function (Faker\Generator $faker) {
     return [
         'business_id' => factory(Timegridio\Concierge\Models\Business::class)->create()->id,
         'contact_id'  => factory(Timegridio\Concierge\Models\Contact::class)->create()->id,
@@ -129,7 +138,7 @@ $factory->define('Timegridio\Concierge\Models\Appointment', function (Faker\Gene
 // Domain //
 ////////////
 
-$factory->define('Timegridio\Concierge\Models\Domain', function ($faker) {
+$factory->define(Timegridio\Concierge\Models\Domain::class, function ($faker) {
     return [
         'slug'     => str_slug($faker->name),
         'owner_id' => factory(App\Models\User::class)->create()->id,

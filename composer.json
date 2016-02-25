@@ -13,11 +13,11 @@
         }
     ],
     "support": {
-        "issues": "https://github.com/timegridio/timegrid/issues",
+        "issues": "https://github.com/alariva/timegrid/issues",
         "email": "alariva@timegrid.io",
-        "wiki": "https://github.com/timegridio/timegrid/wiki",
+        "wiki": "https://github.com/alariva/timegrid/wiki",
         "irc": "https://gitter.im/alariva/timegridDevelopment",
-        "source": "https://github.com/timegridio/timegrid"
+        "source": "https://github.com/alariva/timegrid"
     },
     "type": "project",
     "require": {
@@ -28,6 +28,7 @@
         "camroncade/timezone": "0.1",
         "creativeorange/gravatar": "~1.0",
         "fenos/notifynder": "3.*",
+        "graham-campbell/markdown": "^6.0",
         "guzzlehttp/guzzle": "~6.0",
         "intervention/image": "^2.2",
         "intervention/imagecache": "^2.2",
@@ -48,8 +49,6 @@
         "jenssegers/agent": "^2.3",
         "laracasts/utilities": "^2.1",
         "alariva/tidiochat": "^2.0",
-        "timegridio/backend": "dev-master",
-        "jeroen-g/laravel-packager": "^1.3",
         "timegridio/concierge": "dev-master"
     },
     "require-dev": {
@@ -59,7 +58,7 @@
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",
         "phpspec/phpspec": "~2.1",
-        "phpunit/phpunit": "~4.0|~5.0",
+        "phpunit/phpunit": "~4.0",
         "phpunit/phpunit-selenium": ">=1.2",
         "potsky/laravel-localization-helpers" : "2.3.*",
         "symfony/css-selector": "~3.0",

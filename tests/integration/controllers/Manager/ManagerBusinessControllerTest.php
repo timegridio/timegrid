@@ -30,7 +30,7 @@ class ManagerBusinessControllerTest extends TestCase
 
         $this->visit(route('manager.business.index'));
 
-        $this->seePageIs('biz/'.$this->business->slug.'/manage/dashboard');
+        $this->seePageIs($this->business->slug.'/manage/dashboard');
         $this->see('You only have one business registered. Here your dashboard');
     }
 
@@ -194,7 +194,7 @@ class ManagerBusinessControllerTest extends TestCase
 
         $this->visit(route('manager.business.edit', $this->business));
 
-        $this->seePageIs('biz/'.$this->business->slug.'/manage/edit');
+        $this->seePageIs($this->business->slug.'/manage/edit');
         $this->see('Business profile edit');
     }
 

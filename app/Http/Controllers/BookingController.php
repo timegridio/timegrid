@@ -6,7 +6,7 @@ use App\Http\Requests\AlterAppointmentRequest;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Timegridio\Concierge\Concierge;
+use App\Services\ConciergeService;
 use Carbon\Carbon;
 
 class BookingController extends Controller
@@ -14,16 +14,16 @@ class BookingController extends Controller
     /**
      * Concierge service implementation.
      *
-     * @var Timegridio\Concierge\Alfred
+     * @var App\Services\ConciergeService
      */
     private $concierge;
 
     /**
      * Create controller.
      *
-     * @param Concierge $concierge
+     * @param ConciergeService $concierge
      */
-    public function __construct(Concierge $concierge)
+    public function __construct(ConciergeService $concierge)
     {
         parent::__construct();
 
@@ -68,7 +68,7 @@ class BookingController extends Controller
         ));
 
         try {
-            $appointment = $this->concierge->requestAction($appointment, $action);
+            $appointment = $this->concierge->requestAction(auth()->user(), $appointment, $action);
         } catch (\Exception $e) {
             return response()->json(['code' => 'ERROR', 'html' => '']);
         }

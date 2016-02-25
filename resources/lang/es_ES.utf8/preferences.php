@@ -61,6 +61,11 @@ return [
       'help'   => 'La duración por defecto de tus servicios',
       'label'  => 'Duración Predeterminada de Servicios (minutos)',
     ],
+    'vacancy_edit_advanced_mode' => [
+      'format' => 'Si/No',
+      'help'   => 'Usar modo avanzado para publicar disponibilidad',
+      'label'  => 'Usar modo avanzado para publicar disponibilidad',
+    ],
   ],
   'controls' => [
     'select' => [

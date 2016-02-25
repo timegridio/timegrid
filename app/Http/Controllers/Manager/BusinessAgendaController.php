@@ -4,23 +4,23 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Concierge;
+use App\Services\ConciergeService;
 
 class BusinessAgendaController extends Controller
 {
     /**
      * Concierge service implementation.
      *
-     * @var Timegridio\Concierge\Alfred
+     * @var App\Services\ConciergeService
      */
     private $concierge;
 
     /**
      * Create controller.
      *
-     * @param Timegridio\Concierge\Alfred $concierge
+     * @param App\Services\ConciergeService $concierge
      */
-    public function __construct(Concierge $concierge)
+    public function __construct(ConciergeService $concierge)
     {
         $this->concierge = $concierge;
 

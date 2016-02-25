@@ -1,10 +1,10 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
-use App\Models\User;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class UserContactControllerTest extends TestCase
 {
@@ -24,7 +24,7 @@ class UserContactControllerTest extends TestCase
             ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->createUser());
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('user.businesses.home', $this->business))
@@ -62,7 +62,9 @@ class UserContactControllerTest extends TestCase
             ]);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($this->createUser([
+            'email' => $existingContact->email, ]
+            ));
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('user.businesses.home', $this->business))
@@ -92,24 +94,26 @@ class UserContactControllerTest extends TestCase
         // I have a registered contact in Business A (other business)
         $otherBusiness = $this->createBusiness();
 
+        $issuer = $this->createUser();
+
         $existingContact = $this->createContact([
             'firstname' => 'John',
             'lastname'  => 'Doe',
             'email'     => 'test@example.org',
             ]);
-        $existingContact->user()->associate($this->issuer);
+        $existingContact->user()->associate($issuer);
         $otherBusiness->contacts()->save($existingContact);
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->issuer);
+        $this->actingAs($issuer);
 
-        $beforeCount = $this->issuer->contacts->count();
+        $beforeCount = $issuer->contacts->count();
 
         // And I visit the business home to get subscribed
         $this->visit(route('user.businesses.home', $this->business))
              ->click('Subscribe');
 
-        $afterCount = $this->issuer->fresh()->contacts->count();
+        $afterCount = $issuer->fresh()->contacts->count();
 
         // Then I am not requested for form filling and get my contact copied from existing
         $this->assertResponseOk();
@@ -194,23 +198,12 @@ class UserContactControllerTest extends TestCase
         // Given a fixture of
         $this->arrangeFixture();
 
-        // I have a registered contact in Business
-        $contact = $this->createContact([
-            'firstname' => 'John',
-            'lastname'  => 'Doe',
-            'nin'       => '12345',
-            'email'     => null,
-            ]);
-        $contact->user()->associate($this->issuer);
-        $this->business->contacts()->save($contact);
-
-        // And I am authenticated as the business owner
         $this->actingAs($this->issuer);
         $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('user.business.contact.destroy', ['business' => $this->business, 'contact' => $contact]));
+        $response = $this->call('DELETE', route('user.business.contact.destroy', ['business' => $this->business, 'contact' => $this->contact]));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
