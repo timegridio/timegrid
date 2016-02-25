@@ -9,7 +9,6 @@ class NewUserWasRegisteredUnitTest extends TestCase
     use CreateUser, CreateContact;
 
     /**
-     * @covers App\Events\NewUserWasRegistered::__construct
      * @test
      */
     public function it_fires_event_and_links_user()
@@ -20,7 +19,6 @@ class NewUserWasRegisteredUnitTest extends TestCase
     }
 
     /**
-     * @covers App\Events\NewUserWasRegistered::broadcastOn
      * @test
      */
     public function it_verifies_broadcasts_on()
