@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() == 'local') {
             $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
-            // $this->app->register('Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider');
+            $this->app->register('Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider');
         }
     }
 }

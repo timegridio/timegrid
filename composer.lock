@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e56065634c820206a42241d24ecad99e",
-    "content-hash": "7f86d9011e5cfa4b1abffc564987c548",
+    "hash": "fbc1e6a987f03211199ec495309b32d7",
+    "content-hash": "c3da021d3d9f5be2e4a743c690a13943",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -5114,6 +5114,103 @@
                 "xunit"
             ],
             "time": "2016-01-04 12:16:49"
+        },
+        {
+            "name": "potsky/laravel-localization-helpers",
+            "version": "v2.3.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/laravel-localization-helpers.git",
+                "reference": "92472ff2f40577e0034355d688761abe874596c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/92472ff2f40577e0034355d688761abe874596c6",
+                "reference": "92472ff2f40577e0034355d688761abe874596c6",
+                "shasum": ""
+            },
+            "require": {
+                "fabpot/php-cs-fixer": "^1.11",
+                "laravel/framework": "5.2.*",
+                "potsky/microsoft-translator-php-sdk": "*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "orchestra/testbench": "3.2.*",
+                "phpunit/phpunit": "^4.0|^5.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Potsky",
+                    "email": "potsky@me.com",
+                    "homepage": "http://www.potsky.com"
+                }
+            ],
+            "description": "An artisan command package for easy translation management",
+            "time": "2016-02-02 16:30:56"
+        },
+        {
+            "name": "potsky/microsoft-translator-php-sdk",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/microsoft-translator-php-sdk.git",
+                "reference": "4d409498f4704ebf613062aa5a1d802c61f158c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/microsoft-translator-php-sdk/zipball/4d409498f4704ebf613062aa5a1d802c61f158c6",
+                "reference": "4d409498f4704ebf613062aa5a1d802c61f158c6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^4.0|^5.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MicrosoftTranslator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "potsky",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP SDK for Microsoft Translator",
+            "homepage": "https://github.com/potsky/microsoft-translator-php-sdk",
+            "keywords": [
+                "bing",
+                "microsoft",
+                "php",
+                "sdk",
+                "translation"
+            ],
+            "time": "2016-02-16 14:40:52"
         },
         {
             "name": "satooshi/php-coveralls",
