@@ -5116,56 +5116,6 @@
             "time": "2016-01-04 12:16:49"
         },
         {
-            "name": "potsky/microsoft-translator-php-sdk",
-            "version": "v0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/potsky/microsoft-translator-php-sdk.git",
-                "reference": "f0d17b1b8716376dabc9a028f1c8e78523ac7e7f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/potsky/microsoft-translator-php-sdk/zipball/4d409498f4704ebf613062aa5a1d802c61f158c6",
-                "reference": "f0d17b1b8716376dabc9a028f1c8e78523ac7e7f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9",
-                "phpunit/phpunit": "^4.0|^5.0",
-                "satooshi/php-coveralls": "dev-master"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "MicrosoftTranslator": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "potsky",
-                    "email": "potsky@me.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "PHP SDK for Microsoft Translator",
-            "homepage": "https://github.com/potsky/microsoft-translator-php-sdk",
-            "keywords": [
-                "bing",
-                "microsoft",
-                "php",
-                "sdk",
-                "translation"
-            ],
-            "time": "2016-01-13 09:00:15"
-        },
-        {
             "name": "satooshi/php-coveralls",
             "version": "v0.6.1",
             "source": {
