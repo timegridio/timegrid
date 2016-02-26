@@ -3,24 +3,24 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
-use App\Services\ConciergeService;
 
 class BusinessAgendaController extends Controller
 {
     /**
      * Concierge service implementation.
      *
-     * @var App\Services\ConciergeService
+     * @var Timegridio\Concierge\Concierge
      */
     private $concierge;
 
     /**
      * Create controller.
      *
-     * @param App\Services\ConciergeService $concierge
+     * @param Timegridio\Concierge\Concierge
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(Concierge $concierge)
     {
         $this->concierge = $concierge;
 
@@ -41,7 +41,7 @@ class BusinessAgendaController extends Controller
 
         $this->authorize('manage', $business);
 
-        $appointments = $this->concierge->setBusiness($business)->getUnservedAppointments();
+        $appointments = $this->concierge->business($business)->getUnservedAppointments();
 
         $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
 
