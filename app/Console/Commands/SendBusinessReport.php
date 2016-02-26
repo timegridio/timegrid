@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
-use Timegridio\Concierge\Models\Business;
-use App\Services\ConciergeService;
 use App\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
+use Timegridio\Concierge\Concierge;
+use Timegridio\Concierge\Models\Business;
 
 class SendBusinessReport extends Command
 {
@@ -41,7 +41,7 @@ class SendBusinessReport extends Command
      *
      * @return void
      */
-    public function __construct(ConciergeService $concierge, TransMail $transmail)
+    public function __construct(Concierge $concierge, TransMail $transmail)
     {
         $this->concierge = $concierge;
 
@@ -106,7 +106,7 @@ class SendBusinessReport extends Command
         $this->info(__METHOD__);
         $this->info("Sending to businessId:{$business->id}");
 
-        $appointments = $this->concierge->setBusiness($business)->getActiveAppointments();
+        $appointments = $this->concierge->business($business)->getActiveAppointments();
 
         $owner = $business->owners()->first();
 
