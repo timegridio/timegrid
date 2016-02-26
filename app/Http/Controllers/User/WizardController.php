@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\ConciergeService;
 
 /*******************************************************************************
  * The Wizard will present either a guided step-by-step configuration for
@@ -41,11 +40,15 @@ class WizardController extends Controller
      *
      * @return Response Rendered view for Wizard
      */
-    public function getDashboard(ConciergeService $concierge)
+    public function getDashboard()
     {
         logger()->info(__METHOD__);
 
-        $appointments = $concierge->getUnarchivedAppointmentsFor(auth()->user());
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
+        $appointments = auth()->user()->appointments()->orderBy('start_at')->unarchived()->get();
 
         $appointmentsCount = $appointments->count();
 
