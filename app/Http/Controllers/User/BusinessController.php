@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Timegridio\Concierge\Models\Business;
-use App\Services\ConciergeService;
-use App\Services\VacancyService;
 use Fenos\Notifynder\Facades\Notifynder;
+use Timegridio\Concierge\Concierge;
+use Timegridio\Concierge\Models\Business;
 
 class BusinessController extends Controller
 {
@@ -17,7 +16,7 @@ class BusinessController extends Controller
      *
      * @return Response Rendered view for desired Business
      */
-    public function getHome(Business $business)
+    public function getHome(Business $business, Concierge $concierge)
     {
         logger()->info(__METHOD__);
         logger()->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
@@ -30,13 +29,9 @@ class BusinessController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $concierge = new ConciergeService(new VacancyService());
+        $available = $concierge->business($business)->isBookable('today', 30);
 
-        $concierge->setBusiness($business);
-
-        $available = $concierge->isAvailable(auth()->user());
-
-        $appointment = $concierge->getNextAppointmentFor(auth()->user()->contacts);
+        $appointment = $business->bookings()->forContacts(auth()->user()->contacts)->active()->first();
 
         return view('user.businesses.show', compact('business', 'available', 'appointment'));
     }
