@@ -49,7 +49,7 @@
         "jenssegers/agent": "^2.3",
         "laracasts/utilities": "^2.1",
         "alariva/tidiochat": "^2.0",
-        "timegridio/concierge": "0.3-dev"
+        "timegridio/concierge": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
