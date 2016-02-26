@@ -27,7 +27,7 @@ class SendBusinessReport extends Command
     /**
      * Concierge Service.
      *
-     * @var ConciergeService
+     * @var Timegridio\Concierge\Concierge
      */
     protected $concierge;
 
