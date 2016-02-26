@@ -3,27 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AlterAppointmentRequest;
+use Carbon\Carbon;
+use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use App\Services\ConciergeService;
-use Carbon\Carbon;
 
 class BookingController extends Controller
 {
     /**
      * Concierge service implementation.
      *
-     * @var App\Services\ConciergeService
+     * @var Timegridio\Concierge\Concierge
      */
     private $concierge;
 
     /**
      * Create controller.
      *
-     * @param ConciergeService $concierge
+     * @param Timegridio\Concierge\Concierge
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(Concierge $concierge)
     {
         parent::__construct();
 
@@ -46,7 +46,7 @@ class BookingController extends Controller
         //////////////////
 
         $issuer = auth()->user();
-        $businessId = $request->input('business');
+        $business = Business::findOrFail($request->input('business'));
         $appointment = Appointment::findOrFail($request->input('appointment'));
         $action = $request->input('action');
         $widgetType = $request->input('widget');
@@ -63,14 +63,27 @@ class BookingController extends Controller
             'postAction.request:[issuer:%s, action:%s, business:%s, appointment:%s]',
             $issuer->email,
             $action,
-            $businessId,
+            $business->id,
             $appointment->id
         ));
 
-        try {
-            $appointment = $this->concierge->requestAction(auth()->user(), $appointment, $action);
-        } catch (\Exception $e) {
-            return response()->json(['code' => 'ERROR', 'html' => '']);
+        $this->concierge->business($business);
+
+        $appointmentManager = $this->concierge->booking()->appointment($appointment->hash);
+
+        switch ($action) {
+            case 'annulate':
+                $appointment = $appointmentManager->annulate();
+                break;
+            case 'confirm':
+                $appointment = $appointmentManager->confirm();
+                break;
+            case 'serve':
+                $appointment = $appointmentManager->serve();
+                break;
+            default:
+                # code...
+                break;
         }
 
         $contents = ['appointment' => $appointment, 'user' => auth()->user()];
