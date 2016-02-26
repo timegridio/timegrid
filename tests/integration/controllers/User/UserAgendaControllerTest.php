@@ -1,7 +1,7 @@
 <?php
 
-use Timegridio\Concierge\Models\Appointment;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Timegridio\Concierge\Models\Appointment;
 
 class UserAgendaControllerTest extends TestCase
 {
@@ -356,13 +356,16 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_makes_a_reservation()
+    public function it_makes_a_reservation_with_dateslot()
     {
         $user = $this->createUser();
         $this->actingAs($user);
 
         $owner = $this->createUser();
-        $business = $this->createBusiness(['name' => 'tosto this tosti']);
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'dateslot',
+            ]);
         $business->owners()->save($owner);
 
         $service = $this->makeService();
@@ -376,6 +379,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
             'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
             'capacity'    => 1,
@@ -387,7 +391,7 @@ class UserAgendaControllerTest extends TestCase
         $this->call('POST', route('user.booking.store', ['business' => $business]), [
             'businessId' => $business->id,
             'service_id' => $service->id,
-            '_time'      => '09:00:00',
+            '_time'      => $this->vacancy->start_at->timezone($business->timezone)->toTimeString(),
             '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
             'comments'   => 'test comments',
             ]);
@@ -413,6 +417,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
             'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
             'capacity'    => 1,
@@ -453,7 +458,9 @@ class UserAgendaControllerTest extends TestCase
         $userOne = $this->createUser();
         $userTwo = $this->createUser();
 
-        $business = $this->createBusiness();
+        $business = $this->createBusiness([
+            'strategy' => 'dateslot',
+            ]);
 
         $service = $this->makeService();
         $business->services()->save($service);
@@ -466,6 +473,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
             'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
             'capacity'    => 2,
@@ -503,12 +511,14 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_prevents_taking_a_reservation_over_capacity()
+    public function it_prevents_taking_a_reservation_over_capacity_with_dateslot()
     {
         $userOne = $this->createUser();
         $userTwo = $this->createUser();
 
-        $business = $this->createBusiness();
+        $business = $this->createBusiness([
+            'strategy' => 'dateslot'
+            ]);
 
         $service = $this->makeService();
         $business->services()->save($service);
@@ -521,6 +531,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
             'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
             'capacity'    => 1,
@@ -609,7 +620,10 @@ class UserAgendaControllerTest extends TestCase
         $this->actingAs($user);
 
         $owner = $this->createUser();
-        $business = $this->createBusiness(['name' => 'tosto this tosti', 'strategy' => 'timeslot']);
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'timeslot',
+            ]);
         $business->owners()->save($owner);
 
         $service = $this->makeService();
@@ -755,7 +769,10 @@ class UserAgendaControllerTest extends TestCase
         $userOne = $this->createUser();
         $userTwo = $this->createUser();
 
-        $business = $this->createBusiness(['strategy' => 'timeslot']);
+        $business = $this->createBusiness([
+            'strategy' => 'timeslot'
+            ]);
+        $business->owners()->save($this->createUser());
 
         $service = $this->makeService();
         $business->services()->save($service);
@@ -768,6 +785,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy = $this->makeVacancy([
             'business_id' => $business->id,
             'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
             'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
             'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
             'capacity'    => 1,

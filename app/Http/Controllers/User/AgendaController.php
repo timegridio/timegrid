@@ -4,31 +4,34 @@ namespace App\Http\Controllers\User;
 
 use App\Events\NewAppointmentWasBooked;
 use App\Http\Controllers\Controller;
-use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Service;
-use App\Services\ConciergeService;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;
 use Notifynder;
+use Timegridio\Concierge\Concierge;
+use Timegridio\Concierge\Exceptions\DuplicatedAppointmentException;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Service;
+use Timegridio\Concierge\Vacancy\VacancyManager;
 
 class AgendaController extends Controller
 {
     /**
      * Concierge service implementation.
      *
-     * @var App\Services\ConciergeService
+     * @var Timegridio\Concierge\Concierge
      */
     private $concierge;
 
     /**
      * Create Controller.
      *
-     * @param App\Services\ConciergeService $concierge
+     * @param Timegridio\Concierge\Concierge
      */
-    public function __construct(ConciergeService $concierge)
+    public function __construct(Concierge $concierge)
     {
         $this->concierge = $concierge;
+
         parent::__construct();
     }
 
@@ -41,7 +44,7 @@ class AgendaController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $appointments = $this->concierge->getUnarchivedAppointmentsFor(auth()->user());
+        $appointments = auth()->user()->appointments()->orderBy('start_at')->unarchived()->get();
 
         return view('user.appointments.index', compact('appointments'));
     }
@@ -88,9 +91,10 @@ class AgendaController extends Controller
             $startFromDate = $this->sanitizeDate('tomorrow');
         }
 
-        $this->concierge->setBusiness($business);
-
-        $availability = $this->concierge->getVacancies(auth()->user(), $startFromDate->toDateString(), $days);
+        $availability = $this->concierge
+                             ->business($business)
+                             ->vacancies()
+                             ->generateAvailability($business->vacancies, $startFromDate->toDateString(), $days);
 
         return view(
             'user.appointments.'.$business->strategy.'.book',
@@ -119,21 +123,43 @@ class AgendaController extends Controller
         $contact = $issuer->getContactSubscribedTo($business->id);
         $service = Service::find($request->input('service_id'));
 
-        $strTime = $request->input('_time') ?: $business->pref('start_at');
-        $strDateTime = $request->input('_date').' '.$strTime.' '.$business->timezone;
-        $datetime = Carbon::parse($strDateTime)->setTimezone('UTC');
+#        $strTime = $request->input('_time') ?: $business->pref('start_at');
+#        $strDateTime = $request->input('_date').' '.$strTime.' '.$business->timezone;
+#        $datetime = Carbon::parse($strDateTime)->setTimezone('UTC');
+
+        $date = Carbon::parse($request->input('_date'))->toDateString();
+        $time = Carbon::parse($request->input('_time'))->toTimeString();
 
         $comments = $request->input('comments');
 
-        $this->concierge->setBusiness($business);
+        $reservation = [
+            'issuer'   => $issuer->id,
+            'contact'  => $contact,
+            'service'  => $service,
+            'date'     => $date,
+            'time'     => $time,
+            'timezone' => $business->timezone,
+            'comments' => $comments,
+        ];
 
         logger()->info('issuer:'.$issuer->id);
         logger()->info('business:'.$business->id);
         logger()->info('contact:'.$contact->id);
         logger()->info('service:'.$service->id);
-        logger()->info('datetime:'.$datetime);
+        logger()->info('date:'.$date);
+        logger()->info('time:'.$time);
+        logger()->info('timezone:'.$business->timezone);
 
-        $appointment = $this->concierge->makeReservation($issuer, $business, $contact, $service, $datetime, $comments);
+        try {
+            $appointment = $this->concierge->business($business)->takeReservation($reservation);
+
+        } catch (DuplicatedAppointmentException $e) {
+            logger()->info('[ADVICE] Appointment is duplicated');
+
+            flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+
+            return redirect()->route('user.agenda');
+        }
 
         if (false === $appointment) {
             logger()->info('[ADVICE] Unable to book');
@@ -141,14 +167,6 @@ class AgendaController extends Controller
             flash()->warning(trans('user.booking.msg.store.error'));
 
             return redirect()->back();
-        }
-
-        if (!$appointment->exists) {
-            logger()->info('[ADVICE] Appointment is duplicated');
-
-            flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
-
-            return redirect()->route('user.agenda');
         }
 
         logger()->info('Appointment saved successfully');
