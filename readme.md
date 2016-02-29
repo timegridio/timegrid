@@ -10,7 +10,6 @@ timegrid
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![StyleCI](https://styleci.io/repos/45974720/shield)](https://styleci.io/repos/45974720)
 [![Current Stable](https://img.shields.io/badge/beta--stable-4.1.0-green.svg?style=flat-square)](http://timegrid.io/)
 [![Current Beta](https://img.shields.io/badge/dev--alpha-4.x-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
