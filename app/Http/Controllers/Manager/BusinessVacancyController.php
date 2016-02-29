@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use Timegridio\Concierge\Models\Business;
-use App\Services\VacancyParserService;
 use App\Services\VacancyService;
 use Illuminate\Http\Request;
 use JavaScript;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Vacancy\VacancyParser;
 
 class BusinessVacancyController extends Controller
 {
@@ -100,7 +100,7 @@ class BusinessVacancyController extends Controller
      *
      * @return Illuminate\Http\Response
      */
-    public function storeBatch(Business $business, Request $request, VacancyParserService $vacancyParser)
+    public function storeBatch(Business $business, Request $request, VacancyParser $vacancyParser)
     {
         logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
