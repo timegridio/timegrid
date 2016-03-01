@@ -1,6 +1,6 @@
 <?php
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
     protected $baseUrl = 'http://localhost:8000';
 
