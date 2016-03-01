@@ -18,6 +18,7 @@
         <testsuite name="Application Test Suite">
             <directory>./tests/unit/</directory>
             <directory>./tests/integration/</directory>
+            <directory>./tests/acceptance/scenarios/</directory>
         </testsuite>
     </testsuites>
     <php>
