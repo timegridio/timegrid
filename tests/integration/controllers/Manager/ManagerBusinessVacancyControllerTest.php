@@ -136,6 +136,24 @@ class ManagerBusinessVacancyControllerTest extends TestCase
     }
 
     /**
+     * @FAILING test
+     */
+    public function it_skips_blank_updates_for_vacancy_in_simple_mode()
+    {
+        $this->arrangeBusinessWithOwner();
+
+        $this->actingAs($this->vacancy->business->owner());
+
+        $this->visit(route('manager.business.vacancy.create', $this->vacancy->business));
+
+        $this->type('', "vacancy[{$this->vacancy->date}][{$this->vacancy->service->id}]");
+
+        $this->press('Update');
+
+        $this->see('You must indicate your availability at least for one date');
+    }
+
+    /**
      * @test
      */
     public function it_updates_the_vacancy_in_advanced_mode()
@@ -168,6 +186,33 @@ EOD;
         $this->press('Update');
 
         $this->assertCount($vacanciesCountBeforeUpdate + 6, $this->business->fresh()->vacancies);
+    }
+
+    /**
+     * @FAILING test
+     */
+    public function it_skips_blank_updates_the_vacancy_in_advanced_mode()
+    {
+        $this->arrangeBusinessWithOwner();
+        $serviceFour = $this->createService();
+        $serviceFive = $this->createService();
+        $serviceSix = $this->createService();
+
+        $this->business->services()->save($serviceFour);
+        $this->business->services()->save($serviceFive);
+        $this->business->services()->save($serviceSix);
+
+        $this->business->pref('vacancy_edit_advanced_mode', true);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.create', $this->business));
+
+        $this->type('', 'vacancies');
+
+        $this->press('Update');
+
+        $this->see('You must indicate your availability at least for one date');
     }
 
     /**
@@ -222,21 +267,23 @@ EOD;
         $this->see($this->vacancy->service->slug);
     }
 
-    // TODO: Implement the vacancy table for dateslot
+    /**
+     * @test
+     */
+    public function it_displays_no_services_warning_upon_timetable_show()
+    {
+        $this->business = $this->createBusiness(['strategy' => 'timeslot']);
 
-//    public function it_displays_the_vacancy_management_table_on_dateslot()
-//    {
-//        $this->arrangeBusinessWithOwner();
-//
-//        $this->business->update(['strategy' => 'dateslot']);
-//
-//        $this->actingAs($this->owner);
-//
-//        $this->visit(route('manager.business.vacancy.show', $this->business));
-//
-//        $this->seePageIs($this->business->slug.'/manage/vacancy/show');
-//        $this->see($this->vacancy->service->slug);
-//    }
+        $this->owner = $this->createUser();
+
+        $this->business->owners()->save($this->owner);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.show', $this->business));
+
+        $this->see('No services registered');
+    }
 
     //////////////////////
     // Scenario Helpers //
