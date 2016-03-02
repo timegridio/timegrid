@@ -26,9 +26,10 @@ class CoursesScenarioTest extends TestCase
         $this->the_business_publishes_a_course_service();
         $this->the_business_publishes_vacancies();
         $this->a_user_subscribes_to_business();
-        $this->a_user_queries_vacancies();
+        $this->the_user_queries_vacancies();
         $this->it_provides_available_times_for_requested_service_date();
-        $this->a_user_takes_a_reservation();
+        $this->the_user_takes_a_reservation();
+        $this->the_user_sees_the_reservation_ticket();
     }
 
     public function the_business_publishes_a_course_service()
@@ -92,7 +93,7 @@ EOD;
              ->see('Book appointment');
     }
 
-    public function a_user_queries_vacancies()
+    public function the_user_queries_vacancies()
     {
         $this->actingAs($this->issuer);
 
@@ -127,7 +128,7 @@ EOD;
         $this->seeJsonContains(['times' => ['19:00:00', '20:00:00']]);
     }
 
-    public function a_user_takes_a_reservation()
+    public function the_user_takes_a_reservation()
     {
         $this->actingAs($this->issuer->fresh());
 
@@ -141,6 +142,17 @@ EOD;
             ]);
 
         $this->seeInDatabase('appointments', ['business_id' => $this->business->id]);
+    }
+
+    public function the_user_sees_the_reservation_ticket()
+    {
+        $this->actingAs($this->issuer->fresh());
+
+        $this->visit(route('user.businesses.home', ['business' => $this->business]));
+
+        $this->see($this->service->name)
+             ->see('Please arrive at 07:00 pm')
+             ->see($this->issuer->fresh()->appointments()->first()->code);
     }
 
     /**
@@ -161,5 +173,6 @@ EOD;
         $this->business->owners()->save($this->owner);
 
         $this->business->pref('vacancy_edit_advanced_mode', true);
+        $this->business->pref('time_format', 'h:i a');
     }
 }
