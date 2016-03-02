@@ -53,7 +53,7 @@
 
             <li class="list-group-item"><span title="{{ $appointment->tz }}">
                 <span class='glyphicon glyphicon-time'></span>&nbsp;
-                    {{ trans_choice('appointments.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}&nbsp;&nbsp;
+                    {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}&nbsp;&nbsp;
                     @if($appointment->duration)
                             <span class="text-muted">
                                 <span class='glyphicon glyphicon-hourglass'></span>&nbsp;

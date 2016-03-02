@@ -18,7 +18,7 @@ return [
     'minutes'   => 'minutos',
     'to'        => 'a',
     'from'      => 'de',
-    'arrive_at' => ':at|te esperamos entre :from a :to',
+    'arrive_at' => 'Por favor venga :at|te esperamos entre :from a :to',
     'today'     => 'hoy',
     'tomorrow'  => 'mañana',
   ],
