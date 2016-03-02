@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Timegridio\Concierge\Models\Business;
+use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Http\Request;
+use Timegridio\Concierge\Models\Business;
 
 class BusinessNotificationsController extends Controller
 {
@@ -25,7 +26,7 @@ class BusinessNotificationsController extends Controller
         $this->authorize('manage', $business);
 
         // BEGIN
-        $notifications = $business->getNotifications();
+        $notifications = Notifynder::entity(Business::class)->getAll($business->id);
 
         return view('manager.businesses.notifications', compact('business', 'notifications'));
     }
