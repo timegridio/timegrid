@@ -15,12 +15,12 @@ return [
     'served'    => 'Servida',
   ],
   'text' => [
-    'minutes'  => 'minutos',
-    'to'       => 'a',
-    'from'     => 'de',
-    'from_to'  => 'te esperamos de :from a :to',
-    'today'    => 'hoy',
-    'tomorrow' => 'mañana',
+    'minutes'   => 'minutos',
+    'to'        => 'a',
+    'from'      => 'de',
+    'arrive_at' => ':at|te esperamos entre :from a :to',
+    'today'     => 'hoy',
+    'tomorrow'  => 'mañana',
   ],
   //================================== Obsolete strings ==================================//
 ];

@@ -7,6 +7,15 @@ class CoursesScenarioTest extends TestCase
     use DatabaseTransactions;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
+    protected $issuer;
+
+    protected $business;
+
+    protected $vacancy;
+    
+    protected $service;
+
+
     /**
      * @test
      */
@@ -19,18 +28,19 @@ class CoursesScenarioTest extends TestCase
         $this->a_user_subscribes_to_business();
         $this->a_user_queries_vacancies();
         $this->it_provides_available_times_for_requested_service_date();
+        $this->a_user_takes_a_reservation();
     }
 
     public function the_business_publishes_a_course_service()
     {
-        $service = $this->makeService([
+        $this->service = $this->makeService([
             'name'     => 'First Day Free Pass',
             'duration' => 60,
             ]);
 
         $this->actingAs($this->owner);
 
-        $this->call('POST', route('manager.business.service.store', $this->business), $service->toArray());
+        $this->call('POST', route('manager.business.service.store', $this->business), $this->service->toArray());
 
         $this->assertCount(1, $this->business->fresh()->services);
     }
@@ -56,22 +66,6 @@ EOD;
         $this->see('Availability registered successfully');
     }
 
-    public function a_user_queries_vacancies()
-    {
-        $user = $this->createUser();
-        $this->actingAs($user);
-
-        $contact = $this->makeContact($user);
-
-        $this->business->contacts()->save($contact);
-
-        $this->visit(route('user.booking.book', ['business' => $this->business]));
-
-        $this->see('Reserve appointment')
-             ->see('First Day Free Pass')
-             ->see('Book appointment');
-    }
-
     public function a_user_subscribes_to_business()
     {
         $contact = [
@@ -80,7 +74,7 @@ EOD;
             ];
 
         // And I am authenticated as the business owner
-        $this->actingAs($this->createUser());
+        $this->actingAs($this->issuer);
 
         // And I visit the business contact list section and fill the form
         $this->visit(route('user.businesses.home', $this->business))
@@ -98,18 +92,55 @@ EOD;
              ->see('Book appointment');
     }
 
+    public function a_user_queries_vacancies()
+    {
+        $this->actingAs($this->issuer);
+
+        $this->visit(route('user.booking.book', ['business' => $this->business]));
+
+        $contact = [
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            ];
+
+        $this->click('Subscribe');
+
+        $this->see('Save')
+             ->type($contact['firstname'], 'firstname')
+             ->type($contact['lastname'], 'lastname')
+             ->press('Save');
+
+        $this->click('Book appointment');
+    }
+
     public function it_provides_available_times_for_requested_service_date()
     {
         $this->actingAs($this->issuer);
 
-        $service = $this->business->services()->first();
+        $this->service = $this->business->services()->first();
 
-        $vacancy = $this->business->vacancies()->first();
+        $this->vacancy = $this->business->vacancies()->first();
 
-        $this->get("api/vacancies/{$this->business->id}/{$service->id}/{$vacancy->date}");
+        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
         $this->seeJsonContains(['times' => ['19:00:00', '20:00:00']]);
+    }
+
+    public function a_user_takes_a_reservation()
+    {
+        $this->actingAs($this->issuer->fresh());
+
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
+            'businessId' => $this->business->id,
+            'service_id' => $this->service->id,
+            '_time'      => '19:00:00',
+            '_date'      => $this->vacancy->date,
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $this->business->id]);
     }
 
     /**
@@ -130,9 +161,5 @@ EOD;
         $this->business->owners()->save($this->owner);
 
         $this->business->pref('vacancy_edit_advanced_mode', true);
-
-        $this->contact = $this->createContact();
-
-        $this->contact->user()->associate($this->issuer);
     }
 }
