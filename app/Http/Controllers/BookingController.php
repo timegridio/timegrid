@@ -145,20 +145,31 @@ class BookingController extends Controller
     {
         $times = [];
         foreach ($vacancies as $vacancy) {
-            $begin = $vacancy->start_at;
+            $beginTime = $vacancy->start_at->copy();
 
-            $testBeginTime = $begin->copy();
-            $testEndTime = $begin->copy()->addMinutes($service->duration);
+            $step = $this->calculateStep($vacancy->business, $service->duration);
 
             for ($i = 0; $i <= 24; $i++) {
-                $testEndTime = $testBeginTime->copy()->addMinutes($service->duration);
-                if ($vacancy->hasRoomBetween($testBeginTime, $testEndTime)) {
-                    $times[] = $testBeginTime->timezone($vacancy->business->timezone)->toTimeString();
+                $endTime = $beginTime->copy()->addMinutes($step);
+                $seriviceEndTime = $beginTime->copy()->addMinutes($service->duration);
+                if ($vacancy->hasRoomBetween($beginTime, $seriviceEndTime)) {
+                    $times[] = $beginTime->timezone($vacancy->business->timezone)->toTimeString();
                 }
-                $testBeginTime->addMinutes($service->duration);
+                $beginTime->addMinutes($step);
             }
         }
 
         return $times;
+    }
+
+    protected function calculateStep(Business $business, $defaultStep = 30)
+    {
+        $step = $business->pref('timeslot_step');
+
+        if (0 != $step) {
+            return $step;
+        }
+
+        return $defaultStep;
     }
 }

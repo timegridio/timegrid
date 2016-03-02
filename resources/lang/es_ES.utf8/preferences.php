@@ -66,6 +66,11 @@ return [
       'help'   => 'Usar modo avanzado para publicar disponibilidad',
       'label'  => 'Usar modo avanzado para publicar disponibilidad',
     ],
+    'timeslot_step' => [
+      'format' => 'número de minutos',
+      'help'   => 'Cantidad de minutos entre espacio y espacio para reservar',
+      'label'  => 'Saltos entre reservas',
+    ],
   ],
   'controls' => [
     'select' => [
