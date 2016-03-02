@@ -66,6 +66,11 @@ return [
       'help'   => 'Use advanced mode to publish vacancies',
       'label'  => 'Use advanced mode to publish vacancies',
     ],
+    'time_format' => [
+      'format' => 'H:i a',
+      'help'   => 'Time format to display time',
+      'label'  => 'Time Format',
+    ],
     'timeslot_step' => [
       'format' => 'Number',
       'help'   => 'Number of minutes to step for booking availability',

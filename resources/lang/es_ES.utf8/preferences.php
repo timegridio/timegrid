@@ -66,6 +66,11 @@ return [
       'help'   => 'Usar modo avanzado para publicar disponibilidad',
       'label'  => 'Usar modo avanzado para publicar disponibilidad',
     ],
+    'time_format' => [
+      'format' => 'H:i a',
+      'help'   => 'Formato preferido para mostrar la hora',
+      'label'  => 'Formato de Hora',
+    ],
     'timeslot_step' => [
       'format' => 'número de minutos',
       'help'   => 'Cantidad de minutos entre espacio y espacio para reservar',
