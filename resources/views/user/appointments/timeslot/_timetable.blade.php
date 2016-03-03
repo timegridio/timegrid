@@ -35,16 +35,17 @@
         @else
         <tr class="daterow date_{{ $date }}">
             <td class="dateslot">
-                {!! Button::success(Carbon::parse($date)->formatLocalized('%A %d %B'))
+                {!! Button::info(Carbon::parse($date)->formatLocalized('%A %d %B'))
                     ->block()
                     ->prependIcon(Icon::calendar())
                     ->withAttributes(['class' => 'btn-date']) !!}
             </td>
             <td class="serviceslot" >
                 @foreach ($vacancies as $vacancy)
-                {!! Button::primary($vacancy->service->name)
+                {!! Button::success($vacancy->service->name)
                     ->prependIcon(Icon::ok())
                     ->withAttributes([
+                        'title' => Carbon::parse($date)->formatLocalized('%A %d %B') . ' ' . $vacancy->service->name,
                         'class' => 'service service'.$vacancy->service_id,
                         'data-service' => $vacancy->service_id,
                         'data-date' => $vacancy->date]) !!}
