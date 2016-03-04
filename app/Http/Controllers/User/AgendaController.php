@@ -154,9 +154,11 @@ class AgendaController extends Controller
             $appointment = $this->concierge->business($business)->takeReservation($reservation);
 
         } catch (DuplicatedAppointmentException $e) {
-            logger()->info('[ADVICE] Appointment is duplicated');
+            $code = $this->concierge->appointment()->code;
 
-            flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $appointment->code]));
+            logger()->info('DUPLICATED Appointment with CODE:'.$code);
+
+            flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $code]));
 
             return redirect()->route('user.agenda');
         }
