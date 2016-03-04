@@ -104,20 +104,20 @@ return [
       'content' => 'Unlimited contacts.',
     ],
     'step3' => [
-      'content' => 'Services',
-      'title'   => 'Up to 3 services.',
+      'title'   => 'Services',
+      'content' => 'Up to 3 services.',
     ],
     'step4' => [
-      'content' => 'Appointments',
-      'title'   => 'Unlimited monthly appointments.',
+      'title'   => 'Appointments',
+      'content' => 'Unlimited monthly appointments.',
     ],
     'step5' => [
-      'content' => 'Starter',
-      'title'   => 'Ideal for growing businesses.',
+      'title'   => 'Starter',
+      'content' => 'Ideal for growing businesses.',
     ],
     'step6' => [
-      'content' => 'Payment Methods',
-      'title'   => 'We accept a wide range of payment methods.',
+      'title'   => 'Payment Methods',
+      'content' => 'We accept a wide range of payment methods.',
     ],
   ],
 ];

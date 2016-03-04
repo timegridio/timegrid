@@ -105,20 +105,20 @@ return [
       'content' => 'Contactos ilimitados.',
     ],
     'step3' => [
-      'content' => 'Servicios',
-      'title'   => 'Hasta 3 servicios.',
+      'title'   => 'Servicios',
+      'content' => 'Hasta 3 servicios.',
     ],
     'step4' => [
-      'content' => 'Citas',
-      'title'   => 'Citas mensuales ilimitadas.',
+      'title'   => 'Citas',
+      'content' => 'Citas mensuales ilimitadas.',
     ],
     'step5' => [
-      'content' => 'Starter',
-      'title'   => 'Ideal para negocios en crecimiento.',
+      'title'   => 'Starter',
+      'content' => 'Ideal para negocios en crecimiento.',
     ],
     'step6' => [
-      'content' => 'Formas de pago',
-      'title'   => 'Aceptamos la forma que te quede más cómoda.',
+      'title'   => 'Formas de pago',
+      'content' => 'Aceptamos la forma que te quede más cómoda.',
     ],
   ],
 ];
