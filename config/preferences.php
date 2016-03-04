@@ -11,6 +11,7 @@ return [
         'appointment_take_today'        => ['type' => 'bool', 'value' => false],
         'appointment_flexible_arrival'  => ['type' => 'bool', 'value' => false],
         'appointment_code_length'       => ['type' => 'int', 'value' => 4, 'icon' => 'barcode'],
+        'availability_future_days'      => ['type' => 'int', 'value' => 7, 'step' => 1],
         'service_default_duration'      => ['type' => 'int', 'value' => 30, 'step' => 5, 'icon' => 'hourglass'],
         'annulation_policy_advice'      => ['type' => 'string', 'value' => ''],
         'vacancy_edit_advanced_mode'    => ['type' => 'bool', 'value' => false],

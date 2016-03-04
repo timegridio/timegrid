@@ -76,6 +76,11 @@ return [
       'help'   => 'Cantidad de minutos entre espacio y espacio para reservar',
       'label'  => 'Saltos entre reservas',
     ],
+    'availability_future_days' => [
+      'format' => 'número',
+      'help'   => 'Cantidad de días a mostrar en disponibilidad',
+      'label'  => 'Días futuros en disponibilidad',
+    ],
   ],
   'controls' => [
     'select' => [

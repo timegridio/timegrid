@@ -76,6 +76,11 @@ return [
       'help'   => 'Number of minutes to step for booking availability',
       'label'  => 'Timeslot step',
     ],
+    'availability_future_days' => [
+      'format' => 'Number',
+      'help'   => 'Number of days to show for booking availability',
+      'label'  => 'Availability future days',
+    ],
   ],
   'controls' => [
     'select' => [

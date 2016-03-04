@@ -60,8 +60,13 @@ class AgendaController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $date = $request->input('date', 'today');
-        $days = $request->input('days', 7);
+        if (!auth()->user()->getContactSubscribedTo($business)) {
+            logger()->info('  [ADVICE] User not subscribed to Business');
+
+            flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+
+            return redirect()->route('user.businesses.home', compact('business'));
+        }
 
         // BEGIN
 
@@ -71,13 +76,8 @@ class AgendaController extends Controller
            ->url('http://localhost')
            ->send();
 
-        if (!auth()->user()->getContactSubscribedTo($business)) {
-            logger()->info('  [ADVICE] User not subscribed to Business');
-
-            flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
-
-            return redirect()->route('user.businesses.home', compact('business'));
-        }
+        $date = $request->input('date', 'today');
+        $days = $request->input('days', $business->pref('availability_future_days'));
 
         $startFromDate = $this->sanitizeDate($date);
 
