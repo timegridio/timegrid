@@ -100,8 +100,8 @@ return [
       'content' => 'Ideal plan for freelance professionals.',
     ],
     'step2' => [
-      'title'   => 'Contact list',
-      'content' => 'Up to 200 contacts.',
+      'title'   => 'Contact Addressbook',
+      'content' => 'Unlimited contacts.',
     ],
     'step3' => [
       'content' => 'Services',

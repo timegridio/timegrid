@@ -102,7 +102,7 @@ body{
                         <big><span class="label label-success"><strong>{{trans('pricing.free')}}</strong></span></big>
                     </li>
                     <li id="p1_contacts">
-                        <strong>200</strong> {{trans('pricing.plan.feature.contacts')}}
+                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
                     </li>
                     <li id="p1_services">
                         <strong>3</strong> {{trans('pricing.plan.feature.services')}}
@@ -132,7 +132,7 @@ body{
                         <strong>{!! trans('pricing.currency_price') !!}</strong> / {{trans('pricing.month')}}
                     </li>
                     <li>
-                        <strong>2000</strong> {{trans('pricing.plan.feature.contacts')}}
+                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
                     </li>
                     <li>
                         <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.services')}}

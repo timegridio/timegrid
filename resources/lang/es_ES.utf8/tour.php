@@ -97,28 +97,28 @@ return [
   ],
   'pricing' => [
     'step1' => [
-      'content' => 'pricing.step1.content',
-      'title'   => 'pricing.step1.title',
+      'title'   => 'Free',
+      'content' => 'Ideal para profesionales independientes.',
     ],
     'step2' => [
-      'content' => 'pricing.step2.content',
-      'title'   => 'pricing.step2.title',
+      'title'   => 'Agenda de Contactos',
+      'content' => 'Contactos ilimitados.',
     ],
     'step3' => [
-      'content' => 'pricing.step3.content',
-      'title'   => 'pricing.step3.title',
+      'content' => 'Servicios',
+      'title'   => 'Hasta 3 servicios.',
     ],
     'step4' => [
-      'content' => 'pricing.step4.content',
-      'title'   => 'pricing.step4.title',
+      'content' => 'Citas',
+      'title'   => 'Citas mensuales ilimitadas.',
     ],
     'step5' => [
-      'content' => 'pricing.step5.content',
-      'title'   => 'pricing.step5.title',
+      'content' => 'Starter',
+      'title'   => 'Ideal para negocios en crecimiento.',
     ],
     'step6' => [
-      'content' => 'pricing.step6.content',
-      'title'   => 'pricing.step6.title',
+      'content' => 'Formas de pago',
+      'title'   => 'Aceptamos la forma que te quede más cómoda.',
     ],
   ],
 ];
