@@ -155,6 +155,42 @@ class ManagerAddressbookControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_adds_a_contact_to_addressbook_that_does_not_link_a_user()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+        $existingUser = $this->createUser([
+            'name'  => 'John',
+            'email' => 'johndoe@example.org',
+            ]);
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'email'     => 'another-not-in-users@example.org',
+            ]);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->owner);
+
+        // And I visit the business contact list section and fill the form
+        $this->visit(route('manager.addressbook.index', $this->business))
+             ->click('Add a contact')
+             ->type($contact->firstname, 'firstname')
+             ->type($contact->lastname, 'lastname')
+             ->type($contact->email, 'email')
+             ->press('Save');
+
+        // Then I see the contact registered
+        $this->assertResponseOk();
+        $this->see('Contact registered successfully')
+             ->see("{$contact->firstname} {$contact->lastname}");
+        $this->assertNull($contact->user);
+    }
+
+    /**
+     * @test
+     */
     public function it_adds_a_contact_to_addressbook_that_matches_an_existing_contact()
     {
         // Given a fixture of
