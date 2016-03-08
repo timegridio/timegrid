@@ -184,16 +184,16 @@
         },
         {
             "name": "caffeinated/widgets",
-            "version": "2.1",
+            "version": "v2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caffeinated/widgets.git",
-                "reference": "4816e4c6e5d63ecd7d57dda12bf7364b44e6c349"
+                "reference": "3cd508518c4d62cf6173304638e7a06324a69d61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/widgets/zipball/4816e4c6e5d63ecd7d57dda12bf7364b44e6c349",
-                "reference": "4816e4c6e5d63ecd7d57dda12bf7364b44e6c349",
+                "url": "https://api.github.com/repos/caffeinated/widgets/zipball/3cd508518c4d62cf6173304638e7a06324a69d61",
+                "reference": "3cd508518c4d62cf6173304638e7a06324a69d61",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +226,7 @@
                 "laravel",
                 "widgets"
             ],
-            "time": "2016-01-04 19:20:58"
+            "time": "2016-03-06 05:19:46"
         },
         {
             "name": "camroncade/timezone",
@@ -850,16 +850,16 @@
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "1.0.3",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "b1e1c0d55f8083c71eda2c28c12a228d708294ea"
+                "reference": "bb9024c526b22f3fe6ae55a561fd70653d470aa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/b1e1c0d55f8083c71eda2c28c12a228d708294ea",
-                "reference": "b1e1c0d55f8083c71eda2c28c12a228d708294ea",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/bb9024c526b22f3fe6ae55a561fd70653d470aa8",
+                "reference": "bb9024c526b22f3fe6ae55a561fd70653d470aa8",
                 "shasum": ""
             },
             "require": {
@@ -897,7 +897,7 @@
             "keywords": [
                 "promise"
             ],
-            "time": "2015-10-15 22:28:00"
+            "time": "2016-03-08 01:15:46"
         },
         {
             "name": "guzzlehttp/psr7",
@@ -1831,16 +1831,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.17",
+            "version": "1.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca"
+                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
-                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/b334d6c5f95364948e06d2f620ab93d084074c6e",
+                "reference": "b334d6c5f95364948e06d2f620ab93d084074c6e",
                 "shasum": ""
             },
             "require": {
@@ -1910,7 +1910,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2016-02-19 15:35:38"
+            "time": "2016-03-07 21:01:43"
         },
         {
             "name": "league/oauth1-client",
@@ -3993,16 +3993,16 @@
         },
         {
             "name": "caouecs/laravel4-lang",
-            "version": "2.0.35",
+            "version": "2.0.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "c5ee465657acdc54c8980dccd86182c7d7d3540b"
+                "reference": "f382767032612b24378c89c9b7c655cd2a0e04ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/c5ee465657acdc54c8980dccd86182c7d7d3540b",
-                "reference": "c5ee465657acdc54c8980dccd86182c7d7d3540b",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/f382767032612b24378c89c9b7c655cd2a0e04ae",
+                "reference": "f382767032612b24378c89c9b7c655cd2a0e04ae",
                 "shasum": ""
             },
             "require-dev": {
@@ -4029,7 +4029,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2016-03-01 19:58:13"
+            "time": "2016-03-07 07:22:53"
         },
         {
             "name": "codeclimate/php-test-reporter",
