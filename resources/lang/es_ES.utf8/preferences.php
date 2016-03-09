@@ -71,6 +71,11 @@ return [
       'help'   => 'Formato preferido para mostrar la hora',
       'label'  => 'Formato de Hora',
     ],
+    'date_format' => [
+      'format' => 'Y-m-d',
+      'help'   => 'Formato para mostrar fechas',
+      'label'  => 'Formato de Fecha',
+    ],
     'timeslot_step' => [
       'format' => 'número de minutos',
       'help'   => 'Cantidad de minutos entre espacio y espacio para reservar',

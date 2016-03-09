@@ -71,6 +71,11 @@ return [
       'help'   => 'Time format to display time',
       'label'  => 'Time Format',
     ],
+    'date_format' => [
+      'format' => 'Y-m-d',
+      'help'   => 'Date format to display dates',
+      'label'  => 'Date Format',
+    ],
     'timeslot_step' => [
       'format' => 'Number',
       'help'   => 'Number of minutes to step for booking availability',
