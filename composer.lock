@@ -5953,57 +5953,6 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-23 15:16:06"
-        },
-        {
-            "name": "torann/json-ld",
-            "version": "0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Torann/json-ld.git",
-                "reference": "f309e537e0c8e128d28b74780ad58c411689d543"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Torann/json-ld/zipball/f309e537e0c8e128d28b74780ad58c411689d543",
-                "reference": "f309e537e0c8e128d28b74780ad58c411689d543",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JsonLd\\": "src/JsonLd"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Stainback",
-                    "email": "daniel@lyften.com"
-                }
-            ],
-            "description": "Extremely simple JSON-LD markup generator.",
-            "keywords": [
-                "JSON-LD",
-                "generator",
-                "schema",
-                "structured-data"
-            ],
-            "time": "2016-01-08 20:15:41"
         }
     ],
     "aliases": [],
