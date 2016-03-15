@@ -57,7 +57,7 @@
                     @if($appointment->duration)
                             <span class="text-muted">
                                 <span class='glyphicon glyphicon-hourglass'></span>&nbsp;
-                                {{ $appointment->duration }}&prime;&nbsp;
+                                {{ $appointment->duration() }}&nbsp;
                             </span>
                         </span>
                     @endif
