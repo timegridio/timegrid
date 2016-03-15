@@ -28,7 +28,7 @@
                         <td>{{ $appointment->date('d/M') }}</td>
                         <td title="{{ $appointment->start_at->diffForHumans() }}">{{ $appointment->time }}</td>
                         <td title="{{ $appointment->tz }}">{{ $appointment->finishTime }}</td>
-                        <td>{{ $appointment->duration }}&prime;</td>
+                        <td>{{ $appointment->duration() }}</td>
                         <td>{{ $appointment->service ? $appointment->service->name : '' }}</td>
                         <td>{{ $appointment->contact->fullname }}</td>
                         <td>
