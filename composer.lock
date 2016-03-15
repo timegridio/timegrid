@@ -3634,19 +3634,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "4ea79ff4378f618fb4d1873526d89cb87f665834"
+                "reference": "dc8b65cfc4a17768d5c118fd2541fdad5956074f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/4ea79ff4378f618fb4d1873526d89cb87f665834",
-                "reference": "4ea79ff4378f618fb4d1873526d89cb87f665834",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/dc8b65cfc4a17768d5c118fd2541fdad5956074f",
+                "reference": "dc8b65cfc4a17768d5c118fd2541fdad5956074f",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "5.*",
                 "mccool/laravel-auto-presenter": "^4.0",
-                "php": ">=5.6.0",
-                "torann/json-ld": "^0.0.2"
+                "php": ">=5.6.0"
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "dev-master",
@@ -3689,7 +3688,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-03-15 20:37:05"
+            "time": "2016-03-15 21:29:01"
         },
         {
             "name": "torann/geoip",
@@ -3748,57 +3747,6 @@
                 "location"
             ],
             "time": "2015-06-30 16:13:35"
-        },
-        {
-            "name": "torann/json-ld",
-            "version": "0.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Torann/json-ld.git",
-                "reference": "f309e537e0c8e128d28b74780ad58c411689d543"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Torann/json-ld/zipball/f309e537e0c8e128d28b74780ad58c411689d543",
-                "reference": "f309e537e0c8e128d28b74780ad58c411689d543",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "mockery/mockery": "^0.9.4",
-                "phpunit/phpunit": "^4.8"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JsonLd\\": "src/JsonLd"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD 2-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Daniel Stainback",
-                    "email": "daniel@lyften.com"
-                }
-            ],
-            "description": "Extremely simple JSON-LD markup generator.",
-            "keywords": [
-                "JSON-LD",
-                "generator",
-                "schema",
-                "structured-data"
-            ],
-            "time": "2016-01-08 20:15:41"
         },
         {
             "name": "twbs/bootstrap",
@@ -6005,6 +5953,57 @@
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
             "time": "2016-02-23 15:16:06"
+        },
+        {
+            "name": "torann/json-ld",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Torann/json-ld.git",
+                "reference": "f309e537e0c8e128d28b74780ad58c411689d543"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Torann/json-ld/zipball/f309e537e0c8e128d28b74780ad58c411689d543",
+                "reference": "f309e537e0c8e128d28b74780ad58c411689d543",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "JsonLd\\": "src/JsonLd"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD 2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Daniel Stainback",
+                    "email": "daniel@lyften.com"
+                }
+            ],
+            "description": "Extremely simple JSON-LD markup generator.",
+            "keywords": [
+                "JSON-LD",
+                "generator",
+                "schema",
+                "structured-data"
+            ],
+            "time": "2016-01-08 20:15:41"
         }
     ],
     "aliases": [],
