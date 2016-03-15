@@ -86,7 +86,10 @@ class BookingController extends Controller
                 break;
         }
 
-        $contents = ['appointment' => $appointment, 'user' => auth()->user()];
+        $contents = [
+            'appointment' => $appointment->load('contact'),
+            'user' => auth()->user()
+            ];
 
         $viewKey = "widgets.appointment.{$widgetType}._body";
         if (!view()->exists($viewKey)) {
