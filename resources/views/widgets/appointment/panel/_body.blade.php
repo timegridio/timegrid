@@ -47,7 +47,7 @@
                 <span class='glyphicon glyphicon-calendar'></span>&nbsp;
                 {{ $appointment->date }}&nbsp;&nbsp;
                 <span class="text-muted">
-                    <small>{{ $appointment->diffForHumans }}</small>
+                    <small>{{ $appointment->start_at->diffForHumans() }}</small>
                 </span>
             </li>
 
