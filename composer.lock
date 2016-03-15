@@ -3634,18 +3634,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "dc8b65cfc4a17768d5c118fd2541fdad5956074f"
+                "reference": "f9a42ef2b6aba37370b13b1fb70df0839a63e661"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/dc8b65cfc4a17768d5c118fd2541fdad5956074f",
-                "reference": "dc8b65cfc4a17768d5c118fd2541fdad5956074f",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/f9a42ef2b6aba37370b13b1fb70df0839a63e661",
+                "reference": "f9a42ef2b6aba37370b13b1fb70df0839a63e661",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": "5.*",
                 "mccool/laravel-auto-presenter": "^4.0",
-                "php": ">=5.6.0"
+                "php": ">=5.5.9"
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "dev-master",
@@ -3658,7 +3658,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "0.4-dev"
+                    "dev-master": "0.7-dev"
                 }
             },
             "autoload": {
@@ -3688,7 +3688,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-03-15 21:29:01"
+            "time": "2016-03-15 21:32:07"
         },
         {
             "name": "torann/geoip",
