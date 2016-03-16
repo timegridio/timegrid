@@ -108,6 +108,11 @@ class SendBusinessReport extends Command
 
         $appointments = $this->concierge->business($business)->getActiveAppointments();
 
+        if ($this->skipReport($business, count($appointments))) {
+            $this->info("Skipped report");
+            return false;
+        }
+
         $owner = $business->owners()->first();
 
         // Mail to User
@@ -119,5 +124,22 @@ class SendBusinessReport extends Command
                         ->template('appointments.manager._schedule')
                         ->subject('manager.business.report.subject', ['date' => date('Y-m-d'), 'business' => $business->name])
                         ->send($header, compact('business', 'appointments'));
+
+        return true;
+    }
+
+    protected function skipReport(Business $business, $appointmentsCount)
+    {
+        return !($this->enabledReports($business) && $this->hasAppointments($appointmentsCount));
+    }
+
+    protected function enabledReports(Business $business)
+    {
+        return $business->pref('report_daily_schedule');
+    }
+
+    protected function hasAppointments($appointmentsCount)
+    {
+        return 0 != $appointmentsCount;
     }
 }

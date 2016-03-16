@@ -86,6 +86,11 @@ return [
       'help'   => 'Cantidad de días a mostrar en disponibilidad',
       'label'  => 'Días futuros en disponibilidad',
     ],
+    'report_daily_schedule' => [
+      'format' => 'Si/No',
+      'help'   => 'Quiero recibir un correo diario con citas activas',
+      'label'  => 'Reporte Diario de Citas',
+    ],
   ],
   'controls' => [
     'select' => [

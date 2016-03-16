@@ -18,5 +18,6 @@ return [
         'time_format'                   => ['type' => 'string', 'value' => 'h:i a'],
         'date_format'                   => ['type' => 'string', 'value' => 'Y-m-d'],
         'timeslot_step'                 => ['type' => 'int', 'value' => '0'],
+        'report_daily_schedule'         => ['type' => 'bool', 'value' => false],
     ],
 ];

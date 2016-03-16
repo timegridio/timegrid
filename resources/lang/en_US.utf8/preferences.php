@@ -86,6 +86,11 @@ return [
       'help'   => 'Number of days to show for booking availability',
       'label'  => 'Availability future days',
     ],
+    'report_daily_schedule' => [
+      'format' => 'Yes/No',
+      'help'   => 'I want to receive a daily email with active appointments',
+      'label'  => 'Enable Daily Schedule Email',
+    ],
   ],
   'controls' => [
     'select' => [
