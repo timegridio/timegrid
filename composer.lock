@@ -3634,12 +3634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "f9a42ef2b6aba37370b13b1fb70df0839a63e661"
+                "reference": "79c13f1494d72c98973a62f6ad1ea1d2608f0e4e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/f9a42ef2b6aba37370b13b1fb70df0839a63e661",
-                "reference": "f9a42ef2b6aba37370b13b1fb70df0839a63e661",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/79c13f1494d72c98973a62f6ad1ea1d2608f0e4e",
+                "reference": "79c13f1494d72c98973a62f6ad1ea1d2608f0e4e",
                 "shasum": ""
             },
             "require": {
@@ -3688,7 +3688,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-03-15 21:32:07"
+            "time": "2016-03-16 01:27:46"
         },
         {
             "name": "torann/geoip",
