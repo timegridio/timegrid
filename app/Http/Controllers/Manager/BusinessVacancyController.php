@@ -62,7 +62,16 @@ class BusinessVacancyController extends Controller
 
         $advanced = $business->services->count() > 3 || $business->pref('vacancy_edit_advanced_mode');
 
-        return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'advanced'));
+        $template = '';
+        if($advanced)
+        {
+            $template = $this->concierge
+                             ->vacancies()
+                             ->builder()
+                             ->getTemplate($business, $business->services()->first());
+        }
+
+        return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'advanced', 'template'));
     }
 
     /**

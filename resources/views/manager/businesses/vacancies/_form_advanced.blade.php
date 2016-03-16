@@ -14,6 +14,7 @@
 @endsection
 
 <textarea id="vacancies" name="vacancies" rows="8">
+{{ $template }}
 </textarea>
 <br>
 
