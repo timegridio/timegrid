@@ -49,7 +49,7 @@
                 @if ( $business->description )
                     <p>
                         <i class="glyphicon glyphicon-info-sign"></i>&nbsp;
-                        {{ str_limit($business->description, 80) }}
+                        {{ str_limit(strip_tags(Markdown::convertToHtml($business->description)), 80) }}
                     </p>
                 @endif
 
