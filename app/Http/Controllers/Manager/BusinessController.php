@@ -221,7 +221,6 @@ class BusinessController extends Controller
                 'postal_address'  => $request->get('postal_address'),
                 'phone'           => $request->get('phone'),
                 'social_facebook' => $request->get('social_facebook'),
-                'strategy'        => $request->get('strategy'),
         ];
 
         $this->businessService->update($business, $data);
