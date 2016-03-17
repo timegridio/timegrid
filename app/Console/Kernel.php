@@ -13,6 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
+        'App\Console\Commands\AutopublishBusinessVacancies',
         'App\Console\Commands\SendRootReport',
         'App\Console\Commands\SendBusinessReport',
     ];
@@ -29,5 +30,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('root:report')->dailyAt(config('root.report.time'));
 
         $schedule->command('business:report')->dailyAt('21:00');
+
+        $schedule->command('business:vacancies')->weekly()->sundays()->at('00:00');
     }
 }

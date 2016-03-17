@@ -91,6 +91,11 @@ return [
       'help'   => 'Quiero recibir un correo diario con citas activas',
       'label'  => 'Reporte Diario de Citas',
     ],
+    'vacancy_autopublish' => [
+      'format' => 'Si/No',
+      'help'   => 'Dejar que timegrid publique mi disponibilidad cada Domingo',
+      'label'  => 'Disponibilidad Automática',
+    ],
   ],
   'controls' => [
     'select' => [

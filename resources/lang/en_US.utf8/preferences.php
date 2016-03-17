@@ -91,6 +91,11 @@ return [
       'help'   => 'I want to receive a daily email with active appointments',
       'label'  => 'Enable Daily Schedule Email',
     ],
+    'vacancy_autopublish' => [
+      'format' => 'Yes/No',
+      'help'   => 'Let timegrid autopublish my vacancies weekly (every sunday)',
+      'label'  => 'Enable Vacancy Autopublish',
+    ],
   ],
   'controls' => [
     'select' => [
