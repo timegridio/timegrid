@@ -24,8 +24,7 @@ class ContactService
     public function register(Business $business, $data)
     {
         if (false === $contact = self::getExisting($business, $data['nin'])) {
-            
-            $data['birthdate'] = Carbon::parse($data['birthdate']);
+            $data['birthdate'] = $data['birthdate'] != '' ? Carbon::parse($data['birthdate']) : null;
 
             $contact = Contact::create($data);
 
@@ -170,12 +169,14 @@ class ContactService
      */
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
+        $birthdate = array_get($data, 'birthdate');
+
         $contact->firstname = array_get($data, 'firstname');
         $contact->lastname = array_get($data, 'lastname');
         $contact->email = array_get($data, 'email');
         $contact->nin = array_get($data, 'nin');
         $contact->gender = array_get($data, 'gender');
-        $contact->birthdate = Carbon::parse(array_get($data, 'birthdate'));
+        $contact->birthdate = $birthdate != '' ? Carbon::parse($birthdate) : null;
         $contact->mobile = array_get($data, 'mobile');
         $contact->mobile_country = array_get($data, 'mobile_country');
         $contact->postal_address = array_get($data, 'postal_address');
