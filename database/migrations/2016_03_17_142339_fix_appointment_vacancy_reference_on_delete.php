@@ -1,8 +1,9 @@
 <?php
 
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddVacancyIdColumnToAppointmentsTable extends Migration
+class FixAppointmentVacancyReferenceOnDelete extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +13,7 @@ class AddVacancyIdColumnToAppointmentsTable extends Migration
     public function up()
     {
         Schema::table('appointments', function ($table) {
-            $table->integer('vacancy_id')->unsigned()->nullable();
+            $table->dropForeign(['vacancy_id']);
             $table->foreign('vacancy_id')->references('id')->on('vacancies')->onDelete('set null');
         });
     }
@@ -25,8 +26,8 @@ class AddVacancyIdColumnToAppointmentsTable extends Migration
     public function down()
     {
         Schema::table('appointments', function ($table) {
-            $table->dropForeign('appointments_vacancy_id_foreign');
-            $table->dropColumn('vacancy_id');
+            $table->dropForeign(['vacancy_id']);
+            $table->foreign('vacancy_id')->references('id')->on('vacancies')->onDelete('set null');
         });
     }
 }
