@@ -24,7 +24,8 @@ class ContactService
     public function register(Business $business, $data)
     {
         if (false === $contact = self::getExisting($business, $data['nin'])) {
-            $data['birthdate'] = $data['birthdate'] != '' ? Carbon::parse($data['birthdate']) : null;
+            #$data['birthdate'] = $data['birthdate'] != '' ? Carbon::parse($data['birthdate']) : null;
+            $this->sanitizeDate($data['birthdate']);
 
             $contact = Contact::create($data);
 
@@ -56,9 +57,7 @@ class ContactService
     {
         $existingContactData = $existingContact->toArray();
 
-        $existingContactData['birthdate'] = $existingContactData['birthdate']
-            ? Carbon::parse($existingContactData['birthdate'])
-            : null;
+        $this->sanitizeDate($existingContactData['birthdate']);
 
         $contact = Contact::create($existingContactData);
         $contact->user()->associate($user->id);
@@ -170,13 +169,14 @@ class ContactService
     public function update(Business $business, Contact $contact, $data = [], $notes = null)
     {
         $birthdate = array_get($data, 'birthdate');
+        $this->sanitizeDate($birthdate);
 
         $contact->firstname = array_get($data, 'firstname');
         $contact->lastname = array_get($data, 'lastname');
         $contact->email = array_get($data, 'email');
         $contact->nin = array_get($data, 'nin');
         $contact->gender = array_get($data, 'gender');
-        $contact->birthdate = $birthdate != '' ? Carbon::parse($birthdate) : null;
+        $contact->birthdate = $birthdate;
         $contact->mobile = array_get($data, 'mobile');
         $contact->mobile_country = array_get($data, 'mobile_country');
         $contact->postal_address = array_get($data, 'postal_address');
@@ -218,6 +218,25 @@ class ContactService
     {
         if ($notes) {
             $business->contacts()->find($contact->id)->pivot->update(['notes' => $notes]);
+        }
+    }
+
+    protected function sanitizeDate(&$value)
+    {
+        if (!is_string($value)) {
+            return $value;
+        }
+
+        if (trim($value) == '') {
+            return $value = null;
+        }
+
+        if (strlen($value) == 19) {
+            return $value = Carbon::parse($value);
+        }
+
+        if (strlen($value) == 10) {
+            return $value = Carbon::createFromFormat(trans('app.dateformat.carbon'), $value);
         }
     }
 }
