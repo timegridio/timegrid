@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
@@ -62,9 +63,8 @@ class BusinessVacancyController extends Controller
 
         $advanced = $business->services->count() > 3 || $business->pref('vacancy_edit_advanced_mode');
 
-        $template = '';
-        if($advanced)
-        {
+        $template = $this->recallStatements($business->id);
+        if ($advanced && empty($template)) {
             $template = $this->concierge
                              ->vacancies()
                              ->builder()
@@ -160,6 +160,8 @@ class BusinessVacancyController extends Controller
             return redirect()->back();
         }
 
+        $this->rememberStatements($business->id, $request->input('vacancies'));
+
         logger()->info('Vacancies updated');
 
         flash()->success(trans('manager.vacancies.msg.store.success'));
@@ -199,5 +201,29 @@ class BusinessVacancyController extends Controller
         }
 
         return view('manager.businesses.vacancies.show', compact('business', 'timetable'));
+    }
+
+    protected function rememberStatements($businessId, $statements)
+    {
+        return Storage::put(
+            $this->getStatementsFile($businessId),
+            $statements
+        );
+    }
+
+    protected function recallStatements($businessId)
+    {
+        if (!Storage::exists($this->getStatementsFile($businessId))) {
+            return;
+        }
+
+        return Storage::get(
+            $this->getStatementsFile($businessId)
+        );
+    }
+
+    protected function getStatementsFile($businessId)
+    {
+        return 'business'.DIRECTORY_SEPARATOR.$businessId.DIRECTORY_SEPARATOR.'vacancy-statements.txt';
     }
 }
