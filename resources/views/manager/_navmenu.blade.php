@@ -16,6 +16,10 @@
         <a href="{{ route('manager.business.service.index', $business) }}">{!! Icon::tag() !!}</a>
     </li>
 
+    <li id="btnServices" title="{{ trans('manager.business.btn.tooltip.humanresources') }}" >
+        <a href="{{ route('manager.business.humanresource.index', $business) }}">{!! Icon::education() !!}</a>
+    </li>
+
     <li id="navHome">
         <a href="{{ route('manager.business.show', $business->slug) }}">{!! Icon::home() !!} {{ $business->name }}</a>
     </li>

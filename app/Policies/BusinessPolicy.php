@@ -86,6 +86,19 @@ class BusinessPolicy
     }
 
     /**
+     * Determine if the given user can manage a business' human resources.
+     *
+     * @param User     $user
+     * @param Business $business
+     *
+     * @return bool
+     */
+    public function manageHumanresources(User $user, Business $business)
+    {
+        return $user->isOwner($business);
+    }
+
+    /**
      * Determine if the given user can manage a business' service.
      *
      * @param User     $user

@@ -125,7 +125,7 @@ class BookingController extends Controller
         $business = Business::findOrFail($businessId);
         $service = Service::findOrFail($serviceId);
 
-        $vacancies = $business->vacancies()->forDate(Carbon::parse($date))->get();
+        $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
         $times = $this->splitTimes($vacancies, $service);
 
@@ -154,8 +154,8 @@ class BookingController extends Controller
 
             for ($i = 0; $i <= 24; $i++) {
                 $endTime = $beginTime->copy()->addMinutes($step);
-                $seriviceEndTime = $beginTime->copy()->addMinutes($service->duration);
-                if ($vacancy->hasRoomBetween($beginTime, $seriviceEndTime)) {
+                $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
+                if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
                     $times[] = $beginTime->timezone($vacancy->business->timezone)->toTimeString();
                 }
                 $beginTime->addMinutes($step);

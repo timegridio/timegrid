@@ -44,6 +44,9 @@ $(document).ready(function(){
                 words: timegrid.services,
                 color: '#CEF9CE'
             },{
+                words: timegrid.humanresources,
+                color: '#EDF9CE'
+            },{
                 words: ['mon', 'tue', 'wed', 'thu', 'fri'],
                 color: '#A1EEA1'
             },{

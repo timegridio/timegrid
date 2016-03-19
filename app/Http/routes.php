@@ -317,6 +317,40 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             ]);
         });
 
+        // HUMAN RESOURCE
+        Route::group(['prefix' => 'humanresources'], function () {
+
+            Route::get('', [
+                'as'   => 'manager.business.humanresource.index',
+                'uses' => 'HumanresourceController@index',
+            ]);
+            Route::get('create', [
+                'as'   => 'manager.business.humanresource.create',
+                'uses' => 'HumanresourceController@create',
+            ]);
+            Route::post('', [
+                'as'   => 'manager.business.humanresource.store',
+                'uses' => 'HumanresourceController@store',
+            ]);
+            Route::get('{humanresource}', [
+                'as'   => 'manager.business.humanresource.show',
+                'uses' => 'HumanresourceController@show',
+            ]);
+            Route::get('{humanresource}/edit', [
+                'as'   => 'manager.business.humanresource.edit',
+                'uses' => 'HumanresourceController@edit',
+            ]);
+            Route::put('{humanresource}', [
+                'as'   => 'manager.business.humanresource.update',
+                'uses' => 'HumanresourceController@update',
+            ]);
+            Route::delete('{humanresource}', [
+                'as'   => 'manager.business.humanresource.destroy',
+                'uses' => 'HumanresourceController@destroy',
+            ]);
+
+        });
+
         // SERVICE RESOURCE
         Route::group(['prefix' => 'service'], function () {
 

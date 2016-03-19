@@ -48,6 +48,7 @@ class BusinessVacancyController extends Controller
 
         JavaScript::put([
             'services' => $business->services->pluck('slug')->all(),
+            'humanresources' => $business->humanresources->pluck('slug')->all(),
         ]);
 
         $daysQuantity = $business->pref('vacancy_edit_days_quantity', config('root.vacancy_edit_days'));
