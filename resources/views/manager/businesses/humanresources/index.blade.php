@@ -4,11 +4,11 @@
 <div class="container">
     <div class="col-md-6 col-md-offset-3">
 
-        {!! Alert::info(trans('manager.humanresources.index.instructions')) !!}
+        {!! Alert::info(trans('manager.humanresource.index.instructions')) !!}
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">{{ trans('manager.humanresources.index.title') }}</div>
+            <div class="panel-heading">{{ trans('manager.humanresource.index.title') }}</div>
 
             <div class="panel-body">
 
@@ -28,7 +28,7 @@
             </div>
 
             <div class="panel-footer">
-                {!! Button::primary(trans('manager.humanresources.btn.create'))
+                {!! Button::primary(trans('manager.humanresource.btn.create'))
                     ->withIcon(Icon::plus())
                     ->asLinkTo( route('manager.business.humanresource.create', [$business]) )
                     ->block() !!}

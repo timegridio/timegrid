@@ -4,6 +4,31 @@
 *************************************************************************/
 
 return [
+  //============================== New strings to translate ==============================//
+  'humanresource' => [
+    'btn' => [
+      'create' => 'Add',
+      'delete' => 'Remove',
+      'store'  => 'Save',
+      'update' => 'Update',
+    ],
+    'create' => [
+      'instructions' => 'Add human resources who will provide the services',
+      'title'        => 'Human Resources',
+    ],
+    'form' => [
+      'capacity' => [
+        'label' => 'Capacity',
+      ],
+      'name' => [
+        'label' => 'Name',
+      ],
+    ],
+    'index' => [
+      'instructions' => 'Manage Human Resources here',
+      'title'        => 'Human Resources',
+    ],
+  ],
   //==================================== Translations ====================================//
   'business' => [
     'btn' => [
@@ -228,6 +253,19 @@ return [
       ],
     ],
     'title' => 'My customers',
+  ],
+  'humanresources' => [
+    'msg' => [
+      'destroy' => [
+        'success' => 'Human resource removed',
+      ],
+      'store' => [
+        'success' => 'Human resource added',
+      ],
+      'update' => [
+        'success' => 'Human resource updated',
+      ],
+    ],
   ],
   'service' => [
     'btn' => [

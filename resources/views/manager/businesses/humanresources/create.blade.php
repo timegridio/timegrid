@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-    {!! Alert::info(trans('manager.humanresources.create.instructions')) !!}
+    {!! Alert::info(trans('manager.humanresource.create.instructions')) !!}
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            {{ trans('manager.humanresources.create.title') }}
+            {{ trans('manager.humanresource.create.title') }}
         </div>
 
         <div class="panel-body">

@@ -8,7 +8,7 @@
         {!! Form::text('name', null, [
             'required',
             'class'=>'form-control',
-            'placeholder'=> trans('manager.humanresources.form.name.label')
+            'placeholder'=> trans('manager.humanresource.form.name.label')
             ]) !!}
     </div>
 
@@ -16,7 +16,7 @@
         {!! Form::text('capacity', null, [
             'required',
             'class'=>'form-control',
-            'placeholder'=> trans('manager.humanresources.form.capacity.label')
+            'placeholder'=> trans('manager.humanresource.form.capacity.label')
             ]) !!}
     </div>
 

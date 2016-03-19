@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading">{{ trans('manager.humanresources.create.title') }}</div>
+            <div class="panel-heading">{{ trans('manager.humanresource.create.title') }}</div>
 
             <div class="panel-body">
                 @include('_errors')
