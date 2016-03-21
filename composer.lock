@@ -571,16 +571,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.2.7",
+            "version": "7.2.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "26680b8a22728181ea8e77f4627a323aba480b99"
+                "reference": "3214f7d8da6270707d8489c9fe7e691a96fb1c20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/26680b8a22728181ea8e77f4627a323aba480b99",
-                "reference": "26680b8a22728181ea8e77f4627a323aba480b99",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/3214f7d8da6270707d8489c9fe7e691a96fb1c20",
+                "reference": "3214f7d8da6270707d8489c9fe7e691a96fb1c20",
                 "shasum": ""
             },
             "require": {
@@ -630,7 +630,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2016-03-09 15:03:21"
+            "time": "2016-03-21 15:20:21"
         },
         {
             "name": "graham-campbell/markdown",
@@ -2363,16 +2363,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v1.2.2",
+            "version": "v1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430"
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/b3313b618f4edd76523572531d5d7e22fe747430",
-                "reference": "b3313b618f4edd76523572531d5d7e22fe747430",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c7e26a21ba357863de030f0b9e701c7d04593774",
+                "reference": "c7e26a21ba357863de030f0b9e701c7d04593774",
                 "shasum": ""
             },
             "require": {
@@ -2407,7 +2407,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-03-11 19:54:08"
+            "time": "2016-03-18 20:34:03"
         },
         {
             "name": "patricktalmadge/bootstrapper",
@@ -2509,16 +2509,16 @@
         },
         {
             "name": "propaganistas/laravel-phone",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Phone.git",
-                "reference": "ae7fb3c8acb4356a7c9a8fbe776e8aeed5535079"
+                "reference": "c08f3448ae24288cec6bed2717b36bb2b8517e7f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/ae7fb3c8acb4356a7c9a8fbe776e8aeed5535079",
-                "reference": "ae7fb3c8acb4356a7c9a8fbe776e8aeed5535079",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/c08f3448ae24288cec6bed2717b36bb2b8517e7f",
+                "reference": "c08f3448ae24288cec6bed2717b36bb2b8517e7f",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "phone",
                 "validation"
             ],
-            "time": "2016-02-23 18:37:58"
+            "time": "2016-03-20 14:26:46"
         },
         {
             "name": "psr/http-message",
@@ -4549,16 +4549,16 @@
         },
         {
             "name": "phpspec/phpspec",
-            "version": "2.4.1",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpspec/phpspec.git",
-                "reference": "5528ce1e93a1efa090c9404aba3395c329b4e6ed"
+                "reference": "385ecb015e97c13818074f1517928b24d4a26067"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/5528ce1e93a1efa090c9404aba3395c329b4e6ed",
-                "reference": "5528ce1e93a1efa090c9404aba3395c329b4e6ed",
+                "url": "https://api.github.com/repos/phpspec/phpspec/zipball/385ecb015e97c13818074f1517928b24d4a26067",
+                "reference": "385ecb015e97c13818074f1517928b24d4a26067",
                 "shasum": ""
             },
             "require": {
@@ -4623,7 +4623,7 @@
                 "testing",
                 "tests"
             ],
-            "time": "2016-01-01 10:17:54"
+            "time": "2016-03-20 20:34:32"
         },
         {
             "name": "phpspec/prophecy",
