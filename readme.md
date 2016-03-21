@@ -1,5 +1,5 @@
 <a href="http://www.timegrid.io/">
-    <img src="http://i.imgur.com/905Lv7L.png" alt="timegrid.io logo" title="timegrid.io" align="right" />
+    <img src="http://i.imgur.com/pUUoU6H.png" alt="timegrid.io" title="timegrid.io" align="right" />
 </a>
 
 timegrid
@@ -24,22 +24,19 @@ Timegrid is a single platform holding all *businesses* and *customers* while let
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
+## The Library
+
+Timegrid uses [Concierge library](https://github.com/timegridio/concierge) to handle bookings.
+
 ## Screenshots
 
-![Dashboard Example Screenshot](http://i.imgur.com/I7i4kLl.png)
 ![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
-
-[Wanna see more?](https://github.com/timegridio/timegrid/wiki/Screenshots)
 
 ## Live Demo
 
 You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
-> **ADVICE:** As timegrid has regular email notifications, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
-
-> All accounts will be deleted from the *demo* environment every 48hs.
-
-> **Hint:** To know which commit is in *demo*, you can hover the cursor on the leftmost label of the app footer.
+> **ADVICE:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
 ## Features
 
@@ -79,12 +76,13 @@ I'm open to help out! Just [drop me your feedback](https://timegrid.slack.com/me
 
 [Read the CONTRIBUTING section](CONTRIBUTING.md)
 
-## Special Thanks
+## Special Thanks & Credits
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
   * [Jose V Herrera](https://github.com/josevh) for contributions
   * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
   * [Victor](https://github.com/pappavic) for testing and documentation contributions
+  * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com.
 
 ### License
 
