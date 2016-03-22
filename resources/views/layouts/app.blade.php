@@ -39,7 +39,6 @@
     <div id="sidebar-wrapper">
         <div class="container-fluid">
             <h1>{{ trans('app.nav.help') }}</h1>
-            <h4>{{ Request::route()->getName() }}</h4>
             <div id="userhelp">
             {!! $help !!}
             </div>
