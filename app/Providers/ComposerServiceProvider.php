@@ -24,6 +24,10 @@ class ComposerServiceProvider extends ServiceProvider
         view()->composer(
             ['layouts.app'], 'App\Http\ViewComposers\AuthComposer'
         );
+
+        view()->composer(
+            ['layouts.app'], 'App\Http\ViewComposers\UserHelpComposer'
+        );
     }
 
     /**
