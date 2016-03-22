@@ -11,7 +11,7 @@
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
 
-<div class="container">
+<div class="container-fluid">
     <div class="col-md-8 col-md-offset-2">
 
         <div class="row">

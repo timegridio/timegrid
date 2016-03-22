@@ -1,7 +1,7 @@
 @extends('root.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     
     <h1>Registered Users</h1>
     {!! Table::withContents($users->toArray())->striped()->condensed()->hover() !!}

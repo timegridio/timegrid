@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
 
     {!! Alert::info(trans('manager.businesses.preferences.instructions')) !!}

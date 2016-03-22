@@ -6,7 +6,7 @@
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 
     <div class="panel panel-default" id="dashboard">
         <div class="panel-heading">

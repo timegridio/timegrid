@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     {!! Alert::info(trans('manager.services.create.instructions')) !!}
 
     <div class="panel panel-default">

@@ -86,7 +86,7 @@ body{
 @endsection
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 
   <div class="row flat">
     <div class="col-lg-offset-3 col-md-offset-3 col-xs-offset-1">

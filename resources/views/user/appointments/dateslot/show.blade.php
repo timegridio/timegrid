@@ -2,7 +2,7 @@
 
 @section('content')
 {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
-<div class="container">
+<div class="container-fluid">
     {!! $appointment->panel !!}
     {!! $appointment->actionButtons !!}
 </div>

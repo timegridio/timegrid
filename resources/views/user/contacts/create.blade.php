@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 
         {!! Alert::info(trans('user.contacts.create.help')) !!}
 

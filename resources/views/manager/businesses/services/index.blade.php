@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">
 
         {!! Alert::info(trans('manager.services.index.instructions')) !!}

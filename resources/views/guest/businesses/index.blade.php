@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="col-md-8 col-md-offset-2">
         <ul class="list-group">
             @foreach ($businesses as $business)

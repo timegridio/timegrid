@@ -45,6 +45,7 @@ return [
     'dashboard' => 'Panel de Control',
     'login'     => 'Iniciar Sesión',
     'logout'    => 'Salir',
+    'help'      => 'Ayuda',
     'manager'   => [
       'business' => [
         'register' => 'Registrar Prestación',

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
 @if ($appointments->isEmpty())
     {!! Alert::info(trans('manager.businesses.index.msg.no_appointments')) !!}
 @else

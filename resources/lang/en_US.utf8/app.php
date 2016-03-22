@@ -45,6 +45,7 @@ return [
     'dashboard' => 'Dashboard',
     'login'     => 'Login',
     'logout'    => 'Logout',
+    'help'      => 'Help',
     'manager'   => [
       'business' => [
         'register' => 'SignUp Business',
