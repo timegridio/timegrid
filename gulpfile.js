@@ -12,9 +12,12 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
-
     // Base Scripts and Styles
+    mix.copy([
+        './bower_components/bootstrap/less/',
+    ], 'resources/assets/less/bootstrap/');
+
+    mix.less('app.less');
 
     mix.scripts([
         './bower_components/jquery/dist/jquery.min.js',
@@ -23,6 +26,7 @@ elixir(function(mix) {
     ], 'public/js/app.js');
 
     mix.styles([
+        // './bower_components/bootstrap/dist/css/bootstrap.min.css',
         './bower_components/tooltipster/css/themes/tooltipster-light.css',
         './bower_components/tooltipster/css/tooltipster.css',
         './bower_components/animate.css/animate.min.css',
