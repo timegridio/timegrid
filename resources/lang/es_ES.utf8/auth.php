@@ -4,6 +4,9 @@
 *************************************************************************/
 
 return [
+  'label' => [
+    'oauth_direct_access' => 'o accede directamente co tu red social favorita',
+  ],
   'btn' => [
     'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
     'forgot'             => '¿ Has olvidado tu contraseña ? Blanqueala aquí',

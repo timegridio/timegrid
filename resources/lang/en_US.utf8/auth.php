@@ -4,6 +4,9 @@
 *************************************************************************/
 
 return [
+  'label' => [
+    'oauth_direct_access' => 'or access directly through your favourite social network',
+  ],
   'btn' => [
     'already_registered' => 'Already registered ? Login',
     'forgot'             => 'Forgot password ? Reset',
