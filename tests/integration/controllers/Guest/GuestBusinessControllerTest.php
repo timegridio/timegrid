@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class GuestBusinessControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateUser, CreateBusiness, CreateDomain;
 
     /**
@@ -97,4 +96,38 @@ class GuestBusinessControllerTest extends TestCase
         $this->see($businessTwo->name);
         $this->see($businessThree->name);
     }
+
+    /**
+     * @test
+     */
+    public function it_resumes_the_last_visited_business_as_guest_after_registration()
+    {
+        $business = $this->createBusiness();
+        $user = $this->createUser();
+
+        $this->visit('/'.$business->slug);
+        $this->visit('auth/register');
+        $this->type('test', 'name');
+        $this->type('test', 'username');
+        $this->type('test@example.org', 'email');
+        $this->type('aPassword', 'password');
+        $this->type('aPassword', 'password_confirmation');
+        $this->press('Register');
+        $this->seePageIs('/'.$business->slug);
+
+        $this->visit('auth/register');
+        $this->seePageIs('/'.$business->slug);
+    }
+
+    /**
+     * @test
+     */
+    public function it_displays_available_name_when_business_does_not_exist()
+    {
+        $this->visit('/this-name-is-not-registered');
+
+        $this->see('name is available. Register it now');
+    }
+    
+
 }

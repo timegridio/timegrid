@@ -39,6 +39,7 @@ return [
     'invalid_token'     => 'Por favor envía el formulario nuevamente.',
     'general_exception' => 'Disculpas, hubo un problema. No te preocupes, estamos trabajando en ello ;)',
     'invalid_url'       => 'El vínculo que intentas acceder no existe. Intenta examinando el directorio.',
+    'slug_is_available' => 'El nombre :baseurl está disponible. Registralo ahora.',
   ],
   'name' => 'timegrid.io',
   'nav'  => [

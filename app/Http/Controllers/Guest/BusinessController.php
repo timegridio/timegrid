@@ -24,9 +24,19 @@ class BusinessController extends Controller
             return $this->getDomain($domain);
         }
 
-        $business = Business::where('slug', $slug)->first();
+        if ($business = Business::where('slug', $slug)->first()) {
+            session()->set('guest.last-intended-business-home', $slug);
 
-        return view('guest.businesses.show', compact('business'));
+            return view('guest.businesses.show', compact('business'));
+        }
+
+        session()->forget('guest.last-intended-business-home');
+
+        $baseurl = url()->to('/'.$slug);
+
+        flash()->success(trans('app.msg.slug_is_available', compact('baseurl')));
+
+        return redirect()->to('/auth/login');
     }
 
     /**

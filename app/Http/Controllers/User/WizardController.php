@@ -20,6 +20,12 @@ class WizardController extends Controller
     {
         logger()->info(__METHOD__);
 
+        if ($slug = session()->pull('guest.last-intended-business-home')) {
+            logger()->info('Resume Business visit to:'.$slug);
+
+            return redirect()->to('/'.$slug);
+        }
+
         if (auth()->user()->hasBusiness()) {
             logger()->info('User has Business');
 
