@@ -57,13 +57,15 @@
                     </form>
                 </div>
             </div>
-            <div id="notRegisteredLink" class="row hidden" style="margin-bottom: 20px;">
-				<div class="col-md-12">
-				    {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/auth/register')) !!}
-				</div>
-            </div>
 
             @include('auth/social')
+            
+            <div id="notRegisteredLink" class="row hidden" style="margin-top: 20px;">
+                <div class="col-md-12">
+                    {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/auth/register')) !!}
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
