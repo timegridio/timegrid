@@ -12,7 +12,7 @@
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
 
 <div class="container-fluid">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-6 col-md-offset-3">
 
         <div class="row">
             @include('user.appointments.timeslot._timetable', ['dates' => $availability])
@@ -20,13 +20,7 @@
 
         <div id="extra" class="hidden">
             <div class="row">
-                <div class="form-group col-sm-5">
-                    {!! Form::label(trans('user.appointments.form.time.label')) !!}
-                    <br/>
-                    <select id="times" name="_time" class="form-control"></select>
-                </div>
-
-                <div class="form-group col-sm-7">
+                <div class="form-group col-sm-12">
                     {!! Form::label(trans('user.appointments.form.duration.label')) !!}
                     {!! Form::text('duration', null, [
                         'readonly',
@@ -39,8 +33,17 @@
 
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Form::label(trans('user.appointments.form.comments.label')) !!}
+                    <label for="comments">{{ trans('user.appointments.form.time.label') }}</label>
+                    <br/>
+                    <select id="times" name="_time" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <label for="comments">{{ trans('user.appointments.form.comments.label') }}</label>
                     {!! Form::text('comments', null, [
+                        'id'=>'comments',
                         'class'=>'form-control',
                         'placeholder'=> trans('user.appointments.form.comments.label')
                         ]) !!}

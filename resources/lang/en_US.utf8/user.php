@@ -61,7 +61,7 @@ return array (
       ),
       'comments' => 
       array (
-        'label' => 'Comments',
+        'label' => 'Would you like to leave any comments for the provider?',
       ),
       'date' => 
       array (
@@ -77,7 +77,7 @@ return array (
       ),
       'time' => 
       array (
-        'label' => 'Hour',
+        'label' => 'At what time would you like to boot?',
       ),
       'timetable' => 
       array (

@@ -59,14 +59,14 @@
     <ul class="list-group">
     @foreach ($business->services as $service)
     @if($service->description)
-        <li class="list-group-item list-group-item-info service-description hidden" id="service-description-{{$service->id}}">
-        {{ $service->description }}
+        <li class="list-group-item service-description hidden" id="service-description-{{$service->id}}">
+        {!! Markdown::convertToHtml($service->description) !!}
         </li>
     @endif
 
     @if($service->prerequisites)
-    <li class="list-group-item list-group-item-warning service-prerequisites hidden" id="service-prerequisites-{{$service->id}}">
-        {!! Icon::alert() !!} &nbsp;&nbsp; {{ trans('app.label.attention') }}: {{ $service->prerequisites }}
+    <li class="list-group-item service-prerequisites hidden" id="service-prerequisites-{{$service->id}}">
+        {!! Markdown::convertToHtml($service->prerequisites) !!}
     </li>
     @endif
     @endforeach

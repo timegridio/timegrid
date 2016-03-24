@@ -61,7 +61,7 @@ return array (
       ),
       'comments' => 
       array (
-        'label' => 'Comentarios',
+        'label' => '¿ Querés dejarle algún comentario al prestador ?',
       ),
       'date' => 
       array (
@@ -77,7 +77,7 @@ return array (
       ),
       'time' => 
       array (
-        'label' => 'Hora',
+        'label' => '¿ Qué horario querés reservar ?',
       ),
       'timetable' => 
       array (
