@@ -57,7 +57,7 @@
                     @if($appointment->duration)
                             <span class="text-muted">
                                 <span class='glyphicon glyphicon-hourglass'></span>&nbsp;
-                                {{ $appointment->duration() }}&nbsp;
+                                {{ trans_duration($appointment->duration()) }}&nbsp;
                             </span>
                         </span>
                     @endif
