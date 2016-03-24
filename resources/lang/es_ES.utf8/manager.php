@@ -1,6 +1,7 @@
 <?php
+
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57
 *************************************************************************/
 
 return [
@@ -55,6 +56,9 @@ return [
     ],
   ],
   'businesses' => [
+    'check' => [
+      'remember_vacancies'  => 'Recordar esta disponibilidad como predeterminada',
+    ],
     'btn' => [
       'store'  => 'Registrar',
       'update' => 'Actualizar',

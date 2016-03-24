@@ -150,8 +150,10 @@ class BusinessVacancyController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
+        
+        $statements = $request->input('vacancies');
 
-        $publishedVacancies = $vacancyParser->parseStatements($request->input('vacancies'));
+        $publishedVacancies = $vacancyParser->parseStatements($statements);
 
         if (!$this->concierge->business($business)->vacancies()->updateBatch($business, $publishedVacancies)) {
             logger()->warning('Nothing to update');
@@ -161,7 +163,9 @@ class BusinessVacancyController extends Controller
             return redirect()->back();
         }
 
-        $this->rememberStatements($business->id, $request->input('vacancies'));
+        if ($request->input('remember')) {
+            $this->rememberStatements($business->id, $statements);
+        }
 
         logger()->info('Vacancies updated');
 

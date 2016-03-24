@@ -18,6 +18,8 @@
 </textarea>
 <br>
 
+<input type="checkbox" name="remember" id="remember" value="true" /><label for="remember">{{ trans('manager.businesses.check.remember_vacancies') }}</label>
+
 @if (!$business->services->isEmpty())
 <div class="row">
     <div class="form-group col-sm-12">
