@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "fbc1e6a987f03211199ec495309b32d7",
+    "hash": "e1aa5d2c33c89740ab3cf6491304664f",
     "content-hash": "c3da021d3d9f5be2e4a743c690a13943",
     "packages": [
         {
@@ -2089,16 +2089,16 @@
         },
         {
             "name": "mobiledetect/mobiledetectlib",
-            "version": "2.8.19",
+            "version": "2.8.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/serbanghita/Mobile-Detect.git",
-                "reference": "99e1c21c32104af2d035ff5d2fd8aff8cb29e27c"
+                "reference": "d772569880e7becaec564274a3b93501b3fde700"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/99e1c21c32104af2d035ff5d2fd8aff8cb29e27c",
-                "reference": "99e1c21c32104af2d035ff5d2fd8aff8cb29e27c",
+                "url": "https://api.github.com/repos/serbanghita/Mobile-Detect/zipball/d772569880e7becaec564274a3b93501b3fde700",
+                "reference": "d772569880e7becaec564274a3b93501b3fde700",
                 "shasum": ""
             },
             "require": {
@@ -2139,7 +2139,7 @@
                 "mobile detector",
                 "php mobile detect"
             ],
-            "time": "2015-12-24 16:37:50"
+            "time": "2016-03-24 09:06:37"
         },
         {
             "name": "monolog/monolog",
