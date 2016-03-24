@@ -64,10 +64,10 @@ body{
 .plan-action .btn{
   font-family: 'Lato', sans-serif;
   font-size: 1.5em;
+  border: 0px;
 }
 .plan-action .btn:hover{
   background-color: #5CB85C;
-  border: 1px solid #5CB85C;
 }
 .flat .plan.featured li.plan-name {
   background: #367FA9;
@@ -104,14 +104,14 @@ body{
                     <li id="p1_contacts">
                         <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
                     </li>
+                    <li id="p1_appointments">
+                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.appointments')}}
+                    </li>
                     <li id="p1_services">
                         <strong>3</strong> {{trans('pricing.plan.feature.services')}}
                     </li>
-                    <li id="p1_appointments">
-                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.appointments')}}
-                    </li>
-                    <li id="p1_alerts_email">
-                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
+                    <li id="p1_specialists">
+                        <strong>1</strong> {{trans_choice('pricing.plan.feature.specialists', 1)}}
                     </li>
                     <li class="plan-action">
                         <a href="{{ route('manager.business.register', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{trans('pricing.plan.free.submit')}}</a>
@@ -138,13 +138,13 @@ body{
                         <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.services')}}
                     </li>
                     <li>
-                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.appointments')}}
+                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.appointments')}}
                     </li>
                     <li>
-                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.email_alerts')}}
+                        <strong>30</strong> {{trans_choice('pricing.plan.feature.specialists', 30)}}
                     </li>
                     <li>
-                        {!! Icon::signal() !!}&nbsp;&nbsp;{{trans('pricing.plan.feature.reports')}}
+                        {{ trans('pricing.plan.feature.customized_support') }}
                     </li>
                     <li class="plan-action">
                      <a href="{{ route('manager.business.register', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{trans('pricing.plan.starter.submit')}}</a>

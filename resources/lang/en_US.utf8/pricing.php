@@ -11,9 +11,9 @@ return [
     'feature' => [
       'appointments' => 'appointments per month',
       'contacts'     => 'contacts in agenda',
-      'email_alerts' => 'email alerts',
-      'reports'      => 'reports',
-      'services'     => 'registrable services',
+      'services'     => 'services',
+      'specialists'  => 'specialist|specialists',
+      'customized_support' => 'Customized Support',
     ],
     'free' => [
       'hint'   => 'Ideal for freelancers',
@@ -22,7 +22,7 @@ return [
     ],
     'starter' => [
       'hint'   => 'Ideal for growing businesses',
-      'name'   => 'Starter',
+      'name'   => 'Gold',
       'submit' => 'Contract',
     ],
   ],
