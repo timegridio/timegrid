@@ -47,7 +47,7 @@ class BusinessVacancyController extends Controller
         // BEGIN
 
         JavaScript::put([
-            'services' => $business->services->pluck('slug')->all(),
+            'services'       => $business->services->pluck('slug')->all(),
             'humanresources' => $business->humanresources->pluck('slug')->all(),
         ]);
 
