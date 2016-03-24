@@ -3,7 +3,7 @@
     <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
 
     <div id="catalog">
-    @if($business->services->count() > 0)
+    @if($business->services->count() > 1)
     <input id="filter" name="filter" class="form-control" value="" />
     <div id="searchlist" class="list-group">
         @foreach ($business->services as $service)
@@ -152,6 +152,10 @@ $(document).ready(function() {
         $('#moreDates').show();
         return false;
     });
+
+    @if($business->services->count() <= 1)
+    $('#timetable').show();
+    @endif
 });
 </script>
 @endsection
