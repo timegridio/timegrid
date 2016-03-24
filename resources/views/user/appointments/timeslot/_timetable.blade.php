@@ -1,6 +1,6 @@
 <div id="panel" class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">{{ trans('user.appointments.form.timetable.title') }}</div>
+    <div class="panel-heading">{{ trans('user.appointments.form.timetable.title', ['business' => $business->name]) }}</div>
 
     <div id="catalog">
     @if($business->services->count() > 1)

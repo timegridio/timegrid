@@ -86,7 +86,7 @@ return array (
         array (
           'no_vacancies' => 'No hay disponibilidades para esta fecha',
         ),
-        'title' => 'Reserva una cita',
+        'title' => 'Reserva una cita en :business',
       ),
     ),
     'index' => 
