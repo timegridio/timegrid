@@ -71,10 +71,14 @@
                         @if (!($appointment and $appointment->isActive()))
                         <li class="list-group-item">
                             @if ($user->getContactSubscribedTo($business->id) === null)
-                                {!! Button::large()->primary(trans('user.business.btn.subscribe'))->asLinkTo(route('user.business.contact.create', $business))->withIcon(Icon::star())->block() !!}
+                                {!! Button::large()->primary(trans('user.business.btn.subscribe_to', ['business' => $business->name]))
+                                                   ->asLinkTo(route('user.business.contact.create', $business))
+                                                   ->withIcon(Icon::star())->block() !!}
                             @else
                                 @if($available)
-                                    {!! Button::large()->success(trans('user.appointments.btn.book'))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
+                                    {!! Button::large()->success(trans('user.appointments.btn.book'))
+                                                       ->asLinkTo(route('user.booking.book', $business))
+                                                       ->withIcon(Icon::calendar())->block() !!}
                                 @else
                                     <div class="alert alert-warning">{{ trans('user.appointments.alert.no_vacancies') }}</div>
                                 @endif

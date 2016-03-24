@@ -125,6 +125,7 @@ return array (
     'btn' => 
     array (
       'subscribe' => 'Suscribir',
+      'subscribe_to' => 'Suscribirme a :business',
     ),
   ),
   'businesses' => 
