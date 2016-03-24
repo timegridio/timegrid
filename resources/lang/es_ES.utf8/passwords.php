@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Password Reset Language Lines
+    | Password Reminder Language Lines
     |--------------------------------------------------------------------------
     |
     | The following language lines are the default lines which match reasons
@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'password' => 'La contraseña debe ser de al menos 6 caracteres.',
-    'reset' => 'Tu contraseña fue actualizada.',
-    'sent' => 'Te enviamos un correo para el balnqueo de contraseña.',
-    'token' => 'El código de blanqueo de contraseña es inválido.',
-    'user' => "No encontramos un usuario en nuestra base. ¿Te registraste?",
+    'password' => 'Las contraseñas deben coincidir y contener al menos 6 caracteres',
+    'reset'    => '¡Tu contraseña ha sido restablecida!',
+    'sent'     => '¡Te hemos enviado por correo el enlace para restablecer tu contraseña!',
+    'token'    => 'El token de recuperación de contraseña es inválido.',
+    'user'     => 'No podemos encontrar ningún usuario con ese correo electrónico.',
 
 ];

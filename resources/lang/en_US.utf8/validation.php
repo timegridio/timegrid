@@ -1,6 +1,7 @@
 <?php
 
 return [
+
     /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
@@ -11,6 +12,7 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+
     'accepted'             => 'The :attribute must be accepted.',
     'active_url'           => 'The :attribute is not a valid URL.',
     'after'                => 'The :attribute must be a date after :date.',
@@ -32,11 +34,13 @@ return [
     'different'            => 'The :attribute and :other must be different.',
     'digits'               => 'The :attribute must be :digits digits.',
     'digits_between'       => 'The :attribute must be between :min and :max digits.',
+    'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'The :attribute must be a valid email address.',
     'exists'               => 'The selected :attribute is invalid.',
     'filled'               => 'The :attribute field is required.',
     'image'                => 'The :attribute must be an image.',
     'in'                   => 'The selected :attribute is invalid.',
+    'in_array'             => 'The :attribute field does not exist in :other.',
     'integer'              => 'The :attribute must be an integer.',
     'ip'                   => 'The :attribute must be a valid IP address.',
     'json'                 => 'The :attribute must be a valid JSON string.',
@@ -74,6 +78,7 @@ return [
     'timezone'             => 'The :attribute must be a valid zone.',
     'unique'               => 'The :attribute has already been taken.',
     'url'                  => 'The :attribute format is invalid.',
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines
@@ -84,9 +89,13 @@ return [
     | specify a specific custom language line for a given attribute rule.
     |
     */
+
     'custom' => [
-        // []
+        'attribute-name' => [
+            'rule-name' => 'custom-message',
+        ],
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Attributes
@@ -97,5 +106,7 @@ return [
     | of "email". This simply helps us make messages a little cleaner.
     |
     */
+
     'attributes' => [],
+
 ];
