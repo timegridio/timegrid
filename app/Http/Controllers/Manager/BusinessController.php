@@ -166,15 +166,13 @@ class BusinessController extends Controller
 
         $this->time->timezone($business->timezone);
 
-        $bookings = $business->bookings();
-
         // Build Dashboard Report
-        $dashboard['appointments_active_today'] = $bookings->active()->ofDate($this->time->now())->get()->count();
-        $dashboard['appointments_annulated_today'] = $bookings->annulated()->ofDate($this->time->now())->get()->count();
-        $dashboard['appointments_active_tomorrow'] = $bookings->active()->ofDate($this->time->tomorrow())->get()->count();
-        $dashboard['appointments_active_total'] = $bookings->active()->get()->count();
-        $dashboard['appointments_served_total'] = $bookings->served()->get()->count();
-        $dashboard['appointments_total'] = $bookings->get()->count();
+        $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate($this->time->now())->get()->count();
+        $dashboard['appointments_annulated_today'] = $business->bookings()->annulated()->ofDate($this->time->now())->get()->count();
+        $dashboard['appointments_active_tomorrow'] = $business->bookings()->active()->ofDate($this->time->tomorrow())->get()->count();
+        $dashboard['appointments_active_total'] = $business->bookings()->active()->get()->count();
+        $dashboard['appointments_served_total'] = $business->bookings()->served()->get()->count();
+        $dashboard['appointments_total'] = $business->bookings()->get()->count();
 
         $dashboard['contacts_registered'] = $business->contacts()->count();
         $dashboard['contacts_subscribed'] = $business->contacts()->whereNotNull('user_id')->count();

@@ -158,7 +158,7 @@
                 <div class="col-md-8" title="{{ $time }}">
                     @include('manager.businesses._notifications', ['notifications' => $notifications ])
                 </div>
-                
+
             </div>
 
         </div>
