@@ -164,12 +164,14 @@ class BusinessController extends Controller
 
         Notifynder::entity(Business::class)->readAll($business->id);
 
+        $this->time->timezone($business->timezone);
+
         $bookings = $business->bookings();
 
         // Build Dashboard Report
-        $dashboard['appointments_active_today'] = $bookings->active()->ofDate($this->time->now($business->timezone))->get()->count();
-        $dashboard['appointments_annulated_today'] = $bookings->annulated()->ofDate($this->time->now($business->timezone))->get()->count();
-        $dashboard['appointments_active_tomorrow'] = $bookings->active()->ofDate($this->time->tomorrow($business->timezone))->get()->count();
+        $dashboard['appointments_active_today'] = $bookings->active()->ofDate($this->time->now())->get()->count();
+        $dashboard['appointments_annulated_today'] = $bookings->annulated()->ofDate($this->time->now())->get()->count();
+        $dashboard['appointments_active_tomorrow'] = $bookings->active()->ofDate($this->time->tomorrow())->get()->count();
         $dashboard['appointments_active_total'] = $bookings->active()->get()->count();
         $dashboard['appointments_served_total'] = $bookings->served()->get()->count();
         $dashboard['appointments_total'] = $bookings->get()->count();
@@ -177,7 +179,9 @@ class BusinessController extends Controller
         $dashboard['contacts_registered'] = $business->contacts()->count();
         $dashboard['contacts_subscribed'] = $business->contacts()->whereNotNull('user_id')->count();
 
-        return view('manager.businesses.show', compact('business', 'notifications', 'dashboard'));
+        $time = $this->time->toTimeString();
+
+        return view('manager.businesses.show', compact('business', 'notifications', 'dashboard', 'time'));
     }
 
     /**
