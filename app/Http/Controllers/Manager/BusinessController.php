@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Manager;
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
-use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Category;
 use App\Services\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Request;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Category;
 
 class BusinessController extends Controller
 {
@@ -29,13 +29,22 @@ class BusinessController extends Controller
     private $businessService;
 
     /**
+     * Current localized time.
+     *
+     * @var Carbon\Carbon
+     */
+    private $time;
+
+    /**
      * Create Controller.
      *
      * @param App\Services\BusinessService $businessService
      */
-    public function __construct(BusinessService $businessService)
+    public function __construct(BusinessService $businessService, Carbon $time)
     {
         $this->businessService = $businessService;
+
+        $this->time = $time;
 
         parent::__construct();
     }
@@ -150,18 +159,20 @@ class BusinessController extends Controller
         // BEGIN
 
         session()->set('selected.business', $business);
-        
+
         $notifications = Notifynder::entity(Business::class)->getNotRead($business->id, 20);
-        
+
         Notifynder::entity(Business::class)->readAll($business->id);
 
+        $bookings = $business->bookings();
+
         // Build Dashboard Report
-        $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate(Carbon::now())->get()->count();
-        $dashboard['appointments_annulated_today'] = $business->bookings()->annulated()->ofDate(Carbon::now())->get()->count();
-        $dashboard['appointments_active_tomorrow'] = $business->bookings()->active()->ofDate(Carbon::tomorrow())->get()->count();
-        $dashboard['appointments_active_total'] = $business->bookings()->active()->get()->count();
-        $dashboard['appointments_served_total'] = $business->bookings()->served()->get()->count();
-        $dashboard['appointments_total'] = $business->bookings()->get()->count();
+        $dashboard['appointments_active_today'] = $bookings->active()->ofDate($this->time->now($business->timezone))->get()->count();
+        $dashboard['appointments_annulated_today'] = $bookings->annulated()->ofDate($this->time->now($business->timezone))->get()->count();
+        $dashboard['appointments_active_tomorrow'] = $bookings->active()->ofDate($this->time->tomorrow($business->timezone))->get()->count();
+        $dashboard['appointments_active_total'] = $bookings->active()->get()->count();
+        $dashboard['appointments_served_total'] = $bookings->served()->get()->count();
+        $dashboard['appointments_total'] = $bookings->get()->count();
 
         $dashboard['contacts_registered'] = $business->contacts()->count();
         $dashboard['contacts_subscribed'] = $business->contacts()->whereNotNull('user_id')->count();
