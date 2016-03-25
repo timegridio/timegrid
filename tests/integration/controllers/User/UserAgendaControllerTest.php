@@ -402,6 +402,55 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_takes_a_reservation_with_dateslot_on_behalf_of()
+    {
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'dateslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contact = $this->createContact([
+            'user_id' => $user->id,
+            ]);
+        $business->contacts()->save($contact);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->actingAs($owner);
+
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            'contact_id' => $contact->id,
+            '_time'      => $this->vacancy->start_at->timezone($business->timezone)->toTimeString(),
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $business->id, 'contact_id' => $contact->id]);
+    }
+
+
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_reservation()
     {
         $user = $this->createUser();
@@ -654,6 +703,53 @@ class UserAgendaControllerTest extends TestCase
             ]);
 
         $this->seeInDatabase('appointments', ['business_id' => $business->id]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_takes_a_reservation_with_timeslot_on_behalf_of()
+    {
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contact = $this->createContact([
+            'user_id' => $user->id,
+            ]);
+        $business->contacts()->save($contact);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->actingAs($owner);
+
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            'contact_id' => $contact->id,
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $business->id, 'contact_id' => $contact->id]);
     }
 
     /**

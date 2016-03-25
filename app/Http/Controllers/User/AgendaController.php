@@ -12,7 +12,6 @@ use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Exceptions\DuplicatedAppointmentException;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Timegridio\Concierge\Vacancy\VacancyManager;
 
 class AgendaController extends Controller
 {
@@ -76,6 +75,13 @@ class AgendaController extends Controller
            ->url('http://localhost')
            ->send();
 
+        if ($behalofOfId = $request->input('behalfOfId')) {
+            $this->authorize('manageContacts', $business);
+            $contact = $business->contacts()->find($request->input('contact_id'));
+        } else {
+            $contact = auth()->user()->getContactSubscribedTo($business->id);
+        }
+
         $date = $request->input('date', 'today');
         $days = $request->input('days', $business->pref('availability_future_days'));
 
@@ -98,7 +104,7 @@ class AgendaController extends Controller
 
         return view(
             'user.appointments.'.$business->strategy.'.book',
-            compact('business', 'availability', 'startFromDate')
+            compact('business', 'availability', 'startFromDate', 'contact')
         );
     }
 
@@ -117,10 +123,24 @@ class AgendaController extends Controller
         // FOR REFACTOR //
         //////////////////
 
+        $business = Business::findOrFail($request->input('businessId'));
+
         $issuer = auth()->user();
 
-        $business = Business::findOrFail($request->input('businessId'));
-        $contact = $issuer->getContactSubscribedTo($business->id);
+        $isOwner = $issuer->isOwner($business->id);
+
+        if($request->input('contact_id') && $isOwner)
+        {
+            $contact = $business->contacts()->find($request->input('contact_id'));
+        }
+        else
+        {
+            $contact = $issuer->getContactSubscribedTo($business->id);
+        }
+
+        // Authorize contact is subscribed to Business
+        // ...
+
         $service = Service::find($request->input('service_id'));
 
 #        $strTime = $request->input('_time') ?: $business->pref('start_at');
@@ -152,13 +172,16 @@ class AgendaController extends Controller
 
         try {
             $appointment = $this->concierge->business($business)->takeReservation($reservation);
-
         } catch (DuplicatedAppointmentException $e) {
             $code = $this->concierge->appointment()->code;
 
             logger()->info('DUPLICATED Appointment with CODE:'.$code);
 
             flash()->warning(trans('user.booking.msg.store.sorry_duplicated', ['code' => $code]));
+
+            if ($isOwner) {
+                return redirect()->route('manager.business.agenda.index', compact('business'));
+            }
 
             return redirect()->route('user.agenda');
         }
@@ -176,6 +199,10 @@ class AgendaController extends Controller
         event(new NewAppointmentWasBooked($issuer, $appointment));
 
         flash()->success(trans('user.booking.msg.store.success', ['code' => $appointment->code]));
+
+        if ($isOwner) {
+            return redirect()->route('manager.business.agenda.index', compact('business'));
+        }
 
         return redirect()->route('user.agenda', '#'.$appointment->code);
     }

@@ -46,11 +46,13 @@ return array (
     array (
       'empty_list' => 'No tienes reservas en curso ahora.',
       'no_vacancies' => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
+      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
     ),
     'btn' => 
     array (
       'book' => 'Reservar Cita',
       'book_in_biz' => 'Reservar cita en :biz',
+      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
       'more_dates' => 'Ver más fechas',
     ),
     'form' => 

@@ -46,11 +46,13 @@ return array (
     array (
       'empty_list' => 'You have no ongoing reservations by now.',
       'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
+      'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
     ),
     'btn' => 
     array (
       'book' => 'Book appointment',
       'book_in_biz' => 'Book appointment for :biz',
+      'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
       'more_dates' => 'Check more dates',
     ),
     'form' => 

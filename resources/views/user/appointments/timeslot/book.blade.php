@@ -10,9 +10,14 @@
 {!! Form::hidden('businessId', $business->id, ['required', 'id' => 'business']) !!}
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
+{!! Form::hidden('contact_id', $contact->id, ['required', 'id'=>'contact']) !!}
 
 <div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">
+
+        <div class="row">
+            {!! Alert::info(trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()])) !!}
+        </div>
 
         <div class="row">
             @include('user.appointments.timeslot._timetable', ['dates' => $availability])
