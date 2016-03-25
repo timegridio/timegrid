@@ -77,7 +77,7 @@ class AgendaController extends Controller
 
         if ($behalofOfId = $request->input('behalfOfId')) {
             $this->authorize('manageContacts', $business);
-            $contact = $business->contacts()->find($request->input('contact_id'));
+            $contact = $business->contacts()->find($behalofOfId);
         } else {
             $contact = auth()->user()->getContactSubscribedTo($business->id);
         }
