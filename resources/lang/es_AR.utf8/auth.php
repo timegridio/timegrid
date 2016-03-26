@@ -14,13 +14,13 @@ return [
     */
 
     'failed'   => 'Estas credenciales no coinciden con nuestros registros.',
-    'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
+    'throttle' => 'Demasiados intentos de acceso. Por favor intentá nuevamente en :seconds segundos.',
     'label'    => [
-      'oauth_direct_access' => 'o accede directamente co tu red social favorita',
+      'oauth_direct_access' => 'o accedé directamente con tu red social favorita',
     ],
     'btn' => [
       'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
-      'forgot'             => '¿ Has olvidado tu contraseña ? Blanqueala aquí',
+      'forgot'             => '¿ Olvidaste tu contraseña ? Blanqueala aquí',
       'not_registered'     => '¿ Aún no tenés usuario ? Registrate acá',
     ],
     'login' => [
@@ -41,7 +41,7 @@ return [
       ],
       'email'                 => 'Tu Email',
       'name'                  => 'Tu nombre',
-      'need_help'             => '¿Necesitas ayuda?',
+      'need_help'             => '¿Necesitás ayuda?',
       'password'              => 'Una Contraseña',
       'password_confirmation' => 'La misma contraseña',
       'title'                 => '¡Hola! Vamos a crear un perfil en timegrid.io',

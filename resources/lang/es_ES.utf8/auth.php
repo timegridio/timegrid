@@ -16,12 +16,12 @@ return [
     'failed'   => 'Estas credenciales no coinciden con nuestros registros.',
     'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
     'label'    => [
-      'oauth_direct_access' => 'o accede directamente co tu red social favorita',
+      'oauth_direct_access' => 'o accede directamente con tu red social favorita',
     ],
     'btn' => [
       'already_registered' => '¿ Ya estás registrado ? Iniciá sesión',
       'forgot'             => '¿ Has olvidado tu contraseña ? Blanqueala aquí',
-      'not_registered'     => '¿ Aún no tenés usuario ? Registrate acá',
+      'not_registered'     => '¿ Aún no tienes usuario ? Regístrate aquí',
     ],
     'login' => [
       'alert' => [
