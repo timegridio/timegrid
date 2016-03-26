@@ -43,7 +43,9 @@ class BusinessAgendaController extends Controller
 
         $appointments = $this->concierge->business($business)->getUnservedAppointments();
 
-        $viewKey = 'manager.businesses.appointments.'.$business->strategy.'.index';
+        $viewKey = count($appointments) == 0
+            ? 'manager.businesses.appointments.empty'
+            : 'manager.businesses.appointments.'.$business->strategy.'.index';
 
         return view($viewKey, compact('business', 'appointments'));
     }
