@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
-    <title>{{trans('app.name')}}</title>
+    <title>{{ isset($business) ? $business->name . ' / ' : '' }}{{trans('app.name')}}</title>
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
