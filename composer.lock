@@ -469,16 +469,16 @@
         },
         {
             "name": "fenos/notifynder",
-            "version": "3.1.5",
+            "version": "3.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fenos/Notifynder.git",
-                "reference": "a37fe5d568b3ae9a77c5e9ec5ca2ce44273e10b5"
+                "reference": "cc4d966f1b71fed0a69e765e03601f968f6b1717"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fenos/Notifynder/zipball/a37fe5d568b3ae9a77c5e9ec5ca2ce44273e10b5",
-                "reference": "a37fe5d568b3ae9a77c5e9ec5ca2ce44273e10b5",
+                "url": "https://api.github.com/repos/fenos/Notifynder/zipball/cc4d966f1b71fed0a69e765e03601f968f6b1717",
+                "reference": "cc4d966f1b71fed0a69e765e03601f968f6b1717",
                 "shasum": ""
             },
             "require": {
@@ -515,7 +515,7 @@
                 "laravel",
                 "notifications"
             ],
-            "time": "2016-03-15 09:42:53"
+            "time": "2016-03-26 12:35:52"
         },
         {
             "name": "geoip2/geoip2",
@@ -1527,16 +1527,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.24",
+            "version": "v5.2.26",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "396297a5fd3c70c2fc1af68f09ee574a2380175c"
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/396297a5fd3c70c2fc1af68f09ee574a2380175c",
-                "reference": "396297a5fd3c70c2fc1af68f09ee574a2380175c",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/b73ac62506c5c2bd49d87fcb1089f7759431e173",
+                "reference": "b73ac62506c5c2bd49d87fcb1089f7759431e173",
                 "shasum": ""
             },
             "require": {
@@ -1651,20 +1651,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-03-22 13:45:19"
+            "time": "2016-03-25 17:12:52"
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.14",
+            "version": "v2.0.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "b15f4be0ac739405120d74b837af423aa71502d9"
+                "reference": "edd00ab96933e3ef053533cce81e958fb26921af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/b15f4be0ac739405120d74b837af423aa71502d9",
-                "reference": "b15f4be0ac739405120d74b837af423aa71502d9",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/edd00ab96933e3ef053533cce81e958fb26921af",
+                "reference": "edd00ab96933e3ef053533cce81e958fb26921af",
                 "shasum": ""
             },
             "require": {
@@ -1705,7 +1705,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2015-10-16 15:39:46"
+            "time": "2016-03-21 14:30:30"
         },
         {
             "name": "laravelcollective/html",
