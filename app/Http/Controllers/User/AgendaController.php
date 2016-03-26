@@ -129,12 +129,9 @@ class AgendaController extends Controller
 
         $isOwner = $issuer->isOwner($business->id);
 
-        if($request->input('contact_id') && $isOwner)
-        {
+        if ($request->input('contact_id') && $isOwner) {
             $contact = $business->contacts()->find($request->input('contact_id'));
-        }
-        else
-        {
+        } else {
             $contact = $issuer->getContactSubscribedTo($business->id);
         }
 
@@ -142,10 +139,6 @@ class AgendaController extends Controller
         // ...
 
         $service = Service::find($request->input('service_id'));
-
-#        $strTime = $request->input('_time') ?: $business->pref('start_at');
-#        $strDateTime = $request->input('_date').' '.$strTime.' '.$business->timezone;
-#        $datetime = Carbon::parse($strDateTime)->setTimezone('UTC');
 
         $date = Carbon::parse($request->input('_date'))->toDateString();
         $time = Carbon::parse($request->input('_time'))->toTimeString();
