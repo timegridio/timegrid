@@ -78,10 +78,13 @@
                 <li id="navProfile" class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><img src="{{ Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]) }}" class="img-circle"> {{ $user->name }} <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
+                        <li><a href="{{ route('manager.business.index') }}">{{ trans('app.nav.manager.business.menu') }}</a></li>
+                        <li class="nav-divider"></li>
                         <li><a href="{{ route('user.dashboard') }}">{{ trans('app.nav.dashboard') }}</a></li>
                         <li class="nav-divider"></li>
-                        <li><a href="{{ url('/auth/logout') }}">{{ trans('app.nav.logout') }}</a></li>
                         <li><a href="{!! env('DOCS_URL', 'http://docs.timegrid.io/') !!}{{Session::get('language')}}/">{{ trans('app.nav.manual') }}</a></li>
+                        <li class="nav-divider"></li>
+                        <li><a href="{{ url('/auth/logout') }}">{{ trans('app.nav.logout') }}</a></li>
                     </ul>
                 </li>
                 @endif
