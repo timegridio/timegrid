@@ -71,8 +71,24 @@ class BusinessVacancyController extends Controller
                              ->builder()
                              ->getTemplate($business, $business->services()->first());
         }
+        $servicesList = $business->services()->pluck('name', 'slug');
+        $humanresourcesList = $business->humanresources()->pluck('name', 'slug');
+        $weekdaysList = [
+            'mon' => trans('datetime.weekday.monday'),
+            'tue' => trans('datetime.weekday.tuesday'),
+            'wed' => trans('datetime.weekday.wednesday'),
+            'thu' => trans('datetime.weekday.thursday'),
+            'fri' => trans('datetime.weekday.friday'),
+            'sat' => trans('datetime.weekday.saturday'),
+            'sun' => trans('datetime.weekday.sunday'),
+            ];
 
-        return view('manager.businesses.vacancies.edit', compact('business', 'dates', 'advanced', 'template'));
+        $startAt = $business->pref('start_at');
+        $finishAt = $business->pref('finish_at');
+
+        $viewParams = compact('business', 'dates', 'advanced', 'template', 'servicesList', 'humanresourcesList', 'weekdaysList', 'startAt', 'finishAt');
+
+        return view('manager.businesses.vacancies.edit', $viewParams);
     }
 
     /**
@@ -150,7 +166,7 @@ class BusinessVacancyController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
-        
+
         $statements = $request->input('vacancies');
 
         $publishedVacancies = $vacancyParser->parseStatements($statements);
