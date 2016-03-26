@@ -11,7 +11,6 @@ use Notifynder;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Exceptions\DuplicatedAppointmentException;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Service;
 
 class AgendaController extends Controller
 {
@@ -138,7 +137,7 @@ class AgendaController extends Controller
         // Authorize contact is subscribed to Business
         // ...
 
-        $service = Service::find($request->input('service_id'));
+        $service = $business->services()->find($request->input('service_id'));
 
         $date = Carbon::parse($request->input('_date'))->toDateString();
         $time = Carbon::parse($request->input('_time'))->toTimeString();
