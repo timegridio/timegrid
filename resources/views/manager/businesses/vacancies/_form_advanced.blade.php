@@ -23,11 +23,11 @@
     @endif
     <div class="col-sm-3">
         {!! Form::label( trans('manager.services.index.title') ) !!}<br>
-        {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'selectpicker', 'required']) !!}
+        {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'selectpicker']) !!}
     </div>
     <div class="col-sm-3">
         {!! Form::label( trans_choice('datetime.duration.days', 2) ) !!}<br>
-        {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'selectpicker', 'required']) !!}
+        {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'selectpicker']) !!}
     </div>
     <div class="col-sm-1">
         {!! Form::label( trans('appointments.text.from') ) !!}<br>
