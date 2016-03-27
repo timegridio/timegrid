@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'advice' => [
-    'annulation_deadline_past_due' => 'This appointment is anymore annulable.',
+    'cancelation_deadline_past_due' => 'This appointment is anymore cancellable.',
   ],
   'status' => [
-    'annulated' => 'Annulated',
+    'canceled'  => 'Canceled',
     'confirmed' => 'Confirmed',
     'reserved'  => 'Reserved',
     'served'    => 'Served',

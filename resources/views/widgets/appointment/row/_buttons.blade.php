@@ -1,8 +1,8 @@
 <span class="btn-group">
 
-    @if($appointment->isAnnulableBy(auth()->user()->id))
+    @if($appointment->isCancelableBy(auth()->user()->id))
         {!! Button::danger()->withIcon(Icon::remove())->small()->withAttributes([
-            'data-action' => 'annulate',
+            'data-action' => 'cancel',
             'class' => 'action',
             'data-business' => $appointment->business->id,
             'data-appointment' => $appointment->id,

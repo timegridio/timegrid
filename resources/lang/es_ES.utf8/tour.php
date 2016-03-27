@@ -39,8 +39,8 @@ return [
       'title'   => 'Citas activos para hoy',
     ],
     'indicator2' => [
-      'content' => 'Son las citas que estaban reservados para hoy, pero que se encuentran anulados.',
-      'title'   => 'Citas anulados para hoy',
+      'content' => 'Son las citas que estaban reservados para hoy, pero que se encuentran cancelados.',
+      'title'   => 'Citas cancelados para hoy',
     ],
     'indicator3' => [
       'content' => 'Son las citas pendientes para mañana.',

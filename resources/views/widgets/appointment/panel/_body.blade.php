@@ -2,7 +2,7 @@
 
 {{--
     [META] Translation keys for potsky/laravel-localization-helpers -dev
-    trans('appointments.status.annulated')
+    trans('appointments.status.canceled')
     trans('appointments.status.confirmed')
     trans('appointments.status.reserved')
     trans('appointments.status.served')
@@ -71,12 +71,12 @@
             @endif
         </ul>
 
-        @if($appointment->isActive() && $appointment->annulationDeadline->isPast())
-            {!! Alert::warning(trans('appointments.advice.annulation_deadline_past_due')) !!}
+        @if($appointment->isActive() && $appointment->cancellationDeadline->isPast())
+            {!! Alert::warning(trans('appointments.advice.cancellation_deadline_past_due')) !!}
         @endif
 
-        @if(($annulationPolicyAdvice = $appointment->business->pref('annulation_policy_advice')) && $appointment->isAnnulable() && $appointment->annulationDeadline->isFuture())
-            {!! Alert::warning(sprintf($annulationPolicyAdvice, $appointment->annulationDeadline)) !!}
+        @if(($cancellationPolicyAdvice = $appointment->business->pref('cancellation_policy_advice')) && $appointment->isAnnulable() && $appointment->cancellationDeadline->isFuture())
+            {!! Alert::warning(sprintf($cancellationPolicyAdvice, $appointment->cancellationDeadline)) !!}
         @endif
 
         @include('widgets.appointment.panel._buttons', ['appointment' => $appointment, 'user' => $user])

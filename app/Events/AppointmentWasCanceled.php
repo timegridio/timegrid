@@ -6,7 +6,7 @@ use Timegridio\Concierge\Models\Appointment;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
 
-class AppointmentWasAnnulled extends Event
+class AppointmentWasCanceled extends Event
 {
     use SerializesModels;
 

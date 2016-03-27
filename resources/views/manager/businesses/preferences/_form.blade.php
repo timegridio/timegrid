@@ -4,9 +4,9 @@
 {{-- $preferences->findBy(['key' => $key]) --}}
 
 {{-- [META] Translation keys for potsky/laravel-localization-helpers -dev
-trans('preferences.App\Models\Business.appointment_annulation_pre_hs.format')
-trans('preferences.App\Models\Business.appointment_annulation_pre_hs.help')
-trans('preferences.App\Models\Business.appointment_annulation_pre_hs.label')
+trans('preferences.App\Models\Business.appointment_cancellation_pre_hs.format')
+trans('preferences.App\Models\Business.appointment_cancellation_pre_hs.help')
+trans('preferences.App\Models\Business.appointment_cancellation_pre_hs.label')
 trans('preferences.App\Models\Business.appointment_code_length.format')
 trans('preferences.App\Models\Business.appointment_code_length.help')
 trans('preferences.App\Models\Business.appointment_code_length.label')

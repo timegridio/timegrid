@@ -62,7 +62,6 @@ EOD;
 
         $this->press('Update');
 
-        // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
         $this->see('Availability registered successfully');
     }

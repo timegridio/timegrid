@@ -90,7 +90,7 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_shows_reservations_list_with_an_annulated_appointment()
+    public function it_shows_reservations_list_with_a_canceled_appointment()
     {
         $owner = $this->createUser();
         $user = $this->createUser();
@@ -106,7 +106,7 @@ class UserAgendaControllerTest extends TestCase
         $service = $this->makeService();
         $business->services()->save($service);
 
-        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_ANNULATED]);
+        $appointment = factory(Appointment::class)->make(['status' => Appointment::STATUS_CANCELED]);
         $appointment->issuer()->associate($user);
         $appointment->contact()->associate($contact);
         $appointment->business()->associate($business);
@@ -115,7 +115,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->visit('/')->click('My Reservations');
 
-        $this->see('Annulated')
+        $this->see('Canceled')
             ->see($appointment->code)
             ->see($appointment->business->name);
     }
@@ -140,7 +140,7 @@ class UserAgendaControllerTest extends TestCase
         $business->services()->save($service);
 
         $appointment = factory(Appointment::class)->make([
-            'status'   => Appointment::STATUS_ANNULATED,
+            'status'   => Appointment::STATUS_CANCELED,
             'start_at' => Carbon::now()->subDays(50),
             ]);
         $appointment->issuer()->associate($user);
@@ -152,7 +152,7 @@ class UserAgendaControllerTest extends TestCase
         $this->visit('/')->click('My Reservations');
 
         $this->see('You have no ongoing reservations')
-             ->dontSee('Annulated');
+             ->dontSee('Canceled');
     }
 
     /**

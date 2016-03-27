@@ -78,7 +78,7 @@ return [
       ],
       'panel' => [
         'title_appointments_active'    => 'Citas Activas',
-        'title_appointments_annulated' => 'Citas Anuladas',
+        'title_appointments_canceled'  => 'Citas Canceladas',
         'title_appointments_served'    => 'Citas Atendidas',
         'title_appointments_today'     => 'Hoy',
         'title_appointments_tomorrow'  => 'Mañana',

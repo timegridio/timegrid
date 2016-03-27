@@ -168,7 +168,7 @@ class BusinessController extends Controller
 
         // Build Dashboard Report
         $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate($this->time->today())->get()->count();
-        $dashboard['appointments_annulated_today'] = $business->bookings()->annulated()->ofDate($this->time->today())->get()->count();
+        $dashboard['appointments_canceled_today'] = $business->bookings()->canceled()->ofDate($this->time->today())->get()->count();
         $dashboard['appointments_active_tomorrow'] = $business->bookings()->active()->ofDate($this->time->tomorrow())->get()->count();
         $dashboard['appointments_active_total'] = $business->bookings()->active()->get()->count();
         $dashboard['appointments_served_total'] = $business->bookings()->served()->get()->count();

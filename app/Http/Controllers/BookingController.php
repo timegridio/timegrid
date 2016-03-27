@@ -72,8 +72,8 @@ class BookingController extends Controller
         $appointmentManager = $this->concierge->booking()->appointment($appointment->hash);
 
         switch ($action) {
-            case 'annulate':
-                $appointment = $appointmentManager->annulate();
+            case 'cancel':
+                $appointment = $appointmentManager->cancel();
                 break;
             case 'confirm':
                 $appointment = $appointmentManager->confirm();

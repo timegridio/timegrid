@@ -25,7 +25,6 @@ class ManagerBusinessAgendaControllerTest extends TestCase
         // And I visit the business agenda section
         $this->visit(route('user.agenda', $this->business));
 
-        // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
 
         // Then I see the appointment listed

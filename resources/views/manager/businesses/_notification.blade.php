@@ -5,7 +5,7 @@
         @if ($notification['body']['name'] == 'user.booked')
             <span class="label label-warning">{!! Icon::calendar() !!}</span>
         @endif
-        @if ($notification['body']['name'] == 'appointment.annulate')
+        @if ($notification['body']['name'] == 'appointment.cancel')
             <span class="label label-danger">{!! Icon::calendar() !!}</span>
         @endif
         @if ($notification['body']['name'] == 'appointment.confirm')

@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'App\\Models\\Business' => [
-    'appointment_annulation_pre_hs' => [
+    'appointment_cancellation_pre_hs' => [
       'format' => 'Cantida de horas',
-      'help'   => 'Cantidad de horas con las que es factible anular un turno',
-      'label'  => 'Antelación de Anulaciones',
+      'help'   => 'Cantidad de horas con las que es factible cancelar un turno',
+      'label'  => 'Antelación de Cancelaciones',
     ],
     'appointment_code_length' => [
       'format' => 'Cantidad de caracteres',
@@ -41,10 +41,10 @@ return [
       'help'   => 'Horario en que comienzas a recibir turnos',
       'label'  => 'Hora de Apertura',
     ],
-    'annulation_policy_advice' => [
-      'format' => 'ejemplo: Podrás anular el turno sin cargo hasta el %s',
-      'help'   => 'Escribe un breve texto de tu política de anulación de turnos',
-      'label'  => 'Política de Anulación de Turnos',
+    'cancellation_policy_advice' => [
+      'format' => 'ejemplo: Podrás cancelar el turno sin cargo hasta el %s',
+      'help'   => 'Escribe un breve texto de tu política de cancelación de turnos',
+      'label'  => 'Política de Cancelación de Turnos',
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Si/No',

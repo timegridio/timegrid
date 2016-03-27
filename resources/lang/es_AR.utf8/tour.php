@@ -39,8 +39,8 @@ return [
       'title'   => 'Turnos activos para hoy',
     ],
     'indicator2' => [
-      'content' => 'Son los Turnos que estaban reservados para hoy, pero que se encuentran anulados.',
-      'title'   => 'Turnos anulados para hoy',
+      'content' => 'Son los Turnos que estaban reservados para hoy, pero que se encuentran cancelados.',
+      'title'   => 'Turnos cancelados para hoy',
     ],
     'indicator3' => [
       'content' => 'Son los Turnos pendientes para mañana.',

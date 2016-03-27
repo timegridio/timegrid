@@ -78,7 +78,7 @@ return [
       ],
       'panel' => [
         'title_appointments_active'    => 'Turnos Activos',
-        'title_appointments_annulated' => 'Turnos Anulados',
+        'title_appointments_canceled'  => 'Turnos Cancelados',
         'title_appointments_served'    => 'Turnos Atendidos',
         'title_appointments_today'     => 'Hoy',
         'title_appointments_tomorrow'  => 'Mañana',

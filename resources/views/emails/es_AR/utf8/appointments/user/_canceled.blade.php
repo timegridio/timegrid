@@ -24,7 +24,7 @@
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
 <pre>
 ----------------------------------------------
- TURNO ANULADO
+ TURNO CANCELADO
 ----------------------------------------------
 Prestador: {{ $appointment->business->name }}
     Fecha: {{ $appointment->date }}

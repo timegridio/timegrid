@@ -6,7 +6,7 @@ use App\Events\AppointmentWasConfirmed;
 use App\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
 
-class SendAppointmentAnnullationNotification
+class SendAppointmentCancellationNotification
 {
     private $transmail;
 
@@ -30,7 +30,7 @@ class SendAppointmentAnnullationNotification
         $date = $event->appointment->start_at->toDateString();
         $businessName = $event->appointment->business->name;
 
-        Notifynder::category('appointment.annulate')
+        Notifynder::category('appointment.cancel')
                    ->from('App\Models\User', $event->user->id)
                    ->to('Timegridio\Concierge\Models\Business', $event->appointment->business->id)
                    ->url('http://localhost')
@@ -51,7 +51,7 @@ class SendAppointmentAnnullationNotification
             'email' => $event->appointment->contact->email,
         ];
         $this->transmail->locale($event->appointment->business->locale)
-                        ->template('appointments.user._annullated')
+                        ->template('appointments.user._canceled')
                         ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
                         ->send($header, $params);
     }

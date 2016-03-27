@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'App\\Models\\Business' => [
-    'appointment_annulation_pre_hs' => [
+    'appointment_cancellation_pre_hs' => [
       'format' => 'Number of hours',
-      'help'   => 'Number of hours in advance for which an appointment can be annullated',
-      'label'  => 'Appointment Annulation Anticipation',
+      'help'   => 'Number of hours in advance for which an appointment can be canceled',
+      'label'  => 'Appointment Cancellation Anticipation',
     ],
     'appointment_code_length' => [
       'format' => 'Number of characters',
@@ -41,10 +41,10 @@ return [
       'help'   => 'The time your business opens for receiving appointments',
       'label'  => 'Opening Hour',
     ],
-    'annulation_policy_advice' => [
+    'cancellation_policy_advice' => [
       'format' => 'example: You may annulate this appointment charge-free until %s',
-      'help'   => 'Write an advice text your clients will see about your appointment annulation policy',
-      'label'  => 'Annulation Policy Advice Text',
+      'help'   => 'Write an advice text your clients will see about your appointment cancellation policy',
+      'label'  => 'Cancellation Policy Advice Text',
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Yes/No',

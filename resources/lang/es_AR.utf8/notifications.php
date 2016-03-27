@@ -12,7 +12,7 @@ return [
   ],
   'appointment' => [
     'reserve'  => ':user reservó el turno :code del día :date',
-    'annulate' => ':user anuló el turno :code del día :date',
+    'cancel'   => ':user canceló el turno :code del día :date',
     'confirm'  => ':user confirmó el turno :code del día :date',
     'serve'    => ':user atendió el turno :code del día :date',
     ],

@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'advice' => [
-    'annulation_deadline_past_due' => 'Este turno ya no es anulable.',
+    'cancellation_deadline_past_due' => 'Este turno ya no es cancelable.',
   ],
   'status' => [
-    'annulated' => 'Anulado',
+    'canceled'  => 'Cancelado',
     'confirmed' => 'Confirmado',
     'reserved'  => 'Reservado',
     'served'    => 'Servido',

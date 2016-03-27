@@ -67,10 +67,10 @@
                 <div class="col-md-2">
                     <div class="panel panel-default panel-danger">
                         <div class="panel-heading">
-                            {{ trans('manager.businesses.dashboard.panel.title_appointments_annulated') }}
+                            {{ trans('manager.businesses.dashboard.panel.title_appointments_canceled') }}
                         </div>
                         <div class="panel-body" id="indicator2">
-                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_annulated_today', '?') }}</h1>
+                            <h1 class="text-center">{{ array_get($dashboard, 'appointments_canceled_today', '?') }}</h1>
                         </div>
                         <div class="panel-footer">
                             {{ trans('manager.businesses.dashboard.panel.title_appointments_today') }}

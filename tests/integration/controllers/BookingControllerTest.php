@@ -15,7 +15,7 @@ class BookingControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_annulates_an_existing_appointment()
+    public function it_cancels_an_existing_appointment()
     {
         // Given a fixture of
         $this->arrangeFixture();
@@ -31,25 +31,23 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->appointment->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->appointment->business->id,
             'appointment' => $this->appointment->id,
-            'action'      => 'annulate',
+            'action'      => 'cancel',
             'widget'      => 'row',
             ];
 
         $this->post(route('api.booking.action'), $input);
 
-        // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
-        $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->fresh()->status);
+        $this->assertEquals(Appointment::STATUS_CANCELED, $this->appointment->fresh()->status);
     }
 
     /**
      * @test
      */
-    public function it_annulates_an_existing_appointment_with_panel_widget()
+    public function it_cancels_an_existing_appointment_with_panel_widget()
     {
         // Given a fixture of
         $this->arrangeFixture();
@@ -65,20 +63,18 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action'      => 'annulate',
+            'action'      => 'cancel',
             'widget'      => 'panel',
             ];
 
         $this->post(route('api.booking.action'), $input);
 
-        // Then I receive a response and see the appointment annulated
         $this->assertResponseOk();
         $this->appointment = $this->appointment->fresh();
-        $this->assertEquals(Appointment::STATUS_ANNULATED, $this->appointment->status);
+        $this->assertEquals(Appointment::STATUS_CANCELED, $this->appointment->status);
     }
 
     /**
@@ -101,7 +97,6 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
@@ -137,7 +132,6 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
@@ -155,7 +149,7 @@ class BookingControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_annulates_fails_to_activate_a_served_appointment()
+    public function it_fails_to_activate_a_served_appointment()
     {
         // Given a fixture of
         $this->arrangeFixture();
@@ -171,7 +165,6 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
@@ -205,7 +198,6 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
@@ -239,11 +231,10 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,
-            'action'      => 'annulate',
+            'action'      => 'cancel',
             'widget'      => 'InvalidWidgetType',
             ];
 
@@ -272,7 +263,6 @@ class BookingControllerTest extends TestCase
         // And I am authenticated
         $this->actingAs($this->issuer);
 
-        // And I request the annulation of the appointment and telling an invalid widgetType
         $input = [
             'business'    => $this->business->id,
             'appointment' => $this->appointment->id,

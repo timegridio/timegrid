@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'advice' => [
-    'annulation_deadline_past_due' => 'Esta cita ya no es anulable.',
+    'cancellation_deadline_past_due' => 'Esta cita ya no es cancelable.',
   ],
   'status' => [
-    'annulated' => 'Anulada',
+    'canceled'  => 'Cancelada',
     'confirmed' => 'Confirmada',
     'reserved'  => 'Reservada',
     'served'    => 'Servida',

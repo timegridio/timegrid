@@ -6,10 +6,10 @@
 return [
   //==================================== Translations ====================================//
   'App\\Models\\Business' => [
-    'appointment_annulation_pre_hs' => [
+    'appointment_cancellation_pre_hs' => [
       'format' => 'Cantida de horas',
-      'help'   => 'Cantidad de horas con las que es factible anular una cita',
-      'label'  => 'Antelación de Anulaciones',
+      'help'   => 'Cantidad de horas con las que es factible cancelar una cita',
+      'label'  => 'Antelación de Cancelaciones',
     ],
     'appointment_code_length' => [
       'format' => 'Cantidad de caracteres',
@@ -41,10 +41,10 @@ return [
       'help'   => 'Horario en que comienzas a recibir citas',
       'label'  => 'Hora de Apertura',
     ],
-    'annulation_policy_advice' => [
-      'format' => 'ejemplo: Podrás anular la cita sin cargo hasta el %s',
-      'help'   => 'Escribe un breve texto de tu política de anulación de citas',
-      'label'  => 'Política de Anulación de Citas',
+    'cancellation_policy_advice' => [
+      'format' => 'ejemplo: Podrás cancelar la cita sin cargo hasta el %s',
+      'help'   => 'Escribe un breve texto de tu política de cancelación de citas',
+      'label'  => 'Política de Cancelación de Citas',
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Si/No',

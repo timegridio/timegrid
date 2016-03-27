@@ -19,7 +19,7 @@ class NotifynderCategoriesSeeder extends Seeder
         Notifynder::addCategory('user.updatedBusinessPreferences', '{from.username} updated :business preferences');
         Notifynder::addCategory('user.importedContacts', '{from.username} imported :count contacts');
         Notifynder::addCategory('appointment.reserve', '{from.username} made a reservation for :business');
-        Notifynder::addCategory('appointment.annulate', '{from.username} annulated appointment');
+        Notifynder::addCategory('appointment.cancel', '{from.username} canceled appointment');
         Notifynder::addCategory('appointment.confirm', '{from.username} confirmed appointment');
         Notifynder::addCategory('appointment.serve', '{from.username} served appointment');
     }

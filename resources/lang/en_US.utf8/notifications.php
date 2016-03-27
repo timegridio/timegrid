@@ -11,7 +11,7 @@ return [
   ],
   'appointment' => [
     'reserve'  => ':user reserved appointment :code of date :date',
-    'annulate' => ':user annulated appointment :code of date :date',
+    'cancel'   => ':user canceled appointment :code of date :date',
     'confirm'  => ':user confirmed appointment :code of date :date',
     'serve'    => ':user served appointment :code of date :date',
     ],

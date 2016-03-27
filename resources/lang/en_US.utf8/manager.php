@@ -78,7 +78,7 @@ return [
       ],
       'panel' => [
         'title_appointments_active'    => 'Appointments Active',
-        'title_appointments_annulated' => 'Appointments Annulated',
+        'title_appointments_canceled'  => 'Appointments Canceled',
         'title_appointments_served'    => 'Appointments Served',
         'title_appointments_today'     => 'Today',
         'title_appointments_tomorrow'  => 'Tomorrow',
