@@ -10,13 +10,15 @@ return [
   ],
   'business' => [
     'category' => [
-      'doctor'       => 'Salud',
       'garage'       => 'Mecánica',
+      'doctor'       => 'Salud',
       'photography'  => 'Fotografía',
       'spa'          => 'Spa & Belleza',
       'martial-arts' => 'Artes Marciales',
       'yoga'         => 'Yoga',
       'consulting'   => 'Consultoría',
+      'hairdresser'  => 'Peluquería',
+      'beauty'       => 'Belleza y Salud',
     ],
   ],
   'dateformat' => [
