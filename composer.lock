@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e1aa5d2c33c89740ab3cf6491304664f",
+    "hash": "c47857ed8796da5af68e44d86aec3b7e",
     "content-hash": "c3da021d3d9f5be2e4a743c690a13943",
     "packages": [
         {
@@ -3634,12 +3634,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "67a41eab7e89273410d72427579776cf976f06a6"
+                "reference": "f0f738f6fad444c53f6503c8df7dd5eb686386d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/67a41eab7e89273410d72427579776cf976f06a6",
-                "reference": "67a41eab7e89273410d72427579776cf976f06a6",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/f0f738f6fad444c53f6503c8df7dd5eb686386d3",
+                "reference": "f0f738f6fad444c53f6503c8df7dd5eb686386d3",
                 "shasum": ""
             },
             "require": {
@@ -3688,7 +3688,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-03-24 15:51:59"
+            "time": "2016-03-27 01:47:18"
         },
         {
             "name": "torann/geoip",
