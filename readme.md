@@ -5,7 +5,7 @@
 timegrid
 ============
 
-> Online service booking made easy.
+> Online appointments for freelancers and businesses made easy.
 
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
@@ -16,17 +16,17 @@ timegrid
 
 **The problem**
 
-Small and medium scale businesses wish to provide online service booking for their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
+Freelancers and medium scale businesses wish to provide online appointments of services to their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
 
 **The Solution**
 
-Timegrid is a single platform holding all *businesses* and *customers* while letting them an *affordable* and *easy to use* way to interact. *Simple*, *Useful*, and *Fast*.
+Timegrid lets them to *easily* interact through *online appointments*. *Simple*, *Useful*, and *Fast*.
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
-## The Library
+## Online Appointments Package
 
-Timegrid uses [Concierge library](https://github.com/timegridio/concierge) to handle bookings.
+If you are just looking for the appointing library to use with your own *Laravel* app, see [Concierge library](https://github.com/timegridio/concierge).
 
 ## Screenshots
 
@@ -40,25 +40,17 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
 ## Features
 
-### Implemented
-
-  * User regular and oAuth2 SignUp
+  * User classic and oAuth2 Sign-in/Sign-up (Facebook, Google and Github)
   * Business management
     * Contact addressbook
     * Services management
+    * Staff management
     * Availability management
-    * Items Search
-  * Service Reservation
-  * Email reports
-
-### Coming Soon
-
-  * Add SMS alerts
-  * Add automatic vacancy handling
-  * Support for Themes
-  * Support for more industry sectors reservation strategies
-  * Users reputation
-  * ...and more
+    * Search
+  * Service appointing
+  * Basic email notifications
+  * Multiple Languages Support (Localization)
+  * Multiple Timezones Support
 
 ## Official Documentation
 
