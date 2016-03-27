@@ -31,11 +31,11 @@
 </a>
 @endif
 
-<div class="wrapper toggled" id="wrapper">
+<div class="wrapper" id="wrapper">
 
     <!-- Sidebar -->
     @if($help)
-    <a href="#menu-toggle" id="menu-toggle">X</a>
+    <a href="#menu-toggle" id="menu-toggle"></a>
     <div id="sidebar-wrapper">
         <div class="container-fluid">
             <h1>{{ trans('app.nav.help') }}</h1>

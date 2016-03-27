@@ -97,34 +97,6 @@
     background: none;
 }
 
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 300px;
-    }
-
-    #wrapper.toggled {
-        padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-        width: 300px;
-    }
-
-    #wrapper.toggled #sidebar-wrapper {
-        width: 0;
-    }
-
-    #page-content-wrapper {
-        padding: 20px;
-        position: relative;
-    }
-
-    #wrapper.toggled #page-content-wrapper {
-        position: relative;
-        margin-right: 0;
-    }
-}
-
 /* UserHelp Button */
 #menu-toggle {
     display: float;
