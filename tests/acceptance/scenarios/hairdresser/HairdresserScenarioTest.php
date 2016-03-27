@@ -36,6 +36,7 @@ class HairdresserScenarioTest extends TestCase
         $this->the_user_sees_the_reservation_ticket();
         $this->a_user_b_takes_a_reservation();
         $this->a_user_c_takes_a_tight_reservation();
+        $this->it_provides_available_times_for_remaining_service();
     }
 
     public function the_business_registers_the_staff()
@@ -207,6 +208,21 @@ EOD;
 
         $this->seeInDatabase('appointments', ['business_id' => $this->business->id, 'issuer_id' => $issuer->id]);
     }
+
+    public function it_provides_available_times_for_remaining_service()
+    {
+        $this->actingAs($this->issuer);
+
+        $this->service = $this->business->services()->where('slug', 'washing')->first();
+
+        $this->vacancy = $this->business->vacancies()->first();
+
+        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
+
+        $this->assertResponseOk();
+        $this->seeJsonContains(['times' => ["10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00","17:30:00"]]);
+    }
+
 
     /**
      * Arrange Fixture.
