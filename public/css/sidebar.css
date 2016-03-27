@@ -111,4 +111,10 @@
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-delay: 10s;
+    -webkit-animation-iteration-count: 1;
+    -moz-animation-duration: 2s;
+    -moz-animation-delay: 10s;
+    -moz-animation-iteration-count: 1;
 }
