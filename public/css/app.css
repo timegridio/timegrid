@@ -6930,11 +6930,12 @@ body {
   margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   /* Set the fixed height of the footer here */
-  height: 60px;
+  line-height: 40px;
+  height: 40px;
   background-color: #f5f5f5;
 }
 /* oAuth Login Social Buttons */

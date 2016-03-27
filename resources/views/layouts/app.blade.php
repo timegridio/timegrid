@@ -93,7 +93,6 @@
     </div>
 </nav>
 
-
     <div id="page-content-wrapper">
         <div class="container-fluid">
         @include('flash::message')
