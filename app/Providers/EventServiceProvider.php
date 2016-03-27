@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AppointmentWasConfirmed' => [
             'App\Handlers\Events\SendAppointmentConfirmationNotification',
         ],
+        'App\Events\AppointmentWasAnnulled' => [
+            'App\Handlers\Events\SendAppointmentAnnullationNotification',
+        ],
     ];
 
     /**
