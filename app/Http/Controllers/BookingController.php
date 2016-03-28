@@ -152,7 +152,9 @@ class BookingController extends Controller
 
             $step = $this->calculateStep($vacancy->business, $service->duration);
 
-            for ($i = 0; $i <= 24; $i++) {
+            $maxNumberOfSlots = round($vacancy->finish_at->diffInMinutes($beginTime) / $step);
+
+            for ($i = 0; $i <= $maxNumberOfSlots; $i++) {
                 $endTime = $beginTime->copy()->addMinutes($step);
                 $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
                 if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
