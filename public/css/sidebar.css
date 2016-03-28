@@ -39,7 +39,7 @@
     transition: all 0.5s ease;
 }
 
-#userhelp h1, h2, h3, h4, h5, h6 {
+#userhelp h1, #userhelp h2, #userhelp h3, #userhelp h4, #userhelp h5, #userhelp h6 {
     font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
     font-weight: bolder;
     text-transform: uppercase;
