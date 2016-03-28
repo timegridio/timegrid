@@ -71,9 +71,9 @@ class BusinessAgendaController extends Controller
                 ];
         }
 
-        unset($appointments);
-
         $slotDuration = count($appointments > 5) ? '0:15' : '0:30';
+
+        unset($appointments);
 
         JavaScript::put([
             'minTime'      => $business->pref('start_at'),
