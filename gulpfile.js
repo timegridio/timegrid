@@ -80,6 +80,7 @@ elixir(function(mix) {
         './bower_components/moment-timezone/builds/moment-timezone.min.js',
         './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         './bower_components/fullcalendar/dist/fullcalendar.min.js',
+        './bower_components/fullcalendar/dist/lang-all.js',
     ], 'public/js/datetime.js');
 
     mix.styles([

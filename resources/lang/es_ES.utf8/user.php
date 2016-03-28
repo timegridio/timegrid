@@ -55,6 +55,7 @@ return array (
       'book_in_biz' => 'Reservar cita en :biz',
       'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
       'more_dates' => 'Ver más fechas',
+      'calendar' => 'Ver Calendario',
     ),
     'form' => 
     array (

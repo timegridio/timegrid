@@ -41,6 +41,8 @@
         </div>
 
     </div>
+
+    {!! Button::normal(trans('user.appointments.btn.calendar'))->asLinkTo( route('manager.business.agenda.calendar', [$business]) )->block() !!}
 </div>
 {!! Form::close() !!}
 @endsection

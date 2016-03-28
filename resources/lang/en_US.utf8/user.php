@@ -55,6 +55,7 @@ return array (
       'book_in_biz' => 'Book appointment for :biz',
       'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
       'more_dates' => 'Check more dates',
+      'calendar' => 'View Calendar',
     ),
     'form' => 
     array (

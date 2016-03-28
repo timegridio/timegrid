@@ -254,6 +254,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             'as'   => 'manager.business.agenda.index',
             'uses' => 'BusinessAgendaController@getIndex',
         ]);
+        Route::get('calendar', [
+            'as'   => 'manager.business.agenda.calendar',
+            'uses' => 'BusinessAgendaController@getCalendar',
+        ]);
 
         // BUSINESS MANAGEMENT
         Route::get('dashboard', [

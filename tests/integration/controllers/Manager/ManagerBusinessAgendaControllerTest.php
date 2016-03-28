@@ -60,4 +60,33 @@ class ManagerBusinessAgendaControllerTest extends TestCase
 
         $this->see($this->appointment->code);
     }
+
+
+    /**
+     * @test
+     */
+    public function it_verifies_appointments_in_business_calendar()
+    {
+        // Given a fixture of
+        $this->arrangeFixture();
+
+        $this->appointment = $this->createAppointment([
+            'issuer_id'   => $this->issuer->id,
+            'business_id' => $this->business->id,
+            'service_id'  => $this->service->id,
+            'contact_id'  => $this->contact->id,
+            'vacancy_id'  => $this->vacancy->id,
+            'status'      => Appointment::STATUS_RESERVED,
+            'duration'    => 30,
+            'start_at'    => $this->vacancy->start_at,
+            'finish_at'   => $this->vacancy->start_at->addHours(1),
+            ]);
+
+        // And I am authenticated as the business owner
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.agenda.calendar', $this->business));
+
+        $this->assertResponseOk();
+    }
 }

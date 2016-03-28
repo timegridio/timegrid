@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use JavaScript;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
 
@@ -48,5 +49,38 @@ class BusinessAgendaController extends Controller
             : 'manager.businesses.appointments.'.$business->strategy.'.index';
 
         return view($viewKey, compact('business', 'appointments'));
+    }
+
+    public function getCalendar(Business $business)
+    {
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
+
+        $this->authorize('manage', $business);
+
+        $appointments = $this->concierge->business($business)->getUnservedAppointments();
+
+        $jsAppointments = [];
+
+        foreach ($appointments as $appointment) {
+            $jsAppointments[] = [
+                'title' => $appointment->contact->firstname.' / '.$appointment->service->name,
+                'color' => $appointment->service->color,
+                'start' => $appointment->start_at->timezone($business->timezone)->toIso8601String(),
+                'end'   => $appointment->finish_at->timezone($business->timezone)->toIso8601String(),
+                ];
+        }
+
+        unset($appointments);
+
+        JavaScript::put([
+            'minTime'      => $business->pref('start_at'),
+            'maxTime'      => $business->pref('finish_at'),
+            'events'       => $jsAppointments,
+            'lang'         => session()->get('language'),
+            'slotDuration' => '0:30',
+        ]);
+
+        return view('manager.businesses.appointments.calendar', compact('business'));
     }
 }
