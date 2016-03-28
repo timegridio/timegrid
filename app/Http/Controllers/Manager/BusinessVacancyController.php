@@ -167,11 +167,18 @@ class BusinessVacancyController extends Controller
         // FOR REFACTOR //
         //////////////////
 
+        $this->concierge->business($business);
+
         $statements = $request->input('vacancies');
+        $unpublish = $request->input('unpublish');
+
+        if ($unpublish) {
+            $this->concierge->vacancies()->unpublish();
+        }
 
         $publishedVacancies = $vacancyParser->parseStatements($statements);
 
-        if (!$this->concierge->business($business)->vacancies()->updateBatch($business, $publishedVacancies)) {
+        if (!$this->concierge->vacancies()->updateBatch($business, $publishedVacancies)) {
             logger()->warning('Nothing to update');
 
             flash()->warning(trans('manager.vacancies.msg.store.nothing_changed'));

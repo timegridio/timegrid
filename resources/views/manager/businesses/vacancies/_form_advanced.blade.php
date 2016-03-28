@@ -54,7 +54,13 @@
 </textarea>
 <br>
 
-<input type="checkbox" name="remember" id="remember" value="true" /><label for="remember">{{ trans('manager.businesses.check.remember_vacancies') }}</label>
+<input type="checkbox" name="unpublish" id="unpublish" value="true" />
+<label for="unpublish">&nbsp;{{ trans('manager.businesses.check.unpublish_vacancies') }}</label>
+<br>
+
+<input type="checkbox" name="remember" id="remember" value="true" />
+<label for="remember">&nbsp;{{ trans('manager.businesses.check.remember_vacancies') }}</label>
+<br>
 
 @if (!$business->services->isEmpty())
 <div class="row">

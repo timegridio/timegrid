@@ -58,6 +58,7 @@ return [
   'businesses' => [
     'check' => [
       'remember_vacancies'  => 'Remember these vacancies as default',
+      'unpublish_vacancies' => 'Reset my current availability before publishing',
     ],
     'btn' => [
       'store'  => 'Register',

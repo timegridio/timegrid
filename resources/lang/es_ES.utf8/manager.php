@@ -58,6 +58,7 @@ return [
   'businesses' => [
     'check' => [
       'remember_vacancies'  => 'Recordar esta disponibilidad como predeterminada',
+      'unpublish_vacancies' => 'Limpiar mi disponibilidad actual antes de publicar',
     ],
     'btn' => [
       'store'  => 'Registrar',
