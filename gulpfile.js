@@ -79,10 +79,12 @@ elixir(function(mix) {
         './bower_components/moment/min/moment-with-locales.min.js',
         './bower_components/moment-timezone/builds/moment-timezone.min.js',
         './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        './bower_components/fullcalendar/dist/fullcalendar.min.js',
     ], 'public/js/datetime.js');
 
     mix.styles([
         './bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        './bower_components/fullcalendar/dist/fullcalendar.min.css',
     ], 'public/css/datetime.css');
 
     // Tour Helpers
