@@ -26,13 +26,14 @@
         <div id="extra" class="hidden">
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Form::label(trans('user.appointments.form.duration.label')) !!}
+                @if(isset($canEditDuration))
+                    {!! Form::label(trans('user.appointments.form.duration.label_edit')) !!}
                     {!! Form::text('duration', null, [
-                        'readonly',
                         'id'=>'duration',
                         'class'=>'form-control',
                         'placeholder'=> trans('user.appointments.form.duration.label')
                         ]) !!}
+                @endif
                 </div>
             </div>
 
