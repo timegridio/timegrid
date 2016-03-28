@@ -73,12 +73,14 @@ class BusinessAgendaController extends Controller
 
         unset($appointments);
 
+        $slotDuration = count($appointments > 5) ? '0:15' : '0:30';
+
         JavaScript::put([
             'minTime'      => $business->pref('start_at'),
             'maxTime'      => $business->pref('finish_at'),
             'events'       => $jsAppointments,
             'lang'         => session()->get('language'),
-            'slotDuration' => '0:30',
+            'slotDuration' => $slotDuration,
         ]);
 
         return view('manager.businesses.appointments.calendar', compact('business'));
