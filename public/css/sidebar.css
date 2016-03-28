@@ -1,3 +1,4 @@
+
 /*!
  * Start Bootstrap - Simple Sidebar HTML Template (http://startbootstrap.com)
  * Code licensed under the Apache License v2.0.
@@ -15,27 +16,41 @@
 }
 
 #wrapper.toggled {
-    padding-left: 300px;
+    padding-left: 320px;
 }
 
 #sidebar-wrapper {
+    font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
+    font-size: 1.3em;
+    font-weight: 400;
+    margin: 0 0 10px;
+    color: #60666d;
+    background: #ffffff;
     z-index: 1000;
     position: fixed;
-    left: 300px;
+    left: 320px;
     width: 0;
     height: 100%;
-    margin-left: -300px;
+    margin-left: -320px;
     overflow-y: auto;
-    color: #444444;
-    background: #eeeeee;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
 
+#sidebar-wrapper h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
+    font-weight: bolder;
+    text-transform: uppercase;
+}
+
+#sidebar-wrapper p {
+    font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
+}
+
 #wrapper.toggled #sidebar-wrapper {
-    width: 300px;
+    width: 320px;
 }
 
 #page-content-wrapper {
@@ -46,7 +61,7 @@
 
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
-    margin-right: -300px;
+    margin-right: -320px;
 }
 
 /* Sidebar Styles */
@@ -54,7 +69,7 @@
 .sidebar-nav {
     position: absolute;
     top: 0;
-    width: 300px;
+    width: 320px;
     margin: 0;
     padding: 0;
     list-style: none;
