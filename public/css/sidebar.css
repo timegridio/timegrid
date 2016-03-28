@@ -39,13 +39,13 @@
     transition: all 0.5s ease;
 }
 
-#sidebar-wrapper h1, h2, h3, h4, h5, h6 {
+#userhelp h1, h2, h3, h4, h5, h6 {
     font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
     font-weight: bolder;
     text-transform: uppercase;
 }
 
-#sidebar-wrapper p {
+#userhelp p {
     font-family: 'Lato','Helvetica Neue',Helvetica,Arial,sans-serif!important;
 }
 
