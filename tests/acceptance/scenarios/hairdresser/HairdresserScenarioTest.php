@@ -14,7 +14,7 @@ class HairdresserScenarioTest extends TestCase
 
     protected $vacancy;
     
-    protected $service;
+    // protected $service;
 
 
     /**
@@ -48,15 +48,15 @@ class HairdresserScenarioTest extends TestCase
         $this->seeInDatabase('humanresources', ['business_id' => $this->business->id, 'name' => $staff->name]);
     }
 
-    public function the_business_publishes_a_service($service)
+    public function the_business_publishes_a_service($serviceData)
     {
-        $this->service = $this->makeService($service);
+        $service = $this->makeService($serviceData);
 
         $this->actingAs($this->owner);
 
-        $this->call('POST', route('manager.business.service.store', $this->business), $this->service->toArray());
+        $this->call('POST', route('manager.business.service.store', $this->business), $service->toArray());
 
-        $this->seeInDatabase('services', ['business_id' => $this->business->id, 'name' => $this->service->name]);
+        $this->seeInDatabase('services', ['business_id' => $this->business->id, 'name' => $service->name]);
     }
 
     public function the_business_publishes_vacancies()
@@ -130,14 +130,14 @@ EOD;
     {
         $this->actingAs($this->issuer);
 
-        $this->service = $this->business->services()->where('slug', 'hair-cut')->first();
+        $service = $this->business->services()->where('slug', 'hair-cut')->first();
 
         $this->vacancy = $this->business->vacancies()->first();
 
-        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
+        $this->get("api/vacancies/{$this->business->id}/{$service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ["09:00:00","09:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00","17:30:00"]]);
+        $this->seeJsonContains(['times' => ["09:00:00","09:20:00","09:40:00","10:00:00","10:20:00","10:40:00","11:00:00","11:20:00","11:40:00","12:00:00","12:20:00","12:40:00","13:00:00","13:20:00","13:40:00","14:00:00","14:20:00","14:40:00","15:00:00","15:20:00","15:40:00","16:00:00","16:20:00","16:40:00","17:00:00"]]);
     }
 
     public function the_user_takes_a_reservation()
@@ -147,7 +147,7 @@ EOD;
         $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
-            'service_id' => $this->service->id,
+            'service_id' => $this->business->services()->where('slug', 'hair-cut')->first()->id,
             '_time'      => '09:00:00',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
@@ -162,7 +162,7 @@ EOD;
 
         $this->visit(route('user.businesses.home', ['business' => $this->business]));
 
-        $this->see($this->service->name)
+        $this->see('Hair Cut')
              ->see('Please arrive at 09:00 am')
              ->see($this->issuer->fresh()->appointments()->first()->code);
     }
@@ -213,14 +213,14 @@ EOD;
     {
         $this->actingAs($this->issuer);
 
-        $this->service = $this->business->services()->where('slug', 'washing')->first();
+        $service = $this->business->services()->where('slug', 'washing')->first();
 
         $this->vacancy = $this->business->vacancies()->first();
 
-        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
+        $this->get("api/vacancies/{$this->business->id}/{$service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ["10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00","15:30:00","16:00:00","16:30:00","17:00:00","17:30:00"]]);
+        $this->seeJsonContains(['times' => ["10:30:00","10:40:00","10:50:00","11:00:00","11:10:00","11:20:00","11:30:00","11:40:00","11:50:00","12:00:00","12:10:00","12:20:00","12:30:00","12:40:00","12:50:00","13:00:00"]]);
     }
 
 
@@ -242,7 +242,7 @@ EOD;
         $this->business->owners()->save($this->owner);
 
         $this->business->pref('vacancy_edit_advanced_mode', true);
-        $this->business->pref('timeslot_step', 30);
+        $this->business->pref('timeslot_step', 0);
         $this->business->pref('time_format', 'h:i a');
     }
 }
