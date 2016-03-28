@@ -71,7 +71,7 @@ class BusinessAgendaController extends Controller
                 ];
         }
 
-        $slotDuration = count($appointments > 5) ? '0:15' : '0:30';
+        $slotDuration = count($appointments) > 5 ? '0:15' : '0:30';
 
         unset($appointments);
 
