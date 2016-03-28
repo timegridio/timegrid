@@ -24,6 +24,8 @@ $(document).ready(function(){
             right: 'month,agendaWeek,agendaDay'
         },
         defaultView: 'agendaWeek',
+        allDayDefault: false,
+        allDaySlot: false,
         businessHours: {
             start: timegrid.minTime,
             end: timegrid.maxTime,
