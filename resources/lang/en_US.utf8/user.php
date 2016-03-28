@@ -50,6 +50,7 @@ return array (
     ),
     'btn' => 
     array (
+      'confirm_booking' => 'Confirm appointment reservation',
       'book' => 'Book appointment',
       'book_in_biz' => 'Book appointment for :biz',
       'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',

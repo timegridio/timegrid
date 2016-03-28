@@ -16,14 +16,11 @@
     <div class="col-md-6 col-md-offset-3">
 
         <div class="row">
-            {!! Alert::info(trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()])) !!}
-        </div>
-
-        <div class="row">
             @include('user.appointments.timeslot._timetable', ['dates' => $availability])
         </div>
 
         <div id="extra" class="hidden">
+
             <div class="row">
                 <div class="form-group col-sm-12">
                 @if(isset($canEditDuration))
@@ -36,6 +33,7 @@
                 @endif
                 </div>
             </div>
+
 
             <div class="row">
                 <div class="form-group col-sm-12">
@@ -58,7 +56,7 @@
 
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Button::primary(trans('user.appointments.btn.book'))->large()->block()->submit() !!}
+                    {!! Button::success(trans('user.appointments.btn.confirm_booking'))->large()->block()->submit() !!}
                 </div>
             </div>
         </div>

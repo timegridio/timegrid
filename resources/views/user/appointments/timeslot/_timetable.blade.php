@@ -1,6 +1,39 @@
+@section('css')
+@parent
+<style>
+.date {
+    color: #777777;
+    background: #eaeaea;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 300;
+    text-align: center;
+    vertical-align: middle;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 10px 15px;
+    font-size: 15px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.date-active {
+    color: #333333;
+    background: #eaeaea;
+}
+
+.date-muted {
+    color: #999999;
+    background: #d9d9d9;
+}
+</style>
+@endsection
+
 <div id="panel" class="panel panel-default">
     <!-- Default panel contents -->
-    <div class="panel-heading">{{ trans('user.appointments.form.timetable.title', ['business' => $business->name]) }}</div>
+    <div class="panel-heading">{{ trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]) }}</div>
 
     <div id="catalog">
     @if($business->services->count() > 1)
@@ -21,18 +54,15 @@
     </div>
     @endif
     </div>
-    
+
     <table id="timetable" class="table hidden">
     @foreach ($dates as $date => $vacancies)
         @if (empty($vacancies))
         <tr class="daterow">
-            <td class="dateslot disable">
-                {!! Button::normal(Carbon::parse($date)->formatLocalized('%A %d %B'))
-                    ->block()
-                    ->disable()
-                    ->prependIcon(Icon::calendar())
-                    ->withAttributes(['class' => 'btn-date'])
-                    !!}
+            <td class="dateslot">
+                <div class="date date-muted">
+                    {!! Icon::calendar() !!}&nbsp;{{ (Carbon::parse($date)->formatLocalized('%A %d %B')) }}
+                </div>
             </td>
             <td class="serviceslot" >
                 <p class="hidden-xs">
@@ -44,10 +74,9 @@
         @else
         <tr class="daterow date_{{ $date }}">
             <td class="dateslot">
-                {!! Button::info(Carbon::parse($date)->formatLocalized('%A %d %B'))
-                    ->block()
-                    ->prependIcon(Icon::calendar())
-                    ->withAttributes(['class' => 'btn-date']) !!}
+                <div class="date date-active">
+                    {!! Icon::calendar() !!}&nbsp;{{ (Carbon::parse($date)->formatLocalized('%A %d %B')) }}
+                </div>
             </td>
             <td class="serviceslot" >
                 @foreach ($vacancies as $vacancy)
@@ -81,11 +110,18 @@
     @endforeach
     </ul>
 
-    <div id="moreDates">
+    <div>
+    {!! Button::primary()
+        ->withIcon(Icon::eject())
+        ->withAttributes(['id' => 'restoreDates', 'class' => 'hidden'])
+        ->small()
+        ->block() !!}
+
     {!! Button::primary(trans('user.appointments.btn.more_dates'))
+        ->withAttributes(['id' => 'moreDates', 'class' => 'hidden'])
         ->asLinkTo(route('user.booking.book', ['business' => $business, 'date' => date('Y-m-d', strtotime("$startFromDate +7 days"))]))
         ->small()
-        ->block()!!}
+        ->block() !!}
     </div>
 
 </div>
@@ -102,6 +138,7 @@ $(document).ready(function() {
         $('.service').hide();
         $('.service' + serviceId).show();
         $('#catalog').hide();
+        $('#moreDates').show();
         $('#timetable').show();
     });
 
@@ -110,17 +147,23 @@ $(document).ready(function() {
 
     $('#timetable .btn.service').click(function(e){
         var service = $(this).data('service');
-        console.log('Press ' + service);
-        $('.service-prerequisites').hide();
-        $('#service-prerequisites-'+service).removeClass('hidden').show();
+        // console.log('Press ' + service);
         $('.service-description').hide();
+        $('.service-prerequisites').hide();
+        $('tr:not(.date_'+$(this).data('date')+')').hide();
+        
+        $('#service-prerequisites-'+service).removeClass('hidden').show();
         $('#service-description-'+service).removeClass('hidden').show();
+        
         $('.service').removeClass('btn-success');
+        
         $('#date').val( $(this).data('date') );
         $('#service').val( $(this).data('service') );
+        
         $(this).toggleClass('btn-success');
-        $('tr:not(.date_'+$(this).data('date')+')').hide();
+        
         $('#extra').show();
+        $('#restoreDates').show();
 
         var business = $('#business').val();
         var date = $('#date').val();
@@ -134,14 +177,15 @@ $(document).ready(function() {
             type:'GET',
             dataType: 'json',
             success: function( data ) {
+                $('#moreDates').hide();
+                $('#extra').show();
+
                 timesSelect.find('option').remove();
                 $.each(data.times,function(key, value)
                 {
                     timesSelect.append('<option value=' + value + '>' + value + '</option>');
                 });
                 durationInput.val(data.service.duration);
-                $('#moreDates').hide();
-                $('#extra').show();
             },
             fail: function ( data ) {
                 durationInput.val(0);
@@ -150,17 +194,19 @@ $(document).ready(function() {
 
     });
 
-    $('#timetable .btn.btn-date').click(function(e){
+    $('#restoreDates').click(function(e){
         $('.daterow').show();
-        $('#extra').hide();
-        $('#moreDates').show();
-    });
-    $('#date').click(function(e){
         $('#panel').show();
         $('#extra').hide();
         $('#moreDates').show();
+        $(this).hide();
         return false;
     });
+
+    $('#moreDates').hide();
+    $('#restoreDates').hide();
+    $('#moreDates').removeClass('hidden');
+    $('#restoreDates').removeClass('hidden');
 
     @if($business->services->count() <= 1)
     $('#timetable').show();
