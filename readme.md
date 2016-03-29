@@ -36,7 +36,7 @@ If you are just looking for the appointing library to use with your own *Laravel
 
 You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
-> **ADVICE:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
+> **ADVICE:** Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
 ## Features
 
@@ -46,27 +46,24 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
     * Services management
     * Staff management
     * Availability management
-    * Search
-  * Service appointing
+    * Appointment schedule view
+    * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
+    * Basic search
+  * Frontend reservations
   * Basic email notifications
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
-
-## Official Documentation
-
-  * [![Developer Documentation in English](https://readthedocs.org/projects/timegrid-doc-dev/badge/?version=latest)](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest) Developer Documentation in English
 
 ## Installing
 
 [Read the INSTALLING section](INSTALLING.md)
 
-## Troubleshooting
+## Development
 
-I'm open to help out! Just [drop me your feedback](https://timegrid.slack.com/messages/general/).
-
-## Contributing
-
-[Read the CONTRIBUTING section](CONTRIBUTING.md)
+  * [![Developer Documentation in English](https://readthedocs.org/projects/timegrid-doc-dev/badge/?version=latest)](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest) Developer Documentation in English
+  * [Troubleshooting](https://timegrid.slack.com/messages/general/).
+  * [Contributing](CONTRIBUTING.md)
+  * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
 ## Special Thanks & Credits
 
@@ -78,4 +75,4 @@ I'm open to help out! Just [drop me your feedback](https://timegrid.slack.com/me
 
 ### License
 
-Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
+[AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
