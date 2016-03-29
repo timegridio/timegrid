@@ -14,7 +14,7 @@ timegrid
 [![Current Beta](https://img.shields.io/badge/dev--alpha-4.4-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-**The problem**
+**The Problem**
 
 Freelancers and medium scale businesses wish to provide online appointments of services to their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
 
@@ -40,7 +40,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
 ## Features
 
-  * User classic and oAuth2 Sign-in/Sign-up (Facebook, Google and Github)
+  * User classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
   * Business management
     * Contact addressbook
     * Services management
@@ -53,6 +53,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
   * Basic email notifications
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
+  * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
 
 ## Installing
 
@@ -60,8 +61,8 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
 ## Development
 
-  * [![Developer Documentation in English](https://readthedocs.org/projects/timegrid-doc-dev/badge/?version=latest)](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest) Developer Documentation in English
-  * [Troubleshooting](https://timegrid.slack.com/messages/general/).
+  * [Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+  * [Troubleshooting](https://timegrid.slack.com/messages/general/)
   * [Contributing](CONTRIBUTING.md)
   * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
