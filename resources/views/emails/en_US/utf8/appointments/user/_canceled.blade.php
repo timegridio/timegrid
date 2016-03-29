@@ -19,7 +19,7 @@
           <td class="container-padding content" align="left" style="padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff">
             <br>
 
-<div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, this is your reservation info:</div>
+<div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, your reservation was canceled:</div>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
 
@@ -27,26 +27,12 @@
 ----------------------------------------------
  CANCELED APPOINTMENT
 ----------------------------------------------
-Business: {{ $appointment->business->name }}
-    Date: {{ $appointment->date }}
-    Time: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}
-    Code: {{ $appointment->code() }}
-@if($appointment->business->postal_address && $appointment->business->pref('show_postal_address'))
-   Where: {{ $appointment->business->postal_address }}
-@endif
+
+Your appointment {{ $appointment->code() }} at {{ $appointment->business->name }} for
+{{ $appointment->service->name }} {{ $appointment->time() }} was canceled.
+
 @if($appointment->business->phone && $appointment->business->pref('show_phone'))
-   Phone: {{ $appointment->business->phone }}
-@endif
- Service: {{ $appointment->service->name }}
-
-@if($appointment->service->prerequisites)
-Important:
-{{ $appointment->service->prerequisites }}
-@endif
-
-@if ($appointment->comments)
-Notes for the business:
-{{ $appointment->comments }}
+For contacting {{ $appointment->business->name }} please call {{ $appointment->business->phone }}
 @endif
 </pre>
 <br>

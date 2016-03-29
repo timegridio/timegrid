@@ -19,32 +19,19 @@
           <td class="container-padding content" align="left" style="padding-left:24px;padding-right:24px;padding-top:12px;padding-bottom:12px;background-color:#ffffff">
             <br>
 
-<div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, aquí los datos de tu reserva confirmada:</div>
+<div class="title" style="font-family:Helvetica,Arial, sans-serif;font-size:18px;font-weight:600;color:#374550">{{ $user->name }}, tu reserva fue cancelada:</div>
 
 <div class="body-text" style="font-family:Helvetica, Arial, sans-serif;font-size:14px;line-height:20px;text-align:left;color:#333333">
 <pre>
 ----------------------------------------------
- TURNO CANCELADO
+ CITA CANCELADA
 ----------------------------------------------
-Prestador: {{ $appointment->business->name }}
-    Fecha: {{ $appointment->date }}
-     Hora: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}
-   Código: {{ $appointment->code }}
-@if($appointment->business->pref('show_postal_address'))
-    Dónde: {{ $appointment->business->postal_address }}
+
+La cita {{ $appointment->code() }} en {{ $appointment->business->name }} para {{ $appointment->service->name }} {{ $appointment->time() }} fue cancelada.
+
+@if($appointment->business->phone && $appointment->business->pref('show_phone'))
+Para contactar a {{ $appointment->business->name }} por favor llame al {{ $appointment->business->phone }}
 @endif
-@if($appointment->business->pref('show_phone'))
-      Tel: {{ $appointment->business->phone }}
-@endif
- Servicio: {{ $appointment->service->name }}
-@if($appointment->service->prerequisites)
-Importante:
-{{ $appointment->service->prerequisites }}
-@endif
-@if ($appointment->comments)
-Notas Para el Prestador: {{ $appointment->comments }}
-@endif
-----------------------------------------------
 </pre>
 <br>
 </div>

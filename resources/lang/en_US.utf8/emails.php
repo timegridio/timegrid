@@ -6,6 +6,7 @@ return [
     'appointment' => [
       'reserved'  => ['subject' => 'Information of your reservation'],
       'confirmed' => ['subject' => 'Your appointment at :business was confirmed'],
+      'canceled'  => ['subject' => 'Your appointment at :business was canceled'],
     ],
   ],
   'manager' => [

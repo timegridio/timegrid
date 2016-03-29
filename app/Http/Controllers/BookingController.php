@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\AppointmentWasCanceled;
+use App\Events\AppointmentWasConfirmed;
 use App\Http\Requests\AlterAppointmentRequest;
 use Carbon\Carbon;
 use Timegridio\Concierge\Concierge;
@@ -74,9 +76,11 @@ class BookingController extends Controller
         switch ($action) {
             case 'cancel':
                 $appointment = $appointmentManager->cancel();
+                event(new AppointmentWasCanceled($issuer, $appointment));
                 break;
             case 'confirm':
                 $appointment = $appointmentManager->confirm();
+                event(new AppointmentWasConfirmed($issuer, $appointment));
                 break;
             case 'serve':
                 $appointment = $appointmentManager->serve();

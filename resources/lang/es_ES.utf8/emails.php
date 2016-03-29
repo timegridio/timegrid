@@ -6,6 +6,7 @@ return [
     'appointment' => [
       'reserved'  => ['subject' => 'Información de tu reserva'],
       'confirmed' => ['subject' => 'Tu cita en :business fue confirmada'],
+      'canceled'  => ['subject' => 'Tu cita en :business fue cancelada'],
     ],
   ],
   'manager' => [

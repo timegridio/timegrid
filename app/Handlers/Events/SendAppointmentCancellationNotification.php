@@ -2,7 +2,7 @@
 
 namespace App\Handlers\Events;
 
-use App\Events\AppointmentWasConfirmed;
+use App\Events\AppointmentWasCanceled;
 use App\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
 
@@ -22,7 +22,7 @@ class SendAppointmentCancellationNotification
      *
      * @return void
      */
-    public function handle(AppointmentWasConfirmed $event)
+    public function handle(AppointmentWasCanceled $event)
     {
         logger()->info(__METHOD__);
 
@@ -52,7 +52,7 @@ class SendAppointmentCancellationNotification
         ];
         $this->transmail->locale($event->appointment->business->locale)
                         ->template('appointments.user._canceled')
-                        ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
+                        ->subject('user.appointment.canceled.subject', ['business' => $event->appointment->business->name])
                         ->send($header, $params);
     }
 }
