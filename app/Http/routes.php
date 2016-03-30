@@ -68,7 +68,7 @@ Route::group(
 // REGULAR AUTH //
 //////////////////
 
-Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth'], function () {
+Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth', 'as' => 'auth'], function () {
     Route::auth();
 });
 
