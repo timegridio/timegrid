@@ -41,6 +41,7 @@ return [
         'services'      => 'Gestionar Servicios',
         'vacancies'     => 'Publicar Disponibilidad',
         'notifications' => 'Leer notificaciones',
+        'humanresources' => 'Staff',
       ],
     ],
     'hint' => [

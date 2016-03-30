@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'asd')
+@section('subtitle', 'rock')
+
 @section('content')
 <div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">

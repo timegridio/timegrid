@@ -79,9 +79,10 @@ $(document).ready(function(){
 @endsection
 
 @section('content')
-<div class="container">
-{!! Button::withIcon(Icon::plus())->normal(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.addressbook.create', $business) )->block() !!}
+<div class="container-fluid">
+
     {!! $business->contacts()->paginate(300)->render() !!}
+
     <div class="panel panel-primary filterable">
         <div class="panel-heading">
             <h3 class="panel-title">{{ trans('manager.contacts.title') }}</h3>

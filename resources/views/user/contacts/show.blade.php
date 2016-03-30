@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('css')
 <style>
@@ -114,7 +114,7 @@
             </div>
 
             @if($contact->hasAppointment())
-            @include('user.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business->id)->future()->get()] )
+            @include('user.contacts._appointment')
             @else
             {!! Button::large()->success(trans('user.appointments.btn.book_in_biz', ['biz' => $business->name]))->asLinkTo(route('user.booking.book', $business))->withIcon(Icon::calendar())->block() !!}
             @endif

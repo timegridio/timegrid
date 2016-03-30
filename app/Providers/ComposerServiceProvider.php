@@ -14,15 +14,15 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            '_navi18n', 'App\Http\ViewComposers\NavLanguageComposer'
+            ['manager._sidebar-menu-i18n', '_navi18n'], 'App\Http\ViewComposers\NavLanguageComposer'
         );
 
         view()->composer(
-            ['user._navmenu', 'manager._navmenu'], 'App\Http\ViewComposers\NavComposer'
+            ['layouts.app'], 'App\Http\ViewComposers\NavComposer'
         );
 
         view()->composer(
-            ['layouts.app'], 'App\Http\ViewComposers\AuthComposer'
+            ['layouts.app', 'layouts.user'], 'App\Http\ViewComposers\AuthComposer'
         );
 
         view()->composer(

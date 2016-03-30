@@ -1,110 +1,82 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('auth.register.title') }}</div>
-                <div class="panel-body">
-                    @if (isset($errors) && $errors->has())
-                        <div class="alert alert-danger">
-                            <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                        @if ($errors->has('email'))
-                            {!! Button::success(trans('auth.btn.already_registered'))->block()->asLinkTo(url('/auth/login')) !!}
-                        @endif
-                        @if ($errors->has('password'))
-                            {!! Button::warning(trans('auth.btn.forgot'))->block()->asLinkTo(url('/password/email')) !!}
-                        @endif
-                        <p>&nbsp;</p>
-                    @endif
+<div class="register-box">
+  <div class="register-logo">
+    <a href="../../index2.html"><b>Admin</b>LTE</a>
+  </div>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}" id="registration" role="form">
-                        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+  <div class="register-box-body">
+    <p class="login-box-msg">{{ trans('auth.register.title') }}</p>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.register.name') }}</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">{!! Icon::user() !!}</span>
-                                    <input class="form-control" name="name" value="{{ old('name') }}" data-minlength="3" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
+    @if (isset($errors) && $errors->has())
+    <div class="alert alert-danger">
+        <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @if ($errors->has('email'))
+        {!! Button::success(trans('auth.btn.already_registered'))->block()->asLinkTo(url('/auth/login')) !!}
+    @endif
+    @if ($errors->has('password'))
+        {!! Button::warning(trans('auth.btn.forgot'))->block()->asLinkTo(url('/password/email')) !!}
+    @endif
+    <p>&nbsp;</p>
+    @endif
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.register.username') }}</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">{!! Icon::user() !!}</span>
-                                    <input class="form-control" name="username" value="{{ old('username') }}" data-minlength="3" data-maxlength="25" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/register') }}" id="registration" role="form">
+        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 
-                        <div class="form-group">
-                            <label for="email" class="col-md-4 control-label">{{ trans('auth.register.email') }}</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">{!! Icon::envelope() !!}</span>
-                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" id="email" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
+        <div class="form-group has-feedback">
+            <input class="form-control" name="name" placeholder="{{ trans('auth.register.name') }}" value="{{ old('name') }}" data-minlength="3" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.register.password') }}</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">{!! Icon::lock() !!}</span>
-                                    <input type="password" class="form-control" name="password" id="password" data-minlength="6" placeholder="" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" name="username" placeholder="{{ trans('auth.register.username') }}" value="{{ old('username') }}" id="email" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.register.password_confirmation') }}</label>
-                            <div class="col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">{!! Icon::lock() !!}</span>
-                                    <input type="password" class="form-control" name="password_confirmation" data-match="#password" data-match-error="{{trans('validation.custom.password.confirm')}}" required>
-                                    <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
-                                </div>
-                                <div class="help-block with-errors"></div>
-                            </div>
-                        </div>
+        <div class="form-group has-feedback">
+            <input type="email" class="form-control" name="email" placeholder="{{ trans('auth.register.email') }}" value="{{ old('email') }}" id="email" required>
+            <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                @if (!app()->environment('local'))
-                                    {!! app('captcha')->display() !!}
-                                @endif
-                                <button type="submit" class="btn btn-primary" id="submit">
-                                    {{ trans('auth.register.btn.submit') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" name="password" placeholder="{{ trans('auth.register.password') }}" id="password" data-minlength="6" placeholder="" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
 
+        <div class="form-group has-feedback">
+            <input type="password" class="form-control" name="password_confirmation" placeholder="{{ trans('auth.register.password_confirmation') }}" id="password_confirmation" data-minlength="6" placeholder="" required>
+            <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                @if (!app()->environment('local'))
+                    {!! app('captcha')->display() !!}
+                @endif
+                <button type="submit" class="btn btn-primary" id="submit">
+                    {{ trans('auth.register.btn.submit') }}
+                </button>
             </div>
         </div>
+    </form>
+
+    <div class="social-auth-links text-center">
+      <p>- {{ trans('auth.label.oauth_direct_access') }} -</p>
+      @include('auth/social')
     </div>
+
+    <a href="login.html" class="text-center">I already have a membership</a>
+  </div>
+  <!-- /.form-box -->
 </div>
+<!-- /.register-box -->
 @endsection
 
 @section('footer_scripts')

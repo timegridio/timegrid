@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
 {!! Form::open(['route' => ['user.booking.store', $business], 'class' => 'form']) !!}

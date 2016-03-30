@@ -1,74 +1,71 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('content')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('auth.login.title') }}</div>
-                <div class="panel-body">
-                    @if ($errors->has())
-                        <div class="alert alert-danger">
-                            <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html">time<b>grid</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">{{ trans('auth.login.title') }}</p>
 
-                        {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/auth/register')) !!}<p>&nbsp;</p>
-                    @endif
+    @if ($errors->has())
+        <div class="alert alert-danger">
+            <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
-                        <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+        {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/auth/register')) !!}<p>&nbsp;</p>
+    @endif
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.login.email') }}</label>
-                            <div class="col-md-6">
-                                <input type="email" class="form-control" name="email" value="{{ old('email') }}">
-                            </div>
-                        </div>
+    <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+      <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+      <div class="form-group has-feedback">
+        <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.login.email') }}">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="password" class="form-control" placeholder="{{ trans('auth.login.password') }}">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox" name="remember"> {{ trans('auth.login.remember_me') }}
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">{{ trans('auth.login.login') }}</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
 
-                        <div class="form-group">
-                            <label class="col-md-4 control-label">{{ trans('auth.login.password') }}</label>
-                            <div class="col-md-6">
-                                <input type="password" class="form-control" name="password">
-                            </div>
-                        </div>
+    <div class="social-auth-links text-center">
+      <p>- {{ trans('auth.label.oauth_direct_access') }} -</p>
+      @include('auth/social')
+    </div>
+    <!-- /.social-auth-links -->
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> {{ trans('auth.login.remember_me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">{{ trans('auth.login.login') }}</button>
-
-                                <a class="btn btn-link" href="{{ url('/auth/password/reset') }}">{{ trans('auth.login.forgot') }}</a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-            @include('auth/social')
-            
-            <div id="notRegisteredLink" class="row hidden" style="margin-top: 20px;">
-                <div class="col-md-12">
-                    {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/auth/register')) !!}
-                </div>
-            </div>
-
+    <a class="btn btn-link" href="{{ url('/auth/password/reset') }}">{{ trans('auth.login.forgot') }}</a><br>
+    
+    <div id="notRegisteredLink" class="row hidden" style="margin-top: 20px;">
+        <div class="col-md-12">
+            {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/auth/register')) !!}
         </div>
     </div>
+
+  </div>
+  <!-- /.login-box-body -->
 </div>
+<!-- /.login-box -->
 @endsection
 
 @section('footer_scripts')
