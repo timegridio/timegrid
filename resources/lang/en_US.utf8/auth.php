@@ -54,4 +54,9 @@ return [
       ],
       'title' => 'Password reset',
     ],
+    'social' => [
+      'github' => 'Enter with Github',
+      'facebook' => 'Enter with Facebook',
+      'google' => 'Enter with Google',
+    ],
 ];

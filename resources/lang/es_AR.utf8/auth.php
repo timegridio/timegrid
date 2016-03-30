@@ -54,4 +54,9 @@ return [
       ],
       'title' => 'Blanqueo de contraseña',
     ],
+    'social' => [
+      'github' => 'Entra con Github',
+      'facebook' => 'Entra con Facebook',
+      'google' => 'Entra con Google',
+    ],
 ];
