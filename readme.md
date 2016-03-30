@@ -55,7 +55,8 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
   * Multiple Timezones Support
   * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
 
-  For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
+
+For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
 
 ## Installing
 
