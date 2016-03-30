@@ -24,9 +24,11 @@
         <a href="{{ route('manager.business.show', $business->slug) }}">{!! Icon::home() !!} {{ $business->name }}</a>
     </li>
 
-    {!! Form::open(['method' => 'post', 'url' => route('manager.search', $business), 'class' => 'navbar-form navbar-left', 'role' => 'search']) !!}
-    <div class="form-group">
-        <input id="search" name="criteria" type="text" class="form-control" placeholder="{{trans('app.search.placeholder')}}">
-    </div>
-    {!! Form::close() !!}
+    <li>
+        {!! Form::open(['method' => 'post', 'url' => route('manager.search', $business), 'class' => 'navbar-form navbar-left', 'role' => 'search']) !!}
+        <div class="form-group">
+            <input id="search" name="criteria" type="text" class="form-control" placeholder="{{trans('app.search.placeholder')}}">
+        </div>
+        {!! Form::close() !!}
+    </li>
 @endif
