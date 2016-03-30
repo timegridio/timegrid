@@ -49,6 +49,12 @@ class SendRootReport extends Command
     {
         logger()->info('Generating Root Report');
 
+        //////////////////
+        // FOR REFACTOR //
+        //////////////////
+
+        // Generate Root Report
+
         $registeredUsersCount = DB::table('users')->count();
 
         logger()->info('Users Count: '.$registeredUsersCount);
@@ -64,5 +70,7 @@ class SendRootReport extends Command
         $this->transmail->template('root.report')
                         ->subject('root.report.exceptions_subject')
                         ->send($header, $params);
+
+        $this->info('Root report was sent');
     }
 }
