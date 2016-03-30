@@ -75,7 +75,7 @@
             {!! Alert::warning(trans('appointments.advice.cancellation_deadline_past_due')) !!}
         @endif
 
-        @if(($cancellationPolicyAdvice = $appointment->business->pref('cancellation_policy_advice')) && $appointment->isAnnulable() && $appointment->cancellationDeadline->isFuture())
+        @if(($cancellationPolicyAdvice = $appointment->business->pref('cancellation_policy_advice')) && $appointment->isCancelable() && $appointment->cancellationDeadline->isFuture())
             {!! Alert::warning(sprintf($cancellationPolicyAdvice, $appointment->cancellationDeadline)) !!}
         @endif
 
