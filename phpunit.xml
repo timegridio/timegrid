@@ -19,6 +19,7 @@
             <directory>./tests/unit/</directory>
             <directory>./tests/integration/</directory>
             <directory>./tests/acceptance/scenarios/</directory>
+            <directory>./tests/acceptance/commands/</directory>
         </testsuite>
     </testsuites>
     <php>
