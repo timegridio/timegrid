@@ -3,7 +3,7 @@
 @section('content')
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html">time<b>grid</b></a>
+    <a href="{{ url('/') }}">time<b>grid</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

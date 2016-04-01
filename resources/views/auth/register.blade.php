@@ -3,7 +3,7 @@
 @section('content')
 <div class="register-box">
   <div class="register-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="{{ url('/') }}">time<b>grid</b></a>
   </div>
 
   <div class="register-box-body">
@@ -33,33 +33,38 @@
         <div class="form-group has-feedback">
             <input class="form-control" name="name" placeholder="{{ trans('auth.register.name') }}" value="{{ old('name') }}" data-minlength="3" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group has-feedback">
             <input type="text" class="form-control" name="username" placeholder="{{ trans('auth.register.username') }}" value="{{ old('username') }}" id="email" required>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group has-feedback">
             <input type="email" class="form-control" name="email" placeholder="{{ trans('auth.register.email') }}" value="{{ old('email') }}" id="email" required>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group has-feedback">
             <input type="password" class="form-control" name="password" placeholder="{{ trans('auth.register.password') }}" id="password" data-minlength="6" placeholder="" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group has-feedback">
             <input type="password" class="form-control" name="password_confirmation" placeholder="{{ trans('auth.register.password_confirmation') }}" id="password_confirmation" data-minlength="6" placeholder="" required>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
         </div>
 
         <div class="form-group">
+            @if (!app()->environment('local'))
+                {!! app('captcha')->display() !!}
+            @endif
             <div class="col-md-6 col-md-offset-4">
-                @if (!app()->environment('local'))
-                    {!! app('captcha')->display() !!}
-                @endif
                 <button type="submit" class="btn btn-primary" id="submit">
                     {{ trans('auth.register.btn.submit') }}
                 </button>
@@ -72,7 +77,7 @@
       @include('auth/social')
     </div>
 
-    <a href="login.html" class="text-center">I already have a membership</a>
+    <a href="{{ url('auth/login') }}" class="text-center">{{ trans('auth.btn.already_registered') }}</a>
   </div>
   <!-- /.form-box -->
 </div>
