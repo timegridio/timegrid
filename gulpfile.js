@@ -12,20 +12,29 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    // Base Scripts and Styles
-//    mix.copy([
-//        './bower_components/bootstrap/less/',
-//    ], 'resources/assets/less/bootstrap/');
 
-//    mix.less('app.less');
+    mix.copy([
+        './bower_components/AdminLTE/plugins/iCheck/square/*.png',
+    ], 'public/css/iCheck/');
+
+    mix.styles([
+        './bower_components/AdminLTE/plugins/iCheck/square/blue.css'
+    ], 'public/css/iCheck/icheck.min.css');
+
+    mix.scripts([
+        './bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
+    ], 'public/js/iCheck/icheck.min.js');
+
     mix.styles([
         './bower_components/bootstrap/dist/css/bootstrap.min.css',
         './bower_components/AdminLTE/dist/css/AdminLTE.css',
         './bower_components/AdminLTE/dist/css/skins/skin-blue.css',
-    ], 'public/css/app.css');
+        './bower_components/AdminLTE/plugins/iCheck/square/blue.css'
+    ], 'public/css/app.min.css');
 
     mix.scripts([
         './bower_components/jquery/dist/jquery.min.js',
+        './bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
         './bower_components/bootstrap/dist/js/bootstrap.min.js',
         './bower_components/AdminLTE/dist/js/app.min.js',
         './bower_components/tooltipster/js/jquery.tooltipster.min.js'

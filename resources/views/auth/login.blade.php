@@ -1,5 +1,10 @@
 @extends('layouts.public')
 
+@section('css')
+@parent
+<link rel="stylesheet" href="{{ asset('css/iCheck/icheck.min.css') }}">
+@endsection
+
 @section('content')
 <div class="login-box">
   <div class="login-logo">
@@ -34,11 +39,13 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
+
           <div class="checkbox icheck">
             <label>
               <input type="checkbox" name="remember"> {{ trans('auth.login.remember_me') }}
             </label>
           </div>
+
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
@@ -70,8 +77,10 @@
 
 @section('footer_scripts')
 @parent
+<script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
+
     $('#notRegisteredLink').hide();
     var timer;
     clearTimeout(timer);
@@ -79,6 +88,13 @@ $(document).ready(function(){
         console.log('Search keypress');
         $('#notRegisteredLink').removeClass('hidden').show('slow');
     }, 10000);
+
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
+
 });
 </script>
 @endsection
