@@ -23,10 +23,12 @@ class AuthComposer
         if(auth()->user())
         {
             view()->share('gravatarURL', Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]));
+            view()->share('appointments', auth()->user()->appointments()->active()->get() );
         }
         else
         {
             view()->share('gravatarURL', 'http://placehold.it/150x150');
+            view()->share('appointments', [] );
         }
     }
 }

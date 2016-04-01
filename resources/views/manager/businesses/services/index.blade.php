@@ -1,17 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'asd')
-@section('subtitle', 'rock')
+@section('title', trans('manager.services.index.title'))
+@section('subtitle', trans('manager.services.index.instructions'))
 
 @section('content')
 <div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">
 
-        {!! Alert::info(trans('manager.services.index.instructions')) !!}
-
         <div class="panel panel-default">
-
-            <div class="panel-heading">{{ trans('manager.services.index.title') }}</div>
 
             <div class="panel-body">
 
