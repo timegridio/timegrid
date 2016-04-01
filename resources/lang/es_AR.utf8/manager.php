@@ -212,7 +212,7 @@ return [
       ],
       'postal_address' => [
         'label'      => 'Dirección postal',
-        'validation' => 'TODO: validation',
+        'validation' => 'La dirección postal es requerida',
       ],
       'prerequisites' => [
         'label' => 'Prerequisitos',

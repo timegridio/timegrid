@@ -211,8 +211,8 @@ return [
         'label' => 'Notas',
       ],
       'postal_address' => [
-        'label'      => 'TODO: label',
-        'validation' => 'TODO: validation',
+        'label'      => 'Dirección postal',
+        'validation' => 'La dirección postal es requerida',
       ],
       'prerequisites' => [
         'label' => 'Prerequisitos',
