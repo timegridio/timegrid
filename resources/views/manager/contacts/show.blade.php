@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $contact->fullname)
+
 @section('css')
 <style>
 .user-row {
@@ -34,148 +36,150 @@
 @endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
+<div class="container-fluid">
 
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ $contact->fullname }}</h3>
-                </div>
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
 
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center">
-                            @if($contact->email)
-                                <img alt="{{$contact->fullname}}"
-                                     src="{{ Gravatar::get($contact->email) }}"
-                                     class="img-circle">
+        <div class="panel panel-info">
+
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ $contact->fullname }}</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-3 col-lg-3 " align="center">
+                        @if($contact->email)
+                            <img alt="{{$contact->fullname}}"
+                                 src="{{ Gravatar::get($contact->email) }}"
+                                 class="img-circle">
+                        @endif
+                        <p>&nbsp;</p>
+                        <small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
+                    </div>
+                    
+                    <div class=" col-md-9 col-lg-9 ">
+                        <table class="table table-user-information">
+                            <tbody>
+                            @if ($contact->email)
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.email') }}
+                                    </label>
+                                </td>
+                                <td>{{ $contact->email }}</td>
+                            </tr>
                             @endif
-                            <p>&nbsp;</p>
-                            <small>{{ trans('app.gender.'.$contact->gender) }} {{ $contact->age or '' }}</small>
-                        </div>
-                        
-                        <div class=" col-md-9 col-lg-9 ">
-                            <table class="table table-user-information">
-                                <tbody>
-                                @if ($contact->email)
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.email') }}
-                                        </label>
+                            @if ($contact->nin)
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.nin') }}
+                                    </label>
+                                </td>
+                                <td>{{ $contact->nin }}</td>
+                            </tr>
+                            @endif
+                            @if ($contact->birthdate)
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.birthdate') }}
+                                    </label>
+                                </td>
+                                <td>{{ $contact->birthdate->formatLocalized('%d %B %Y') }}</td>
+                            </tr>
+                            @endif
+                            @if ($contact->mobile)
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.mobile') }}
+                                    </label>
+                                </td>
+                                <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
+                            </tr>
+                            @endif
+                            @if ($contact->postal_address)
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.postal_address') }}
+                                    </label>
+                                </td>
+                                <td>{{ $contact->postal_address }}</td>
+                            </tr>
+                            @endif
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">
+                                        {{ trans('manager.contacts.label.member_since') }}
+                                    </label>
                                     </td>
-                                    <td>{{ $contact->email }}</td>
-                                </tr>
-                                @endif
-                                @if ($contact->nin)
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.nin') }}
-                                        </label>
-                                    </td>
-                                    <td>{{ $contact->nin }}</td>
-                                </tr>
-                                @endif
-                                @if ($contact->birthdate)
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.birthdate') }}
-                                        </label>
-                                    </td>
-                                    <td>{{ $contact->birthdate->formatLocalized('%d %B %Y') }}</td>
-                                </tr>
-                                @endif
-                                @if ($contact->mobile)
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.mobile') }}
-                                        </label>
-                                    </td>
-                                    <td>{{ (trim($contact->mobile) != '') ? phone_format($contact->mobile, $contact->mobile_country) : '' }}</td>
-                                </tr>
-                                @endif
-                                @if ($contact->postal_address)
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.postal_address') }}
-                                        </label>
-                                    </td>
-                                    <td>{{ $contact->postal_address }}</td>
-                                </tr>
-                                @endif
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">
-                                            {{ trans('manager.contacts.label.member_since') }}
-                                        </label>
-                                        </td>
-                                    <td>{{ $contact->pivot->created_at->diffForHumans() }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-right">
-                                        <label class="control-label">{{ trans('manager.contacts.label.notes') }}</label>
-                                    </td>
-                                    <td>{{ $contact->pivot->notes }}</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                <td>{{ $contact->pivot->created_at->diffForHumans() }}</td>
+                            </tr>
+                            <tr>
+                                <td class="text-right">
+                                    <label class="control-label">{{ trans('manager.contacts.label.notes') }}</label>
+                                </td>
+                                <td>{{ $contact->pivot->notes }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
-            <div class="panel-footer">
-                {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
-
-                @if ($contact->user)
-                {!! Button::success($contact->user->username)->withIcon(Icon::ok_circle()) !!}
-                @else
-                {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
-                @endif
-
-                <span class="pull-right">
-                {!! Button::warning()
-                    ->withIcon(Icon::edit())
-                    ->asLinkTo( route('manager.addressbook.edit', [$business, $contact]) )
-                    ->withAttributes([
-                        'data-for' => 'edit',
-                        'data-toggle' => 'tooltip',
-                        'data-original-title' => trans('manager.contacts.btn.edit')])
-                    !!}
-
-                {!! Button::danger()
-                    ->withIcon(Icon::trash())
-                    ->asLinkTo( route('manager.addressbook.destroy', [$business, $contact]) )
-                    ->withAttributes([
-                        'id' => 'delete-btn',
-                        'type' => 'button',
-                        'data-for' => 'delete',
-                        'data-toggle' => 'tooltip',
-                        'data-method' => 'DELETE',
-                        'data-original-title' => trans('manager.contacts.btn.delete'),
-                        'data-confirm'=> trans('manager.contacts.btn.confirm_delete')])
-                    !!}
-                </span>
-            </div>
-                
             </div>
 
-        @if($contact->hasAppointment())
-        @include('manager.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business->id)->Active()->get()] )
-        @endif
+        <div class="panel-footer">
+            {!! $contact->quality == 100 ? ProgressBar::success($contact->quality)->animated()->striped()->visible() : ProgressBar::normal($contact->quality)->animated()->striped()->visible() !!}
 
-        @if(auth()->user()->isOwner($business->id))
-        {!! Button::large()->success(trans('user.appointments.btn.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]))
-                           ->asLinkTo(route('user.booking.book', ['business' => $business, 'behalfOfId' => $contact->id]))
-                           ->withIcon(Icon::calendar())->block() !!}
-        @endif
+            @if ($contact->user)
+            {!! Button::success($contact->user->username)->withIcon(Icon::ok_circle()) !!}
+            @else
+            {!! Button::warning()->withIcon(Icon::remove_circle()) !!}
+            @endif
 
+            <span class="pull-right">
+            {!! Button::warning()
+                ->withIcon(Icon::edit())
+                ->asLinkTo( route('manager.addressbook.edit', [$business, $contact]) )
+                ->withAttributes([
+                    'data-for' => 'edit',
+                    'data-toggle' => 'tooltip',
+                    'data-original-title' => trans('manager.contacts.btn.edit')])
+                !!}
+
+            {!! Button::danger()
+                ->withIcon(Icon::trash())
+                ->asLinkTo( route('manager.addressbook.destroy', [$business, $contact]) )
+                ->withAttributes([
+                    'id' => 'delete-btn',
+                    'type' => 'button',
+                    'data-for' => 'delete',
+                    'data-toggle' => 'tooltip',
+                    'data-method' => 'DELETE',
+                    'data-original-title' => trans('manager.contacts.btn.delete'),
+                    'data-confirm'=> trans('manager.contacts.btn.confirm_delete')])
+                !!}
+            </span>
         </div>
+            
+        </div>
+
+    @if($contact->hasAppointment())
+    @include('manager.contacts._appointment', ['appointments' => $contact->appointments()->orderBy('start_at')->ofBusiness($business->id)->Active()->get()] )
+    @endif
+
+    @if(auth()->user()->isOwner($business->id))
+    {!! Button::large()->success(trans('user.appointments.btn.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]))
+                       ->asLinkTo(route('user.booking.book', ['business' => $business, 'behalfOfId' => $contact->id]))
+                       ->withIcon(Icon::calendar())->block() !!}
+    @endif
+
     </div>
+
 </div>
 @endsection
 
