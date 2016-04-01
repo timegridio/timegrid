@@ -128,9 +128,11 @@ class ContactController extends Controller
 
         // BEGIN
 
-        // $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
+        $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
+        
+        $appointments = $contact->appointments()->orderBy('start_at')->ofBusiness($business->id)->active()->get();
 
-        return view('user.contacts.show', compact('business', 'contact'));
+        return view('user.contacts.show', compact('business', 'contact', 'appointments', 'memberSince'));
     }
 
     /**

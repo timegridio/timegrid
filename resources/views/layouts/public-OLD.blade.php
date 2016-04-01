@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>{{ isset($business) ? $business->name . ' / ' : '' }}{{ trans('app.name') }}</title>
+  <title>{{trans('app.name')}}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -30,9 +30,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-    @yield('css')
-
-    @yield('headscripts')
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -57,6 +54,12 @@ desired effect
 <body class="hold-transition skin-blue sidebar-mini">
 {!! Analytics::render() !!}
 
+@if (config('env') == 'demo')
+<a target="_blank" href="https://github.com/alariva/timegrid">
+    <img style="position: absolute; top: 0; left: 0; border: 0; z-index:99999" src="https://camo.githubusercontent.com/82b228a3648bf44fc1163ef44c62fcc60081495e/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png">
+</a>
+@endif
+
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -67,7 +70,7 @@ desired effect
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>t</b>g</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg">time<b>grid</b></span>
+      <span class="logo-lg"><b>time</b>grid</span>
     </a>
 
     <!-- Header Navbar -->
@@ -79,9 +82,6 @@ desired effect
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-
-          @include('_navi18n')
-          @include('user._navmenu')
           <!-- Messages: style can be found in dropdown.less-->
           <li class="dropdown messages-menu">
             <!-- Menu toggle button -->
@@ -178,8 +178,50 @@ desired effect
             </ul>
           </li>
           <!-- User Account Menu -->
-          @include('_user-account-menu')
+          <li class="dropdown user user-menu">
+            <!-- Menu Toggle Button -->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <!-- The user image in the navbar-->
+              <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <!-- hidden-xs hides the username on small devices so only the image appears. -->
+              <span class="hidden-xs">Alexander Pierce</span>
+            </a>
+            <ul class="dropdown-menu">
+              <!-- The user image in the menu -->
+              <li class="user-header">
+                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
+                <p>
+                  Alexander Pierce - Web Developer
+                  <small>Member since Nov. 2012</small>
+                </p>
+              </li>
+              <!-- Menu Body -->
+              <li class="user-body">
+                <div class="row">
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Followers</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Sales</a>
+                  </div>
+                  <div class="col-xs-4 text-center">
+                    <a href="#">Friends</a>
+                  </div>
+                </div>
+                <!-- /.row -->
+              </li>
+              <!-- Menu Footer-->
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="#" class="btn btn-default btn-flat">Profile</a>
+                </div>
+                <div class="pull-right">
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+              </li>
+            </ul>
+          </li>
           <!-- Control Sidebar Toggle Button -->
           <li>
             <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
@@ -188,27 +230,42 @@ desired effect
       </div>
     </nav>
   </header>
-  
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-        @if(isset($business))
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>Alexander Pierce</p>
+          <!-- Status -->
+          <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        </div>
+      </div>
 
-        <!-- Sidebar user panel (optional) -->
-        @include('manager._sidebar-userpanel', compact('business'))
+      <!-- search form (Optional) -->
+      
+      <!-- /.search form -->
 
-        <!-- search form (Optional) -->
-        @include('manager._search', compact('business'))
-        <!-- /.search form -->
-
-        <!-- Sidebar Menu -->
-        @include('manager._sidebar-menu', compact('business'))
-
-        @endif
-
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <li class="header">HEADER</li>
+        <!-- Optionally, you can add icons to the links -->
+        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Link</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Link in level 2</a></li>
+          </ul>
+        </li>
+      </ul>
       <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
@@ -219,12 +276,12 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        @yield('title', '')
-        <small>@yield('subtitle', '')</small>
+        Page Header
+        <small>Optional description</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">@yield('title', 'Here')</li>
+        <li class="active">Here</li>
       </ol>
     </section>
 
@@ -232,9 +289,6 @@ desired effect
     <section class="content">
 
       <!-- Your Page Content Here -->
-      @include('flash::message')
-      @include('_errors')
-
       @yield('content')
 
     </section>
@@ -246,18 +300,47 @@ desired effect
   @include('_footer')
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-light">
+  <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
     <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-userhelp-tab" data-toggle="tab"><i class="fa fa-question"></i></a></li>
+      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
       <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
       <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-userhelp-tab">
-        <h3 class="control-sidebar-heading">{{ trans('app.nav.help') }}</h3>
-        {!! $help !!}
+      <div class="tab-pane active" id="control-sidebar-home-tab">
+        <h3 class="control-sidebar-heading">Recent Activity</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript::;">
+              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
+              <div class="menu-info">
+                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
+                <p>Will be 23 on April 24th</p>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <!-- /.control-sidebar-menu -->
+
+        <h3 class="control-sidebar-heading">Tasks Progress</h3>
+        <ul class="control-sidebar-menu">
+          <li>
+            <a href="javascript::;">
+              <h4 class="control-sidebar-subheading">
+                Custom Template Design
+                <span class="label label-danger pull-right">70%</span>
+              </h4>
+
+              <div class="progress progress-xxs">
+                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+              </div>
+            </a>
+          </li>
+        </ul>
         <!-- /.control-sidebar-menu -->
 
       </div>
@@ -296,7 +379,7 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- Scripts -->
-<script src="{{ asset('js/app.min.js') }}"></script>
+<script src="{{ asset('js/app.js') }}"></script>
 
 <script type="text/javascript">
 $(document).ready(function() {

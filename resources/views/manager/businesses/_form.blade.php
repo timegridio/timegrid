@@ -37,12 +37,12 @@
     </div>
     <div class="form-group col-sm-3">
         {!! Form::label( trans('manager.businesses.form.timezone.label') ) !!}<br>
-        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'selectpicker', 'required'], ['customValue' => 'true']) !!}
+        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2', 'required'], ['customValue' => 'true']) !!}
         <div class="help-block with-errors"></div>
     </div>
     <div class="form-group col-sm-3">
         {!! Form::label( trans('manager.businesses.form.category.label') ) !!}<br>
-        {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'selectpicker', 'required']) !!}
+        {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'form-control select2', 'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
@@ -108,8 +108,8 @@
 $(document).ready(function(){
 
     $('#slug').slugify('#name'); // Slug as you type
-    $('selectpicker').addClass('dropupAuto');
-    $('selectpicker').selectpicker({ size: 1 });
+    
+    $('.select2').select2({ theme: 'boostrap' });
 
     $("#phone-input").intlTelInput({
         preferredCountries:["us", "gb", "es", "fr", "it", "ar", "br"],

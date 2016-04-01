@@ -13,17 +13,23 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     // Base Scripts and Styles
-    mix.copy([
-        './bower_components/bootstrap/less/',
-    ], 'resources/assets/less/bootstrap/');
+//    mix.copy([
+//        './bower_components/bootstrap/less/',
+//    ], 'resources/assets/less/bootstrap/');
 
-    mix.less('app.less');
+//    mix.less('app.less');
+    mix.styles([
+        './bower_components/bootstrap/dist/css/bootstrap.min.css',
+        './bower_components/AdminLTE/dist/css/AdminLTE.css',
+        './bower_components/AdminLTE/dist/css/skins/skin-blue.css',
+    ], 'public/css/app.css');
 
     mix.scripts([
         './bower_components/jquery/dist/jquery.min.js',
         './bower_components/bootstrap/dist/js/bootstrap.min.js',
+        './bower_components/AdminLTE/dist/js/app.min.js',
         './bower_components/tooltipster/js/jquery.tooltipster.min.js'
-    ], 'public/js/app.js');
+    ], 'public/js/app.min.js');
 
     mix.styles([
         // './bower_components/bootstrap/dist/css/bootstrap.min.css',
@@ -41,7 +47,7 @@ elixir(function(mix) {
     // Form Helpers
 
     mix.scripts([
-        './bower_components/bootstrap-select/dist/js/bootstrap-select.min.js',
+        './bower_components/select2/dist/js/select2.full.min.js',
         './bower_components/bootstrap-validator/dist/validator.min.js',
         './bower_components/speakingurl/speakingurl.min.js',
         './bower_components/jquery-slugify/dist/slugify.min.js',
@@ -50,8 +56,8 @@ elixir(function(mix) {
     ], 'public/js/forms.js');
 
     mix.copy([
-        './bower_components/bootstrap-select/dist/js/i18n/*.min.js',
-    ], 'public/js/bootstrap-select/i18n');
+        './bower_components/select2/dist/js/i18n/*.min.js',
+    ], 'public/js/select2/i18n');
 
     mix.copy([
         './bower_components/mjolnic-bootstrap-colorpicker/bootstrap-colorpicker-2.3.0/dist/img/',
@@ -59,7 +65,8 @@ elixir(function(mix) {
     
 
     mix.styles([
-        './bower_components/bootstrap-select/dist/css/bootstrap-select.min.css',
+        './bower_components/select2/dist/css/select2.min.css',
+        './bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
         './bower_components/mjolnic-bootstrap-colorpicker/bootstrap-colorpicker-2.3.0/dist/css/bootstrap-colorpicker.min.css',
     ], 'public/css/forms.css');
 
@@ -79,12 +86,14 @@ elixir(function(mix) {
         './bower_components/moment/min/moment-with-locales.min.js',
         './bower_components/moment-timezone/builds/moment-timezone.min.js',
         './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        './bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js',
         './bower_components/fullcalendar/dist/fullcalendar.min.js',
         './bower_components/fullcalendar/dist/lang-all.js',
     ], 'public/js/datetime.js');
 
     mix.styles([
         './bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+        './bower_components/bootstrap-timepicker/css/timepicker.less',
         './bower_components/fullcalendar/dist/fullcalendar.min.css',
     ], 'public/css/datetime.css');
 

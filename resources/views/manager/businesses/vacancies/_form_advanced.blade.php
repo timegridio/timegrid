@@ -1,6 +1,7 @@
 @section('css')
 @parent
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+<link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
 <style>
 #vacancies{
     font-size: 1em;
@@ -17,24 +18,24 @@
     @if(count($humanresourcesList))
     <div class="col-sm-3">
         {!! Form::label( trans('manager.humanresource.index.title') ) !!}<br>
-        {!! Form::select('staff', $humanresourcesList, null, ['id' => 'staff', 'class' => 'selectpicker']) !!}
+        {!! Form::select('staff', $humanresourcesList, null, ['id' => 'staff', 'class' => 'form-control select2']) !!}
     </div>
     @endif
     <div class="col-sm-3">
         {!! Form::label( trans('manager.services.index.title') ) !!}<br>
-        {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'selectpicker']) !!}
+        {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'form-control select2']) !!}
     </div>
     <div class="col-sm-3">
         {!! Form::label( trans_choice('datetime.duration.days', 2) ) !!}<br>
-        {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'selectpicker']) !!}
+        {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'form-control select2']) !!}
     </div>
     <div class="col-sm-1">
         {!! Form::label( trans('appointments.text.from') ) !!}<br>
-        {!! Form::input('', null, $startAt, ['id' => 'start_at', 'class' => 'form-control']) !!}
+        {!! Form::input('', null, $startAt, ['id' => 'start_at', 'class' => 'form-control timepicker']) !!}
     </div>
     <div class="col-sm-1">
         {!! Form::label( trans('appointments.text.to') ) !!}<br>
-        {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control']) !!}
+        {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control timepicker']) !!}
     </div>
     <div class="col-sm-1">
         {!! Form::label( trans('&nbsp;') ) !!}<br>
@@ -72,6 +73,7 @@
 @section('footer_scripts')
 @parent
 <script src="{{ asset('js/forms.js') }}"></script>
+<script src="{{ asset('js/datetime.js') }}"></script>
 <script>
 $(document).ready(function(){
 
@@ -137,9 +139,16 @@ $(document).ready(function(){
 
     function resetControls()
     {
-        $('#services').selectpicker('deselectAll');
-        $('#weekdays').selectpicker('deselectAll');
+        $('#services').select2('deselectAll');
+        $('#weekdays').select2('deselectAll');
     }
+
+    $('.select2').select2({
+        theme: "bootstrap"
+    });
+
+    $('#start_at').timepicker();
+
 });
 </script>
 @endsection
