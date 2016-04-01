@@ -19,7 +19,7 @@
                 <!-- end notification -->
             </ul>
         </li>
-        <li class="footer"><a href="{{ route('user.agenda') }}"></a></li>
+        <li class="footer"><a href="{{ route('user.agenda') }}">{{ trans('user.dashboard.card.agenda.button') }}</a></li>
     </ul>
     @endforeach
 </li>
