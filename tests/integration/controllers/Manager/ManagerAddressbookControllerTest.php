@@ -1,9 +1,9 @@
 <?php
 
-use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Contact;
 use App\Models\User;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 
 class ManagerAddressbookControllerTest extends TestCase
 {
@@ -15,7 +15,6 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_adds_a_contact_to_addressbook()
     {
-        // Given a fixture of
         $this->arrangeFixture();
 
         $contact = $this->createContact([
@@ -23,20 +22,14 @@ class ManagerAddressbookControllerTest extends TestCase
             'lastname'  => 'Doe',
             ]);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
 
-        // And I visit the business contact list section and fill the form
-        $this->visit(route('manager.addressbook.index', $this->business));
+        $this->visit(route('manager.addressbook.index', $this->business))
+             ->click('Add a contact')
+             ->type($contact->firstname, 'firstname')
+             ->type($contact->lastname, 'lastname')
+             ->press('Save');
 
-        $this->see('Add a contact');
-        return;
-             #->click('Add a contact')
-             #->type($contact->firstname, 'firstname')
-             #->type($contact->lastname, 'lastname')
-             #->press('Save');
-
-        // Then I see the contact registered
         $this->assertResponseOk();
         $this->see('Contact registered successfully')
              ->see("{$contact->firstname} {$contact->lastname}");
@@ -47,7 +40,6 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_edits_a_contact_of_addressbook()
     {
-        // Given a fixture of
         $this->arrangeFixture();
 
         $contact = $this->createContact([
@@ -56,21 +48,17 @@ class ManagerAddressbookControllerTest extends TestCase
             ]);
         $this->business->contacts()->save($contact);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
 
-        // And I visit the business contact edit form
         $this->visit(route('manager.addressbook.edit', ['business' => $this->business->slug, 'contact' => $contact->id]))
              ->see($contact->firstname)
              ->see($contact->lastname)
              ->see($contact->nin);
 
-        // And I change the name and lastname
         $this->type('NewName', 'firstname')
              ->type('NewLastName', 'lastname')
              ->press('Update');
 
-        // Then I see the contact updated on the list
         $this->assertResponseOk();
         $this->see('Updated successfully')
              ->see('NewName')
@@ -82,10 +70,8 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_detaches_a_contact_from_business()
     {
-        // Given a fixture of
         $this->arrangeFixture();
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
         $this->withoutMiddleware();
 
@@ -102,12 +88,10 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_denies_detaching_a_contact_from_business_to_unauthorized_user()
     {
-        // Given a fixture of
         $this->arrangeFixture();
 
         $unauthorizedUser = $this->createUser();
 
-        // And I am authenticated as the business owner
         $this->actingAs($unauthorizedUser);
         $this->withoutMiddleware();
 
@@ -124,7 +108,6 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_adds_a_contact_to_addressbook_that_links_to_existing_user()
     {
-        // Given a fixture of
         $this->arrangeFixture();
         $existingUser = $this->createUser([
             'name'  => 'John',
@@ -137,10 +120,8 @@ class ManagerAddressbookControllerTest extends TestCase
             'email'     => 'johndoe@example.org',
             ]);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
 
-        // And I visit the business contact list section and fill the form
         $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
@@ -148,7 +129,6 @@ class ManagerAddressbookControllerTest extends TestCase
              ->type($contact->email, 'email')
              ->press('Save');
 
-        // Then I see the contact registered
         $this->assertResponseOk();
         $this->see('Contact registered successfully')
              ->see("{$contact->firstname} {$contact->lastname}");
@@ -160,7 +140,6 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_adds_a_contact_to_addressbook_that_does_not_link_a_user()
     {
-        // Given a fixture of
         $this->arrangeFixture();
         $existingUser = $this->createUser([
             'name'  => 'John',
@@ -173,10 +152,8 @@ class ManagerAddressbookControllerTest extends TestCase
             'email'     => 'another-not-in-users@example.org',
             ]);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
 
-        // And I visit the business contact list section and fill the form
         $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
@@ -184,7 +161,6 @@ class ManagerAddressbookControllerTest extends TestCase
              ->type($contact->email, 'email')
              ->press('Save');
 
-        // Then I see the contact registered
         $this->assertResponseOk();
         $this->see('Contact registered successfully')
              ->see("{$contact->firstname} {$contact->lastname}");
@@ -196,7 +172,6 @@ class ManagerAddressbookControllerTest extends TestCase
      */
     public function it_adds_a_contact_to_addressbook_that_matches_an_existing_contact()
     {
-        // Given a fixture of
         $this->arrangeFixture();
         $existingUser = $this->createUser([
             'name'  => 'John',
@@ -209,7 +184,7 @@ class ManagerAddressbookControllerTest extends TestCase
             'email'     => 'johndoe@example.org',
             'nin'       => '123456789',
         ]);
-        // And the existing contact belongs to the business addressbok
+
         $this->business->contacts()->attach($existingContact);
 
         $contact = $this->createContact([
@@ -219,10 +194,8 @@ class ManagerAddressbookControllerTest extends TestCase
             'nin'       => '123456789',
         ]);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->owner);
 
-        // And I visit the business contact list section and fill the form
         $this->visit(route('manager.addressbook.index', $this->business))
              ->click('Add a contact')
              ->type($contact->firstname, 'firstname')
@@ -231,7 +204,6 @@ class ManagerAddressbookControllerTest extends TestCase
              ->type($contact->nin, 'nin')
              ->press('Save');
 
-        // Then I see the existing contact found
         $this->assertResponseOk();
         $this->see('We found this existing contact')
              ->see("{$contact->firstname} {$contact->lastname}");
