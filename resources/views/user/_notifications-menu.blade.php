@@ -5,8 +5,9 @@
     <i class="fa fa-calendar-check-o"></i>
     <span class="label {{ $appointments->count() > 0 ? 'label-warning' : 'label-default' }}">{{ $appointments->count() }}</span>
   </a>
+  
+  @foreach($appointments as $appointment)
   <ul class="dropdown-menu">
-    @foreach($appointments as $appointment)
     <li>
       <!-- Inner Menu: contains the notifications -->
       <ul class="menu">
@@ -18,7 +19,7 @@
         <!-- end notification -->
       </ul>
     </li>
-    @endforeach
-    <li class="footer"><a href="{{ route('user.agenda') . '#' . $appointment->code() }}"></a></li>
+    <li class="footer"><a href="{{ route('user.agenda') }}"></a></li>
   </ul>
+  @endforeach
 </li>
