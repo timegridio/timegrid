@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.contacts.title'))
+
 @section('footer_scripts')
 @parent
 <script>
-
 $(document).ready(function(){
+
     $('.filterable .btn-filter').click(function(){
         var $panel = $(this).parents('.filterable'),
         $filters = $panel.find('.filters input'),
@@ -87,7 +89,9 @@ $(document).ready(function(){
         <div class="panel-heading">
             <h3 class="panel-title">{{ trans('manager.contacts.title') }}</h3>
             <div class="pull-right">
-                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> {{ trans('manager.contacts.list.btn.filter') }}</button>
+                <button class="btn btn-default btn-xs btn-filter">
+                    <span class="glyphicon glyphicon-filter"></span>&nbsp;{{ trans('manager.contacts.list.btn.filter') }}
+                </button>
             </div>
         </div>
         <table class="table table-condensed table-hover table-striped">
@@ -100,18 +104,21 @@ $(document).ready(function(){
                 </tr>
             </thead>
             <tbody>
-                @foreach ($contacts as $contact)
-                    <tr>
-                        <td>{{ $contact->lastname }}</td>
-                        <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->firstname) !!}</td>
-                        <td>{{ $contact->email }}</td>
-                        <td>{{ $contact->mobile }}</td>
-                    </tr>
-                @endforeach
+            @foreach ($contacts as $contact)
+                <tr>
+                    <td>{{ $contact->lastname }}</td>
+                    <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->firstname) !!}</td>
+                    <td>{{ $contact->email }}</td>
+                    <td>{{ $contact->mobile }}</td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
-{!! Button::withIcon(Icon::plus())->primary(trans('manager.businesses.contacts.btn.create'))->asLinkTo( route('manager.addressbook.create', $business) )->large()->block() !!}
+{!! Button::withIcon(Icon::plus())->primary(trans('manager.businesses.contacts.btn.create'))
+                                  ->asLinkTo( route('manager.addressbook.create', $business) )
+                                  ->large()
+                                  ->block() !!}
 </div>
 
 @endsection
