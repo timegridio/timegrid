@@ -1,7 +1,6 @@
 @extends('layouts.user')
 
 @section('title', trans('user.businesses.index.title'))
-@section('subtitle', '')
 
 @section('content')
 <div class="container-fluid">
