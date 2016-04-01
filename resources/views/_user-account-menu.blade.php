@@ -13,7 +13,7 @@
             <img src="{{ $gravatarURL }}" class="img-circle" alt="{{ $user->name }}">
 
             <p>
-                {{ $user->name }} - Web Developer
+                {{ $user->name }}
                 <small>{{ $user->email }}</small>
             </p>
         </li>
@@ -21,13 +21,13 @@
         <li class="user-body">
             <div class="row">
                 <div class="col-xs-4 text-center">
-                    <a href="#">Followers</a>
+                    <a href="{{ route('manager.business.index') }}">{{ trans('app.nav.manager.business.menu') }}</a>
                 </div>
                 <div class="col-xs-4 text-center">
-                    <a href="#">Sales</a>
+                    <a href="#"></a>
                 </div>
                 <div class="col-xs-4 text-center">
-                    <a href="#">Friends</a>
+                    <a href="{!! env('DOCS_URL', 'http://docs.timegrid.io/') !!}{{ Session::get('language') }}/" target="_blank">{{ trans('app.nav.manual') }}</a>
                 </div>
             </div>
             <!-- /.row -->
@@ -35,7 +35,7 @@
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                <a href="{{ route('user.dashboard') }}" class="btn btn-default btn-flat">{{ trans('app.nav.dashboard') }}</a>
             </div>
             <div class="pull-right">
                 <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">{{ trans('app.nav.logout') }}</a>
