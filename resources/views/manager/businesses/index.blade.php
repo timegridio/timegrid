@@ -1,5 +1,8 @@
 @extends('layouts.user')
 
+@section('title', trans('manager.businesses.index.title'))
+@section('subtitle', trans('manager.businesses.index.help'))
+
 @section('content')
 <div class="container-fluid">
 
@@ -7,12 +10,9 @@
 
             <div class="panel panel-default">
 
-                <div class="panel-heading">{{ trans('manager.businesses.index.title') }}</div>
-
                 <div class="panel-body">
                     @if($user->hasBusiness())
-                        {!! Alert::info(trans('manager.businesses.index.help')) !!}
-                            
+
                         @foreach ($businesses as $business)
                             <div class="row">
                             <div class="col-md-12">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="panel-footer">
-                    {!! Button::normal(trans('app.nav.manager.business.register'))->asLinkTo( route('manager.business.register') ) !!}
+                    {!! Button::primary(trans('app.nav.manager.business.register'))->block()->asLinkTo( route('manager.business.register') ) !!}
                 </div>
             </div>
         </div>

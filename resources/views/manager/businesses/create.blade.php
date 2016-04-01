@@ -1,9 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.user')
+
+@section('title', trans('manager.businesses.create.title'))
+@section('subtitle', trans('manager.businesses.msg.register', ['plan' => trans($plan)]))
 
 @section('content')
 <div class="container-fluid">
-
-    {!! Alert::info(trans('manager.businesses.msg.register', ['plan' => trans($plan)])) !!}
 
     <div class="panel panel-default">
 

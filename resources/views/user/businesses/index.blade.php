@@ -1,13 +1,12 @@
 @extends('layouts.user')
 
+@section('title', trans('user.businesses.index.title'))
+@section('subtitle', '')
+
 @section('content')
 <div class="container-fluid">
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
-
-            <div class="panel-heading">
-                {{ trans('user.businesses.index.title') }}
-            </div>
 
             <div class="panel-body">
                 @if (!$businesses->isEmpty())
