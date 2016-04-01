@@ -31,6 +31,7 @@ If you are just looking for the appointing library to use with your own *Laravel
 ## Screenshots
 
 ![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
+![Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
 
 ## Live Demo
 
