@@ -2,6 +2,7 @@
 @parent
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
+<link rel="stylesheet" href="{{ asset('css/iCheck/icheck.min.css') }}">
 <style>
 #vacancies{
     font-size: 1em;
@@ -74,6 +75,7 @@
 @parent
 <script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/datetime.js') }}"></script>
+<script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
 <script>
 $(document).ready(function(){
 
@@ -148,6 +150,12 @@ $(document).ready(function(){
     });
 
     $('#start_at').timepicker();
+
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' // optional
+    });
 
 });
 </script>
