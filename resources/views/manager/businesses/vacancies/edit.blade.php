@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.vacancies.edit.title'))
+@section('subtitle', trans('manager.vacancies.edit.instructions'))
+
 @section('content')
 <div class="container-fluid">
     <div class="row">
-
-        {!! Alert::info(trans('manager.vacancies.edit.instructions')) !!}
 
         <div class="panel panel-default">
 
