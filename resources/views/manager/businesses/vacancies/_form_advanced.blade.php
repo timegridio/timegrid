@@ -15,53 +15,54 @@
 </style>
 @endsection
 
-<div class="row">
+<div class="container-fluid">
+
     @if(count($humanresourcesList))
-    <div class="col-sm-3">
+    <div class="row">
         {!! Form::label( trans('manager.humanresource.index.title') ) !!}<br>
         {!! Form::select('staff', $humanresourcesList, null, ['id' => 'staff', 'class' => 'form-control select2']) !!}
     </div>
     @endif
-    <div class="col-sm-3">
+    <div class="row">
         {!! Form::label( trans('manager.services.index.title') ) !!}<br>
         {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'form-control select2']) !!}
     </div>
-    <div class="col-sm-3">
+    <div class="row">
         {!! Form::label( trans_choice('datetime.duration.days', 2) ) !!}<br>
         {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'form-control select2']) !!}
     </div>
-    <div class="col-sm-1">
+    <div class="row">
         {!! Form::label( trans('appointments.text.from') ) !!}<br>
         {!! Form::input('', null, $startAt, ['id' => 'start_at', 'class' => 'form-control timepicker']) !!}
     </div>
-    <div class="col-sm-1">
+    <div class="row">
         {!! Form::label( trans('appointments.text.to') ) !!}<br>
         {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control timepicker']) !!}
     </div>
-    <div class="col-sm-1">
+    <div class="row">
         {!! Form::label( trans('&nbsp;') ) !!}<br>
-        {!! Button::withIcon(Icon::plus())->withAttributes(['id' => 'add']) !!}
+        {!! Button::withIcon(Icon::plus())->withAttributes(['id' => 'add'])->block() !!}
     </div>
-    <div class="col-sm-1">
+    <div class="row">
         {!! Form::label( trans('&nbsp;') ) !!}<br>
-        {!! Button::withIcon(Icon::trash())->withAttributes(['id' => 'reset']) !!}
+        {!! Button::danger()->withIcon(Icon::trash())->withAttributes(['id' => 'reset'])->block() !!}
     </div>
-    
+
 </div>
 
 <br>
 <textarea id="vacancies" name="vacancies" rows="8">
 {{ $template }}
 </textarea>
-<br>
+<br><br>
 
 <input type="checkbox" name="unpublish" id="unpublish" value="true" />
 <label for="unpublish">&nbsp;{{ trans('manager.businesses.check.unpublish_vacancies') }}</label>
-<br>
+<br><br>
 
 <input type="checkbox" name="remember" id="remember" value="true" />
 <label for="remember">&nbsp;{{ trans('manager.businesses.check.remember_vacancies') }}</label>
-<br>
+<br><br>
 
 @if (!$business->services->isEmpty())
 <div class="row">
@@ -150,6 +151,7 @@ $(document).ready(function(){
     });
 
     $('#start_at').timepicker();
+    $('#finish_at').timepicker();
 
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',

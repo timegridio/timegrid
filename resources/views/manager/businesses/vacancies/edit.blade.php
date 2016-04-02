@@ -5,7 +5,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row">
+    <div class="col-md-8 col-md-offset-2">
 
         <div class="panel panel-default">
 
@@ -17,7 +17,7 @@
                 @if($advanced)
                     {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.storeBatch', $business]]) !!}
                     @include('manager.businesses.vacancies._form_advanced', ['submitLabel' => trans('manager.businesses.vacancies.btn.update')])
-                    {!! Form::close() !!}                
+                    {!! Form::close() !!}
                 @else
                     {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.store', $business]]) !!}
                     @include('manager.businesses.vacancies._form', ['submitLabel' => trans('manager.businesses.vacancies.btn.update')])
