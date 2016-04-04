@@ -89,7 +89,7 @@ $(document).ready(function(){
 
     $('#add').click(function(){
 
-        var staff = $('#staff').find(":selected").text();
+        var staff = $('#staff').find(":selected").val();
         if(staff == '')
         {
             // If we dont have Staff members, lets default to simple capacity
