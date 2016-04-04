@@ -55,6 +55,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
   * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
+  * GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
 
 
 For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
