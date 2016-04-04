@@ -51,6 +51,8 @@
 </head>
 <body>
 
+    {!! Analytics::render() !!}
+
 <!-- Page Content -->
 <div class="container">
 
