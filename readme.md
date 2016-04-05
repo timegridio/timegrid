@@ -66,6 +66,7 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 
 ## Development
 
+  * [Twitter](https://twitter.com/timegrid_io)
   * [Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
   * [Troubleshooting](https://timegrid.slack.com/messages/general/)
   * [Contributing](CONTRIBUTING.md)
