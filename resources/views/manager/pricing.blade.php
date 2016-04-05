@@ -129,7 +129,7 @@ body{
                     </li>
                     <li class="plan-price">
                         {{-- Important to use unescaped for currency as might have html entities --}}
-                        <strong>{!! trans('pricing.currency_price') !!}</strong> / {{trans('pricing.month')}}
+                        <strong>{!! config('marketplace.pricing.currency_price') !!}</strong> / {{trans('pricing.month')}}
                     </li>
                     <li>
                         <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
@@ -141,7 +141,7 @@ body{
                         <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.appointments')}}
                     </li>
                     <li>
-                        <strong>30</strong> {{trans_choice('pricing.plan.feature.specialists', 30)}}
+                        <strong>3</strong> {{trans_choice('pricing.plan.feature.specialists', 3)}}
                     </li>
                     <li>
                         {{ trans('pricing.plan.feature.customized_support') }}
