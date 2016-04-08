@@ -53,10 +53,9 @@ class BookingController extends Controller
         $action = $request->input('action');
         $widgetType = $request->input('widget');
 
-        ///////////////////////////////////
-        // TODO: AUTHORIZATION GOES HERE //
-        ///////////////////////////////////
-        // AUTHORIZE:
+        /////////////////////////////////////////////
+        // AUTHORIZATION : AlterAppointmentRequest //
+        /////////////////////////////////////////////
         //  (A) auth()->user() is owner of $business
         // OR
         //  (B) auth()->user() is issuer of $appointment
@@ -92,7 +91,7 @@ class BookingController extends Controller
 
         $contents = [
             'appointment' => $appointment->load('contact'),
-            'user' => auth()->user()
+            'user'        => auth()->user(),
             ];
 
         $viewKey = "widgets.appointment.{$widgetType}._body";
