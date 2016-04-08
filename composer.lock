@@ -571,16 +571,16 @@
         },
         {
             "name": "giggsey/libphonenumber-for-php",
-            "version": "7.2.8",
+            "version": "7.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/giggsey/libphonenumber-for-php.git",
-                "reference": "3214f7d8da6270707d8489c9fe7e691a96fb1c20"
+                "reference": "9732331f19e638099e2342a2fbd1bf750dfcd6b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/3214f7d8da6270707d8489c9fe7e691a96fb1c20",
-                "reference": "3214f7d8da6270707d8489c9fe7e691a96fb1c20",
+                "url": "https://api.github.com/repos/giggsey/libphonenumber-for-php/zipball/9732331f19e638099e2342a2fbd1bf750dfcd6b2",
+                "reference": "9732331f19e638099e2342a2fbd1bf750dfcd6b2",
                 "shasum": ""
             },
             "require": {
@@ -630,7 +630,7 @@
                 "phonenumber",
                 "validation"
             ],
-            "time": "2016-03-21 15:20:21"
+            "time": "2016-04-08 11:10:48"
         },
         {
             "name": "graham-campbell/markdown",
@@ -1527,16 +1527,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.2.28",
+            "version": "v5.2.29",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "69acb1f8ec254511e10138890364865ff2645ddd"
+                "reference": "e3d644eb131f18c5f3d28ff7bc678bc797091f20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/69acb1f8ec254511e10138890364865ff2645ddd",
-                "reference": "69acb1f8ec254511e10138890364865ff2645ddd",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/e3d644eb131f18c5f3d28ff7bc678bc797091f20",
+                "reference": "e3d644eb131f18c5f3d28ff7bc678bc797091f20",
                 "shasum": ""
             },
             "require": {
@@ -1651,7 +1651,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2016-04-01 18:26:27"
+            "time": "2016-04-03 01:43:55"
         },
         {
             "name": "laravel/socialite",
@@ -2509,16 +2509,16 @@
         },
         {
             "name": "propaganistas/laravel-phone",
-            "version": "2.7.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Propaganistas/Laravel-Phone.git",
-                "reference": "c08f3448ae24288cec6bed2717b36bb2b8517e7f"
+                "reference": "89b72cfca6592b15dc5df1fe0e716a13391b6ce5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/c08f3448ae24288cec6bed2717b36bb2b8517e7f",
-                "reference": "c08f3448ae24288cec6bed2717b36bb2b8517e7f",
+                "url": "https://api.github.com/repos/Propaganistas/Laravel-Phone/zipball/89b72cfca6592b15dc5df1fe0e716a13391b6ce5",
+                "reference": "89b72cfca6592b15dc5df1fe0e716a13391b6ce5",
                 "shasum": ""
             },
             "require": {
@@ -2559,7 +2559,7 @@
                 "phone",
                 "validation"
             ],
-            "time": "2016-03-20 14:26:46"
+            "time": "2016-04-06 16:55:42"
         },
         {
             "name": "psr/http-message",
