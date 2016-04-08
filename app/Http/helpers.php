@@ -43,12 +43,12 @@ if (!function_exists('trans_duration')) {
     function trans_duration($string)
     {
         $translations = [
-            'hour'    => trans_choice('datetime.duration.hours',1),
-            'hours'   => trans_choice('datetime.duration.hours',2),
-            'minute'  => trans_choice('datetime.duration.minutes',1),
-            'minutes' => trans_choice('datetime.duration.minutes',2),
-            'second'  => trans_choice('datetime.duration.seconds',1),
-            'seconds' => trans_choice('datetime.duration.seconds',2),
+            'hour'    => trans_choice('datetime.duration.hours', 1),
+            'hours'   => trans_choice('datetime.duration.hours', 2),
+            'minute'  => trans_choice('datetime.duration.minutes', 1),
+            'minutes' => trans_choice('datetime.duration.minutes', 2),
+            'second'  => trans_choice('datetime.duration.seconds', 1),
+            'seconds' => trans_choice('datetime.duration.seconds', 2),
         ];
 
         return str_replace(array_keys($translations), array_values($translations), $string);
