@@ -159,7 +159,6 @@ class BookingController extends Controller
             $maxNumberOfSlots = round($vacancy->finish_at->diffInMinutes($beginTime) / $step);
 
             for ($i = 0; $i <= $maxNumberOfSlots; $i++) {
-                $endTime = $beginTime->copy()->addMinutes($step);
                 $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
                 if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
                     $times[] = $beginTime->timezone($vacancy->business->timezone)->toTimeString();
