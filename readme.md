@@ -30,8 +30,9 @@ If you just need a booking library to use with your own *Laravel* app, see [Conc
 
 ## Screenshots
 
+![Self-Service Reservation Screenshot](http://i.imgur.com/2UXCx2N.png)
 ![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
-![Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
+![Business Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
 
 ## Live Demo
 
