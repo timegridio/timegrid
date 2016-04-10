@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;
+use JavaScript;
 use Notifynder;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Exceptions\DuplicatedAppointmentException;
@@ -100,6 +101,12 @@ class AgendaController extends Controller
                              ->business($business)
                              ->vacancies()
                              ->generateAvailability($business->vacancies, $startFromDate->toDateString(), $days);
+
+        JavaScript::put([
+            'language'  => session()->get('language'),
+            'startDate' => $startFromDate->toDateString(),
+            'endDate'   => $startFromDate->addDays($days )->toDateString(),
+        ]);
 
         return view(
             'user.appointments.'.$business->strategy.'.book',

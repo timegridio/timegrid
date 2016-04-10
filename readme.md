@@ -26,7 +26,7 @@ Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**P
 
 ## Online Appointments Package
 
-If you are just looking for the appointing library to use with your own *Laravel* app, see [Concierge library](https://github.com/timegridio/concierge).
+If you just need a booking library to use with your own *Laravel* app, see [Concierge library](https://github.com/timegridio/concierge).
 
 ## Screenshots
 
@@ -37,7 +37,7 @@ If you are just looking for the appointing library to use with your own *Laravel
 
 You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
 
-> **ADVICE:** Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
+> **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
 ## Features
 
@@ -50,13 +50,12 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
     * Appointment schedule view
     * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
     * Basic search
-  * Frontend reservations
+  * Frontend self-service reservations
   * Basic email notifications
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
   * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
   * GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
-
 
 For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
 

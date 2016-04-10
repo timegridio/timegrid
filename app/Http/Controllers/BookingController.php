@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Service;
 
 class BookingController extends Controller
 {
@@ -53,10 +52,9 @@ class BookingController extends Controller
         $action = $request->input('action');
         $widgetType = $request->input('widget');
 
-        ///////////////////////////////////
-        // TODO: AUTHORIZATION GOES HERE //
-        ///////////////////////////////////
-        // AUTHORIZE:
+        /////////////////////////////////////////////
+        // AUTHORIZATION : AlterAppointmentRequest //
+        /////////////////////////////////////////////
         //  (A) auth()->user() is owner of $business
         // OR
         //  (B) auth()->user() is issuer of $appointment
@@ -92,7 +90,7 @@ class BookingController extends Controller
 
         $contents = [
             'appointment' => $appointment->load('contact'),
-            'user' => auth()->user()
+            'user'        => auth()->user(),
             ];
 
         $viewKey = "widgets.appointment.{$widgetType}._body";
@@ -121,13 +119,51 @@ class BookingController extends Controller
      *
      * @return Symfony\Component\HttpFoundation\JsonResponse
      */
+    public function getDates($businessId, $serviceId)
+    {
+        logger()->info(__METHOD__);
+        logger()->info("businessId:$businessId serviceId:$serviceId");
+
+        $business = Business::findOrFail($businessId);
+        $service = $business->services()->findOrFail($serviceId);
+
+        $days = $business->pref('availability_future_days');
+        $startFrom = $business->pref('appointment_take_today') ? 'today' : 'tomorrow';
+
+        $baseDate = Carbon::parse($startFrom);
+
+        $vacancies = $business->vacancies()->forService($serviceId)->get();
+
+        $dates = array_pluck($vacancies->toArray(), 'date');
+
+        return response()->json([
+            'business' => $businessId,
+            'service'  => [
+                'id'       => $service->id,
+                'duration' => $service->duration,
+            ],
+            'dates'     => $dates,
+            'startDate' => $baseDate->toDateString(),
+            'endDate'   => $baseDate->addDays($days)->toDateString(),
+        ], 200);
+    }
+
+    /**
+     * Get available times.
+     *
+     * @param int    $businessId
+     * @param int    $serviceId
+     * @param string $date
+     *
+     * @return Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function getTimes($businessId, $serviceId, $date)
     {
         logger()->info(__METHOD__);
         logger()->info("businessId:$businessId serviceId:$serviceId date:$date");
 
         $business = Business::findOrFail($businessId);
-        $service = Service::findOrFail($serviceId);
+        $service = $business->services()->findOrFail($serviceId);
 
         $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
@@ -159,7 +195,6 @@ class BookingController extends Controller
             $maxNumberOfSlots = round($vacancy->finish_at->diffInMinutes($beginTime) / $step);
 
             for ($i = 0; $i <= $maxNumberOfSlots; $i++) {
-                $endTime = $beginTime->copy()->addMinutes($step);
                 $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
                 if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
                     $times[] = $beginTime->timezone($vacancy->business->timezone)->toTimeString();
