@@ -24,9 +24,11 @@ Timegrid lets them to *easily* interact through *online appointments*. *Simple*,
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
-## Online Appointments Package
+![Timegrid Mindmap](http://i.imgur.com/MAPWFlv.png)
 
-If you just need a booking library to use with your own *Laravel* app, see [Concierge library](https://github.com/timegridio/concierge).
+## Appointment Library
+
+Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for handling the appointments.
 
 ## Screenshots
 
@@ -36,7 +38,7 @@ If you just need a booking library to use with your own *Laravel* app, see [Conc
 
 ## Live Demo
 
-You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
+Give a try the [*beta* live demo](http://demo.timegrid.io/)
 
 > **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
