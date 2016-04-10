@@ -37,7 +37,9 @@
 
     <div id="catalog">
     @if($business->services->count() > 1)
-    <input id="filter" name="filter" class="form-control" value="" />
+        @if($business->services->count() > 10)
+        <input id="filter" name="filter" class="form-control" value="" />
+        @endif
     <div id="searchlist" class="list-group">
         @foreach ($business->services as $service)
         <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#">
