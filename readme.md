@@ -51,7 +51,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
     * Appointment schedule view
     * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
     * Basic search
-  * Frontend self-service reservations
+  * Self-service appointment reservation with datepicker
   * Basic email notifications
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
