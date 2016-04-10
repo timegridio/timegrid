@@ -146,6 +146,7 @@ function updateEnabledDates()
     });
 
     $('#datepicker').datepicker({
+        language: timegrid.language,
         format: 'yyyy-m-d',
         startDate: timegrid.startDate,
         endDate: timegrid.endDate,
