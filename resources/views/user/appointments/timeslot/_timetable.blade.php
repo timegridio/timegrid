@@ -1,186 +1,184 @@
 @section('css')
 @parent
+<link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
 <style>
-.date {
-    color: #777777;
-    background: #eaeaea;
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 300;
-    text-align: center;
-    vertical-align: middle;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 10px 15px;
-    font-size: 15px;
-    line-height: 1.42857143;
-    border-radius: 4px;
-    width: 100%;
-}
-
-.date-active {
-    color: #333333;
-    background: #eaeaea;
-}
-
-.date-muted {
-    color: #999999;
-    background: #d9d9d9;
+.datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
+    color: #999;
+    cursor: default;
+    border-radius: 0;
 }
 </style>
 @endsection
 
-<div id="panel" class="panel panel-default">
-    <!-- Default panel contents -->
-    <div class="panel-heading">{{ trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]) }}</div>
-
-    <div id="catalog">
-    @if($business->services->count() > 1)
-        @if($business->services->count() > 10)
-        <input id="filter" name="filter" class="form-control" value="" />
-        @endif
-    <div id="searchlist" class="list-group">
-        @foreach ($business->services as $service)
-        <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#">
-            <span>{{ $service->name }}</span>
-            @if($service->duration)
-            <span class="text-muted pull-right">({{ trans_duration("{$service->duration} minutes") }})
-            @endif
-            @if($service->color)
-            &nbsp;&nbsp;<i style="background:{{ $service->color }}" class="badge">&nbsp;</i>
-            @endif
-            </span>
-        </a>
-        @endforeach
-    </div>
+<div id="catalog">
+@if($business->services->count() > 1)
+    @if($business->services->count() > 10)
+    <input id="filter" name="filter" class="form-control" value="" />
     @endif
-    </div>
-
-    <table id="timetable" class="table hidden">
-    @foreach ($dates as $date => $vacancies)
-        @if (empty($vacancies))
-        <tr class="daterow">
-            <td class="dateslot">
-                <div class="date date-muted">
-                    {!! Icon::calendar() !!}&nbsp;{{ (Carbon::parse($date)->formatLocalized('%A %d %B')) }}
-                </div>
-            </td>
-            <td class="serviceslot" >
-                <p class="hidden-xs">
-                    {!! Icon::remove() !!}&nbsp;&nbsp;{{ trans('user.appointments.form.timetable.msg.no_vacancies') }}
-                </p>
-                <p class="hidden-lg hidden-md hidden-sm">{!! Icon::remove() !!}&nbsp;&nbsp;{{ trans('N/D') }}</p>
-            </td>
-        </tr>
-        @else
-        <tr class="daterow date_{{ $date }}">
-            <td class="dateslot">
-                <div class="date date-active">
-                    {!! Icon::calendar() !!}&nbsp;{{ (Carbon::parse($date)->formatLocalized('%A %d %B')) }}
-                </div>
-            </td>
-            <td class="serviceslot" >
-                @foreach ($vacancies as $vacancy)
-                {!! Button::success($vacancy->service->name)
-                    ->prependIcon(Icon::ok())
-                    ->withAttributes([
-                        'title' => Carbon::parse($date)->formatLocalized('%A %d %B') . ' ' . $vacancy->service->name,
-                        'class' => 'service service'.$vacancy->service_id,
-                        'data-service' => $vacancy->service_id,
-                        'data-date' => $vacancy->date]) !!}
-                @endforeach
-            </td>
-        </tr>
-        @endif
-    @endforeach
-    </table>
-
-    <ul class="list-group">
+<div id="searchlist" class="list-group">
     @foreach ($business->services as $service)
-    @if($service->description)
-        <li class="list-group-item service-description hidden" id="service-description-{{$service->id}}">
-        {!! Markdown::convertToHtml($service->description) !!}
-        </li>
-    @endif
-
-    @if($service->prerequisites)
-    <li class="list-group-item service-prerequisites hidden" id="service-prerequisites-{{$service->id}}">
-        {!! Markdown::convertToHtml($service->prerequisites) !!}
-    </li>
-    @endif
+    <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#">
+        <span>{{ $service->name }}</span>
+        @if($service->duration)
+        <span class="text-muted pull-right">({{ trans_duration("{$service->duration} minutes") }})
+        @endif
+        @if($service->color)
+        &nbsp;&nbsp;<i style="background:{{ $service->color }}" class="badge">&nbsp;</i>
+        @endif
+        </span>
+    </a>
     @endforeach
-    </ul>
+</div>
+@endif
+</div>
 
-    <div>
-    {!! Button::primary()
-        ->withIcon(Icon::eject())
-        ->withAttributes(['id' => 'restoreDates', 'class' => 'hidden'])
-        ->small()
-        ->block() !!}
+<ul class="list-group">
+@foreach ($business->services as $service)
+@if($service->description)
+    <li class="list-group-item service-description hidden" id="service-description-{{$service->id}}">
+    {!! Markdown::convertToHtml($service->description) !!}
+    </li>
+@endif
 
-    {!! Button::primary(trans('user.appointments.btn.more_dates'))
-        ->withAttributes(['id' => 'moreDates', 'class' => 'hidden'])
-        ->asLinkTo(route('user.booking.book', ['business' => $business, 'date' => date('Y-m-d', strtotime("$startFromDate +7 days"))]))
-        ->small()
-        ->block() !!}
+@if($service->prerequisites)
+<li class="list-group-item service-prerequisites hidden" id="service-prerequisites-{{$service->id}}">
+    {!! Markdown::convertToHtml($service->prerequisites) !!}
+</li>
+@endif
+@endforeach
+
+<li class="list-group-item hidden" id="recap-service"></li>
+<li class="list-group-item hidden" id="recap-date"></li>
+<li class="list-group-item hidden" id="recap-time"></li>
+
+</ul>
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="datepicker" class="hide"></div>
+        </div>
     </div>
-
 </div>
 
 @section('footer_scripts')
 @parent
+<script src="{{ asset('js/datetime.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 
-    $('#searchlist').btsListFilter('#filter', {itemChild: 'span'});
+function arr_diff (a1, a2) {
+
+    var a = [], diff = [];
+
+    for (var i = 0; i < a1.length; i++) {
+        a[a1[i]] = true;
+    }
+
+    for (var i = 0; i < a2.length; i++) {
+        if (a[a2[i]]) {
+            delete a[a2[i]];
+        } else {
+            a[a2[i]] = true;
+        }
+    }
+
+    for (var k in a) {
+        diff.push(k);
+    }
+
+    return diff;
+};
+
+function getDateRange(startDate, endDate, dateFormat) {
+    var dates = [],
+        end = moment(endDate),
+        diff = endDate.diff(startDate, 'days');
+
+    if(!startDate.isValid() || !endDate.isValid() || diff <= 0) {
+        return;
+    }
+
+    for(var i = 0; i < diff; i++) {
+        dates.push(end.subtract(1,'d').format(dateFormat));
+    }
+
+    return dates;
+};
+
+function updateEnabledDates()
+{
+    var business = $('#business').val();
+    var service = $('#service').val();
+    var scanDates = getDateRange(moment(timegrid.startDate), moment(timegrid.endDate).add(1,'d'), 'YYYY-MM-DD');
+
+    $.ajax({
+        url:'/api/vacancies/' + business + '/' + service,
+        type:'GET',
+        dataType: 'json',
+        success: function( data ) {
+
+            var disabledDates = arr_diff(scanDates, data.dates);
+
+            $('#datepicker').datepicker('setDatesDisabled', disabledDates);
+            $('#datepicker').show();
+
+        },
+        fail: function ( data ) {
+            console.log('Failed to load dates.');
+        }
+    });
+}
+
+    $('#searchlist').btsListFilter('#filter', { itemChild: 'span' });
 
     $('.service-selector').click(function(e){
         var serviceId = $(this).data('service-id');
-        $('.service').hide();
-        $('.service' + serviceId).show();
+
+        $('#service').val(serviceId);
         $('#catalog').hide();
-        $('#moreDates').show();
-        $('#timetable').show();
+
+        $('#service-prerequisites-'+serviceId).removeClass('hidden').show();
+        $('#service-description-'+serviceId).removeClass('hidden').show();
+        $('#recap-service').removeClass('hidden').html( $(this).html() );
+
+        updateEnabledDates();
     });
 
-    $('#timetable').removeClass('hidden').hide();
-    $('#extra').removeClass('hidden').hide();
-
-    $('#timetable .btn.service').click(function(e){
-        var service = $(this).data('service');
-        // console.log('Press ' + service);
-        $('.service-description').hide();
-        $('.service-prerequisites').hide();
-        $('tr:not(.date_'+$(this).data('date')+')').hide();
-        
-        $('#service-prerequisites-'+service).removeClass('hidden').show();
-        $('#service-description-'+service).removeClass('hidden').show();
-        
-        $('.service').removeClass('btn-success');
-        
-        $('#date').val( $(this).data('date') );
-        $('#service').val( $(this).data('service') );
-        
-        $(this).toggleClass('btn-success');
-        
-        $('#extra').show();
-        $('#restoreDates').show();
+    $('#datepicker').datepicker({
+        format: 'yyyy-m-d',
+        startDate: timegrid.startDate,
+        endDate: timegrid.endDate,
+        datesDisabled: false,
+        inline: true,
+        todayHighlight: true,
+        daysOfWeekDisabled: '0'
+    }).on('changeDate', function(e) {
 
         var business = $('#business').val();
-        var date = $('#date').val();
         var service = $('#service').val();
+        var date = $('#date').val();
 
         var timesSelect = $('#times');
         var durationInput = $('#duration');
+
+        var day = e.date.getDate();
+        var month = e.date.getMonth() + 1;
+        var year = e.date.getFullYear();
+
+        var date = day + '-' + month + '-' + year;
+
+        $('#date').val( date );
+        $('#recap-date').removeClass('hidden').html( date );
 
         $.ajax({
             url:'/api/vacancies/' + business + '/' + service + '/' + date,
             type:'GET',
             dataType: 'json',
             success: function( data ) {
-                $('#moreDates').hide();
-                $('#extra').show();
+
+                $('#datepicker').hide();
+                $('#extra').removeClass('hide').show();
 
                 timesSelect.find('option').remove();
                 $.each(data.times,function(key, value)
@@ -196,23 +194,8 @@ $(document).ready(function() {
 
     });
 
-    $('#restoreDates').click(function(e){
-        $('.daterow').show();
-        $('#panel').show();
-        $('#extra').hide();
-        $('#moreDates').show();
-        $(this).hide();
-        return false;
-    });
+    $('#datepicker').hide().removeClass('hide');
 
-    $('#moreDates').hide();
-    $('#restoreDates').hide();
-    $('#moreDates').removeClass('hidden');
-    $('#restoreDates').removeClass('hidden');
-
-    @if($business->services->count() <= 1)
-    $('#timetable').show();
-    @endif
 });
 </script>
 @endsection

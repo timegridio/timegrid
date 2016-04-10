@@ -119,6 +119,44 @@ class BookingController extends Controller
      *
      * @return Symfony\Component\HttpFoundation\JsonResponse
      */
+    public function getDates($businessId, $serviceId)
+    {
+        logger()->info(__METHOD__);
+        logger()->info("businessId:$businessId serviceId:$serviceId");
+
+        $business = Business::findOrFail($businessId);
+        $service = $business->services()->findOrFail($serviceId);
+
+        $days = $business->pref('availability_future_days');
+        $startFrom = $business->pref('appointment_take_today') ? 'today' : 'tomorrow';
+
+        $baseDate = Carbon::parse($startFrom);
+
+        $vacancies = $business->vacancies()->forService($serviceId)->get();
+
+        $dates = array_pluck($vacancies->toArray(), 'date');
+
+        return response()->json([
+            'business' => $businessId,
+            'service'  => [
+                'id'       => $service->id,
+                'duration' => $service->duration,
+            ],
+            'dates'     => $dates,
+            'startDate' => $baseDate->toDateString(),
+            'endDate'   => $baseDate->addDays($days)->toDateString(),
+        ], 200);
+    }
+
+    /**
+     * Get available times.
+     *
+     * @param int    $businessId
+     * @param int    $serviceId
+     * @param string $date
+     *
+     * @return Symfony\Component\HttpFoundation\JsonResponse
+     */
     public function getTimes($businessId, $serviceId, $date)
     {
         logger()->info(__METHOD__);

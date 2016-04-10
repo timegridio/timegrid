@@ -13,13 +13,17 @@
 {!! Form::hidden('contact_id', $contact->id, ['required', 'id'=>'contact']) !!}
 
 <div class="container-fluid">
+
     <div class="col-md-6 col-md-offset-3">
 
-        <div class="row">
-            @include('user.appointments.timeslot._timetable', ['dates' => $availability])
-        </div>
+        <div id="panel" class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">{{ trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]) }}</div>
 
-        <div id="extra" class="hidden">
+        @include('user.appointments.timeslot._timetable', ['dates' => $availability])
+
+        <div class="container-fluid">
+        <div id="extra" class="hide">
 
             <div class="row">
                 <div class="form-group col-sm-12">
@@ -33,7 +37,6 @@
                 @endif
                 </div>
             </div>
-
 
             <div class="row">
                 <div class="form-group col-sm-12">
@@ -59,6 +62,10 @@
                     {!! Button::success(trans('user.appointments.btn.confirm_booking'))->large()->block()->submit() !!}
                 </div>
             </div>
+
+        </div>
+        </div>
+
         </div>
 
     </div>

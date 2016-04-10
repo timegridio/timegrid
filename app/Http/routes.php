@@ -23,6 +23,10 @@ Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
         'uses' => 'BookingController@postAction',
     ]);
 
+    Route::get('vacancies/{businessId}/{serviceId}', [
+        'uses' => 'BookingController@getDates',
+    ]);
+
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
         'uses' => 'BookingController@getTimes',
     ]);
