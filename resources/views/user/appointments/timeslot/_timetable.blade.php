@@ -2,10 +2,31 @@
 @parent
 <link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
 <style>
+.datepicker table tr td.day {
+    padding: 4px;
+    border-radius: 0px;
+}
+.datepicker table tr td.day, .datepicker table tr td.day:hover {
+    font-weight: bolder;
+    color: #00A65A;
+    border-bottom: 2px solid #00A65A;
+}
 .datepicker table tr td.disabled, .datepicker table tr td.disabled:hover {
-    color: #999;
+    font-weight: bolder;
+    color: #F5F5F5;
+    border-bottom: 2px solid #F5F5F5;
     cursor: default;
-    border-radius: 0;
+}
+.datepicker table tr td.today.disabled, .datepicker table tr td.today.disabled:active {
+    background: #DDB0AA;
+    color: #DD4B39;
+    border-bottom: 2px solid #DD4B39;
+}
+.datepicker table tr td.today, .datepicker table tr td.today:hover {
+    font-weight: bolder;
+    color: #DD4B39;
+    border-bottom: 2px solid #DD4B39;
+    cursor: default;
 }
 </style>
 @endsection
@@ -52,7 +73,7 @@
 
 <div class="form-group">
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-md-offset-3">
             <div id="datepicker" class="hide"></div>
         </div>
     </div>
@@ -176,7 +197,7 @@ function updateEnabledDates()
             dataType: 'json',
             success: function( data ) {
 
-                $('#datepicker').hide();
+                // $('#datepicker').hide();
                 $('#extra').removeClass('hide').show();
 
                 timesSelect.find('option').remove();
