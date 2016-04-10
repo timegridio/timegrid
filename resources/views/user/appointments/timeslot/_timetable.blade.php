@@ -10,14 +10,11 @@
 </style>
 @endsection
 
-<div id="catalog">
 @if($business->services->count() > 1)
-    @if($business->services->count() > 10)
-    <input id="filter" name="filter" class="form-control" value="" />
-    @endif
-<div id="searchlist" class="list-group">
+<ul id="catalog" class="list-group">
     @foreach ($business->services as $service)
-    <a class="list-group-item service-selector" data-service-id="{{ $service->id }}" href="#">
+    <a class="service-selector" data-service-id="{{ $service->id }}" data-service-name="{{ $service->name }}" href="#">
+    <li class="list-group-item">
         <span>{{ $service->name }}</span>
         @if($service->duration)
         <span class="text-muted pull-right">({{ trans_duration("{$service->duration} minutes") }})
@@ -26,11 +23,11 @@
         &nbsp;&nbsp;<i style="background:{{ $service->color }}" class="badge">&nbsp;</i>
         @endif
         </span>
+    </li>
     </a>
     @endforeach
-</div>
+</ul>
 @endif
-</div>
 
 <ul class="list-group">
 @foreach ($business->services as $service)
@@ -130,7 +127,7 @@ function updateEnabledDates()
     });
 }
 
-    $('#searchlist').btsListFilter('#filter', { itemChild: 'span' });
+    // $('#searchlist').btsListFilter('#filter', { itemChild: 'span' });
 
     $('.service-selector').click(function(e){
         var serviceId = $(this).data('service-id');
@@ -140,7 +137,7 @@ function updateEnabledDates()
 
         $('#service-prerequisites-'+serviceId).removeClass('hidden').show();
         $('#service-description-'+serviceId).removeClass('hidden').show();
-        $('#recap-service').removeClass('hidden').html( $(this).html() );
+        $('#recap-service').removeClass('hidden').html( $(this).data('service-name') );
 
         updateEnabledDates();
     });
@@ -153,7 +150,8 @@ function updateEnabledDates()
         datesDisabled: false,
         inline: true,
         todayHighlight: true,
-        daysOfWeekDisabled: '0'
+        daysOfWeekDisabled: '0',
+        debug: true
     }).on('changeDate', function(e) {
 
         var business = $('#business').val();
