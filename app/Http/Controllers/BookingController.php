@@ -9,7 +9,6 @@ use Carbon\Carbon;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Service;
 
 class BookingController extends Controller
 {
@@ -126,7 +125,7 @@ class BookingController extends Controller
         logger()->info("businessId:$businessId serviceId:$serviceId date:$date");
 
         $business = Business::findOrFail($businessId);
-        $service = Service::findOrFail($serviceId);
+        $service = $business->services()->findOrFail($serviceId);
 
         $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
