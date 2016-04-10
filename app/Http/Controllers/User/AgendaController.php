@@ -103,7 +103,7 @@ class AgendaController extends Controller
                              ->generateAvailability($business->vacancies, $startFromDate->toDateString(), $days);
 
         JavaScript::put([
-            'language'  => session()->get('language'),
+            'language'  => 'en', // ToDo: Should load selected language or fallback
             'startDate' => $startFromDate->toDateString(),
             'endDate'   => $startFromDate->addDays($days )->toDateString(),
         ]);
