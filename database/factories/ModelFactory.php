@@ -74,6 +74,17 @@ $factory->define(Timegridio\Concierge\Models\Category::class, function (Faker\Ge
     ];
 });
 
+///////////////////
+// Humanresource //
+///////////////////
+
+$factory->define(Timegridio\Concierge\Models\Humanresource::class, function (Faker\Generator $faker) {
+    return [
+        'name'     => $faker->firstName,
+        'capacity' => 1,
+    ];
+});
+
 //////////////////
 // Service Type //
 //////////////////
