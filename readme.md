@@ -76,10 +76,11 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 ## Special Thanks & Credits
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
+  * [Mohamed G.Hafez](https://github.com/mg-freelancer) for contributions
   * [John Ezekiel](https://github.com/zeke8402) for friendly hints and creating a really nice [booking-app](https://github.com/zeke8402/booking-app)
-  * [Jose V Herrera](https://github.com/josevh) for contributions
-  * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
   * [Victor](https://github.com/pappavic) for testing and documentation contributions
+  * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
+  * [Jose V Herrera](https://github.com/josevh) for contributions
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ### License
