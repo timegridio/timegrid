@@ -4,7 +4,7 @@
 // User //
 //////////
 
-$factory->define(App\Models\User::class , function (Faker\Generator $faker) {
+$factory->define('App\Models\User' , function (Faker\Generator $faker) {
     return [
         'username' => $faker->unique()->firstName . rand(1,1000),
         'name'     => $faker->firstName,
