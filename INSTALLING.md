@@ -1,4 +1,4 @@
-# Installating
+# Installing
 
 > Advice: the current version is still considered to be not production ready. If you want to install for production you must first
 perform all sort of tests (including unit and acceptance) and make sure the implementation fits your needs. Your feedback is as well
