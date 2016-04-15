@@ -22,3 +22,22 @@ Run `composer install --dev` instead of `composer install`
 ### Reference
 
 [See Issue Report](https://github.com/alariva/timegrid/issues/52)
+
+## Call to undefined function locale_get_primary_language()
+
+### Problem
+
+When running the app, I get the following error:
+
+```
+FatalErrorException in helpers.php line 17:
+Call to undefined function locale_get_primary_language()
+```
+
+### Solution
+
+[Install PHP intl](http://php.net/manual/en/intl.installation.php)
+
+### Reference
+
+[Discussion](https://gitter.im/alariva/timegridDevelopment?at=56ab732a8fbaf4220afa165e)
