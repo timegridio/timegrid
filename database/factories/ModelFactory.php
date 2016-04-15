@@ -6,9 +6,9 @@
 
 $factory->define('App\Models\User', function (Faker\Generator $faker) {
     return [
-        'username' => $faker->firstName,
+        'username' => $faker->unique()->firstName,
         'name'     => $faker->firstName,
-        'email'    => $faker->safeEmail,
+        'email'    => $faker->unique()->safeEmail,
         'password' => bcrypt('password'),
     ];
 });
@@ -36,7 +36,7 @@ $factory->define(Timegridio\Concierge\Models\Contact::class, function (Faker\Gen
         'firstname'      => $faker->firstName,
         'lastname'       => $faker->lastName,
         'nin'            => $faker->numberBetween(25000000, 50000000),
-        'email'          => $faker->safeEmail,
+        'email'          => $faker->unique()->safeEmail,
         'birthdate'      => \Carbon\Carbon::now()->subYears(30),
         'mobile'         => null,
         'mobile_country' => null,
