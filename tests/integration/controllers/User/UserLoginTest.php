@@ -31,6 +31,22 @@ class UserLoginTest extends TestCase
     /**
      * @test
      */
+    public function it_provides_logout()
+    {
+        $user = $this->createUser();
+
+        $this->actingAs($user);
+
+        $this->visit('auth/logout');
+
+        $this->seePageIs('/');
+
+        $this->see('Login');
+    }
+
+    /**
+     * @test
+     */
     public function it_denies_bad_login()
     {
         $user = $this->createUser(['email' => 'test@example.org', 'password' => bcrypt('password')]);
@@ -57,7 +73,7 @@ class UserLoginTest extends TestCase
         $this->visit(route('user.agenda'));
 
         $this->seePageIs('/auth/login');
-        
+
         $this->see('Login');
         $this->see('Password');
         $this->see('Remember me');
