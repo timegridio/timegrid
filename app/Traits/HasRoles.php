@@ -46,16 +46,4 @@ trait HasRoles
 
         return (bool) $role->intersect($this->roles)->count();
     }
-
-    /**
-     * Determine if the user may perform the given permission.
-     *
-     * @param Permission $permission
-     *
-     * @return bool
-     */
-    public function hasPermission(Permission $permission)
-    {
-        return $this->hasRole($permission->roles);
-    }
 }

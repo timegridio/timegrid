@@ -27,6 +27,20 @@ $factory->define('App\Models\Role', function (Faker\Generator $faker) {
     ];
 });
 
+////////////////
+// Permission //
+////////////////
+
+$factory->define('App\Models\Permission', function (Faker\Generator $faker) {
+    $name = $faker->word;
+
+    return [
+        'name'        => $name,
+        'slug'        => str_slug($name),
+        'description' => $faker->sentence,
+    ];
+});
+
 /////////////
 // Contact //
 /////////////
