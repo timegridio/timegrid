@@ -25,7 +25,7 @@ class BusinessFormRequest extends Request
             case 'PATCH':
             case 'PUT':
             case 'POST':
-                return [
+                $rules = [
                     'name'        => 'required|min:4',
                     'description' => 'required|min:10',
                     'timezone'    => 'timezone',
@@ -33,8 +33,10 @@ class BusinessFormRequest extends Request
                     ];
                 break;
             default:
-                return [];
+                $rules = [];
                 break;
         }
+
+        return $rules;
     }
 }

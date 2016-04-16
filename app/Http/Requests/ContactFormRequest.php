@@ -21,21 +21,22 @@ class ContactFormRequest extends Request
      */
     public function rules()
     {
-        $rules = ['firstname'   => 'required|min:3',
-                    'lastname'  => 'required|min:3',
-                    'gender'    => 'required|max:1',
-                    'birthdate' => 'date_format:'.trans('app.dateformat.carbon'),
-                ];
-
         switch ($this->method()) {
             case 'PATCH':
             case 'PUT':
             case 'POST':
-                return $rules;
+                $rules = [
+                    'firstname' => 'required|min:3',
+                    'lastname'  => 'required|min:3',
+                    'gender'    => 'required|max:1',
+                    'birthdate' => 'date_format:'.trans('app.dateformat.carbon'),
+                ];
                 break;
             default:
-                return [];
+                $rules = [];
                 break;
         }
+
+        return $rules;
     }
 }
