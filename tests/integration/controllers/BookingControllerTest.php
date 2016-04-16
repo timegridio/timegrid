@@ -283,6 +283,21 @@ class BookingControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_provides_available_dates_for_requested_service()
+    {
+        $this->arrangeFixture();
+
+        $this->actingAs($this->issuer);
+
+        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}");
+
+        $this->assertResponseOk();
+        $this->seeJson();
+    }
+
+    /**
+     * @test
+     */
     public function it_provides_available_times_for_requested_service_date()
     {
         $this->arrangeFixture();
