@@ -68,10 +68,11 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 
 ## Development
 
-  * [Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+  * [Frequently Asked Questions](https://github.com/timegridio/timegrid/wiki/FAQ)
   * [Troubleshooting](https://timegrid.slack.com/messages/general/)
   * [Contributing](CONTRIBUTING.md)
   * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+  * [Developer Documentation](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
 
 ## Special Thanks & Credits
 
