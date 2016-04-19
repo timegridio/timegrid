@@ -74,6 +74,10 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
   * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
   * [Developer Documentation](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
 
+## Author
+
+Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
+
 ## Special Thanks & Credits
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
