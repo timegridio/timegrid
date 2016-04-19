@@ -24,7 +24,7 @@ Timegrid lets them to *easily* interact through *online appointments*. *Simple*,
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
-![Timegrid Mindmap](http://i.imgur.com/p947YCB.png)
+![Timegrid Mindmap](http://i.imgur.com/mJsbo5G.png)
 
 ## Appointment Library
 
