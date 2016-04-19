@@ -88,6 +88,6 @@ Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
   * [Jose V Herrera](https://github.com/josevh) for contributions
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
-### License
+## License
 
-[AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
+Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
