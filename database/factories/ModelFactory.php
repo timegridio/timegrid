@@ -4,7 +4,7 @@
 // User //
 //////////
 
-$factory->define('App\Models\User', function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
         'username' => $faker->unique()->firstName,
         'name'     => $faker->firstName,
@@ -17,7 +17,7 @@ $factory->define('App\Models\User', function (Faker\Generator $faker) {
 // Role //
 //////////
 
-$factory->define('App\Models\Role', function (Faker\Generator $faker) {
+$factory->define(App\Models\Role::class, function (Faker\Generator $faker) {
     $name = $faker->word;
 
     return [
