@@ -33,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Barryvdh\Debugbar\ServiceProvider');
             $this->app->register('Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider');
         }
+
+        if ($this->app->environment() != 'testing') {
+            $this->app->register(Jenssegers\Rollbar\RollbarServiceProvider::class);
+        }
     }
 }

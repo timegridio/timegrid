@@ -169,7 +169,6 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Ipunkt\LaravelAnalytics\AnalyticsServiceProvider::class,
         Jenssegers\Agent\AgentServiceProvider::class,
-        Jenssegers\Rollbar\RollbarServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
