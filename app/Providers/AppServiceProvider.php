@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Jenssegers\Rollbar\RollbarServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,7 +36,7 @@ class AppServiceProvider extends ServiceProvider
         }
 
         if ($this->app->environment() != 'testing') {
-            $this->app->register(Jenssegers\Rollbar\RollbarServiceProvider::class);
+            $this->app->register(RollbarServiceProvider::class);
         }
     }
 }
