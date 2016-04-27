@@ -158,6 +158,34 @@ class UserContactControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_cannot_edit_an_unowned_contact()
+    {
+        $this->arrangeFixture();
+
+        $contact = $this->createContact([
+            'firstname' => 'John',
+            'lastname'  => 'Doe',
+            'nin'       => null,
+            'email'     => null,
+            ]);
+
+        $this->business->contacts()->save($contact);
+
+        $this->actingAs($this->issuer);
+
+        try {
+            $this->visit(route('user.business.contact.edit', [
+                'business' => $this->business,
+                'contact'  => $contact,
+                ]));
+        } catch (Exception $e) {
+            $this->assertResponseStatus(403);
+        }
+    }
+
+    /**
+     * @test
+     */
     public function it_can_change_nin_of_a_contact()
     {
         // Given a fixture of

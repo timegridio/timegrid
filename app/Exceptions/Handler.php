@@ -10,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidationException;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Component\HttpKernel\Exception\HttpException;
+use Log;
 
 class Handler extends ExceptionHandler
 {
@@ -36,11 +37,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
-        Mail::raw($exception, function ($message) {
-            $message->subject(config('root.report.exceptions_subject'));
-            $message->from(config('root.report.from_address'), config('root.appname'));
-            $message->to(config('root.report.to_mail'));
-        });
+        Log::error($exception);
 
         return parent::report($exception);
     }

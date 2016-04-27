@@ -24,18 +24,21 @@ Timegrid lets them to *easily* interact through *online appointments*. *Simple*,
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
-## Online Appointments Package
+![Timegrid Mindmap](http://i.imgur.com/mJsbo5G.png)
 
-If you just need a booking library to use with your own *Laravel* app, see [Concierge library](https://github.com/timegridio/concierge).
+## Appointment Library
+
+Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for handling the appointments.
 
 ## Screenshots
 
+![Self-Service Reservation Screenshot](http://i.imgur.com/2UXCx2N.png)
 ![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
-![Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
+![Business Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
 
 ## Live Demo
 
-You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
+Give a try the [*beta* live demo](http://demo.timegrid.io/)
 
 > **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
@@ -50,7 +53,7 @@ You can try the *beta-stable* [live demo](http://demo.timegrid.io/)
     * Appointment schedule view
     * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
     * Basic search
-  * Frontend self-service reservations
+  * Self-service appointment reservation with datepicker
   * Basic email notifications
   * Multiple Languages Support (Localization)
   * Multiple Timezones Support
@@ -65,20 +68,26 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 
 ## Development
 
-  * [Twitter](https://twitter.com/timegrid_io)
-  * [Developer Documentation in English](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+  * [Frequently Asked Questions](https://github.com/timegridio/timegrid/wiki/FAQ)
   * [Troubleshooting](https://timegrid.slack.com/messages/general/)
   * [Contributing](CONTRIBUTING.md)
   * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+  * [Developer Documentation](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+
+## Author
+
+Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
 
 ## Special Thanks & Credits
 
   * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
-  * [Jose V Herrera](https://github.com/josevh) for contributions
-  * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
+  * [Mohamed G.Hafez](https://github.com/mg-freelancer) for contributions
+  * [John Ezekiel](https://github.com/zeke8402) for friendly hints and creating a really nice [booking-app](https://github.com/zeke8402/booking-app)
   * [Victor](https://github.com/pappavic) for testing and documentation contributions
-  * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com.
+  * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
+  * [Jose V Herrera](https://github.com/josevh) for contributions
+  * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
-### License
+## License
 
-[AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
+Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)

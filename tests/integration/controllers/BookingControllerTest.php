@@ -1,8 +1,8 @@
 <?php
 
-use Timegridio\Concierge\Models\Appointment;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Timegridio\Concierge\Models\Appointment;
 
 //use Illuminate\Foundation\Testing\WithoutMiddleware;
 
@@ -279,6 +279,21 @@ class BookingControllerTest extends TestCase
     //////////
     // AJAX //
     //////////
+
+    /**
+     * @test
+     */
+    public function it_provides_available_dates_for_requested_service()
+    {
+        $this->arrangeFixture();
+
+        $this->actingAs($this->issuer);
+
+        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}");
+
+        $this->assertResponseOk();
+        $this->seeJson();
+    }
 
     /**
      * @test

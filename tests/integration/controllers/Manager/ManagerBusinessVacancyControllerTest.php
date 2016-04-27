@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
 class ManagerBusinessVacancyControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateUser, CreateBusiness, CreateService, CreateVacancy;
 
     /**
@@ -133,6 +131,25 @@ class ManagerBusinessVacancyControllerTest extends TestCase
         $this->press('Update');
 
         $this->assertEquals($this->vacancy->fresh()->capacity, $newCapacity);
+    }
+
+    /**
+     * @test
+     */
+    public function it_updates_blank_vacancies_in_advanced_mode()
+    {
+        $this->arrangeBusinessWithOwner();
+        $this->business->pref('vacancy_edit_advanced_mode', true);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.create', $this->business));
+
+        $this->type('', 'vacancies');
+
+        $this->press('Update');
+
+        $this->see('You must indicate your availability');
     }
 
     /**

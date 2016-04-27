@@ -40,8 +40,6 @@ class Language
         if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
             logger()->info('setGlobalLocale set');
-
-            return $next($request);
         }
 
         return $next($request);

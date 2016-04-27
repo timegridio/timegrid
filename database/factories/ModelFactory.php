@@ -4,11 +4,11 @@
 // User //
 //////////
 
-$factory->define('App\Models\User', function (Faker\Generator $faker) {
+$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
     return [
-        'username' => $faker->firstName,
+        'username' => $faker->unique()->firstName,
         'name'     => $faker->firstName,
-        'email'    => $faker->safeEmail,
+        'email'    => $faker->unique()->safeEmail,
         'password' => bcrypt('password'),
     ];
 });
@@ -17,11 +17,25 @@ $factory->define('App\Models\User', function (Faker\Generator $faker) {
 // Role //
 //////////
 
-$factory->define('App\Models\Role', function (Faker\Generator $faker) {
+$factory->define(App\Models\Role::class, function (Faker\Generator $faker) {
     $name = $faker->word;
 
     return [
         'name'        => $faker->word,
+        'slug'        => str_slug($name),
+        'description' => $faker->sentence,
+    ];
+});
+
+////////////////
+// Permission //
+////////////////
+
+$factory->define('App\Models\Permission', function (Faker\Generator $faker) {
+    $name = $faker->word;
+
+    return [
+        'name'        => $name,
         'slug'        => str_slug($name),
         'description' => $faker->sentence,
     ];
@@ -36,7 +50,7 @@ $factory->define(Timegridio\Concierge\Models\Contact::class, function (Faker\Gen
         'firstname'      => $faker->firstName,
         'lastname'       => $faker->lastName,
         'nin'            => $faker->numberBetween(25000000, 50000000),
-        'email'          => $faker->safeEmail,
+        'email'          => $faker->unique()->safeEmail,
         'birthdate'      => \Carbon\Carbon::now()->subYears(30),
         'mobile'         => null,
         'mobile_country' => null,
@@ -71,6 +85,17 @@ $factory->define(Timegridio\Concierge\Models\Category::class, function (Faker\Ge
         'slug'        => str_slug($faker->name),
         'description' => $faker->paragraph,
         'strategy'    => 'dateslot',
+    ];
+});
+
+///////////////////
+// Humanresource //
+///////////////////
+
+$factory->define(Timegridio\Concierge\Models\Humanresource::class, function (Faker\Generator $faker) {
+    return [
+        'name'     => $faker->firstName,
+        'capacity' => 1,
     ];
 });
 
