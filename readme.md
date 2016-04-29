@@ -10,8 +10,7 @@ timegrid
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![Current Stable](https://img.shields.io/badge/beta--stable-4.3.0-green.svg?style=flat-square)](http://timegrid.io/)
-[![Current Beta](https://img.shields.io/badge/dev--alpha-4.4-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
 **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
