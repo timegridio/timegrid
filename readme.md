@@ -14,13 +14,7 @@ timegrid
 [![Current Beta](https://img.shields.io/badge/dev--alpha-4.4-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-**The Problem**
-
-Freelancers and medium scale businesses wish to provide online appointments of services to their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
-
-**The Solution**
-
-Timegrid lets them to *easily* interact through *online appointments*. *Simple*, *Useful*, and *Fast*.
+**Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
