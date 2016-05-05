@@ -35,7 +35,7 @@ class AppServiceProvider extends ServiceProvider
             $this->app->register('Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider');
         }
 
-        if ($this->app->environment() != 'testing') {
+        if (env('ROLLBAR_TOKEN', false)) {
             $this->app->register(RollbarServiceProvider::class);
         }
     }
