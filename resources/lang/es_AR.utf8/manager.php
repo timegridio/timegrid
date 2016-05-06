@@ -285,6 +285,9 @@ return [
       'name' => [
         'label' => 'Nombre del servicio',
       ],
+      'color' => [
+        'label' => 'Color',
+      ],
     ],
     'msg' => [
       'store' => [
