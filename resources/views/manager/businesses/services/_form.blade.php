@@ -59,9 +59,8 @@
     <div class="form-group col-xl-2 col-md-2 col-sm-2 col-xs-2">
         <div class="input-group color-picker">
             {!! Form::text('color', null, [
-                'readonly',
                 'class'=>'form-control',
-                'placeholder'=> trans('manager.service.form.name.label')
+                'placeholder'=> trans('manager.service.form.color.label')
                 ]) !!}
             <span class="input-group-addon"><i></i></span>
         </div>
@@ -83,7 +82,7 @@
 $(document).ready(function(){
 
     $('selectpicker').addClass('dropupAuto');
-    $('selectpicker').selectpicker({ size: 1 });
+    $('selectpicker').select2({ size: 1 });
 
     $('.color-picker').colorpicker({
       colorSelectors: {
