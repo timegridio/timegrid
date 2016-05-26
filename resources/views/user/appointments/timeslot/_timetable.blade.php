@@ -181,6 +181,7 @@ function updateEnabledDates()
 
         var timesSelect = $('#times');
         var durationInput = $('#duration');
+        var timezoneInput = $('#timezone');
 
         var day = e.date.getDate();
         var month = e.date.getMonth() + 1;
@@ -206,6 +207,8 @@ function updateEnabledDates()
                     timesSelect.append('<option value=' + value + '>' + value + '</option>');
                 });
                 durationInput.val(data.service.duration);
+                timezoneInput.val(data.timezone);
+                timesSelect.attr('title', data.timezone);
             },
             fail: function ( data ) {
                 durationInput.val(0);

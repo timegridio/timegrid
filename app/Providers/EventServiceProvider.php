@@ -14,6 +14,7 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\NewUserWasRegistered' => [
+            'App\Handlers\Events\AutoConfigureUserPreferences',
             'App\Handlers\Events\SendMailUserWelcome',
         ],
         'App\Events\NewAppointmentWasBooked' => [
