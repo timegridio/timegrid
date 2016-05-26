@@ -157,7 +157,7 @@ class BookingController extends Controller
      *
      * @return Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getTimes($businessId, $serviceId, $date)
+    public function getTimes($businessId, $serviceId, $date, $timezone = false)
     {
         logger()->info(__METHOD__);
         logger()->info("businessId:$businessId serviceId:$serviceId date:$date");
@@ -167,7 +167,13 @@ class BookingController extends Controller
 
         $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
-        $times = $this->splitTimes($vacancies, $service);
+        if(!$timezone)
+        {
+            $timezone = auth()->user()->pref('timezone');
+            logger()->info('User Timezone Preference: ' . $timezone);
+        }
+
+        $times = $this->splitTimes($vacancies, $service, $timezone);
 
         return response()->json([
             'business' => $businessId,
@@ -177,6 +183,7 @@ class BookingController extends Controller
             ],
             'date'  => $date,
             'times' => $times,
+            'timezone' => $timezone,
         ], 200);
     }
 
@@ -184,10 +191,14 @@ class BookingController extends Controller
     // HELPERS //
     /////////////
 
-    protected function splitTimes($vacancies, $service)
+    protected function splitTimes($vacancies, $service, $timezone = false)
     {
         $times = [];
         foreach ($vacancies as $vacancy) {
+            $selectedTimezone = $timezone ?: $vacancy->business->timezone;
+
+            logger()->info('Using Timezone: ' . $selectedTimezone);
+
             $beginTime = $vacancy->start_at->copy();
 
             $step = $this->calculateStep($vacancy->business, $service->duration);
@@ -197,7 +208,7 @@ class BookingController extends Controller
             for ($i = 0; $i <= $maxNumberOfSlots; $i++) {
                 $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
                 if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
-                    $times[] = $beginTime->timezone($vacancy->business->timezone)->toTimeString();
+                    $times[] = $beginTime->timezone($selectedTimezone)->toTimeString();
                 }
                 $beginTime->addMinutes($step);
             }

@@ -11,10 +11,11 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use App\Traits\Preferenceable;
 
 class User extends EloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable;
+    use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable, Preferenceable;
 
     /**
      * The attributes that are mass assignable.

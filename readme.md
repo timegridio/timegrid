@@ -5,22 +5,16 @@
 timegrid
 ============
 
-> Online appointments for freelancers and businesses made easy.
-
+[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000?style=flat-square)](https://gitter.im/alariva/timegridDevelopment)
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![Current Stable](https://img.shields.io/badge/beta--stable-4.3.0-green.svg?style=flat-square)](http://timegrid.io/)
-[![Current Beta](https://img.shields.io/badge/dev--alpha-4.4-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-**The Problem**
+> Online appointments for freelancers and businesses made easy.
 
-Freelancers and medium scale businesses wish to provide online appointments of services to their customers, but the tools out there are either *too expensive* or *too complex* for their needs.
-
-**The Solution**
-
-Timegrid lets them to *easily* interact through *online appointments*. *Simple*, *Useful*, and *Fast*.
+**Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 

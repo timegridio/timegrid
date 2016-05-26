@@ -12,6 +12,8 @@
 <!--
     <logging>
         <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-html" target="build/logs/codeCoverage" charset="UTF-8" yui="true" highlight="true" lowUpperBound="50" highLowerBound="80"/>
+        <log type="testdox-html" target="build/logs/testdox.html" />
     </logging>
 -->
     <testsuites>
@@ -26,9 +28,9 @@
         <env name="APP_ENV" value="testing"/>
         <env name="APP_LOG" value="syslog"/>
         <env name="DB_CONNECTION" value="testing"/>
-        <env name="DB_DATABASE" value="test_timegrid"/>
-        <env name="DB_USERNAME" value="test_timegrid"/>
-        <env name="DB_PASSWORD" value="test_timegrid"/>
+        <env name="DB_DATABASE" value="testing_timegrid"/>
+        <env name="DB_USERNAME" value="testing_timegrid"/>
+        <env name="DB_PASSWORD" value="testing_timegrid"/>
         <env name="CACHE_DRIVER" value="array"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="QUEUE_DRIVER" value="sync"/>

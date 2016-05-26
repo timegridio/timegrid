@@ -9,6 +9,7 @@
 {!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form']) !!}
 {!! Form::hidden('businessId', $business->id, ['required', 'id' => 'business']) !!}
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
+{!! Form::hidden('_timezone', null, ['id'=>'timezone', 'readonly']) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
 {!! Form::hidden('contact_id', $contact->id, ['required', 'id'=>'contact']) !!}
 

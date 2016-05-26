@@ -148,6 +148,7 @@ class AgendaController extends Controller
 
         $date = Carbon::parse($request->input('_date'))->toDateString();
         $time = Carbon::parse($request->input('_time'))->toTimeString();
+        $timezone = $request->input('_timezone') ?: $business->timezone;
 
         $comments = $request->input('comments');
 
@@ -157,7 +158,7 @@ class AgendaController extends Controller
             'service'  => $service,
             'date'     => $date,
             'time'     => $time,
-            'timezone' => $business->timezone,
+            'timezone' => $timezone,
             'comments' => $comments,
         ];
 
@@ -167,7 +168,7 @@ class AgendaController extends Controller
         logger()->info('service:'.$service->id);
         logger()->info('date:'.$date);
         logger()->info('time:'.$time);
-        logger()->info('timezone:'.$business->timezone);
+        logger()->info('timezone:'.$timezone);
 
         try {
             $appointment = $this->concierge->business($business)->takeReservation($reservation);

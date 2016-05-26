@@ -2,11 +2,19 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Timegridio\Concierge\Models\Appointment;
+use Faker\Factory;
 
 class UserAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
+
+    public function __construct()
+    {
+        $this->faker = Factory::create();
+
+        parent::__construct();
+    }
 
     /**
      * @test
@@ -447,7 +455,6 @@ class UserAgendaControllerTest extends TestCase
         $this->seeInDatabase('appointments', ['business_id' => $business->id, 'contact_id' => $contact->id]);
     }
 
-
     /**
      * @test
      */
@@ -566,7 +573,7 @@ class UserAgendaControllerTest extends TestCase
         $userTwo = $this->createUser();
 
         $business = $this->createBusiness([
-            'strategy' => 'dateslot'
+            'strategy' => 'dateslot',
             ]);
 
         $service = $this->makeService();
@@ -699,6 +706,54 @@ class UserAgendaControllerTest extends TestCase
             'service_id' => $service->id,
             '_time'      => '09:00:00',
             '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_takes_a_reservation_with_timeslot_on_shifted_timezone()
+    {
+        $user = $this->createUser();
+        $this->actingAs($user);
+
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $contact = $this->createContact([
+            'user_id' => $user->id,
+            ]);
+        $business->contacts()->save($contact);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $shiftedTime = Carbon::parse('09:00:00 '.$business->timezone)->timezone($this->faker->timezone);
+
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            '_time'      => $shiftedTime->toTimeString(),
+            '_timezone'  => $shiftedTime->tzName,
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->timezone($shiftedTime->tzName)->toDateString(),
             'comments'   => 'test comments',
             ]);
 
@@ -866,7 +921,7 @@ class UserAgendaControllerTest extends TestCase
         $userTwo = $this->createUser();
 
         $business = $this->createBusiness([
-            'strategy' => 'timeslot'
+            'strategy' => 'timeslot',
             ]);
         $business->owners()->save($this->createUser());
 
