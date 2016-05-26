@@ -3769,12 +3769,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "a1a35a19924f04ca496d2a7536abdf9f5851e4f7"
+                "reference": "88271e7150a91af4f966be42f1f9f0e74c03fb5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/a1a35a19924f04ca496d2a7536abdf9f5851e4f7",
-                "reference": "a1a35a19924f04ca496d2a7536abdf9f5851e4f7",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/88271e7150a91af4f966be42f1f9f0e74c03fb5e",
+                "reference": "88271e7150a91af4f966be42f1f9f0e74c03fb5e",
                 "shasum": ""
             },
             "require": {
@@ -3823,7 +3823,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-04-21 17:07:56"
+            "time": "2016-05-26 19:32:41"
         },
         {
             "name": "torann/geoip",
@@ -4175,7 +4175,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/4b1c90815243ff3849544f8fc4378b6b0587eee3",
+                "url": "https://api.github.com/repos/codeclimate/php-test-reporter/zipball/c1e1d55738449147e29eead15cdedf3ff66fdca1",
                 "reference": "4b1c90815243ff3849544f8fc4378b6b0587eee3",
                 "shasum": ""
             },
