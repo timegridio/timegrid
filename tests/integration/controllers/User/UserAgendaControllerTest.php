@@ -455,7 +455,6 @@ class UserAgendaControllerTest extends TestCase
         $this->seeInDatabase('appointments', ['business_id' => $business->id, 'contact_id' => $contact->id]);
     }
 
-
     /**
      * @test
      */
@@ -574,7 +573,7 @@ class UserAgendaControllerTest extends TestCase
         $userTwo = $this->createUser();
 
         $business = $this->createBusiness([
-            'strategy' => 'dateslot'
+            'strategy' => 'dateslot',
             ]);
 
         $service = $this->makeService();
@@ -922,7 +921,7 @@ class UserAgendaControllerTest extends TestCase
         $userTwo = $this->createUser();
 
         $business = $this->createBusiness([
-            'strategy' => 'timeslot'
+            'strategy' => 'timeslot',
             ]);
         $business->owners()->save($this->createUser());
 
