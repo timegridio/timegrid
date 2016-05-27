@@ -16,6 +16,7 @@ class AuthComposer
         view()->share('isGuest', auth()->guest());
         view()->share('signedIn', auth()->check());
         view()->share('user', auth()->user());
+        view()->share('timezone', session()->get('timezone'));
 
         if (auth()->user()) {
             view()->share('gravatarURL', Gravatar::get(auth()->user()->email, ['size' => 24, 'secure' => true]));

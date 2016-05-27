@@ -15,6 +15,7 @@ class UserEventListener
     public function onUserLogin(Login $login)
     {
         $this->touchAudit($login->user);
+        $this->loadSessionPreferences($login->user);
 
         logger()->info("User logged in: UserId:{$login->user->id}");
     }
@@ -50,5 +51,14 @@ class UserEventListener
         $user->last_ip = request()->ip();
         $user->last_login_at = Carbon::now();
         $user->save();
+    }
+
+    protected function loadSessionPreferences(User $user)
+    {
+        logger()->info("Loading user preferences");
+        if ($timezone = $user->pref('timezone')) {
+            session()->set('timezone', $timezone);
+            logger()->info("Loaded user timezone from preferences: $timezone");
+        }
     }
 }
