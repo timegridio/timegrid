@@ -26,7 +26,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->visit('/')->click('My Reservations');
 
-        $this->see('You have no ongoing reservations by now');
+        $this->see('You have no ongoing reservations.');
     }
 
     /**
@@ -159,7 +159,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->visit('/')->click('My Reservations');
 
-        $this->see('You have no ongoing reservations')
+        $this->see('You have no ongoing reservations.')
              ->dontSee('Canceled');
     }
 
