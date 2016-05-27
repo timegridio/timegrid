@@ -12,10 +12,8 @@
         <li class="user-header">
             <img src="{{ $gravatarURL }}" class="img-circle" alt="{{ $user->name }}">
 
-            <p>
-                {{ $user->name }}
-                <small>{{ $user->email }}</small>
-            </p>
+            <p title="{{ $timezone }}">{{ $user->name }}</p>
+            <p><small>{{ $user->email }}</small></p>
         </li>
         <!-- Menu Body -->
         <li class="user-body">

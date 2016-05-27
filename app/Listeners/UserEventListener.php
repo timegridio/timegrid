@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
@@ -13,9 +14,8 @@ class UserEventListener
      */
     public function onUserLogin(Login $login)
     {
-        $login->user->last_ip = request()->ip();
-        $login->user->last_login_at = Carbon::now();
-        $login->user->save();
+        $this->touchAudit($login->user);
+        $this->loadSessionPreferences($login->user);
 
         logger()->info("User logged in: UserId:{$login->user->id}");
     }
@@ -44,5 +44,21 @@ class UserEventListener
             'Illuminate\Auth\Events\Logout',
             'App\Listeners\UserEventListener@onUserLogout'
         );
+    }
+
+    protected function touchAudit(User $user)
+    {
+        $user->last_ip = request()->ip();
+        $user->last_login_at = Carbon::now();
+        $user->save();
+    }
+
+    protected function loadSessionPreferences(User $user)
+    {
+        logger()->info("Loading user preferences");
+        if ($timezone = $user->pref('timezone')) {
+            session()->set('timezone', $timezone);
+            logger()->info("Loaded user timezone from preferences: $timezone");
+        }
     }
 }
