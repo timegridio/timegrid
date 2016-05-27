@@ -28,7 +28,7 @@ class ManagerBusinessAgendaControllerTest extends TestCase
         $this->assertResponseOk();
 
         // Then I see the appointment listed
-        $this->see('You have no ongoing reservations');
+        $this->see('You have no ongoing reservations.');
     }
 
     /**

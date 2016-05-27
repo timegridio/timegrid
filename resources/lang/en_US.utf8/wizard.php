@@ -11,8 +11,8 @@ return [
     'caption' => 'Do you need to provide online appointments for your services? Register your business and start giving bookings today.',
   ],
   'user' => [
-    'btn'     => 'I want to take reservations',
+    'btn'     => 'I want to make reservations',
     'header'  => 'I am a customer',
-    'caption' => 'Do you need to take a reservation for a service?',
+    'caption' => 'Do you need to make a reservation for a service?',
   ],
 ];
