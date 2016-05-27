@@ -44,7 +44,7 @@ return array (
   array (
     'alert' => 
     array (
-      'empty_list' => 'You have no ongoing reservations by now.',
+      'empty_list' => 'You have no ongoing reservations.',
       'no_vacancies' => 'Sorry, the business cannot take any reservations now.',
       'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
     ),
