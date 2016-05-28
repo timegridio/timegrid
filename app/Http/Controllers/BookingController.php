@@ -191,7 +191,7 @@ class BookingController extends Controller
     // HELPERS //
     /////////////
 
-    protected function splitTimes($vacancies, $service, $timezone = false)
+    protected function splitTimes($vacancies, $service, $timezone = false, $timeformat = 'H:i')
     {
         $times = [];
         foreach ($vacancies as $vacancy) {
@@ -208,7 +208,7 @@ class BookingController extends Controller
             for ($i = 0; $i <= $maxNumberOfSlots; $i++) {
                 $serviceEndTime = $beginTime->copy()->addMinutes($service->duration);
                 if ($vacancy->hasRoomBetween($beginTime, $serviceEndTime)) {
-                    $times[] = $beginTime->timezone($selectedTimezone)->toTimeString();
+                    $times[] = $beginTime->timezone($selectedTimezone)->format($timeformat);
                 }
                 $beginTime->addMinutes($step);
             }
