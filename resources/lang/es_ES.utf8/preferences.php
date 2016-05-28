@@ -5,6 +5,13 @@
 
 return [
   //==================================== Translations ====================================//
+  'App\\Models\\User' => [
+    'timezone' => [
+      'format' => 'Zona horaria',
+      'help'   => 'Zona horaria de preferencia',
+      'label'  => 'Zona horaria',
+    ],
+  ],
   'App\\Models\\Business' => [
     'appointment_cancellation_pre_hs' => [
       'format' => 'Cantida de horas',

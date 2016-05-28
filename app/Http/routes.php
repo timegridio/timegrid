@@ -118,6 +118,16 @@ Route::group(['middleware' => 'web', 'auth'], function () {
 
 Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
 
+    // USER PREFERENCES
+    Route::get('preferences', [
+        'as'   => 'user.preferences',
+        'uses' => 'User\UserPreferencesController@getPreferences',
+        ]);
+    Route::post('preferences', [
+        'as'   => 'user.preferences',
+        'uses' => 'User\UserPreferencesController@postPreferences',
+        ]);
+
     Route::get('agenda', [
         'as'   => 'user.agenda',
         'uses' => 'User\AgendaController@getIndex',
