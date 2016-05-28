@@ -17,7 +17,7 @@
     </td>
     <td>
         @if ($notification['extra'])
-            {{trans('notifications.'.$notification['body']['name'], ['user' => $notification['from']['name']] + json_decode($notification['extra'], true)) }}
+            {{trans('notifications.'.$notification['body']['name'], ['user' => $notification['from']['name']] + $notification['extra']) }}
         @else
             {{trans('notifications.'.$notification['body']['name'], ['user' => $notification['from']['name']]) }}
         @endif
