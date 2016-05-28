@@ -137,7 +137,7 @@ EOD;
         $this->get("api/vacancies/{$this->business->id}/{$service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ["09:00:00","09:20:00","09:40:00","10:00:00","10:20:00","10:40:00","11:00:00","11:20:00","11:40:00","12:00:00","12:20:00","12:40:00","13:00:00","13:20:00","13:40:00","14:00:00","14:20:00","14:40:00","15:00:00","15:20:00","15:40:00","16:00:00","16:20:00","16:40:00","17:00:00","17:20:00","17:40:00"]]);
+        $this->seeJsonContains(['times' => ["09:00","09:20","09:40","10:00","10:20","10:40","11:00","11:20","11:40","12:00","12:20","12:40","13:00","13:20","13:40","14:00","14:20","14:40","15:00","15:20","15:40","16:00","16:20","16:40","17:00","17:20","17:40"]]);
     }
 
     public function the_user_takes_a_reservation()
@@ -148,7 +148,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->business->services()->where('slug', 'hair-cut')->first()->id,
-            '_time'      => '09:00:00',
+            '_time'      => '09:00',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);
@@ -180,7 +180,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->business->services()->where('slug', 'brushing')->first()->id,
-            '_time'      => '09:30:00',
+            '_time'      => '09:30',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);
@@ -201,7 +201,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->business->services()->where('slug', 'washing')->first()->id,
-            '_time'      => '09:20:00',
+            '_time'      => '09:20',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);
@@ -220,7 +220,7 @@ EOD;
         $this->get("api/vacancies/{$this->business->id}/{$service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ["10:30:00","10:40:00","10:50:00","11:00:00","11:10:00","11:20:00","11:30:00","11:40:00","11:50:00","12:00:00","12:10:00","12:20:00","12:30:00","12:40:00","12:50:00","13:00:00","13:10:00","13:20:00","13:30:00","13:40:00","13:50:00","14:00:00","14:10:00","14:20:00","14:30:00","14:40:00","14:50:00","15:00:00","15:10:00","15:20:00","15:30:00","15:40:00","15:50:00","16:00:00","16:10:00","16:20:00","16:30:00","16:40:00","16:50:00","17:00:00","17:10:00","17:20:00","17:30:00","17:40:00","17:50:00"]]);
+        $this->seeJsonContains(['times' => ["10:30","10:40","10:50","11:00","11:10","11:20","11:30","11:40","11:50","12:00","12:10","12:20","12:30","12:40","12:50","13:00","13:10","13:20","13:30","13:40","13:50","14:00","14:10","14:20","14:30","14:40","14:50","15:00","15:10","15:20","15:30","15:40","15:50","16:00","16:10","16:20","16:30","16:40","16:50","17:00","17:10","17:20","17:30","17:40","17:50"]]);
     }
 
 
