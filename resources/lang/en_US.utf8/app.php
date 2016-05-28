@@ -49,6 +49,7 @@ return [
     'login'     => 'Login',
     'logout'    => 'Logout',
     'help'      => 'Help',
+    'preferences' => 'Preferences',
     'manager'   => [
       'business' => [
         'register' => 'SignUp Business',

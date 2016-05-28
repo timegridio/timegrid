@@ -49,6 +49,7 @@ return [
     'login'     => 'Iniciar Sesión',
     'logout'    => 'Salir',
     'help'      => 'Ayuda',
+    'preferences' => 'Preferencias',
     'manager'   => [
       'business' => [
         'register' => 'Registrar Prestación',

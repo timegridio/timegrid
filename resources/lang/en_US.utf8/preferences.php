@@ -5,6 +5,13 @@
 
 return [
   //==================================== Translations ====================================//
+  'App\\Models\\User' => [
+    'timezone' => [
+      'format' => 'Timezone',
+      'help'   => 'Preferred timezone',
+      'label'  => 'Timezone',
+    ],
+  ],
   'App\\Models\\Business' => [
     'appointment_cancellation_pre_hs' => [
       'format' => 'Number of hours',
