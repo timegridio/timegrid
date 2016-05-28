@@ -18,4 +18,7 @@ return [
                 'loading'    => 'Cargando',
             ],
         ],
+    'btn' => [
+        'pick-this-time' => 'Usar este horario',
+    ],
 ];

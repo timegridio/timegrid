@@ -18,4 +18,7 @@ return [
                 'loading'    => 'Loading',
             ],
         ],
+    'btn' => [
+        'pick-this-time' => 'Pick this time',
+    ],
 ];
