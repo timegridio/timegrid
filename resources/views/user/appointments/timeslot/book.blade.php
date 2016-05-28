@@ -75,7 +75,7 @@ $(document).ready(function(){
         steps.steps("next");
     });
 
-    $('#times').click(function(){
+    $('#times').change(function(){
         console.log('Selected time ' + $(this).val() );
         steps.steps("next");
     });
