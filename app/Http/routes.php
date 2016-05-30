@@ -80,7 +80,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth', 'as' => 'auth']
 // GUEST CONTEXT //
 ///////////////////
 
-Route::group(['middleware' => 'web', 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
 
     ///////////////////////////
     // PRIVATE HOME / WIZARD //
