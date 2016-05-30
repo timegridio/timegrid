@@ -6,7 +6,7 @@ timegrid
 ============
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000?style=flat-square)](https://gitter.im/alariva/timegridDevelopment)
-[![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
+[![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
 [![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
