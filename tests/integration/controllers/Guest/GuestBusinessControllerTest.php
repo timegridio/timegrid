@@ -108,7 +108,6 @@ class GuestBusinessControllerTest extends TestCase
         $this->visit('/'.$business->slug);
         $this->visit('auth/register');
         $this->type('test', 'name');
-        $this->type('test', 'username');
         $this->type('test@example.org', 'email');
         $this->type('aPassword', 'password');
         $this->type('aPassword', 'password_confirmation');

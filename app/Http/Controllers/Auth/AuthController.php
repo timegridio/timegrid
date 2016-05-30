@@ -53,7 +53,6 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         $rules = [
-                'username'             => 'required|min:3|max:25|unique:users',
                 'email'                => 'required|email|max:255|unique:users',
                 'password'             => 'required|confirmed|min:6',
                 'g-recaptcha-response' => 'required|captcha',
@@ -76,7 +75,7 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         $user = User::create([
-            'username' => $data['username'],
+            'username' => md5("{$data['name']}/{$data['email']}"),
             'name'     => $data['name'],
             'email'    => $data['email'],
             'password' => bcrypt($data['password']),

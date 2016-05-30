@@ -31,20 +31,14 @@
         <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 
         <div class="form-group has-feedback">
-            <input class="form-control" name="name" placeholder="{{ trans('auth.register.name') }}" value="{{ old('name') }}" data-minlength="3" required>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <div class="help-block with-errors"></div>
-        </div>
-
-        <div class="form-group has-feedback">
-            <input type="text" class="form-control" name="username" placeholder="{{ trans('auth.register.username') }}" value="{{ old('username') }}" id="email" required>
-            <span class="glyphicon glyphicon-user form-control-feedback"></span>
-            <div class="help-block with-errors"></div>
-        </div>
-
-        <div class="form-group has-feedback">
             <input type="email" class="form-control" name="email" placeholder="{{ trans('auth.register.email') }}" value="{{ old('email') }}" id="email" required>
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            <div class="help-block with-errors"></div>
+        </div>
+
+        <div class="form-group has-feedback">
+            <input class="form-control" name="name" placeholder="{{ trans('auth.register.name') }}" value="{{ old('name') }}" data-minlength="3" required>
+            <span class="glyphicon glyphicon-user form-control-feedback"></span>
             <div class="help-block with-errors"></div>
         </div>
 

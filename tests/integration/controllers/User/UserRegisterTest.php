@@ -19,7 +19,6 @@ class UserRegisterTest extends TestCase
         $this->seeRegistrationFormFields();
 
         $this->type($user->name, 'name');
-        $this->type($user->username, 'username');
         $this->type($user->email, 'email');
         $this->type('password', 'password');
         $this->type('password', 'password_confirmation');
@@ -41,7 +40,6 @@ class UserRegisterTest extends TestCase
         $this->seeRegistrationFormFields();
 
         $this->type($user->name, 'name');
-        $this->type($user->username, 'username');
         $this->type($user->email, 'email');
 
         $this->press('Register');
@@ -56,9 +54,8 @@ class UserRegisterTest extends TestCase
     protected function seeRegistrationFormFields()
     {
         $this->see('Hi! We are going to build your profile');
-        $this->see('Your name');
-        $this->see('Username');
         $this->see('Your Email');
+        $this->see('Your name');
         $this->see('A password');
         $this->see('Repeat password');
 
