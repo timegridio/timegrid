@@ -27,6 +27,7 @@
     "jquery-slugify": "~1.2.3",
     "jquery-highlighttextarea": "~3.1.1",
     "mjolnic-bootstrap-colorpicker": "~2.3.0",
-    "jquery.steps": "^1.1.0"
+    "jquery.steps": "^1.1.0",
+    "bootstrap-switch": "^3.3.2"
   }
 }
