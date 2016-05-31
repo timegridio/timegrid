@@ -433,6 +433,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
                 'as'   => 'manager.business.vacancy.store',
                 'uses' => 'BusinessVacancyController@store',
             ]);
+            Route::post('update', [
+                'as'   => 'manager.business.vacancy.update',
+                'uses' => 'BusinessVacancyController@update',
+            ]);
         });
 
     });

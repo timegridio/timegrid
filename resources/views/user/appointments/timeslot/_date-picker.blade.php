@@ -55,7 +55,7 @@ $(document).ready(function() {
         datesDisabled: false,
         inline: true,
         todayHighlight: true,
-        daysOfWeekDisabled: '0',
+        // daysOfWeekDisabled: '0',
         debug: true
     }).on('changeDate', function(e) {
 
