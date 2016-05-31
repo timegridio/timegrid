@@ -62,7 +62,8 @@ elixir(function(mix) {
         './bower_components/jquery-slugify/dist/slugify.min.js',
         './bower_components/bootstrap-list-filter/bootstrap-list-filter.min.js',
         './bower_components/mjolnic-bootstrap-colorpicker/bootstrap-colorpicker-2.3.0/dist/js/bootstrap-colorpicker.min.js',
-        './bower_components/jquery.steps/build/jquery.steps.min.js'
+        './bower_components/jquery.steps/build/jquery.steps.min.js',
+        './bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js',
     ], 'public/js/forms.js');
 
     mix.copy([
@@ -78,7 +79,8 @@ elixir(function(mix) {
         './bower_components/select2/dist/css/select2.min.css',
         './bower_components/select2-bootstrap-theme/dist/select2-bootstrap.min.css',
         './bower_components/mjolnic-bootstrap-colorpicker/bootstrap-colorpicker-2.3.0/dist/css/bootstrap-colorpicker.min.css',
-        './bower_components/jquery.steps/demo/css/jquery.steps.css'
+        './bower_components/jquery.steps/demo/css/jquery.steps.css',
+        './bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.min.css'
     ], 'public/css/forms.css');
 
     // Highlight
