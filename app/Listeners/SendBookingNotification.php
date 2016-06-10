@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Handlers\Events;
+namespace App\Listeners;
 
 use App\Events\NewAppointmentWasBooked;
 use App\TransMail;

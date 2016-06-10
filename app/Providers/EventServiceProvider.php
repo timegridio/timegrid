@@ -14,20 +14,20 @@ class EventServiceProvider extends ServiceProvider
      */
     protected $listen = [
         'App\Events\NewUserWasRegistered' => [
-            'App\Handlers\Events\AutoConfigureUserPreferences',
-            'App\Handlers\Events\SendMailUserWelcome',
+            'App\Listeners\AutoConfigureUserPreferences',
+            'App\Listeners\SendMailUserWelcome',
         ],
         'App\Events\NewAppointmentWasBooked' => [
-            'App\Handlers\Events\SendBookingNotification',
+            'App\Listeners\SendBookingNotification',
         ],
         'App\Events\NewContactWasRegistered' => [
-            'App\Handlers\Events\LinkContactToExistingUser',
+            'App\Listeners\LinkContactToExistingUser',
         ],
         'App\Events\AppointmentWasConfirmed' => [
-            'App\Handlers\Events\SendAppointmentConfirmationNotification',
+            'App\Listeners\SendAppointmentConfirmationNotification',
         ],
         'App\Events\AppointmentWasCanceled' => [
-            'App\Handlers\Events\SendAppointmentCancellationNotification',
+            'App\Listeners\SendAppointmentCancellationNotification',
         ],
     ];
 
