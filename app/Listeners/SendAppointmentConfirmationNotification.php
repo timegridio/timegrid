@@ -51,6 +51,7 @@ class SendAppointmentConfirmationNotification
             'email' => $event->appointment->contact->email,
         ];
         $this->transmail->locale($event->appointment->business->locale)
+                        ->timezone($event->user->pref('timezone'))
                         ->template('appointments.user._confirmed')
                         ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
                         ->send($header, $params);

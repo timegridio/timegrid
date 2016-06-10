@@ -51,6 +51,7 @@ class SendBookingNotification
             'email' => $event->user->email,
         ];
         $this->transmail->locale($event->appointment->business->locale)
+                        ->timezone($event->user->pref('timezone'))
                         ->template('appointments.user._new')
                         ->subject('user.appointment.reserved.subject')
                         ->send($header, $params);
@@ -65,6 +66,7 @@ class SendBookingNotification
             'email' => $event->appointment->business->owner()->email,
         ];
         $this->transmail->locale($event->appointment->business->locale)
+                        ->timezone($event->appointment->business->owner()->pref('timezone'))
                         ->template('appointments.manager._new')
                         ->subject('manager.appointment.reserved.subject')
                         ->send($header, $params);
