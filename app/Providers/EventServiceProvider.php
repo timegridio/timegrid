@@ -29,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\AppointmentWasCanceled' => [
             'App\Listeners\SendAppointmentCancellationNotification',
         ],
+        'App\Events\NewSoftAppointmentWasBooked' => [
+            'App\Listeners\SendSofAppointmentValidationRequest'
+        ],
     ];
 
     /**

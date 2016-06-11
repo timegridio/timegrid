@@ -1,17 +1,44 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/05/28 01:10:25 
-*************************************************************************/
 
 return  [
   //============================== New strings to translate ==============================//
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/appointments/timeslot/book.blade.php
-  'appointments' =>  [
-    'form' =>  [
-      'duration' =>  [
-        'label_edit' => 'TODO: label_edit',
-        'label'      => 'Duración',
+  'booking' =>  [
+    'msg' =>  [
+      'validate' =>  [
+        'error' =>  [
+          'bad-code'                              => 'Código de cita inválido',
+          'no-appointment-was-found'              => 'No encontramos citas con ese código',
+          'your-appointment-is-already-confirmed' => 'Bien, tu cita ya está confirmada',
+        ],
+        'success' =>  [
+          'your-appointment-was-confirmed' => 'Confirmaste tu cita exitosamente',
+        ],
       ],
+      'store' =>  [
+        'error'            => 'Lo sentimos, no hay la disponibilidad está agotada para esta reserva.',
+        'not-registered'   => 'Debés estar en la agenda de contactos del proveedor para hacer reservas como invitado.',
+        'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
+        'success'          => '¡Tomá nota! Reservamos tu cita bajo el código :code',
+      ],
+      'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
+    ],
+  ],
+  //==================================== Translations ====================================//
+  'appointments' =>  [
+    'alert' =>  [
+      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
+      'empty_list'               => 'No tienes reservas en curso ahora.',
+      'no_vacancies'             => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
+    ],
+    'btn' =>  [
+      'book'                     => 'Reservar Cita',
+      'book_in_biz'              => 'Reservar cita en :biz',
+      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
+      'calendar'                 => 'Ver Calendario',
+      'confirm_booking'          => 'Confirmar reserva de cita',
+      'more_dates'               => 'Ver más fechas',
+    ],
+    'form' =>  [
       'btn' =>  [
         'submit' => 'Confirmar',
       ],
@@ -20,6 +47,9 @@ return  [
       ],
       'date' =>  [
         'label' => 'Fecha',
+      ],
+      'email' =>  [
+        'label' => 'Tu Email',
       ],
       'service' =>  [
         'label' => 'Servicio',
@@ -35,19 +65,6 @@ return  [
         'title' => 'Reserva una cita en :business',
       ],
     ],
-    'alert' =>  [
-      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
-      'empty_list'               => 'No tienes reservas en curso ahora.',
-      'no_vacancies'             => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
-    ],
-    'btn' =>  [
-      'book'                     => 'Reservar Cita',
-      'book_in_biz'              => 'Reservar cita en :biz',
-      'book_in_biz_on_behalf_of' => 'Reservar cita para :contact en :biz',
-      'calendar'                 => 'Ver Calendario',
-      'confirm_booking'          => 'Confirmar reserva de cita',
-      'more_dates'               => 'Ver más fechas',
-    ],
     'index' =>  [
       'th' =>  [
         'business'    => 'Prestador',
@@ -62,27 +79,6 @@ return  [
         'status'      => 'Estado',
       ],
       'title' => 'Citas',
-    ],
-  ],
-  // Defined in file /home/alariva/timegrid.io/app/app/Http/Controllers/User/UserPreferencesController.php
-  'msg' =>  [
-    'preferences' =>  [
-      'success' => 'Hemos guardado tus preferencias de usuario.',
-    ],
-  ],
-  // Defined in file /home/alariva/timegrid.io/app/resources/views/user/preferences/edit.blade.php
-  'preferences' =>  [
-    'title' => 'Preferencias',
-  ],
-  //==================================== Translations ====================================//
-  'booking' =>  [
-    'msg' =>  [
-      'store' =>  [
-        'error'            => 'Lo sentimos, no hay la disponibilidad está agotada para esta reserva.',
-        'sorry_duplicated' => 'Lo sentimos, tu cita se duplica con el :code reservado anteriormente',
-        'success'          => '¡Tomá nota! Reservamos tu cita bajo el código :code',
-      ],
-      'you_are_not_subscribed_to_business' => 'Para pedir una cita debés suscribirte al prestador antes',
     ],
   ],
   'business' =>  [
@@ -151,12 +147,12 @@ return  [
       ],
     ],
   ],
-  //================================== Obsolete strings ==================================//
-  'LLH:obsolete' =>  [
-    'business' =>  [
-      'btn' =>  [
-        'subscribe' => 'Suscribir',
-      ],
+  'msg' =>  [
+    'preferences' =>  [
+      'success' => 'Hemos guardado tus preferencias de usuario.',
     ],
+  ],
+  'preferences' =>  [
+    'title' => 'Preferencias',
   ],
 ];

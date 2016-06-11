@@ -167,11 +167,15 @@ class BookingController extends Controller
 
         $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
-        if(!$timezone)
-        {
-            $timezone = auth()->user()->pref('timezone');
-            logger()->info('User Timezone Preference: ' . $timezone);
+        if ($timezone == false) {
+            if (auth()->guest()) {
+                $timezone = $business->timezone;
+            } else {
+                $timezone = auth()->user()->pref('timezone');
+            }
         }
+
+        logger()->info('Using Timezone: '.$timezone);
 
         $times = $this->splitTimes($vacancies, $service, $timezone);
 
@@ -181,8 +185,8 @@ class BookingController extends Controller
                 'id'       => $service->id,
                 'duration' => $service->duration,
             ],
-            'date'  => $date,
-            'times' => $times,
+            'date'     => $date,
+            'times'    => $times,
             'timezone' => $timezone,
         ], 200);
     }
@@ -197,7 +201,7 @@ class BookingController extends Controller
         foreach ($vacancies as $vacancy) {
             $selectedTimezone = $timezone ?: $vacancy->business->timezone;
 
-            logger()->info('Using Timezone: ' . $selectedTimezone);
+            logger()->info('Using Timezone: '.$selectedTimezone);
 
             $beginTime = $vacancy->start_at->copy();
 

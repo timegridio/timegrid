@@ -23,7 +23,7 @@ class ContactService
      */
     public function register(Business $business, $data)
     {
-        if (false === $contact = self::getExisting($business, $data['nin'])) {
+        if (false === $contact = self::getExisting($business, $data['email'])) {
             #$data['birthdate'] = $data['birthdate'] != '' ? Carbon::parse($data['birthdate']) : null;
             $this->sanitizeDate($data['birthdate']);
 
@@ -90,17 +90,17 @@ class ContactService
      * Find an existing contact with the same NIN.
      *
      * @param Business $business
-     * @param string   $nin
+     * @param string   $email
      *
      * @return Timegridio\Concierge\Models\Contact
      */
-    public function getExisting(Business $business, $nin)
+    public function getExisting(Business $business, $email)
     {
-        if (trim($nin) == '') {
+        if (trim($email) == '') {
             return false;
         }
 
-        $existingContacts = $business->contacts()->whereNotNull('nin')->where(['nin' => $nin])->get();
+        $existingContacts = $business->contacts()->whereNotNull('email')->where(['email' => $email])->get();
 
         foreach ($existingContacts as $existingContact) {
             logger()->info("[ADVICE] Found existing contactId:{$existingContact->id}");

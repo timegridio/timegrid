@@ -7,12 +7,14 @@
 
 @section('content')
 <div class="container">
-{!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form']) !!}
+{!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form', 'id' => 'form', 'data-toggle' => 'validator', 'role' => 'form']) !!}
 {!! Form::hidden('businessId', $business->id, ['required', 'id' => 'business']) !!}
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
 {!! Form::hidden('_timezone', null, ['id'=>'timezone', 'readonly']) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
+@if(isset($contact))
 {!! Form::hidden('contact_id', $contact->id, ['required', 'id'=>'contact']) !!}
+@endif
 
 <h1 class="text-center">{{ $business->name }}</h1>
 <div id="steps">
@@ -34,6 +36,7 @@
 <script src="{{ asset('js/forms.js') }}"></script>
 <script>
 $(document).ready(function(){
+
     $("#steps").steps({
         headerTag: "h3",
         bodyTag: "section",
@@ -79,6 +82,7 @@ $(document).ready(function(){
         console.log('Selected time ' + $(this).val() );
         steps.steps("next");
     });
+
 });
 </script>
 @endsection
