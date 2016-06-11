@@ -120,8 +120,7 @@ class TransMail
 
     public function switchTimezone($timezone)
     {
-        if($timezone !== null && $timezone != '')
-        {
+        if ($timezone !== null && $timezone != '') {
             $this->revertTimezone = session()->get('timezone');
 
             session()->set('timezone', $timezone);
@@ -179,7 +178,7 @@ class TransMail
             $mail->to($header['email'], $header['name'])
                  ->subject($this->getSubject());
         });
-        
+
         $this->switchLocale($this->revertLocale);
         $this->switchTimezone($this->revertTimezone);
     }
@@ -193,17 +192,15 @@ class TransMail
      *
      * @param string $posixLocale
      *
-     * @return void
+     * @return $this
      */
     protected function switchLocale($posixLocale)
     {
         if (function_exists($this->localeSwitchFunction)) {
             call_user_func($this->localeSwitchFunction, $posixLocale);
-
-            return $this;
         }
 
-        return false;
+        return $this;
     }
 
     /**
