@@ -15,7 +15,7 @@
 // AJAX CALLS //
 ////////////////
 
-Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
 
     // TODO: 'booking' should be moved out of api into the proper group.
     Route::post('booking', [
@@ -181,7 +181,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 // SELECTED BUSINESS SLUG CONTEXT //
 ////////////////////////////////////
 
-Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
 
     ///////////////////////////
     // BUSINESS USER CONTEXT //
@@ -198,6 +198,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             Route::get('book', [
                 'as'   => 'book',
                 'uses' => 'AgendaController@getAvailability',
+            ]);
+            Route::get('validate', [
+                'as'   => 'validate',
+                'uses' => 'AgendaController@getValidate',
             ]);
         });
 

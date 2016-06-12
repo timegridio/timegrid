@@ -1,8 +1,8 @@
 <?php
 
+use Faker\Factory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Timegridio\Concierge\Models\Appointment;
-use Faker\Factory;
 
 class UserAgendaControllerTest extends TestCase
 {
@@ -319,22 +319,6 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
-    public function it_prevents_showing_vacancies_to_unsubcribed_users()
-    {
-        $user = $this->createUser();
-
-        $this->actingAs($user);
-
-        $business = $this->createBusiness(['name' => 'tosto this tosti']);
-
-        $this->visit(route('user.booking.book', ['business' => $business]));
-
-        $this->see('To be able to do a reservation you must subscribe the business first');
-    }
-
-    /**
-     * @test
-     */
     public function it_tries_to_query_vacancies_without_subscription()
     {
         $owner = $this->createUser();
@@ -355,104 +339,6 @@ class UserAgendaControllerTest extends TestCase
 
         $this->see('Subscribe')
              ->see($business->name);
-    }
-
-    //////////////
-    // DATESLOT //
-    //////////////
-
-    /**
-     * @test
-     */
-    public function it_makes_a_reservation_with_dateslot()
-    {
-        $user = $this->createUser();
-        $this->actingAs($user);
-
-        $owner = $this->createUser();
-        $business = $this->createBusiness([
-            'name'     => 'tosto this tosti',
-            'strategy' => 'dateslot',
-            ]);
-        $business->owners()->save($owner);
-
-        $service = $this->makeService();
-        $business->services()->save($service);
-
-        $contact = $this->createContact([
-            'user_id' => $user->id,
-            ]);
-        $business->contacts()->save($contact);
-
-        $this->vacancy = $this->makeVacancy([
-            'business_id' => $business->id,
-            'service_id'  => $service->id,
-            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
-            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
-            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
-            'capacity'    => 1,
-            ]);
-        $this->vacancy->service()->associate($service);
-        $business->vacancies()->save($this->vacancy);
-
-        $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
-            'businessId' => $business->id,
-            'service_id' => $service->id,
-            '_time'      => $this->vacancy->start_at->timezone($business->timezone)->toTimeString(),
-            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
-            'comments'   => 'test comments',
-            ]);
-
-        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
-    }
-
-    /**
-     * @test
-     */
-    public function it_takes_a_reservation_with_dateslot_on_behalf_of()
-    {
-        $user = $this->createUser();
-        $this->actingAs($user);
-
-        $owner = $this->createUser();
-        $business = $this->createBusiness([
-            'name'     => 'tosto this tosti',
-            'strategy' => 'dateslot',
-            ]);
-        $business->owners()->save($owner);
-
-        $service = $this->makeService();
-        $business->services()->save($service);
-
-        $contact = $this->createContact([
-            'user_id' => $user->id,
-            ]);
-        $business->contacts()->save($contact);
-
-        $this->vacancy = $this->makeVacancy([
-            'business_id' => $business->id,
-            'service_id'  => $service->id,
-            'date'        => Carbon::parse('today 00:00 '.$business->timezone)->toDateString(),
-            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
-            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
-            'capacity'    => 1,
-            ]);
-        $this->vacancy->service()->associate($service);
-        $business->vacancies()->save($this->vacancy);
-
-        $this->actingAs($owner);
-
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
-            'businessId' => $business->id,
-            'service_id' => $service->id,
-            'contact_id' => $contact->id,
-            '_time'      => $this->vacancy->start_at->timezone($business->timezone)->toTimeString(),
-            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
-            'comments'   => 'test comments',
-            ]);
-
-        $this->seeInDatabase('appointments', ['business_id' => $business->id, 'contact_id' => $contact->id]);
     }
 
     /**
@@ -661,6 +547,49 @@ class UserAgendaControllerTest extends TestCase
             ]);
 
         $this->dontSeeInDatabase('appointments', ['business_id' => $business->id]);
+    }
+
+    /**
+     * @test
+     */
+    public function a_guest_user_may_make_a_reservation()
+    {
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $contact = $this->makeContact();
+        $contact->email = 'guest@example.org';
+        $business->contacts()->save($contact);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            'email'      => 'guest@example.org',
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
+        $this->seeInDatabase('contacts', ['email' => 'guest@example.org']);
     }
 
     //////////////
