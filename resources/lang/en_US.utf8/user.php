@@ -55,7 +55,7 @@ return  [
         'label' => 'Service',
       ],
       'time' =>  [
-        'label' => 'At what time would you like to boot?',
+        'label' => 'What time would you like to book?',
       ],
       'timetable' =>  [
         'instructions' => 'Select a service to reserve',
