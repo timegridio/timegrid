@@ -21,4 +21,13 @@ trait CreateAppointment
 
         return $appointment;
     }
+
+    private function makeSoftAppointment(Business $business, Contact $contact, $override = [])
+    {
+        $appointment = factory(Appointment::class)->make($override);
+        $appointment->contact()->associate($contact);
+        $appointment->business()->associate($business);
+
+        return $appointment;
+    }
 }

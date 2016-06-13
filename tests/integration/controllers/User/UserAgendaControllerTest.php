@@ -739,6 +739,34 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_validates_a_soft_appotinment_through_a_mailed_link()
+    {
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $contact = $this->createContact([
+            'user_id' => null,
+            ]);
+        $business->contacts()->save($contact);
+
+        $appointment = $this->makeSoftAppointment($business, $contact);
+        $appointment->save();
+
+        $code = $appointment->code;
+        $email = $appointment->contact->email;
+
+        $this->visit(route('user.booking.validate', compact('business', 'code', 'email')));
+
+        $this->see('You confirmed your appointment successfully');
+        $this->see($appointment->code);
+    }
+
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_reservation_with_timeslot()
     {
         $user = $this->createUser();
