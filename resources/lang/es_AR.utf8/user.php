@@ -2,19 +2,19 @@
 
 return  [
   //============================== New strings to translate ==============================//
-  'booking' =>  [
-    'msg' =>  [
-      'validate' =>  [
-        'error' =>  [
+  'booking' => [
+    'msg' => [
+      'validate' => [
+        'error' => [
           'bad-code'                              => 'Código de turno inválido',
           'no-appointment-was-found'              => 'No encontramos turnos con ese código',
-          'your-appointment-is-already-confirmed' => 'Bien, tu turno ya está confirmada',
         ],
-        'success' =>  [
-          'your-appointment-was-confirmed' => 'Confirmaste tu turno exitosamente',
+        'success' => [
+          'your-appointment-is-already-confirmed' => 'Bien, tu turno ya está confirmada',
+          'your-appointment-was-confirmed'        => 'Confirmaste tu turno exitosamente',
         ],
       ],
-      'store' =>  [
+      'store' => [
         'error'            => 'Lo sentimos, no hay la disponibilidad está agotada para esta reserva.',
         'not-registered'   => 'Debés estar en la agenda de contactos del proveedor para hacer reservas como invitado.',
         'sorry_duplicated' => 'Lo sentimos, tu turno se duplica con el :code reservado anteriormente',
@@ -24,13 +24,13 @@ return  [
     ],
   ],
   //==================================== Translations ====================================//
-  'appointments' =>  [
-    'alert' =>  [
+  'appointments' => [
+    'alert' => [
       'book_in_biz_on_behalf_of' => 'Reservar turno para :contact en :biz',
       'empty_list'               => 'No tienes reservas en curso ahora.',
       'no_vacancies'             => 'Lo sentimos, el prestador no puede tomar reservas al momento.',
     ],
-    'btn' =>  [
+    'btn' => [
       'book'                     => 'Reservar Turno',
       'book_in_biz'              => 'Reservar turno en :biz',
       'book_in_biz_on_behalf_of' => 'Reservar turno para :contact en :biz',
@@ -38,35 +38,35 @@ return  [
       'confirm_booking'          => 'Confirmar reserva de turno',
       'more_dates'               => 'Ver más fechas',
     ],
-    'form' =>  [
-      'btn' =>  [
+    'form' => [
+      'btn' => [
         'submit' => 'Confirmar',
       ],
-      'comments' =>  [
+      'comments' => [
         'label' => '¿ Querés dejarle algún comentario al prestador ?',
       ],
-      'date' =>  [
+      'date' => [
         'label' => 'Fecha',
       ],
-      'email' =>  [
+      'email' => [
         'label' => 'Tu Email',
       ],
-      'service' =>  [
+      'service' => [
         'label' => 'Servicio',
       ],
-      'time' =>  [
+      'time' => [
         'label' => '¿ Qué horario querés reservar ?',
       ],
-      'timetable' =>  [
+      'timetable' => [
         'instructions' => 'Selecciona un servicio para reservar turno',
-        'msg'          =>  [
+        'msg'          => [
           'no_vacancies' => 'No hay disponibilidades para esta fecha',
         ],
         'title' => 'Reserva un turno en :business',
       ],
     ],
-    'index' =>  [
-      'th' =>  [
+    'index' => [
+      'th' => [
         'business'    => 'Prestador',
         'calendar'    => 'Fecha',
         'code'        => 'Código',
@@ -81,78 +81,78 @@ return  [
       'title' => 'Turnos',
     ],
   ],
-  'business' =>  [
-    'btn' =>  [
+  'business' => [
+    'btn' => [
       'subscribe_to' => 'Suscribirme a :business',
     ],
   ],
-  'businesses' =>  [
-    'index' =>  [
-      'btn' =>  [
+  'businesses' => [
+    'index' => [
+      'btn' => [
         'create'       => 'Registrar Prestación',
         'manage'       => 'Mis Prestaciones',
         'power_create' => 'Registrá tu comercio ahora',
       ],
       'title' => 'Prestadores disponibles',
     ],
-    'list' =>  [
+    'list' => [
       'no_businesses' => 'No se econtraron prestadores.',
     ],
-    'subscriptions' =>  [
+    'subscriptions' => [
       'none_found' => 'No hay suscripciones disponibles.',
       'title'      => 'Suscripciones',
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'store'  => 'Guardar',
       'update' => 'Editar',
     ],
-    'create' =>  [
+    'create' => [
       'help'  => '¡Bien hecho! Ya casi estas listo. Llena tu perfil por primera vez para que tu reserva se maneje sin consecuencia. Podrás cambiar esta información por empresa si deseas.',
       'title' => 'Mis datos',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'TODO: success',
       ],
-      'store' =>  [
+      'store' => [
         'associated_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',
         'success'                     => 'Guardado',
-        'warning'                     =>  [
+        'warning'                     => [
           'already_registered' => 'Se asoció tu perfil a los datos ya registrados',
         ],
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Actualizado',
       ],
     ],
   ],
-  'dashboard' =>  [
-    'card' =>  [
-      'agenda' =>  [
+  'dashboard' => [
+    'card' => [
+      'agenda' => [
         'button'      => 'Ver Agenda',
         'description' => 'Revisa tu turno actual en agenda.|[2, Inf] Revisa tus turnos actuales en agenda.',
         'title'       => 'Tu turno|[2, Inf] Tus Turnos',
       ],
-      'directory' =>  [
+      'directory' => [
         'button'      => 'Ver Directorio',
         'description' => 'Conoce los comercions en los que puedes reservar servicios.',
         'title'       => 'Directorio',
       ],
-      'subscriptions' =>  [
+      'subscriptions' => [
         'button'      => 'Mis Suscripciones',
         'description' => 'Revisa los comercios a los que ya estás suscripto.',
         'title'       => 'Suscripciones',
       ],
     ],
   ],
-  'msg' =>  [
-    'preferences' =>  [
+  'msg' => [
+    'preferences' => [
       'success' => 'Hemos guardado tus preferencias de usuario.',
     ],
   ],
-  'preferences' =>  [
+  'preferences' => [
     'title' => 'Preferencias',
   ],
 ];

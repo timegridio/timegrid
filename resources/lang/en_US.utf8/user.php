@@ -2,19 +2,19 @@
 
 return  [
   //============================== New strings to translate ==============================//
-  'booking' =>  [
-    'msg' =>  [
-      'validate' =>  [
-        'error' =>  [
+  'booking' => [
+    'msg' => [
+      'validate' => [
+        'error' => [
           'bad-code'                              => 'Sorry, invalid appointment code',
           'no-appointment-was-found'              => 'Sorry, no appointments were found with that code',
-          'your-appointment-is-already-confirmed' => 'Cool, your appointment is already confirmed',
         ],
-        'success' =>  [
-          'your-appointment-was-confirmed' => 'You confirmed your appointment successfully',
+        'success' => [
+          'your-appointment-is-already-confirmed' => 'Cool, your appointment is already confirmed',
+          'your-appointment-was-confirmed'        => 'You confirmed your appointment successfully',
         ],
       ],
-      'store' =>  [
+      'store' => [
         'error'            => 'Sorry, there is no longer availability for the attempted reservation.',
         'not-registered'   => 'You need to be listed on the contractor\'s addressbook in order to make a guest reservation.',
         'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
@@ -24,13 +24,13 @@ return  [
     ],
   ],
   //==================================== Translations ====================================//
-  'appointments' =>  [
-    'alert' =>  [
+  'appointments' => [
+    'alert' => [
       'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
       'empty_list'               => 'You have no ongoing reservations.',
       'no_vacancies'             => 'Sorry, the business cannot take any reservations now.',
     ],
-    'btn' =>  [
+    'btn' => [
       'book'                     => 'Book appointment',
       'book_in_biz'              => 'Book appointment for :biz',
       'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
@@ -38,35 +38,35 @@ return  [
       'confirm_booking'          => 'Confirm appointment reservation',
       'more_dates'               => 'Check more dates',
     ],
-    'form' =>  [
-      'btn' =>  [
+    'form' => [
+      'btn' => [
         'submit' => 'Confirm',
       ],
-      'comments' =>  [
+      'comments' => [
         'label' => 'Would you like to leave any comments for the provider?',
       ],
-      'date' =>  [
+      'date' => [
         'label' => 'Date',
       ],
-      'email' =>  [
+      'email' => [
         'label' => 'Your email',
       ],
-      'service' =>  [
+      'service' => [
         'label' => 'Service',
       ],
-      'time' =>  [
+      'time' => [
         'label' => 'What time would you like to book?',
       ],
-      'timetable' =>  [
+      'timetable' => [
         'instructions' => 'Select a service to reserve',
-        'msg'          =>  [
+        'msg'          => [
           'no_vacancies' => 'There is no availability for this date',
         ],
         'title' => 'Reserve appointment at :business',
       ],
     ],
-    'index' =>  [
-      'th' =>  [
+    'index' => [
+      'th' => [
         'business'    => 'Business',
         'calendar'    => 'Date',
         'code'        => 'Code',
@@ -81,78 +81,78 @@ return  [
       'title' => 'Appointments',
     ],
   ],
-  'business' =>  [
-    'btn' =>  [
+  'business' => [
+    'btn' => [
       'subscribe_to' => 'Subscribe to :business',
     ],
   ],
-  'businesses' =>  [
-    'index' =>  [
-      'btn' =>  [
+  'businesses' => [
+    'index' => [
+      'btn' => [
         'create'       => 'Register business',
         'manage'       => 'My businesses',
         'power_create' => 'Register now',
       ],
       'title' => 'Available businesses',
     ],
-    'list' =>  [
+    'list' => [
       'no_businesses' => 'No businesses available.',
     ],
-    'subscriptions' =>  [
+    'subscriptions' => [
       'none_found' => 'No subscriptions available.',
       'title'      => 'Subscriptions',
     ],
   ],
-  'contacts' =>  [
-    'btn' =>  [
+  'contacts' => [
+    'btn' => [
       'store'  => 'Save',
       'update' => 'Update',
     ],
-    'create' =>  [
+    'create' => [
       'help'  => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
       'title' => 'My profile',
     ],
-    'msg' =>  [
-      'destroy' =>  [
+    'msg' => [
+      'destroy' => [
         'success' => 'Deleted successfully',
       ],
-      'store' =>  [
+      'store' => [
         'associated_existing_contact' => 'Your profile was attached to an existing one',
         'success'                     => 'Successfully saved',
-        'warning'                     =>  [
+        'warning'                     => [
           'already_registered' => 'This profile was already registered',
         ],
       ],
-      'update' =>  [
+      'update' => [
         'success' => 'Updated successfully',
       ],
     ],
   ],
-  'dashboard' =>  [
-    'card' =>  [
-      'agenda' =>  [
+  'dashboard' => [
+    'card' => [
+      'agenda' => [
         'button'      => 'See Agenda',
         'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
         'title'       => 'One appointment|[2,Inf] Your appointments',
       ],
-      'directory' =>  [
+      'directory' => [
         'button'      => 'Browse Directory',
         'description' => 'Browse the directory and book your service.',
         'title'       => 'Directory',
       ],
-      'subscriptions' =>  [
+      'subscriptions' => [
         'button'      => 'See Subscriptions',
         'description' => 'Manage your subscriptions to businesses.',
         'title'       => 'Subscriptions',
       ],
     ],
   ],
-  'msg' =>  [
-    'preferences' =>  [
+  'msg' => [
+    'preferences' => [
       'success' => 'Your preferences have been saved.',
     ],
   ],
-  'preferences' =>  [
+  'preferences' => [
     'title' => 'My preferences',
   ],
 ];

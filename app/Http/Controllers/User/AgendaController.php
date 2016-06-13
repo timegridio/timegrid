@@ -249,7 +249,7 @@ class AgendaController extends Controller
         }
 
         if ($appointment->status == Appointment::STATUS_CONFIRMED) {
-            flash()->error(trans('user.booking.msg.validate.error.your-appointment-is-already-confirmed'));
+            flash()->success(trans('user.booking.msg.validate.success.your-appointment-is-already-confirmed'));
 
             return view('guest.appointment.show', compact('appointment'));
         }
