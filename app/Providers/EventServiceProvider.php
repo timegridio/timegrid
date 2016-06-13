@@ -13,24 +13,24 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\NewUserWasRegistered' => [
-            'App\Listeners\AutoConfigureUserPreferences',
-            'App\Listeners\SendMailUserWelcome',
+        \App\Events\NewUserWasRegistered::class => [
+            \App\Listeners\AutoConfigureUserPreferences::class,
+            \App\Listeners\SendMailUserWelcome::class,
         ],
-        'App\Events\NewAppointmentWasBooked' => [
-            'App\Listeners\SendBookingNotification',
+        \App\Events\NewAppointmentWasBooked::class => [
+            \App\Listeners\SendBookingNotification::class,
         ],
-        'App\Events\NewContactWasRegistered' => [
-            'App\Listeners\LinkContactToExistingUser',
+        \App\Events\NewContactWasRegistered::class => [
+            \App\Listeners\LinkContactToExistingUser::class,
         ],
-        'App\Events\AppointmentWasConfirmed' => [
-            'App\Listeners\SendAppointmentConfirmationNotification',
+        \App\Events\AppointmentWasConfirmed::class => [
+            \App\Listeners\SendAppointmentConfirmationNotification::class,
         ],
-        'App\Events\AppointmentWasCanceled' => [
-            'App\Listeners\SendAppointmentCancellationNotification',
+        \App\Events\AppointmentWasCanceled::class => [
+            \App\Listeners\SendAppointmentCancellationNotification::class,
         ],
-        'App\Events\NewSoftAppointmentWasBooked' => [
-            'App\Listeners\SendSofAppointmentValidationRequest'
+        \App\Events\NewSoftAppointmentWasBooked::class => [
+            \App\Listeners\SendSofAppointmentValidationRequest::class
         ],
     ];
 
@@ -40,7 +40,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        'App\Listeners\UserEventListener',
+        \App\Listeners\UserEventListener::class,
     ];
 
     /**

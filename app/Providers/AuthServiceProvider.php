@@ -13,8 +13,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Timegridio\Concierge\Models\Business' => 'App\Policies\BusinessPolicy',
-        'Timegridio\Concierge\Models\Contact'  => 'App\Policies\ContactPolicy',
+        \Timegridio\Concierge\Models\Business::class => \App\Policies\BusinessPolicy::class,
+        \Timegridio\Concierge\Models\Contact::class  => \App\Policies\ContactPolicy::class,
     ];
 
     /**
