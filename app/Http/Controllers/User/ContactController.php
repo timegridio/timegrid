@@ -44,7 +44,7 @@ class ContactController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $existingContacts = $this->contactService->findExistingContactsByUserId(auth()->user()->id);
+        $existingContacts = $this->contactService->findExistingContactsByUserId(auth()->id());
 
         if ($existingContacts->isEmpty()) {
             $existingContacts = $this->contactService->findExistingContactsByEmail(auth()->user()->email);
@@ -82,7 +82,7 @@ class ContactController extends Controller
 
         $businessName = $business->name;
         Notifynder::category('user.subscribedBusiness')
-                   ->from('App\Models\User', auth()->user()->id)
+                   ->from('App\Models\User', auth()->id())
                    ->to('Timegridio\Concierge\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))

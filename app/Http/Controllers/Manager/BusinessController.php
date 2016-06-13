@@ -129,7 +129,7 @@ class BusinessController extends Controller
         // Generate local notification
         $businessName = $business->name;
         Notifynder::category('user.registeredBusiness')
-            ->from('App\Models\User', auth()->user()->id)
+            ->from('App\Models\User', auth()->id())
             ->to('Timegridio\Concierge\Models\Business', $business->id)
             ->url('http://localhost')
             ->extra(compact('businessName'))
