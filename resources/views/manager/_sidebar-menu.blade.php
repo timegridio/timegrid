@@ -10,45 +10,45 @@
         </a>
     </li>
 
-    <li class="{{{ $route == 'manager.addressbook.index' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.contacts') }}" >
+    <li class="{{{ $route == 'manager.addressbook.index' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.addressbook') }}" >
         <a href="{{ route('manager.addressbook.index', $business) }}">
             <i class="fa fa-users"></i>
-            <span>{{ trans('manager.business.btn.tooltip.contacts') }}</span>
+            <span>{{ trans('nav.manager.left.addressbook') }}</span>
         </a>
     </li>
 
-    <li class="{{{ $route == 'manager.business.vacancy.create' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.vacancies') }}" >
-        <a href="{{ route('manager.business.vacancy.create', $business) }}">
-            <i class="fa fa-calendar-o"></i>
-            <span>{{ trans('manager.business.btn.tooltip.vacancies') }}</span>
-        </a>
-    </li>
-
-    <li class="{{{ $route == 'manager.business.agenda.index' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.agenda') }}" >
+    <li class="{{{ $route == 'manager.business.agenda.index' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.agenda') }}" >
         <a href="{{ route('manager.business.agenda.index', $business) }}">
             <i class="fa fa-calendar-check-o"></i>
-            <span>{{ trans('manager.business.btn.tooltip.agenda') }}</span>
+            <span>{{ trans('nav.manager.left.agenda') }}</span>
         </a>
     </li>
 
-    <li class="{{{ $route == 'manager.business.agenda.calendar' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.agenda') }}" >
+    <li class="{{{ $route == 'manager.business.agenda.calendar' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.calendar') }}" >
         <a href="{{ route('manager.business.agenda.calendar', $business) }}">
             <i class="fa fa-calendar"></i>
-            <span>{{ trans('manager.business.btn.tooltip.agenda') }}</span>
+            <span>{{ trans('nav.manager.left.calendar') }}</span>
         </a>
     </li>
 
-    <li class="{{{ $route == 'manager.business.service.index' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.services') }}" >
-        <a href="{{ route('manager.business.service.index', $business) }}">
-            <i class="fa fa-tags"></i>
-            <span>{{ trans('manager.business.btn.tooltip.services') }}</span>
-        </a>
-    </li>
-
-    <li class="{{{ $route == 'manager.business.humanresource.index' ? 'active' : '' }}}" title="{{ trans('manager.business.btn.tooltip.humanresources') }}" >
+    <li class="{{{ $route == 'manager.business.humanresource.index' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.staff') }}" >
         <a href="{{ route('manager.business.humanresource.index', $business) }}">
             <i class="fa fa-user-md"></i>
-            <span>{{ trans('manager.business.btn.tooltip.humanresources') }}</span>
+            <span>{{ trans('nav.manager.left.staff') }}</span>
+        </a>
+    </li>
+
+    <li class="{{{ $route == 'manager.business.service.index' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.services') }}" >
+        <a href="{{ route('manager.business.service.index', $business) }}">
+            <i class="fa fa-tags"></i>
+            <span>{{ trans('nav.manager.left.services') }}</span>
+        </a>
+    </li>
+
+    <li class="{{{ $route == 'manager.business.vacancy.create' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.availability') }}" >
+        <a href="{{ route('manager.business.vacancy.create', $business) }}">
+            <i class="fa fa-calendar-o"></i>
+            <span>{{ trans('nav.manager.left.availability') }}</span>
         </a>
     </li>
 
