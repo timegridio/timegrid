@@ -135,14 +135,16 @@ class AgendaController extends Controller
         //////////////////
 
         $business = Business::findOrFail($request->input('businessId'));
+        $email = $request->input('email');
+        $contactId = $request->input('contact_id');
         $isOwner = false;
 
         if ($issuer = auth()->user()) {
             $isOwner = $issuer->isOwner($business->id);
-            $contact = $this->findSubscrbedContact($issuer, $isOwner, $business, $request->input('contact_id'));
+            $contact = $this->findSubscrbedContact($issuer, $isOwner, $business, $contactId);
         } else {
             $contactService = new ContactService();
-            $contact = $contactService->getExisting($business, $request->input('email'));
+            $contact = $contactService->getExisting($business, $email);
 
             if (!$contact) {
                 logger()->info('[ADVICE] Not subscribed');
@@ -152,29 +154,23 @@ class AgendaController extends Controller
                 return redirect()->back();
             }
 
-            auth()->once(['email' => $request->input('email')]);
+            auth()->once(compact('email'));
         }
 
         // Authorize contact is subscribed to Business
         // ...
 
-        $service = $business->services()->find($request->input('service_id'));
+        $serviceId = $request->input('service_id');
+        $service = $business->services()->find($serviceId);
 
         $date = Carbon::parse($request->input('_date'))->toDateString();
         $time = Carbon::parse($request->input('_time'))->toTimeString();
         $timezone = $request->input('_timezone') ?: $business->timezone;
 
         $comments = $request->input('comments');
+        $issuer = auth()->id();
 
-        $reservation = [
-            'issuer'   => auth()->id(),
-            'contact'  => $contact,
-            'service'  => $service,
-            'date'     => $date,
-            'time'     => $time,
-            'timezone' => $timezone,
-            'comments' => $comments,
-        ];
+        $reservation = compact('issuer', 'contact', 'service', 'date', 'time', 'timezone', 'comments');
 
         logger()->info('Reservation:'.print_r($reservation, true));
 
