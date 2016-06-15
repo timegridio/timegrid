@@ -103,6 +103,11 @@ return [
       'help'   => 'Let timegrid autopublish my vacancies weekly (every sunday)',
       'label'  => 'Enable Vacancy Autopublish',
     ],
+    'allow_guest_registration' => [
+      'format' => 'Yes/No',
+      'help'   => 'Let guest users to register a new contact for soft appointments',
+      'label'  => 'Allow Guest Registration',
+    ],
   ],
   'controls' => [
     'select' => [

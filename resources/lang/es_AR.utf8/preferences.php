@@ -103,6 +103,11 @@ return [
       'help'   => 'Dejar que timegrid publique mi disponibilidad cada Domingo',
       'label'  => 'Disponibilidad Automática',
     ],
+    'allow_guest_registration' => [
+      'format' => 'Si/No',
+      'help'   => 'Permitir a usuarios no identificados a agregarse en tu agenda de contactos',
+      'label'  => 'Permitir Registro de Invitados',
+    ],
   ],
   'controls' => [
     'select' => [

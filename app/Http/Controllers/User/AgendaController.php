@@ -143,8 +143,7 @@ class AgendaController extends Controller
             $isOwner = $issuer->isOwner($business->id);
             $contact = $this->findSubscrbedContact($issuer, $isOwner, $business, $contactId);
         } else {
-            $contactService = new ContactService();
-            $contact = $contactService->getExisting($business, $email);
+            $contact = $this->getContact($business, $email);
 
             if (!$contact) {
                 logger()->info('[ADVICE] Not subscribed');
@@ -215,6 +214,18 @@ class AgendaController extends Controller
         }
 
         return redirect()->route('user.agenda', '#'.$appointment->code);
+    }
+
+    protected function getContact(Business $business, $email)
+    {
+        $contactService = new ContactService();
+        if ($business->pref('allow_guest_registration')) {
+            $contact = $contactService->register($business, compact('email'));
+        } else {
+            $contact = $contactService->getExisting($business, $email);
+        }
+
+        return $contact;
     }
 
     public function getValidate(Request $request, Business $business)

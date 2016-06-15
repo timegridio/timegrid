@@ -552,7 +552,7 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
-    public function a_guest_user_may_make_a_reservation()
+    public function a_listed_guest_user_may_make_a_soft_appointment()
     {
         $owner = $this->createUser();
         $business = $this->createBusiness([
@@ -560,6 +560,8 @@ class UserAgendaControllerTest extends TestCase
             'strategy' => 'timeslot',
             ]);
         $business->owners()->save($owner);
+
+        $business->pref('allow_guest_registration', false);
 
         $contact = $this->makeContact();
         $contact->email = 'guest@example.org';
@@ -590,6 +592,47 @@ class UserAgendaControllerTest extends TestCase
 
         $this->seeInDatabase('appointments', ['business_id' => $business->id]);
         $this->seeInDatabase('contacts', ['email' => 'guest@example.org']);
+    }
+
+    /**
+     * @test
+     */
+    public function an_unlisted_guest_user_may_make_a_soft_appointment()
+    {
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'name'     => 'tosto this tosti',
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $business->pref('allow_guest_registration', true);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $this->vacancy = $this->makeVacancy([
+            'business_id' => $business->id,
+            'service_id'  => $service->id,
+            'start_at'    => Carbon::parse('today 08:00 '.$business->timezone)->timezone('utc'),
+            'finish_at'   => Carbon::parse('today 22:00 '.$business->timezone)->timezone('utc'),
+            'capacity'    => 1,
+            ]);
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+
+        $this->withoutMiddleware();
+        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+            'businessId' => $business->id,
+            'service_id' => $service->id,
+            'email'      => 'unlisted-guest@example.org',
+            '_time'      => '09:00:00',
+            '_date'      => $this->vacancy->start_at->timezone($business->timezone)->toDateString(),
+            'comments'   => 'test comments',
+            ]);
+
+        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
+        $this->seeInDatabase('contacts', ['email' => 'unlisted-guest@example.org']);
     }
 
     //////////////
