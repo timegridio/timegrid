@@ -7,6 +7,7 @@ return [
       'reserved'  => ['subject' => 'Información de tu reserva'],
       'confirmed' => ['subject' => 'Tu turno en :business fue confirmado'],
       'canceled'  => ['subject' => 'Tu turno en :business fue cancelado'],
+      'validate'  => ['subject' => 'Confirmá tu turno en :business'],
     ],
   ],
   'manager' => [
