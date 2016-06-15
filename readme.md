@@ -60,13 +60,11 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 
 [Read the INSTALLING section](INSTALLING.md)
 
-## Development
+## Contributing
 
-  * [Frequently Asked Questions](https://github.com/timegridio/timegrid/wiki/FAQ)
-  * [Troubleshooting](https://timegrid.slack.com/messages/general/)
-  * [Contributing](CONTRIBUTING.md)
-  * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
-  * [Developer Documentation](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+To get a dedicated introduction to *timegrid* and joining the development community, [reserve your seat](https://timegrid.io/dev).
+
+Otherwise, [just jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev).
 
 ## Author
 
