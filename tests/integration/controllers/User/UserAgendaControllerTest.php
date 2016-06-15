@@ -752,7 +752,7 @@ class UserAgendaControllerTest extends TestCase
             ]);
         $business->contacts()->save($contact);
 
-        $appointment = $this->makeSoftAppointment($business, $contact);
+        $appointment = $this->makeSoftAppointment($business, $contact, ['status' => Appointment::STATUS_RESERVED]);
         $appointment->save();
 
         $code = $appointment->code;
