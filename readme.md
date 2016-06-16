@@ -32,7 +32,7 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for h
 
 ## Live Demo
 
-Give a try the [*beta* live demo](http://demo.timegrid.io/)
+[Test drive the *beta* live demo](http://demo.timegrid.io)
 
 > **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
 
@@ -62,9 +62,11 @@ For future features check [issues](https://github.com/timegridio/timegrid/issues
 
 ## Contributing
 
-To get a dedicated introduction to *timegrid* and joining the development community, [reserve your seat](https://timegrid.io/dev).
+To get a dedicated introduction to *timegrid* and joining the development community...
 
-Otherwise, [just jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev).
+[![Reserve Your Seat](http://i.imgur.com/pgkEz87.png)](https://timegrid.io/dev)
+
+Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
 ## Author
 
