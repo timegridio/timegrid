@@ -27,7 +27,7 @@ class Language
 
     public function handle($request, Closure $next)
     {
-        logger()->info(__METHOD__);
+        // logger()->debug(__METHOD__);
 
         $sessionAppLocale = session()->get('applocale', null);
 
@@ -35,11 +35,11 @@ class Language
             $sessionAppLocale = $this->getAgentLangOrFallback(config('app.fallback_locale'));
         }
 
-        logger()->info("sessionAppLocale:$sessionAppLocale");
+        // logger()->debug("sessionAppLocale:$sessionAppLocale");
 
         if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
-            logger()->info('setGlobalLocale set');
+            // logger()->debug('setGlobalLocale set');
         }
 
         return $next($request);
@@ -59,16 +59,16 @@ class Language
         $agentLanguages = $this->agent->languages();
         $configLanguages = config('languages');
 
-        logger()->info('Agent Languages: '.serialize($agentLanguages));
-        logger()->info('Config Languages: '.serialize($configLanguages));
+        // logger()->debug('Agent Languages: '.serialize($agentLanguages));
+        // logger()->debug('Config Languages: '.serialize($configLanguages));
 
         if ($agentPreferredLocale = $this->searchAgent($agentLanguages, $configLanguages)) {
-            logger()->info("Agent Preferred Locale: $agentPreferredLocale");
+            // logger()->debug("Agent Preferred Locale: $agentPreferredLocale");
 
             return $agentPreferredLocale;
         }
 
-        logger()->info("Using Fallback: $fallbackLocale");
+        // logger()->debug("Using Fallback: $fallbackLocale");
 
         return $fallbackLocale;
     }
