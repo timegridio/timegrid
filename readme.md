@@ -12,9 +12,7 @@ timegrid
 [![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-> Online appointments for freelancers and businesses made easy.
-
-**Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
+> **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
 Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
 
