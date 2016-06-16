@@ -122,7 +122,7 @@ class BookingController extends Controller
     public function getDates($businessId, $serviceId)
     {
         logger()->info(__METHOD__);
-        logger()->info("businessId:$businessId serviceId:$serviceId");
+        logger()->info(serialize(compact('businessId', 'serviceId')));
 
         $business = Business::findOrFail($businessId);
         $service = $business->services()->findOrFail($serviceId);
@@ -160,7 +160,7 @@ class BookingController extends Controller
     public function getTimes($businessId, $serviceId, $date, $timezone = false)
     {
         logger()->info(__METHOD__);
-        logger()->info("businessId:$businessId serviceId:$serviceId date:$date");
+        logger()->info(serialize(compact('businessId', 'serviceId', 'date', 'timezone')));
 
         $business = Business::findOrFail($businessId);
         $service = $business->services()->findOrFail($serviceId);
@@ -175,7 +175,7 @@ class BookingController extends Controller
             }
         }
 
-        logger()->info('Using Timezone: '.$timezone);
+        logger()->info("Using Timezone: {$timezone}");
 
         $times = $this->splitTimes($vacancies, $service, $timezone);
 
@@ -201,7 +201,7 @@ class BookingController extends Controller
         foreach ($vacancies as $vacancy) {
             $selectedTimezone = $timezone ?: $vacancy->business->timezone;
 
-            logger()->info('Using Timezone: '.$selectedTimezone);
+            logger()->info("Using Timezone: {$selectedTimezone}");
 
             $beginTime = $vacancy->start_at->copy();
 

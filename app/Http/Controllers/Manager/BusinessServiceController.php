@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
-use Illuminate\Http\Request;
 
 class BusinessServiceController extends Controller
 {
@@ -145,13 +145,13 @@ class BusinessServiceController extends Controller
         //////////////////
         // FOR REFACTOR //
         //////////////////
-        $service->update([
-            'name'          => $request->get('name'),
-            'color'         => $request->get('color'),
-            'duration'      => $request->get('duration'),
-            'description'   => $request->get('description'),
-            'prerequisites' => $request->get('prerequisites'),
-        ]);
+        $service->update($request->only([
+            'name',
+            'color',
+            'duration',
+            'description',
+            'prerequisites',
+        ]));
 
         if ($request->get('type_id')) {
             $service->type()->associate($request->get('type_id'));

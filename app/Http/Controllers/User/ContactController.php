@@ -5,11 +5,11 @@ namespace App\Http\Controllers\User;
 use App\Events\NewContactWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterContactRequest;
-use Timegridio\Concierge\Models\Business;
-use Timegridio\Concierge\Models\Contact;
 use App\Services\ContactService;
 use Notifynder;
 use Request;
+use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\Contact;
 
 class ContactController extends Controller
 {
@@ -46,18 +46,20 @@ class ContactController extends Controller
 
         $existingContacts = $this->contactService->findExistingContactsByUserId(auth()->id());
 
+        $user = auth()->user();
+
         if ($existingContacts->isEmpty()) {
-            $existingContacts = $this->contactService->findExistingContactsByEmail(auth()->user()->email);
+            $existingContacts = $this->contactService->findExistingContactsByEmail($user->email);
         }
 
         foreach ($existingContacts as $existingContact) {
             if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
                 logger()->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
-                $newContact = $this->contactService->copyFrom(auth()->user(), $business, $existingContact);
+                $contact = $this->contactService->copyFrom($user, $business, $existingContact);
 
                 flash()->success(trans('user.contacts.msg.store.associated_existing_contact'));
 
-                return redirect()->route('user.business.contact.show', [$business, $newContact]);
+                return redirect()->route('user.business.contact.show', [$business, $contact]);
             }
         }
 
@@ -129,7 +131,7 @@ class ContactController extends Controller
         // BEGIN
 
         $memberSince = $business->contacts()->find($contact->id)->pivot->created_at;
-        
+
         $appointments = $contact->appointments()->orderBy('start_at')->ofBusiness($business->id)->active()->get();
 
         return view('user.contacts.show', compact('business', 'contact', 'appointments', 'memberSince'));
@@ -174,16 +176,16 @@ class ContactController extends Controller
 
         // BEGIN
 
-        $data = [
-            'firstname'       => $request->get('firstname'),
-            'lastname'        => $request->get('lastname'),
-            'email'           => $request->get('email'),
-            'nin'             => $request->get('nin'),
-            'gender'          => $request->get('gender'),
-            'birthdate'       => $request->get('birthdate'),
-            'mobile'          => $request->get('mobile'),
-            'mobile_country'  => $request->get('mobile_country'),
-        ];
+        $data = $request->only([
+            'firstname',
+            'lastname',
+            'email',
+            'nin',
+            'gender',
+            'birthdate',
+            'mobile',
+            'mobile_country',
+        ]);
 
         $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
 

@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use Timegridio\Concierge\Models\Business;
+use Illuminate\Http\Request;
 use App\SearchEngine;
-use Illuminate\Support\Facades\Request;
+use Timegridio\Concierge\Models\Business;
 
 class Search extends Controller
 {
@@ -16,15 +16,17 @@ class Search extends Controller
      *
      * @return Illuminate\View\View
      */
-    public function postSearch(Business $business)
+    public function postSearch(Business $business, Request $request)
     {
         $this->authorize('manage', $business);
 
-        $criteria = Request::input('criteria');
+        $criteria = $request->input('criteria');
 
         $search = new SearchEngine($criteria);
         $search->setBusinessScope([$business->id])->run();
 
-        return view('manager.search.index')->with(['results' => $search->results(), 'criteria' => $criteria]);
+        $results = $search->results();
+
+        return view('manager.search.index')->with(compact('results', 'criteria'));
     }
 }

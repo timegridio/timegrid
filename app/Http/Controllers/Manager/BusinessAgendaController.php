@@ -46,7 +46,7 @@ class BusinessAgendaController extends Controller
 
         $viewKey = count($appointments) == 0
             ? 'manager.businesses.appointments.empty'
-            : 'manager.businesses.appointments.'.$business->strategy.'.index';
+            : "manager.businesses.appointments.{$business->strategy}.index";
 
         return view($viewKey, compact('business', 'appointments'));
     }

@@ -164,17 +164,17 @@ class AddressbookController extends Controller
 
         // BEGIN //
 
-        $data = [
-            'firstname'       => $request->get('firstname'),
-            'lastname'        => $request->get('lastname'),
-            'email'           => $request->get('email'),
-            'nin'             => $request->get('nin'),
-            'gender'          => $request->get('gender'),
-            'birthdate'       => $request->get('birthdate'),
-            'mobile'          => $request->get('mobile'),
-            'mobile_country'  => $request->get('mobile_country'),
-            'postal_address'  => $request->get('postal_address'),
-        ];
+        $data = $request->only([
+            'firstname',
+            'lastname',
+            'email',
+            'nin',
+            'gender',
+            'birthdate',
+            'mobile',
+            'mobile_country',
+            'postal_address',
+        ]);
 
         $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
 

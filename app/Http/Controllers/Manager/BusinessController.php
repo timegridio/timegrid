@@ -227,14 +227,14 @@ class BusinessController extends Controller
         // BEGIN
         $category = $request->get('category');
 
-        $data = [
-                'name'            => $request->get('name'),
-                'description'     => $request->get('description'),
-                'timezone'        => $request->get('timezone'),
-                'postal_address'  => $request->get('postal_address'),
-                'phone'           => $request->get('phone'),
-                'social_facebook' => $request->get('social_facebook'),
-        ];
+        $data = $request->only([
+                'name',
+                'description',
+                'timezone',
+                'postal_address',
+                'phone',
+                'social_facebook',
+        ]);
 
         $this->businessService->update($business, $data);
 
@@ -283,7 +283,7 @@ class BusinessController extends Controller
     {
         return Category::pluck('slug', 'id')->transform(
             function ($item) {
-                return trans('app.business.category.'.$item);
+                return trans("app.business.category.{$item}");
             }
         );
     }
