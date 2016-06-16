@@ -28,6 +28,6 @@ class UserHelpComposer
             ? Markdown::convertToHtml(Storage::get($filepath))
             : '';
 
-        $view->with('help', $help);
+        $view->with(compact('help'));
     }
 }
