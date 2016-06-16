@@ -36,23 +36,22 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for h
 
 ## Features
 
-  * User classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
+  * Classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
   * Business management
-    * Contact addressbook
-    * Services management
-    * Staff management
+    * Addressbook
+    * Services
+    * Staff
     * Availability management
-    * Appointment schedule view
-    * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
-    * Basic search
-  * Self-service appointment reservation with datepicker
+    * Appointments
+  * Scheduling view with [fullcalendar](https://github.com/fullcalendar)
+  * Self-service reservation with datepicker
   * Basic email notifications
-  * Multiple Languages Support (Localization)
+  * i18n Support
   * Multiple Timezones Support
-  * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
-  * GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
+  * Live chat with [TidioChat](https://www.tidiochat.com/)
+  * Admin GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
 
-For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
+[Future features here](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
 
 ## Installing
 
