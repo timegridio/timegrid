@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\NewSoftAppointmentWasBooked;
 use App\TransMail;
 
-class SendSofAppointmentValidationRequest
+class SendSoftAppointmentValidationRequest
 {
     private $transmail;
 

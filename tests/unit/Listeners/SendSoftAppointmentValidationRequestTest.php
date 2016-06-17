@@ -1,7 +1,7 @@
 <?php
 
 use App\Events\NewSoftAppointmentWasBooked;
-use App\Listeners\SendSofAppointmentValidationRequest;
+use App\Listeners\SendSoftAppointmentValidationRequest;
 use App\TransMail;
 
 class SendSoftAppointmentValidationRequestTest extends TestCase
@@ -35,7 +35,7 @@ class SendSoftAppointmentValidationRequestTest extends TestCase
         $this->transmail->shouldReceive('send')->once()->andReturn($this->transmail);
         $this->transmail->shouldReceive('success')->andReturn(true);
 
-        $listener = new SendSofAppointmentValidationRequest($this->transmail);
+        $listener = new SendSoftAppointmentValidationRequest($this->transmail);
 
         $listener->handle(new NewSoftAppointmentWasBooked($this->appointment));
 
