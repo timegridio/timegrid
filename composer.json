@@ -63,7 +63,7 @@
         "phpunit/phpunit-selenium": ">=1.2",
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
-        "mockery/mockery": "^0.9.4",
+        "mockery/mockery": "0.9.*",
         "potsky/laravel-localization-helpers": "2.3.2"
     },
     "autoload": {
