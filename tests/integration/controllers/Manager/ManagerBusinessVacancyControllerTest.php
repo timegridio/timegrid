@@ -247,6 +247,27 @@ EOD;
     /**
      * @test
      */
+    public function it_unpublishes_when_posting_vacancies()
+    {
+        $this->arrangeBusinessWithOwner();
+        $serviceFour = $this->createService();
+
+        $this->business->services()->save($serviceFour);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.vacancy.create', $this->business));
+
+        $this->check('unpublish');
+
+        $this->press('Update');
+
+        $this->assertResponseOk();
+    }
+
+    /**
+     * @test
+     */
     public function it_forgets_the_published_vacancies()
     {
         $this->arrangeBusinessWithOwner();
