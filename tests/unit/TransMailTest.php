@@ -1,6 +1,7 @@
 <?php
 
 use App\TransMail;
+use Illuminate\Support\Facades\Mail;
 
 class TransMailTest extends TestCase
 {
@@ -36,7 +37,12 @@ class TransMailTest extends TestCase
      */
     public function it_sends_a_localized_email()
     {
-        $this->mail->shouldReceive('send');
+        $this->mail
+             ->shouldReceive('send')
+             ->once()
+             ->andReturn(true)
+             ->shouldReceive('failures')
+             ->andReturn(0);
 
         $this->transmail->locale('en_US.utf8')
                         ->template('welcome')

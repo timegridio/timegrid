@@ -64,6 +64,11 @@ class TransMail
     protected $subject = '';
 
     /**
+     * @var  bool Post sent success status indicator.
+     */
+    protected $success = false;
+
+    /**
      * Construct the class.
      *
      * @param Mail|null $mail
@@ -181,6 +186,15 @@ class TransMail
 
         $this->switchLocale($this->revertLocale);
         $this->switchTimezone($this->revertTimezone);
+
+        $this->success = 0 == Mail::failures();
+
+        return $this->success();
+    }
+
+    public function success()
+    {
+        return $this->success;
     }
 
     /////////////

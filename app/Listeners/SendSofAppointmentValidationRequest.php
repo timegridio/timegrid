@@ -44,11 +44,13 @@ class SendSofAppointmentValidationRequest
             'name'  => $event->appointment->contact->firstname,
             'email' => $email,
         ];
-        $this->transmail->locale($locale)
-                        ->timezone($timezone)
-                        ->template('appointments.user._validate')
-                        ->subject('user.appointment.validate.subject', compact('business'))
-                        ->send($header, $params);
+
+        return $this->transmail
+                    ->locale($locale)
+                    ->timezone($timezone)
+                    ->template('appointments.user._validate')
+                    ->subject('user.appointment.validate.subject', compact('business'))
+                    ->send($header, $params);
     }
 
     protected function generateLink($business, $code, $email)
