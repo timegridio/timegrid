@@ -26,7 +26,7 @@ class SendSoftAppointmentValidationRequestTest extends TestCase
     /**
      * @test
      */
-    public function handle()
+    public function it_sends_a_soft_appointment_validation_request_email()
     {
         $this->transmail->shouldReceive('locale')->once()->andReturn($this->transmail);
         $this->transmail->shouldReceive('timezone')->once()->andReturn($this->transmail);
