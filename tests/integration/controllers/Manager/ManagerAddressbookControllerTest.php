@@ -44,7 +44,8 @@ class ManagerAddressbookControllerTest extends TestCase
 
         $contact = $this->createContact([
             'firstname' => 'John',
-            'lastname'  => 'Doe', 'nin' => '1133224455',
+            'lastname'  => 'Doe',
+            'nin'       => '1133224455',
             ]);
         $this->business->contacts()->save($contact);
 

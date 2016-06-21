@@ -31,7 +31,7 @@ class ContactController extends Controller
 
         // Search existing subscribed email in same business
         if (!$existingContact) {
-            $existingContact = $business->addressbook()->reuseExisting($user->email);
+            $existingContact = $business->addressbook()->getSubscribed($user->email);
         }
 
         // Search existing any authenticated profile for user
@@ -76,7 +76,7 @@ class ContactController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-#        $existingContact = $business->addressbook()->reuseExisting($request->input('email'));
+#        $existingContact = $business->addressbook()->getSubscribed($request->input('email'));
 #
 #        if ($existingContact) {
 #            $existingContact->linktToUserId(auth()->id());
