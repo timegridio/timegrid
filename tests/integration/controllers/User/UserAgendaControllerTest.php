@@ -554,12 +554,10 @@ class UserAgendaControllerTest extends TestCase
      */
     public function a_listed_guest_user_may_make_a_soft_appointment()
     {
-        $owner = $this->createUser();
         $business = $this->createBusiness([
             'name'     => 'tosto this tosti',
             'strategy' => 'timeslot',
             ]);
-        $business->owners()->save($owner);
 
         $business->pref('allow_guest_registration', false);
 
@@ -590,8 +588,8 @@ class UserAgendaControllerTest extends TestCase
             'comments'   => 'test comments',
             ]);
 
-        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
         $this->seeInDatabase('contacts', ['email' => 'guest@example.org']);
+        $this->seeInDatabase('appointments', ['business_id' => $business->id]);
     }
 
     /**

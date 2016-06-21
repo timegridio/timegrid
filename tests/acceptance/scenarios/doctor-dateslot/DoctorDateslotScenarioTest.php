@@ -105,10 +105,7 @@ EOD;
 
         $this->click('Subscribe');
 
-        $this->see('Save')
-             ->type($contact['firstname'], 'firstname')
-             ->type($contact['lastname'], 'lastname')
-             ->press('Save');
+        $this->see('Your profile was attached to an existing one');
 
         $this->click('Book appointment');
     }

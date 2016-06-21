@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Events\NewContactWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AlterContactRequest;
-use App\Services\ContactService;
 use Notifynder;
 use Request;
 use Timegridio\Concierge\Models\Business;
@@ -13,25 +12,6 @@ use Timegridio\Concierge\Models\Contact;
 
 class ContactController extends Controller
 {
-    /**
-     * Contact service implementation.
-     *
-     * @var App\Services\ContactService
-     */
-    private $contactService;
-
-    /**
-     * Create controller.
-     *
-     * @param App\Services\ContactService $contactService
-     */
-    public function __construct(ContactService $contactService)
-    {
-        $this->contactService = $contactService;
-
-        parent::__construct();
-    }
-
     /**
      * create Contact.
      *
@@ -44,27 +24,33 @@ class ContactController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $existingContacts = $this->contactService->findExistingContactsByUserId(auth()->id());
-
         $user = auth()->user();
 
-        if ($existingContacts->isEmpty()) {
-            $existingContacts = $this->contactService->findExistingContactsByEmail($user->email);
+        // Search existing registered + email in same business
+        $existingContact = $business->addressbook()->getRegisteredUserId($user->id);
+
+        // Search existing subscribed email in same business
+        if (!$existingContact) {
+            $existingContact = $business->addressbook()->reuseExisting($user->email);
         }
 
-        foreach ($existingContacts as $existingContact) {
-            if ($existingContact !== null && !$existingContact->isSubscribedTo($business)) {
-                logger()->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
-                $contact = $this->contactService->copyFrom($user, $business, $existingContact);
-
-                flash()->success(trans('user.contacts.msg.store.associated_existing_contact'));
-
-                return redirect()->route('user.business.contact.show', [$business, $contact]);
-            }
+        // Search existing any authenticated profile for user
+        if (!$existingContact) {
+            $existingContact = $user->contacts()->first();
         }
 
-        $contact = new Contact(); // For Form Model Binding
-        return view('user.contacts.create', compact('business', 'contact'));
+        if (!$existingContact) {
+            $contact = new Contact(); // For Form Model Binding
+            return view('user.contacts.create', compact('business', 'contact'));
+        }
+
+        logger()->info("[ADVICE] Found existing contact contactId:{$existingContact->id}");
+
+        $contact = $business->addressbook()->copyFrom($existingContact, $user->id);
+
+        flash()->success(trans('user.contacts.msg.store.associated_existing_contact'));
+
+        return redirect()->route('user.business.contact.show', [$business, $contact]);
     }
 
     /**
@@ -90,21 +76,20 @@ class ContactController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $existingContacts = $this->contactService->findExistingContactsByEmail($request->input('email'));
+#        $existingContact = $business->addressbook()->reuseExisting($request->input('email'));
+#
+#        if ($existingContact) {
+#            $existingContact->linktToUserId(auth()->id());
+#            // auth()->user()->contacts()->save($existingContact);
+#
+#            flash()->warning(trans('user.contacts.msg.store.warning.already_registered'));
+#
+#            return redirect()->route('user.business.contact.show', [$business, $existingContact]);
+#        }
 
-        foreach ($existingContacts as $existingContact) {
-            if ($existingContact->isSubscribedTo($business)) {
-                auth()->user()->contacts()->save($existingContact);
+        $contact = $business->addressbook()->register(Request::all());
 
-                flash()->warning(trans('user.contacts.msg.store.warning.already_registered'));
-
-                return redirect()->route('user.business.contact.show', [$business, $existingContact]);
-            }
-        }
-
-        $contact = $this->contactService->register($business, Request::all());
-
-        $this->contactService->linkToUser($contact, auth()->user());
+        $business->addressbook()->linkToUserId($contact, auth()->id());
 
         event(new NewContactWasRegistered($contact));
 
@@ -187,7 +172,7 @@ class ContactController extends Controller
             'mobile_country',
         ]);
 
-        $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
+        $contact = $business->addressbook()->update($contact, $data, $request->get('notes'));
 
         flash()->success(trans('user.contacts.msg.update.success'));
 
@@ -211,7 +196,7 @@ class ContactController extends Controller
 
         // BEGIN
 
-        $this->contactService->detach($business, $contact);
+        $business->addressbook()->remove($contact);
 
         flash()->success(trans('user.contacts.msg.destroy.success'));
 

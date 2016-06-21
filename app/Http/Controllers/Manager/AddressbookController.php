@@ -2,33 +2,14 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\Events\NewContactWasRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ContactFormRequest;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Contact;
-use App\Services\ContactService;
 
 class AddressbookController extends Controller
 {
-    /**
-     * Contact service implementation.
-     *
-     * @var App\Services\ContactService
-     */
-    private $contactService;
-
-    /**
-     * Create controller.
-     *
-     * @param App\Services\ContactService $contactService
-     */
-    public function __construct(ContactService $contactService)
-    {
-        $this->contactService = $contactService;
-
-        parent::__construct();
-    }
-
     /**
      * index of Contacts for Business.
      *
@@ -43,7 +24,7 @@ class AddressbookController extends Controller
 
         $this->authorize('manageContacts', $business);
 
-        $contacts = $business->contacts()->orderBy('lastname', 'ASC')->simplePaginate(100);
+        $contacts = $business->addressbook()->listing(100);
 
         return view('manager.contacts.index', compact('business', 'contacts'));
     }
@@ -66,6 +47,7 @@ class AddressbookController extends Controller
         // BEGIN //
 
         $contact = new Contact(); // For Form Model Binding
+
         return view('manager.contacts.create', compact('business', 'contact'));
     }
 
@@ -86,13 +68,21 @@ class AddressbookController extends Controller
 
         // BEGIN //
 
-        $contact = $this->contactService->register($business, $request->all());
+        $contact = $business->addressbook()->register($request->all());
+
+        if (!$contact) {
+            flash()->error(trans('manager.contacts.msg.store.error'));
+
+            return redirect()->route('manager.addressbook.index', [$business]);
+        }
 
         if (!$contact->wasRecentlyCreated) {
             flash()->warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 
             return redirect()->route('manager.addressbook.show', [$business, $contact]);
         }
+
+        event(new NewContactWasRegistered($contact));
 
         flash()->success(trans('manager.contacts.msg.store.success'));
 
@@ -116,8 +106,7 @@ class AddressbookController extends Controller
         $this->authorize('manageContacts', $business);
 
         // BEGIN //
-
-        $contact = $this->contactService->find($business, $contact);
+        $contact = $business->addressbook()->find($contact);
 
         return view('manager.contacts.show', compact('business', 'contact'));
     }
@@ -139,7 +128,7 @@ class AddressbookController extends Controller
 
         // BEGIN //
 
-        $contact = $this->contactService->find($business, $contact);
+        $contact = $business->addressbook()->find($contact);
 
         $notes = $contact->pivot->notes;
 
@@ -176,7 +165,7 @@ class AddressbookController extends Controller
             'postal_address',
         ]);
 
-        $contact = $this->contactService->update($business, $contact, $data, $request->get('notes'));
+        $contact = $business->addressbook()->update($contact, $data, $request->get('notes'));
 
         // FEATURE: If email was updated, user linking should be triggered (if contact is not owned)
 
@@ -202,7 +191,7 @@ class AddressbookController extends Controller
 
         // BEGIN //
 
-        $contact = $this->contactService->detach($business, $contact);
+        $contact = $business->addressbook()->remove($contact);
 
         // FEATURE: If user is linked to contact, inform removal
 

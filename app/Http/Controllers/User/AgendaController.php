@@ -5,7 +5,6 @@ namespace App\Http\Controllers\User;
 use App\Events\NewAppointmentWasBooked;
 use App\Events\NewSoftAppointmentWasBooked;
 use App\Http\Controllers\Controller;
-use App\Services\ContactService;
 use Carbon;
 use Event;
 use Illuminate\Http\Request;
@@ -218,11 +217,10 @@ class AgendaController extends Controller
 
     protected function getContact(Business $business, $email)
     {
-        $contactService = new ContactService();
         if ($business->pref('allow_guest_registration')) {
-            $contact = $contactService->register($business, compact('email'));
+            $contact = $business->addressbook()->register(compact('email'));
         } else {
-            $contact = $contactService->getExisting($business, $email);
+            $contact = $business->addressbook()->getSubscribed($email);
         }
 
         return $contact;

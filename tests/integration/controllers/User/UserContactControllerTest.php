@@ -61,7 +61,6 @@ class UserContactControllerTest extends TestCase
             'lastname'  => 'Doe2',
             ]);
 
-        // And I am authenticated as the business owner
         $this->actingAs($this->createUser([
             'email' => $existingContact->email, ]
             ));
@@ -70,15 +69,9 @@ class UserContactControllerTest extends TestCase
         $this->visit(route('user.businesses.home', $this->business))
              ->click('Subscribe');
 
-        $this->see('Save')
-             ->type($contact->firstname, 'firstname')
-             ->type($contact->lastname, 'lastname')
-             ->type($existingContact->email, 'email')
-             ->press('Save');
-
         // Then I see the contact registered
         $this->assertResponseOk();
-        $this->see('This profile was already registered')
+        $this->see('Your profile was attached to an existing one')
              ->see("{$existingContact->firstname} {$existingContact->lastname}");
         $this->assertEquals(true, $existingContact->businesses->contains($this->business));
     }

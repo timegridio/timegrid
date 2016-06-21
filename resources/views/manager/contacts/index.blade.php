@@ -83,7 +83,7 @@ $(document).ready(function(){
 @section('content')
 <div class="container-fluid">
 
-    {!! $business->contacts()->paginate(300)->render() !!}
+    {!! $contacts->render() !!}
 
     <div class="panel panel-primary filterable">
         <div class="panel-heading">
