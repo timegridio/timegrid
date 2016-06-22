@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\NewUserWasRegistered;
+use App\Models\User;
 
 class AutoConfigureUserPreferences
 {
@@ -20,7 +21,7 @@ class AutoConfigureUserPreferences
         $this->saveUserTimezone($event->user);
     }
 
-    protected function saveUserTimezone($user)
+    protected function saveUserTimezone(User $user)
     {
         try {
             $timezone = $this->detectUserTimezone();
