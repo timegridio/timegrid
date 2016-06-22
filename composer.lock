@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "21c6cc8bc16d5e08b0c40da1ae0167d8",
-    "content-hash": "b15eccbeb0c6580404938940b1ff75d9",
+    "hash": "fd74eb70c9e9d4763b06ba35b9f33fe1",
+    "content-hash": "bc0f209378219d4aa8f46e5f86f50fb7",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1925,16 +1925,16 @@
         },
         {
             "name": "laracasts/flash",
-            "version": "1.3.4",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/flash.git",
-                "reference": "e0a048b911092e15920ce66f4b6a54b6befa30a3"
+                "reference": "4df7200127a71511bdf116bc8b7a2586612c7a35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/e0a048b911092e15920ce66f4b6a54b6befa30a3",
-                "reference": "e0a048b911092e15920ce66f4b6a54b6befa30a3",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/4df7200127a71511bdf116bc8b7a2586612c7a35",
+                "reference": "4df7200127a71511bdf116bc8b7a2586612c7a35",
                 "shasum": ""
             },
             "require": {
@@ -1964,7 +1964,7 @@
                 }
             ],
             "description": "Easy flash notifications",
-            "time": "2015-12-22 15:52:08"
+            "time": "2016-03-14 15:55:34"
         },
         {
             "name": "laracasts/utilities",

@@ -33,7 +33,7 @@
         "intervention/image": "^2.2",
         "intervention/imagecache": "^2.2",
         "ipunkt/laravel-analytics": "~1.1",
-        "laracasts/flash": "~1.3",
+        "laracasts/flash": "~2.0",
         "laravel/framework": "5.2.*",
         "laravel/socialite": "^2.0",
         "laravelcollective/html": "~5.0",
