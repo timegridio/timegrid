@@ -70,12 +70,6 @@ class AddressbookController extends Controller
 
         $contact = $business->addressbook()->register($request->all());
 
-        if (!$contact) {
-            flash()->error(trans('manager.contacts.msg.store.error'));
-
-            return redirect()->route('manager.addressbook.index', [$business]);
-        }
-
         if (!$contact->wasRecentlyCreated) {
             flash()->warning(trans('manager.contacts.msg.store.warning_showing_existing_contact'));
 
