@@ -168,11 +168,7 @@ class BookingController extends Controller
         $vacancies = $business->vacancies()->forService($serviceId)->forDate(Carbon::parse($date))->get();
 
         if ($timezone == false) {
-            if (auth()->guest()) {
-                $timezone = $business->timezone;
-            } else {
-                $timezone = auth()->user()->pref('timezone');
-            }
+            $timezone = auth()->guest() ? $business->timezone : auth()->user()->pref('timezone');
         }
 
         logger()->info("Using Timezone: {$timezone}");
