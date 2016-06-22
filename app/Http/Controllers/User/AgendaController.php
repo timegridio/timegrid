@@ -206,7 +206,7 @@ class AgendaController extends Controller
             return view('guest.appointment.show', compact('appointment'));
         }
 
-        event(new NewAppointmentWasBooked($issuer, $appointment));
+        event(new NewAppointmentWasBooked(auth()->user(), $appointment));
 
         if ($isOwner) {
             return redirect()->route('manager.business.agenda.index', compact('business'));
