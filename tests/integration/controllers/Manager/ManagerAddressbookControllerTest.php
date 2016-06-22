@@ -38,6 +38,24 @@ class ManagerAddressbookControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_validates_the_submitted_contact_before_saving_to_addressbook()
+    {
+        $this->arrangeFixture();
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.addressbook.index', $this->business))
+             ->click('Add a contact')
+             ->press('Save');
+
+        $this->assertResponseOk();
+        $this->see('The firstname field is required')
+             ->see("The lastname field is required");
+    }
+
+    /**
+     * @test
+     */
     public function it_edits_a_contact_of_addressbook()
     {
         $this->arrangeFixture();
