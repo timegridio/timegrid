@@ -22,6 +22,7 @@
             <directory>./tests/integration/</directory>
             <directory>./tests/acceptance/scenarios/</directory>
             <directory>./tests/acceptance/commands/</directory>
+            <directory>./tests/acceptance/emails/</directory>
         </testsuite>
     </testsuites>
     <php>

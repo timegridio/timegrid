@@ -64,7 +64,8 @@
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "0.9.*",
-        "potsky/laravel-localization-helpers": "2.3.2"
+        "potsky/laravel-localization-helpers": "2.3.2",
+        "tightenco/mailthief": "^0.1.0"
     },
     "autoload": {
         "classmap": [
