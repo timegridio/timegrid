@@ -18,7 +18,7 @@ class WizardController extends Controller
      */
     public function getWizard()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         if ($slug = session()->pull('guest.last-intended-business-home')) {
             logger()->info('Resume Business visit to:'.$slug);
@@ -48,7 +48,7 @@ class WizardController extends Controller
      */
     public function getDashboard()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         //////////////////
         // FOR REFACTOR //
@@ -70,7 +70,7 @@ class WizardController extends Controller
      */
     public function getWelcome()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         return view('wizard');
     }
@@ -82,7 +82,7 @@ class WizardController extends Controller
      */
     public function getPricing()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         return view('manager.pricing');
     }
@@ -94,7 +94,7 @@ class WizardController extends Controller
      */
     public function getTerms()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         return view('manager.terms');
     }

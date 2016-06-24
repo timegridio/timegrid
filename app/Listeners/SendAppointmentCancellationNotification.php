@@ -24,7 +24,7 @@ class SendAppointmentCancellationNotification
      */
     public function handle(AppointmentWasCanceled $event)
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         $code = $event->appointment->code;
         $date = $event->appointment->start_at->toDateString();

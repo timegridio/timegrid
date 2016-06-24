@@ -44,7 +44,7 @@ class AgendaController extends Controller
      */
     public function getIndex()
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         $appointments = auth()->user()->appointments()->orderBy('start_at')->unarchived()->get();
 
@@ -60,7 +60,7 @@ class AgendaController extends Controller
      */
     public function getAvailability(Business $business, Request $request)
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         if (auth()->user()) {
             if (!auth()->user()->getContactSubscribedTo($business)) {
@@ -127,7 +127,7 @@ class AgendaController extends Controller
      */
     public function postStore(Request $request)
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         //////////////////
         // FOR REFACTOR //

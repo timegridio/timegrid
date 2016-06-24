@@ -37,7 +37,7 @@ class BusinessAgendaController extends Controller
      */
     public function getIndex(Business $business)
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);
@@ -53,7 +53,7 @@ class BusinessAgendaController extends Controller
 
     public function getCalendar(Business $business)
     {
-        logger()->info(__METHOD__);
+        logger()->info(__CLASS__.':'.__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);

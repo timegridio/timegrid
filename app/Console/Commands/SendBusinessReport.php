@@ -103,7 +103,7 @@ class SendBusinessReport extends Command
      */
     protected function sendBusinessReport(Business $business)
     {
-        $this->info(__METHOD__);
+        $this->info(__CLASS__.':'.__METHOD__);
         $this->info("Sending to businessId:{$business->id}");
 
         $appointments = $this->concierge->business($business)->getActiveAppointments();
