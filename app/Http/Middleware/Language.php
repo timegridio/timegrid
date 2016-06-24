@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-// use Illuminate\Contracts\Routing\Middleware;
 use Jenssegers\Agent\Agent;
 
 class Language
