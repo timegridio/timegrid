@@ -17,16 +17,4 @@ class NewUserWasRegisteredUnitTest extends TestCase
 
         event(new NewUserWasRegistered($user));
     }
-
-    /**
-     * @test
-     */
-    public function it_verifies_broadcasts_on()
-    {
-        $user = $this->createUser(['email' => 'guest@example.org', 'password' => bcrypt('demoguest')]);
-
-        $event = new NewUserWasRegistered($user);
-
-        $this->assertEquals([], $event->broadcastOn());
-    }
 }

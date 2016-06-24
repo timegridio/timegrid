@@ -20,14 +20,4 @@ class NewUserWasRegistered extends Event
     {
         $this->user = $user;
     }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
-    }
 }

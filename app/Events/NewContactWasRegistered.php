@@ -20,14 +20,4 @@ class NewContactWasRegistered extends Event
     {
         $this->contact = $contact;
     }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
-    }
 }

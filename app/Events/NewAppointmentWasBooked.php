@@ -2,9 +2,9 @@
 
 namespace App\Events;
 
-use Timegridio\Concierge\Models\Appointment;
 use App\Models\User;
 use Illuminate\Queue\SerializesModels;
+use Timegridio\Concierge\Models\Appointment;
 
 class NewAppointmentWasBooked extends Event
 {
@@ -23,15 +23,5 @@ class NewAppointmentWasBooked extends Event
     {
         $this->user = $user;
         $this->appointment = $appointment;
-    }
-
-    /**
-     * Get the channels the event should be broadcast on.
-     *
-     * @return array
-     */
-    public function broadcastOn()
-    {
-        return [];
     }
 }
