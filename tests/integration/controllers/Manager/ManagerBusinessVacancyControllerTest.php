@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 class ManagerBusinessVacancyControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use CreateUser, CreateBusiness, CreateService, CreateVacancy;
+    use CreateUser, CreateBusiness, CreateService, CreateHumanresource, CreateVacancy;
 
     /**
      * @var Timegridio\Concierge\Models\Business
@@ -203,6 +203,34 @@ EOD;
         $this->press('Update');
 
         $this->assertCount($vacanciesCountBeforeUpdate + 6, $this->business->fresh()->vacancies);
+    }
+
+    /**
+     * @test
+     */
+    public function it_updates_the_vacancy_through_ajax()
+    {
+        $this->arrangeBusinessWithOwner();
+        $service = $this->createService();
+        $this->business->services()->save($service);
+
+        $humanresource = $this->makeHumanResource();
+        $this->business->humanresources()->save($humanresource);
+
+        $vacanciesCountBeforeUpdate = $this->business->vacancies->count();
+
+        $this->actingAs($this->owner);
+
+        $this->call('post', route('manager.business.vacancy.update', $this->business), [
+            'serviceId'      => $service->id,
+            'weekdays'       => [
+                'mon' => true,
+                'wed' => true,
+                'fri' => true,
+                ],
+            ]);
+
+        $this->assertGreaterThan($vacanciesCountBeforeUpdate, $this->business->fresh()->vacancies->count());
     }
 
     /**
