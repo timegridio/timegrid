@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Support\Facades\Artisan;
 
 class SendBusinessReportTest extends TestCase
 {
@@ -14,6 +13,9 @@ class SendBusinessReportTest extends TestCase
     {
         $exitCode = Artisan::call('business:report');
 
+        $resultAsText = Artisan::output();
+
         $this->assertEquals(0, $exitCode);
+        $this->assertEquals($resultAsText, "Scanning all businesses...\n");
     }
 }
