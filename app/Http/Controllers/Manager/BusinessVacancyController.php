@@ -259,8 +259,7 @@ class BusinessVacancyController extends Controller
 
         $this->concierge->business($business);
 
-        if($vacanciesToWipe = $business->vacancies()->where(['service_id' => $service->id]))
-        {
+        if ($vacanciesToWipe = $business->vacancies()->where(['service_id' => $service->id])) {
             $vacanciesToWipe->delete();
         }
 
@@ -273,10 +272,6 @@ class BusinessVacancyController extends Controller
 
     protected function buildStatements(Service $service, HumanResource $humanResource, $weekdays, $startAt, $finishAt, $timezone)
     {
-        if(!$weekdays){
-            return '';
-        }
-
         $out = [];
 
         $out[] = "{$service->slug}:{$humanResource->slug}";
