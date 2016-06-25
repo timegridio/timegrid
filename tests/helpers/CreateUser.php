@@ -12,8 +12,6 @@ trait CreateUser
     private function makeUser()
     {
         $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
 
         return $user;
     }
