@@ -109,12 +109,6 @@ class Preference extends EloquentModel
             case 'float':
                 return (float) $this->value;
                 break;
-            case 'json':
-                return json_decode($this->value);
-                break;
-            case 'array':
-                return unserialize($this->value);
-                break;
             default:
                 break;
         }
