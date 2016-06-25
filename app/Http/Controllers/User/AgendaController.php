@@ -234,7 +234,7 @@ class AgendaController extends Controller
         if (strlen($code) < 4) {
             flash()->error(trans('user.booking.msg.validate.error.bad-code'));
 
-            return redirect()->to('/');
+            return view('guest.appointment.invalid');
         }
 
         // Get the Appointment starting with provided Hash and having Contact

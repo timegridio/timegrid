@@ -808,6 +808,34 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_rejects_validation_of_soft_appotinment_with_incomplete_appointment_codes()
+    {
+        $owner = $this->createUser();
+        $business = $this->createBusiness([
+            'strategy' => 'timeslot',
+            ]);
+        $business->owners()->save($owner);
+
+        $contact = $this->createContact([
+            'user_id' => null,
+            ]);
+        $business->contacts()->save($contact);
+
+        $appointment = $this->makeSoftAppointment($business, $contact, ['status' => Appointment::STATUS_RESERVED]);
+        $appointment->save();
+
+        $code = substr($appointment->code, 0, 1);
+        $email = $appointment->contact->email;
+
+        $this->visit(route('user.booking.validate', compact('business', 'code', 'email')));
+
+        $this->see('Sorry, invalid appointment code');
+        $this->dontSee($appointment->code);
+    }
+
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_reservation_with_timeslot()
     {
         $user = $this->createUser();
