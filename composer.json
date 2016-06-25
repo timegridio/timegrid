@@ -23,7 +23,7 @@
     "require": {
         "anhskohbo/no-captcha": "2.*",
         "barryvdh/laravel-snappy": "~0.2",
-        "bassjobsen/bootstrap-3-typeahead": "^3.1",
+        "bassjobsen/bootstrap-3-typeahead": "~4.0",
         "caffeinated/widgets": "~2.0",
         "camroncade/timezone": "0.1",
         "creativeorange/gravatar": "~1.0",
@@ -54,17 +54,17 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
-        "caouecs/laravel4-lang": "~2.0",
+        "caouecs/laravel4-lang": "~3.0",
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",
         "phpspec/phpspec": "~2.1",
-        "phpunit/phpunit": "~4.8",
-        "phpunit/phpunit-selenium": "~2.0",
+        "phpunit/phpunit": "~5.0",
+        "phpunit/phpunit-selenium": "~3.0",
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "0.9.*",
-        "potsky/laravel-localization-helpers": "2.3.2",
+        "potsky/laravel-localization-helpers": "2.3.3",
         "tightenco/mailthief": "^0.1.0"
     },
     "autoload": {
