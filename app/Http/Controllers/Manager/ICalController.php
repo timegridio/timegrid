@@ -23,6 +23,8 @@ class ICalController extends Controller
         // BEGIN
         $vCalendar = new Calendar($business->slug);
 
+        $vCalendar->setPublishedTTL('PT1H');
+
         $events = $this->buildEvents($business);
 
         foreach ($events as $event) {
