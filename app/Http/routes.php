@@ -31,6 +31,11 @@ Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
         'uses' => 'BookingController@getTimes',
     ]);
 
+    Route::get('ical/{business}/{token}', [
+        'as' => 'api.business.ical.download',
+        'uses' => 'Manager\ICalController@download',
+    ]);
+
 });
 
 /*

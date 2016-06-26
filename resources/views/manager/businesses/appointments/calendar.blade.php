@@ -7,6 +7,8 @@
 
 @section('content')
 <div id="calendar"></div>
+
+<div class="well">{{ $icalURL }}</div>
 @endsection
 
 @section('footer_scripts')

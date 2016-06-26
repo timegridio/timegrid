@@ -50,7 +50,8 @@
         "laracasts/utilities": "^2.1",
         "alariva/tidiochat": "^2.0",
         "timegridio/concierge": "dev-master",
-        "jenssegers/rollbar": "^1.5"
+        "jenssegers/rollbar": "^1.5",
+        "eluceo/ical": "^0.10.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
