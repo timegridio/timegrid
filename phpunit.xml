@@ -18,11 +18,11 @@
 -->
     <testsuites>
         <testsuite name="Application Test Suite">
-            <directory>./tests/unit/</directory>
-            <directory>./tests/integration/</directory>
-            <directory>./tests/acceptance/scenarios/</directory>
-            <directory>./tests/acceptance/commands/</directory>
-            <directory>./tests/acceptance/emails/</directory>
+            <directory suffix="Test.php">./tests/unit/</directory>
+            <directory suffix="Test.php">./tests/integration/</directory>
+            <directory suffix="Test.php">./tests/acceptance/scenarios/</directory>
+            <directory suffix="Test.php">./tests/acceptance/commands/</directory>
+            <directory suffix="Test.php">./tests/acceptance/emails/</directory>
         </testsuite>
     </testsuites>
     <php>
@@ -37,7 +37,7 @@
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
     <filter>
-      <whitelist processUncoveredFilesFromWhitelist="true">
+      <whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="true">
         <directory suffix=".php">app/</directory>
         <exclude>
           <directory suffix=".js">public/</directory>
