@@ -90,8 +90,8 @@ class UserAgendaControllerTest extends TestCase
 
         $this->visit('/')->click('My Reservations');
 
-        $this->dontSee('Reserved')
-             ->dontSee($appointment->code)
+        $this->see('You have no ongoing reservations')
+             ->dontSee('Reserved')
              ->dontSee($appointment->business->name);
     }
 
