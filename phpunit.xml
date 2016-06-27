@@ -37,11 +37,12 @@
         <env name="QUEUE_DRIVER" value="sync"/>
     </php>
     <filter>
-      <whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="true">
-        <directory suffix=".php">app/</directory>
-        <exclude>
-          <directory suffix=".js">public/</directory>
-        </exclude>
-      </whitelist>
+        <whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">app/</directory>
+            <exclude>
+                <file>./app/Http/routes.php</file>
+                <directory suffix=".js">public/</directory>
+            </exclude>
+        </whitelist>
     </filter>
 </phpunit>
