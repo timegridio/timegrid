@@ -58,11 +58,27 @@ class SendBusinessReportTest extends TestCase
         $this->assertRegExp("/Sending to businessId:{$this->business->id}/", $this->commandTester->getDisplay());
     }
 
+    /** @test */
+    public function it_skips_reporting_if_preference_is_not_set()
+    {
+        $this->business->pref('report_daily_schedule', false);
+
+        $this->commandTester->execute([
+            'command'  => $this->command->getName(),
+            'business' => $this->business->id,
+        ]);
+
+        $this->assertRegExp("/Sending to businessId:{$this->business->id}/", $this->commandTester->getDisplay());
+        $this->assertRegExp("/Skipped report/", $this->commandTester->getDisplay());
+    }
+
     protected function arrangeFixture()
     {
         $issuer = $this->createUser();
 
         $this->business = $this->createBusiness();
+
+        $this->business->pref('report_daily_schedule', true);
 
         $contact = $this->createContact();
 
