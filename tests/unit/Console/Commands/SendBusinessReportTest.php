@@ -75,15 +75,19 @@ class SendBusinessReportTest extends TestCase
     protected function arrangeFixture()
     {
         $issuer = $this->createUser();
+        $owner = $this->createUser();
 
         $this->business = $this->createBusiness();
+        $this->business->owners()->save($owner);
 
         $this->business->pref('report_daily_schedule', true);
 
         $contact = $this->createContact();
 
-        $this->makeAppointment($this->business, $issuer, $contact, [
+        $appointment = $this->makeAppointment($this->business, $issuer, $contact, [
             'status' => Appointment::STATUS_CONFIRMED,
             ]);
+
+        $appointment->save();
     }
 }
