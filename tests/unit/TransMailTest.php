@@ -52,6 +52,22 @@ class TransMailTest extends TestCase
 
     /**
      * @test
+     */
+    public function it_switches_timezone()
+    {
+        $testTimezone = 'Europe/London';
+        
+        $return = $this->transmail->switchTimezone($testTimezone);
+
+        $this->assertEquals($return, $this->transmail);
+
+        $return = $this->transmail->timezone($testTimezone);
+
+        $this->assertEquals($return, $this->transmail);
+    }
+
+    /**
+     * @test
      * @expectedException \Exception
      */
     public function it_throws_exception_on_unexisting_view()
