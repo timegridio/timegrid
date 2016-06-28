@@ -59,7 +59,6 @@
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",
-        "phpspec/phpspec": "~2.1",
         "phpunit/phpunit": "~5.0",
         "phpunit/phpunit-selenium": "~3.0",
         "symfony/css-selector": "~3.0",
