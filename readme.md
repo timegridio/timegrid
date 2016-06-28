@@ -9,18 +9,18 @@ timegrid
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Current Beta](https://img.shields.io/badge/dev--beta-5.0-yellow.svg?style=flat-square)](http://demo.timegrid.io/)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
 > **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
-Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
+Built with [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/)
 
 ![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
 
 ## Appointment Library
 
-Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for handling the appointments.
+Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for dealing with appointments.
 
 ## Screenshots
 
@@ -30,9 +30,9 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for h
 
 ## Live Demo
 
-[Test drive the *beta* live demo](http://demo.timegrid.io)
+[Test drive the *beta live demo*](http://demo.timegrid.io)
 
-> **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
+> **HINT:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing
 
 ## Features
 
@@ -41,8 +41,9 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for h
     * Addressbook
     * Services
     * Staff
-    * Availability management
+    * Availability
     * Appointments
+  * Calendar sharing through [iCalendar link](https://en.wikipedia.org/wiki/ICalendar)
   * Scheduling view with [fullcalendar](https://github.com/fullcalendar)
   * Self-service reservation with datepicker
   * Basic email notifications
