@@ -63,12 +63,18 @@ class AgendaController extends Controller
         logger()->info(__CLASS__.':'.__METHOD__);
 
         if (auth()->user()) {
-            if (!auth()->user()->getContactSubscribedTo($business)) {
-                logger()->info('  [ADVICE] User not subscribed to Business');
+            if ($behalofOfId = $request->input('behalfOfId')) {
+                $this->authorize('manageContacts', $business);
 
-                flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+                $contact = $business->contacts()->find($behalofOfId);
+            } else {
+                if (!$contact = auth()->user()->getContactSubscribedTo($business->id)) {
+                    logger()->info('  [ADVICE] User not subscribed to Business');
 
-                return redirect()->route('user.businesses.home', compact('business'));
+                    flash()->warning(trans('user.booking.msg.you_are_not_subscribed_to_business'));
+
+                    return redirect()->route('user.businesses.home', compact('business'));
+                }
             }
 
             Notifynder::category('user.checkingVacancies')
@@ -76,14 +82,6 @@ class AgendaController extends Controller
                ->to('Timegridio\Concierge\Models\Business', $business->id)
                ->url('http://localhost')
                ->send();
-
-            if ($behalofOfId = $request->input('behalfOfId')) {
-                $this->authorize('manageContacts', $business);
-
-                $contact = $business->contacts()->find($behalofOfId);
-            } else {
-                $contact = auth()->user()->getContactSubscribedTo($business->id);
-            }
         }
 
         $date = $request->input('date', 'today');

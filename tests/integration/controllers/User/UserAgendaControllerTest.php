@@ -232,6 +232,37 @@ class UserAgendaControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_queries_vacancies_on_behalf_of_a_contact()
+    {
+        $owner = $this->createUser();
+        $user = $this->createUser();
+
+        $business = $this->createBusiness(['name' => 'tosto this tosti']);
+        $business->owners()->save($owner);
+
+        $contact = $this->makeContact($user);
+
+        $business->contacts()->save($contact);
+
+        $service = $this->makeService();
+        $business->services()->save($service);
+
+        $this->vacancy = $this->makeVacancy();
+        $this->vacancy->service()->associate($service);
+        $business->vacancies()->save($this->vacancy);
+        
+        $this->actingAs($owner);
+
+        $this->visit(route('user.booking.book', ['business' => $business, 'behalfOfId' => $contact->id]));
+
+        $this->see('Select a service to reserve')
+             ->see($service->name)
+             ->see('Confirm');
+    }
+
+    /**
+     * @test
+     */
     public function it_queries_vacancies_allowing_from_today()
     {
         $owner = $this->createUser();
