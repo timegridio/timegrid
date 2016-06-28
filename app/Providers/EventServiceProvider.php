@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -30,7 +29,7 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\SendAppointmentCancellationNotification::class,
         ],
         \App\Events\NewSoftAppointmentWasBooked::class => [
-            \App\Listeners\SendSofAppointmentValidationRequest::class
+            \App\Listeners\SendSofAppointmentValidationRequest::class,
         ],
     ];
 
@@ -42,18 +41,4 @@ class EventServiceProvider extends ServiceProvider
     protected $subscribe = [
         \App\Listeners\UserEventListener::class,
     ];
-
-    /**
-     * Register any other events for your application.
-     *
-     * @param \Illuminate\Contracts\Events\Dispatcher $events
-     *
-     * @return void
-     */
-    public function boot(DispatcherContract $events)
-    {
-        parent::boot($events);
-
-        //
-    }
 }
