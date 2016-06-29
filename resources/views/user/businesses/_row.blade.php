@@ -1,61 +1,23 @@
-@section('css')
-@parent
-<style>
-.glyphicon {
-    margin-bottom: 4px;
-    margin-right: 10px;
-    color: #999;
-}
-</style>
-@endsection
-
-<div class="row">
-
-    <div class="col-md-2 col-sm-3 text-left">
-        <a href="{{route('user.businesses.home', compact('business'))}}">
+<a href="{{ route('user.businesses.home', compact('business')) }}" class="list-group-item">
+    <div class="media col-md-3">
+        <figure class="pull-left">
             {!! $business->facebookImg('normal') !!}
-        </a>
+        </figure>
     </div>
-
-    <div class="col-md-10 col-sm-9">
-
-        <h3>
-            <a href="{{route('user.businesses.home', compact('business'))}}">
-                {{ str_limit($business->name, 50) }}
-            </a>
-            &nbsp;
-            <small class="text-muted">
-                <i class="glyphicon glyphicon-star"></i>{{ $business->subscriptionsCount }}
-            </small>
-        </h3>
-
-        <div class="row">
-            <div class="col-xs-9">
-
-                @if ( $business->category )
-                    <p>
-                        <i class="glyphicon glyphicon-home"></i>&nbsp;
-                        {!! trans('app.business.category.'.strtolower($business->category->slug)) !!}
-                    </p>
-                @endif
-
-                @if ( $business->postal_address )
-                    <p title="{{ $business->postal_address }}">
-                        <i class="glyphicon glyphicon-map-marker"></i>&nbsp;
-                        {{ $business->postal_address }}
-                    </p>
-                @endif
-
-                @if ( $business->description )
-                    <p>
-                        <i class="glyphicon glyphicon-info-sign"></i>&nbsp;
-                        {{ str_limit(strip_tags(Markdown::convertToHtml($business->description)), 80) }}
-                    </p>
-                @endif
-
-            </div>
-            <div class="col-xs-3"></div>
-        </div>
-    </div>{{-- column --}}
-
-</div>{{-- row --}}
+    <div class="col-md-6">
+        <h4 class="list-group-item-heading"> {{ str_limit($business->name, 50) }} </h4>
+        <p class="list-group-item-text">
+            <p>
+                <i class="glyphicon glyphicon-home"></i>&nbsp;
+                {!! trans('app.business.category.'.strtolower($business->category->slug)) !!}
+            </p>
+        </p>
+        <p class="list-group-item-text">
+            {{ str_limit(strip_tags(Markdown::convertToHtml($business->description)), 400) }}
+        </p>
+    </div>
+    <div class="col-md-3 text-center">
+        <h2> {{ $business->subscriptionsCount }} <small> {{ trans('user.businesses.subscriptions.title') }} </small></h2>
+        <button type="button" class="btn btn-default btn-lg btn-block"> {{ trans('user.appointments.btn.book') }} </button>
+    </div>
+</a>
