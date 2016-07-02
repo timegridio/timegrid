@@ -4,15 +4,15 @@ namespace App\Listeners;
 
 use App\Events\NewUserWasRegistered;
 use App\Models\User;
-use Torann\GeoIP\GeoIP;
+use App\Services\DetectTimezone;
 
 class AutoConfigureUserPreferences
 {
-    private $geoip;
+    private $detectTimezone;
 
-    public function __construct(GeoIP $geoip)
+    public function __construct(DetectTimezone $detectTimezone)
     {
-        $this->geoip = $geoip;
+        $this->detectTimezone = $detectTimezone;
     }
 
     /**
@@ -31,15 +31,8 @@ class AutoConfigureUserPreferences
 
     protected function saveUserTimezone(User $user)
     {
-        $timezone = $this->detectUserTimezone();
+        $timezone = $this->detectTimezone->get();
 
         $user->pref('timezone', $timezone);
-    }
-
-    protected function detectUserTimezone()
-    {
-        $location = $this->geoip->getLocation();
-
-        return $location['timezone'];
     }
 }
