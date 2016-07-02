@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Exceptions\BusinessAlreadyRegistered;
+use App\Models\User;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Category;
-use App\Models\User;
 
 /*******************************************************************************
  * Business Service Layer
@@ -26,20 +26,19 @@ class BusinessService
     {
         $slug = str_slug($data['name']);
 
-        $business = self::getExisting($user, $slug);
-
-        if (false === $business) {
-            $business = new Business($data);
-
-            $category = Category::find($category);
-
-            $business->strategy = $category->strategy;
-            $business->category()->associate($category);
-            $business->save();
-
-            auth()->user()->businesses()->attach($business);
-            auth()->user()->save();
+        if ($business = self::getExisting($user, $slug)) {
+            return $business;
         }
+
+        $business = new Business($data);
+
+        $category = Category::find($category);
+        $business->strategy = $category->strategy;
+        $business->category()->associate($category);
+
+        $business->save();
+
+        auth()->user()->businesses()->attach($business);
 
         return $business;
     }
