@@ -12,6 +12,11 @@ trait CreateAppointment
         return factory(Appointment::class)->create($overrides);
     }
 
+    private function createAppointments($count = 20, $overrides = [])
+    {
+        return factory(Appointment::class, $count)->create($overrides);
+    }
+
     private function makeAppointment(Business $business, User $issuer, Contact $contact, $override = [])
     {
         $appointment = factory(Appointment::class)->make($override);

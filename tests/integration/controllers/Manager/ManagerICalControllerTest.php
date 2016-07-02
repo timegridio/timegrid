@@ -3,6 +3,7 @@
 use App\BusinessToken;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Timegridio\Concierge\Models\Appointment;
 
 class ManagerICalControllerTest extends TestCase
 {
@@ -64,10 +65,12 @@ class ManagerICalControllerTest extends TestCase
 
         $this->business = $this->createBusiness();
 
-        $this->appointment = $this->makeAppointment($this->business, $this->createUser(), $this->createContact());
-
-        $this->appointment->save();
-
         $this->business->owners()->save($this->owner);
+
+        $this->appointment = $this->createAppointments(10, [
+            'business_id' => $this->business->id,
+            'issuer_id'   => $this->owner->id,
+            'status'      => Appointment::STATUS_CONFIRMED,
+            ]);
     }
 }
