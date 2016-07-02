@@ -43,7 +43,11 @@ class ICalController extends Controller
 
     protected function buildEvents(Business $business)
     {
-        $appointments = $business->bookings;
+        $businessAppointments = $business->bookings()->active()->get();
+
+        $ownerAppointments = $business->owner()->appointments()->active()->get();
+
+        $appointments = array_merge($businessAppointments->all(), $ownerAppointments->all());
 
         $events = [];
 
@@ -55,7 +59,15 @@ class ICalController extends Controller
 
             $vEvent->setDtStart($startAt);
             $vEvent->setDtEnd($endAt);
-            $vEvent->setSummary($appointment->contact->firstname.'/'.$appointment->service->name.'@'.$business->slug);
+
+            $summary = $appointment->contact->firstname.'/'.
+                       $appointment->service->name.'@'.
+                       $business->slug.
+                       ' ['.$appointment->code.']';
+
+            $vEvent->setSummary($summary);
+
+            $vEvent->setDescription($appointment->comments);
 
             $vEvent->setUseTimezone(true);
 
