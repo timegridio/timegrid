@@ -62,7 +62,7 @@ class ICalController extends Controller
 
             $summary = $appointment->contact->firstname.'/'.
                        $appointment->service->name.'@'.
-                       $business->slug.
+                       $appointment->business->slug.
                        ' ['.$appointment->code.']';
 
             $vEvent->setSummary($summary);
