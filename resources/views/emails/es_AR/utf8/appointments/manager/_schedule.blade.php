@@ -22,8 +22,8 @@
         <td style="padding:4px; color:#444;">
             {{ $appointment->contact->firstname }} {{ $appointment->contact->lastname }}
         </td>
-        <td style="padding:4px; color:#444;">{{ $appointment->date }}</td>
-        <td style="padding:4px; color:#444;">{{ $appointment->time }}</td>
+        <td style="padding:4px; color:#444;">{{ $appointment->date() }}</td>
+        <td style="padding:4px; color:#444;">{{ $appointment->time() }}</td>
         <td style="padding:4px; color:#444;">{{ $appointment->service->name }}</td>
         <td style="padding:4px; color:#444;">{{ $appointment->business->name }}</td>
         <td style="padding:4px; color:#444;">{{ $appointment->notes }}</td>
