@@ -26,7 +26,7 @@
 <pre>
 Prestador: {{ $appointment->business->name }}
     Fecha: {{ $appointment->date }}
-     Hora: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}
+     Hora: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }} ({{ $appointment->timezone() }})
    Código: {{ $appointment->code() }}
 @if($appointment->business->postal_address && $appointment->business->pref('show_postal_address'))
     Dónde: {{ $appointment->business->postal_address }}

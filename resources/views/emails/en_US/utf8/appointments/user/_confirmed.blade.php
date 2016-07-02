@@ -29,7 +29,7 @@
 ----------------------------------------------
 Business: {{ $appointment->business->name }}
     Date: {{ $appointment->date }}
-    Time: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}
+    Time: {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }} ({{ $appointment->timezone() }})
     Code: {{ $appointment->code() }}
 @if($appointment->business->postal_address && $appointment->business->pref('show_postal_address'))
    Where: {{ $appointment->business->postal_address }}

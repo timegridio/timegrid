@@ -27,7 +27,7 @@
  TURNO CANCELADO
 ----------------------------------------------
 
-El turno {{ $appointment->code() }} en {{ $appointment->business->name }} para {{ $appointment->service->name }} {{ $appointment->time() }} fue cancelado.
+El turno {{ $appointment->code() }} en {{ $appointment->business->name }} para {{ $appointment->service->name }} {{ $appointment->time() }} ({{ $appointment->timezone() }}) fue cancelado.
 
 @if($appointment->business->phone && $appointment->business->pref('show_phone'))
 Para contactar a {{ $appointment->business->name }} por favor llame al {{ $appointment->business->phone }}

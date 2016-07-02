@@ -27,7 +27,7 @@
  CITA CANCELADA
 ----------------------------------------------
 
-La cita {{ $appointment->code() }} en {{ $appointment->business->name }} para {{ $appointment->service->name }} {{ $appointment->time() }} fue cancelada.
+La cita {{ $appointment->code() }} en {{ $appointment->business->name }} para {{ $appointment->service->name }} {{ $appointment->time() }} ({{ $appointment->timezone() }}) fue cancelada.
 
 @if($appointment->business->phone && $appointment->business->pref('show_phone'))
 Para contactar a {{ $appointment->business->name }} por favor llame al {{ $appointment->business->phone }}

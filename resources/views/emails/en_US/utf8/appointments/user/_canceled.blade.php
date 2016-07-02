@@ -29,7 +29,7 @@
 ----------------------------------------------
 
 Your appointment {{ $appointment->code() }} at {{ $appointment->business->name }} for
-{{ $appointment->service->name }} {{ $appointment->time() }} was canceled.
+{{ $appointment->service->name }} {{ $appointment->time() }} ({{ $appointment->timezone() }}) was canceled.
 
 @if($appointment->business->phone && $appointment->business->pref('show_phone'))
 For contacting {{ $appointment->business->name }} please call {{ $appointment->business->phone }}
