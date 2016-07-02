@@ -121,6 +121,7 @@ class SendBusinessReport extends Command
             'name'  => $owner->name,
         ];
         $this->transmail->locale($business->locale)
+                        ->timezone($business->timezone)
                         ->template('appointments.manager._schedule')
                         ->subject('manager.business.report.subject', ['date' => date('Y-m-d'), 'business' => $business->name])
                         ->send($header, compact('business', 'appointments'));
