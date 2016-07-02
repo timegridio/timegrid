@@ -85,6 +85,31 @@ class ManagerBusinessControllerTest extends TestCase
     /**
      * @test
      */
+    public function it_auto_setups_a_staff_member()
+    {
+        $this->owner = $this->createUser();
+
+        $businessData = [
+            'name'        => 'Tosto',
+            'slug'        => 'tosto',
+            'category'    => '1',
+            'description' => 'Tosto this tosti to say',
+            'locale'      => 'en_US.utf8',
+            'strategy'    => 'timeslot',
+        ];
+
+        $this->assertCount(0, $this->owner->fresh()->businesses);
+
+        $this->actingAs($this->owner);
+
+        $this->call('POST', route('manager.business.store'), $businessData);
+
+        $this->assertEquals(1, $this->owner->businesses()->first()->humanresources()->count());
+    }
+
+    /**
+     * @test
+     */
     public function it_prevents_a_duplicated_business_registration()
     {
         $this->owner = $this->createUser();

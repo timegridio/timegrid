@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Models\User;
+use App\Services\Business\Setup\SetupStaff;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Category;
 
@@ -13,6 +14,8 @@ use Timegridio\Concierge\Models\Category;
  ******************************************************************************/
 class BusinessService
 {
+    private $setupStaffClass = SetupStaff::class;
+
     /**
      * register Business.
      *
@@ -119,5 +122,12 @@ class BusinessService
         $business->save();
 
         return $business;
+    }
+
+    public function setup(Business $business)
+    {
+        $setupStaff = $this->setupStaffClass;
+
+        $setupStaff::createStaffMember($business);
     }
 }
