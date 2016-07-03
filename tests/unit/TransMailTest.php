@@ -1,7 +1,7 @@
 <?php
 
 use App\TransMail;
-use Illuminate\Support\Facades\Mail;
+use Snowfire\Beautymail\Beautymail;
 
 class TransMailTest extends TestCase
 {
@@ -45,8 +45,8 @@ class TransMailTest extends TestCase
              ->andReturn(0);
 
         $this->transmail->locale('en_US.utf8')
-                        ->template('welcome')
-                        ->subject('welcome')
+                        ->template('user.welcome.welcome')
+                        ->subject('user.welcome.subject')
                         ->send($this->header, $this->params);
     }
 
@@ -84,7 +84,7 @@ class TransMailTest extends TestCase
 
     protected function arrangeScenario()
     {
-        $this->mail = new Mail();
+        $this->mail = Mockery::mock(Beautymail::class);
 
         $this->transmail = new TransMail($this->mail);
 

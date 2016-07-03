@@ -24,7 +24,7 @@ class SendAppointmentConfirmationNotification
      */
     public function handle(AppointmentWasConfirmed $event)
     {
-        logger()->info('Handle AppointmentWasConfirmed.SendBookingNotification()');
+        logger()->info(__METHOD__);
 
         $code = $event->appointment->code;
         $date = $event->appointment->start_at->toDateString();
@@ -43,8 +43,10 @@ class SendAppointmentConfirmationNotification
 
         // Mail to User
         $params = [
-            'user'        => $event->user,
-            'appointment' => $event->appointment,
+            'user'         => $event->user,
+            'appointment'  => $event->appointment,
+            'userName'     => $event->appointment->contact->firstname,
+            'businessName' => $businessName,
         ];
         $header = [
             'name'  => $event->appointment->contact->firstname,
@@ -52,8 +54,8 @@ class SendAppointmentConfirmationNotification
         ];
         $this->transmail->locale($event->appointment->business->locale)
                         ->timezone($event->user->pref('timezone'))
-                        ->template('appointments.user._confirmed')
-                        ->subject('user.appointment.confirmed.subject', ['business' => $event->appointment->business->name])
+                        ->template('user.appointment-confirmation.notification')
+                        ->subject('user.appointment-confirmation.subject', compact('businessName'))
                         ->send($header, $params);
     }
 }

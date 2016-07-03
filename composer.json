@@ -51,7 +51,8 @@
         "alariva/tidiochat": "^2.0",
         "timegridio/concierge": "dev-master",
         "jenssegers/rollbar": "^1.5",
-        "eluceo/ical": "^0.10.1"
+        "eluceo/ical": "^0.10.1",
+        "snowfire/beautymail": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
@@ -86,17 +87,19 @@
         ]
     },
     "scripts": {
+        "post-root-package-install": [
+            "php -r \"copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "php artisan key:generate"
+        ],
         "post-install-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
             "php artisan optimize"
         ],
         "post-update-cmd": [
-            "php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
-        ],
-        "post-create-project-cmd": [
-            "php -r \"copy('.env.example', '.env');\"",
-            "php artisan key:generate"
         ]
     },
     "config": {

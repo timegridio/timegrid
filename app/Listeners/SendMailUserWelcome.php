@@ -23,16 +23,17 @@ class SendMailUserWelcome
      */
     public function handle(NewUserWasRegistered $event)
     {
-        logger()->info('Handle NewUserWasRegistered.SendMailUserWelcome()');
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         $params = [
             'user' => $event->user,
+            'userName' => $event->user->name,
         ];
         $header = [
             'name'  => $event->user->name,
             'email' => $event->user->email,
         ];
-        $this->transmail->template('welcome')
+        $this->transmail->template('user.welcome.welcome')
                         ->subject('user.welcome.subject')
                         ->send($header, $params);
     }

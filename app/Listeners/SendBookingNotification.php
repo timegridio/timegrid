@@ -24,7 +24,7 @@ class SendBookingNotification
      */
     public function handle(NewAppointmentWasBooked $event)
     {
-        logger()->info('Handle NewAppointmentWasBooked.SendBookingNotification()');
+        logger()->info(__CLASS__.':'.__METHOD__);
 
         $code = $event->appointment->code;
         $date = $event->appointment->start_at->toDateString();
@@ -65,8 +65,8 @@ class SendBookingNotification
             'params'   => $params,
             'locale'   => $event->appointment->business->locale,
             'timezone' => $user->pref('timezone'),
-            'template' => 'appointments.user._new',
-            'subject'  => 'user.appointment.reserved.subject',
+            'template' => 'emails.user.appointment-notification.notification',
+            'subject'  => 'emails.user.appointment-notification.subject',
         ];
         $this->sendemail($email);
     }
@@ -86,8 +86,8 @@ class SendBookingNotification
             'params'   => $params,
             'locale'   => $event->appointment->business->locale,
             'timezone' => $event->appointment->business->owner()->pref('timezone'),
-            'template' => 'appointments.manager._new',
-            'subject'  => 'manager.appointment.reserved.subject',
+            'template' => 'emails.manager.appointment-notification.notification',
+            'subject'  => 'emails.manager.appointment-notification.subject',
         ];
         $this->sendemail($email);
     }
