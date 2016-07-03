@@ -55,7 +55,7 @@
                             @endif
                         </h2>
                         <hr />
-                        <p>{!! Markdown::convertToHtml($service->description) !!}</p>
+                        <p>{!! Markdown::convertToHtml(strip_tags($service->description)) !!}</p>
                         <br />
                         <a href="#" class="btn btn-block btn-primary btn-lg service-btn" data-service-id="{{ $service->id }}">{{ $service->name }}</a>
                     </div>

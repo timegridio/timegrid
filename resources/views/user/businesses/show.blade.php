@@ -33,7 +33,7 @@
                                   </div>
                                   <div class="media-body">
                                     <div class="{{ $business->pref('description_div_class') }}">
-                                        <h5>{!! Markdown::convertToHtml($business->description) !!}</h5>
+                                        <h5>{!! Markdown::convertToHtml(strip_tags($business->description)) !!}</h5>
                                     </div>
                                   </div>
                                 </div>

@@ -13,7 +13,7 @@
             </p>
         </p>
         <p class="list-group-item-text">
-            {{ str_limit(strip_tags(Markdown::convertToHtml($business->description)), 400) }}
+            {{ str_limit(strip_tags(Markdown::convertToHtml(strip_tags($business->description))), 400) }}
         </p>
     </div>
     <div class="col-md-3 text-center">
