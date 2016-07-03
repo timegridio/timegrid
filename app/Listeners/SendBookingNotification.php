@@ -41,22 +41,38 @@ class SendBookingNotification
         // Send emails //
         /////////////////
 
-        // Mail to User
+        $this->sendEmailToContactUser($event);
+
+        $this->sendEmailToOwner($event);
+    }
+
+    protected function sendEmailToContactUser($event)
+    {
+        if (!$user = $event->appointment->contact->user) {
+            return false;
+        }
+
         $params = [
-            'user'        => $event->user,
+            'user'        => $user,
             'appointment' => $event->appointment,
         ];
         $header = [
-            'name'  => $event->user->name,
-            'email' => $event->user->email,
+            'name'  => $user->name,
+            'email' => $user->email,
         ];
-        $this->transmail->locale($event->appointment->business->locale)
-                        ->timezone($event->user->pref('timezone'))
-                        ->template('appointments.user._new')
-                        ->subject('user.appointment.reserved.subject')
-                        ->send($header, $params);
+        $email = [
+            'header'   => $header,
+            'params'   => $params,
+            'locale'   => $event->appointment->business->locale,
+            'timezone' => $user->pref('timezone'),
+            'template' => 'appointments.user._new',
+            'subject'  => 'user.appointment.reserved.subject',
+        ];
+        $this->sendemail($email);
+    }
 
-        // Mail to Owner
+    protected function sendEmailToOwner($event)
+    {
         $params = [
             'user'        => $event->appointment->business->owner(),
             'appointment' => $event->appointment,
@@ -65,10 +81,25 @@ class SendBookingNotification
             'name'  => $event->appointment->business->owner()->name,
             'email' => $event->appointment->business->owner()->email,
         ];
-        $this->transmail->locale($event->appointment->business->locale)
-                        ->timezone($event->appointment->business->owner()->pref('timezone'))
-                        ->template('appointments.manager._new')
-                        ->subject('manager.appointment.reserved.subject')
+        $email = [
+            'header'   => $header,
+            'params'   => $params,
+            'locale'   => $event->appointment->business->locale,
+            'timezone' => $event->appointment->business->owner()->pref('timezone'),
+            'template' => 'appointments.manager._new',
+            'subject'  => 'manager.appointment.reserved.subject',
+        ];
+        $this->sendemail($email);
+    }
+
+    protected function sendEmail($email)
+    {
+        extract($email);
+
+        $this->transmail->locale($locale)
+                        ->timezone($timezone)
+                        ->template($template)
+                        ->subject($subject)
                         ->send($header, $params);
     }
 }
