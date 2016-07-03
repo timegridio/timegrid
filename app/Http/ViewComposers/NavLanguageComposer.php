@@ -16,5 +16,6 @@ class NavLanguageComposer
     public function compose(View $view)
     {
         $view->with('availableLanguages', config('languages'));
+        $view->with('appLocale', app()->getLocale());
     }
 }
