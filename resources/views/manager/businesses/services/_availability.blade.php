@@ -30,9 +30,8 @@
 </ul>
 {!! Form::close() !!}
 
-@section('footer_scripts')
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
-@parent
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -74,4 +73,4 @@ $(document).ready(function(){
     });
 });
 </script>
-@endsection
+@endpush

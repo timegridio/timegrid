@@ -31,8 +31,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
 <script>
 $(document).ready(function(){
@@ -85,4 +84,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

@@ -177,8 +177,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/newsbox.js') }}"></script>
 <script src="{{ asset('js/tour.js') }}"></script>
 <script type="text/javascript">
@@ -367,4 +366,4 @@ onToDo: null
 
 })();
 </script>
-@endsection
+@endpush

@@ -214,7 +214,7 @@ $(document).ready(function() {
 });
 </script>
 
-@yield('footer_scripts')
+@stack('footer_scripts')
 
 </body>
 </html>

@@ -29,7 +29,3 @@
     </div>
 
 </div>
-
-@section('footer_scripts')
-@parent
-@endsection

@@ -48,7 +48,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
+@push('footer_scripts')
 <script>
 $(document).ready(function() {
 
@@ -123,4 +123,4 @@ $(document).ready(function() {
  
 });
 </script>
-@endsection
+@endpush

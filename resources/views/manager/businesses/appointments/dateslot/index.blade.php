@@ -18,8 +18,7 @@
 @endsection
 
 {{-- ToDo: Reusable code with app/resources/views/manager/businesses/appointments/dateslot/index.blade.php --}}
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 $(document).ready(function(){
 function prepareEvents(){
@@ -83,4 +82,4 @@ prepareEvents();
 
 });
 </script>
-@endsection
+@endpush

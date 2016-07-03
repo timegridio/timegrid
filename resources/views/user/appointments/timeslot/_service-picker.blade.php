@@ -66,8 +66,7 @@
     </div>
 </section>
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 
     function arr_diff (a1, a2) {
@@ -134,4 +133,4 @@
     });
 
 </script>
-@endsection
+@endpush

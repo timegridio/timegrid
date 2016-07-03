@@ -99,8 +99,7 @@
     </div>
 </div>
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/lib/utils.js') }}"></script>
 <script src="{{ asset('js/intlTelInput/intlTelInput.min.js') }}"></script>
@@ -128,4 +127,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

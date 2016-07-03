@@ -1,5 +1,4 @@
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 $(document).ready(function(){
 
@@ -45,7 +44,7 @@ $(document).ready(function(){
     });
 });
 </script>
-@endsection
+@endpush
 
 @section('css')
 <style>

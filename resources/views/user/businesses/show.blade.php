@@ -101,8 +101,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 $(document).ready(function(){
 
@@ -153,4 +152,4 @@ prepareEvents();
 
 });
 </script>
-@endsection
+@endpush

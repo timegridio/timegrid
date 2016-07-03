@@ -50,7 +50,6 @@
     </div>
 </div>
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
-@endsection
+@endpush

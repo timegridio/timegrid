@@ -91,7 +91,7 @@
     </div>
 </div>
 
-@section('footer_scripts')
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/datetime.js') }}"></script>
 <script src="{{ asset('js/gender/gender.min.js') }}"></script>
@@ -139,4 +139,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

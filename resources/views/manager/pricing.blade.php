@@ -193,9 +193,8 @@ body{
 </div> <!-- /container -->
 @endsection
 
-@section('footer_scripts')
+@push('footer_scripts')
 <script src="{{ asset('js/bootstrap-tour.min.js') }}"></script>
-@parent
 <script>
 $(document).ready(function(){
 
@@ -246,4 +245,4 @@ tour.start();
 
 });
 </script>
-@endsection
+@endpush

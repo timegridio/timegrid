@@ -22,8 +22,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/newsbox.js') }}"></script>
 
 <script type="text/javascript">
@@ -43,4 +42,4 @@ $(".demo").bootstrapNews({
     onToDo: null
 });
 </script>
-@endsection
+@endpush

@@ -25,8 +25,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script type="text/javascript">
 (function() {
  
@@ -97,4 +96,4 @@
 
 })();
 </script>
-@endsection
+@endpush

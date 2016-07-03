@@ -44,8 +44,7 @@
 @endsection
 
 @unless($user->hasBusiness())
-    @section('footer_scripts')
-    @parent
+    @push('footer_scripts')
     {!! TidioChat::js() !!}
-    @endsection
+    @endpush
 @endunless

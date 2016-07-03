@@ -75,8 +75,7 @@
 <!-- /.login-box -->
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -97,4 +96,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

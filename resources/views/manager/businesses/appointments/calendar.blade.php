@@ -11,8 +11,7 @@
 <div class="well">{{ $icalURL }}</div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/datetime.js') }}"></script>
 <script>
 $(document).ready(function(){
@@ -45,4 +44,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush
