@@ -74,7 +74,9 @@
 
 <script type="text/javascript">
 $(document).ready(function() {
-    $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-light'});
+    $('.btn').tooltipster({
+      animation: "grow", theme: 'tooltipster-light'
+    });
 });
 </script>
 

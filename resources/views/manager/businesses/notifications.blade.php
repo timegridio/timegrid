@@ -14,7 +14,7 @@
         </div>
 
         <div class="panel-body">
-            @include('manager.businesses._notifications', ['notifications' => $notifications ])
+            @include('manager.businesses._notifications', compact('notifications'))
         </div>
                 
     </div>

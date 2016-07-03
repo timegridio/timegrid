@@ -79,7 +79,7 @@
             {!! Alert::warning(sprintf($cancellationPolicyAdvice, $appointment->cancellationDeadline)) !!}
         @endif
 
-        @include('widgets.appointment.panel._buttons', ['appointment' => $appointment, 'user' => $user])
+        @include('widgets.appointment.panel._buttons', compact('appointment', 'user'))
 
     </div>
 
