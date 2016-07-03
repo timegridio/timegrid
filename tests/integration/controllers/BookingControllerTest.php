@@ -207,8 +207,7 @@ class BookingControllerTest extends TestCase
 
         $this->post(route('api.booking.action'), $input);
 
-        // Then I receive a response and see the appointment with no changes
-        $this->assertResponseOk();
+        $this->assertResponseStatus(302);
         $this->assertEquals(Appointment::STATUS_RESERVED, $this->appointment->status);
     }
 
@@ -240,8 +239,7 @@ class BookingControllerTest extends TestCase
 
         $this->post(route('api.booking.action'), $input);
 
-        // Then I receive a response with error code
-        $this->seeJson(['code' => 'ERROR']);
+        $this->assertResponseStatus(302);
     }
 
     /**

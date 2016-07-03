@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
-use Auth;
 
 class AlterAppointmentRequest extends Request
 {
@@ -34,6 +34,11 @@ class AlterAppointmentRequest extends Request
      */
     public function rules()
     {
-        return [];
+        return [
+            'business'    => 'required|integer',
+            'appointment' => 'required|integer',
+            'action'      => 'required|in:confirm,cancel,serve',
+            'widget'      => 'required|in:row,panel',
+        ];
     }
 }
