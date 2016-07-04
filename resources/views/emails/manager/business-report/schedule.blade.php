@@ -5,7 +5,7 @@
     @include('beautymail::templates.minty.contentStart')
         <tr>
             <td class="title">
-                {{ trans('emails.guest.password.hello', compact('userName')) }}
+                {{ trans('emails.manager.business-report.welcome', compact('ownerName')) }}
             </td>
         </tr>
         <tr>
@@ -13,15 +13,18 @@
         </tr>
         <tr>
             <td class="paragraph">
-                {{ trans('emails.guest.password.instructions') }}
+                @include('emails.manager.business-report._table', $appointments)
             </td>
         </tr>
         <tr>
             <td width="100%" height="25"></td>
         </tr>
         <tr>
+            <td width="100%" height="25"></td>
+        </tr>
+        <tr>
             <td>
-                @include('beautymail::templates.minty.button', ['text' => trans('emails.user.welcome.button'), 'link' => url('password/reset/'.$token) ])
+                @include('beautymail::templates.minty.button', ['text' => trans('emails.manager.business-report.button'), 'link' => route('manager.business.agenda.calendar', $business)])
             </td>
         </tr>
         <tr>

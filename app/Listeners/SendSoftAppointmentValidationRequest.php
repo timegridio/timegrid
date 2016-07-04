@@ -26,7 +26,7 @@ class SendSoftAppointmentValidationRequest
         logger()->info(__CLASS__.':'.__METHOD__);
 
         $timezone = $event->appointment->business->timezone;
-        $business = $event->appointment->business->name;
+        $businessName = $event->appointment->business->name;
         $businessSlug = $event->appointment->business->slug;
         $locale = $event->appointment->business->locale;
         $email = $event->appointment->contact->email;
@@ -37,8 +37,9 @@ class SendSoftAppointmentValidationRequest
         ////////////////////////////////////////////////////
 
         $params = [
-            'appointment' => $event->appointment,
-            'link'        => $this->generateLink($businessSlug, $code, $email),
+            'appointment'  => $event->appointment,
+            'link'         => $this->generateLink($businessSlug, $code, $email),
+            'businessName' => $businessName,
         ];
         $header = [
             'name'  => $event->appointment->contact->firstname,
@@ -48,8 +49,8 @@ class SendSoftAppointmentValidationRequest
         return $this->transmail
                     ->locale($locale)
                     ->timezone($timezone)
-                    ->template('appointments.user._validate')
-                    ->subject('user.appointment.validate.subject', compact('business'))
+                    ->template('guest.appointment-validation.validation')
+                    ->subject('guest.appointment-validation.subject', compact('businessName'))
                     ->send($header, $params);
     }
 

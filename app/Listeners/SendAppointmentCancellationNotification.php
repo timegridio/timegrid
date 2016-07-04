@@ -43,8 +43,10 @@ class SendAppointmentCancellationNotification
 
         // Mail to User
         $params = [
-            'user'        => $event->user,
-            'appointment' => $event->appointment,
+            'user'         => $event->user,
+            'appointment'  => $event->appointment,
+            'businessName' => $businessName,
+            'userName'     => $event->appointment->contact->firstname,
         ];
         $header = [
             'name'  => $event->appointment->contact->firstname,
@@ -52,8 +54,8 @@ class SendAppointmentCancellationNotification
         ];
         $this->transmail->locale($event->appointment->business->locale)
                         ->timezone($event->user->pref('timezone'))
-                        ->template('appointments.user._canceled')
-                        ->subject('user.appointment.canceled.subject', ['business' => $event->appointment->business->name])
+                        ->template('user.appointment-cancellation.notification')
+                        ->subject('user.appointment-cancellation.subject', compact('businessName'))
                         ->send($header, $params);
     }
 }

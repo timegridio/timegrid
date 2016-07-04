@@ -2,7 +2,7 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Mail;
+use Snowfire\Beautymail\Beautymail;
 
 class TransMail
 {
@@ -73,9 +73,9 @@ class TransMail
      *
      * @param Mail|null $mail
      */
-    public function __construct(Mail $mail = null)
+    public function __construct($mail = null)
     {
-        $this->mail = $mail ?: new Mail();
+        $this->mail = $mail ?: app()->make(Beautymail::class);
 
         $this->locale();
     }
@@ -179,15 +179,16 @@ class TransMail
         $this->switchLocale($this->locale);
         $this->switchTimezone($this->timezone);
 
-        Mail::send($this->getViewKey(), $params, function ($mail) use ($header) {
-            $mail->to($header['email'], $header['name'])
-                 ->subject($this->getSubject());
+        $this->mail->send($this->getViewKey(), $params, function ($message) use ($header) {
+            $message
+                ->to(array_get($header, 'email'), array_get($header, 'name'))
+                ->subject($this->getSubject());
         });
 
         $this->switchLocale($this->revertLocale);
         $this->switchTimezone($this->revertTimezone);
 
-        $this->success = 0 == Mail::failures();
+        $this->success = 0 == $this->mail->failures();
 
         return $this->success();
     }
@@ -226,7 +227,7 @@ class TransMail
      */
     protected function getViewKey()
     {
-        $key = $this->viewBase.'.'.$this->locale.'.'.$this->viewPath;
+        $key = $this->viewBase.'.'.$this->viewPath;
 
         if (!view()->exists($key)) {
             throw new \Exception('Email view does not exist: '.$key);

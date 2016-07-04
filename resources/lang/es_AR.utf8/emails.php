@@ -1,21 +1,29 @@
 <?php
 
 return [
-  'user' => [
-    'welcome'     => ['subject' => 'Bienvenido a timegrid.io'],
-    'appointment' => [
-      'reserved'  => ['subject' => 'Información de tu reserva'],
-      'confirmed' => ['subject' => 'Tu turno en :business fue confirmado'],
-      'canceled'  => ['subject' => 'Tu turno en :business fue cancelado'],
-      'validate'  => ['subject' => 'Confirmá tu turno en :business'],
+    'root'    => [
     ],
-  ],
-  'manager' => [
-    'appointment' => [
-      'reserved' => ['subject' => 'Tenés una reserva nueva'],
+    'manager' => [
+        'business-report' => [
+            'subject' => 'Reporte de agenda del :date en :businessName',
+            'welcome' => 'Hola :ownerName',
+            'button'  => 'Ver Agenda',
+        ],
+        'appointment-notification' => [
+            'subject'      => 'Tenés una nueva reserva',
+            'welcome'      => ':ownerName, tenés una nueva reserva',
+            'instructions' => 'Se realizó una reserva',
+            'title'        => 'Detalles de la reserva',
+        ],
     ],
-    'business' => [
-      'report' => ['subject' => ':date Agenda de :business'],
+    'user'    => [
+        'appointment-notification' => [
+            'subject'      => 'Detalles de tu reserva',
+            'welcome'      => ':ownerName, generaste una reserva',
+            'instructions' => 'Tu reserva fue exitosa.',
+            'title'        => 'Aquí los detalles de tu reserva',
+        ],
     ],
-  ],
+    'guest'   => [
+    ],
 ];
