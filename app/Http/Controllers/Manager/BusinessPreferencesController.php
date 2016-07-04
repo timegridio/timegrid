@@ -18,7 +18,7 @@ class BusinessPreferencesController extends Controller
      */
     public function getPreferences(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('managePreferences', $business);
@@ -41,7 +41,7 @@ class BusinessPreferencesController extends Controller
      */
     public function postPreferences(Business $business, Request $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('managePreferences', $business);

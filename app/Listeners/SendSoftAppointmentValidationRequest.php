@@ -23,7 +23,7 @@ class SendSoftAppointmentValidationRequest
      */
     public function handle(NewSoftAppointmentWasBooked $event)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $timezone = $event->appointment->business->timezone;
         $businessName = $event->appointment->business->name;

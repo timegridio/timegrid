@@ -16,7 +16,7 @@ class BusinessServiceController extends Controller
      */
     public function index(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageServices', $business);
@@ -33,7 +33,7 @@ class BusinessServiceController extends Controller
      */
     public function create(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageServices', $business);
@@ -55,7 +55,7 @@ class BusinessServiceController extends Controller
      */
     public function store(Business $business, Request $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manageServices', $business);
@@ -93,7 +93,7 @@ class BusinessServiceController extends Controller
      */
     public function show(Business $business, Service $service)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         $this->authorize('manageServices', $business);
@@ -113,7 +113,7 @@ class BusinessServiceController extends Controller
      */
     public function edit(Business $business, Service $service)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         $this->authorize('manageServices', $business);
@@ -135,7 +135,7 @@ class BusinessServiceController extends Controller
      */
     public function update(Business $business, Service $service, Request $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         $this->authorize('manageServices', $business);
@@ -173,7 +173,7 @@ class BusinessServiceController extends Controller
      */
     public function destroy(Business $business, Service $service)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s serviceId:%s', $business->id, $service->id));
 
         $this->authorize('manageServices', $business);

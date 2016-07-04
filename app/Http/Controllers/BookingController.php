@@ -40,7 +40,7 @@ class BookingController extends Controller
      */
     public function postAction(AlterAppointmentRequest $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         //////////////////
         // FOR REFACOTR //
@@ -121,7 +121,7 @@ class BookingController extends Controller
      */
     public function getDates($businessId, $serviceId)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(serialize(compact('businessId', 'serviceId')));
 
         $business = Business::findOrFail($businessId);
@@ -159,7 +159,7 @@ class BookingController extends Controller
      */
     public function getTimes($businessId, $serviceId, $date, $timezone = false)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(serialize(compact('businessId', 'serviceId', 'date', 'timezone')));
 
         $business = Business::findOrFail($businessId);

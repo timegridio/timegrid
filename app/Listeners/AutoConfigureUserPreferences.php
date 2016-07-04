@@ -24,7 +24,7 @@ class AutoConfigureUserPreferences
      */
     public function handle(NewUserWasRegistered $event)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $this->saveUserTimezone($event->user);
     }

@@ -17,7 +17,7 @@ class BusinessController extends Controller
      */
     public function getHome($slug)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('slug:%s', $slug));
 
         if ($domain = Domain::where('slug', $slug)->first()) {
@@ -46,7 +46,7 @@ class BusinessController extends Controller
      */
     public function getDomain(Domain $domain)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $businesses = $domain->businesses;
 

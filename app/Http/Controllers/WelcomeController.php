@@ -33,7 +33,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         return view('welcome');
     }

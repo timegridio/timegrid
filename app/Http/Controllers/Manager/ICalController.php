@@ -12,7 +12,7 @@ class ICalController extends Controller
 {
     public function download(Business $business, $token)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $businessToken = new BusinessToken($business);
 

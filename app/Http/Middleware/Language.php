@@ -26,7 +26,7 @@ class Language
 
     public function handle($request, Closure $next)
     {
-        // logger()->debug(__CLASS__.':'.__METHOD__);
+        // logger()->debug(__METHOD__);
 
         $sessionAppLocale = session()->get('applocale', null);
 

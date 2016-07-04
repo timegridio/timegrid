@@ -112,7 +112,7 @@ class AutopublishBusinessVacancies extends Command
      */
     protected function publishVacancies(Business $business)
     {
-        $this->info(__CLASS__.':'.__METHOD__);
+        $this->info(__METHOD__);
         $this->info("Publishing vacancies for businessId:{$business->id}");
 
         $publishedVacancies = $this->vacancyParser->parseStatements($this->recallStatements($business->id));

@@ -14,7 +14,7 @@ class RootController extends Controller
      */
     public function getIndex()
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->warning('[ROOT ACCESS]');
 
         //////////////////
@@ -33,7 +33,7 @@ class RootController extends Controller
      */
     public function getSudo($userId)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         logger()->warning("[!] ROOT SUDO userId:{$userId}");
         auth()->loginUsingId($userId);

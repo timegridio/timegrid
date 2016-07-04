@@ -24,7 +24,7 @@ class SendBookingNotification
      */
     public function handle(NewAppointmentWasBooked $event)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $code = $event->appointment->code;
         $date = $event->appointment->start_at->toDateString();

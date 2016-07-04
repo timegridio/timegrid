@@ -20,7 +20,7 @@ class BusinessNotificationsController extends Controller
      */
     public function show(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);

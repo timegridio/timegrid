@@ -56,7 +56,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         // BEGIN
 
@@ -80,7 +80,7 @@ class BusinessController extends Controller
      */
     public function create($plan = 'free')
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info("plan:$plan");
 
         // BEGIN
@@ -114,7 +114,7 @@ class BusinessController extends Controller
      */
     public function store(BusinessFormRequest $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         // BEGIN
 
@@ -153,7 +153,7 @@ class BusinessController extends Controller
      */
     public function show(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('manage', $business);
@@ -193,7 +193,7 @@ class BusinessController extends Controller
      */
     public function edit(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('update', $business);
@@ -221,7 +221,7 @@ class BusinessController extends Controller
      */
     public function update(Business $business, BusinessFormRequest $request)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
         $this->authorize('update', $business);
@@ -256,7 +256,7 @@ class BusinessController extends Controller
      */
     public function destroy(Business $business)
     {
-        logger()->info(__CLASS__.':'.__METHOD__);
+        logger()->info(__METHOD__);
 
         $this->authorize('destroy', $business);
 
