@@ -55,6 +55,7 @@ class SendBookingNotification
         $params = [
             'user'        => $user,
             'appointment' => $event->appointment,
+            'userName'    => $event->appointment->contact->firstname,
         ];
         $header = [
             'name'  => $user->name,
@@ -76,6 +77,7 @@ class SendBookingNotification
         $params = [
             'user'        => $event->appointment->business->owner(),
             'appointment' => $event->appointment,
+            'ownerName'   => $event->appointment->business->owner()->name,
         ];
         $header = [
             'name'  => $event->appointment->business->owner()->name,
