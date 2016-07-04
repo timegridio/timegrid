@@ -65,8 +65,8 @@ class SendBookingNotification
             'params'   => $params,
             'locale'   => $event->appointment->business->locale,
             'timezone' => $user->pref('timezone'),
-            'template' => 'emails.user.appointment-notification.notification',
-            'subject'  => 'emails.user.appointment-notification.subject',
+            'template' => 'user.appointment-notification.notification',
+            'subject'  => 'user.appointment-notification.subject',
         ];
         $this->sendemail($email);
     }
@@ -86,8 +86,8 @@ class SendBookingNotification
             'params'   => $params,
             'locale'   => $event->appointment->business->locale,
             'timezone' => $event->appointment->business->owner()->pref('timezone'),
-            'template' => 'emails.manager.appointment-notification.notification',
-            'subject'  => 'emails.manager.appointment-notification.subject',
+            'template' => 'manager.appointment-notification.notification',
+            'subject'  => 'manager.appointment-notification.subject',
         ];
         $this->sendemail($email);
     }
