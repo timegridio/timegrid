@@ -21,7 +21,7 @@
         </tr>
         <tr>
             <td class="title">
-                {{ trans('emails.user.appointment-notification.intructions-title') }}
+                {{ trans('emails.user.appointment-notification.appointment-title') }}
             </td>
         </tr>
         <tr>
@@ -29,7 +29,7 @@
         </tr>
         <tr>
             <td class="paragraph">
-                {{ trans('emails.user.appointment-notification.intructions-paragraph') }}
+                @include('emails.user.appointment-notification._appointment', compact('appointment'))
             </td>
         </tr>
         <tr>

@@ -29,9 +29,9 @@ return [
         ],
         'appointment-notification' => [
             'subject'              => 'Your new appointment details',
-            'welcome'              => ':userName, you made a new appointment',
-            'instructions'         => 'Your appointment reservation was taken.',
-            'title'                => 'Here your appointment details',
+            'hello-title'          => ':userName, you made a new appointment',
+            'hello-paragraph'      => 'Your appointment reservation was taken.',
+            'appointment-title'    => 'Here your appointment details',
             'button'               => 'View my agenda',
         ],
         'appointment-confirmation' => [
