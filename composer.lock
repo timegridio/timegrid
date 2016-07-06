@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "61c097e5246b6a7aeffc7d7cd8667559",
-    "content-hash": "a0239dbf4c2ece1f3e8065f32b5d78db",
+    "hash": "db26b48092abe0b52d51543f73c3d4e9",
+    "content-hash": "60fdffb4e84ff9505c4f0d3f16bc45dc",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -4390,6 +4390,66 @@
             "time": "2016-06-21 20:47:03"
         },
         {
+            "name": "timegridio/icalreader",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timegridio/icalreader.git",
+                "reference": "11f4f67d5edb4aed978de17c81aaad359cd6ae25"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/11f4f67d5edb4aed978de17c81aaad359cd6ae25",
+                "reference": "11f4f67d5edb4aed978de17c81aaad359cd6ae25",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.6|~7.0"
+            },
+            "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
+                "laracasts/testdummy": "~2.3",
+                "nesbot/carbon": "~1.21",
+                "orchestra/testbench": "~3.2.0",
+                "phpunit/phpunit": "~4.0||~5.0",
+                "scrutinizer/ocular": "~1.1",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "tests/PackageTestCase.php"
+                ],
+                "psr-4": {
+                    "Timegridio\\ICalReader\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ariel Vallese",
+                    "email": "alariva@timegrid.io",
+                    "homepage": "http://alariva.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "iCal reader wrapper for Laravel 5",
+            "homepage": "https://github.com/timegridio/icalreader",
+            "keywords": [
+                "ical-reader",
+                "timegridio"
+            ],
+            "time": "2016-07-06 06:56:12"
+        },
+        {
             "name": "torann/geoip",
             "version": "dev-master",
             "source": {
@@ -6927,6 +6987,7 @@
         "webpatser/laravel-countries": 20,
         "timegridio/concierge": 20,
         "snowfire/beautymail": 20,
+        "timegridio/icalreader": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,

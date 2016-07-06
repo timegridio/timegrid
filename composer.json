@@ -52,7 +52,8 @@
         "timegridio/concierge": "dev-master",
         "jenssegers/rollbar": "^1.5",
         "eluceo/ical": "^0.10.1",
-        "snowfire/beautymail": "dev-master"
+        "snowfire/beautymail": "dev-master",
+        "timegridio/icalreader": "dev-master"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
