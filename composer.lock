@@ -4395,12 +4395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/icalreader.git",
-                "reference": "11f4f67d5edb4aed978de17c81aaad359cd6ae25"
+                "reference": "82ddb342426651564318c5b7e281310959a03de8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/11f4f67d5edb4aed978de17c81aaad359cd6ae25",
-                "reference": "11f4f67d5edb4aed978de17c81aaad359cd6ae25",
+                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/82ddb342426651564318c5b7e281310959a03de8",
+                "reference": "82ddb342426651564318c5b7e281310959a03de8",
                 "shasum": ""
             },
             "require": {
@@ -4447,7 +4447,7 @@
                 "ical-reader",
                 "timegridio"
             ],
-            "time": "2016-07-06 06:56:12"
+            "time": "2016-07-06 07:08:05"
         },
         {
             "name": "torann/geoip",
