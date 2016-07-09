@@ -3327,16 +3327,16 @@
         },
         {
             "name": "rollbar/rollbar",
-            "version": "v0.18.0",
+            "version": "v0.18.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rollbar/rollbar-php.git",
-                "reference": "1ccb29c3e254ecfea2276eb7da24d2a23fa2dde1"
+                "reference": "fafe13f8beb669d6bba0137f3703fa808d50cbb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/1ccb29c3e254ecfea2276eb7da24d2a23fa2dde1",
-                "reference": "1ccb29c3e254ecfea2276eb7da24d2a23fa2dde1",
+                "url": "https://api.github.com/repos/rollbar/rollbar-php/zipball/fafe13f8beb669d6bba0137f3703fa808d50cbb7",
+                "reference": "fafe13f8beb669d6bba0137f3703fa808d50cbb7",
                 "shasum": ""
             },
             "require": {
@@ -3373,7 +3373,7 @@
                 "logging",
                 "monitoring"
             ],
-            "time": "2016-05-25 21:37:43"
+            "time": "2016-07-05 15:50:29"
         },
         {
             "name": "snowfire/beautymail",
@@ -3497,23 +3497,23 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.2",
+            "version": "v5.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8"
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/d8db871a54619458a805229a057ea2af33c753e8",
-                "reference": "d8db871a54619458a805229a057ea2af33c753e8",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
+                "reference": "4cc92842069c2bbc1f28daaaf1d2576ec4dfe153",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "mockery/mockery": "~0.9.1,<0.9.4"
+                "mockery/mockery": "~0.9.1"
             },
             "type": "library",
             "extra": {
@@ -3546,7 +3546,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2016-05-01 08:45:47"
+            "time": "2016-07-08 11:51:25"
         },
         {
             "name": "symfony/console",
@@ -4395,12 +4395,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/icalreader.git",
-                "reference": "82ddb342426651564318c5b7e281310959a03de8"
+                "reference": "5bf78aa65bec6496fc7396db894ebe59b49b3de0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/82ddb342426651564318c5b7e281310959a03de8",
-                "reference": "82ddb342426651564318c5b7e281310959a03de8",
+                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/5bf78aa65bec6496fc7396db894ebe59b49b3de0",
+                "reference": "5bf78aa65bec6496fc7396db894ebe59b49b3de0",
                 "shasum": ""
             },
             "require": {
@@ -4444,10 +4444,18 @@
             "description": "iCal reader wrapper for Laravel 5",
             "homepage": "https://github.com/timegridio/icalreader",
             "keywords": [
-                "ical-reader",
+                "api",
+                "calendar",
+                "date",
+                "events",
+                "ical",
+                "icalreader",
+                "parser",
+                "time",
+                "timegrid",
                 "timegridio"
             ],
-            "time": "2016-07-06 07:08:05"
+            "time": "2016-07-07 04:55:26"
         },
         {
             "name": "torann/geoip",
@@ -4751,16 +4759,16 @@
         },
         {
             "name": "caouecs/laravel4-lang",
-            "version": "3.0.7",
+            "version": "3.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "3924ed74122cb59eb1fe59487511f01293c4d649"
+                "reference": "73b0378492a7f49a998b44548a4454826d7d384c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/3924ed74122cb59eb1fe59487511f01293c4d649",
-                "reference": "3924ed74122cb59eb1fe59487511f01293c4d649",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/73b0378492a7f49a998b44548a4454826d7d384c",
+                "reference": "73b0378492a7f49a998b44548a4454826d7d384c",
                 "shasum": ""
             },
             "require-dev": {
@@ -4788,7 +4796,7 @@
                 "lpm"
             ],
             "abandoned": "caouecs/laravel-lang",
-            "time": "2016-06-29 18:59:08"
+            "time": "2016-07-04 22:13:05"
         },
         {
             "name": "codeclimate/php-test-reporter",
@@ -4904,16 +4912,16 @@
         },
         {
             "name": "fabpot/php-cs-fixer",
-            "version": "v1.11.4",
+            "version": "v1.11.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
-                "reference": "eeb280e909834603ffe03524dbe0066e77c83084"
+                "reference": "d3d08b76753092a232a4d8c3b94095ac06898719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/eeb280e909834603ffe03524dbe0066e77c83084",
-                "reference": "eeb280e909834603ffe03524dbe0066e77c83084",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/d3d08b76753092a232a4d8c3b94095ac06898719",
+                "reference": "d3d08b76753092a232a4d8c3b94095ac06898719",
                 "shasum": ""
             },
             "require": {
@@ -4927,8 +4935,12 @@
                 "symfony/process": "~2.3|~3.0",
                 "symfony/stopwatch": "~2.5|~3.0"
             },
+            "conflict": {
+                "hhvm": "<3.9"
+            },
             "require-dev": {
-                "satooshi/php-coveralls": "0.7.*@dev"
+                "phpunit/phpunit": "^4.5|^5",
+                "satooshi/php-coveralls": "^0.7.1"
             },
             "bin": [
                 "php-cs-fixer"
@@ -4955,7 +4967,7 @@
             ],
             "description": "A tool to automatically fix PHP code style",
             "abandoned": "friendsofphp/php-cs-fixer",
-            "time": "2016-06-07 07:51:27"
+            "time": "2016-07-06 22:49:35"
         },
         {
             "name": "fzaninotto/faker",
