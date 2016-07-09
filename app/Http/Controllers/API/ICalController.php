@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Manager;
+namespace App\Http\Controllers\API;
 
 use App\BusinessToken;
 use App\Http\Controllers\Controller;

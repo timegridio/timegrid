@@ -31,7 +31,7 @@ class LanguageControllerTest extends TestCase
     /*
      * TODO: For some reason the custom header is not working, thus the test not
      * feasible by now.
-     * 
+     *
      * @test
      */
 //    public function it_attempts_to_use_agent_preferred_languages_first_spanish()

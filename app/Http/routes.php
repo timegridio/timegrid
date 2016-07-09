@@ -15,7 +15,7 @@
 // AJAX CALLS //
 ////////////////
 
-Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
+Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => ['web']], function () {
 
     // TODO: 'booking' should be moved out of api into the proper group.
     Route::post('booking', [
@@ -24,16 +24,16 @@ Route::group(['prefix' => 'api', 'middleware' => ['web']], function () {
     ]);
 
     Route::get('vacancies/{businessId}/{serviceId}', [
-        'uses' => 'BookingController@getDates',
+        'uses' => 'AvailabilityController@getDates',
     ]);
 
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
-        'uses' => 'BookingController@getTimes',
+        'uses' => 'AvailabilityController@getTimes',
     ]);
 
     Route::get('ical/{business}/{token}', [
         'as' => 'api.business.ical.download',
-        'uses' => 'Manager\ICalController@download',
+        'uses' => 'ICalController@download',
     ]);
 
 });

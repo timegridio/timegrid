@@ -274,40 +274,6 @@ class BookingControllerTest extends TestCase
         $this->seeJson(['code' => 'OK']);
     }
 
-    //////////
-    // AJAX //
-    //////////
-
-    /**
-     * @test
-     */
-    public function it_provides_available_dates_for_requested_service()
-    {
-        $this->arrangeFixture();
-
-        $this->actingAs($this->issuer);
-
-        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}");
-
-        $this->assertResponseOk();
-        $this->seeJson();
-    }
-
-    /**
-     * @test
-     */
-    public function it_provides_available_times_for_requested_service_date()
-    {
-        $this->arrangeFixture();
-
-        $this->actingAs($this->issuer);
-
-        $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
-
-        $this->assertResponseOk();
-        $this->seeJson();
-    }
-
     /**
      * Arrange Fixture.
      *
@@ -315,9 +281,6 @@ class BookingControllerTest extends TestCase
      */
     protected function arrangeFixture()
     {
-        // Given there is...
-
-        // a Business owned by Me (User)
         $this->owner = $this->createUser();
 
         $this->issuer = $this->createUser();
@@ -329,11 +292,9 @@ class BookingControllerTest extends TestCase
 
         $this->contact->user()->associate($this->issuer);
 
-        // And the Business provides a Service
         $this->service = $this->makeService();
         $this->business->services()->save($this->service);
 
-        // And the Service has Vacancies to be reserved
         $this->vacancy = $this->makeVacancy();
         $this->vacancy->service()->associate($this->service);
         $this->business->vacancies()->save($this->vacancy);

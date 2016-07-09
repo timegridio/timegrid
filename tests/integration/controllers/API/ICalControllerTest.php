@@ -5,7 +5,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Timegridio\Concierge\Models\Appointment;
 
-class ManagerICalControllerTest extends TestCase
+class ICalControllerTest extends TestCase
 {
     use DatabaseTransactions;
     use WithoutMiddleware;
