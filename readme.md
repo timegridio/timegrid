@@ -24,9 +24,7 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 ## Screenshots
 
-![Self-Service Reservation Screenshot](http://i.imgur.com/2UXCx2N.png)
-![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
-![Business Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
+![Business Dashboard Example Screenshot](http://i.imgur.com/5ReeS9c.png)
 
 ## Live Demo
 
