@@ -69,48 +69,18 @@
 @push('footer_scripts')
 <script>
 
-    function arr_diff (a1, a2) {
-        var a = [], diff = [];
-        for (var i = 0; i < a1.length; i++) {
-            a[a1[i]] = true;
-        }
-        for (var i = 0; i < a2.length; i++) {
-            if (a[a2[i]]) {
-                delete a[a2[i]];
-            } else {
-                a[a2[i]] = true;
-            }
-        }
-        for (var k in a) {
-            diff.push(k);
-        }
-        return diff;
-    }
-
-    function getDateRange(startDate, endDate, dateFormat) {
-        var dates = [],
-        end = moment(endDate),
-        diff = endDate.diff(startDate, 'days');
-        if(!startDate.isValid() || !endDate.isValid() || diff <= 0) {
-            return;
-        }
-        for(var i = 0; i < diff; i++) {
-            dates.push(end.subtract(1,'d').format(dateFormat));
-        }
-        return dates;
-    }
-
     function updateDatepicker()
     {
         var business = $('#business').val();
         var service = $('#service').val();
-        var scanDates = getDateRange(moment(timegrid.startDate), moment(timegrid.endDate).add(1,'d'), 'YYYY-MM-DD');
+
         $.ajax({
             url:'/api/vacancies/' + business + '/' + service,
             type:'GET',
             dataType: 'json',
             success: function( data ) {
-                var disabledDates = arr_diff(scanDates, data.dates);
+                disabledDates = data.disabledDates;
+                console.log('disabledDates:' + disabledDates);
                 $('#datepicker').datepicker('setDatesDisabled', disabledDates);
                 $('#datepicker').show();
             },

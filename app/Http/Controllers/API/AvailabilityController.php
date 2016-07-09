@@ -54,8 +54,15 @@ class AvailabilityController extends Controller
         $startFrom = $business->pref('appointment_take_today') ? 'today' : 'tomorrow';
 
         $baseDate = Carbon::parse($startFrom);
+        $endDate = $baseDate->copy()->addDays($days);
+
+        // $this->availability->excludeDates([]);
 
         $dates = $this->availability->getDates($business, $service->id);
+
+        $disabledDates = $this->getDisabledDates($baseDate, $endDate, $dates);
+
+        logger()->debug('Disabled Dates:'.serialize($disabledDates));
 
         return response()->json([
             'business' => $business->id,
@@ -63,9 +70,10 @@ class AvailabilityController extends Controller
                 'id'       => $service->id,
                 'duration' => $service->duration,
             ],
-            'dates'     => $dates,
-            'startDate' => $baseDate->toDateString(),
-            'endDate'   => $baseDate->addDays($days)->toDateString(),
+            'dates'         => $dates,
+            'disabledDates' => $disabledDates,
+            'startDate'     => $baseDate->toDateString(),
+            'endDate'       => $endDate->toDateString(),
         ], 200);
     }
 
@@ -111,5 +119,18 @@ class AvailabilityController extends Controller
         }
 
         return $timezone ?: $fallbackTimezone;
+    }
+
+    protected function getDisabledDates(Carbon $start, Carbon $end, array $enabledDates)
+    {
+        $interval = new \DateInterval('P1D');
+        $daterange = new \DatePeriod($start, $interval, $end->addDay());
+
+        $dates = [];
+        foreach($daterange as $date){
+            $dates[] = $date->format('Y-m-d');
+        }
+
+        return array_values(array_diff($dates, $enabledDates));
     }
 }
