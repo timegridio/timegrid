@@ -4333,12 +4333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "1b2d9c3175633dcb509eafa50179747f173284b4"
+                "reference": "0ef0fea5696197c10d7491a08e9a460496a425e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/1b2d9c3175633dcb509eafa50179747f173284b4",
-                "reference": "1b2d9c3175633dcb509eafa50179747f173284b4",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/0ef0fea5696197c10d7491a08e9a460496a425e8",
+                "reference": "0ef0fea5696197c10d7491a08e9a460496a425e8",
                 "shasum": ""
             },
             "require": {
@@ -4387,7 +4387,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-06-21 20:47:03"
+            "time": "2016-07-09 06:11:45"
         },
         {
             "name": "timegridio/icalreader",
