@@ -58,7 +58,7 @@ class BusinessVacancyController extends Controller
         $dates = $this->concierge
                       ->business($business)
                       ->vacancies()
-                      ->generateAvailability($business->vacancies, 'today', $daysQuantity);
+                      ->generateAvailability('today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
             flash()->warning(trans('manager.vacancies.msg.edit.no_services'));

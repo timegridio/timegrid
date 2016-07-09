@@ -102,7 +102,7 @@ class AgendaController extends Controller
         $availability = $this->concierge
                              ->business($business)
                              ->vacancies()
-                             ->generateAvailability($business->vacancies, $startFromDate->toDateString(), $days);
+                             ->generateAvailability($startFromDate->toDateString(), $days);
 
         JavaScript::put([
             'language'  => 'en', // ToDo: Should load selected language or fallback
