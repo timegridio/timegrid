@@ -60,6 +60,10 @@ class ICalController extends Controller
             $vEvent->setDtStart($startAt);
             $vEvent->setDtEnd($endAt);
 
+            $vEvent->setStatus($this->mapStatus($appointment->status));
+
+            $vEvent->setUniqueId($appointment->business->slug.':'.$appointment->code.'@timegrid.io');
+
             $summary = $appointment->contact->firstname.'/'.
                        $appointment->service->name.'@'.
                        $appointment->business->slug.
@@ -75,5 +79,21 @@ class ICalController extends Controller
         }
 
         return $events;
+    }
+
+    /**
+     * Map Timegridio\Concierge\Models\Appointment status into
+     * Eluceo\iCal\Component\Event for ICal status compatibility
+     */
+    protected function mapStatus($status)
+    {
+        $mapping = [
+            'R' => 'TENTATIVE',
+            'C' => 'CONFIRMED',
+            'A' => 'CANCELLED',
+            'S' => 'CONFIRMED',
+        ];
+
+        return array_get($mapping, $status, 'TENTATIVE');
     }
 }
