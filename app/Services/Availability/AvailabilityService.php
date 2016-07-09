@@ -13,6 +13,8 @@ class AvailabilityService
 
     protected $timeformat = 'H:i';
 
+    protected $excludeDates = [];
+
     public function timezone($timezone)
     {
         $this->timezone = $timezone;
@@ -27,11 +29,20 @@ class AvailabilityService
         return $this;
     }
 
+    public function excludeDates(array $dates)
+    {
+        $this->excludeDates = $dates;
+
+        return $this;
+    }
+
     public function getDates(Business $business, $serviceId)
     {
         $vacancies = $business->vacancies()->forService($serviceId)->get();
 
-        return array_pluck($vacancies->toArray(), 'date');
+        $dates = array_pluck($vacancies->toArray(), 'date');
+
+        return array_diff($dates, $this->excludeDates);
     }
 
     public function getTimes(Business $business, Service $service, Carbon $date)
