@@ -29,7 +29,7 @@ class AvailabilityService
         return $this;
     }
 
-    public function excludeDates(array $dates)
+    public function excludeDates($dates)
     {
         $this->excludeDates = $dates;
 
@@ -40,9 +40,22 @@ class AvailabilityService
     {
         $vacancies = $business->vacancies()->forService($serviceId)->get();
 
+        $vacancies = $this->removeExcludedDates($vacancies);
+
         $dates = array_pluck($vacancies->toArray(), 'date');
 
         return array_diff($dates, $this->excludeDates);
+    }
+
+    protected function removeExcludedDates($vacancies)
+    {
+        $excludedDates = collect($this->excludeDates);
+
+        return $vacancies->reject(function ($vacancy) use ($excludedDates) {
+
+            return $excludedDates->contains("{$vacancy->humanresourceSlug()}:{$vacancy->date}") ||
+                   $excludedDates->contains("{$vacancy->date}");
+        });
     }
 
     public function getTimes(Business $business, Service $service, Carbon $date)
@@ -58,7 +71,6 @@ class AvailabilityService
     {
         $times = [];
         foreach ($vacancies as $vacancy) {
-
             $beginTime = $vacancy->start_at->copy();
 
             $maxNumberOfSlots = round($vacancy->finish_at->diffInMinutes($beginTime) / $step);

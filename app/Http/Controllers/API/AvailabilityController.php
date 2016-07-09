@@ -56,7 +56,7 @@ class AvailabilityController extends Controller
         $baseDate = Carbon::parse($startFrom);
         $endDate = $baseDate->copy()->addDays($days);
 
-        // $this->availability->excludeDates([]);
+        // $this->availability->excludeDates(['humanresource-slug:YYYY-MM-DD']);
 
         $dates = $this->availability->getDates($business, $service->id);
 
