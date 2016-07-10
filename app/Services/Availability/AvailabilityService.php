@@ -38,7 +38,7 @@ class AvailabilityService
 
     public function getDates(Business $business, $serviceId)
     {
-        $vacancies = $business->vacancies()->forService($serviceId)->get();
+        $vacancies = $business->vacancies()->with('humanresource')->forService($serviceId)->get();
 
         $vacancies = $this->removeExcludedDates($vacancies);
 
@@ -60,7 +60,7 @@ class AvailabilityService
 
     public function getTimes(Business $business, Service $service, Carbon $date)
     {
-        $vacancies = $business->vacancies()->forService($service->id)->forDate($date)->get();
+        $vacancies = $business->vacancies()->with('humanresource')->forService($service->id)->forDate($date)->get();
 
         $step = $this->calculateStep($business, $service->duration);
 
