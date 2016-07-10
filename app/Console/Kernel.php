@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('business:vacancies')->weekly()->sundays()->at('00:00');
 
-        $schedule->command('ical:sync')->twiceDaily(0, 12); 
+        $schedule->command('ical:sync')->twiceDaily(0, 12);
     }
 
     /**

@@ -109,7 +109,8 @@ class SendBusinessReport extends Command
         $appointments = $this->concierge->business($business)->getActiveAppointments();
 
         if ($this->skipReport($business, count($appointments))) {
-            $this->info("Skipped report");
+            $this->info('Skipped report');
+
             return false;
         }
 

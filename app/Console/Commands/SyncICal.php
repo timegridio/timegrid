@@ -24,8 +24,11 @@ class SyncICal extends Command
      */
     protected $description = 'Sync ICal';
 
-
+    /**
+     * @var App\Services\Availability\ICalSyncService
+     */
     protected $icalsync;
+
     /**
      * Create a new command instance.
      *
@@ -48,7 +51,7 @@ class SyncICal extends Command
         $businessId = $this->argument('business');
 
         if ($businessId === null) {
-            $this->info("Syncing ICal for all businesses");
+            $this->info('Syncing ICal for all businesses');
             $this->scanBusinesses();
 
             return 0;
