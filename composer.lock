@@ -4333,15 +4333,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "592d83667479768372b3220ca4a913430ba75f14"
+                "reference": "7e24bc7ae0ea8ea42448ccb2e6e52664bfa0be65"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/592d83667479768372b3220ca4a913430ba75f14",
-                "reference": "592d83667479768372b3220ca4a913430ba75f14",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/7e24bc7ae0ea8ea42448ccb2e6e52664bfa0be65",
+                "reference": "7e24bc7ae0ea8ea42448ccb2e6e52664bfa0be65",
                 "shasum": ""
             },
             "require": {
+                "doctrine/dbal": "^2.5",
                 "illuminate/support": "5.*",
                 "mccool/laravel-auto-presenter": "^4.0",
                 "php": ">=5.5.9"
@@ -4387,7 +4388,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-07-09 20:43:39"
+            "time": "2016-07-09 22:58:05"
         },
         {
             "name": "timegridio/icalreader",
@@ -4395,12 +4396,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/icalreader.git",
-                "reference": "5bf78aa65bec6496fc7396db894ebe59b49b3de0"
+                "reference": "a345345c04f19ad949fe0ab2c0c07ff97835e822"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/5bf78aa65bec6496fc7396db894ebe59b49b3de0",
-                "reference": "5bf78aa65bec6496fc7396db894ebe59b49b3de0",
+                "url": "https://api.github.com/repos/timegridio/icalreader/zipball/a345345c04f19ad949fe0ab2c0c07ff97835e822",
+                "reference": "a345345c04f19ad949fe0ab2c0c07ff97835e822",
                 "shasum": ""
             },
             "require": {
@@ -4455,7 +4456,7 @@
                 "timegrid",
                 "timegridio"
             ],
-            "time": "2016-07-07 04:55:26"
+            "time": "2016-07-10 01:10:52"
         },
         {
             "name": "torann/geoip",

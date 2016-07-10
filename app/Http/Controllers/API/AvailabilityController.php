@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use App\Services\Availability\AvailabilityService;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
 
@@ -57,6 +58,8 @@ class AvailabilityController extends Controller
         $endDate = $baseDate->copy()->addDays($days);
 
         // $this->availability->excludeDates(['humanresource-slug:YYYY-MM-DD']);
+
+        $this->excludeDates($businessId);
 
         $dates = $this->availability->getDates($business, $service->id);
 
@@ -127,10 +130,25 @@ class AvailabilityController extends Controller
         $daterange = new \DatePeriod($start, $interval, $end->addDay());
 
         $dates = [];
-        foreach($daterange as $date){
+        foreach ($daterange as $date) {
             $dates[] = $date->format('Y-m-d');
         }
 
         return array_values(array_diff($dates, $enabledDates));
+    }
+
+    protected function excludeDates($businessId)
+    {
+        $filepath = "business/{$businessId}/ical/ical-exclude.compiled";
+        if (!Storage::exists($filepath)) {
+            // logger()->debug('No ical-exclude.compiled file found:'.$filepath);
+            return;
+        }
+
+        $excluded = Storage::get($filepath);
+
+        logger()->debug('ICal Exclude Dates:'.serialize($excluded));
+
+        $this->availability->excludeDates(explode("\n", $excluded));
     }
 }

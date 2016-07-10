@@ -18,6 +18,9 @@ return [
       'title'        => 'Human Resources',
     ],
     'form' => [
+      'calendar_link' => [
+        'label' => 'Calendar link',
+      ],
       'capacity' => [
         'label' => 'Capacity',
       ],

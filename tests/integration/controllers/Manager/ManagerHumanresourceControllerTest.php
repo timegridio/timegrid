@@ -108,4 +108,55 @@ class ManagerHumanresourceControllerTest extends TestCase
 
         $this->see($humanresource->name);
     }
+
+    /**
+     * @test
+     */
+    public function it_updates_a_staff_member_with_calendar_link()
+    {
+        $this->arrangeFixture();
+
+        $humanresource = $this->createHumanResource([
+            'business_id' => $this->business->id
+            ]);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.humanresource.edit', [
+            'business' => $this->business,
+            'humanresource' => $humanresource->id
+            ]));
+
+        $calendar_link = 'http://example.org/ical.ics';
+        $this->type($calendar_link, 'calendar_link');
+
+        $this->press('Update');
+
+        $this->seeInDatabase('humanresources', ['id' => $humanresource->id, 'calendar_link' => $calendar_link]);
+    }
+
+    /**
+     * @test
+     */
+    public function it_updates_a_staff_member_and_unsets_calendar_link()
+    {
+        $this->arrangeFixture();
+
+        $humanresource = $this->createHumanResource([
+            'business_id' => $this->business->id
+            ]);
+
+        $this->actingAs($this->owner);
+
+        $this->visit(route('manager.business.humanresource.edit', [
+            'business' => $this->business,
+            'humanresource' => $humanresource->id
+            ]));
+
+        $this->type('', 'calendar_link');
+
+        $this->press('Update');
+
+        $this->seeInDatabase('humanresources', ['id' => $humanresource->id, 'calendar_link' => null]);
+    }
 }

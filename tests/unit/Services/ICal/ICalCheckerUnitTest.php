@@ -50,8 +50,6 @@ class ICalCheckerUnitTest extends TestCase
 
     protected function getStub()
     {
-        $contents = file_get_contents(__DIR__.'/stubs/ical-stub.ics');
-
-        return $contents;
+        return file_get_contents(__DIR__.'/stubs/ical-stub.ics');
     }
 }
