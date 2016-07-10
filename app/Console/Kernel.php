@@ -15,10 +15,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\AutopublishBusinessVacancies',
-        'App\Console\Commands\SendRootReport',
-        'App\Console\Commands\SendBusinessReport',
-        'App\Console\Commands\SyncICal',
+        \App\Console\Commands\AutopublishBusinessVacancies::class,
+        \App\Console\Commands\SendRootReport::class,
+        \App\Console\Commands\SendBusinessReport::class,
+        \App\Console\Commands\SyncICal::class,
     ];
 
     /**
