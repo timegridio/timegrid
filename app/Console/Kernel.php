@@ -18,6 +18,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\AutopublishBusinessVacancies',
         'App\Console\Commands\SendRootReport',
         'App\Console\Commands\SendBusinessReport',
+        'App\Console\Commands\SyncICal',
     ];
 
     /**
@@ -34,6 +35,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('business:report')->dailyAt('21:00');
 
         $schedule->command('business:vacancies')->weekly()->sundays()->at('00:00');
+
+        $schedule->command('ical:sync')->twiceDaily(0, 12); 
     }
 
     /**

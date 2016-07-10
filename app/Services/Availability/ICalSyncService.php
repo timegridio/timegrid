@@ -10,9 +10,11 @@ class ICalSyncService
 {
     protected $humanresource;
 
-    public function __construct(Humanresource $humanresource)
+    public function humanresource(Humanresource $humanresource)
     {
         $this->humanresource = $humanresource;
+
+        return $this;
     }
 
     public function sync()

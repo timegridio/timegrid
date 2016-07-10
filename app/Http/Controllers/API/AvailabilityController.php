@@ -139,7 +139,7 @@ class AvailabilityController extends Controller
 
     protected function excludeDates($businessId)
     {
-        $filepath = "business/{$businessId}/ical/ical-exclude.compiled";
+        $filepath = "business/{$businessId}/ical/ical-exclusion.compiled";
         if (!Storage::exists($filepath)) {
             // logger()->debug('No ical-exclude.compiled file found:'.$filepath);
             return;

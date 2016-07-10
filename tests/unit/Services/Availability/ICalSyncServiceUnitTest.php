@@ -27,11 +27,11 @@ class ICalSyncServiceUnitTest extends TestCase
 
         $this->assertFalse(Storage::exists($filepath));
 
-        $icalsync = Mockery::mock(ICalSyncService::class, [$this->humanresource])->makePartial();
+        $icalsync = Mockery::mock(ICalSyncService::class)->makePartial();
 
         $icalsync->shouldReceive('getRemoteContents')->once()->andReturn($this->getStub());
 
-        $icalsync->sync();
+        $icalsync->humanresource($this->humanresource)->sync();
 
         $this->assertTrue(Storage::exists($filepath));
     }
