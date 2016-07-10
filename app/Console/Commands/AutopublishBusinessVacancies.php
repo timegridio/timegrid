@@ -29,7 +29,7 @@ class AutopublishBusinessVacancies extends Command
     /**
      * Concierge Service.
      *
-     * @var Timegridio\Concierge\Concierge
+     * @var \Timegridio\Concierge\Concierge
      */
     protected $concierge;
 
@@ -45,8 +45,6 @@ class AutopublishBusinessVacancies extends Command
 
     /**
      * Create a new command instance.
-     *
-     * @return void
      */
     public function __construct(Concierge $concierge, TransMail $transmail, VacancyParser $vacancyParser)
     {
