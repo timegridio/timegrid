@@ -18,6 +18,6 @@ class ConfigureLogging extends BaseConfigureLogging
      */
     protected function configureSyslogHandler(Application $app, Writer $log)
     {
-        $log->useSyslog(env('SYSLOG_APPNAME', 'timegrid'));
+        $log->useSyslog(config('root.appname', 'dev.timegrid'));
     }
 }
