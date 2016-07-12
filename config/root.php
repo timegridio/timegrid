@@ -7,6 +7,10 @@ return [
 
     'appname' => env('SYSLOG_APPNAME', 'timegrid'),
 
+    'rollbar' => [
+        'token' => env('ROLLBAR_TOKEN', false),
+    ],
+
     'report' => [
         'from_address'       => env('MAIL_FROM_ADDRESS', 'root@localhost'),
         'to_mail'            => env('ROOT_REPORT_MAIL', 'root@localhost'),
