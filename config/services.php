@@ -53,7 +53,7 @@ return [
     ],
 
     'rollbar' => array(
-        'access_token' => env('ROLLBAR_TOKEN'),
+        'access_token' => env('ROLLBAR_TOKEN', false),
         'level' => env('ROLLBAR_LEVEL', 'error'),
     ),
 

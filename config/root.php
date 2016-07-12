@@ -5,11 +5,7 @@
  */
 return [
 
-    'appname' => env('SYSLOG_APPNAME', 'timegrid'),
-
-    'rollbar' => [
-        'token' => env('ROLLBAR_TOKEN', false),
-    ],
+    'appname' => env('SYSLOG_APPNAME', 'default.timegrid'),
 
     'report' => [
         'from_address'       => env('MAIL_FROM_ADDRESS', 'root@localhost'),
