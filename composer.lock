@@ -1980,16 +1980,16 @@
         },
         {
             "name": "laracasts/flash",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laracasts/flash.git",
-                "reference": "4df7200127a71511bdf116bc8b7a2586612c7a35"
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laracasts/flash/zipball/4df7200127a71511bdf116bc8b7a2586612c7a35",
-                "reference": "4df7200127a71511bdf116bc8b7a2586612c7a35",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/03eec812fd6ae948664ff51b4320785f6d15ee5d",
+                "reference": "03eec812fd6ae948664ff51b4320785f6d15ee5d",
                 "shasum": ""
             },
             "require": {
@@ -2019,7 +2019,7 @@
                 }
             ],
             "description": "Easy flash notifications",
-            "time": "2016-03-14 15:55:34"
+            "time": "2016-07-11 20:46:02"
         },
         {
             "name": "laracasts/utilities",
@@ -4333,12 +4333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "80e7a1ac0c0f14d2b8e07e8eb84b44cfa7fb9227"
+                "reference": "2164a174e0c83acecf3925f0ddaf71e4d4077fc5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/80e7a1ac0c0f14d2b8e07e8eb84b44cfa7fb9227",
-                "reference": "80e7a1ac0c0f14d2b8e07e8eb84b44cfa7fb9227",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/2164a174e0c83acecf3925f0ddaf71e4d4077fc5",
+                "reference": "2164a174e0c83acecf3925f0ddaf71e4d4077fc5",
                 "shasum": ""
             },
             "require": {
@@ -4388,7 +4388,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-07-10 16:45:49"
+            "time": "2016-07-10 17:33:40"
         },
         {
             "name": "timegridio/icalreader",
