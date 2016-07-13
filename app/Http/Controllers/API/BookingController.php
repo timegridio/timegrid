@@ -94,15 +94,12 @@ class BookingController extends Controller
             ];
 
         $viewKey = "widgets.appointment.{$widgetType}._body";
-        if (!view()->exists($viewKey)) {
-            return response()->json(['code' => 'ERROR', 'html' => '']);
-        }
-
         // Widgets MUST be rendered before being returned on Response as they need to be interpreted as HTML
         $html = view($viewKey, $contents)->render();
+        $code = 'OK';
 
         logger()->info("postAction.response:[appointment:{$appointment->toJson()}]");
 
-        return response()->json(['code' => 'OK', 'html' => $html]);
+        return response()->json(compact('code', 'html'));
     }
 }
