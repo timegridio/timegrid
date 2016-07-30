@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Timegridio\Concierge\Models\Business;
+use Validator;
 
 class ICalController extends Controller
 {
@@ -14,9 +15,13 @@ class ICalController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $businessToken = new BusinessToken($business);
+        $validToken = with(new BusinessToken($business))->generate();
 
-        if ($businessToken->generate() !== $token) {
+        $validator = Validator::make(compact('token'), [
+            'token' => "bail|required|alpha_num|max:32|in:{$validToken}",
+        ]);
+
+        if ($validator->fails()) {
             abort(403);
         }
 

@@ -89,15 +89,15 @@ class AvailabilityController extends Controller
      *
      * @return Symfony\Component\HttpFoundation\JsonResponse
      */
-    public function getTimes($businessId, $serviceId, $date, $timezone = false)
+    public function getTimes($businessId, $serviceId, $date, $preferredTimezone = false)
     {
         logger()->info(__METHOD__);
-        logger()->info(serialize(compact('businessId', 'serviceId', 'date', 'timezone')));
+        logger()->info(serialize(compact('businessId', 'serviceId', 'date', 'preferredTimezone')));
 
         $business = Business::findOrFail($businessId);
         $service = $business->services()->findOrFail($serviceId);
 
-        $timezone = $this->decideTimezone($timezone, $business->timezone);
+        $timezone = $this->decideTimezone($preferredTimezone, $business->timezone);
 
         logger()->info("Using Timezone: {$timezone}");
 
