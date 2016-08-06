@@ -3,8 +3,10 @@
 namespace App\Listeners;
 
 use App\Events\NewAppointmentWasBooked;
+use App\Models\User;
 use App\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
+use Timegridio\Concierge\Models\Contact;
 
 class SendBookingNotification
 {
