@@ -16,8 +16,6 @@
         </div>
 
         <div class="panel-body">
-            @include('_errors')
-
             {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
             {!! Form::hidden('plan', $plan) !!}
             {!! Form::hidden('country_code', $countryCode) !!}

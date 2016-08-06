@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class ManagerBusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**

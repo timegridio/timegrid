@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class UserPreferencesControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateUser, CreateService;
 
     /**
