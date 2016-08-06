@@ -20,10 +20,10 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  * @property string $username
  * @property string $password
  * @property string $last_ip
- * @property Carbon $last_login_at
- * @property Collection businesses
- * @property Collection contacts
- * @property Collection appointments
+ * @property Carbon\Carbon $last_login_at
+ * @property Illuminate\Support\Collection $businesses
+ * @property Illuminate\Support\Collection $contacts
+ * @property Illuminate\Support\Collection $appointments
  */
 class User extends EloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
