@@ -60,7 +60,7 @@ class SendBookingNotification
             'userName'    => $event->appointment->contact->firstname,
         ];
         $header = [
-            'name'  => $contact->firstname,
+            'name'  => $event->appointment->contact->firstname,
             'email' => $destinationEmail,
         ];
         $email = [
