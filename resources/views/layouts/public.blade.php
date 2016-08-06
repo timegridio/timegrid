@@ -51,7 +51,6 @@
       <section class="content">
 
         @include('flash::message')
-        @include('_errors')
 
         @yield('content')
 

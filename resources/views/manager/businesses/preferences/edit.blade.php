@@ -11,8 +11,6 @@
                 <div class="panel-heading">{{ trans('manager.businesses.preferences.title') }}</div>
 
                 <div class="panel-body">
-                @include('_errors')
-
                 {!! Form::open(['route' => ['manager.business.preferences', $business], 'id' => 'preferences', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses.preferences._form')
                 {!! Form::close() !!}

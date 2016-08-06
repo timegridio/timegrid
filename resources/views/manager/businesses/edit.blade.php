@@ -7,8 +7,6 @@
             <div class="panel-heading">{{ trans('manager.businesses.edit.title') }}</div>
 
             <div class="panel-body">
-                @include('_errors')
-
                 {!! Form::model($business, ['method' => 'put', 'route' => ['manager.business.update', $business], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
                 @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.update')])
                 {!! Form::close() !!}

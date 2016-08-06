@@ -4,7 +4,7 @@
     trans('app.msg.invalid_token')
 --}}
 
-@if(isset($errors) && $errors->has())
+@if (count($errors) > 0)
 <div class="alert alert-danger">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <ul>
