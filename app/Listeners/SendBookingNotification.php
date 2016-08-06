@@ -52,14 +52,16 @@ class SendBookingNotification
             return false;
         }
 
+        $destinationEmail = $this->getDestinationEmail($user, $event->appointment->contact);
+
         $params = [
             'user'        => $user,
             'appointment' => $event->appointment,
             'userName'    => $event->appointment->contact->firstname,
         ];
         $header = [
-            'name'  => $user->name,
-            'email' => $user->email,
+            'name'  => $contact->firstname,
+            'email' => $destinationEmail,
         ];
         $email = [
             'header'   => $header,
@@ -103,5 +105,10 @@ class SendBookingNotification
                         ->template($template)
                         ->subject($subject)
                         ->send($header, $params);
+    }
+
+    protected function getDestinationEmail(User $user, Contact $contact)
+    {
+        return $contact->email ?: $user->email;
     }
 }

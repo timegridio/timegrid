@@ -5,7 +5,9 @@
  */
 return [
 
-    'appname' => env('SYSLOG_APPNAME', 'default.timegrid'),
+    'app' => [
+        'name' => env('SYSLOG_APPNAME', 'default.timegrid'),
+    ],
 
     'rollbar' => [
         'token' => env('ROLLBAR_TOKEN', false),

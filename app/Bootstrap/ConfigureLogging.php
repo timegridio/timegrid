@@ -1,6 +1,6 @@
 <?php
 
-namespace Bootstrap;
+namespace App\Bootstrap;
 
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Bootstrap\ConfigureLogging as BaseConfigureLogging;
@@ -18,6 +18,6 @@ class ConfigureLogging extends BaseConfigureLogging
      */
     protected function configureSyslogHandler(Application $app, Writer $log)
     {
-        $log->useSyslog(config('root.appname', 'dev.timegrid'));
+        $log->useSyslog(config('root.app.name', 'dev.timegrid'));
     }
 }
