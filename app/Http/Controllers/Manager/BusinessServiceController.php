@@ -80,7 +80,7 @@ class BusinessServiceController extends Controller
 
         flash()->success(trans('manager.service.msg.store.success'));
 
-        return redirect()->route('manager.business.service.index', [$business]);
+        return redirect()->route('manager.business.service.show', [$business, $service]);
     }
 
     /**
