@@ -72,6 +72,8 @@ class ManagerBusinessVacancyControllerTest extends TestCase
 
         $this->business->services()->delete();
 
+        $this->business->pref('vacancy_edit_advanced_mode', false);
+
         $this->actingAs($this->owner);
 
         $this->visit(route('manager.business.vacancy.create', $this->business));
@@ -121,6 +123,8 @@ class ManagerBusinessVacancyControllerTest extends TestCase
         $this->arrangeBusinessWithOwner();
 
         $this->actingAs($this->vacancy->business->owner());
+
+        $this->business->pref('vacancy_edit_advanced_mode', false);
 
         $this->visit(route('manager.business.vacancy.create', $this->vacancy->business));
 

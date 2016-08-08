@@ -145,6 +145,13 @@ desired effect
 
                 @yield('content')
 
+                @if(!session()->has('selected.business'))
+                    {!! Button::success(trans('app.'))
+                                ->large()
+                                ->block()
+                                ->asLinkTo( route('manager.business.index') ) !!}
+                @endif
+
             </section>
             <!-- /.content -->
         </div>
