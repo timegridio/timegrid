@@ -222,7 +222,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->visit(route('user.booking.book', ['business' => $business]));
+        $this->visit(route('user.booking.book', compact('business')));
 
         $this->see('Select a service to reserve')
              ->see($service->name)
@@ -366,7 +366,7 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->visit(route('user.businesses.home', ['business' => $business]));
+        $this->visit(route('user.businesses.home', compact('business')));
 
         $this->see('Subscribe')
              ->see($business->name);
@@ -402,7 +402,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -412,7 +412,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->assertCount(1, $business->fresh()->bookings()->get());
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -458,7 +458,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userOne);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -470,7 +470,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userTwo);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -516,7 +516,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userOne);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -528,7 +528,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userTwo);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -569,7 +569,7 @@ class UserAgendaControllerTest extends TestCase
         $otherDayThanVacancy = $this->vacancy->start_at->addDays(7)->timezone($business->timezone)->toDateString();
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -610,7 +610,7 @@ class UserAgendaControllerTest extends TestCase
         $business->vacancies()->save($this->vacancy);
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             'email'      => 'guest@example.org',
@@ -651,7 +651,7 @@ class UserAgendaControllerTest extends TestCase
         $business->vacancies()->save($this->vacancy);
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             'email'      => 'unlisted-guest@example.org',
@@ -702,7 +702,7 @@ class UserAgendaControllerTest extends TestCase
         $business->vacancies()->save($this->vacancy);
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -749,7 +749,7 @@ class UserAgendaControllerTest extends TestCase
         $shiftedTime = Carbon::parse('09:00:00 '.$business->timezone)->timezone($this->faker->timezone);
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => $shiftedTime->toTimeString(),
@@ -796,7 +796,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($owner);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             'contact_id' => $contact->id,
@@ -893,7 +893,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($user);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -903,7 +903,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->assertCount(1, $business->fresh()->bookings()->get());
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -946,7 +946,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userOne);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -958,7 +958,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userTwo);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -1005,7 +1005,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userOne);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -1017,7 +1017,7 @@ class UserAgendaControllerTest extends TestCase
 
         $this->actingAs($userTwo);
 
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',
@@ -1058,7 +1058,7 @@ class UserAgendaControllerTest extends TestCase
         $otherDayThanVacancy = $this->vacancy->start_at->addDays(7)->timezone($business->timezone)->toDateString();
 
         $this->withoutMiddleware();
-        $this->call('POST', route('user.booking.store', ['business' => $business]), [
+        $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
             '_time'      => '09:00:00',

@@ -4,12 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
+/**
+ * @property Illuminate\Support\Collection $permissions
+ */
 class Role extends EloquentModel
 {
     /**
      * A role may be given various permissions.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     * @return Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function permissions()
     {
@@ -19,7 +22,7 @@ class Role extends EloquentModel
     /**
      * Grant the given permission to a role.
      *
-     * @param Permission $permission
+     * @param App\Models\Permission $permission
      *
      * @return mixed
      */
