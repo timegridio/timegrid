@@ -7,6 +7,7 @@ return [
   //==================================== Translations ====================================//
   'btn' => [
     'update' => 'Update',
+    'go_to_dashboard'  => 'Go to Dashboard',
   ],
   'business' => [
     'category' => [

@@ -7,6 +7,7 @@ return [
   //==================================== Translations ====================================//
   'btn' => [
     'update' => 'Actualizar',
+    'go_to_dashboard'  => 'Ir al panel de control',
   ],
   'business' => [
     'category' => [
