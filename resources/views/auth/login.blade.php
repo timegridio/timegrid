@@ -14,7 +14,7 @@
     <div class="login-box-body">
         <p class="login-box-msg">{{ trans('auth.login.title') }}</p>
 
-        @if ($errors->has())
+        @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
             <ul>
