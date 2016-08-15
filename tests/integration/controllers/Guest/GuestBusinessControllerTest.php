@@ -1,8 +1,7 @@
 <?php
 
-use Timegridio\Concierge\Models\Business;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Timegridio\Concierge\Models\Business;
 
 class GuestBusinessControllerTest extends TestCase
 {
@@ -127,6 +126,4 @@ class GuestBusinessControllerTest extends TestCase
 
         $this->see('name is available. Register it now');
     }
-    
-
 }

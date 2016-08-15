@@ -96,11 +96,11 @@ class Language
      * Search for an AgentLang among app available Langs.
      *
      * EXAMPLE MATCH
-     * "en_us" "en_us.utf8" : true
-     * "en"    "en_us.utf8" : true
-     * "es"    "es_es.utf8" : true
-     * "en_us" "es_es.utf8" : false
-     * "es_ar" "es_es.utf8" : false
+     * "en_us" "en_us" : true
+     * "en"    "en_us" : true
+     * "es"    "es_es" : true
+     * "en_us" "es_es" : false
+     * "es_ar" "es_es" : false
      *
      * @param array  $availableLangs
      * @param string $agentLang
@@ -123,8 +123,8 @@ class Language
      *
      * EXAMPLE CONVERSION
      * array:2 [                   >> array:2 [
-     *   "en_US.utf8" => "English" >>   "en_US.utf8" => "en_us.utf8"
-     *   "es_ES.utf8" => "Español" >>   "es_ES.utf8" => "es_es.utf8"
+     *   "en_US" => "English" >>   "en_US" => "en_us"
+     *   "es_ES" => "Español" >>   "es_ES" => "es_es"
      * ]                           >> ]
      *
      * @param array $array
