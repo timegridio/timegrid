@@ -105,7 +105,7 @@ $(document).ready(function(){
             <tbody>
             @foreach ($contacts as $contact)
                 <tr>
-                    <td>{{ $contact->lastname }}</td>
+                    <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->lastname) !!}</td>
                     <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->mobile }}</td>
