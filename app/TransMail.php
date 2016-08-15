@@ -14,7 +14,7 @@ class TransMail
     /**
      * @var string
      */
-    protected $locale = 'en_US.utf8';
+    protected $locale = 'en_US';
 
     /**
      * Locale Switch Function name.
@@ -26,7 +26,7 @@ class TransMail
     /**
      * @var string
      */
-    protected $revertLocale = 'en_US.utf8';
+    protected $revertLocale = 'en_US';
 
     /**
      * @var string
