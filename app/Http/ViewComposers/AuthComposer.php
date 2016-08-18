@@ -23,7 +23,7 @@ class AuthComposer
             view()->share('appointments', auth()->user()->appointments()->active()->get());
         } else {
             view()->share('gravatarURL', 'http://placehold.it/150x150');
-            view()->share('appointments', []);
+            view()->share('appointments', collect([]));
         }
     }
 }

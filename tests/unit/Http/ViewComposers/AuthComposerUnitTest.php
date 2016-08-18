@@ -20,7 +20,7 @@ class AuthComposerUnitTest extends TestCase
         $this->assertInternalType('bool', $view->shared('signedIn'));
         $this->assertNull($view->shared('user'));
         $this->assertEquals('http://placehold.it/150x150', $view->shared('gravatarURL'));
-        $this->assertEquals([], $view->shared('appointments'));
+        $this->assertInstanceOf(Illuminate\Support\Collection::class, $view->shared('appointments'));
     }
 
     /** @test */
