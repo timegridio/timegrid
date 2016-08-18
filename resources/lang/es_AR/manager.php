@@ -131,11 +131,11 @@ return [
       ],
     ],
     'index' => [
-      'help' => 'Desde aquí puedes administrar todos los prestadores',
+      'help' => 'Desde aquí podés administrar todos los prestadores',
       'msg'  => [
         'no_appointments' => 'No hay turnos reservados en este momento.',
       ],
-      'register_business_help' => 'Si sos prestador y querés dar citas online, es tu oportunidad!',
+      'register_business_help' => 'Si sos prestador y querés dar turnos online, es tu oportunidad!',
       'title'                  => 'Mis Prestaciones',
     ],
     'msg' => [
@@ -310,7 +310,7 @@ return [
       'btn' => [
         'go_to_vacancies' => 'Publicar disponibilidad',
       ],
-      'instructions' => 'Aquí puedes dar de alta los servicios que prestas. Cada uno podrá ser reservado para una y por la cantidad de citas que admitas',
+      'instructions' => 'Aquí podés dar de alta los servicios que prestas. Cada uno podrá ser reservado para una y por la cantidad de turnos que admitas',
       'title'        => 'Agregar un servicio',
     ],
     'index' => [
@@ -325,7 +325,7 @@ return [
   ],
   'vacancies' => [
     'edit' => [
-      'instructions' => 'Aquí puedes editar y publicar tu disponibilidad para cada servicio por cada fecha.',
+      'instructions' => 'Aquí podés editar y publicar tu disponibilidad para cada servicio por cada fecha.',
       'title'        => 'Disponibilidades',
     ],
     'msg' => [

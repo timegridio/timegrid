@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.user')
 
 @section('content')
 <div class="container-fluid">

@@ -83,7 +83,7 @@ return [
       'title'   => 'Mi cuenta',
     ],
     'search' => [
-      'content' => 'Queremos que ganes tiempo. Por eso el buscador será tu principal aliado. No dudes en escribir nombres de personas, códigos de cita o nombres de servicios para encontrar lo que buscas.',
+      'content' => 'Queremos que ganes tiempo. Por eso el buscador será tu principal aliado. No dudes en escribir nombres de personas, códigos de turno o nombres de servicios para encontrar lo que buscas.',
       'title'   => 'Potente Buscador',
     ],
     'services' => [
