@@ -16,8 +16,6 @@
     <!-- iCheck -->
 
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -28,8 +26,9 @@
 @yield('headscripts')
 
 </head>
-<!-- ADD THE CLASS layout-top-nav TO REMOVE THE SIDEBAR. -->
-<body class="hold-transition skin-blue layout-top-nav">
+
+<body class="hold-transition skin-blue sidebar-mini">
+
     {!! Analytics::render() !!}
 
     @if (config('env') == 'demo')
@@ -40,6 +39,7 @@
 
     <div class="wrapper">
 
+        <!-- Main Header -->
         <header class="main-header">
             <nav class="navbar navbar-static-top">
                 <div class="container">
@@ -54,7 +54,10 @@
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
                             @include('_navi18n')
-                            @include('user._navmenu')
+
+                            @if(auth()->check())
+                                @include('user._navmenu')
+                            @endif
                         </ul>
                         <!-- Search input here -->
                     </div>
@@ -63,11 +66,17 @@
                     <div class="navbar-custom-menu">
                         <ul class="nav navbar-nav">
 
-                            <!-- Notifications Menu -->
-                            @include('user._notifications-menu')
+                            @if(auth()->check())
+                                <!-- Notifications Menu -->
+                                @include('user._notifications-menu')
 
-                            <!-- User Account Menu -->
-                            @include('_user-account-menu')
+                                <!-- User Account Menu -->
+                                @include('_user-account-menu')
+                            @else
+                                <li>
+                                    <a href="{{ url('/auth/login') }}"><i class="fa fa-sign-in"></i> {{ trans('app.nav.login') }}</a>
+                                </li>
+                            @endif
 
                         </ul>
                     </div>
@@ -102,6 +111,7 @@
         </div>
         <!-- /.content-wrapper -->
 
+        <!-- Main Footer -->
         @include('_footer')
 
         <!-- /.container -->
@@ -113,9 +123,8 @@
 <script src="{{ asset('js/app.min.js') }}"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
-        $('.btn').tooltipster({animation: "grow", theme: 'tooltipster-light'});
-    });
+$(document).ready(function() {
+    $('.btn').tooltipster({ animation: "grow", theme: 'tooltipster-light' });
 </script>
 
 @stack('footer_scripts')
