@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue layout-top-nav">
 
     {!! Analytics::render() !!}
 
@@ -88,19 +88,11 @@
         <!-- Full Width Column -->
         <div class="content-wrapper">
             <div class="container">
-                <!-- Content Header (Page header) -->
-                <section class="content-header">
-                    <h1>
-                        @yield('title', '')
-                        <small>@yield('subtitle', '')</small>
-                    </h1>
-                </section>
 
                 <!-- Main content -->
                 <section class="content">
 
                     @include('flash::message')
-                    @include('_errors')
 
                     @yield('content')
 
