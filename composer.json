@@ -56,7 +56,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
-        "caouecs/laravel4-lang": "~3.0",
+        "caouecs/laravel-lang": "~3.0",
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",
