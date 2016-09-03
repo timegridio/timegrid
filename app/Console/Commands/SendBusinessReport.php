@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\TransMail;
+use App\TG\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Timegridio\Concierge\Concierge;

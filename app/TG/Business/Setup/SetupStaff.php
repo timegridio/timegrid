@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Business\Setup;
+namespace App\TG\Business\Setup;
 
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Humanresource;

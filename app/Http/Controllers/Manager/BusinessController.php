@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Manager;
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
-use App\Services\BusinessService;
+use App\TG\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Request;
@@ -24,7 +24,7 @@ class BusinessController extends Controller
     /**
      * Business service.
      *
-     * @var App\Services\BusinessService
+     * @var App\TG\BusinessService
      */
     private $businessService;
 
@@ -38,7 +38,7 @@ class BusinessController extends Controller
     /**
      * Create Controller.
      *
-     * @param App\Services\BusinessService $businessService
+     * @param App\TG\BusinessService $businessService
      */
     public function __construct(BusinessService $businessService, Carbon $time)
     {

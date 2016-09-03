@@ -1,7 +1,7 @@
 <?php
 
-use App\Services\Availability;
-use App\Services\Availability\AvailabilityService;
+use App\TG\Availability;
+use App\TG\Availability\AvailabilityService;
 
 class AvailabilityServiceUnitTest extends TestCase
 {

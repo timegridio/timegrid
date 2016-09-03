@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 // use App\Jobs\FetchICalFile;
-use App\Services\Availability\ICalSyncService;
+use App\TG\Availability\ICalSyncService;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
 use Timegridio\Concierge\Models\Business;
@@ -25,7 +25,7 @@ class SyncICal extends Command
     protected $description = 'Sync ICal';
 
     /**
-     * @var App\Services\Availability\ICalSyncService
+     * @var App\TG\Availability\ICalSyncService
      */
     protected $icalsync;
 

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Availability;
+namespace App\TG\Availability;
 
-use App\Services\ICalChecker;
+use App\TG\ICalChecker;
 use Illuminate\Support\Facades\Storage;
 use Timegridio\Concierge\Models\Humanresource;
 

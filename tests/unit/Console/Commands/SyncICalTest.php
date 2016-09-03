@@ -1,7 +1,7 @@
 <?php
 
 use App\Console\Commands\SyncICal;
-use App\Services\Availability\ICalSyncService;
+use App\TG\Availability\ICalSyncService;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Symfony\Component\Console\Application as ConsoleApplication;
 use Symfony\Component\Console\Tester\CommandTester;

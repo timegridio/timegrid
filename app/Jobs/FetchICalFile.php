@@ -2,7 +2,7 @@
 
 namespace App\Jobs;
 
-use App\Services\Availability\ICalSyncService;
+use App\TG\Availability\ICalSyncService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;

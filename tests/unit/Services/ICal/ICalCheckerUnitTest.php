@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\ICalChecker;
+use App\TG\ICalChecker;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 

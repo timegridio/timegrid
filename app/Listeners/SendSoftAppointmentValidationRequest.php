@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\NewSoftAppointmentWasBooked;
-use App\TransMail;
+use App\TG\TransMail;
 
 class SendSoftAppointmentValidationRequest
 {

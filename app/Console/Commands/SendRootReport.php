@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\TransMail;
+use App\TG\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -24,7 +24,7 @@ class SendRootReport extends Command
     protected $description = 'Send Root Email Report';
 
     /**
-     * @var App\TransMail
+     * @var App\TG\TransMail
      */
     private $transmail;
 

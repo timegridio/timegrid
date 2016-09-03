@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Services;
+namespace App\TG;
 
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Models\User;
-use App\Services\Business\Setup\SetupStaff;
+use App\TG\Business\Setup\SetupStaff;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Category;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\BusinessToken;
+use App\TG\Business\Token as BusinessToken;
 use App\Http\Controllers\Controller;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
