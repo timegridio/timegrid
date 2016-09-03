@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "208749d3dff37cf8d32ef312ae48d91b",
-    "content-hash": "afec7cfe5678e773f20150fce8f69df8",
+    "hash": "3789a99f14fa6abd5461ab8814086054",
+    "content-hash": "cb4a7108798864e6d78f9c2074f22af9",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -4290,12 +4290,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "6fc5f3c0bf21cc9c8d5baaab3d43f02a56156199"
+                "reference": "e8bc49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/6fc5f3c0bf21cc9c8d5baaab3d43f02a56156199",
-                "reference": "6fc5f3c0bf21cc9c8d5baaab3d43f02a56156199",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/e8bc49",
+                "reference": "e8bc49",
                 "shasum": ""
             },
             "require": {
@@ -4345,7 +4345,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-08-15 13:36:50"
+            "time": "2016-09-03 01:08:28"
         },
         {
             "name": "timegridio/icalreader",
