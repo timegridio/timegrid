@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "f2ff97e236db906d03676ec0f10f84fd",
-    "content-hash": "9f65a2c4fdad266066b92824efd38417",
+    "hash": "de7373cf293bc04572931df70cfdd6f9",
+    "content-hash": "bba7eb78220e9caca0eaba0f16f48909",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -181,52 +181,6 @@
             ],
             "description": "Bootstrap 3 Typeahead",
             "time": "2016-03-24 12:18:09"
-        },
-        {
-            "name": "caffeinated/widgets",
-            "version": "v2.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/caffeinated/widgets.git",
-                "reference": "3cd508518c4d62cf6173304638e7a06324a69d61"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/caffeinated/widgets/zipball/3cd508518c4d62cf6173304638e7a06324a69d61",
-                "reference": "3cd508518c4d62cf6173304638e7a06324a69d61",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/config": "5.1.*|5.2.*",
-                "illuminate/support": "5.1.*|5.2.*",
-                "php": ">=5.5.9"
-            },
-            "suggest": {
-                "caffeinated/sapling": "Laravel 5 Twig integration package"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Caffeinated\\Widgets\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Shea Lewis",
-                    "email": "shea.lewis89@gmail.com"
-                }
-            ],
-            "description": "Laravel 5 Widgets",
-            "keywords": [
-                "caffeinated",
-                "laravel",
-                "widgets"
-            ],
-            "time": "2016-03-06 05:19:46"
         },
         {
             "name": "camroncade/timezone",
