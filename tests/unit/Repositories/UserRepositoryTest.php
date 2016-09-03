@@ -1,6 +1,6 @@
 <?php
 
-use App\Repositories\UserRepository;
+use App\TG\Repositories\UserRepository;
 
 class UserRepositoryTest extends TestCase
 {
