@@ -29,16 +29,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot(Router $router)
     {
-        //
-
         parent::boot($router);
 
         $router->model('contact', Contact::class);
         $router->model('service', Service::class);
         $router->model('appointment', Appointment::class);
-        $router->bind('business', function ($businessSlug) {
-            return Business::where('slug', $businessSlug)->first();
-        });
     }
 
     /**
