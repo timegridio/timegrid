@@ -20,6 +20,7 @@
         <testsuite name="Application Test Suite">
             <directory suffix="Test.php">./tests/unit/</directory>
             <directory suffix="Test.php">./tests/integration/</directory>
+            <directory suffix="Test.php">./tests/acceptance/compliance/</directory>
             <directory suffix="Test.php">./tests/acceptance/scenarios/</directory>
             <directory suffix="Test.php">./tests/acceptance/commands/</directory>
             <directory suffix="Test.php">./tests/acceptance/emails/</directory>
