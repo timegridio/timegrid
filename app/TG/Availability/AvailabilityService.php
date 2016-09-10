@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Services\Availability;
+namespace App\TG\Availability;
 
 use Carbon\Carbon;
 use Timegridio\Concierge\Models\Business;

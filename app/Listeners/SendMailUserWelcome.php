@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\NewUserWasRegistered;
-use App\TransMail;
+use App\TG\TransMail;
 
 class SendMailUserWelcome
 {

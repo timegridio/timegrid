@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\DetectTimezone;
+use App\TG\DetectTimezone;
 use Torann\GeoIP\GeoIP;
 
 class DetectTimezoneUnitTest extends TestCase

@@ -1,6 +1,6 @@
 <?php
 
-use App\TransMail;
+use App\TG\TransMail;
 use Snowfire\Beautymail\Beautymail;
 
 class TransMailTest extends TestCase

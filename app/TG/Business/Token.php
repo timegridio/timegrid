@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\TG\Business;
 
 use Timegridio\Concierge\Models\Business;
 
-class BusinessToken
+class Token
 {
     private $business;
 

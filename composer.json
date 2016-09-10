@@ -24,7 +24,6 @@
         "anhskohbo/no-captcha": "2.*",
         "barryvdh/laravel-snappy": "~0.2",
         "bassjobsen/bootstrap-3-typeahead": "~4.0",
-        "caffeinated/widgets": "~2.0",
         "camroncade/timezone": "0.1",
         "creativeorange/gravatar": "~1.0",
         "fenos/notifynder": "3.*",
@@ -49,15 +48,16 @@
         "jenssegers/agent": "^2.3",
         "laracasts/utilities": "^2.1",
         "alariva/tidiochat": "^2.0",
-        "timegridio/concierge": "dev-master",
+        "timegridio/concierge": "dev-master#e8bc49",
         "jenssegers/rollbar": "^1.5",
         "eluceo/ical": "^0.10.1",
         "snowfire/beautymail": "dev-master",
-        "timegridio/icalreader": "dev-master"
+        "timegridio/icalreader": "dev-master",
+        "spatie/laravel-cookie-consent": "^1.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",
-        "caouecs/laravel4-lang": "~3.0",
+        "caouecs/laravel-lang": "~3.0",
         "codeclimate/php-test-reporter": "dev-master",
         "fzaninotto/faker": "~1.0",
         "laracasts/generators": "^1.1",

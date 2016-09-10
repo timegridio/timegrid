@@ -22,7 +22,7 @@ class ComposerServiceProvider extends ServiceProvider
         );
 
         view()->composer(
-            ['layouts.app', 'layouts.user'], \App\Http\ViewComposers\AuthComposer::class
+            ['wizard', 'user.*', 'manager.*', 'guest.*', 'layouts.*', '_user-account-menu'], \App\Http\ViewComposers\AuthComposer::class
         );
 
         view()->composer(

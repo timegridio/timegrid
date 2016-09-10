@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\TG;
 
 use Snowfire\Beautymail\Beautymail;
 

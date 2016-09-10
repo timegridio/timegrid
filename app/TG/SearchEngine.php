@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\TG;
 
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;

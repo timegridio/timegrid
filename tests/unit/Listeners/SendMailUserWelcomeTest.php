@@ -2,7 +2,7 @@
 
 use App\Events\NewUserWasRegistered;
 use App\Listeners\SendMailUserWelcome;
-use App\TransMail;
+use App\TG\TransMail;
 
 class SendMailUserWelcomeTest extends TestCase
 {

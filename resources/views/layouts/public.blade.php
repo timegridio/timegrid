@@ -40,6 +40,8 @@
 
     <div class="wrapper">
 
+        @include('cookieConsent::index')
+
         <header class="main-header">
             <nav class="navbar navbar-static-top">
                 <div class="container">

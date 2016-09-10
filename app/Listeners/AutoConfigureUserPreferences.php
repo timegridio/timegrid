@@ -4,7 +4,7 @@ namespace App\Listeners;
 
 use App\Events\NewUserWasRegistered;
 use App\Models\User;
-use App\Services\DetectTimezone;
+use App\TG\DetectTimezone;
 
 class AutoConfigureUserPreferences
 {

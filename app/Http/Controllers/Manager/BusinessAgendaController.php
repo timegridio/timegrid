@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\BusinessToken;
+use App\TG\Business\Token as BusinessToken;
 use App\Http\Controllers\Controller;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
@@ -49,7 +49,9 @@ class BusinessAgendaController extends Controller
             ? 'manager.businesses.appointments.empty'
             : "manager.businesses.appointments.{$business->strategy}.index";
 
-        return view($viewKey, compact('business', 'appointments'));
+        $user = auth()->user();
+
+        return view($viewKey, compact('business', 'appointments', 'user'));
     }
 
     public function getCalendar(Business $business)

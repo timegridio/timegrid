@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Repositories;
+namespace App\TG\Repositories;
 
 use App\Models\User;
 

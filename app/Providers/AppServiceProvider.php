@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             \Illuminate\Contracts\Auth\Registrar::class,
-            \App\Services\Registrar::class
+            \App\TG\Registrar::class
         );
 
         if ($this->app->environment() == 'local') {

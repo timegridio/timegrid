@@ -1,6 +1,6 @@
 <?php
 
-use App\BusinessToken;
+use App\TG\Business\Token as BusinessToken;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Timegridio\Concierge\Models\Appointment;

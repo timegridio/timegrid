@@ -3,7 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\AppointmentWasConfirmed;
-use App\TransMail;
+use App\TG\TransMail;
 use Fenos\Notifynder\Facades\Notifynder;
 
 class SendAppointmentConfirmationNotification

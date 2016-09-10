@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\BusinessToken;
+use App\TG\Business\Token as BusinessToken;
 use App\Http\Controllers\Controller;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;

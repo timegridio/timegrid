@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Services\Availability\AvailabilityService;
+use App\TG\Availability\AvailabilityService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Timegridio\Concierge\Concierge;

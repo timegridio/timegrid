@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\SearchEngine;
+use App\TG\SearchEngine;
 use Timegridio\Concierge\Models\Business;
 
 class Search extends Controller

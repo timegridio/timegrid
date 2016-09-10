@@ -2,7 +2,7 @@
 
 use App\Events\NewSoftAppointmentWasBooked;
 use App\Listeners\SendSoftAppointmentValidationRequest;
-use App\TransMail;
+use App\TG\TransMail;
 
 class SendSoftAppointmentValidationRequestTest extends TestCase
 {

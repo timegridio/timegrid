@@ -8,15 +8,6 @@ use Illuminate\Http\Request;
 
 class UserPreferencesController extends Controller
 {
-    protected $user;
-
-    public function __construct()
-    {
-        parent::__construct();
-
-        $this->user = auth()->user();
-    }
-
     public function getPreferences()
     {
         logger()->info(__METHOD__);
@@ -24,7 +15,7 @@ class UserPreferencesController extends Controller
         // BEGIN
 
         $parameters = config()->get('preferences.App\Models\User');
-        $preferences = $this->user->preferences;
+        $preferences = auth()->user()->preferences;
 
         return view('user.preferences.edit', compact('preferences', 'parameters'));
     }
@@ -60,13 +51,13 @@ class UserPreferencesController extends Controller
         foreach ($mergedPreferences as $key => $value) {
             logger()->info(sprintf(
                 "set preference: UserId:%s key:%s='%s' type:%s",
-                $this->user->id,
+                auth()->user()->id,
                 $key,
                 $value,
                 $parameters[$key]['type']
             ));
 
-            $this->user->pref($key, $value, $parameters[$key]['type']);
+            auth()->user()->pref($key, $value, $parameters[$key]['type']);
         }
     }
 }

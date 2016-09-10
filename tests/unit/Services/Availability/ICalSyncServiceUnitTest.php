@@ -1,6 +1,6 @@
 <?php
 
-use App\Services\Availability\ICalSyncService;
+use App\TG\Availability\ICalSyncService;
 use Illuminate\Support\Facades\Storage;
 
 class ICalSyncServiceUnitTest extends TestCase

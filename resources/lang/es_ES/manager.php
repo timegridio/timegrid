@@ -76,6 +76,10 @@ return [
     'create' => [
       'title' => 'Registrar un prestador',
     ],
+    'notifications' => [
+      'title' => 'Notificaciones',
+      'help' => 'Todo lo sucedido recientemente',
+    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'Aún no tienes servicios cargados! Hazlo aquí!',
@@ -88,10 +92,11 @@ return [
         'title_appointments_today'     => 'Hoy',
         'title_appointments_tomorrow'  => 'Mañana',
         'title_appointments_total'     => 'Citas Totales',
-        'title_contacts_active'        => 'Contactos Suscriptos',
+        'title_contacts_subscribed'    => 'Contactos Suscriptos',
         'title_contacts_registered'    => 'Contactos Registrados',
         'title_total'                  => 'Total',
       ],
+      'title' => 'Tablero de Control'
     ],
     'edit' => [
       'title' => 'Edición de datos del prestador',
