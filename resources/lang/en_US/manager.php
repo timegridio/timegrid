@@ -76,6 +76,10 @@ return [
     'create' => [
       'title' => 'Register a business',
     ],
+    'notifications' => [
+      'title' => 'Notifications',
+      'help' => 'All what happened recently',
+    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'There are still no services added. Add them from here!',
@@ -88,10 +92,11 @@ return [
         'title_appointments_today'     => 'Today',
         'title_appointments_tomorrow'  => 'Tomorrow',
         'title_appointments_total'     => 'Total Appointments',
-        'title_contacts_active'        => 'Contacts Subscribed',
+        'title_contacts_subscribed'    => 'Contacts Subscribed',
         'title_contacts_registered'    => 'Contacts Registered',
         'title_total'                  => 'Total',
       ],
+      'title' => 'Dashboard'
     ],
     'edit' => [
       'title' => 'Business profile edit',

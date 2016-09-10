@@ -1,12 +1,25 @@
 <!-- Sidebar Menu -->
 <ul class="sidebar-menu">
 
-    <li class="header">{{ $business->name }}</li>
+    <li class="header">{{ route('guest.business.home', $business->slug) }}</li>
+
+    {{-- Configuration --}}
+    <li class="treeview">
+        <a href="#"><i class="fa fa-home"></i> <span>{{ $business->name }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+        <ul class="treeview-menu">
+            <li><a href="{{ route('manager.business.preferences', $business) }}"><i class="fa fa-cogs"></i><span>{{ trans('nav.manager.left.preferences') }}</span></a></li>
+            <li><a href="{{ route('manager.business.edit', $business) }}"><i class="fa fa-pencil-square-o"></i><span>{{ trans('nav.manager.left.edit') }}</span></a></li>
+            <li><a href="{{ route('manager.business.vacancy.show', $business) }}"><i class="fa fa-calendar"></i><span>{{ trans('nav.manager.left.availability') }}</span></a></li>
+            <li><a href="{{ route('manager.business.notifications.show', $business) }}"><i class="fa fa-bullhorn"></i><span>{{ trans('nav.manager.left.notifications') }}</span></a></li>
+        </ul>
+    </li>
+    {{-- Language Switcher Dropdown --}}
+
     <!-- Optionally, you can add icons to the links -->
-    <li class="{{{ $route == 'manager.business.show' ? 'active' : '' }}}" title="{{ $business->name }}" >
+    <li class="{{{ $route == 'manager.business.show' ? 'active' : '' }}}" title="{{ trans('nav.manager.left.dashboard') }}" >
         <a href="{{ route('manager.business.show', $business->slug) }}">
-            <i class="fa fa-home"></i>
-            <span>{{ $business->name }}</span>
+            <i class="fa fa-tachometer"></i>
+            <span>{{ trans('nav.manager.left.dashboard') }}</span>
         </a>
     </li>
 

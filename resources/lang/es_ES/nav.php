@@ -4,12 +4,16 @@ return  [
   //============================== New strings to translate ==============================//
   'manager' =>  [
     'left' =>  [
-      'addressbook'  => 'Contactos',
-      'agenda'       => 'Turnos',
-      'availability' => 'Disponibilidad',
-      'calendar'     => 'Agenda',
-      'services'     => 'Servicios',
-      'staff'        => 'Staff',
+      'dashboard'     => 'Tablero',
+      'notifications' => 'Notificaciones',
+      'preferences'   => 'Preferencias',
+      'edit'          => 'Editar',
+      'addressbook'   => 'Contactos',
+      'agenda'        => 'Turnos',
+      'availability'  => 'Disponibilidad',
+      'calendar'      => 'Agenda',
+      'services'      => 'Servicios',
+      'staff'         => 'Staff',
     ],
   ],
 ];

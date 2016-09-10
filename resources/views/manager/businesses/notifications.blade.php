@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.businesses.notifications.title'))
+@section('subtitle', trans('manager.businesses.notifications.help'))
+
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
 @parent
@@ -8,16 +11,7 @@
 @section('content')
 <div class="container-fluid">
 
-    <div class="panel panel-default" id="dashboard">
-        <div class="panel-heading">
-            {{ $business->name }}
-        </div>
-
-        <div class="panel-body">
-            @include('manager.businesses._notifications', compact('notifications'))
-        </div>
-                
-    </div>
+    @include('manager.businesses._notifications', compact('notifications'))
 
 </div>
 @endsection
