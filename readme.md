@@ -25,7 +25,7 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 ## Screenshots
 
-![Timegrid Backoffice Dashboard Screenshot](http://i.imgur.com/6vURWRl.png)
+![Timegrid Backoffice Dashboard Screenshot](http://i.imgur.com/YOQBoVx.png)
 
 ## Live Demo
 
