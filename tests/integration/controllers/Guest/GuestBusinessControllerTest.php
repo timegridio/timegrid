@@ -1,8 +1,7 @@
 <?php
 
-use Timegridio\Concierge\Models\Business;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Timegridio\Concierge\Models\Business;
 
 class GuestBusinessControllerTest extends TestCase
 {
@@ -108,7 +107,6 @@ class GuestBusinessControllerTest extends TestCase
         $this->visit('/'.$business->slug);
         $this->visit('auth/register');
         $this->type('test', 'name');
-        $this->type('test', 'username');
         $this->type('test@example.org', 'email');
         $this->type('aPassword', 'password');
         $this->type('aPassword', 'password_confirmation');
@@ -128,6 +126,4 @@ class GuestBusinessControllerTest extends TestCase
 
         $this->see('name is available. Register it now');
     }
-    
-
 }

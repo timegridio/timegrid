@@ -2,22 +2,35 @@
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endsection
 
-<div class="row">
+<div class="container-fluid">
 
-    <div class="form-group col-xl-6 col-md-6 col-sm-4 col-xs-4">
-        {!! Form::text('name', null, [
-            'required',
-            'class'=>'form-control',
-            'placeholder'=> trans('manager.humanresource.form.name.label')
-            ]) !!}
+    <div class="row">
+        <div class="form-group">
+            {!! Form::text('name', null, [
+                'required',
+                'class'=>'form-control',
+                'placeholder'=> trans('manager.humanresource.form.name.label')
+                ]) !!}
+        </div>
     </div>
 
-    <div class="form-group col-xl-6 col-md-6 col-sm-4 col-xs-4">
-        {!! Form::text('capacity', null, [
-            'required',
-            'class'=>'form-control',
-            'placeholder'=> trans('manager.humanresource.form.capacity.label')
-            ]) !!}
+    <div class="row">
+        <div class="form-group">
+            {!! Form::text('capacity', null, [
+                'required',
+                'class'=>'form-control',
+                'placeholder'=> trans('manager.humanresource.form.capacity.label')
+                ]) !!}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group">
+            {!! Form::text('calendar_link', null, [
+                'class'=>'form-control',
+                'placeholder'=> trans('manager.humanresource.form.calendar_link.label')
+                ]) !!}
+        </div>
     </div>
 
     <div class="row">
@@ -29,7 +42,3 @@
     </div>
 
 </div>
-
-@section('footer_scripts')
-@parent
-@endsection

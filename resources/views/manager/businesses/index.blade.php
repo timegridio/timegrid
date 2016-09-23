@@ -14,18 +14,18 @@
                     @if($user->hasBusiness())
 
                         @foreach ($businesses as $business)
-                            <div class="row">
-                            <div class="col-md-12">
-                                <div class="media">
-                                  <div class="media-left media-top hidden-xs hidden-sm">
-                                    <a href="{{route('manager.business.show', ['business' => $business])}}">{!! $business->facebookImg('normal') !!}</a>
-                                  </div>
-                                  <div class="media-body">
-                                    <blockquote>{!! Button::normal($business->name)->asLinkTo( route('manager.business.show', ['business' => $business]) ) !!} {{ str_limit($business->description, 50) }}</blockquote>
-                                  </div>
-                                </div>
+                        <div class="row">
+                        <div class="col-md-12">
+                            <div class="media">
+                              <div class="media-left media-top hidden-xs hidden-sm">
+                                <a href="{{ route('manager.business.show', $business) }}">{!! $business->facebookImg('normal') !!}</a>
+                              </div>
+                              <div class="media-body">
+                                <blockquote>{!! Button::normal($business->name)->asLinkTo( route('manager.business.show', $business) ) !!} {{ str_limit($business->description, 50) }}</blockquote>
+                              </div>
                             </div>
-                            </div>
+                        </div>
+                        </div>
                         @endforeach
 
                     @else
@@ -43,9 +43,8 @@
 </div>
 @endsection
 
-@if(!$user->hasBusiness())
-    @section('footer_scripts')
-    @parent
+@unless($user->hasBusiness())
+    @push('footer_scripts')
     {!! TidioChat::js() !!}
-    @endsection
-@endif
+    @endpush
+@endunless

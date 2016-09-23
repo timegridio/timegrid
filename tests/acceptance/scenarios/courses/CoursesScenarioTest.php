@@ -12,9 +12,8 @@ class CoursesScenarioTest extends TestCase
     protected $business;
 
     protected $vacancy;
-    
-    protected $service;
 
+    protected $service;
 
     /**
      * @test
@@ -105,10 +104,7 @@ EOD;
 
         $this->click('Subscribe');
 
-        $this->see('Save')
-             ->type($contact['firstname'], 'firstname')
-             ->type($contact['lastname'], 'lastname')
-             ->press('Save');
+        $this->see('Your profile was attached to an existing one');
 
         $this->click('Book appointment');
     }
@@ -124,7 +120,7 @@ EOD;
         $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ['19:00:00', '20:00:00']]);
+        $this->seeJsonContains(['times' => ['19:00', '20:00']]);
     }
 
     public function the_user_takes_a_reservation()
@@ -135,7 +131,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->service->id,
-            '_time'      => '19:00:00',
+            '_time'      => '19:00',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);

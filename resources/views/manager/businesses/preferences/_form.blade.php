@@ -75,7 +75,6 @@ trans('preferences.App\Models\Business.start_at.label')
     </div>
 </div>
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
-@endsection
+@endpush

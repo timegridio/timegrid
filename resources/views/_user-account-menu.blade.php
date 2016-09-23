@@ -12,10 +12,8 @@
         <li class="user-header">
             <img src="{{ $gravatarURL }}" class="img-circle" alt="{{ $user->name }}">
 
-            <p>
-                {{ $user->name }}
-                <small>{{ $user->email }}</small>
-            </p>
+            <p title="{{ $timezone }}">{{ $user->name }}</p>
+            <p><small>{{ $user->email }}</small></p>
         </li>
         <!-- Menu Body -->
         <li class="user-body">
@@ -35,7 +33,7 @@
         <!-- Menu Footer-->
         <li class="user-footer">
             <div class="pull-left">
-                <a href="{{ route('user.dashboard') }}" class="btn btn-default btn-flat">{{ trans('app.nav.dashboard') }}</a>
+                <a href="{{ route('user.preferences') }}" class="btn btn-default btn-flat">{{ trans('app.nav.preferences') }}</a>
             </div>
             <div class="pull-right">
                 <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">{{ trans('app.nav.logout') }}</a>

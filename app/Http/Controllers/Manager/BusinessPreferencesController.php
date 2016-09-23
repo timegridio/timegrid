@@ -56,7 +56,7 @@ class BusinessPreferencesController extends Controller
 
         $businessName = $business->name;
         Notifynder::category('user.updatedBusinessPreferences')
-                   ->from('App\Models\User', auth()->user()->id)
+                   ->from('App\Models\User', auth()->id())
                    ->to('Timegridio\Concierge\Models\Business', $business->id)
                    ->url('http://localhost')
                    ->extra(compact('businessName'))

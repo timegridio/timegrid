@@ -12,4 +12,3 @@
     </ul>
 </li>
 {{-- Language Switcher Dropdown --}}
-

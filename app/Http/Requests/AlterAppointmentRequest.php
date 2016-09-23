@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use Auth;
 use Timegridio\Concierge\Models\Appointment;
 use Timegridio\Concierge\Models\Business;
-use Auth;
 
 class AlterAppointmentRequest extends Request
 {
@@ -20,7 +20,7 @@ class AlterAppointmentRequest extends Request
 
         $appointment = Appointment::find($appointmentId);
 
-        $authorize = ($appointment->issuer->id == auth()->user()->id) || auth()->user()->isOwner($businessId);
+        $authorize = (auth()->user()->isOwner($businessId) || $appointment->issuer->id == auth()->id());
 
         logger()->info("Authorize:$authorize");
 
@@ -34,6 +34,11 @@ class AlterAppointmentRequest extends Request
      */
     public function rules()
     {
-        return [];
+        return [
+            'business'    => 'required|integer',
+            'appointment' => 'required|integer',
+            'action'      => 'required|in:confirm,cancel,serve',
+            'widget'      => 'required|in:row,panel',
+        ];
     }
 }

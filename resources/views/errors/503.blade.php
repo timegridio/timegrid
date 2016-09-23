@@ -1,6 +1,7 @@
 <html>
     <head>
         <link href='//fonts.googleapis.com/css?family=Lato:100' rel='stylesheet' type='text/css'>
+        <meta http-equiv="refresh" content="10">
 
         <style>
             body {
@@ -27,9 +28,16 @@
 
             .title {
                 font-size: 72px;
+                margin-left: 100px;
+                margin-right: 100px;
                 margin-bottom: 40px;
             }
-            
+
+            .subtitle {
+                font-size: 42px;
+                margin-bottom: 20px;
+            }
+
             .brand {
                 font-weight: bold;
                 font-size: 24px;
@@ -40,8 +48,9 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Be right back.</div>
-                <div class="title">Enseguida volvemos.</div>
+                <div class="title">Your life only gets better when you get better.</div>
+                <div class="subtitle">Be right back.</div>
+                <div class="subtitle">Ya volvemos.</div>
                 <div class="brand">timegrid.io</div>
             </div>
         </div>

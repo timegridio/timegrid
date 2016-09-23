@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.user')
 
 @section('content')
 <div class="container-fluid">
@@ -25,7 +25,7 @@
                                   </div>
                                   <div class="media-body">
                                     <div class="{{ $business->pref('description_div_class') }}">
-                                        <h5>{!! Markdown::convertToHtml($business->description) !!}</h5>
+                                        <h5>{!! Markdown::convertToHtml(strip_tags($business->description)) !!}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -54,8 +54,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 $(document).ready(function(){
 
@@ -106,4 +105,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

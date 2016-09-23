@@ -183,7 +183,7 @@
 </div>
 @endsection
 
-@section('footer_scripts')
+@push('footer_scripts')
 <script>
 $(document).ready(function() {
     var panels = $('.user-infos');
@@ -288,4 +288,4 @@ $(document).ready(function() {
 
 })();
 </script>
-@endsection
+@endpush

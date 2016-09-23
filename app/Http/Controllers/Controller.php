@@ -13,8 +13,6 @@ class Controller extends BaseController
 
     public function __construct()
     {
-        view()->share('isGuest', auth()->guest());
-        view()->share('signedIn', auth()->check());
-        view()->share('user', auth()->user());
+        //
     }
 }

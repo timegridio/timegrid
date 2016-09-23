@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.user')
 
 @section('content')
 <div class="container-fluid">
@@ -6,7 +6,8 @@
         <ul class="list-group">
             @foreach ($businesses as $business)
             <li class="list-group-item">
-            {!! Button::normal($business->name)->asLinkTo( route('user.businesses.home', ['business' => $business]) ) !!} {{ str_limit($business->description, 50) }}
+            {!! Button::normal($business->name)->asLinkTo( route('user.businesses.home', $business) ) !!}
+            {{ str_limit($business->description, 50) }}
             </li>
             @endforeach
         </ul>

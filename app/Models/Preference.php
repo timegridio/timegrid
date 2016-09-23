@@ -4,20 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 
+/**
+ * @property string $key
+ * @property mixed $value
+ * @property string $type
+ */
 class Preference extends EloquentModel
 {
-    /**
-     * [$fillable description].
-     *
-     * @var [type]
-     */
+
     protected $fillable = ['key', 'value', 'type'];
 
-    /**
-     * [preferenceable description].
-     *
-     * @return [type] [description]
-     */
     public function preferenceable()
     {
         return $this->morphTo();
@@ -26,7 +22,7 @@ class Preference extends EloquentModel
     /**
      * [__toString description].
      *
-     * @return string [description]
+     * @return string $value
      */
     public function __toString()
     {
@@ -34,12 +30,12 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [getDefault description].
+     * Get default value.
      *
-     * @param [type] $model [description]
-     * @param [type] $key   [description]
+     * @param string $model
+     * @param string $key
      *
-     * @return [type] [description]
+     * @return mixed
      */
     public static function getDefault($model, $key)
     {
@@ -59,7 +55,7 @@ class Preference extends EloquentModel
     /**
      * [question description].
      *
-     * @return [type] [description]
+     * @return string
      */
     public function question()
     {
@@ -69,7 +65,7 @@ class Preference extends EloquentModel
     /**
      * [help description].
      *
-     * @return [type] [description]
+     * @return string
      */
     public function help()
     {
@@ -90,9 +86,9 @@ class Preference extends EloquentModel
     }
 
     /**
-     * [value description].
+     * Get casted value.
      *
-     * @return [type] [description]
+     * @return mixed
      */
     public function value()
     {
@@ -108,12 +104,6 @@ class Preference extends EloquentModel
                 break;
             case 'float':
                 return (float) $this->value;
-                break;
-            case 'json':
-                return json_decode($this->value);
-                break;
-            case 'array':
-                return unserialize($this->value);
                 break;
             default:
                 break;

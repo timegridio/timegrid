@@ -105,10 +105,7 @@ EOD;
 
         $this->click('Subscribe');
 
-        $this->see('Save')
-             ->type($contact['firstname'], 'firstname')
-             ->type($contact['lastname'], 'lastname')
-             ->press('Save');
+        $this->see('Your profile was attached to an existing one');
 
         $this->click('Book appointment');
     }
@@ -125,8 +122,8 @@ EOD;
 
         $this->assertResponseOk();
         $this->seeJsonContains(['times' => [
-            "08:00:00","08:45:00","09:30:00","10:15:00","11:00:00","11:45:00","12:30:00","13:15:00",
-            "14:00:00","14:45:00","15:30:00","16:15:00","17:00:00","17:45:00","18:30:00","19:15:00"]
+            "08:00","08:45","09:30","10:15","11:00","11:45","12:30","13:15",
+            "14:00","14:45","15:30","16:15","17:00","17:45","18:30","19:15"]
             ]);
     }
 
@@ -138,7 +135,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->service->id,
-            '_time'      => '08:00:00',
+            '_time'      => '08:00',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);

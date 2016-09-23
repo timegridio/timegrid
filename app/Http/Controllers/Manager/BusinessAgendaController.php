@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Manager;
 
+use App\TG\Business\Token as BusinessToken;
 use App\Http\Controllers\Controller;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
@@ -42,13 +43,15 @@ class BusinessAgendaController extends Controller
 
         $this->authorize('manage', $business);
 
-        $appointments = $this->concierge->business($business)->getUnservedAppointments();
+        $appointments = $this->concierge->business($business)->getUnarchivedAppointments();
 
         $viewKey = count($appointments) == 0
             ? 'manager.businesses.appointments.empty'
-            : 'manager.businesses.appointments.'.$business->strategy.'.index';
+            : "manager.businesses.appointments.{$business->strategy}.index";
 
-        return view($viewKey, compact('business', 'appointments'));
+        $user = auth()->user();
+
+        return view($viewKey, compact('business', 'appointments', 'user'));
     }
 
     public function getCalendar(Business $business)
@@ -73,6 +76,8 @@ class BusinessAgendaController extends Controller
 
         $slotDuration = count($appointments) > 5 ? '0:15' : '0:30';
 
+        $icalURL = $this->generateICalURL($business);
+
         unset($appointments);
 
         JavaScript::put([
@@ -83,6 +88,13 @@ class BusinessAgendaController extends Controller
             'slotDuration' => $slotDuration,
         ]);
 
-        return view('manager.businesses.appointments.calendar', compact('business'));
+        return view('manager.businesses.appointments.calendar', compact('business', 'icalURL'));
+    }
+
+    protected function generateICalURL(Business $business)
+    {
+        $businessToken = new BusinessToken($business);
+
+        return route('api.business.ical.download', [$business, $businessToken->generate()]);
     }
 }

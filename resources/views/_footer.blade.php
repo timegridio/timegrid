@@ -14,5 +14,5 @@
         @endif
     </div>
     <!-- Default to the left -->
-    <strong>&copy; 2015 <a href="http://alariva.com">alariva.com</a></strong>
+    <strong>&copy; 2015 - 2016 <a href="http://alariva.com">alariva.com</a></strong>
 </footer>

@@ -1,6 +1,7 @@
 <?php
 
-use App\TransMail;
+use App\TG\TransMail;
+use Snowfire\Beautymail\Beautymail;
 
 class TransMailTest extends TestCase
 {
@@ -36,12 +37,33 @@ class TransMailTest extends TestCase
      */
     public function it_sends_a_localized_email()
     {
-        $this->mail->shouldReceive('send');
+        $this->mail
+             ->shouldReceive('send')
+             ->once()
+             ->andReturn(true)
+             ->shouldReceive('failures')
+             ->andReturn(0);
 
         $this->transmail->locale('en_US.utf8')
-                        ->template('welcome')
-                        ->subject('welcome')
+                        ->template('user.welcome.welcome')
+                        ->subject('user.welcome.subject')
                         ->send($this->header, $this->params);
+    }
+
+    /**
+     * @test
+     */
+    public function it_switches_timezone()
+    {
+        $testTimezone = 'Europe/London';
+        
+        $return = $this->transmail->switchTimezone($testTimezone);
+
+        $this->assertEquals($return, $this->transmail);
+
+        $return = $this->transmail->timezone($testTimezone);
+
+        $this->assertEquals($return, $this->transmail);
     }
 
     /**
@@ -62,7 +84,7 @@ class TransMailTest extends TestCase
 
     protected function arrangeScenario()
     {
-        $this->mail = new Mail();
+        $this->mail = Mockery::mock(Beautymail::class);
 
         $this->transmail = new TransMail($this->mail);
 

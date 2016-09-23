@@ -4,6 +4,11 @@ use App\Models\User;
 
 trait CreateUser
 {
+    private function createUsers($count, $overrides = [])
+    {
+        return factory(User::class, $count)->create($overrides);
+    }
+
     private function createUser($overrides = [])
     {
         return factory(User::class)->create($overrides);
@@ -12,8 +17,6 @@ trait CreateUser
     private function makeUser()
     {
         $user = factory(User::class)->make();
-        $user->email = 'guest@example.org';
-        $user->password = bcrypt('demoguest');
 
         return $user;
     }

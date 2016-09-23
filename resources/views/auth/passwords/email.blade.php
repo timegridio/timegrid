@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.user')
 
 <!-- Main Content -->
 @section('content')

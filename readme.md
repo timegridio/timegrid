@@ -6,67 +6,64 @@ timegrid
 ============
 
 [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000?style=flat-square)](https://gitter.im/alariva/timegridDevelopment)
-[![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=development)](https://travis-ci.org/timegridio/timegrid)
+[![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![Current Beta](https://img.shields.io/badge/dev--alpha-5.0-orange.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Current Beta](https://img.shields.io/badge/dev--beta-5.0-yellow.svg?style=flat-square)](http://demo.timegrid.io/)
+[![Codewake](https://www.codewake.com/badges/ask_question_flat_square.svg)](https://www.codewake.com/p/timegrid)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 
-> Online appointments for freelancers and businesses made easy.
+> **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
-**Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
+Built with [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/)
 
-Built with the [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/).
-
-![Timegrid Mindmap](http://i.imgur.com/mJsbo5G.png)
+![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
 
 ## Appointment Library
 
-Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for handling the appointments.
+Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for dealing with appointments.
 
 ## Screenshots
 
-![Self-Service Reservation Screenshot](http://i.imgur.com/2UXCx2N.png)
-![Appointment Example Screenshot](http://i.imgur.com/y1sw5nH.png)
-![Business Dashboard Example Screenshot](http://i.imgur.com/bsnRNk2.png)
+![Timegrid Backoffice Dashboard Screenshot](http://i.imgur.com/YOQBoVx.png)
 
 ## Live Demo
 
-Give a try the [*beta* live demo](http://demo.timegrid.io/)
+[Test drive the *beta live demo*](http://demo.timegrid.io)
 
-> **ADVICE:** I hate spam the same you do. Despite demo does not currently send emails, you may use a [maildrop.cc](http://maildrop.cc/) fake account for testing.
+> **HINT:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing
 
 ## Features
 
-  * User classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
+  * Classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
   * Business management
-    * Contact addressbook
-    * Services management
-    * Staff management
-    * Availability management
-    * Appointment schedule view
-    * Appointment calendar view with [fullcalendar](https://github.com/fullcalendar)
-    * Basic search
-  * Self-service appointment reservation with datepicker
+    * Addressbook
+    * Services
+    * Staff
+    * Availability
+    * Appointments
+  * Calendar sharing through [iCalendar link](https://en.wikipedia.org/wiki/ICalendar)
+  * Scheduling view with [fullcalendar](https://github.com/fullcalendar)
+  * Self-service reservation with datepicker
   * Basic email notifications
-  * Multiple Languages Support (Localization)
+  * i18n Support
   * Multiple Timezones Support
-  * Simple live chat support with [TidioChat](https://www.tidiochat.com/)
-  * GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
+  * Live chat with [TidioChat](https://www.tidiochat.com/)
+  * Admin GUI with [AdminLTE](https://github.com/almasaeed2010/AdminLTE) [Twitter Bootstrap 3](https://github.com/twbs/bootstrap) based theme.
 
-For future features check [issues](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
+[Future features here](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
 
 ## Installing
 
 [Read the INSTALLING section](INSTALLING.md)
 
-## Development
+## Contributing
 
-  * [Frequently Asked Questions](https://github.com/timegridio/timegrid/wiki/FAQ)
-  * [Troubleshooting](https://timegrid.slack.com/messages/general/)
-  * [Contributing](CONTRIBUTING.md)
-  * [Roadmap](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
-  * [Developer Documentation](http://timegrid-doc-dev.readthedocs.org/en/latest/?badge=latest)
+To get a dedicated introduction to *timegrid* and joining the development community...
+
+[![Reserve Your Seat](http://i.imgur.com/pgkEz87.png)](https://timegrid.io/dev)
+
+Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
 
 ## Author
 

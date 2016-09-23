@@ -2,7 +2,7 @@
 @foreach($times as $time => $availableCapacity)
 
     @if($availableCapacity === null)
-        <li class="list-group-item list-group-item-default"> {{-- hidden-sm hidden-md hidden-lg --}}
+        <li class="list-group-item list-group-item-default">
             {{ $time }}
         </li>
     @elseif($availableCapacity > 0)

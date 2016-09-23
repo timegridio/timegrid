@@ -5,7 +5,9 @@
  */
 return [
 
-    'appname' => env('SYSLOG_APPNAME', 'timegrid'),
+    'app' => [
+        'name' => env('SYSLOG_APPNAME', 'default.timegrid'),
+    ],
 
     'report' => [
         'from_address'       => env('MAIL_FROM_ADDRESS', 'root@localhost'),

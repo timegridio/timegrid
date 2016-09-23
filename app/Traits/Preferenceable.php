@@ -14,34 +14,44 @@ trait Preferenceable
     public function pref($key, $value = null, $type = 'string')
     {
         if (isset($value)) {
-            $this->preferences()->updateOrCreate(['key' => $key], ['value' => $this->cast($value, $type),
-                                                                   'type'  => $type, ]);
+            $value = $this->cast($value, $type);
+
+            $this->preferences()->updateOrCreate(compact('key'), compact('value', 'type'));
 
             return $value;
         }
+
+        $pref = $this->preferences()->forKey($key)->first();
+
+        if ($pref !== null) {
+            return $pref->value();
+        }
+
         $default = Preference::getDefault($this, $key);
 
-        return($pref = $this->preferences()->forKey($key)->first()) ? $pref->value() : $default->value();
+        return  $default->value();
     }
 
     private function cast($value, $type)
     {
         switch ($type) {
             case 'bool':
-                return boolval($value);
+                $value = boolval($value);
                 break;
             case 'int':
-                return intval($value);
+                $value = intval($value);
                 break;
             case 'float':
-                return floatval($value);
+                $value = floatval($value);
                 break;
             case 'string':
-                return $value;
+                $value = (string) $value;
                 break;
             default:
-                return $value;
+                // No changes
                 break;
         }
+
+        return $value;
     }
 }

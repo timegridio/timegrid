@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\TransMail;
+use App\TG\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -24,7 +24,7 @@ class SendRootReport extends Command
     protected $description = 'Send Root Email Report';
 
     /**
-     * @var App\TransMail
+     * @var App\TG\TransMail
      */
     private $transmail;
 
@@ -67,8 +67,8 @@ class SendRootReport extends Command
             'name'  => 'Root',
             'email' => config('root.report.to_mail'),
         ];
-        $this->transmail->template('root.report')
-                        ->subject('root.report.exceptions_subject')
+        $this->transmail->template('root.report.report')
+                        ->subject('root.report.subject')
                         ->send($header, $params);
 
         $this->info('Root report was sent');

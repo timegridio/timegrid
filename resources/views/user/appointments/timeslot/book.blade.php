@@ -6,74 +6,82 @@
 @endsection
 
 @section('content')
-{!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form']) !!}
+<div class="container">
+{!! Form::open(['route' => ['user.booking.store', 'business'], 'class' => 'form', 'id' => 'form', 'data-toggle' => 'validator', 'role' => 'form']) !!}
 {!! Form::hidden('businessId', $business->id, ['required', 'id' => 'business']) !!}
 {!! Form::hidden('_date', null, ['required', 'id'=>'date', 'min'=> date('Y-m-d')]) !!}
+{!! Form::hidden('_timezone', null, ['id'=>'timezone', 'readonly']) !!}
 {!! Form::hidden('service_id', null, ['required', 'id'=>'service']) !!}
+@if(isset($contact))
 {!! Form::hidden('contact_id', $contact->id, ['required', 'id'=>'contact']) !!}
+@endif
 
-<div class="container-fluid">
+<h1 class="text-center">{{ $business->name }}</h1>
+<div id="steps">
+    @include('user.appointments.timeslot._service-picker', ['services' => $business->services])
 
-    <div class="col-md-6 col-md-offset-3">
+    @include('user.appointments.timeslot._date-picker')
 
-        <div id="panel" class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading">{{ trans('user.appointments.alert.book_in_biz_on_behalf_of', ['biz' => $business->name, 'contact' => $contact->fullname()]) }}</div>
+    @include('user.appointments.timeslot._time-picker')
 
-        @include('user.appointments.timeslot._timetable', ['dates' => $availability])
-
-        <div class="container-fluid">
-        <div id="extra" class="hide">
-
-            <div class="row">
-                <div class="form-group col-sm-12">
-                @if(isset($canEditDuration))
-                    {!! Form::label(trans('user.appointments.form.duration.label_edit')) !!}
-                    {!! Form::text('duration', null, [
-                        'id'=>'duration',
-                        'class'=>'form-control',
-                        'placeholder'=> trans('user.appointments.form.duration.label')
-                        ]) !!}
-                @endif
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-12">
-                    <label for="comments">{{ trans('user.appointments.form.time.label') }}</label>
-                    <br/>
-                    <select id="times" name="_time" class="form-control"></select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-12">
-                    <label for="comments">{{ trans('user.appointments.form.comments.label') }}</label>
-                    {!! Form::text('comments', null, [
-                        'id'=>'comments',
-                        'class'=>'form-control',
-                        'placeholder'=> trans('user.appointments.form.comments.label')
-                        ]) !!}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group col-sm-12">
-                    {!! Button::success(trans('user.appointments.btn.confirm_booking'))->large()->block()->submit() !!}
-                </div>
-            </div>
-
-        </div>
-        </div>
-
-        </div>
-
-    </div>
+    @include('user.appointments.timeslot._recap')
 </div>
+
 {!! Form::close() !!}
+</div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
-@endsection
+<script>
+$(document).ready(function(){
+
+    $("#steps").steps({
+        headerTag: "h3",
+        bodyTag: "section",
+        transitionEffect: "slideLeft",
+        autoFocus: true,
+        /* Labels */
+        labels: {
+            cancel: "{{ trans('booking.steps.label.cancel') }}",
+            current: "{{ trans('booking.steps.label.current') }}",
+            pagination: "{{ trans('booking.steps.label.pagination') }}",
+            finish: "{{ trans('booking.steps.label.finish') }}",
+            next: "{{ trans('booking.steps.label.next') }}",
+            previous: "{{ trans('booking.steps.label.previous') }}",
+            loading: "{{ trans('booking.steps.label.loading') }} ..."
+        },
+        /* Behaviour */
+        autoFocus: true,
+        enableAllSteps: false,
+        enableKeyNavigation: true,
+        enablePagination: false,
+        suppressPaginationOnFocus: true,
+        enableContentCache: true,
+        enableCancelButton: false,
+        enableFinishButton: false,
+        showFinishButtonAlways: false,
+        forceMoveForward: false,
+        startIndex: 0,
+    });
+
+    var steps = $("#steps");
+
+    $('#service').change(function(){
+        console.log('Selected service ' + $(this).val() );
+        steps.steps("next");
+    });
+
+    $('#date').change(function(){
+        console.log('Selected date ' + $(this).val() );
+        steps.steps("next");
+    });
+
+    $('#times').change(function(){
+        console.log('Selected time ' + $(this).val() );
+        steps.steps("next");
+    });
+
+});
+</script>
+@endpush

@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\TransMail;
+use App\TG\TransMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 use Timegridio\Concierge\Concierge;
@@ -109,21 +109,26 @@ class SendBusinessReport extends Command
         $appointments = $this->concierge->business($business)->getActiveAppointments();
 
         if ($this->skipReport($business, count($appointments))) {
-            $this->info("Skipped report");
+            $this->info('Skipped report');
+
             return false;
         }
 
         $owner = $business->owners()->first();
 
         // Mail to User
+        $ownerName = $owner->name;
+        $businessName = $business->name;
+        $date = date('Y-m-d');
         $header = [
             'email' => $owner->email,
-            'name'  => $owner->name,
+            'name'  => $ownerName,
         ];
         $this->transmail->locale($business->locale)
-                        ->template('appointments.manager._schedule')
-                        ->subject('manager.business.report.subject', ['date' => date('Y-m-d'), 'business' => $business->name])
-                        ->send($header, compact('business', 'appointments'));
+                        ->timezone($business->timezone)
+                        ->template('manager.business-report.schedule')
+                        ->subject('manager.business-report.subject', compact('businessName', 'date'))
+                        ->send($header, compact('business', 'appointments', 'ownerName'));
 
         return true;
     }

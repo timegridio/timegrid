@@ -72,8 +72,7 @@
 </div>
 @endif
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/datetime.js') }}"></script>
 <script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
@@ -161,4 +160,4 @@ $(document).ready(function(){
 
 });
 </script>
-@endsection
+@endpush

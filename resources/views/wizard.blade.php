@@ -26,7 +26,6 @@
 </div>
 @endsection
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 {!! TidioChat::js() !!}
-@endsection
+@endpush

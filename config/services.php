@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => getenv('MAILGUN_DOMAIN'),
-        'secret' => getenv('MAILGUN_SECRET'),
+        'domain' => env('MAILGUN_DOMAIN'),
+        'secret' => env('MAILGUN_SECRET'),
     ],
 
     'mandrill' => [
@@ -35,26 +35,26 @@ return [
     ],
 
     'github' => [
-        'client_id'     => getenv('GITHUB_CLIENT_ID'),
-        'client_secret' => getenv('GITHUB_CLIENT_SECRET'),
-        'redirect'      => getenv('APP_URL').'/social/login/github',
+        'client_id'     => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect'      => env('APP_URL').'/social/login/github',
     ],
 
     'facebook' => [
-        'client_id'     => getenv('FACEBOOK_CLIENT_ID'),
-        'client_secret' => getenv('FACEBOOK_CLIENT_SECRET'),
-        'redirect'      => getenv('APP_URL').'/social/login/facebook',
+        'client_id'     => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect'      => env('APP_URL').'/social/login/facebook',
     ],
 
     'google' => [
-        'client_id'     => getenv('GOOGLE_CLIENT_ID'),
-        'client_secret' => getenv('GOOGLE_CLIENT_SECRET'),
-        'redirect'      => getenv('APP_URL').'/social/login/google',
+        'client_id'     => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect'      => env('APP_URL').'/social/login/google',
     ],
 
-    'rollbar' => array(
-        'access_token' => env('ROLLBAR_TOKEN'),
-        'level' => env('ROLLBAR_LEVEL', 'error'),
-    ),
+    'rollbar' => [
+        'access_token' => env('ROLLBAR_TOKEN', false),
+        'level'        => env('ROLLBAR_LEVEL', 'error'),
+    ],
 
 ];

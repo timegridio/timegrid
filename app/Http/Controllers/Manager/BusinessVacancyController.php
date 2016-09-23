@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Storage;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
+use Timegridio\Concierge\Models\HumanResource;
+use Timegridio\Concierge\Models\Service;
 use Timegridio\Concierge\Vacancy\VacancyParser;
 
 class BusinessVacancyController extends Controller
@@ -56,7 +58,7 @@ class BusinessVacancyController extends Controller
         $dates = $this->concierge
                       ->business($business)
                       ->vacancies()
-                      ->generateAvailability($business->vacancies, 'today', $daysQuantity);
+                      ->generateAvailability('today', $daysQuantity);
 
         if ($business->services->isEmpty()) {
             flash()->warning(trans('manager.vacancies.msg.edit.no_services'));
@@ -229,6 +231,60 @@ class BusinessVacancyController extends Controller
         }
 
         return view('manager.businesses.vacancies.show', compact('business', 'timetable'));
+    }
+
+    public function update(Business $business, Request $request, VacancyParser $vacancyParser)
+    {
+        logger()->info(__METHOD__);
+        logger()->info(sprintf('businessId:%s', $business->id));
+
+        $this->authorize('manageVacancies', $business);
+
+        // BEGIN
+
+        $serviceId = $request->input('serviceId');
+        $weekdays = $request->input('weekdays');
+
+        logger()->info($weekdays);
+
+        $service = $business->services()->find($serviceId);
+        $humanResource = $business->humanresources()->first();
+
+        $startAt = $business->pref('start_at');
+        $finishAt = $business->pref('finish_at');
+
+        $statements = $this->buildStatements($service, $humanResource, $weekdays, $startAt, $finishAt, $business->timezone);
+
+        $publishedVacancies = $vacancyParser->parseStatements($statements);
+
+        $this->concierge->business($business);
+
+        if ($vacanciesToWipe = $business->vacancies()->where(['service_id' => $service->id])) {
+            $vacanciesToWipe->delete();
+        }
+
+        if ($this->concierge->vacancies()->updateBatch($business, $publishedVacancies)) {
+            logger()->info('Vacancies updated');
+        }
+
+        return response()->json(['status' => 'OK']);
+    }
+
+    protected function buildStatements(Service $service, HumanResource $humanResource, $weekdays, $startAt, $finishAt, $timezone)
+    {
+        $out = [];
+
+        $out[] = "{$service->slug}:{$humanResource->slug}";
+        $dates = [];
+        foreach ($weekdays as $day => $status) {
+            for ($i = 0; $i < 4; $i++) {
+                $dates[] = Carbon::parse($day." +$i weeks ".$timezone)->toDateString();
+            }
+        }
+        $out[] = ' '.implode(',', $dates);
+        $out[] = "  {$startAt} - {$finishAt}";
+
+        return implode("\n", $out);
     }
 
     protected function rememberStatements($businessId, $statements)

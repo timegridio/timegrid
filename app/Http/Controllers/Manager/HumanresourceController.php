@@ -87,13 +87,8 @@ class HumanresourceController extends Controller
 
         // BEGIN //
 
-        $data = [
-            'name'       => $request->get('name'),
-            'capacity'   => intval($request->get('capacity')),
-        ];
-
-        // Update resource
-        $humanresource->update($data);
+        $humanresource->fill($request->all());
+        $humanresource->save();
 
         flash()->success(trans('manager.humanresources.msg.update.success'));
 

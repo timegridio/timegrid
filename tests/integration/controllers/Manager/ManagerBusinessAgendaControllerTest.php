@@ -8,7 +8,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class ManagerBusinessAgendaControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use ArrangeFixture, CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
 
     /**
@@ -28,7 +27,7 @@ class ManagerBusinessAgendaControllerTest extends TestCase
         $this->assertResponseOk();
 
         // Then I see the appointment listed
-        $this->see('You have no ongoing reservations');
+        $this->see('You have no ongoing reservations.');
     }
 
     /**

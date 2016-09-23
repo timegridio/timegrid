@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class ManagerBusinessPreferencesControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateBusiness, CreateUser, CreateService;
 
     /**

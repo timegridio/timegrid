@@ -1,31 +1,48 @@
 @extends('layouts.user')
 
+@section('css')
+@parent
+<style>
+.glyphicon {
+    margin-bottom: 4px;
+    margin-right: 10px;
+    color: #999;
+}
+a.list-group-item {
+    height:auto;
+    min-height:220px;
+}
+a.list-group-item.active small {
+    color:#fff;
+}
+.list-group-item-heading {
+    margin-top: 16px;
+}
+</style>
+@endsection
+
 @section('title', trans('user.businesses.index.title'))
 
 @section('content')
 <div class="container-fluid">
-    <div class="col-md-10 col-md-offset-1">
-        <div class="panel panel-default">
-
-            <div class="panel-body">
-                @if (!$businesses->isEmpty())
-                    @foreach ($businesses as $business)
-                        @include('user.businesses._row', ['business' => $business])
-                    @endforeach
-                @else
-                    {{ trans('user.businesses.list.no_businesses') }}
-                @endif
-            </div>
-
-            <div class="panel-footer">
-                @if($user->hasBusiness())
-                    {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo( route('manager.business.index') ) !!}
-                @else
-                    {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.business.register') ) !!}
-                @endif
-            </div>
-
+    <div class="row">
+        
+        <div class="list-group">
+            @if ($businesses->isEmpty())
+                {{ trans('user.businesses.list.no_businesses') }}
+            @else
+                @foreach ($businesses as $business)
+                    @include('user.businesses._row', compact('business'))
+                @endforeach
+            @endif
         </div>
+
+        @if($user->hasBusiness())
+            {!! Button::normal(trans('user.businesses.index.btn.manage'))->asLinkTo( route('manager.business.index') )->block() !!}
+        @else
+            {!! Button::primary(trans('user.businesses.index.btn.create'))->asLinkTo( route('manager.business.register') )->block() !!}
+        @endif
+
     </div>
 </div>
 @endsection

@@ -15,9 +15,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\AutopublishBusinessVacancies',
-        'App\Console\Commands\SendRootReport',
-        'App\Console\Commands\SendBusinessReport',
+        \App\Console\Commands\AutopublishBusinessVacancies::class,
+        \App\Console\Commands\SendRootReport::class,
+        \App\Console\Commands\SendBusinessReport::class,
+        \App\Console\Commands\SyncICal::class,
     ];
 
     /**
@@ -34,6 +35,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('business:report')->dailyAt('21:00');
 
         $schedule->command('business:vacancies')->weekly()->sundays()->at('00:00');
+
+        $schedule->command('ical:sync')->twiceDaily(0, 12);
     }
 
     /**
@@ -49,8 +52,8 @@ class Kernel extends ConsoleKernel
         parent::__construct($app, $events);
 
         array_walk($this->bootstrappers, function (&$bootstrapper) {
-            if ($bootstrapper === 'Illuminate\Foundation\Bootstrap\ConfigureLogging') {
-                $bootstrapper = 'Bootstrap\ConfigureLogging';
+            if ($bootstrapper === \Illuminate\Foundation\Bootstrap\ConfigureLogging::class) {
+                $bootstrapper = \App\Bootstrap\ConfigureLogging::class;
             }
         });
     }

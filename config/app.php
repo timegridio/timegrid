@@ -65,7 +65,7 @@ return [
     |
     */
 
-    'locale' => 'en_US.utf8',
+    'locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +78,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en_US.utf8',
+    'fallback_locale' => 'en_US',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +160,6 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
-        Caffeinated\Widgets\WidgetsServiceProvider::class,
         Camroncade\Timezone\TimezoneServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
@@ -177,9 +176,12 @@ return [
         Stevebauman\Location\LocationServiceProvider::class,
         Torann\GeoIP\GeoIPServiceProvider::class,
         Webpatser\Countries\CountriesServiceProvider::class,
+        Snowfire\Beautymail\BeautymailServiceProvider::class,
+        Spatie\CookieConsent\CookieConsentServiceProvider::class,
 
         Alariva\Tidiochat\TidioChatServiceProvider::class,
         Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
+        Timegridio\ICalReader\ICalReaderServiceProvider::class,
     ],
 
     /*

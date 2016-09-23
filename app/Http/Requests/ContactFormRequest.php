@@ -21,6 +21,8 @@ class ContactFormRequest extends Request
      */
     public function rules()
     {
+        $rules = [];
+
         switch ($this->method()) {
             case 'PATCH':
             case 'PUT':
@@ -33,7 +35,7 @@ class ContactFormRequest extends Request
                 ];
                 break;
             default:
-                $rules = [];
+                // Perform no alteration to rules
                 break;
         }
 

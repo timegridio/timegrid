@@ -15,7 +15,7 @@
 // AJAX CALLS //
 ////////////////
 
-Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => ['web']], function () {
 
     // TODO: 'booking' should be moved out of api into the proper group.
     Route::post('booking', [
@@ -24,11 +24,16 @@ Route::group(['prefix' => 'api', 'middleware' => ['web', 'auth']], function () {
     ]);
 
     Route::get('vacancies/{businessId}/{serviceId}', [
-        'uses' => 'BookingController@getDates',
+        'uses' => 'AvailabilityController@getDates',
     ]);
 
     Route::get('vacancies/{businessId}/{serviceId}/{date}', [
-        'uses' => 'BookingController@getTimes',
+        'uses' => 'AvailabilityController@getTimes',
+    ]);
+
+    Route::get('ical/{business}/{token}', [
+        'as' => 'api.business.ical.download',
+        'uses' => 'ICalController@download',
     ]);
 
 });
@@ -80,7 +85,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth', 'as' => 'auth']
 // GUEST CONTEXT //
 ///////////////////
 
-Route::group(['middleware' => 'web', 'auth'], function () {
+Route::group(['middleware' => 'web'], function () {
 
     ///////////////////////////
     // PRIVATE HOME / WIZARD //
@@ -117,6 +122,16 @@ Route::group(['middleware' => 'web', 'auth'], function () {
 //////////////////
 
 Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
+
+    // USER PREFERENCES
+    Route::get('preferences', [
+        'as'   => 'user.preferences',
+        'uses' => 'User\UserPreferencesController@getPreferences',
+        ]);
+    Route::post('preferences', [
+        'as'   => 'user.preferences',
+        'uses' => 'User\UserPreferencesController@postPreferences',
+        ]);
 
     Route::get('agenda', [
         'as'   => 'user.agenda',
@@ -171,7 +186,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 // SELECTED BUSINESS SLUG CONTEXT //
 ////////////////////////////////////
 
-Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
 
     ///////////////////////////
     // BUSINESS USER CONTEXT //
@@ -188,6 +203,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             Route::get('book', [
                 'as'   => 'book',
                 'uses' => 'AgendaController@getAvailability',
+            ]);
+            Route::get('validate', [
+                'as'   => 'validate',
+                'uses' => 'AgendaController@getValidate',
             ]);
         });
 
@@ -422,6 +441,10 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web', 'auth']], functi
             Route::post('', [
                 'as'   => 'manager.business.vacancy.store',
                 'uses' => 'BusinessVacancyController@store',
+            ]);
+            Route::post('update', [
+                'as'   => 'manager.business.vacancy.update',
+                'uses' => 'BusinessVacancyController@update',
             ]);
         });
 

@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class ManagerBusinessNotificationsControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateUser, CreateBusiness;
 
     /**

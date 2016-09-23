@@ -6,7 +6,6 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 class ManagerBusinessServiceControllerTest extends TestCase
 {
     use DatabaseTransactions;
-    use WithoutMiddleware;
     use CreateBusiness, CreateUser, CreateService, CreateServiceType;
 
     /**

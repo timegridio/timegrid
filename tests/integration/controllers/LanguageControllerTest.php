@@ -7,7 +7,7 @@ class LanguageControllerTest extends TestCase
      */
     public function it_switches_language_to_english_us()
     {
-        $applocale = 'en_US.utf8';
+        $applocale = 'en_US';
         $this->call('GET', "/lang/$applocale");
 
         $this->assertSessionHas('language', 'en');
@@ -20,7 +20,7 @@ class LanguageControllerTest extends TestCase
      */
     public function it_switches_language_to_spanish_es()
     {
-        $applocale = 'es_ES.utf8';
+        $applocale = 'es_ES';
         $this->call('GET', "/lang/$applocale");
 
         $this->assertSessionHas('language', 'es');
@@ -31,7 +31,7 @@ class LanguageControllerTest extends TestCase
     /*
      * TODO: For some reason the custom header is not working, thus the test not
      * feasible by now.
-     * 
+     *
      * @test
      */
 //    public function it_attempts_to_use_agent_preferred_languages_first_spanish()

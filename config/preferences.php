@@ -14,11 +14,15 @@ return [
         'availability_future_days'      => ['type' => 'int', 'value' => 7, 'step' => 1],
         'service_default_duration'      => ['type' => 'int', 'value' => 30, 'step' => 5, 'icon' => 'hourglass'],
         'annulation_policy_advice'      => ['type' => 'string', 'value' => ''],
-        'vacancy_edit_advanced_mode'    => ['type' => 'bool', 'value' => false],
+        'vacancy_edit_advanced_mode'    => ['type' => 'bool', 'value' => true],
         'vacancy_autopublish'           => ['type' => 'bool', 'value' => false],
         'time_format'                   => ['type' => 'string', 'value' => 'h:i a'],
         'date_format'                   => ['type' => 'string', 'value' => 'Y-m-d'],
         'timeslot_step'                 => ['type' => 'int', 'value' => '0'],
         'report_daily_schedule'         => ['type' => 'bool', 'value' => false],
+        'allow_guest_registration'      => ['type' => 'bool', 'value' => false],
+    ],
+    'App\Models\User' => [
+        'timezone'                      => ['type' => 'string', 'value' => ''],
     ],
 ];

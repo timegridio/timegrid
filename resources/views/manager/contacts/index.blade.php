@@ -2,8 +2,7 @@
 
 @section('title', trans('manager.contacts.title'))
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script>
 $(document).ready(function(){
 
@@ -49,7 +48,7 @@ $(document).ready(function(){
     });
 });
 </script>
-@endsection
+@endpush
 
 @section('css')
 @parent
@@ -83,7 +82,7 @@ $(document).ready(function(){
 @section('content')
 <div class="container-fluid">
 
-    {!! $business->contacts()->paginate(300)->render() !!}
+    {!! $contacts->render() !!}
 
     <div class="panel panel-primary filterable">
         <div class="panel-heading">
@@ -106,7 +105,7 @@ $(document).ready(function(){
             <tbody>
             @foreach ($contacts as $contact)
                 <tr>
-                    <td>{{ $contact->lastname }}</td>
+                    <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->lastname) !!}</td>
                     <td>{!! link_to( route('manager.addressbook.show', [$business, $contact->id]), $contact->firstname) !!}</td>
                     <td>{{ $contact->email }}</td>
                     <td>{{ $contact->mobile }}</td>

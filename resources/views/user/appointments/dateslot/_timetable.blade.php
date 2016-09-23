@@ -74,8 +74,7 @@
     </table>
 </div>
 
-@section('footer_scripts')
-@parent
+@push('footer_scripts')
 <script type="text/javascript">
 $(document).ready(function() {
     $('#extra').removeClass('hidden').hide();
@@ -103,4 +102,4 @@ $(document).ready(function() {
     });
 });
 </script>
-@endsection
+@endpush

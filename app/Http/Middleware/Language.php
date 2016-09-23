@@ -3,7 +3,6 @@
 namespace App\Http\Middleware;
 
 use Closure;
-// use Illuminate\Contracts\Routing\Middleware;
 use Jenssegers\Agent\Agent;
 
 class Language
@@ -27,7 +26,7 @@ class Language
 
     public function handle($request, Closure $next)
     {
-        logger()->info(__METHOD__);
+        // logger()->debug(__METHOD__);
 
         $sessionAppLocale = session()->get('applocale', null);
 
@@ -35,11 +34,11 @@ class Language
             $sessionAppLocale = $this->getAgentLangOrFallback(config('app.fallback_locale'));
         }
 
-        logger()->info("sessionAppLocale:$sessionAppLocale");
+        // logger()->debug("sessionAppLocale:$sessionAppLocale");
 
         if (isAcceptedLocale($sessionAppLocale)) {
             setGlobalLocale($sessionAppLocale);
-            logger()->info('setGlobalLocale set');
+            // logger()->debug('setGlobalLocale set');
         }
 
         return $next($request);
@@ -59,16 +58,16 @@ class Language
         $agentLanguages = $this->agent->languages();
         $configLanguages = config('languages');
 
-        logger()->info('Agent Languages: '.serialize($agentLanguages));
-        logger()->info('Config Languages: '.serialize($configLanguages));
+        // logger()->debug('Agent Languages: '.serialize($agentLanguages));
+        // logger()->debug('Config Languages: '.serialize($configLanguages));
 
         if ($agentPreferredLocale = $this->searchAgent($agentLanguages, $configLanguages)) {
-            logger()->info("Agent Preferred Locale: $agentPreferredLocale");
+            // logger()->debug("Agent Preferred Locale: $agentPreferredLocale");
 
             return $agentPreferredLocale;
         }
 
-        logger()->info("Using Fallback: $fallbackLocale");
+        // logger()->debug("Using Fallback: $fallbackLocale");
 
         return $fallbackLocale;
     }
@@ -97,11 +96,11 @@ class Language
      * Search for an AgentLang among app available Langs.
      *
      * EXAMPLE MATCH
-     * "en_us" "en_us.utf8" : true
-     * "en"    "en_us.utf8" : true
-     * "es"    "es_es.utf8" : true
-     * "en_us" "es_es.utf8" : false
-     * "es_ar" "es_es.utf8" : false
+     * "en_us" "en_us" : true
+     * "en"    "en_us" : true
+     * "es"    "es_es" : true
+     * "en_us" "es_es" : false
+     * "es_ar" "es_es" : false
      *
      * @param array  $availableLangs
      * @param string $agentLang
@@ -124,8 +123,8 @@ class Language
      *
      * EXAMPLE CONVERSION
      * array:2 [                   >> array:2 [
-     *   "en_US.utf8" => "English" >>   "en_US.utf8" => "en_us.utf8"
-     *   "es_ES.utf8" => "Español" >>   "es_ES.utf8" => "es_es.utf8"
+     *   "en_US" => "English" >>   "en_US" => "en_us"
+     *   "es_ES" => "Español" >>   "es_ES" => "es_es"
      * ]                           >> ]
      *
      * @param array $array

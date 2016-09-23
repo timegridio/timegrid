@@ -1,22 +1,21 @@
 language: php
 
 php:
-  - 5.5.9
   - 5.6
 
 install:
   - composer self-update
 
 before_script:
-  - cp .env.travis .env
-  - cp travis.phpunit.xml phpunit.xml
-  - mkdir /tmp/timegrid
+  - mv .env.travis .env
+  - mv travis.phpunit.xml phpunit.xml
   - mysql -e 'create database test_timegrid;'
   - composer install --dev --no-interaction
-  - php artisan key:generate
+  - php artisan config:clear
   - php artisan migrate
   - php artisan db:seed
   - php artisan geoip:update
+  - php artisan config:cache
 
 after_success:
   - ./travis-codeclimate-report.sh

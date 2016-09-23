@@ -51,7 +51,7 @@
                 </span>
             </li>
 
-            <li class="list-group-item"><span title="{{ $appointment->tz }}">
+            <li class="list-group-item"><span title="{{ $appointment->timezone() }}">
                 <span class='glyphicon glyphicon-time'></span>&nbsp;
                     {{ trans_choice('appointments.text.arrive_at', count($arriveAt = $appointment->arriveAt), $arriveAt) }}&nbsp;&nbsp;
                     @if($appointment->duration)
@@ -79,7 +79,7 @@
             {!! Alert::warning(sprintf($cancellationPolicyAdvice, $appointment->cancellationDeadline)) !!}
         @endif
 
-        @include('widgets.appointment.panel._buttons', ['appointment' => $appointment, 'user' => $user])
+        @include('widgets.appointment.panel._buttons', compact('appointment', 'user'))
 
     </div>
 

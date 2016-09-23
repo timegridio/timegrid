@@ -3,20 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Jenssegers\Rollbar\RollbarServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        //
-    }
-
     /**
      * Register any application services.
      *
@@ -25,18 +14,18 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(
-            'Illuminate\Contracts\Auth\Registrar',
-            'App\Services\Registrar'
+            \Illuminate\Contracts\Auth\Registrar::class,
+            \App\TG\Registrar::class
         );
 
         if ($this->app->environment() == 'local') {
-            $this->app->register('Laracasts\Generators\GeneratorsServiceProvider');
-            $this->app->register('Barryvdh\Debugbar\ServiceProvider');
-            $this->app->register('Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider');
+            $this->app->register(\Laracasts\Generators\GeneratorsServiceProvider::class);
+            $this->app->register(\Barryvdh\Debugbar\ServiceProvider::class);
+            $this->app->register(\Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class);
         }
 
-        if (env('ROLLBAR_TOKEN', false)) {
-            $this->app->register(RollbarServiceProvider::class);
+        if (config('services.rollbar.access_token', false)) {
+            $this->app->register(\Jenssegers\Rollbar\RollbarServiceProvider::class);
         }
     }
 }

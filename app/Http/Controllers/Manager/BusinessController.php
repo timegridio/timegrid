@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Manager;
 use App\Exceptions\BusinessAlreadyRegistered;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BusinessFormRequest;
-use App\Services\BusinessService;
+use App\TG\Business\Dashboard;
+use App\TG\BusinessService;
 use Carbon\Carbon;
 use Fenos\Notifynder\Facades\Notifynder;
 use Illuminate\Support\Facades\Request;
@@ -24,7 +25,7 @@ class BusinessController extends Controller
     /**
      * Business service.
      *
-     * @var App\Services\BusinessService
+     * @var App\TG\BusinessService
      */
     private $businessService;
 
@@ -38,7 +39,7 @@ class BusinessController extends Controller
     /**
      * Create Controller.
      *
-     * @param App\Services\BusinessService $businessService
+     * @param App\TG\BusinessService $businessService
      */
     public function __construct(BusinessService $businessService, Carbon $time)
     {
@@ -70,7 +71,9 @@ class BusinessController extends Controller
             return redirect()->route('manager.business.show', $businesses->first());
         }
 
-        return view('manager.businesses.index', compact('businesses'));
+        $user = auth()->user();
+
+        return view('manager.businesses.index', compact('businesses', 'user'));
     }
 
     /**
@@ -120,6 +123,8 @@ class BusinessController extends Controller
 
         try {
             $business = $this->businessService->register(auth()->user(), $request->all(), $request->get('category'));
+
+            $this->businessService->setup($business);
         } catch (BusinessAlreadyRegistered $exception) {
             flash()->error(trans('manager.businesses.msg.store.business_already_exists'));
 
@@ -129,7 +134,7 @@ class BusinessController extends Controller
         // Generate local notification
         $businessName = $business->name;
         Notifynder::category('user.registeredBusiness')
-            ->from('App\Models\User', auth()->user()->id)
+            ->from('App\Models\User', auth()->id())
             ->to('Timegridio\Concierge\Models\Business', $business->id)
             ->url('http://localhost')
             ->extra(compact('businessName'))
@@ -166,20 +171,13 @@ class BusinessController extends Controller
 
         $this->time->timezone($business->timezone);
 
-        // Build Dashboard Report
-        $dashboard['appointments_active_today'] = $business->bookings()->active()->ofDate($this->time->today())->get()->count();
-        $dashboard['appointments_canceled_today'] = $business->bookings()->canceled()->ofDate($this->time->today())->get()->count();
-        $dashboard['appointments_active_tomorrow'] = $business->bookings()->active()->ofDate($this->time->tomorrow())->get()->count();
-        $dashboard['appointments_active_total'] = $business->bookings()->active()->get()->count();
-        $dashboard['appointments_served_total'] = $business->bookings()->served()->get()->count();
-        $dashboard['appointments_total'] = $business->bookings()->get()->count();
+        $dashboard = new Dashboard($business, $this->time);
 
-        $dashboard['contacts_registered'] = $business->contacts()->count();
-        $dashboard['contacts_subscribed'] = $business->contacts()->whereNotNull('user_id')->count();
+        $boxes = $dashboard->getBoxes();
 
         $time = $this->time->toTimeString();
 
-        return view('manager.businesses.show', compact('business', 'notifications', 'dashboard', 'time'));
+        return view('manager.businesses.show', compact('business', 'notifications', 'boxes', 'time'));
     }
 
     /**
@@ -227,14 +225,14 @@ class BusinessController extends Controller
         // BEGIN
         $category = $request->get('category');
 
-        $data = [
-                'name'            => $request->get('name'),
-                'description'     => $request->get('description'),
-                'timezone'        => $request->get('timezone'),
-                'postal_address'  => $request->get('postal_address'),
-                'phone'           => $request->get('phone'),
-                'social_facebook' => $request->get('social_facebook'),
-        ];
+        $data = $request->only([
+                'name',
+                'description',
+                'timezone',
+                'postal_address',
+                'phone',
+                'social_facebook',
+        ]);
 
         $this->businessService->update($business, $data);
 
@@ -283,7 +281,7 @@ class BusinessController extends Controller
     {
         return Category::pluck('slug', 'id')->transform(
             function ($item) {
-                return trans('app.business.category.'.$item);
+                return trans("app.business.category.{$item}");
             }
         );
     }

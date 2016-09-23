@@ -47,8 +47,8 @@ $factory->define('App\Models\Permission', function (Faker\Generator $faker) {
 
 $factory->define(Timegridio\Concierge\Models\Contact::class, function (Faker\Generator $faker) {
     return [
-        'firstname'      => $faker->firstName,
-        'lastname'       => $faker->lastName,
+        'firstname'      => str_pad($faker->firstName, 3, '_'), // Guarantee 3 chars min len for firstname
+        'lastname'       => str_pad($faker->lastName, 3, '_'), // Guarantee 3 chars min len for lasttname
         'nin'            => $faker->numberBetween(25000000, 50000000),
         'email'          => $faker->unique()->safeEmail,
         'birthdate'      => \Carbon\Carbon::now()->subYears(30),

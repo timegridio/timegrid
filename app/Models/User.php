@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Traits\HasRoles;
+use App\Traits\Preferenceable;
 use Fenos\Notifynder\Notifable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
@@ -11,8 +12,19 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Auth\Access\Authorizable;
-use App\Traits\Preferenceable;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $email
+ * @property string $username
+ * @property string $password
+ * @property string $last_ip
+ * @property Carbon\Carbon $last_login_at
+ * @property Illuminate\Support\Collection $businesses
+ * @property Illuminate\Support\Collection $contacts
+ * @property Illuminate\Support\Collection $appointments
+ */
 class User extends EloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
     use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable, Preferenceable;
@@ -49,7 +61,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function businesses()
     {
-        return $this->belongsToMany('Timegridio\Concierge\Models\Business')->withTimestamps();
+        return $this->belongsToMany(\Timegridio\Concierge\Models\Business::class)->withTimestamps();
     }
 
     /**
@@ -61,7 +73,7 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function contacts()
     {
-        return $this->hasMany('Timegridio\Concierge\Models\Contact');
+        return $this->hasMany(\Timegridio\Concierge\Models\Contact::class);
     }
 
     /**
@@ -73,7 +85,10 @@ class User extends EloquentModel implements AuthenticatableContract, Authorizabl
      */
     public function appointments()
     {
-        return $this->hasManyThrough('Timegridio\Concierge\Models\Appointment', 'Timegridio\Concierge\Models\Contact');
+        return $this->hasManyThrough(
+            \Timegridio\Concierge\Models\Appointment::class,
+            \Timegridio\Concierge\Models\Contact::class
+        );
     }
 
     /////////////////////

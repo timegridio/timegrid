@@ -2,7 +2,7 @@
 
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class   ConsultingScenarioTest extends TestCase
+class ConsultingScenarioTest extends TestCase
 {
     use DatabaseTransactions;
     use CreateBusiness, CreateUser, CreateContact, CreateAppointment, CreateService, CreateVacancy;
@@ -12,9 +12,8 @@ class   ConsultingScenarioTest extends TestCase
     protected $business;
 
     protected $vacancy;
-    
-    protected $service;
 
+    protected $service;
 
     /**
      * @test
@@ -36,7 +35,7 @@ class   ConsultingScenarioTest extends TestCase
     {
         $this->service = $this->makeService([
             'name'     => 'OnSite 4hs Support',
-            'duration' => 60*4,
+            'duration' => 60 * 4,
             ]);
 
         $this->actingAs($this->owner);
@@ -105,10 +104,7 @@ EOD;
 
         $this->click('Subscribe');
 
-        $this->see('Save')
-             ->type($contact['firstname'], 'firstname')
-             ->type($contact['lastname'], 'lastname')
-             ->press('Save');
+        $this->see('Your profile was attached to an existing one');
 
         $this->click('Book appointment');
     }
@@ -124,7 +120,7 @@ EOD;
         $this->get("api/vacancies/{$this->business->id}/{$this->service->id}/{$this->vacancy->date}");
 
         $this->assertResponseOk();
-        $this->seeJsonContains(['times' => ["09:00:00","09:30:00","10:00:00","10:30:00","11:00:00","11:30:00","12:00:00","12:30:00","13:00:00","13:30:00","14:00:00"]]);
+        $this->seeJsonContains(['times' => ['09:00', '09:30', '10:00', '10:30', '11:00', '11:30', '12:00', '12:30', '13:00', '13:30', '14:00']]);
     }
 
     public function the_user_takes_a_reservation()
@@ -135,7 +131,7 @@ EOD;
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->service->id,
-            '_time'      => '11:30:00',
+            '_time'      => '11:30',
             '_date'      => $this->vacancy->date,
             'comments'   => 'test comments',
             ]);

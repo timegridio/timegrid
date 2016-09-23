@@ -1,5 +1,6 @@
 /vendor_local
 /vendor
+/packages/
 /node_modules
 /tests/logs
 /build

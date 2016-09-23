@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Repositories\UserRepository;
+use App\TG\Repositories\UserRepository;
 use Illuminate\Contracts\Auth\Guard;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 
