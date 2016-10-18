@@ -57,6 +57,13 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 [Read the INSTALLING section](INSTALLING.md)
 
+## Localization
+
+Current supported languages are American English (`en_US`) and Spanish (`es_ES` and `es_AR`).
+
+Future targeted translations might be French and Italian, however, feel free to contribute with your preferred 
+translation.
+
 ## Author
 
 Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
