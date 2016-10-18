@@ -2,17 +2,15 @@
 
 namespace App\TG;
 
-use Torann\GeoIP\GeoIP;
-
 class DetectTimezone
 {
     private $geoip;
 
     private $timezone = null;
 
-    public function __construct(GeoIP $geoip)
+    public function __construct()
     {
-        $this->geoip = $geoip;
+        $this->geoip = app('geoip');
 
         $this->detect();
     }
