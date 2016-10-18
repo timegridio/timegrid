@@ -57,17 +57,22 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 [Read the INSTALLING section](INSTALLING.md)
 
+## Author
+
+Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
+
+### Author Notes
+
+Timegrid was born as a pet project and aimed to solve my own needs as a freelancer.
+Contributions and suggestions are welcome!
+
 ## Contributing
 
-To get a dedicated introduction to *timegrid* and joining the development community...
+Just get involved.
 
 [![Reserve Your Seat](http://i.imgur.com/pgkEz87.png)](https://timegrid.io/dev)
 
 Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
-
-## Author
-
-Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
 
 ## Special Thanks & Credits
 
