@@ -48,7 +48,7 @@
         "jenssegers/agent": "^2.3",
         "laracasts/utilities": "^2.1",
         "alariva/tidiochat": "^2.0",
-        "timegridio/concierge": "dev-master#e8bc49",
+        "timegridio/concierge": "dev-master#90e65c",
         "jenssegers/rollbar": "^1.5",
         "eluceo/ical": "^0.10.1",
         "snowfire/beautymail": "dev-master",
