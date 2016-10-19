@@ -53,7 +53,8 @@
         "eluceo/ical": "^0.10.1",
         "snowfire/beautymail": "dev-master",
         "timegridio/icalreader": "dev-master",
-        "spatie/laravel-cookie-consent": "^1.2"
+        "spatie/laravel-cookie-consent": "^1.2",
+        "geoip2/geoip2": "~2.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

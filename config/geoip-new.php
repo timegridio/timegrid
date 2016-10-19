@@ -31,7 +31,7 @@ return [
     | Supported: "maxmind_database", "maxmind_api", "ipapi"
     |
     */
-    'service' => 'maxmind_database',
+    'service' => 'ipapi',
     /*
     |--------------------------------------------------------------------------
     | Storage Specific Configuration
