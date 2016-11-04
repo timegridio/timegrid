@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "23a412591d6d56ed5f4db1ce7dd1491f",
-    "content-hash": "345f0930f7f898a1497d17c30155da27",
+    "hash": "70f8be09796215aafcf4b7e2d2153a93",
+    "content-hash": "a0861662f2925f59beba83cb0ec1bcee",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -1537,16 +1537,16 @@
         },
         {
             "name": "ipunkt/laravel-analytics",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ipunkt/laravel-analytics.git",
-                "reference": "cf3fa8a2e0e85ac4c0d559a801307c4cd6780544"
+                "reference": "35193df6f4371a694ccc0f022bcb679a37847eac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ipunkt/laravel-analytics/zipball/cf3fa8a2e0e85ac4c0d559a801307c4cd6780544",
-                "reference": "cf3fa8a2e0e85ac4c0d559a801307c4cd6780544",
+                "url": "https://api.github.com/repos/ipunkt/laravel-analytics/zipball/35193df6f4371a694ccc0f022bcb679a37847eac",
+                "reference": "35193df6f4371a694ccc0f022bcb679a37847eac",
                 "shasum": ""
             },
             "require": {
@@ -1557,6 +1557,9 @@
             },
             "require-dev": {
                 "laravel/framework": "~5.0"
+            },
+            "suggest": {
+                "martijnc/php-csp": "For handling Content Security Policy matters"
             },
             "type": "library",
             "autoload": {
@@ -1583,7 +1586,7 @@
                 "php",
                 "statistics"
             ],
-            "time": "2016-06-28 07:20:12"
+            "time": "2016-11-03 07:42:58"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -2155,16 +2158,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v2.0.19",
+            "version": "v2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2"
+                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2",
-                "reference": "4efbdb1e9e45ee0d21d1bc1ad35370c0eee5adb2",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/aca8de9a93a28a119714e289c8bc599bd81aa88d",
+                "reference": "aca8de9a93a28a119714e289c8bc599bd81aa88d",
                 "shasum": ""
             },
             "require": {
@@ -2205,7 +2208,7 @@
                 "laravel",
                 "oauth"
             ],
-            "time": "2016-10-24 13:06:51"
+            "time": "2016-11-01 18:49:10"
         },
         {
             "name": "laravelcollective/html",
@@ -4797,16 +4800,16 @@
         },
         {
             "name": "caouecs/laravel-lang",
-            "version": "3.0.17",
+            "version": "3.0.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/caouecs/Laravel-lang.git",
-                "reference": "f22feed58adaa8051918ceb86fa2d991afad63ad"
+                "reference": "7c5d9ba460165b964408114c2d6e8e32258f3873"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/f22feed58adaa8051918ceb86fa2d991afad63ad",
-                "reference": "f22feed58adaa8051918ceb86fa2d991afad63ad",
+                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/7c5d9ba460165b964408114c2d6e8e32258f3873",
+                "reference": "7c5d9ba460165b964408114c2d6e8e32258f3873",
                 "shasum": ""
             },
             "require-dev": {
@@ -4833,7 +4836,7 @@
                 "laravel",
                 "lpm"
             ],
-            "time": "2016-10-10 18:52:34"
+            "time": "2016-10-31 19:34:07"
         },
         {
             "name": "codeclimate/php-test-reporter",
@@ -5279,16 +5282,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f"
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
-                "reference": "ea74994a3dc7f8d2f65a06009348f2d63c81e61f",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/399c1f9781e222f6eb6cc238796f5200d1b7f108",
+                "reference": "399c1f9781e222f6eb6cc238796f5200d1b7f108",
                 "shasum": ""
             },
             "require": {
@@ -5317,7 +5320,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2016-09-16 13:37:59"
+            "time": "2016-10-31 17:19:45"
         },
         {
             "name": "padraic/humbug_get_contents",
@@ -5638,16 +5641,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "4.0.1",
+            "version": "4.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3"
+                "reference": "6cba06ff75a1a63a71033e1a01b89056f3af1e8d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/5f3f7e736d6319d5f1fc402aff8b026da26709a3",
-                "reference": "5f3f7e736d6319d5f1fc402aff8b026da26709a3",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/6cba06ff75a1a63a71033e1a01b89056f3af1e8d",
+                "reference": "6cba06ff75a1a63a71033e1a01b89056f3af1e8d",
                 "shasum": ""
             },
             "require": {
@@ -5697,7 +5700,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-07-26 14:39:29"
+            "time": "2016-11-01 05:06:24"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -7062,25 +7065,26 @@
         },
         {
             "name": "tightenco/mailthief",
-            "version": "v0.2.3",
+            "version": "v0.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/tightenco/mailthief.git",
-                "reference": "274d4129ad8ad80cd122ab5448f31f1bb554fa8a"
+                "reference": "a42277459092ae87f5ac11271f969625509f7f49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/tightenco/mailthief/zipball/274d4129ad8ad80cd122ab5448f31f1bb554fa8a",
-                "reference": "274d4129ad8ad80cd122ab5448f31f1bb554fa8a",
+                "url": "https://api.github.com/repos/tightenco/mailthief/zipball/a42277459092ae87f5ac11271f969625509f7f49",
+                "reference": "a42277459092ae87f5ac11271f969625509f7f49",
                 "shasum": ""
             },
             "require": {
-                "illuminate/mail": "^5.1",
-                "illuminate/view": "^5.1"
+                "illuminate/mail": "^5.0",
+                "illuminate/view": "^5.0"
             },
             "require-dev": {
+                "laravel/framework": "^5.1",
                 "mockery/mockery": "^0.9.5",
-                "phpunit/phpunit": "^5.4"
+                "phpunit/phpunit": "^5.5"
             },
             "type": "library",
             "autoload": {
@@ -7099,7 +7103,7 @@
                 }
             ],
             "description": "A fake Mailer for Laravel applications that takes the pain out of testing mail.",
-            "time": "2016-08-03 17:38:40"
+            "time": "2016-10-12 22:32:47"
         },
         {
             "name": "webmozart/assert",

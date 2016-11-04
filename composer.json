@@ -69,7 +69,7 @@
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "0.9.*",
         "potsky/laravel-localization-helpers": "2.3.3",
-        "tightenco/mailthief": "^0.2"
+        "tightenco/mailthief": "~0.3"
     },
     "autoload": {
         "classmap": [
