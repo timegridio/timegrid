@@ -4,12 +4,29 @@
 perform all sort of tests (including unit and acceptance) and make sure the implementation fits your needs. Your feedback is as well
 welcome in order to enhance the documentation and codebase.
 
+* [Requirements](#requirements)
 * [Step 1: Get the code](#step1)
 * [Step 2: Use Composer to install dependencies](#step2)
 * [Step 3: Create database](#step3)
 * [Step 4: Install](#step4)
 * [Step 5: Start Page](#step5)
 * [Optional: Populate DB with a Demo Fixture](#demosandbox)
+
+<a name="requirements"></a>
+## Requirements
+
+timegrid has some server requirements for web hosting:
+
+  * PHP ~5.6
+  * OpenSSL PHP Extension
+  * PDO PHP Extension
+  * Mbstring PHP Extension
+  * Tokenizer PHP Extension
+  * Nginx or Apache web server
+  * MySQL server
+  * [PHP Intl](http://php.net/manual/en/intl.setup.php)
+
+> **Advice:** PHP 7 is not yet supported.
 
 <a name="step1"></a>
 ## Step 1: Get the code
