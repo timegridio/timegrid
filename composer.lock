@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "70f8be09796215aafcf4b7e2d2153a93",
-    "content-hash": "a0861662f2925f59beba83cb0ec1bcee",
+    "hash": "fe04687b60d0d686b0b654fe378422d4",
+    "content-hash": "84d3e081e4ce132beb867e6cc74480f1",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -825,16 +825,16 @@
         },
         {
             "name": "eluceo/ical",
-            "version": "0.10.1",
+            "version": "0.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/markuspoerschke/iCal.git",
-                "reference": "2dd99c12c0aa961c541380ab0c113135e14af33e"
+                "reference": "63315a46211630308f068f4d79ef8638e5483346"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/markuspoerschke/iCal/zipball/2dd99c12c0aa961c541380ab0c113135e14af33e",
-                "reference": "2dd99c12c0aa961c541380ab0c113135e14af33e",
+                "url": "https://api.github.com/repos/markuspoerschke/iCal/zipball/63315a46211630308f068f4d79ef8638e5483346",
+                "reference": "63315a46211630308f068f4d79ef8638e5483346",
                 "shasum": ""
             },
             "require": {
@@ -874,7 +874,7 @@
                 "ics",
                 "php calendar"
             ],
-            "time": "2016-06-09 09:08:55"
+            "time": "2016-09-16 12:19:54"
         },
         {
             "name": "fenos/notifynder",
