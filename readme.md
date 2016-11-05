@@ -57,6 +57,8 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 [Read the INSTALLING section](INSTALLING.md)
 
+> **NOTES:** PHP 7 support is in progress along with Laravel 5.3 upgrade. [Want to help out?](https://github.com/timegridio/timegrid/issues/104)
+
 ## Localization
 
 Current supported languages are American English (`en_US`) and Spanish (`es_ES` and `es_AR`).
