@@ -91,6 +91,7 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
   * [Victor](https://github.com/pappavic) for testing and documentation contributions
   * [Mohammad Hossein Mojtahedi](https://github.com/MHM5000) for doc review
   * [Jose V Herrera](https://github.com/josevh) for contributions
+  * [Bruno Gangemi](https://github.com/brugasoft) for useful feedback
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License
