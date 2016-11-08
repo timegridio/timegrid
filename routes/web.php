@@ -2,50 +2,12 @@
 
 /*
 |--------------------------------------------------------------------------
-| Routes File
+| Web Routes
 |--------------------------------------------------------------------------
 |
-| Here is where you will register all of the routes in an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested.
-|
-*/
-
-////////////////
-// AJAX CALLS //
-////////////////
-
-Route::group(['prefix' => 'api', 'namespace' => 'API', 'middleware' => ['web']], function () {
-
-    // TODO: 'booking' should be moved out of api into the proper group.
-    Route::post('booking', [
-        'as'   => 'api.booking.action',
-        'uses' => 'BookingController@postAction',
-    ]);
-
-    Route::get('vacancies/{businessId}/{serviceId}', [
-        'uses' => 'AvailabilityController@getDates',
-    ]);
-
-    Route::get('vacancies/{businessId}/{serviceId}/{date}', [
-        'uses' => 'AvailabilityController@getTimes',
-    ]);
-
-    Route::get('ical/{business}/{token}', [
-        'as' => 'api.business.ical.download',
-        'uses' => 'ICalController@download',
-    ]);
-
-});
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
+| This file is where you may define all of the routes that are handled
+| by your application. Just tell Laravel the URIs it should respond
+| to using a Closure or controller method. Build something great!
 |
 */
 
@@ -58,7 +20,7 @@ Route::group(
         'as'         => 'root.',
         'prefix'     => 'root',
         'namespace'  => 'Root',
-        'middleware' => ['web', 'role:root'],
+        'middleware' => ['role:root'],
     ],
     function () {
         Route::get('dashboard', [
@@ -77,15 +39,14 @@ Route::group(
 // REGULAR AUTH //
 //////////////////
 
-Route::group(['prefix' => 'auth', 'middleware' => 'web', 'auth', 'as' => 'auth'], function () {
-    Route::auth();
-});
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
 
 ///////////////////
 // GUEST CONTEXT //
 ///////////////////
 
-Route::group(['middleware' => 'web'], function () {
+Route::group([], function () {
 
     ///////////////////////////
     // PRIVATE HOME / WIZARD //
@@ -103,12 +64,12 @@ Route::group(['middleware' => 'web'], function () {
     // SOCIAL AUTH //
     /////////////////
 
-    Route::get('social/login/redirect/{provider}', [
-        'as'   => 'social.login',
-        'uses' => 'Auth\OAuthController@redirectToProvider',
-    ]);
-
-    Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
+//    Route::get('social/login/redirect/{provider}', [
+//        'as'   => 'social.login',
+//        'uses' => 'Auth\OAuthController@redirectToProvider',
+//    ]);
+//
+//    Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
 
     /////////////////
     // PUBLIC HOME //
@@ -121,7 +82,7 @@ Route::group(['middleware' => 'web'], function () {
 // USER CONTEXT //
 //////////////////
 
-Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () {
+Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 
     // USER PREFERENCES
     Route::get('preferences', [
@@ -186,7 +147,12 @@ Route::group(['prefix' => 'user', 'middleware' => ['web', 'auth']], function () 
 // SELECTED BUSINESS SLUG CONTEXT //
 ////////////////////////////////////
 
-Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
+Route::group(['prefix' => '{business}'], function ($business) {
+
+    Route::get('ical/{token}', [
+        'as' => 'business.ical.download',
+        'uses' => 'User\ICalController@download',
+    ]);
 
     ///////////////////////////
     // BUSINESS USER CONTEXT //
@@ -454,4 +420,4 @@ Route::group(['prefix' => '{business}', 'middleware' => ['web']], function () {
 Route::get('{slug}', [
     'as'   => 'guest.business.home',
     'uses' => 'Guest\BusinessController@getHome',
-])->where('slug', '[^_]+.*')->middleware('web');
+])->where('slug', '[^_]+.*');

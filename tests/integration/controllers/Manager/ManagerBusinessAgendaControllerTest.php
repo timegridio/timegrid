@@ -1,9 +1,7 @@
 <?php
 
-use Timegridio\Concierge\Models\Appointment;
-use Carbon\Carbon;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Timegridio\Concierge\Models\Appointment;
 
 class ManagerBusinessAgendaControllerTest extends TestCase
 {
@@ -59,7 +57,6 @@ class ManagerBusinessAgendaControllerTest extends TestCase
 
         $this->see($this->appointment->code);
     }
-
 
     /**
      * @test

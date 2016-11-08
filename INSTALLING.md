@@ -17,7 +17,7 @@ welcome in order to enhance the documentation and codebase.
 
 timegrid has some server requirements for web hosting:
 
-  * PHP ~5.6
+  * PHP ~5.6 || 7.1
   * OpenSSL PHP Extension
   * PDO PHP Extension
   * Mbstring PHP Extension
@@ -26,7 +26,7 @@ timegrid has some server requirements for web hosting:
   * MySQL server
   * [PHP Intl](http://php.net/manual/en/intl.setup.php)
 
-> **Advice:** PHP 7 is not yet supported.
+> **Advice:** PHP 7 is recently supported and not yet fully tested.
 
 <a name="step1"></a>
 ## Step 1: Get the code

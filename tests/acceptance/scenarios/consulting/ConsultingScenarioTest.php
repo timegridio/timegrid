@@ -127,7 +127,6 @@ EOD;
     {
         $this->actingAs($this->issuer->fresh());
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', ['business' => $this->business]), [
             'businessId' => $this->business->id,
             'service_id' => $this->service->id,

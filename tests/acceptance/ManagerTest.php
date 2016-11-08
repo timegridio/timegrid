@@ -13,7 +13,7 @@ class ManagerTest extends Selenium
     protected function setLanguageAndLogin()
     {
         return $this->visit('/lang/en_US.utf8')
-                    ->visit('/auth/login')
+                    ->visit('/login')
                     ->type('demo@timegrid.io', '#email')
                     ->type('demomanager', '#password')
                     ->press('Login')

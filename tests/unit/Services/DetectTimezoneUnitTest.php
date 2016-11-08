@@ -11,11 +11,8 @@ class DetectTimezoneUnitTest extends TestCase
     public function it_detects_the_user_timezone()
     {
         $timezone = 'America/New_York';
-
         $detectTimezone = $this->makeDetectTimezone($timezone);
-
         $detectedTimezone = $detectTimezone->get();
-
         $this->assertInternalType('string', $detectedTimezone);
         $this->assertEquals($timezone, $detectedTimezone);
     }
@@ -26,11 +23,8 @@ class DetectTimezoneUnitTest extends TestCase
     public function it_converts_to_string()
     {
         $timezone = 'America/New_York';
-
         $detectTimezone = $this->makeDetectTimezone($timezone);
-
         $detectedTimezone = $detectTimezone->get();
-
         $this->assertInternalType('string', "$detectedTimezone");
         $this->assertEquals($timezone, "$detectedTimezone");
     }

@@ -36,7 +36,7 @@
                 <a href="{{ route('user.preferences') }}" class="btn btn-default btn-flat">{{ trans('app.nav.preferences') }}</a>
             </div>
             <div class="pull-right">
-                <a href="{{ url('/auth/logout') }}" class="btn btn-default btn-flat">{{ trans('app.nav.logout') }}</a>
+                <a href="{{ url('/logout') }}" class="btn btn-default btn-flat">{{ trans('app.nav.logout') }}</a>
             </div>
         </li>
     </ul>

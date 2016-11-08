@@ -15,7 +15,7 @@ timegrid
 
 > **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
-Built with [**Laravel 5.2**](http://laravel.com/docs/5.2) framework for [**PHP**](http://php.net/)
+Built with [**Laravel 5.3**](http://laravel.com/docs/5.3) framework for [**PHP**](http://php.net/)
 
 ![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
 
@@ -56,8 +56,6 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 ## Installing
 
 [Read the INSTALLING section](INSTALLING.md)
-
-> **NOTES:** PHP 7 support is in progress along with Laravel 5.3 upgrade. [Want to help out?](https://github.com/timegridio/timegrid/issues/104)
 
 ## Localization
 

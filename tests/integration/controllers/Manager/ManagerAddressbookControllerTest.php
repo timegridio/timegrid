@@ -92,11 +92,13 @@ class ManagerAddressbookControllerTest extends TestCase
         $this->arrangeFixture();
 
         $this->actingAs($this->owner);
-        $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $this->contact]));
+        $business = $this->business;
+        $contact = $this->contact;
+
+        $response = $this->call('delete', route('manager.addressbook.destroy', compact('business', 'contact')));
 
         $this->assertEquals(302, $response->getStatusCode());
         $this->assertCount(0, $this->business->fresh()->contacts);
@@ -112,11 +114,10 @@ class ManagerAddressbookControllerTest extends TestCase
         $unauthorizedUser = $this->createUser();
 
         $this->actingAs($unauthorizedUser);
-        $this->withoutMiddleware();
 
         $this->assertCount(1, $this->business->fresh()->contacts);
 
-        $response = $this->call('DELETE', route('manager.addressbook.destroy', [$this->business, $this->contact]));
+        $response = $this->call('delete', route('manager.addressbook.destroy', [$this->business, $this->contact]));
 
         $this->assertEquals(403, $response->getStatusCode());
         $this->assertCount(1, $this->business->fresh()->contacts);

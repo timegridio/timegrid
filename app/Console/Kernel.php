@@ -10,6 +10,25 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 class Kernel extends ConsoleKernel
 {
     /**
+     * We need to replace the ConfigureLogging bootstrappers to use the custom
+     * one. We’ll do this by overriding their respective constructors and
+     * doing an array_walk to the bootstrappers property.
+     *
+     * @param Application $app
+     * @param Router      $router
+     */
+    public function __construct(Application $app, Dispatcher $events)
+    {
+        parent::__construct($app, $events);
+
+        array_walk($this->bootstrappers, function (&$bootstrapper) {
+            if ($bootstrapper === \Illuminate\Foundation\Bootstrap\ConfigureLogging::class) {
+                $bootstrapper = \App\Bootstrap\ConfigureLogging::class;
+            }
+        });
+    }
+
+    /**
      * The Artisan commands provided by your application.
      *
      * @var array
@@ -40,21 +59,12 @@ class Kernel extends ConsoleKernel
     }
 
     /**
-     * We need to replace the ConfigureLogging bootstrappers to use the custom
-     * one. We’ll do this by overriding their respective constructors and
-     * doing an array_walk to the bootstrappers property.
+     * Register the Closure based commands for the application.
      *
-     * @param Application $app
-     * @param Router      $router
+     * @return void
      */
-    public function __construct(Application $app, Dispatcher $events)
+    protected function commands()
     {
-        parent::__construct($app, $events);
-
-        array_walk($this->bootstrappers, function (&$bootstrapper) {
-            if ($bootstrapper === \Illuminate\Foundation\Bootstrap\ConfigureLogging::class) {
-                $bootstrapper = \App\Bootstrap\ConfigureLogging::class;
-            }
-        });
+        require base_path('routes/console.php');
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Traits\HasRoles;
 use App\Traits\Preferenceable;
-use Fenos\Notifynder\Notifable;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
@@ -12,6 +12,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Foundation\Auth\Access\Authorizable;
+use Timegridio\Concierge\Models\Business;
 
 /**
  * @property int $id
@@ -27,7 +28,7 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
  */
 class User extends EloquentModel implements AuthenticatableContract, AuthorizableContract, CanResetPasswordContract
 {
-    use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifable, Preferenceable;
+    use Authenticatable, Authorizable, CanResetPassword, HasRoles, Notifiable, Preferenceable;
 
     /**
      * The attributes that are mass assignable.

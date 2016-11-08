@@ -95,6 +95,6 @@ class BusinessAgendaController extends Controller
     {
         $businessToken = new BusinessToken($business);
 
-        return route('api.business.ical.download', [$business, $businessToken->generate()]);
+        return route('business.ical.download', [$business, $businessToken->generate()]);
     }
 }

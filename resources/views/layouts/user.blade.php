@@ -74,7 +74,7 @@
                                 @include('_user-account-menu')
                             @else
                                 <li>
-                                    <a href="{{ url('/auth/login') }}"><i class="fa fa-sign-in"></i> {{ trans('app.nav.login') }}</a>
+                                    <a href="{{ url('/login') }}"><i class="fa fa-sign-in"></i> {{ trans('app.nav.login') }}</a>
                                 </li>
                             @endif
 

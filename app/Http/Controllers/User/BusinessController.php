@@ -9,6 +9,13 @@ use Timegridio\Concierge\Models\Business;
 
 class BusinessController extends Controller
 {
+    private $concierge;
+
+    public function __construct(Concierge $concierge)
+    {
+        $this->concierge = $concierge;
+    }
+
     /**
      * get Home.
      *
@@ -16,7 +23,7 @@ class BusinessController extends Controller
      *
      * @return Response Rendered view for desired Business
      */
-    public function getHome(Business $business, Concierge $concierge)
+    public function getHome(Business $business)
     {
         logger()->info(__METHOD__);
         logger()->info(sprintf("businessId:%s businessSlug:'%s'", $business->id, $business->slug));
@@ -29,7 +36,7 @@ class BusinessController extends Controller
                    ->extra(compact('businessName'))
                    ->send();
 
-        $available = $concierge->business($business)->isBookable('today', 30);
+        $available = $this->concierge->business($business)->isBookable('today', 30);
 
         $appointment = $business->bookings()->forContacts(auth()->user()->contacts)->active()->first();
 

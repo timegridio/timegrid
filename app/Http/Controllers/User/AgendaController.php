@@ -136,7 +136,9 @@ class AgendaController extends Controller
         $contactId = $request->input('contact_id');
         $isOwner = false;
 
-        if ($issuer = auth()->user()) {
+        $issuer = auth()->user();
+
+        if ($issuer) {
             $isOwner = $issuer->isOwner($business->id);
             $contact = $this->findSubscrbedContact($issuer, $isOwner, $business, $contactId);
         } else {

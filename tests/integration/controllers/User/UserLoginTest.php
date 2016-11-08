@@ -37,7 +37,7 @@ class UserLoginTest extends TestCase
 
         $this->actingAs($user);
 
-        $this->visit('auth/logout');
+        $this->visit('/logout');
 
         $this->seePageIs('/');
 
@@ -72,7 +72,7 @@ class UserLoginTest extends TestCase
     {
         $this->visit(route('user.agenda'));
 
-        $this->seePageIs('/auth/login');
+        $this->seePageIs('/login');
 
         $this->see('Login');
         $this->see('Password');

@@ -105,7 +105,7 @@ class GuestBusinessControllerTest extends TestCase
         $user = $this->createUser();
 
         $this->visit('/'.$business->slug);
-        $this->visit('auth/register');
+        $this->visit('register');
         $this->type('test', 'name');
         $this->type('test@example.org', 'email');
         $this->type('aPassword', 'password');
@@ -113,7 +113,7 @@ class GuestBusinessControllerTest extends TestCase
         $this->press('Register');
         $this->seePageIs('/'.$business->slug);
 
-        $this->visit('auth/register');
+        $this->visit('register');
         $this->seePageIs('/'.$business->slug);
     }
 

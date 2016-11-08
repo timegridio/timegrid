@@ -24,7 +24,7 @@ class UserAgendaControllerTest extends TestCase
         $user = $this->createUser();
         $this->actingAs($user);
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('You have no ongoing reservations.');
     }
@@ -55,7 +55,7 @@ class UserAgendaControllerTest extends TestCase
         $appointment->service()->associate($service);
         $appointment->save();
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('Reserved')
             ->see($appointment->code)
@@ -88,7 +88,7 @@ class UserAgendaControllerTest extends TestCase
         $appointment->service()->associate($service);
         $appointment->save();
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('You have no ongoing reservations')
              ->dontSee('Reserved')
@@ -121,7 +121,7 @@ class UserAgendaControllerTest extends TestCase
         $appointment->service()->associate($service);
         $appointment->save();
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('Canceled')
             ->see($appointment->code)
@@ -157,7 +157,7 @@ class UserAgendaControllerTest extends TestCase
         $appointment->service()->associate($service);
         $appointment->save();
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('You have no ongoing reservations.')
              ->dontSee('Canceled');
@@ -192,7 +192,7 @@ class UserAgendaControllerTest extends TestCase
         $appointment->service()->associate($service);
         $appointment->save();
 
-        $this->visit('/')->click('My Reservations');
+        $this->visit('/home')->click('My Reservations');
 
         $this->see('Reserved')
             ->see($appointment->code)
@@ -398,8 +398,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
-
         $this->actingAs($user);
 
         $this->call('POST', route('user.booking.store', compact('business')), [
@@ -453,8 +451,6 @@ class UserAgendaControllerTest extends TestCase
             ]);
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
-
-        $this->withoutMiddleware();
 
         $this->actingAs($userOne);
 
@@ -512,8 +508,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
-
         $this->actingAs($userOne);
 
         $this->call('POST', route('user.booking.store', compact('business')), [
@@ -568,7 +562,6 @@ class UserAgendaControllerTest extends TestCase
 
         $otherDayThanVacancy = $this->vacancy->start_at->addDays(7)->timezone($business->timezone)->toDateString();
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
@@ -609,7 +602,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
@@ -650,7 +642,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
@@ -701,7 +692,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
@@ -748,7 +738,6 @@ class UserAgendaControllerTest extends TestCase
 
         $shiftedTime = Carbon::parse('09:00:00 '.$business->timezone)->timezone($this->faker->timezone);
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,
@@ -889,7 +878,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
 
         $this->actingAs($user);
 
@@ -941,8 +929,6 @@ class UserAgendaControllerTest extends TestCase
             ]);
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
-
-        $this->withoutMiddleware();
 
         $this->actingAs($userOne);
 
@@ -1001,8 +987,6 @@ class UserAgendaControllerTest extends TestCase
         $this->vacancy->service()->associate($service);
         $business->vacancies()->save($this->vacancy);
 
-        $this->withoutMiddleware();
-
         $this->actingAs($userOne);
 
         $this->call('POST', route('user.booking.store', compact('business')), [
@@ -1057,7 +1041,6 @@ class UserAgendaControllerTest extends TestCase
 
         $otherDayThanVacancy = $this->vacancy->start_at->addDays(7)->timezone($business->timezone)->toDateString();
 
-        $this->withoutMiddleware();
         $this->call('POST', route('user.booking.store', compact('business')), [
             'businessId' => $business->id,
             'service_id' => $service->id,

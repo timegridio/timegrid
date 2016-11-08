@@ -44,7 +44,7 @@ class RootControllerTest extends TestCase
         $this->visit(route('root.dashboard'));
 
         // Then I should see the Root access warning
-        $this->seePageIs('/home')
+        $this->seePageIs('/')
              ->dontSee('Registered Users');
     }
 

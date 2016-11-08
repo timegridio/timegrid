@@ -19,7 +19,7 @@
             </ul>
         </div>
         @if ($errors->has('email'))
-        {!! Button::success(trans('auth.btn.already_registered'))->block()->asLinkTo(url('/auth/login')) !!}
+        {!! Button::success(trans('auth.btn.already_registered'))->block()->asLinkTo(url('/login')) !!}
         @endif
         @if ($errors->has('password'))
         {!! Button::warning(trans('auth.btn.forgot'))->block()->asLinkTo(url('/password/email')) !!}
@@ -29,7 +29,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <form role="form" method="POST" action="{{ url('/auth/register') }}" id="registration" role="form">
+                <form role="form" method="POST" action="{{ url('/register') }}" id="registration" role="form">
                     <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
 
                     <div class="form-group has-feedback">
@@ -72,7 +72,7 @@
             <div class="row">
                 <div class="social-auth-links text-center">
                     <p>{{ trans('auth.label.oauth_direct_access') }}</p>
-                    @include('auth/social')
+                    {{-- @include('auth/social') --}}
                 </div>
             </div>
         </div>

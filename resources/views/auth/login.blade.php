@@ -24,10 +24,10 @@
             </ul>
         </div>
 
-        {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/auth/register')) !!}<p>&nbsp;</p>
+        {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/register')) !!}<p>&nbsp;</p>
         @endif
 
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/auth/login') }}">
+        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
             <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.login.email') }}">
@@ -57,15 +57,15 @@
 
         <div class="social-auth-links text-center">
             <p>- {{ trans('auth.label.oauth_direct_access') }} -</p>
-            @include('auth/social')
+            {{-- @include('auth/social') --}}
         </div>
         <!-- /.social-auth-links -->
 
-        <a class="btn btn-link" href="{{ url('/auth/password/reset') }}">{{ trans('auth.login.forgot') }}</a><br>
+        <a class="btn btn-link" href="{{ url('/password/reset') }}">{{ trans('auth.login.forgot') }}</a><br>
 
         <div id="notRegisteredLink" class="row hidden" style="margin-top: 20px;">
             <div class="col-md-12">
-                {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/auth/register')) !!}
+                {!! Button::success(trans('auth.btn.not_registered'))->withAttributes(['id' => 'btnNotRegistered', 'class' => ''])->block()->asLinkTo(url('/register')) !!}
             </div>
         </div>
 

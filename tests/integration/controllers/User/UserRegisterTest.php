@@ -14,7 +14,7 @@ class UserRegisterTest extends TestCase
     {
         $user = $this->makeUser();
 
-        $this->visit('auth/register');
+        $this->visit('/register');
 
         $this->seeRegistrationFormFields();
 
@@ -35,7 +35,7 @@ class UserRegisterTest extends TestCase
     {
         $user = $this->makeUser();
 
-        $this->visit('auth/register');
+        $this->visit('/register');
 
         $this->seeRegistrationFormFields();
 

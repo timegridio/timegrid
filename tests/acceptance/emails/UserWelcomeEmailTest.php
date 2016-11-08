@@ -16,7 +16,7 @@ class UserWelcomeEmailTest extends TestCase
 
         $user = $this->makeUser();
 
-        $this->visit('auth/register');
+        $this->visit('/register');
 
         $this->type($user->name, 'name');
         $this->type($user->email, 'email');

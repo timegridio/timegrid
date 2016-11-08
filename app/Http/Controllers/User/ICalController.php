@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\TG\Business\Token as BusinessToken;
+use App\Http\Controllers\Controller;
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;
 use Timegridio\Concierge\Models\Business;

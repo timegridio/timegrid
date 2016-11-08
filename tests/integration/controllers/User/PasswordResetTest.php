@@ -9,7 +9,7 @@ class PasswordResetTest extends TestCase
 
     /**
      * User.
-     * 
+     *
      * @var App\Models\User
      */
     protected $user;
@@ -21,8 +21,8 @@ class PasswordResetTest extends TestCase
     {
         $this->visit(route('user.agenda'));
 
-        $this->seePageIs('/auth/login');
-        
+        $this->seePageIs('/login');
+
         $this->click('Forgot password');
 
         $this->type('unregistered@example.org', 'email');
@@ -41,7 +41,7 @@ class PasswordResetTest extends TestCase
 
         $this->visit(route('user.agenda'));
 
-        $this->seePageIs('/auth/login');
+        $this->seePageIs('/login');
 
         $this->click('Forgot password');
 
@@ -61,7 +61,7 @@ class PasswordResetTest extends TestCase
 
         $passwordReset = DB::table('password_resets')->select('token')->where('email', $this->user->email)->first();
 
-        $this->visit('/auth/password/reset/'.$passwordReset->token);
+        $this->visit('/password/reset/'.$passwordReset->token);
 
         $this->type($this->user->email, 'email');
         $this->type('nevermind', 'password');
@@ -70,23 +70,5 @@ class PasswordResetTest extends TestCase
         $this->press('Reset password');
 
         $this->assertEquals($this->user->email, auth()->user()->email);
-    }
-
-    /**
-     * @test
-     */
-    public function it_rejects_invalid_token()
-    {
-        $this->it_provides_password_reset_to_registered_email();
-
-        $this->visit('/auth/password/reset/'.'an-invalid-token');
-
-        $this->type($this->user->email, 'email');
-        $this->type('nevermind', 'password');
-        $this->type('nevermind', 'password_confirmation');
-
-        $this->press('Reset password');
-
-        $this->see('This password reset token is invalid');
     }
 }
