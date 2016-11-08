@@ -5,15 +5,13 @@ namespace App\Http\Controllers\Auth;
 use App\AuthenticateUser;
 use App\AuthenticateUserListener;
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class OAuthController extends Controller implements AuthenticateUserListener
 {
-    use RegistersUsers, AuthenticatesUsers, ThrottlesLogins;
+    use ThrottlesLogins;
 
     public function __construct()
     {
