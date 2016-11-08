@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1163f05d98d37686baa835284d86bdb2",
-    "content-hash": "aea84d01c471cc1ff764a90ed419ddab",
+    "hash": "2176f5926e6489f1331746d5261173ac",
+    "content-hash": "650d26b555b813b691a8fb5cfd32fdfd",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -2313,6 +2313,48 @@
             "time": "2016-09-15 21:26:50"
         },
         {
+            "name": "maxmind/web-service-common",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/maxmind/web-service-common-php.git",
+                "reference": "f26fce5281290973beeeca3e33847887177dd138"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/maxmind/web-service-common-php/zipball/f26fce5281290973beeeca3e33847887177dd138",
+                "reference": "f26fce5281290973beeeca3e33847887177dd138",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.6.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MaxMind\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Gregory Oschwald",
+                    "email": "goschwald@maxmind.com"
+                }
+            ],
+            "description": "Internal MaxMind Web Service API",
+            "homepage": "https://github.com/maxmind/mm-web-service-api-php",
+            "time": "2015-07-21 20:07:31"
+        },
+        {
             "name": "mccool/laravel-auto-presenter",
             "version": "4.3.0",
             "source": {
@@ -2650,16 +2692,16 @@
         },
         {
             "name": "paragonie/random_compat",
-            "version": "v2.0.3",
+            "version": "v2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb"
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/c0125896dbb151380ab47e96c621741e79623beb",
-                "reference": "c0125896dbb151380ab47e96c621741e79623beb",
+                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
+                "reference": "a9b97968bcde1c4de2a5ec6cbd06a0f6c919b46e",
                 "shasum": ""
             },
             "require": {
@@ -2694,7 +2736,7 @@
                 "pseudorandom",
                 "random"
             ],
-            "time": "2016-10-17 15:23:22"
+            "time": "2016-11-07 23:38:38"
         },
         {
             "name": "patricktalmadge/bootstrapper",
@@ -3282,16 +3324,16 @@
         },
         {
             "name": "spatie/laravel-cookie-consent",
-            "version": "1.6.1",
+            "version": "1.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-cookie-consent.git",
-                "reference": "c97188f11c8b02e1239302d3fbb06cb8f36b33c2"
+                "reference": "c541776c4ae2fae9ee985312e6418267a7c28f67"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-cookie-consent/zipball/c97188f11c8b02e1239302d3fbb06cb8f36b33c2",
-                "reference": "c97188f11c8b02e1239302d3fbb06cb8f36b33c2",
+                "url": "https://api.github.com/repos/spatie/laravel-cookie-consent/zipball/c541776c4ae2fae9ee985312e6418267a7c28f67",
+                "reference": "c541776c4ae2fae9ee985312e6418267a7c28f67",
                 "shasum": ""
             },
             "require": {
@@ -3339,7 +3381,7 @@
                 "law",
                 "spatie"
             ],
-            "time": "2016-10-30 17:57:52"
+            "time": "2016-11-07 13:55:51"
         },
         {
             "name": "stevebauman/location",
@@ -4231,27 +4273,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/timegridio/concierge.git",
-                "reference": "90e65c4bed04e15f959ea65f67ce7d5c616aa0fe"
+                "reference": "90e65c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/timegridio/concierge/zipball/90e65c4bed04e15f959ea65f67ce7d5c616aa0fe",
-                "reference": "90e65c4bed04e15f959ea65f67ce7d5c616aa0fe",
+                "url": "https://api.github.com/repos/timegridio/concierge/zipball/90e65c",
+                "reference": "90e65c",
                 "shasum": ""
             },
             "require": {
-                "doctrine/dbal": "^2.5",
-                "illuminate/support": "5.*",
-                "mccool/laravel-auto-presenter": "^4.0",
+                "doctrine/dbal": "~2.5",
+                "illuminate/support": "~5.3",
+                "mccool/laravel-auto-presenter": "~4.0",
                 "php": ">=5.5.9"
             },
             "require-dev": {
                 "codeclimate/php-test-reporter": "dev-master",
                 "laracasts/testdummy": "~2.3",
-                "laravel/framework": "5.2.*",
-                "orchestra/testbench": "~3.2.0",
+                "orchestra/testbench": "~3.3",
                 "phpspec/phpspec": "~2.1",
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "~5.0"
             },
             "type": "library",
             "extra": {
