@@ -35,7 +35,8 @@
         "ipunkt/laravel-analytics": "~1.1",
         "laracasts/flash": "~2.0",
         "laravel/framework": "5.3.*",
-        "laravelcollective/html": "~5.0",
+        "laravel/socialite": "~2.0",
+        "laravelcollective/html": "~5.2",
         "mccool/laravel-auto-presenter": "^4.0",
         "patricktalmadge/bootstrapper": "~5",
         "pid/speakingurl": "^0.11.0",
@@ -67,7 +68,7 @@
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "0.9.*",
-        "tightenco/mailthief": "dev-master"
+        "tightenco/mailthief": "~0.3"
     },
     "autoload": {
         "classmap": [
