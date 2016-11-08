@@ -55,3 +55,16 @@ Call to undefined function locale_get_primary_language()
 ### Reference
 
 [Discussion](https://gitter.im/alariva/timegridDevelopment?at=56ab732a8fbaf4220afa165e)
+
+## This cache store does not support tagging.
+
+### Problem
+
+Getting the error *This cache store does not support tagging.*, specially after 
+registering a business.
+
+In your `.env` file you probably have `CACHE_DRIVER=file`
+
+### Solution
+
+Edit your `.env` file and set `CACHE_DRIVER=array`
