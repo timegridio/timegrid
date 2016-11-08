@@ -64,12 +64,12 @@ Route::group([], function () {
     // SOCIAL AUTH //
     /////////////////
 
-//    Route::get('social/login/redirect/{provider}', [
-//        'as'   => 'social.login',
-//        'uses' => 'Auth\OAuthController@redirectToProvider',
-//    ]);
-//
-//    Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
+    Route::get('social/login/redirect/{provider}', [
+        'as'   => 'social.login',
+        'uses' => 'Auth\OAuthController@redirectToProvider',
+    ]);
+
+    Route::get('social/login/{provider}', 'Auth\OAuthController@handleProviderCallback');
 
     /////////////////
     // PUBLIC HOME //
