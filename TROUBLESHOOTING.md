@@ -1,5 +1,19 @@
 # Installation Troubleshooting
 
+# Quick Checking Your Revision
+
+## Make sure your system meets the requirements
+
+  - Check [requirements](INSTALLING.md#requirements)
+
+## Verify that your current revision is passing tests
+
+  - [ ] Get the current revision number: `git rev-parse HEAD`
+  - [ ] Verify that your [current revision is passing tests](https://travis-ci.org/timegridio/timegrid/builds)
+  - [ ] If not passing, use a *build passing revision*
+
+# Specific problems
+
 ## Uncaught exception 'ReflectionException' when running artisan
 
 ### Problem
