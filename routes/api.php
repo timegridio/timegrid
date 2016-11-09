@@ -23,11 +23,6 @@ Route::get('/user', function (Request $request) {
 
 // TODO: 'booking' should be moved out of api into the proper group.
 
-Route::post('booking', [
-    'as'   => 'api.booking.action',
-    'uses' => 'BookingController@postAction',
-]);
-
 Route::get('vacancies/{businessId}/{serviceId}', [
     'uses' => 'AvailabilityController@getDates',
 ]);
