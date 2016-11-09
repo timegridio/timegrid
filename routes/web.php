@@ -42,6 +42,19 @@ Route::group(
 Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
+//////////
+// AJAX //
+//////////
+
+Route::group(['namespace' => 'API'], function () {
+
+    Route::post('booking', [
+        'as'   => 'api.booking.action',
+        'uses' => 'BookingController@postAction',
+    ]);
+
+});
+
 ///////////////////
 // GUEST CONTEXT //
 ///////////////////
