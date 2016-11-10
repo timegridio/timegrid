@@ -63,11 +63,9 @@ class Handler extends ExceptionHandler
             if ($exception instanceof \Illuminate\Http\Exception\HttpResponseException) {
                 return redirect(route('user.directory.list'))->withErrors(trans('app.msg.invalid_url'));
             }
-            if ($request->user()) {
             // Catch General exceptios to show a friendly error message
-                if (!app()->isDownForMaintenance() && $exception instanceof Exception) {
-                    return redirect(route('whoops'))->withErrors(trans('app.msg.general_exception'));
-                }
+            if (!app()->isDownForMaintenance() && $exception instanceof Exception && $request->user()) {
+                return redirect(route('whoops'))->withErrors(trans('app.msg.general_exception'));
             }
         }
 
