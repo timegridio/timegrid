@@ -27,7 +27,7 @@
 
 </head>
 
-<body class="hold-transition skin-blue layout-top-nav">
+<body class="hold-transition skin-green layout-top-nav">
 
     {!! Analytics::render() !!}
 
