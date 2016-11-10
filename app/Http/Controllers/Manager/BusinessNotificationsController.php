@@ -3,14 +3,11 @@
 namespace App\Http\Controllers\Manager;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
 use Fenos\Notifynder\Facades\Notifynder;
-use Illuminate\Http\Request;
 use Timegridio\Concierge\Models\Business;
 
 class BusinessNotificationsController extends Controller
 {
-
     /**
      * Show Business Notifications.
      *
@@ -30,5 +27,4 @@ class BusinessNotificationsController extends Controller
 
         return view('manager.businesses.notifications', compact('business', 'notifications'));
     }
-
 }
