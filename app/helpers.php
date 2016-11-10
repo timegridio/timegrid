@@ -54,3 +54,21 @@ if (!function_exists('trans_duration')) {
         return str_replace(array_keys($translations), array_values($translations), $string);
     }
 }
+
+if (!function_exists('str_link')) {
+    /**
+     * Generate a link string with fallback.
+     *
+     * @param string $route
+     * @param string $caption
+     * @param string $fallback_caption
+     *
+     * @return string
+     */
+    function str_link($route, $caption, $fallback_caption = '#N/A')
+    {
+        $caption = trim($caption);
+
+        return link_to($route, $caption ?: $fallback_caption);
+    }
+}
