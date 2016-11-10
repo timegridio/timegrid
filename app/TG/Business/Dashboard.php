@@ -14,34 +14,34 @@ class Dashboard
 
     const BOXES = [
         'appointments_active_today' => [
-            'icon' => 'check',
+            'icon'  => 'check',
             'color' => 'green',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_active'
+            'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
             ],
         'appointments_canceled_today' => [
-            'icon' => 'minus-circle',
+            'icon'  => 'minus-circle',
             'color' => 'red',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_canceled'
+            'title' => 'manager.businesses.dashboard.panel.title_appointments_canceled',
             ],
         'appointments_active_tomorrow' => [
-            'icon' => 'hourglass-o',
+            'icon'  => 'hourglass-o',
             'color' => 'yellow',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_active'
+            'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
             ],
         'contacts_subscribed' => [
-            'icon' => 'users',
+            'icon'  => 'users',
             'color' => 'green',
-            'title' => 'manager.businesses.dashboard.panel.title_contacts_subscribed'
+            'title' => 'manager.businesses.dashboard.panel.title_contacts_subscribed',
             ],
         'contacts_registered' => [
-            'icon' => 'users',
+            'icon'  => 'users',
             'color' => 'aqua',
-            'title' => 'manager.businesses.dashboard.panel.title_contacts_registered'
+            'title' => 'manager.businesses.dashboard.panel.title_contacts_registered',
             ],
         'appointments_total' => [
-            'icon' => 'table',
+            'icon'  => 'table',
             'color' => 'aqua',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_total'
+            'title' => 'manager.businesses.dashboard.panel.title_appointments_total',
             ],
     ];
 
@@ -69,7 +69,7 @@ class Dashboard
 
     public function getBoxes()
     {
-        $bag = new Collection;
+        $bag = new Collection();
 
         foreach (self::BOXES as $key => $boxParameters) {
             $boxParameters['number'] = $this->counter[$key];
@@ -78,6 +78,4 @@ class Dashboard
 
         return $bag;
     }
-
-
 }

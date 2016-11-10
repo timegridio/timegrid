@@ -91,9 +91,7 @@ class SyncICal extends Command
     protected function processHumanresources($humanresources)
     {
         foreach ($humanresources as $humanresource) {
-
             // dispatch(new FetchICalFile($humanresource));
-
             $this->icalsync->humanresource($humanresource)->sync();
         }
     }

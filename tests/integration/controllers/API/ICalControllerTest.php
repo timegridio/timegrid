@@ -35,7 +35,7 @@ class ICalControllerTest extends TestCase
 
         $token = $businessToken->generate();
 
-        $this->call('get', route('api.business.ical.download', [$this->business, $token]));
+        $this->call('get', route('business.ical.download', [$this->business, $token]));
 
         $this->see('BEGIN:VCALENDAR');
         $this->see("PRODID:{$this->business->slug}");
@@ -48,7 +48,7 @@ class ICalControllerTest extends TestCase
     {
         $this->arrangeBusinessWithOwner();
 
-        $this->call('get', route('api.business.ical.download', [$this->business, 'invalid']));
+        $this->call('get', route('business.ical.download', [$this->business, 'invalid']));
 
         $this->assertResponseStatus(403);
     }

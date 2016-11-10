@@ -52,7 +52,6 @@ Route::group(['namespace' => 'API'], function () {
         'as'   => 'api.booking.action',
         'uses' => 'BookingController@postAction',
     ]);
-
 });
 
 ///////////////////
@@ -153,7 +152,6 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
             'uses' => 'User\WizardController@getPricing',
         ]);
     });
-
 });
 
 ////////////////////////////////////
@@ -163,7 +161,7 @@ Route::group(['prefix' => 'user', 'middleware' => ['auth']], function () {
 Route::group(['prefix' => '{business}'], function ($business) {
 
     Route::get('ical/{token}', [
-        'as' => 'business.ical.download',
+        'as'   => 'business.ical.download',
         'uses' => 'User\ICalController@download',
     ]);
 
@@ -196,7 +194,6 @@ Route::group(['prefix' => '{business}'], function ($business) {
                 'uses' => 'BusinessController@getHome',
             ]);
         });
-
     });
 
     ////////////////////
@@ -354,7 +351,6 @@ Route::group(['prefix' => '{business}'], function ($business) {
                 'as'   => 'manager.business.humanresource.destroy',
                 'uses' => 'HumanresourceController@destroy',
             ]);
-
         });
 
         // SERVICE RESOURCE
@@ -400,7 +396,6 @@ Route::group(['prefix' => '{business}'], function ($business) {
                 'as'   => 'manager.business.service.destroy',
                 'uses' => 'BusinessServiceController@destroy',
             ]);
-
         });
 
         // VACANCY RESOURCE
@@ -426,7 +421,6 @@ Route::group(['prefix' => '{business}'], function ($business) {
                 'uses' => 'BusinessVacancyController@update',
             ]);
         });
-
     });
 });
 
