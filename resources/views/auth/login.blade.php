@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.bare')
 
 @section('css')
 @parent
