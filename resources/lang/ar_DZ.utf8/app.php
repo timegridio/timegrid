@@ -6,7 +6,7 @@
 return [
   //==================================== Translations ====================================//
   'btn' => [
-    'update' => 'Update',
+    'update' => 'تحديث',
   ],
   'business' => [
     'category' => [
@@ -26,15 +26,15 @@ return [
     'datetimepicker' => 'MM/DD/YYYY',
   ],
   'footer' => [
-    'demo'  => 'Remember this is a DEMO version.',
+    'demo'  => 'تذكير : هذه نسخة تجريبيبة فقط',
     'local' => 'Local environment advice.',
   ],
   'gender' => [
-    'F' => 'Female',
-    'M' => 'Male',
+    'F' => 'أنثى',
+    'M' => 'ذكر',
   ],
   'label' => [
-    'attention'       => 'Attention',
+    'attention'       => 'تحذير',
     'select_timezone' => 'TimeZone',
   ],
   'msg' => [
@@ -46,14 +46,14 @@ return [
   'name' => 'timegrid.io',
   'nav'  => [
     'dashboard' => 'Dashboard',
-    'login'     => 'Login',
-    'logout'    => 'Logout',
-    'help'      => 'Help',
-    'preferences' => 'Preferences',
+    'login'     => 'تسجيل الدخول',
+    'logout'    => 'تسجيل الخروج',
+    'help'      => 'مساعدة',
+    'preferences' => 'خيارات',
     'manager'   => [
       'business' => [
         'register' => 'SignUp Business',
-        'list'     => 'List',
+        'list'     => 'قائمة',
         'menu'     => 'My Businesses',
       ],
     ],
@@ -67,7 +67,7 @@ return [
         'selector'         => 'Browse',
       ],
     ],
-    'wizard' => 'Help',
+    'wizard' => 'مساعدة',
   ],
   'notifications' => [
     'title' => 'Recently',
@@ -76,7 +76,7 @@ return [
     'msg' => [
       'no_results' => 'We found nothing with this criteria: :criteria',
     ],
-    'placeholder' => 'search',
+    'placeholder' => 'البحث',
   ],
   //================================== Obsolete strings ==================================//
 ];
