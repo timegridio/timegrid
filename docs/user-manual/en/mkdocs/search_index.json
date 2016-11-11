@@ -2,13 +2,83 @@
     "docs": [
         {
             "location": "/", 
-            "text": "timegrid user manual\n\n\n\n\nOverview", 
+            "text": "timegrid user manual\n\n\n\n\nOverview\n\n\nGetting Started", 
             "title": "Introduction"
         }, 
         {
             "location": "/#timegrid-user-manual", 
-            "text": "Overview", 
+            "text": "Overview  Getting Started", 
             "title": "timegrid user manual"
+        }, 
+        {
+            "location": "/README/", 
+            "text": "User Manual\n\n\nWhat is timegrid ?\n\n\nTimegrid is a web application that helps contractors and customers to find the perfect meeting time through online appointments.\n\n\nDemo\n\n\nYou can try the \nbeta\n \nDemo\n\n\nHow does it work\n\n\ntimegrid is a web application that mediates \nbusinesses\n and \ncustomers\n to let them handle \nservice reservations\n.\n\n\nYou can use it from\n\n\n\n\nyour PC\n\n\nyour tablet\n\n\nyour mobile phone\n\n\n\n\nQuickstart\n\n\nBusinesses\n\n\n\n\nRegister once on the website\n\n\nSetup your services\n\n\nPublish your availability\n\n\nDone!\n You can start giving out appointments\n\n\n\n\nCustomers\n\n\n\n\nRegister once on the website\n\n\nSuscribe to the desired business\n\n\nMake the reservation for a desired service\n\n\nDone!\n They are waiting for you\n\n\n\n\nMay I use timegrid for my industry sector?\n\n\ntimegrid is thought to work with as many industry sectors as possible.\nHowever, some of them have a different approach for handling appointments.\n\n\n\n\n\n\n\n\nIndustry\n\n\nAppointment Strategy\n\n\n\n\n\n\n\n\n\n\nMechanic Garage\n\n\nPer day\n\n\n\n\n\n\nDoctor\n\n\nPer day\n\n\n\n\n\n\nPhotography\n\n\nPer day\n\n\n\n\n\n\n\n\nDont worry, we will be adding more industry sectors soon!\n\n\nWe are working at\n\n\n\n\nAdding new industry sectors\n\n\nProvide video examples\n\n\n\n\nTroubleshooting\n\n\nWe want your feedback, let us know if you need support or want to suggest an enhancement!\n\n\n\u00a9 \ntimegrid.io", 
+            "title": "Overview"
+        }, 
+        {
+            "location": "/README/#user-manual", 
+            "text": "", 
+            "title": "User Manual"
+        }, 
+        {
+            "location": "/README/#what-is-timegrid", 
+            "text": "Timegrid is a web application that helps contractors and customers to find the perfect meeting time through online appointments.", 
+            "title": "What is timegrid ?"
+        }, 
+        {
+            "location": "/README/#demo", 
+            "text": "You can try the  beta   Demo", 
+            "title": "Demo"
+        }, 
+        {
+            "location": "/README/#how-does-it-work", 
+            "text": "timegrid is a web application that mediates  businesses  and  customers  to let them handle  service reservations .  You can use it from   your PC  your tablet  your mobile phone", 
+            "title": "How does it work"
+        }, 
+        {
+            "location": "/README/#quickstart", 
+            "text": "", 
+            "title": "Quickstart"
+        }, 
+        {
+            "location": "/README/#businesses", 
+            "text": "Register once on the website  Setup your services  Publish your availability  Done!  You can start giving out appointments", 
+            "title": "Businesses"
+        }, 
+        {
+            "location": "/README/#customers", 
+            "text": "Register once on the website  Suscribe to the desired business  Make the reservation for a desired service  Done!  They are waiting for you", 
+            "title": "Customers"
+        }, 
+        {
+            "location": "/README/#may-i-use-timegrid-for-my-industry-sector", 
+            "text": "timegrid is thought to work with as many industry sectors as possible.\nHowever, some of them have a different approach for handling appointments.     Industry  Appointment Strategy      Mechanic Garage  Per day    Doctor  Per day    Photography  Per day     Dont worry, we will be adding more industry sectors soon!", 
+            "title": "May I use timegrid for my industry sector?"
+        }, 
+        {
+            "location": "/README/#we-are-working-at", 
+            "text": "Adding new industry sectors  Provide video examples", 
+            "title": "We are working at"
+        }, 
+        {
+            "location": "/README/#troubleshooting", 
+            "text": "We want your feedback, let us know if you need support or want to suggest an enhancement!  \u00a9  timegrid.io", 
+            "title": "Troubleshooting"
+        }, 
+        {
+            "location": "/getting-started/", 
+            "text": "So you are a \ncontractor\n or \nown a business\n and you want to start giving \nonline appointments\n to your \nclients\n.\n\n\nLet's get started.\n\n\nRegister your Business\n\n\nAfter you become a \nregistered user\n, \ntimegrid\n will ask you if you want to register your \nbusiness\n or\njust go on as a regular \nclient\n. Click \nI want to provide services\n.\n\n\nNow pick the plan that fits your needs. It will probably be ok to choose \nFree\n. Click \nStart\n.\n\n\nTimegrid\n will require you to provide some info about your \nBusiness\n, this is just the required info to display to \nyour \nclients\n.\n\n\n\n\nName:\n Just a friendly name which your \nclients\n identify your business.\n\n\nTimeZone:\n Pick the correct timezone.\n\n\nIndustry:\n Choose the industry that best fits your needs.\n\n\nDescription:\n Seduce your \nclients\n with a nice copy.\n\n\nPostal Address:\n Your complete postal address, it will render a high level map on your homepage.\n\n\nMobile:\n Your mobile phone if you want to allow your \nclients\n have an alternative way to contact you.\n\n\nYour Facebook Page URL:\n Copy \n Paste the full address so \ntimegrid\n takes your page picture.\n\n\n\n\nYou are all set!\n\n\nLet's now set up the \nServices\n you provide.", 
+            "title": "Getting Started"
+        }, 
+        {
+            "location": "/getting-started/#register-your-business", 
+            "text": "After you become a  registered user ,  timegrid  will ask you if you want to register your  business  or\njust go on as a regular  client . Click  I want to provide services .  Now pick the plan that fits your needs. It will probably be ok to choose  Free . Click  Start .  Timegrid  will require you to provide some info about your  Business , this is just the required info to display to \nyour  clients .   Name:  Just a friendly name which your  clients  identify your business.  TimeZone:  Pick the correct timezone.  Industry:  Choose the industry that best fits your needs.  Description:  Seduce your  clients  with a nice copy.  Postal Address:  Your complete postal address, it will render a high level map on your homepage.  Mobile:  Your mobile phone if you want to allow your  clients  have an alternative way to contact you.  Your Facebook Page URL:  Copy   Paste the full address so  timegrid  takes your page picture.   You are all set!  Let's now set up the  Services  you provide.", 
+            "title": "Register your Business"
+        }, 
+        {
+            "location": "/adding-services/", 
+            "text": "Adding Services", 
+            "title": "Adding Services"
         }
     ]
 }
