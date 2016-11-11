@@ -88,6 +88,15 @@ Route::group([], function () {
     /////////////////
 
     Route::get('/', 'WelcomeController@index');
+
+    ///////////////////////////////////////
+    // WHOOPS USER FRIENDLY ERROR SCREEN //
+    ///////////////////////////////////////
+
+    Route::get('whoops', [
+        'as'   => 'whoops',
+        'uses' => 'WhoopsController@display',
+    ]);
 });
 
 //////////////////
