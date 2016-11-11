@@ -41,6 +41,10 @@ and I'll be happy to help.
 
 You may also [subscribe the dev newsletter](http://eepurl.com/bF_ARX).
 
+# Which branch?
+
+You should branch out from `master`.
+
 # Reporting Issues
 
 For submitting an issue, please follow the steps below:
