@@ -64,4 +64,18 @@ return [
             'button'             => 'Validate Appointment',
         ],
     ],
+    'text'  => [
+        'business'          => 'Business',
+        'user'              => 'User',
+        'date'              => 'Date',
+        'time'              => 'Time',
+        'code'              => 'Code',
+        'where'             => 'Where',
+        'phone'             => 'Phone',
+        'service'           => 'Service',
+        'important'         => 'important',
+        'customer_notes'    => 'customer notes for you',
+        'there_are'         => 'There are',
+        'registered'        => 'registered users so far',
+    ],
 ];
