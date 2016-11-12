@@ -10,6 +10,7 @@ welcome in order to enhance the documentation and codebase.
 * [Step 3: Create database](#step3)
 * [Step 4: Install](#step4)
 * [Step 5: Start Page](#step5)
+* [Troubleshooting](#troubleshooting)
 * [Optional: Populate DB with a Demo Fixture](#demosandbox)
 
 <a name="requirements"></a>
@@ -98,6 +99,13 @@ And we are ready to go. **Run** the server:
 Congrats! You can now register as new user and log-in.
 
 ![timegrid Login Screen](http://i.imgur.com/jM8pbGq.png)
+
+<a name="troubleshooting"></a>
+## Troubleshooting
+
+If after the installation you are experiencing problems, see the
+[troubleshooting](TROUBLESHOOTING.md) section or ask on 
+[Gitter](https://gitter.im/alariva/timegridDevelopment) for quick help.
 
 <a name="demosandbox"></a>
 ## Demo Sandbox Fixture
