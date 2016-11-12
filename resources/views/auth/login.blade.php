@@ -27,7 +27,7 @@
         {!! Button::success(trans('auth.btn.not_registered'))->block()->asLinkTo(url('/register')) !!}<p>&nbsp;</p>
         @endif
 
-        <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+        <form role="form" method="POST" action="{{ url('/login') }}">
             {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.login.email') }}" required>
