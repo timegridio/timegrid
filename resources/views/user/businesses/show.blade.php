@@ -7,11 +7,7 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                    @if($user->isOwner($business->id))
-                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }} {!! link_to(route('manager.business.show', $business), $business->name) !!}
-                    @else
-                        {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }}
-                    @endif
+                    {!! Icon::star() !!}&nbsp;{{ $business->subscriptionsCount }}
                 </div>
 
                     <ul class="list-group">
@@ -83,6 +79,12 @@
                                     <div class="alert alert-warning">{{ trans('user.appointments.alert.no_vacancies') }}</div>
                                 @endif
                             @endif
+                        </li>
+                        @endif
+
+                        @if($user->isOwner($business->id))
+                        <li class="list-group-item">
+                            {!! Button::primary(trans('user.go_to_business_dashboard', ['business' => $business->name]))->withIcon(Icon::dashboard())->block()->large()->asLinkTo(route('manager.business.show', $business), $business->name) !!}
                         </li>
                         @endif
 

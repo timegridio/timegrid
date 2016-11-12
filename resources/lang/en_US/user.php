@@ -155,4 +155,5 @@ return  [
   'preferences' => [
     'title' => 'My preferences',
   ],
+  'go_to_business_dashboard' => 'Go to :business\'s dashboard',
 ];
