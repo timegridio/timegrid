@@ -28,7 +28,7 @@
         @endif
 
         <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-            <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+            {{ csrf_field() }}
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="{{ trans('auth.login.email') }}" required>
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

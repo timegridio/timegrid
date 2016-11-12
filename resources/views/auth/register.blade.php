@@ -30,7 +30,7 @@
         <div class="container-fluid">
             <div class="row">
                 <form role="form" method="POST" action="{{ url('/register') }}" id="registration" role="form">
-                    <input type="hidden" id="_token" name="_token" value="{{ csrf_token() }}">
+                    {{ csrf_field() }}
 
                     <div class="form-group has-feedback">
                         <input type="email" class="form-control" name="email" placeholder="{{ trans('auth.register.email') }}" value="{{ old('email') }}" id="email" required>
