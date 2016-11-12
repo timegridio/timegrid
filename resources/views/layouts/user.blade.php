@@ -120,6 +120,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('.btn').tooltipster({ animation: "grow", theme: 'tooltipster-light' });
+});
 </script>
 
 @stack('footer_scripts')
