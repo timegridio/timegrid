@@ -25,7 +25,7 @@
                     <a href="#"></a>
                 </div>
                 <div class="col-xs-4 text-center">
-                    <a href="{!! env('DOCS_URL', 'http://docs.timegrid.io/') !!}{{ Session::get('language') }}/" target="_blank">{{ trans('app.nav.manual') }}</a>
+                    <a href="{{ docs_url(Session::get('language')) }}" target="_blank">{{ trans('app.nav.manual') }}</a>
                 </div>
             </div>
             <!-- /.row -->
