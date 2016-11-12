@@ -9,6 +9,12 @@ return [
         'name' => env('SYSLOG_APPNAME', 'default.timegrid'),
     ],
 
+    'docs_url' => 
+    [
+        'en' => env('DOCS_URL_EN', 'http://www.timegrid.io/docs/en/user-manual/'),
+        'es' => env('DOCS_URL_ES', 'http://www.timegrid.io/docs/es/manual-de-usuario/'),
+    ],
+
     'report' => [
         'from_address'       => env('MAIL_FROM_ADDRESS', 'root@localhost'),
         'to_mail'            => env('ROOT_REPORT_MAIL', 'root@localhost'),

@@ -72,3 +72,21 @@ if (!function_exists('str_link')) {
         return link_to($route, $caption ?: $fallback_caption);
     }
 }
+
+if (!function_exists('docs_url')) {
+    /**
+     * Generate a link to user manual documentation.
+     *
+     * @param string $language
+     *
+     * @return string
+     */
+    function docs_url($locale = 'en')
+    {
+        if (!$locale) {
+            $locale = 'en';
+        }
+
+        return config("root.docs_url.{$locale}");
+    }
+}
