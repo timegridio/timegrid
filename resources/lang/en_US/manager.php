@@ -74,7 +74,7 @@ return [
       ],
     ],
     'create' => [
-      'title' => 'Register a business',
+      'title' => 'Register your business',
     ],
     'notifications' => [
       'title' => 'Notifications',
@@ -114,20 +114,25 @@ return [
         'placeholder' => 'Commercial name',
         'validation'  => 'A name is required',
       ],
+      'link' => [
+        'label'       => 'Link',
+        'placeholder' => 'Your timegrid homepage link',
+        'validation'  => 'Your homepage link is invalid',
+      ],
       'phone' => [
         'label'       => 'Mobile',
         'placeholder' => 'your mobile number',
       ],
       'postal_address' => [
-        'label'       => 'Postal Address',
+        'label'       => 'Postal address',
         'placeholder' => 'street name and number, area, city, country',
       ],
       'social_facebook' => [
-        'label'       => 'Your Facebook Page URL',
+        'label'       => 'Facebook Page',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ],
       'timezone' => [
-        'label' => 'TimeZone',
+        'label' => 'Timezone',
       ],
       'slug' => [
         'label'       => 'Alias',

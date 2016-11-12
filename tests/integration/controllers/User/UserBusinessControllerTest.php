@@ -17,7 +17,7 @@ class UserBusinessControllerTest extends TestCase
         $user = $this->createUser();
         $this->actingAs($user);
 
-        $this->visit('/home')->click('Browse');
+        $this->visit('/home')->click('I want to make reservations');
 
         $this->see('Available businesses');
     }
@@ -32,7 +32,7 @@ class UserBusinessControllerTest extends TestCase
 
         $businesses = $this->createBusinesses(30);
 
-        $this->visit('/home')->click('Browse');
+        $this->visit('/home')->click('I want to make reservations');
 
         foreach ($businesses as $business) {
             $this->see(substr($business->name, 0, 50)); /* Up to 50 chars */
@@ -49,7 +49,7 @@ class UserBusinessControllerTest extends TestCase
 
         $businesses = $this->createBusinesses(15);
 
-        $this->visit('/home')->click('Browse')
+        $this->visit('/home')->click('I want to make reservations')
              ->click($businesses[1]->name);
 
         $this->see($businesses[1]->name)
@@ -66,7 +66,7 @@ class UserBusinessControllerTest extends TestCase
 
         $business = $this->createBusiness();
 
-        $this->visit('/home')->click('Browse')
+        $this->visit('/home')->click('I want to make reservations')
             ->click($business->name);
 
         $this->see($business->name)
@@ -83,7 +83,7 @@ class UserBusinessControllerTest extends TestCase
 
         $business = $this->createBusiness();
 
-        $this->visit('/home')->click('Browse')
+        $this->visit('/home')->click('I want to make reservations')
             ->click($business->name)
             ->click('Subscribe');
 
@@ -130,8 +130,7 @@ class UserBusinessControllerTest extends TestCase
 
         $this->visit(route('manager.business.register'));
 
-        $this->see('We are going to register your business with free plan')
-             ->see('Register a business');
+        $this->see('Register your business');
 
         $this->type($business->name, 'name')
              ->type($business->description, 'description')

@@ -22,9 +22,9 @@
   trans('app.business.category.photography')
 --}}
 
-<div class="row">
-    <div class="form-group col-sm-6">
-        {!! Form::label( trans('manager.businesses.form.name.label') ) !!}
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.name.label'), null, ['class'=>'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
         {!! Form::text('name', null, [
             'required',
             'id' => 'name',
@@ -35,33 +35,50 @@
             ]) !!}
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-sm-3">
-        {!! Form::label( trans('manager.businesses.form.timezone.label') ) !!}<br>
-        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2', 'required'], ['customValue' => 'true']) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-    <div class="form-group col-sm-3">
-        {!! Form::label( trans('manager.businesses.form.category.label') ) !!}<br>
-        {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'form-control select2', 'required']) !!}
-        <div class="help-block with-errors"></div>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.link.label'), null, ['class'=>'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
+        <span class="bizurl">
+            <span>{{ url('/') }}/</span><span id="slug"></span>
+        </span>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-sm-12">
-        {!! Form::label( trans('manager.businesses.form.description.label') ) !!}
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.description.label'), null, ['class' => 'control-label col-sm-3']  ) !!}
+    <div class="col-sm-9">
         {!! Form::textarea('description', null, [
             'required',
             'class' => 'form-control',
-            'rows' => '2',
+            'rows' => '6',
             'data-minlength' => '10',
             'placeholder'=> trans('manager.businesses.form.description.placeholder')
             ]) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-sm-6">
-        {!! Form::label( trans('manager.businesses.form.postal_address.label') ) !!}
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.timezone.label'), null, ['class' => 'control-label col-sm-3'] ) !!}<br>
+    <div class="col-sm-9">
+        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2 col-sm-2', 'required'], ['customValue' => 'true']) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.category.label'), null, ['class' => 'control-label col-sm-3'] ) !!}<br>
+    <div class="col-sm-9">
+        {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'form-control select2', 'required']) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.postal_address.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
         {!! Form::text('postal_address', null, [
             'id' => 'name',
             'class' => 'form-control',
@@ -70,8 +87,11 @@
             ]) !!}
         <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-sm-6">
-        {!! Form::label( trans('manager.businesses.form.phone.label') ) !!}<br>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.phone.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
         {!! Form::text('phone-input', empty($business) ? null : $business->phone, [
             'id' => 'phone-input',
             'class' => 'form-control',
@@ -80,9 +100,10 @@
         <div class="help-block with-errors"></div>
     </div>
 </div>
-<div class="row">
-    <div class="form-group col-sm-12">
-        {!! Form::label( trans('manager.businesses.form.social_facebook.label') ) !!}
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.social_facebook.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
         {!! Form::text('social_facebook', null, [
             'class' => 'form-control',
             'placeholder'=> trans('manager.businesses.form.social_facebook.placeholder')
@@ -92,9 +113,10 @@
 </div>
 
 {!! Form::hidden('phone', '') !!}
-{!! Form::hidden('strategy', 'dateslot') !!}
-<div class="row">
-    <div class="form-group col-md-12">
+{!! Form::hidden('strategy', 'timeslot') !!}
+
+<div class="form-group">
+    <div class="col-md-12">
         {!! Button::primary($submitLabel)->large()->block()->submit() !!}
     </div>
 </div>
@@ -107,7 +129,7 @@
 $(document).ready(function(){
 
     $('#slug').slugify('#name'); // Slug as you type
-    
+
     $('.select2').select2({ theme: 'boostrap' });
 
     $("#phone-input").intlTelInput({
