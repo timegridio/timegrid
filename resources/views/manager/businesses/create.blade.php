@@ -1,26 +1,25 @@
-@extends('layouts.user')
+@extends('layouts.bare')
 
 @section('title', trans('manager.businesses.create.title'))
 @section('subtitle', trans('manager.businesses.msg.register', ['plan' => trans($plan)]))
 
 @section('content')
-<div class="container-fluid">
+<div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2">
 
     <div class="panel panel-default">
 
         <div class="panel-heading">
         {{ trans('manager.businesses.create.title') }}
-            <span class="bizurl pull-right">
-                <span>{{ url('/') }}/</span><span id="slug"></span>
-            </span>
         </div>
 
         <div class="panel-body">
-            {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator']) !!}
+            {!! Form::model($business, ['route' => ['manager.business.store'], 'id' => 'registration', 'data-toggle' => 'validator', 'class' => 'form-horizontal']) !!}
+            <fieldset>
             {!! Form::hidden('plan', $plan) !!}
             {!! Form::hidden('country_code', $countryCode) !!}
             {!! Form::hidden('locale', $locale) !!}
             @include('manager.businesses._form', ['submitLabel' => trans('manager.businesses.btn.store')])
+            </fieldset>
             {!! Form::close() !!}
         </div>
 

@@ -24,7 +24,7 @@ class UserAgendaControllerTest extends TestCase
         $user = $this->createUser();
         $this->actingAs($user);
 
-        $this->visit('/home')->click('My Reservations');
+        $this->visit(route('user.agenda'));
 
         $this->see('You have no ongoing reservations.');
     }

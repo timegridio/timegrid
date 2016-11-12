@@ -107,12 +107,17 @@ return [
       ],
       'description' => [
         'label'       => 'Descripción',
-        'placeholder' => 'Describe al prestador',
+        'placeholder' => 'Describí tus prestaciones',
       ],
       'name' => [
         'label'       => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
         'validation'  => 'Se requiere nombre',
+      ],
+      'link' => [
+        'label'       => 'Enlace',
+        'placeholder' => 'Enlace a tu página timegrid',
+        'validation'  => 'El enlace a tu página timegrid es inválido',
       ],
       'phone' => [
         'label'       => 'Móvil',
@@ -123,11 +128,11 @@ return [
         'placeholder' => 'altura calle, barrio, ciudad, país',
       ],
       'social_facebook' => [
-        'label'       => 'URL Página de Facebook',
+        'label'       => 'Página de Facebook',
         'placeholder' => 'https://facebook.com/tu-pagina-de-facebook',
       ],
       'timezone' => [
-        'label' => 'Zona Horaria',
+        'label' => 'Zona horaria',
       ],
       'slug' => [
         'label'       => 'Alias',

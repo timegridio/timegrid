@@ -19,19 +19,9 @@ Built with [**Laravel 5.3**](http://laravel.com/docs/5.3) framework for [**PHP**
 
 ![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
 
-## Appointment Library
-
-Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for dealing with appointments.
-
 ## Screenshots
 
 ![Timegrid Backoffice Dashboard Screenshot](http://i.imgur.com/YOQBoVx.png)
-
-## Live Demo
-
-[Test drive the *beta live demo*](http://demo.timegrid.io)
-
-> **HINT:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing
 
 ## Features
 
@@ -53,6 +43,18 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 [Future features here](https://github.com/timegridio/timegrid/issues?q=is%3Aissue+is%3Aopen+label%3Afeature-request)
 
+## Documentation
+
+  * [User Manual](http://www.timegrid.io/docs/en/user-manual/) (*work-in-progress*)
+
+> Documentation is *in-progress*. [Help is welcome!](https://github.com/timegridio/timegrid/issues/117)
+
+## Live Demo
+
+[Test drive the *beta live demo*](http://demo.timegrid.io)
+
+> **HINT:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing
+
 ## Installing
 
 [Read the INSTALLING section](INSTALLING.md)
@@ -63,6 +65,10 @@ Current supported languages are American English (`en_US`) and Spanish (`es_ES` 
 
 Future targeted translations might be French and Italian, however, feel free to contribute with your preferred 
 translation.
+
+## Appointment Library
+
+Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for dealing with appointments.
 
 ## Author
 

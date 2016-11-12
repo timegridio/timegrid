@@ -1,4 +1,4 @@
-@extends('layouts.public')
+@extends('layouts.bare')
 
 @section('content')
 <div class="register-box">
