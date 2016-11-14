@@ -33,7 +33,6 @@ class AddressbookController extends Controller
      * create Contact.
      *
      * @param Business           $business Business that will hold the Contact
-     * @param ContactFormRequest $request  Contact form Request
      *
      * @return Response Rendered form for Contact creation
      */
