@@ -97,6 +97,7 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
   * [Khouadja Achraf](https://github.com/achrafkh) for contributions
   * [Nick N. Huynh](https://github.com/finalblast) for contributions
   * [Kashyap Sharma](https://github.com/Kashyap12) for contributions
+  * [Niharika Khanna](https://github.com/niharikak101) for contributions
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License
