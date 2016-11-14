@@ -301,6 +301,9 @@ return [
       'color' => [
         'label' => 'Color',
       ],
+      'servicetype' => [
+        'label' => 'Tipo',
+      ],
     ],
     'msg' => [
       'store' => [
@@ -322,6 +325,9 @@ return [
       ],
       'instructions' => 'Aquí podés dar de alta los servicios que prestas. Cada uno podrá ser reservado para una y por la cantidad de turnos que admitas',
       'title'        => 'Agregar un servicio',
+    ],
+    'edit' => [
+      'title'        => 'Editar servicio',
     ],
     'index' => [
       'instructions' => 'Estos son tus servicios',

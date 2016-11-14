@@ -301,6 +301,9 @@ return [
       'color' => [
         'label' => 'Color',
       ],
+      'servicetype' => [
+        'label' => 'Service Type',
+      ],
     ],
     'msg' => [
       'store' => [
@@ -322,6 +325,9 @@ return [
       ],
       'instructions' => 'Give a name to your service, a wide description to help your customers be familiar with it.Add any instructions for your customers before they get to the appointment.',
       'title'        => 'Add a service',
+    ],
+    'edit' => [
+      'title'        => 'Edit service',
     ],
     'index' => [
       'instructions' => 'Add as many services as you provide to configure availability for each of them.',
