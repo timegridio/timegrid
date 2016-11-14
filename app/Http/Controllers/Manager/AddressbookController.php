@@ -37,7 +37,7 @@ class AddressbookController extends Controller
      *
      * @return Response Rendered form for Contact creation
      */
-    public function create(Business $business, ContactFormRequest $request)
+    public function create(Business $business)
     {
         logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
