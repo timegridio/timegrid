@@ -2,61 +2,73 @@
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 @endsection
 
-{{-- Services Form Partial --}}
-<div class="row">
-    <div class="form-group col-xl-6 col-md-6 col-sm-4 col-xs-4">
+<div class="form-group">
+    {!! Form::label( trans('manager.service.form.name.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
         {!! Form::text('name', null, [
             'required',
             'class'=>'form-control',
             'placeholder'=> trans('manager.service.form.name.label')
             ]) !!}
+        <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-xl-2 col-md-2 col-sm-4 col-xs-4">
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.service.form.duration.label'), null, ['class' => 'control-label col-sm-3 col-md-3'] ) !!}
+    <div class="col-sm-3 col-md-3">
         <div class="input-group">
             <span class="input-group-addon">{!! Icon::hourglass() !!}</span>
-                {!! Form::number('duration', null, [
-                    'required',
-                    'step' => 5,
-                    'class'=>'form-control',
-                    'placeholder'=> trans('manager.service.form.duration.label')
-                    ]) !!}
+            {!! Form::number('duration', null, [
+                'required',
+                'step' => 5,
+                'class'=>'form-control',
+                'placeholder'=> trans('manager.service.form.duration.label')
+                ]) !!}
         </div>
+        <div class="help-block with-errors"></div>
     </div>
-    <div class="form-group col-xl-4 col-md-4 col-sm-4 col-xs-4">
-    @if($types->count() > 0)
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.contacts.form.description.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
+    {!! Form::textarea('description', null, [
+        'class'=>'form-control',
+        'rows'=> '3',
+        'placeholder'=> trans('manager.contacts.form.description.label')
+        ]) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.contacts.form.prerequisites.label'), null, ['class' => 'control-label col-sm-3'] ) !!}
+    <div class="col-sm-9">
+    {!! Form::textarea('prerequisites', null, [
+        'class'=>'form-control',
+        'rows'=> '3',
+        'placeholder'=> trans('manager.contacts.form.prerequisites.label')
+        ]) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+@if($types->count() > 0)
+<div class="form-group">
+    {!! Form::label( trans('manager.service.form.servicetype.label'), null, ['class' => 'control-label col-sm-3 col-md-3'] ) !!}
+    <div class="col-sm-9 col-md-9">
         <div class="input-group">
-            {!! Form::select('type_id', $types, null, ['name' => 'type_id', 'class' => 'selectpicker']) !!}
+            {!! Form::select('type_id', $types, null, ['name' => 'type_id', 'class' => 'select2']) !!}
         </div>
-    @endif
+        <div class="help-block with-errors"></div>
     </div>
 </div>
+@endif
 
-<div class="row">
-    <div class="col-xs-12">
-        <div class="form-group">
-            {!! Form::textarea('description', null, [
-                'class'=>'form-control',
-                'rows'=> '3',
-                'placeholder'=> trans('manager.contacts.form.description.label')
-                ]) !!}
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-xs-12">
-        <div class="form-group">
-            {!! Form::textarea('prerequisites', null, [
-                'class'=>'form-control',
-                'rows'=> '3',
-                'placeholder'=> trans('manager.contacts.form.prerequisites.label')
-                ]) !!}
-        </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="form-group col-xl-2 col-md-2 col-sm-2 col-xs-2">
+<div class="form-group">
+    {!! Form::label( trans('manager.service.form.color.label'), null, ['class' => 'control-label col-sm-3 col-md-3'] ) !!}
+    <div class="col-sm-4 col-md-4">
         <div class="input-group color-picker">
             {!! Form::text('color', null, [
                 'class'=>'form-control',
@@ -64,14 +76,13 @@
                 ]) !!}
             <span class="input-group-addon"><i></i></span>
         </div>
+        <div class="help-block with-errors"></div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col-xs-12">
-        <div class="form-group">
-            {!! Button::primary($submitLabel)->large()->block()->submit() !!}
-        </div>
+<div class="col-xs-12">
+    <div class="form-group">
+        {!! Button::primary($submitLabel)->large()->block()->submit() !!}
     </div>
 </div>
 
@@ -80,8 +91,9 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-    $('selectpicker').addClass('dropupAuto');
-    $('selectpicker').select2({ size: 1 });
+    $('.select2').select2({ theme: 'boostrap' });
+    // $('.selectpicker').addClass('dropupAuto');
+    // $('.selectpicker').select2({ size: 4 });
 
     $('.color-picker').colorpicker({
       colorSelectors: {
