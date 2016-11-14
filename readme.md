@@ -15,19 +15,16 @@ timegrid
 
 > **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
-Built with [**Laravel 5.3**](http://laravel.com/docs/5.3) framework for [**PHP**](http://php.net/)
-
-![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
-
-## Screenshots
-
-![Timegrid Backoffice Dashboard Screenshot](http://i.imgur.com/YOQBoVx.png)
+<div style="text-align:center">
+  <img src="http://i.imgur.com/YOQBoVx.png" alt="Timegrid Backoffice Dashboard Screenshot">
+</div>
 
 ## Features
 
+  * Built with [**Laravel 5.3**](http://laravel.com/docs/5.3) framework for [**PHP**](http://php.net/)
   * Classic and oAuth2 Sign-in/Sign-up with [Socialite](https://github.com/laravel/socialite)
   * Business management
-    * Addressbook
+    * Clients Addressbook
     * Services
     * Staff
     * Availability
@@ -45,9 +42,7 @@ Built with [**Laravel 5.3**](http://laravel.com/docs/5.3) framework for [**PHP**
 
 ## Documentation
 
-  * [User Manual](http://www.timegrid.io/docs/en/user-manual/) (*work-in-progress*)
-
-> Documentation is *in-progress*. [Help is welcome!](https://github.com/timegridio/timegrid/issues/117)
+  * [User Manual](http://www.timegrid.io/docs/en/user-manual/) (*work-in-progress* and [help is welcome!](https://github.com/timegridio/timegrid/issues/117))
 
 ## Live Demo
 
@@ -69,6 +64,8 @@ translation.
 ## Appointment Library
 
 Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for dealing with appointments.
+
+![Timegrid Mindmap](http://i.imgur.com/gXBFMor.png)
 
 ## Author
 
@@ -99,6 +96,8 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
   * [Calvin Roger S. Canas](https://github.com/calvincanas) for contributions
   * [Khouadja Achraf](https://github.com/achrafkh) for contributions
   * [Nick N. Huynh](https://github.com/finalblast) for contributions
+  * [Kashyap Sharma](https://github.com/Kashyap12) for contributions
+  * [Niharika Khanna](https://github.com/niharikak101) for contributions
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License

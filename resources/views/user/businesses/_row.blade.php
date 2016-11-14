@@ -12,7 +12,7 @@
                 {!! trans('app.business.category.'.strtolower($business->category->slug)) !!}
             </p>
         </p>
-        <p class="list-group-item-text">
+        <p class="list-group-item-text multiline-list-item">
             {{ str_limit(strip_tags(Markdown::convertToHtml(strip_tags($business->description))), 400) }}
         </p>
     </div>

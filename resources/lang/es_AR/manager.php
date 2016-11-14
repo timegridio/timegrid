@@ -209,6 +209,7 @@ return [
         'male' => [
           'label' => 'Masculino',
         ],
+        'label' => 'Sexo',
       ],
       'lastname' => [
         'label'      => 'Apellido',

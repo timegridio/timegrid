@@ -18,6 +18,10 @@ a.list-group-item.active small {
 .list-group-item-heading {
     margin-top: 16px;
 }
+
+.multiline-list-item {
+    word-wrap: break-word;
+}
 </style>
 @endsection
 
