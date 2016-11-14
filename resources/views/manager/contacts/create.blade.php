@@ -11,7 +11,7 @@
 
             <div class="panel-body">
 
-                {!! Form::model($contact, ['route' => ['manager.addressbook.store', $business]]) !!}
+                {!! Form::model($contact, ['route' => ['manager.addressbook.store', $business], 'class' => 'horizontal-form']) !!}
                     @include('manager.contacts._form', ['submitLabel' => trans('manager.contacts.btn.store'), compact('$contact')])
                 {!! Form::close() !!}
 

@@ -11,7 +11,7 @@
 
             <div class="panel-body">
 
-                {!! Form::model($contact, ['method' => 'put', 'route' => ['manager.addressbook.update', $business, $contact ]]) !!}
+                {!! Form::model($contact, ['method' => 'put', 'route' => ['manager.addressbook.update', $business, $contact], 'class' => 'form-horizontal']) !!}
                     @include('manager.contacts._form', ['submitLabel' => trans('manager.contacts.btn.update')])
                 {!! Form::close() !!}
 
