@@ -58,10 +58,14 @@ Get started in 10 min with a [Docker image](https://github.com/timegridio/docker
 
 ## Localization
 
-Current supported languages are American English (`en_US`) and Spanish (`es_ES` and `es_AR`).
+Current supported user interface languages are:
 
-Future targeted translations might be French and Italian, however, feel free to contribute with your preferred 
-translation.
+  * American English (`en_US`)
+  * Spanish (`es_ES` and `es_AR`)
+  * Italian (`it_IT`)
+
+Future targeted translations might be French and Arabic, however, feel free to contribute with your preferred 
+translation!
 
 ## Appointment Library
 
