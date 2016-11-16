@@ -52,7 +52,9 @@ timegrid
 
 ## Installing
 
-[Read the INSTALLING section](INSTALLING.md)
+Read the [INSTALLING](INSTALLING.md) section.
+
+Get started in 10 min with a [Docker image](https://github.com/timegridio/dockerfiles) for development environment.
 
 ## Localization
 
