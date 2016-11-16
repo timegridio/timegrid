@@ -54,7 +54,7 @@ timegrid
 
 Read the [INSTALLING](INSTALLING.md) section.
 
-You can build a [Docker image](https://github.com/timegridio/dockerfiles) for development environment.
+Get started in 10 min with a [Docker image](https://github.com/timegridio/dockerfiles) for development environment.
 
 ## Localization
 
