@@ -30,7 +30,7 @@ class EventServiceProvider extends ServiceProvider
             \App\Listeners\SendAppointmentCancellationNotification::class,
         ],
         \App\Events\NewSoftAppointmentWasBooked::class => [
-            \App\Listeners\SendSofAppointmentValidationRequest::class,
+            \App\Listeners\SendSoftAppointmentValidationRequest::class,
         ],
     ];
 
