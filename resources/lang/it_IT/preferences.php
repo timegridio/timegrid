@@ -1,7 +1,11 @@
 <?php
 
 return  [
-  //==================================== Translations ====================================//
+  'App\\Models\\User' => [
+    'timezone' => [
+      'label' => 'Fuso Orario',
+    ],
+  ],
   'App\\Models\\Business' => [
     'appointment_cancellation_pre_hs' => [
       'format' => 'Ore',
