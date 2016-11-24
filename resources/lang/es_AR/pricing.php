@@ -6,14 +6,19 @@
 return  [
   'free'           => 'GRATIS',
   'month'          => 'mes',
+  'feature' => [
+    'unlimited_appointments' => 'turnos <strong>sin límite</strong>',
+    'unlimited_contacts' => 'agenda de clientes <strong>sin límite</strong>',
+    'unlimited_services' => 'servicios <strong>sin límite</strong>',
+    'unlimited_specialists' => 'especialistas <strong>sin límite</strong>',
+    'up_to_appointments' => 'turnos <strong>hasta :limit</strong>',
+    'up_to_contacts' => 'agenda de clientes <strong>hasta :limit</strong>',
+    'up_to_services' => 'servicios <strong>hasta :limit</strong>',
+    'up_to_specialists' => 'especialistas <strong>hasta :limit</strong>',
+    'one_specialist' => '<strong>un</strong> especialista',
+    'customized_support' => 'Soporte Personalizado',
+   ],
   'plan'           => [
-    'feature' => [
-      'appointments' => 'turnos por mes',
-      'contacts'     => 'contactos en agenda',
-      'services'     => 'servicios',
-      'specialists'  => 'especialista|especialistas',
-      'customized_support' => 'Soporte Personalizado',
-    ],
     'free' => [
       'hint'   => 'Ideal para freelancers',
       'name'   => 'Free',
@@ -21,7 +26,7 @@ return  [
     ],
     'starter' => [
       'hint'   => 'Ideal para negocios',
-      'name'   => 'Gold',
+      'name'   => 'Premium',
       'submit' => 'Contratar',
     ],
   ],

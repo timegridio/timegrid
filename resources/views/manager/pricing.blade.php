@@ -101,20 +101,20 @@
                     <li class="plan-price">
                         <big><span class="label label-success"><strong>{{trans('pricing.free')}}</strong></span></big>
                     </li>
-                    <li id="p1_contacts">
-                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
-                    </li>
                     <li id="p1_appointments">
-                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.appointments')}}
+                        {!! trans('pricing.feature.unlimited_appointments') !!}
+                    </li>
+                    <li id="p1_contacts">
+                        {!! trans('pricing.feature.up_to_contacts', ['limit' => 200]) !!}
                     </li>
                     <li id="p1_services">
-                        <strong>3</strong> {{trans('pricing.plan.feature.services')}}
+                        {!! trans('pricing.feature.up_to_services', ['limit' => 3]) !!}
                     </li>
                     <li id="p1_specialists">
-                        <strong>1</strong> {{trans_choice('pricing.plan.feature.specialists', 1)}}
+                        {!! trans('pricing.feature.one_specialist') !!}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.register', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{trans('pricing.plan.free.submit')}}</a>
+                        <a href="{{ route('manager.business.register', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{ trans('pricing.plan.free.submit') }}</a>
                     </li>
                 </ul>
             </div>
@@ -129,25 +129,25 @@
                     </li>
                     <li class="plan-price">
                         {{-- Important to use unescaped for currency as might have html entities --}}
-                        <strong>{!! config('marketplace.pricing.currency_price') !!}</strong> / {{trans('pricing.month')}}
+                        <strong>{!! config('marketplace.pricing.currency_price') !!}</strong> / {{ trans('pricing.month') }}
+                    </li>
+                    <li id="p2_appointments">
+                        {!! trans('pricing.feature.unlimited_appointments') !!}
+                    </li>
+                    <li id="p2_contacts">
+                        {!! trans('pricing.feature.unlimited_contacts') !!}
+                    </li>
+                    <li id="p2_services">
+                        {!! trans('pricing.feature.unlimited_services') !!}
+                    </li>
+                    <li id="p2_specialists">
+                        {!! trans('pricing.feature.unlimited_specialists') !!}
                     </li>
                     <li>
-                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.contacts')}}
-                    </li>
-                    <li>
-                        <strong>{{trans_choice('pricing.unlimited',1)}}</strong> {{trans('pricing.plan.feature.services')}}
-                    </li>
-                    <li>
-                        <strong>{{trans_choice('pricing.unlimited',2)}}</strong> {{trans('pricing.plan.feature.appointments')}}
-                    </li>
-                    <li>
-                        <strong>3</strong> {{trans_choice('pricing.plan.feature.specialists', 3)}}
-                    </li>
-                    <li>
-                        {{ trans('pricing.plan.feature.customized_support') }}
+                        {{ trans('pricing.feature.customized_support') }}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.register', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{trans('pricing.plan.starter.submit')}}</a>
+                        <a href="{{ route('manager.business.register', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{ trans('pricing.plan.starter.submit') }}</a>
                     </li>
                 </ul>
             </div>
