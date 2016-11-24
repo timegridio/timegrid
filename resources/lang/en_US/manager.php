@@ -41,6 +41,10 @@ return  [
     'create' => [
       'title' => 'Register your business',
     ],
+    'notifications' => [
+      'title' => 'Notifications',
+      'help' => 'All what happened recently',
+    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'There are still no services added. Add them from here!',
@@ -70,13 +74,15 @@ return  [
         'label'       => 'Describe yourself',
         'placeholder' => 'Describe your business and the services you provide',
       ],
-      'link' => [
-        'label' => 'Link',
-      ],
       'name' => [
         'label'       => 'Name',
         'placeholder' => 'Commercial name',
         'validation'  => 'A name is required',
+      ],
+      'link' => [
+        'label'       => 'Link',
+        'placeholder' => 'Your timegrid homepage link',
+        'validation'  => 'Your homepage link is invalid',
       ],
       'phone' => [
         'label'       => 'Mobile',
@@ -197,6 +203,7 @@ return  [
     ],
     'label' => [
       'birthdate'      => 'Birthdate',
+      'email'          => 'Email',
       'member_since'   => 'Subscribed since',
       'mobile'         => 'Mobile',
       'nin'            => 'ID',
