@@ -49,8 +49,8 @@ return  [
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Yes/No',
-      'help'   => 'Let clients arrive between opening and closing hours',
-      'label'  => 'Flexible Arrival Time',
+      'help'   => 'Let clients arrive anytime during service time',
+      'label'  => 'Flexible appointments by arrival time order',
     ],
     'finish_at' => [
       'format' => 'hh:mm:ss',

@@ -50,7 +50,7 @@ return  [
     'appointment_flexible_arrival' => [
       'format' => 'S&iacute;/No',
       'help'   => 'Permetti ai clienti di arrivare tra l\'orario di apertura e quello di chiusura',
-      'label'  => 'Appuntamenti flessibili',
+      'label'  => 'Appuntamenti flessibili di ordine orario di arrivo',
     ],
     'finish_at' => [
       'format' => 'hh:mm:ss',
