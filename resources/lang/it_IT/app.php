@@ -9,9 +9,15 @@ return  [
   //==================================== Translations ====================================//
   'business' => [
     'category' => [
-      'doctor'      => 'Sanit&agrave;',
-      'garage'      => 'Meccanico',
-      'photography' => 'Fotografia',
+      'garage'       => 'Meccanico',
+      'doctor'       => 'Sanit&agrave;',
+      'photography'  => 'Fotografia',
+      'spa'          => 'Spa & Bellezza',
+      'martial-arts' => 'Arti Marziali',
+      'yoga'         => 'Yoga',
+      'consulting'   => 'Consulenza',
+      'hairdresser'  => 'Parrucchiere',
+      'beauty'       => 'Bellezza & Cura del corpo'
     ],
   ],
   'dateformat' => [
@@ -32,6 +38,8 @@ return  [
   ],
   'msg' => [
     'invalid_token'     => 'Errore di validazione, per favore riprova.',
+    'general_exception' => 'Spiacenti, errore del sistema. Stiamo lavorando per risolverlo ;)',
+    'invalid_url'       => 'Pagina inesistente, prova a navigare la directory.',
     'slug_is_available' => 'Il nome :baseurl &egrave; disponibile. Registralo adesso.',
   ],
   'name' => 'timegrid.io',
@@ -62,6 +70,9 @@ return  [
     'title' => 'Recenti',
   ],
   'search' => [
+    'msg' => [
+      'no_results' => 'Non abbiamo trovato nulla con questa selezione: :criteria',
+    ],
     'placeholder' => 'search',
   ],
 ];

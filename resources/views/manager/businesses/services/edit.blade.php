@@ -9,7 +9,7 @@
 
             <div class="panel-body">
                 {!! Form::model($service, ['method' => 'put', 'route' => ['manager.business.service.update', $service->business, $service->id], 'class' => 'form-horizontal']) !!}
-                    @include('manager.businesses.services._form', ['submitLabel' => trans('manager.service.btn.update')])
+                    @include('manager.businesses.services._form', ['submitLabel' => trans('manager.service.btn.update'), 'extended' => true])
                 {!! Form::close() !!}
             </div>
         </div>

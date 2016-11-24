@@ -64,7 +64,7 @@ return  [
     ],
     'form' => [
       'category' => [
-        'label' => 'Rubro Comercial',
+        'label' => 'Industria',
       ],
       'description' => [
         'label'       => 'Descripción',
@@ -92,6 +92,11 @@ return  [
       ],
       'timezone' => [
         'label' => 'Zona horaria',
+      ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'así será el link en la web',
+        'validation'  => 'Se requiere un alias',
       ],
     ],
     'index' => [
