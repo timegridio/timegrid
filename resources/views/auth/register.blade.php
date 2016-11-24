@@ -33,6 +33,13 @@
                     {{ csrf_field() }}
 
                     <div class="form-group has-feedback">
+                        @if (!app()->environment('local'))
+                        {!! app('captcha')->display() !!}
+                        @endif
+                        <div class="help-block with-errors"></div>
+                    </div>
+
+                    <div class="form-group has-feedback">
                         <input type="email" class="form-control" name="email" placeholder="{{ trans('auth.register.email') }}" value="{{ old('email') }}" id="email" required>
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                         <div class="help-block with-errors"></div>
@@ -57,9 +64,6 @@
                     </div>
 
                     <div class="form-group">
-                        @if (!app()->environment('local'))
-                        {!! app('captcha')->display() !!}
-                        @endif
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary" id="submit">
                                 {{ trans('auth.register.btn.submit') }}
