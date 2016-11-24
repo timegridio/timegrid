@@ -114,7 +114,7 @@ return  [
     ],
     'msg' => [
       'destroy' => [
-        'success' => 'TODO: success',
+        'success' => 'Contacto eliminado',
       ],
       'store' => [
         'associated_existing_contact' => 'Se asoció tu perfil a los datos ya registrados',

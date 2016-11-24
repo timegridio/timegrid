@@ -1,14 +1,7 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2015/07/24 14:22:40
-*************************************************************************/
 
-return [
-  'nav' => [
-    'end'  => 'Cerrar',
-    'next' => 'Siguiente',
-    'prev' => 'Anterior',
-  ],
+return  [
+  //==================================== Translations ====================================//
   'dashboard' => [
     'agenda' => [
       'content' => 'Aquí se presentan todos las citas pendientes en forma de lista.',
@@ -95,30 +88,31 @@ return [
       'title'   => 'Disponibilidad',
     ],
   ],
+  'nav' => [
+    'end'  => 'Cerrar',
+    'next' => 'Siguiente',
+    'prev' => 'Anterior',
+  ],
   'pricing' => [
     'step1' => [
-      'title'   => 'Free',
       'content' => 'Ideal para profesionales independientes.',
+      'title'   => 'Free',
     ],
     'step2' => [
-      'title'   => 'Agenda de Contactos',
       'content' => 'Contactos ilimitados.',
+      'title'   => 'Agenda de Contactos',
     ],
     'step3' => [
-      'title'   => 'Servicios',
       'content' => 'Hasta 3 servicios.',
+      'title'   => 'Servicios',
     ],
     'step4' => [
-      'title'   => 'Citas',
       'content' => 'Citas mensuales ilimitadas.',
+      'title'   => 'Citas',
     ],
     'step5' => [
-      'title'   => 'Starter',
       'content' => 'Ideal para negocios en crecimiento.',
-    ],
-    'step6' => [
-      'title'   => 'Formas de pago',
-      'content' => 'Aceptamos la forma que te quede más cómoda.',
+      'title'   => 'Starter',
     ],
   ],
 ];

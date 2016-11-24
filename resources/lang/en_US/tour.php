@@ -1,11 +1,7 @@
 <?php
 
-return [
-  'nav' => [
-    'end'  => 'Close',
-    'next' => 'Next',
-    'prev' => 'Back',
-  ],
+return  [
+  //==================================== Translations ====================================//
   'dashboard' => [
     'agenda' => [
       'content' => 'See your appointments in schedule format.',
@@ -72,18 +68,16 @@ return [
       'title'   => 'Language/Idioma',
     ],
     'panel' => [
-      'content' => 'Welcome to your dashboard. Here you will have a quick insights view about the reservations of '.
-                   'your business',
-      'title' => 'Your dashboard',
+      'content' => 'Welcome to your dashboard. Here you will have a quick insights view about the reservations of your business',
+      'title'   => 'Your dashboard',
     ],
     'profile' => [
       'content' => 'Close your session',
       'title'   => 'Your session',
     ],
     'search' => [
-      'content' => 'The search bar is your friend in order to quickly get to the contact, appointment, business or '.
-                   'service you need.',
-      'title' => 'Lookup',
+      'content' => 'The search bar is your friend in order to quickly get to the contact, appointment, business or service you need.',
+      'title'   => 'Lookup',
     ],
     'services' => [
       'content' => 'Manage from here all the services you provide.',
@@ -94,30 +88,31 @@ return [
       'title'   => 'Availability',
     ],
   ],
+  'nav' => [
+    'end'  => 'Close',
+    'next' => 'Next',
+    'prev' => 'Back',
+  ],
   'pricing' => [
     'step1' => [
-      'title'   => 'Free',
       'content' => 'Ideal plan for freelance professionals.',
+      'title'   => 'Free',
     ],
     'step2' => [
-      'title'   => 'Contact Addressbook',
       'content' => 'Unlimited contacts.',
+      'title'   => 'Contact Addressbook',
     ],
     'step3' => [
-      'title'   => 'Services',
       'content' => 'Up to 3 services.',
+      'title'   => 'Services',
     ],
     'step4' => [
-      'title'   => 'Appointments',
       'content' => 'Unlimited monthly appointments.',
+      'title'   => 'Appointments',
     ],
     'step5' => [
-      'title'   => 'Starter',
       'content' => 'Ideal for growing businesses.',
-    ],
-    'step6' => [
-      'title'   => 'Payment Methods',
-      'content' => 'We accept a wide range of payment methods.',
+      'title'   => 'Starter',
     ],
   ],
 ];

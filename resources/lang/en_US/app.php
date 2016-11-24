@@ -1,25 +1,15 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
-*************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
+return  [
   'btn' => [
-    'update' => 'Update',
-    'go_to_dashboard'  => 'Go to Dashboard',
+    'get_to_dashboard' => 'Get to Dashboard',
+    'update'           => 'Update',
   ],
   'business' => [
     'category' => [
-      'garage'       => 'Car Mechanic',
-      'doctor'       => 'Healthcare',
-      'photography'  => 'Photography',
-      'spa'          => 'Spa & Beauty',
-      'martial-arts' => 'Martial Arts',
-      'yoga'         => 'Yoga',
-      'consulting'   => 'Consulting',
-      'hairdresser'  => 'Hairdresser',
-      'beauty'       => 'Beauty & Healthcare',
+      'doctor'      => 'Healthcare',
+      'garage'      => 'Car Mechanic',
+      'photography' => 'Photography',
     ],
   ],
   'dateformat' => [
@@ -40,27 +30,23 @@ return [
   ],
   'msg' => [
     'invalid_token'     => 'We found some validation problems, please submit your form again.',
-    'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
-    'invalid_url'       => 'The link you try to access does not exist, try browsing the directory.',
     'slug_is_available' => 'The :baseurl name is available. Register it now.',
   ],
   'name' => 'timegrid.io',
   'nav'  => [
-    'dashboard' => 'Dashboard',
-    'login'     => 'Login',
-    'logout'    => 'Logout',
-    'help'      => 'Help',
-    'preferences' => 'Preferences',
-    'manager'   => [
+    'help'    => 'Help',
+    'login'   => 'Login',
+    'logout'  => 'Logout',
+    'manager' => [
       'business' => [
-        'register' => 'SignUp Business',
-        'list'     => 'List',
         'menu'     => 'My Businesses',
+        'register' => 'SignUp Business',
       ],
     ],
-    'manual'   => 'User Manual',
-    'register' => 'Register',
-    'user'     => [
+    'manual'      => 'User Manual',
+    'preferences' => 'Preferences',
+    'register'    => 'Register',
+    'user'        => [
       'business' => [
         'menu'             => 'Directory',
         'my_appointments'  => 'My Reservations',
@@ -74,10 +60,6 @@ return [
     'title' => 'Recently',
   ],
   'search' => [
-    'msg' => [
-      'no_results' => 'We found nothing with this criteria: :criteria',
-    ],
     'placeholder' => 'search',
   ],
-  //================================== Obsolete strings ==================================//
 ];

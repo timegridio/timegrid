@@ -1,25 +1,17 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
-*************************************************************************/
 
-return [
-  //==================================== Translations ====================================//
+return  [
+  //============================== New strings to translate ==============================//
   'btn' => [
-    'update' => 'Aggiorna',
-    'go_to_dashboard'  => 'Vai alla Dashboard',
+    'get_to_dashboard' => 'Andare al dashboard',
+    'update'           => 'Aggiorna',
   ],
+  //==================================== Translations ====================================//
   'business' => [
     'category' => [
-      'garage'       => 'Meccanico',
-      'doctor'       => 'Sanit&agrave;',
-      'photography'  => 'Fotografia',
-      'spa'          => 'Spa & Bellezza',
-      'martial-arts' => 'Arti Marziali',
-      'yoga'         => 'Yoga',
-      'consulting'   => 'Consulenza',
-      'hairdresser'  => 'Parrucchiere',
-      'beauty'       => 'Bellezza & Cura del corpo'
+      'doctor'      => 'Sanit&agrave;',
+      'garage'      => 'Meccanico',
+      'photography' => 'Fotografia',
     ],
   ],
   'dateformat' => [
@@ -40,27 +32,23 @@ return [
   ],
   'msg' => [
     'invalid_token'     => 'Errore di validazione, per favore riprova.',
-    'general_exception' => 'Spiacenti, errore del sistema. Stiamo lavorando per risolverlo ;)',
-    'invalid_url'       => 'Pagina inesistente, prova a navigare la directory.',
     'slug_is_available' => 'Il nome :baseurl &egrave; disponibile. Registralo adesso.',
   ],
   'name' => 'timegrid.io',
   'nav'  => [
-    'dashboard' => 'Dashboard',
-    'login'     => 'Login',
-    'logout'    => 'Logout',
-    'help'      => 'Help',
-    'preferences' => 'Impostazioni',
-    'manager'   => [
+    'help'    => 'Help',
+    'login'   => 'Login',
+    'logout'  => 'Logout',
+    'manager' => [
       'business' => [
-        'register' => 'Registra Attivit&agrave;',
-        'list'     => 'Lista',
         'menu'     => 'Le Mie Attivit&agrave;',
+        'register' => 'Registra Attivit&agrave;',
       ],
     ],
-    'manual'   => 'Manuale Utente',
-    'register' => 'Registra',
-    'user'     => [
+    'manual'      => 'Manuale Utente',
+    'preferences' => 'Impostazioni',
+    'register'    => 'Registra',
+    'user'        => [
       'business' => [
         'menu'             => 'Directory',
         'my_appointments'  => 'Le Mie Prenotazioni',
@@ -74,10 +62,6 @@ return [
     'title' => 'Recenti',
   ],
   'search' => [
-    'msg' => [
-      'no_results' => 'Non abbiamo trovato nulla con questa selezione: :criteria',
-    ],
     'placeholder' => 'search',
   ],
-  //================================== Obsolete strings ==================================//
 ];

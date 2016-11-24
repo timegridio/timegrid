@@ -1,20 +1,12 @@
 <?php
 
 return  [
-  //============================== New strings to translate ==============================//
-  'btn' =>  [
-    'register-me'    => 'Register me',
+  //==================================== Translations ====================================//
+  'btn' => [
     'pick-this-time' => 'Pick this time',
   ],
-  'steps' =>  [
-    'title' =>  [
-      'register'       => 'Authorization',
-      'pick-a-date'    => 'Pick a date',
-      'pick-a-service' => 'Pick a service',
-      'pick-a-time'    => 'Pick a time',
-      'recap'          => 'Recap',
-    ],
-    'label' =>  [
+  'steps' => [
+    'label' => [
       'cancel'     => 'Cancel',
       'current'    => 'Current',
       'finish'     => 'Finish',
@@ -23,6 +15,11 @@ return  [
       'pagination' => 'Pagination',
       'previous'   => 'Previous',
     ],
+    'title' => [
+      'pick-a-date'    => 'Pick a date',
+      'pick-a-service' => 'Pick a service',
+      'pick-a-time'    => 'Pick a time',
+      'recap'          => 'Recap',
+    ],
   ],
-  //==================================== Translations ====================================//
 ];

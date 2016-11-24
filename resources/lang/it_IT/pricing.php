@@ -1,24 +1,20 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:37:10
-*************************************************************************/
 
-return [
-  'free'           => 'GRATIS',
-  'month'          => 'mese',
+return  [
+  //==================================== Translations ====================================//
   'feature' => [
+    'customized_support'     => 'Supporto personalizzato',
+    'one_specialist'         => '<strong>un</strong> specialista',
     'unlimited_appointments' => 'appuntamenti <strong>illimitato</strong>',
-    'unlimited_contacts' => 'contatti in agenda <strong>illimitato</strong>',
-    'unlimited_services' => 'servizi <strong>illimitato</strong>',
-    'unlimited_specialists' => 'specialisti <strong>illimitato</strong>',
-    'up_to_appointments' => 'appuntamenti <strong>fino a :limit</strong>',
-    'up_to_contacts' => 'contatti in agenda <strong>fino a :limit</strong>',
-    'up_to_services' => 'servizi <strong>fino a :limit</strong>',
-    'up_to_specialists' => 'specialisti <strong>fino a :limit</strong>',
-    'one_specialist' => '<strong>un</strong> specialista',
-    'customized_support' => 'Supporto personalizzato',
-   ],
-  'plan'           => [
+    'unlimited_contacts'     => 'contatti in agenda <strong>illimitato</strong>',
+    'unlimited_services'     => 'servizi <strong>illimitato</strong>',
+    'unlimited_specialists'  => 'specialisti <strong>illimitato</strong>',
+    'up_to_contacts'         => 'contatti in agenda <strong>fino a :limit</strong>',
+    'up_to_services'         => 'servizi <strong>fino a :limit</strong>',
+  ],
+  'free'  => 'GRATIS',
+  'month' => 'mese',
+  'plan'  => [
     'free' => [
       'hint'   => 'Ideale per freelancer',
       'name'   => 'Gratis',
@@ -30,5 +26,4 @@ return [
       'submit' => 'Contratto',
     ],
   ],
-  'unlimited' => 'illimitato|illimitato',
 ];

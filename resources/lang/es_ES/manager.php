@@ -1,50 +1,15 @@
 <?php
 
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57
-*************************************************************************/
-
-return [
-  //============================== New strings to translate ==============================//
-  'humanresource' => [
-    'btn' => [
-      'create' => 'Agregar',
-      'delete' => 'Remover',
-      'store'  => 'Guardar',
-      'update' => 'Actualizar',
-    ],
-    'create' => [
-      'instructions' => 'Agregar un Recurso Humano',
-      'title'        => 'Recursos Humanos',
-    ],
-    'form' => [
-      'calendar_link' => [
-        'label' => 'Link de Calendario',
-      ],
-      'capacity' => [
-        'label' => 'Capacidad',
-      ],
-      'name' => [
-        'label' => 'Nombre',
-      ],
-    ],
-    'index' => [
-      'instructions' => 'Gestiona tus Recursos Humanos aquí',
-      'title'        => 'Recursos Humanos',
-    ],
-  ],
+return  [
   //==================================== Translations ====================================//
   'business' => [
     'btn' => [
       'tooltip' => [
-        'agenda'        => 'Agenda de Citas',
-        'contacts'      => 'Lista de Contactos',
-        'edit'          => 'Editar datos del Prestador',
-        'preferences'   => 'Cambiar Preferencias',
-        'services'      => 'Gestionar Servicios',
-        'vacancies'     => 'Publicar Disponibilidad',
-        'notifications' => 'Leer notificaciones',
+        'agenda'         => 'Agenda de Citas',
+        'contacts'       => 'Lista de Contactos',
         'humanresources' => 'Staff',
+        'services'       => 'Gestionar Servicios',
+        'vacancies'      => 'Publicar Disponibilidad',
       ],
     ],
     'hint' => [
@@ -60,13 +25,13 @@ return [
     ],
   ],
   'businesses' => [
-    'check' => [
-      'remember_vacancies'  => 'Recordar esta disponibilidad como predeterminada',
-      'unpublish_vacancies' => 'Limpiar mi disponibilidad actual antes de publicar',
-    ],
     'btn' => [
       'store'  => 'Registrar',
       'update' => 'Actualizar',
+    ],
+    'check' => [
+      'remember_vacancies'  => 'Recordar esta disponibilidad como predeterminada',
+      'unpublish_vacancies' => 'Limpiar mi disponibilidad actual antes de publicar',
     ],
     'contacts' => [
       'btn' => [
@@ -76,27 +41,12 @@ return [
     'create' => [
       'title' => 'Registrar un prestador',
     ],
-    'notifications' => [
-      'title' => 'Notificaciones',
-      'help' => 'Todo lo sucedido recientemente',
-    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'Aún no tienes servicios cargados! Hazlo aquí!',
         'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
       ],
-      'panel' => [
-        'title_appointments_active'    => 'Citas Activas',
-        'title_appointments_canceled'  => 'Citas Canceladas',
-        'title_appointments_served'    => 'Citas Atendidas',
-        'title_appointments_today'     => 'Hoy',
-        'title_appointments_tomorrow'  => 'Mañana',
-        'title_appointments_total'     => 'Citas Totales',
-        'title_contacts_subscribed'    => 'Contactos Suscriptos',
-        'title_contacts_registered'    => 'Contactos Registrados',
-        'title_total'                  => 'Total',
-      ],
-      'title' => 'Tablero de Control'
+      'title' => 'Tablero de Control',
     ],
     'edit' => [
       'title' => 'Edición de datos del prestador',
@@ -109,15 +59,13 @@ return [
         'label'       => 'Descripción',
         'placeholder' => 'Describe tus prestaciones',
       ],
+      'link' => [
+        'label' => 'Enlace',
+      ],
       'name' => [
         'label'       => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
         'validation'  => 'Se requiere nombre',
-      ],
-      'link' => [
-        'label'       => 'Enlace',
-        'placeholder' => 'Enlace a tu página timegrid',
-        'validation'  => 'El enlace a tu página timegrid es inválido',
       ],
       'phone' => [
         'label'       => 'Móvil',
@@ -133,11 +81,6 @@ return [
       ],
       'timezone' => [
         'label' => 'Zona horaria',
-      ],
-      'slug' => [
-        'label'       => 'Alias',
-        'placeholder' => 'así será el link en la web',
-        'validation'  => 'Se requiere un alias',
       ],
     ],
     'index' => [
@@ -166,6 +109,10 @@ return [
       'update' => [
         'success' => 'Datos del prestador actualizados',
       ],
+    ],
+    'notifications' => [
+      'help'  => 'Todo lo sucedido recientemente',
+      'title' => 'Notificaciones',
     ],
     'preferences' => [
       'instructions' => 'Aquí puedes configurar las preferencias a las necesidades de tu negocio',
@@ -206,10 +153,10 @@ return [
         'female' => [
           'label' => 'Femenino',
         ],
-        'male' => [
+        'label' => 'Sexo',
+        'male'  => [
           'label' => 'Masculino',
         ],
-        'label' => 'Sexo',
       ],
       'lastname' => [
         'label'      => 'Apellido',
@@ -231,13 +178,9 @@ return [
       'prerequisites' => [
         'label' => 'Prerequisitos',
       ],
-      'data' => [
-        'label' => 'datos en formato CSV',
-      ],
     ],
     'label' => [
       'birthdate'      => 'Nacimiento',
-      'email'          => 'Email',
       'member_since'   => 'Suscripto desde',
       'mobile'         => 'Móvil',
       'nin'            => 'DNI',
@@ -254,7 +197,6 @@ return [
         'lastname'  => 'Apellidos',
         'mobile'    => 'Móvil',
         'username'  => 'Usuario',
-        'quality'   => 'Puntaje',
       ],
       'msg' => [
         'filter_no_results' => 'Nada por aquí',
@@ -273,6 +215,33 @@ return [
       ],
     ],
     'title' => 'Mis Clientes',
+  ],
+  'humanresource' => [
+    'btn' => [
+      'create' => 'Agregar',
+      'delete' => 'Remover',
+      'store'  => 'Guardar',
+      'update' => 'Actualizar',
+    ],
+    'create' => [
+      'instructions' => 'Agregar un Recurso Humano',
+      'title'        => 'Recursos Humanos',
+    ],
+    'form' => [
+      'calendar_link' => [
+        'label' => 'Link de Calendario',
+      ],
+      'capacity' => [
+        'label' => 'Capacidad',
+      ],
+      'name' => [
+        'label' => 'Nombre',
+      ],
+    ],
+    'index' => [
+      'instructions' => 'Gestiona tus Recursos Humanos aquí',
+      'title'        => 'Recursos Humanos',
+    ],
   ],
   'humanresources' => [
     'msg' => [
@@ -293,14 +262,14 @@ return [
       'update' => 'Actualizar',
     ],
     'form' => [
+      'color' => [
+        'label' => 'Color',
+      ],
       'duration' => [
         'label' => 'Duración en minutos',
       ],
       'name' => [
         'label' => 'Nombre del servicio',
-      ],
-      'color' => [
-        'label' => 'Color',
       ],
       'servicetype' => [
         'label' => 'Tipo',
@@ -328,7 +297,7 @@ return [
       'title'        => 'Agregar un servicio',
     ],
     'edit' => [
-      'title'        => 'Editar servicio',
+      'title' => 'Editar servicio',
     ],
     'index' => [
       'instructions' => 'Estos son tus servicios',
@@ -360,5 +329,4 @@ return [
       ],
     ],
   ],
-  //================================== Obsolete strings ==================================//
 ];

@@ -1,29 +1,7 @@
 <?php
 
 return  [
-  //============================== New strings to translate ==============================//
-  'booking' => [
-    'msg' => [
-      'validate' => [
-        'error' => [
-          'bad-code'                              => 'Spiacenti, codice appuntamento non valido',
-          'no-appointment-was-found'              => 'Spiacenti, nessun appuntamento trovato per il codice fornito',
-        ],
-        'success' => [
-          'your-appointment-is-already-confirmed' => 'Il tuo appuntamento risulta gi&agrave; confermato',
-          'your-appointment-was-confirmed'        => 'Appuntamento confermato correttamente',
-        ],
-      ],
-      'store' => [
-        'error'            => 'Spiacenti, disponibilit&agrave; terminata per la richiesta effettuata.',
-        'not-registered'   => 'Devi risultare negli indirizzi dell\'azienda per poter effettuare una prenotazione.',
-        'sorry_duplicated' => 'Spiacenti, il tuo appuntamento risulta duplicato con il codice :code utilizzato precedentemente',
-        'success'          => 'Buone notizie! Il tuo appuntamento &egrave; stato registrato con il codice :code',
-      ],
-      'you_are_not_subscribed_to_business' => 'Per effettuare una prenotazione devi essere registrato presso l\'azienda',
-    ],
-  ],
-  //==================================== Translations ====================================//
+  'go_to_business_dashboard' => 'Andare al dashboard',
   'appointments' => [
     'alert' => [
       'book_in_biz_on_behalf_of' => 'Effettua una prenotazione per :contact presso :biz',
@@ -79,6 +57,27 @@ return  [
         'status'      => 'Stato',
       ],
       'title' => 'Appuntamenti',
+    ],
+  ],
+  'booking' => [
+    'msg' => [
+      'store' => [
+        'error'            => 'Spiacenti, disponibilit&agrave; terminata per la richiesta effettuata.',
+        'not-registered'   => 'Devi risultare negli indirizzi dell\'azienda per poter effettuare una prenotazione.',
+        'sorry_duplicated' => 'Spiacenti, il tuo appuntamento risulta duplicato con il codice :code utilizzato precedentemente',
+        'success'          => 'Buone notizie! Il tuo appuntamento &egrave; stato registrato con il codice :code',
+      ],
+      'validate' => [
+        'error' => [
+          'bad-code'                 => 'Spiacenti, codice appuntamento non valido',
+          'no-appointment-was-found' => 'Spiacenti, nessun appuntamento trovato per il codice fornito',
+        ],
+        'success' => [
+          'your-appointment-is-already-confirmed' => 'Il tuo appuntamento risulta gi&agrave; confermato',
+          'your-appointment-was-confirmed'        => 'Appuntamento confermato correttamente',
+        ],
+      ],
+      'you_are_not_subscribed_to_business' => 'Per effettuare una prenotazione devi essere registrato presso l\'azienda',
     ],
   ],
   'business' => [
