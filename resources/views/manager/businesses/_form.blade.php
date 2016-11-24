@@ -61,14 +61,6 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label( trans('manager.businesses.form.timezone.label'), null, ['class' => 'control-label col-sm-3'] ) !!}<br>
-    <div class="col-sm-9">
-        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2 col-sm-2', 'required'], ['customValue' => 'true']) !!}
-        <div class="help-block with-errors"></div>
-    </div>
-</div>
-
-<div class="form-group">
     {!! Form::label( trans('manager.businesses.form.category.label'), null, ['class' => 'control-label col-sm-3'] ) !!}<br>
     <div class="col-sm-9">
         {!! Form::select('category', $categories, empty($business) ? null : $business->category_id, ['name' => 'category', 'class' => 'form-control select2', 'required']) !!}
@@ -108,6 +100,14 @@
             'class' => 'form-control',
             'placeholder'=> trans('manager.businesses.form.social_facebook.placeholder')
             ]) !!}
+        <div class="help-block with-errors"></div>
+    </div>
+</div>
+
+<div class="form-group">
+    {!! Form::label( trans('manager.businesses.form.timezone.label'), null, ['class' => 'control-label col-sm-3'] ) !!}<br>
+    <div class="col-sm-9">
+        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2 col-sm-2', 'required'], ['customValue' => 'true']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
