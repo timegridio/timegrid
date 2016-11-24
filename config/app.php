@@ -183,7 +183,6 @@ return [
         Alariva\Tidiochat\TidioChatServiceProvider::class,
         Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
         Timegridio\ICalReader\ICalReaderServiceProvider::class,
-        Potsky\LaravelLocalizationHelpers\LaravelLocalizationHelpersServiceProvider::class,
     ],
 
     /*
