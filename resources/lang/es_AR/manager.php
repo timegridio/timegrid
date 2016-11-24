@@ -46,6 +46,17 @@ return  [
         'no_services_set'  => 'Aún no tienes servicios cargados! Hazlo aquí!',
         'no_vacancies_set' => 'Aún no tienes publicada tu disponibilidad! Hazlo aquí!',
       ],
+      'panel' => [
+        'title_appointments_active'    => 'Turnos Activos',
+        'title_appointments_canceled'  => 'Turnos Cancelados',
+        'title_appointments_served'    => 'Turnos Atendidos',
+        'title_appointments_today'     => 'Hoy',
+        'title_appointments_tomorrow'  => 'Mañana',
+        'title_appointments_total'     => 'Turnos Totales',
+        'title_contacts_subscribed'    => 'Contactos Suscriptos',
+        'title_contacts_registered'    => 'Contactos Registrados',
+        'title_total'                  => 'Total',
+      ],
       'title' => 'Panel de Control',
     ],
     'edit' => [
