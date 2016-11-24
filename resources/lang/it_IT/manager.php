@@ -51,6 +51,10 @@ return  [
     'create' => [
       'title' => 'Registra un\'azienda',
     ],
+    'notifications' => [
+      'title' => 'Notifiche',
+      'help' => 'Eventi recenti',
+    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'Non ci sono ancora servizi disponibili. Aggiungi nuovi servizi da qui!',
@@ -134,10 +138,6 @@ return  [
         'success' => 'Dati aziendali aggiornati',
       ],
     ],
-    'notifications' => [
-      'help'  => 'Eventi recenti',
-      'title' => 'Notifiche',
-    ],
     'preferences' => [
       'instructions' => 'Da qui puoi impostare i dati delle tua azienda.',
       'title'        => 'Impostazioni Azienda',
@@ -205,6 +205,7 @@ return  [
     ],
     'label' => [
       'birthdate'      => 'Data di nascita',
+      'email'          => 'Email',
       'member_since'   => 'Registrato dal',
       'mobile'         => 'Cellulare',
       'nin'            => 'Codice Fiscale/P.iva',

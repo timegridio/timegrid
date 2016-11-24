@@ -41,6 +41,10 @@ return  [
     'create' => [
       'title' => 'Registrar un prestador',
     ],
+    'notifications' => [
+      'title' => 'Notificaciones',
+      'help' => 'Todo lo sucedido recientemente',
+    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'Aún no tienes servicios cargados! Hazlo aquí!',
@@ -70,13 +74,15 @@ return  [
         'label'       => 'Descripción',
         'placeholder' => 'Describí tus prestaciones',
       ],
-      'link' => [
-        'label' => 'Enlace',
-      ],
       'name' => [
         'label'       => 'Nombre',
         'placeholder' => 'Nombre completo del prestador',
         'validation'  => 'Se requiere nombre',
+      ],
+      'link' => [
+        'label'       => 'Enlace',
+        'placeholder' => 'Enlace a tu página timegrid',
+        'validation'  => 'El enlace a tu página timegrid es inválido',
       ],
       'phone' => [
         'label'       => 'Móvil',
@@ -169,10 +175,10 @@ return  [
         'female' => [
           'label' => 'Femenino',
         ],
-        'label' => 'Sexo',
-        'male'  => [
+        'male' => [
           'label' => 'Masculino',
         ],
+        'label' => 'Sexo',
       ],
       'lastname' => [
         'label'      => 'Apellido',
@@ -197,6 +203,7 @@ return  [
     ],
     'label' => [
       'birthdate'      => 'Nacimiento',
+      'email'          => 'Email',
       'member_since'   => 'Suscripto desde',
       'mobile'         => 'Móvil',
       'nin'            => 'DNI',
