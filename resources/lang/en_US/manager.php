@@ -46,6 +46,17 @@ return  [
         'no_services_set'  => 'There are still no services added. Add them from here!',
         'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
       ],
+      'panel' => [
+        'title_appointments_active'    => 'Appointments Active',
+        'title_appointments_canceled'  => 'Appointments Canceled',
+        'title_appointments_served'    => 'Appointments Served',
+        'title_appointments_today'     => 'Today',
+        'title_appointments_tomorrow'  => 'Tomorrow',
+        'title_appointments_total'     => 'Total Appointments',
+        'title_contacts_subscribed'    => 'Contacts Subscribed',
+        'title_contacts_registered'    => 'Contacts Registered',
+        'title_total'                  => 'Total',
+      ],
       'title' => 'Dashboard',
     ],
     'edit' => [

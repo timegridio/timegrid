@@ -56,6 +56,18 @@ return  [
         'no_services_set'  => 'Non ci sono ancora servizi disponibili. Aggiungi nuovi servizi da qui!',
         'no_vacancies_set' => 'Non hai ancora inserito la tua disponibilit&agrave; Fallo da qui!',
       ],
+      'panel' => [
+        'title_appointments_active'    => 'Appuntamenti di oggi',
+        'title_appointments_active_tomorrow'    => 'Appuntamenti di domani',
+        'title_appointments_canceled'  => 'Appuntamenti di oggi Cancellati',
+        'title_appointments_served'    => 'Appuntamenti Conclusi',
+        'title_appointments_today'     => 'Oggi',
+        'title_appointments_tomorrow'  => 'Domani',
+        'title_appointments_total'     => 'Appuntamenti totali',
+        'title_contacts_subscribed'    => 'Contatti Approvati',
+        'title_contacts_registered'    => 'Contatti Registrati',
+        'title_total'                  => 'Totale',
+      ],
       'title' => 'Dashboard',
     ],
     'edit' => [
