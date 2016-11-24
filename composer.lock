@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93c17f30c60ec047db01223441ac0c3f",
-    "content-hash": "9220d42385da388af68aa3826afefacd",
+    "hash": "8fbeea23701bb57aa3717e4ef6d4aa41",
+    "content-hash": "25a5fc623f7caa6acb69144297246361",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -4982,6 +4982,64 @@
             "time": "2015-06-14 21:17:01"
         },
         {
+            "name": "friendsofphp/php-cs-fixer",
+            "version": "v1.12.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfPHP/PHP-CS-Fixer.git",
+                "reference": "c5a9d66dd27f02a3ffba4ec451ce27702604cdc8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfPHP/PHP-CS-Fixer/zipball/c5a9d66dd27f02a3ffba4ec451ce27702604cdc8",
+                "reference": "c5a9d66dd27f02a3ffba4ec451ce27702604cdc8",
+                "shasum": ""
+            },
+            "require": {
+                "ext-tokenizer": "*",
+                "php": "^5.3.6 || >=7.0 <7.2",
+                "sebastian/diff": "^1.1",
+                "symfony/console": "^2.3 || ^3.0",
+                "symfony/event-dispatcher": "^2.1 || ^3.0",
+                "symfony/filesystem": "^2.1 || ^3.0",
+                "symfony/finder": "^2.1 || ^3.0",
+                "symfony/process": "^2.3 || ^3.0",
+                "symfony/stopwatch": "^2.5 || ^3.0"
+            },
+            "conflict": {
+                "hhvm": "<3.9"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.5|^5",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "bin": [
+                "php-cs-fixer"
+            ],
+            "type": "application",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\CS\\": "Symfony/CS/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dariusz Rumiński",
+                    "email": "dariusz.ruminski@gmail.com"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "A tool to automatically fix PHP code style",
+            "time": "2016-11-15 09:10:47"
+        },
+        {
             "name": "fzaninotto/faker",
             "version": "v1.6.0",
             "source": {
@@ -6144,6 +6202,101 @@
                 "xunit"
             ],
             "time": "2016-04-22 10:41:33"
+        },
+        {
+            "name": "potsky/laravel-localization-helpers",
+            "version": "v2.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/laravel-localization-helpers.git",
+                "reference": "498e089cbac004505ce99c23ae99a4808e1e8e50"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/laravel-localization-helpers/zipball/498e089cbac004505ce99c23ae99a4808e1e8e50",
+                "reference": "498e089cbac004505ce99c23ae99a4808e1e8e50",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^1.11",
+                "laravel/framework": "5.3.*",
+                "potsky/microsoft-translator-php-sdk": "*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "orchestra/testbench": "3.3.*",
+                "phpunit/phpunit": "^4.0|^5.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/migrations"
+                ],
+                "psr-0": {
+                    "Potsky\\LaravelLocalizationHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Potsky"
+                }
+            ],
+            "description": "An artisan command package for easy translation management",
+            "time": "2016-09-30 11:14:39"
+        },
+        {
+            "name": "potsky/microsoft-translator-php-sdk",
+            "version": "v0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/potsky/microsoft-translator-php-sdk.git",
+                "reference": "4d409498f4704ebf613062aa5a1d802c61f158c6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/potsky/microsoft-translator-php-sdk/zipball/4d409498f4704ebf613062aa5a1d802c61f158c6",
+                "reference": "4d409498f4704ebf613062aa5a1d802c61f158c6",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9",
+                "phpunit/phpunit": "^4.0|^5.0",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "MicrosoftTranslator": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "potsky",
+                    "role": "Developer"
+                }
+            ],
+            "description": "PHP SDK for Microsoft Translator",
+            "homepage": "https://github.com/potsky/microsoft-translator-php-sdk",
+            "keywords": [
+                "bing",
+                "microsoft",
+                "php",
+                "sdk",
+                "translation"
+            ],
+            "time": "2016-02-16 14:40:52"
         },
         {
             "name": "satooshi/php-coveralls",
