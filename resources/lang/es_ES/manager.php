@@ -93,6 +93,11 @@ return  [
       'timezone' => [
         'label' => 'Zona horaria',
       ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'así será el link en la web',
+        'validation'  => 'Se requiere un alias',
+      ],
     ],
     'index' => [
       'help' => 'Desde aquí puedes administrar todos los prestadores',

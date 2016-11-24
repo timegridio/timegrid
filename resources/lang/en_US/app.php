@@ -7,9 +7,15 @@ return  [
   ],
   'business' => [
     'category' => [
-      'doctor'      => 'Healthcare',
-      'garage'      => 'Car Mechanic',
-      'photography' => 'Photography',
+      'garage'       => 'Car Mechanic',
+      'doctor'       => 'Healthcare',
+      'photography'  => 'Photography',
+      'spa'          => 'Spa & Beauty',
+      'martial-arts' => 'Martial Arts',
+      'yoga'         => 'Yoga',
+      'consulting'   => 'Consulting',
+      'hairdresser'  => 'Hairdresser',
+      'beauty'       => 'Beauty & Healthcare',
     ],
   ],
   'dateformat' => [
@@ -30,6 +36,8 @@ return  [
   ],
   'msg' => [
     'invalid_token'     => 'We found some validation problems, please submit your form again.',
+    'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
+    'invalid_url'       => 'The link you try to access does not exist, try browsing the directory.',
     'slug_is_available' => 'The :baseurl name is available. Register it now.',
   ],
   'name' => 'timegrid.io',
@@ -60,6 +68,9 @@ return  [
     'title' => 'Recently',
   ],
   'search' => [
+    'msg' => [
+      'no_results' => 'We found nothing with this criteria: :criteria',
+    ],
     'placeholder' => 'search',
   ],
 ];

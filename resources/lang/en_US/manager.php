@@ -93,6 +93,11 @@ return  [
       'timezone' => [
         'label' => 'Timezone',
       ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'this will be your timegrid URL',
+        'validation'  => 'An alias is required',
+      ],
     ],
     'index' => [
       'help' => 'From here you can manage all your businesses',

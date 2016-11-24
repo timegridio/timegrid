@@ -12,9 +12,11 @@ return  [
     'served'    => 'Served',
   ],
   'text' => [
-    'arrive_at' => 'Please arrive at :at|we wait for you between :from to :to',
-    'from'      => 'from',
     'minutes'   => 'minutes',
     'to'        => 'to',
+    'from'      => 'from',
+    'arrive_at' => 'Please arrive at :at|we wait for you between :from to :to',
+    'today'     => 'today',
+    'tomorrow'  => 'tomorrow',
   ],
 ];

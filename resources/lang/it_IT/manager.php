@@ -73,6 +73,40 @@ return  [
     'edit' => [
       'title' => 'Modifica il profilo del Lavoro',
     ],
+    'form' => [
+      'category' => [
+        'label' => 'Industria',
+      ],
+      'description' => [
+        'label'       => 'Descriviti',
+        'placeholder' => 'Descrivi il tuo settore ed i servizi che fornisci',
+      ],
+      'name' => [
+        'label'       => 'Nome',
+        'placeholder' => 'Ragione Sociale',
+        'validation'  => 'Inserisci un Nome',
+      ],
+      'phone' => [
+        'label'       => 'Cellulare',
+        'placeholder' => 'numero di Cellulare',
+      ],
+      'postal_address' => [
+        'label'       => 'Indirizzo Postale',
+        'placeholder' => 'Via, Provincia, Citt&agrave;, Nazione',
+      ],
+      'social_facebook' => [
+        'label'       => 'La tua pagina Facebook',
+        'placeholder' => 'https://www.facebook.com/timegrid.io',
+      ],
+      'timezone' => [
+        'label' => 'TimeZone',
+      ],
+      'slug' => [
+        'label'       => 'Alias',
+        'placeholder' => 'questo sar&agrave; il nome della la tua pagina timegrid',
+        'validation'  => 'Inserisci un Alias',
+      ],
+    ],
     'index' => [
       'help' => 'Da qui puoi gestire tutte le tue aziende',
       'msg'  => [
