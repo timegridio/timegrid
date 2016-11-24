@@ -64,7 +64,7 @@ return  [
     ],
     'form' => [
       'category' => [
-        'label' => 'Rubro Comercial',
+        'label' => 'Industria',
       ],
       'description' => [
         'label'       => 'Descripción',
