@@ -13,7 +13,7 @@
 
             <div class="panel-body">
                 {!! Form::model($service, ['route' => ['manager.business.service.store', $business], 'class' => 'form-horizontal']) !!}
-                    @include('manager.businesses.services._form', ['submitLabel' => trans('manager.services.btn.store')])
+                    @include('manager.businesses.services._form', ['submitLabel' => trans('manager.services.btn.store'), 'extended' => false])
                 {!! Form::close() !!}
             </div>
         </div>
