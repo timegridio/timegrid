@@ -1,11 +1,7 @@
 <?php
 
-return [
-  'nav' => [
-    'end'  => 'Chiudi',
-    'next' => 'Avanti',
-    'prev' => 'Indietro',
-  ],
+return  [
+  //==================================== Translations ====================================//
   'dashboard' => [
     'agenda' => [
       'content' => 'Consulta i tuoi appuntamenti sul Calendario.',
@@ -72,18 +68,16 @@ return [
       'title'   => 'Lingua',
     ],
     'panel' => [
-      'content' => 'Benvenuto sulla tua dashboard. Da qui avrai una visuale completa delle prenotazioni per '.
-                   'la tua azienda',
-      'title' => 'Dashboard',
+      'content' => 'Benvenuto sulla tua dashboard. Da qui avrai una visuale completa delle prenotazioni per la tua azienda',
+      'title'   => 'Dashboard',
     ],
     'profile' => [
       'content' => 'Termina sessione',
       'title'   => 'La tua sessione',
     ],
     'search' => [
-      'content' => 'Ricerca contatti, appuntamenti, aziende oppure '.
-                   'i tuoi servizi.',
-      'title' => 'Ricerca',
+      'content' => 'Ricerca contatti, appuntamenti, aziende oppure i tuoi servizi.',
+      'title'   => 'Ricerca',
     ],
     'services' => [
       'content' => 'Gestisci tutti i servizi che fornisci.',
@@ -94,30 +88,31 @@ return [
       'title'   => 'Disponibilit&agrave;',
     ],
   ],
+  'nav' => [
+    'end'  => 'Chiudi',
+    'next' => 'Avanti',
+    'prev' => 'Indietro',
+  ],
   'pricing' => [
     'step1' => [
-      'title'   => 'Free',
       'content' => 'Il piano ideale per i liberi professionisti.',
+      'title'   => 'Free',
     ],
     'step2' => [
-      'title'   => 'Rubrica contatti',
       'content' => 'Contatti illimitati.',
+      'title'   => 'Rubrica contatti',
     ],
     'step3' => [
-      'title'   => 'Servizi',
       'content' => 'Fino a 3 servizi.',
+      'title'   => 'Servizi',
     ],
     'step4' => [
-      'title'   => 'Appuntamenti',
       'content' => 'Appuntamenti mensili illimitati.',
+      'title'   => 'Appuntamenti',
     ],
     'step5' => [
-      'title'   => 'Starter',
       'content' => 'Ideale per aziende in crescita.',
-    ],
-    'step6' => [
-      'title'   => 'Metodi di pagamento',
-      'content' => 'Accettiamo una vasta gamma di metodi di pagamento.',
+      'title'   => 'Starter',
     ],
   ],
 ];

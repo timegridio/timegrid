@@ -1,50 +1,15 @@
 <?php
 
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57
-*************************************************************************/
-
-return [
-  //============================== New strings to translate ==============================//
-  'humanresource' => [
-    'btn' => [
-      'create' => 'Add',
-      'delete' => 'Remove',
-      'store'  => 'Save',
-      'update' => 'Update',
-    ],
-    'create' => [
-      'instructions' => 'Add human resources who will provide the services',
-      'title'        => 'Human Resources',
-    ],
-    'form' => [
-      'calendar_link' => [
-        'label' => 'Calendar link',
-      ],
-      'capacity' => [
-        'label' => 'Capacity',
-      ],
-      'name' => [
-        'label' => 'Name',
-      ],
-    ],
-    'index' => [
-      'instructions' => 'Manage Human Resources here',
-      'title'        => 'Human Resources',
-    ],
-  ],
+return  [
   //==================================== Translations ====================================//
   'business' => [
     'btn' => [
       'tooltip' => [
-        'agenda'        => 'Reservations schedule',
-        'contacts'      => 'Contact list',
-        'edit'          => 'Edit business profile',
-        'preferences'   => 'Change preferences',
-        'services'      => 'Manage services',
-        'vacancies'     => 'Publish availability',
-        'notifications' => 'Read notifications',
+        'agenda'         => 'Reservations schedule',
+        'contacts'       => 'Contact list',
         'humanresources' => 'Staff',
+        'services'       => 'Manage services',
+        'vacancies'      => 'Publish availability',
       ],
     ],
     'hint' => [
@@ -60,13 +25,13 @@ return [
     ],
   ],
   'businesses' => [
-    'check' => [
-      'remember_vacancies'  => 'Remember these vacancies as default',
-      'unpublish_vacancies' => 'Reset my current availability before publishing',
-    ],
     'btn' => [
       'store'  => 'Register',
       'update' => 'Update',
+    ],
+    'check' => [
+      'remember_vacancies'  => 'Remember these vacancies as default',
+      'unpublish_vacancies' => 'Reset my current availability before publishing',
     ],
     'contacts' => [
       'btn' => [
@@ -76,27 +41,12 @@ return [
     'create' => [
       'title' => 'Register your business',
     ],
-    'notifications' => [
-      'title' => 'Notifications',
-      'help' => 'All what happened recently',
-    ],
     'dashboard' => [
       'alert' => [
         'no_services_set'  => 'There are still no services added. Add them from here!',
         'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
       ],
-      'panel' => [
-        'title_appointments_active'    => 'Appointments Active',
-        'title_appointments_canceled'  => 'Appointments Canceled',
-        'title_appointments_served'    => 'Appointments Served',
-        'title_appointments_today'     => 'Today',
-        'title_appointments_tomorrow'  => 'Tomorrow',
-        'title_appointments_total'     => 'Total Appointments',
-        'title_contacts_subscribed'    => 'Contacts Subscribed',
-        'title_contacts_registered'    => 'Contacts Registered',
-        'title_total'                  => 'Total',
-      ],
-      'title' => 'Dashboard'
+      'title' => 'Dashboard',
     ],
     'edit' => [
       'title' => 'Business profile edit',
@@ -109,15 +59,13 @@ return [
         'label'       => 'Describe yourself',
         'placeholder' => 'Describe your business and the services you provide',
       ],
+      'link' => [
+        'label' => 'Link',
+      ],
       'name' => [
         'label'       => 'Name',
         'placeholder' => 'Commercial name',
         'validation'  => 'A name is required',
-      ],
-      'link' => [
-        'label'       => 'Link',
-        'placeholder' => 'Your timegrid homepage link',
-        'validation'  => 'Your homepage link is invalid',
       ],
       'phone' => [
         'label'       => 'Mobile',
@@ -133,11 +81,6 @@ return [
       ],
       'timezone' => [
         'label' => 'Timezone',
-      ],
-      'slug' => [
-        'label'       => 'Alias',
-        'placeholder' => 'this will be your timegrid URL',
-        'validation'  => 'An alias is required',
       ],
     ],
     'index' => [
@@ -166,6 +109,10 @@ return [
       'update' => [
         'success' => 'Updated business data',
       ],
+    ],
+    'notifications' => [
+      'help'  => 'All what happened recently',
+      'title' => 'Notifications',
     ],
     'preferences' => [
       'instructions' => 'Here you can customize the business settings to your needs.',
@@ -206,10 +153,10 @@ return [
         'female' => [
           'label' => 'Female',
         ],
-        'male' => [
+        'label' => 'Gender',
+        'male'  => [
           'label' => 'Male',
         ],
-        'label' => 'Gender',
       ],
       'lastname' => [
         'label'      => 'Last name',
@@ -231,13 +178,9 @@ return [
       'prerequisites' => [
         'label' => 'Prerequisites',
       ],
-      'data' => [
-        'label' => 'CSV data',
-      ],
     ],
     'label' => [
       'birthdate'      => 'Birthdate',
-      'email'          => 'Email',
       'member_since'   => 'Subscribed since',
       'mobile'         => 'Mobile',
       'nin'            => 'ID',
@@ -254,7 +197,6 @@ return [
         'lastname'  => 'Lastname',
         'mobile'    => 'Mobile',
         'username'  => 'Username',
-        'quality'   => 'Score',
       ],
       'msg' => [
         'filter_no_results' => 'Nothing here',
@@ -273,6 +215,33 @@ return [
       ],
     ],
     'title' => 'My customers',
+  ],
+  'humanresource' => [
+    'btn' => [
+      'create' => 'Add',
+      'delete' => 'Remove',
+      'store'  => 'Save',
+      'update' => 'Update',
+    ],
+    'create' => [
+      'instructions' => 'Add human resources who will provide the services',
+      'title'        => 'Human Resources',
+    ],
+    'form' => [
+      'calendar_link' => [
+        'label' => 'Calendar link',
+      ],
+      'capacity' => [
+        'label' => 'Capacity',
+      ],
+      'name' => [
+        'label' => 'Name',
+      ],
+    ],
+    'index' => [
+      'instructions' => 'Manage Human Resources here',
+      'title'        => 'Human Resources',
+    ],
   ],
   'humanresources' => [
     'msg' => [
@@ -293,14 +262,14 @@ return [
       'update' => 'Update',
     ],
     'form' => [
+      'color' => [
+        'label' => 'Color',
+      ],
       'duration' => [
         'label' => 'Duration in minutes',
       ],
       'name' => [
         'label' => 'Service name',
-      ],
-      'color' => [
-        'label' => 'Color',
       ],
       'servicetype' => [
         'label' => 'Service Type',
@@ -328,7 +297,7 @@ return [
       'title'        => 'Add a service',
     ],
     'edit' => [
-      'title'        => 'Edit service',
+      'title' => 'Edit service',
     ],
     'index' => [
       'instructions' => 'Add as many services as you provide to configure availability for each of them.',
@@ -360,5 +329,4 @@ return [
       ],
     ],
   ],
-  //================================== Obsolete strings ==================================//
 ];

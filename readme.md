@@ -58,10 +58,14 @@ Get started in 10 min with a [Docker image](https://github.com/timegridio/docker
 
 ## Localization
 
-Current supported languages are American English (`en_US`) and Spanish (`es_ES` and `es_AR`).
+Current supported user interface languages are:
 
-Future targeted translations might be French and Italian, however, feel free to contribute with your preferred 
-translation.
+  * American English (`en_US`)
+  * Spanish (`es_ES` and `es_AR`)
+  * Italian (`it_IT`)
+
+Future targeted translations might be French and Arabic, however, feel free to contribute with your preferred 
+translation!
 
 ## Appointment Library
 
@@ -100,6 +104,7 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
   * [Nick N. Huynh](https://github.com/finalblast) for contributions
   * [Kashyap Sharma](https://github.com/Kashyap12) for contributions
   * [Niharika Khanna](https://github.com/niharikak101) for contributions
+  * [Webearit.com](https://www.webearit.com/) for contribution on Italian translation
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License

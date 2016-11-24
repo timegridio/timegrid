@@ -1,19 +1,20 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:37:10 
-*************************************************************************/
 
 return  [
-  'free'           => 'GRATIS',
-  'month'          => 'mes',
-  'plan'           => [
-    'feature' => [
-      'appointments' => 'turnos por mes',
-      'contacts'     => 'contactos en agenda',
-      'services'     => 'servicios',
-      'specialists'  => 'especialista|especialistas',
-      'customized_support' => 'Soporte Personalizado',
-    ],
+  //==================================== Translations ====================================//
+  'feature' => [
+    'customized_support'     => 'Soporte Personalizado',
+    'one_specialist'         => '<strong>un</strong> especialista',
+    'unlimited_appointments' => 'turnos <strong>sin límite</strong>',
+    'unlimited_contacts'     => 'agenda de clientes <strong>sin límite</strong>',
+    'unlimited_services'     => 'servicios <strong>sin límite</strong>',
+    'unlimited_specialists'  => 'especialistas <strong>sin límite</strong>',
+    'up_to_contacts'         => 'agenda de clientes <strong>hasta :limit</strong>',
+    'up_to_services'         => 'servicios <strong>hasta :limit</strong>',
+  ],
+  'free'  => 'GRATIS',
+  'month' => 'mes',
+  'plan'  => [
     'free' => [
       'hint'   => 'Ideal para freelancers',
       'name'   => 'Free',
@@ -21,9 +22,8 @@ return  [
     ],
     'starter' => [
       'hint'   => 'Ideal para negocios',
-      'name'   => 'Gold',
+      'name'   => 'Premium',
       'submit' => 'Contratar',
     ],
   ],
-  'unlimited' => 'ilimitados|ilimitadas',
 ];

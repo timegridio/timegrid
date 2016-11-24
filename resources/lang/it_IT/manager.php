@@ -1,132 +1,12 @@
 <?php
 
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2016/01/27 11:25:57
-*************************************************************************/
-
-return [
+return  [
   //============================== New strings to translate ==============================//
-  'office' => [
-    'btn' => [
-      'create' => 'Aggiungi',
-      'delete' => 'Rimuovi',
-      'store'  => 'Salva',
-      'update' => 'Aggiorna',
-    ],
-    'create' => [
-      'instructions' => 'Aggiungi una diviso',
-      'title'        => 'Divisi',
-    ],
-    'form' => [
-      'capacity' => [
-        'label' => 'Capacit&agrave;',
-      ],
-      'name' => [
-        'label' => 'Nome',
-      ],
-    ],
-    'index' => [
-      'instructions' => 'Gestisci qui i Divisi',
-      'title'        => 'Divisi',
-    ],
-  ],
-    'humanresource' => [
-    'btn' => [
-      'create' => 'Aggiungi',
-      'delete' => 'Rimuovi',
-      'store'  => 'Salva',
-      'update' => 'Aggiorna',
-    ],
-    'create' => [
-      'instructions' => 'Aggiungi una risorsa umana che fornir&agrave; il servizio',
-      'title'        => 'Risorse Umane',
-    ],
-    'form' => [
-      'calendar_link' => [
-        'label' => 'link al Calendario',
-      ],
-      'capacity' => [
-        'label' => 'Capacit&agrave;',
-      ],
-      'name' => [
-        'label' => 'Nome',
-      ],
-    ],
-    'index' => [
-      'instructions' => 'Gestisci qui le Risorse Umane',
-      'title'        => 'Risorse Umane',
-    ],
-  ],
-  //==================================== Translations ====================================//
-  'business' => [
-    'btn' => [
-      'tooltip' => [
-        'agenda'        => 'Calendario Prenotazioni',
-        'contacts'      => 'Lista Contatti',
-        'edit'          => 'Modifica il Profilo Aziendale',
-        'preferences'   => 'Modifica impostazioni',
-        'services'      => 'Gestisci i Servizi',
-        'vacancies'     => 'Disponibilit&agrave;',
-        'notifications' => 'Leggi le notifiche',
-        'humanresources' => 'Staff',
-      ],
-    ],
-    'hint' => [
-      'out_of_vacancies' => 'Pubblica la tua disponibilit&agrave;<br /><br />E\'necessaria per consentire ai clienti di prendere le prenotazioni.',
-      'set_services'     => 'Aggiungi i servizi che fornisci',
-    ],
-    'service' => [
-      'msg' => [
-        'update' => [
-          'success' => 'Servizio aggiornato!',
-        ],
-      ],
-    ],
-  ],
   'businesses' => [
-    'check' => [
-      'remember_vacancies'  => 'Imposta queste giornate non lavorative come default',
-      'unpublish_vacancies' => 'Ripristina la mia disponibilit&agrave; attuale prima di pubblicare',
-    ],
-    'btn' => [
-      'store'  => 'Registra',
-      'update' => 'Aggiorna',
-    ],
-    'contacts' => [
-      'btn' => [
-        'create' => 'Aggiungi un contatto',
-      ],
-    ],
-    'create' => [
-      'title' => 'Registra un\'azienda',
-    ],
-    'notifications' => [
-      'title' => 'Notifiche',
-      'help' => 'Eventi recenti',
-    ],
-    'dashboard' => [
-      'alert' => [
-        'no_services_set'  => 'Non ci sono ancora servizi disponibili. Aggiungi nuovi servizi da qui!',
-        'no_vacancies_set' => 'Non hai ancora inserito la tua disponibilit&agrave; Fallo da qui!',
-      ],
-      'panel' => [
-        'title_appointments_active'    => 'Appuntamenti di oggi',
-        'title_appointments_active_tomorrow'    => 'Appuntamenti di domani',
-        'title_appointments_canceled'  => 'Appuntamenti di oggi Cancellati',
-        'title_appointments_served'    => 'Appuntamenti Conclusi',
-        'title_appointments_today'     => 'Oggi',
-        'title_appointments_tomorrow'  => 'Domani',
-        'title_appointments_total'     => 'Appuntamenti totali',
-        'title_contacts_subscribed'    => 'Contatti Approvati',
-        'title_contacts_registered'    => 'Contatti Registrati',
-        'title_total'                  => 'Totale',
-      ],
-      'title' => 'Dashboard'
-    ],
-    'edit' => [
-      'title' => 'Modifica il profilo del Lavoro',
-    ],
     'form' => [
+      'link' => [
+        'label' => 'Link',
+      ],
       'category' => [
         'label' => 'Industria',
       ],
@@ -154,11 +34,32 @@ return [
       'timezone' => [
         'label' => 'TimeZone',
       ],
-      'slug' => [
-        'label'       => 'Alias',
-        'placeholder' => 'questo sar&agrave; il nome della la tua pagina timegrid',
-        'validation'  => 'Inserisci un Alias',
+    ],
+    'btn' => [
+      'store'  => 'Registra',
+      'update' => 'Aggiorna',
+    ],
+    'check' => [
+      'remember_vacancies'  => 'Imposta queste giornate non lavorative come default',
+      'unpublish_vacancies' => 'Ripristina la mia disponibilit&agrave; attuale prima di pubblicare',
+    ],
+    'contacts' => [
+      'btn' => [
+        'create' => 'Aggiungi un contatto',
       ],
+    ],
+    'create' => [
+      'title' => 'Registra un\'azienda',
+    ],
+    'dashboard' => [
+      'alert' => [
+        'no_services_set'  => 'Non ci sono ancora servizi disponibili. Aggiungi nuovi servizi da qui!',
+        'no_vacancies_set' => 'Non hai ancora inserito la tua disponibilit&agrave; Fallo da qui!',
+      ],
+      'title' => 'Dashboard',
+    ],
+    'edit' => [
+      'title' => 'Modifica il profilo del Lavoro',
     ],
     'index' => [
       'help' => 'Da qui puoi gestire tutte le tue aziende',
@@ -187,6 +88,10 @@ return [
         'success' => 'Dati aziendali aggiornati',
       ],
     ],
+    'notifications' => [
+      'help'  => 'Eventi recenti',
+      'title' => 'Notifiche',
+    ],
     'preferences' => [
       'instructions' => 'Da qui puoi impostare i dati delle tua azienda.',
       'title'        => 'Impostazioni Azienda',
@@ -198,17 +103,16 @@ return [
     ],
   ],
   'contacts' => [
-    'btn' => [
-      'confirm_delete' => 'Sei sicuro di voler eliminare il contatto?',
-      'delete'         => 'Elimina',
-      'edit'           => 'Modifica',
-      'store'          => 'Salva',
-      'update'         => 'Aggiorna',
-    ],
-    'create' => [
-      'title' => 'Contatti',
-    ],
     'form' => [
+      'gender' => [
+        'label'  => 'TODO: label',
+        'female' => [
+          'label' => 'Femmina',
+        ],
+        'male' => [
+          'label' => 'Maschio',
+        ],
+      ],
       'birthdate' => [
         'label' => 'Data di nascita',
       ],
@@ -221,14 +125,6 @@ return [
       'firstname' => [
         'label'      => 'Nome',
         'validation' => 'Inserisci un Nome',
-      ],
-      'gender' => [
-        'female' => [
-          'label' => 'Femmina',
-        ],
-        'male' => [
-          'label' => 'Maschio',
-        ],
       ],
       'lastname' => [
         'label'      => 'Cognome',
@@ -250,13 +146,19 @@ return [
       'prerequisites' => [
         'label' => 'Prerequisiti',
       ],
-      'data' => [
-        'label' => 'dati CSV',
-      ],
+    ],
+    'btn' => [
+      'confirm_delete' => 'Sei sicuro di voler eliminare il contatto?',
+      'delete'         => 'Elimina',
+      'edit'           => 'Modifica',
+      'store'          => 'Salva',
+      'update'         => 'Aggiorna',
+    ],
+    'create' => [
+      'title' => 'Contatti',
     ],
     'label' => [
       'birthdate'      => 'Data di nascita',
-      'email'          => 'Email',
       'member_since'   => 'Registrato dal',
       'mobile'         => 'Cellulare',
       'nin'            => 'Codice Fiscale/P.iva',
@@ -273,7 +175,6 @@ return [
         'lastname'  => 'Cognome',
         'mobile'    => 'Cellulare',
         'username'  => 'Username',
-        'quality'   => 'Punteggio',
       ],
       'msg' => [
         'filter_no_results' => 'Nulla da mostrare',
@@ -293,34 +194,24 @@ return [
     ],
     'title' => 'I miei Clienti',
   ],
-  'humanresources' => [
-    'msg' => [
-      'destroy' => [
-        'success' => 'Risorsa umana eliminata',
-      ],
-      'store' => [
-        'success' => 'Risorsa umana inserita',
-      ],
-      'update' => [
-        'success' => 'Risorsa umana aggiornata',
-      ],
-    ],
-  ],
   'service' => [
-    'btn' => [
-      'delete' => 'Elimina',
-      'update' => 'Aggiorna',
-    ],
     'form' => [
+      'servicetype' => [
+        'label' => 'TODO: label',
+      ],
+      'color' => [
+        'label' => 'Colore',
+      ],
       'duration' => [
         'label' => 'Durata in minuti',
       ],
       'name' => [
         'label' => 'Nome del Servizio',
       ],
-      'color' => [
-        'label' => 'Colore',
-      ],
+    ],
+    'btn' => [
+      'delete' => 'Elimina',
+      'update' => 'Aggiorna',
     ],
     'msg' => [
       'store' => [
@@ -329,6 +220,9 @@ return [
     ],
   ],
   'services' => [
+    'edit' => [
+      'title' => 'TODO: title',
+    ],
     'btn' => [
       'create' => 'Aggiungi un servizio',
       'store'  => 'Salva',
@@ -353,6 +247,69 @@ return [
       ],
     ],
   ],
+  //==================================== Translations ====================================//
+  'business' => [
+    'btn' => [
+      'tooltip' => [
+        'agenda'         => 'Calendario Prenotazioni',
+        'contacts'       => 'Lista Contatti',
+        'humanresources' => 'Staff',
+        'services'       => 'Gestisci i Servizi',
+        'vacancies'      => 'Disponibilit&agrave;',
+      ],
+    ],
+    'hint' => [
+      'out_of_vacancies' => 'Pubblica la tua disponibilit&agrave;<br /><br />E\'necessaria per consentire ai clienti di prendere le prenotazioni.',
+      'set_services'     => 'Aggiungi i servizi che fornisci',
+    ],
+    'service' => [
+      'msg' => [
+        'update' => [
+          'success' => 'Servizio aggiornato!',
+        ],
+      ],
+    ],
+  ],
+  'humanresource' => [
+    'btn' => [
+      'create' => 'Aggiungi',
+      'delete' => 'Rimuovi',
+      'store'  => 'Salva',
+      'update' => 'Aggiorna',
+    ],
+    'create' => [
+      'instructions' => 'Aggiungi una risorsa umana che fornir&agrave; il servizio',
+      'title'        => 'Risorse Umane',
+    ],
+    'form' => [
+      'calendar_link' => [
+        'label' => 'link al Calendario',
+      ],
+      'capacity' => [
+        'label' => 'Capacit&agrave;',
+      ],
+      'name' => [
+        'label' => 'Nome',
+      ],
+    ],
+    'index' => [
+      'instructions' => 'Gestisci qui le Risorse Umane',
+      'title'        => 'Risorse Umane',
+    ],
+  ],
+  'humanresources' => [
+    'msg' => [
+      'destroy' => [
+        'success' => 'Risorsa umana eliminata',
+      ],
+      'store' => [
+        'success' => 'Risorsa umana inserita',
+      ],
+      'update' => [
+        'success' => 'Risorsa umana aggiornata',
+      ],
+    ],
+  ],
   'vacancies' => [
     'edit' => [
       'instructions' => 'Inserisci la disponibilit&agrave; per ogni servizio giorno per giorno. Questo rappresenta gli appuntamenti che &egrave; possibile gestire ogni giorno per ogni servizio',
@@ -373,5 +330,4 @@ return [
       ],
     ],
   ],
-  //================================== Obsolete strings ==================================//
 ];

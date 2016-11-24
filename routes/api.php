@@ -30,8 +30,3 @@ Route::get('vacancies/{businessId}/{serviceId}', [
 Route::get('vacancies/{businessId}/{serviceId}/{date}', [
     'uses' => 'AvailabilityController@getTimes',
 ]);
-
-Route::get('ical/{business}/{token}', [
-    'as' => 'api.business.ical.download',
-    'uses' => 'ICalController@download',
-]);

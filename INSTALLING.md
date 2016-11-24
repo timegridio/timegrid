@@ -10,6 +10,7 @@ welcome in order to enhance the documentation and codebase.
 * [Step 3: Create database](#step3)
 * [Step 4: Install](#step4)
 * [Step 5: Start Page](#step5)
+* [Step 6: Configure Cron](#step6)
 * [Troubleshooting](#troubleshooting)
 * [Optional: Populate DB with a Demo Fixture](#demosandbox)
 
@@ -99,6 +100,16 @@ And we are ready to go. **Run** the server:
 Congrats! You can now register as new user and log-in.
 
 ![timegrid Login Screen](http://i.imgur.com/jM8pbGq.png)
+
+-----
+<a name="step6"></a>
+## Step 6: Configure Cron for Scheduled Jobs
+
+This is optional but totally recommended if you want automation capabilities.
+Replace the artisan path with your valid installataion path, and make sure that it
+runs with the permissions of your web server. In this case it's called `nginx`.
+
+`* * * * * nginx php /var/www/timegrid/htdocs/artisan schedule:run >> /dev/null 2>&1`
 
 <a name="troubleshooting"></a>
 ## Troubleshooting

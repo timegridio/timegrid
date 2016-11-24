@@ -1,19 +1,17 @@
 <?php
 
-return [
+return  [
+  //==================================== Translations ====================================//
   'duration' => [
-    'days'    => 'día|días',
-    'hours'   => 'hora|horas',
-    'minutes' => 'minuto|minutos',
-    'seconds' => 'segundo|segundos',
+    'days' => 'día|días',
   ],
   'weekday' => [
-    'monday'    => 'Lunes',
-    'tuesday'   => 'Martes',
-    'wednesday' => 'Miércoles',
-    'thursday'  => 'Jueves',
     'friday'    => 'Viernes',
+    'monday'    => 'Lunes',
     'saturday'  => 'Sábado',
     'sunday'    => 'Domingo',
+    'thursday'  => 'Jueves',
+    'tuesday'   => 'Martes',
+    'wednesday' => 'Miércoles',
   ],
 ];

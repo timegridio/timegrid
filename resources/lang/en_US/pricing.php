@@ -1,19 +1,20 @@
 <?php
-/*************************************************************************
- Generated via "php artisan localization:missing" at 2015/12/09 15:37:10
-*************************************************************************/
 
-return [
-  'free'           => 'FREE',
-  'month'          => 'month',
-  'plan'           => [
-    'feature' => [
-      'appointments' => 'appointments per month',
-      'contacts'     => 'contacts in agenda',
-      'services'     => 'services',
-      'specialists'  => 'specialist|specialists',
-      'customized_support' => 'Customized Support',
-    ],
+return  [
+  //==================================== Translations ====================================//
+  'feature' => [
+    'customized_support'     => 'Customized Support',
+    'one_specialist'         => '<strong>one</strong> specialist',
+    'unlimited_appointments' => '<strong>unlimited</strong> appointments',
+    'unlimited_contacts'     => '<strong>unlimited</strong> clients addressbook',
+    'unlimited_services'     => '<strong>unlimited</strong> service catalog',
+    'unlimited_specialists'  => '<strong>unlimited</strong> specialists',
+    'up_to_contacts'         => '<strong>up to :limit</strong> clients',
+    'up_to_services'         => '<strong>up to :limit</strong> services catalog',
+  ],
+  'free'  => 'FREE',
+  'month' => 'month',
+  'plan'  => [
     'free' => [
       'hint'   => 'Ideal for freelancers',
       'name'   => 'Free',
@@ -21,9 +22,8 @@ return [
     ],
     'starter' => [
       'hint'   => 'Ideal for growing businesses',
-      'name'   => 'Gold',
+      'name'   => 'Premium',
       'submit' => 'Contract',
     ],
   ],
-  'unlimited' => 'unlimited|unlimited',
 ];

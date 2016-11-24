@@ -121,7 +121,7 @@
                 @yield('content')
 
                 @if(!session()->has('selected.business'))
-                    {!! Button::success(trans('app.'))
+                    {!! Button::success(trans('app.btn.get_to_dashboard'))
                                 ->large()
                                 ->block()
                                 ->asLinkTo( route('manager.business.index') ) !!}

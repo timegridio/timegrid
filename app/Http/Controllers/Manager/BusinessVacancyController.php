@@ -276,7 +276,7 @@ class BusinessVacancyController extends Controller
 
         $out[] = "{$service->slug}:{$humanResource->slug}";
         $dates = [];
-        foreach ($weekdays as $day => $status) {
+        foreach (array_keys($weekdays) as $day) {
             for ($i = 0; $i < 4; $i++) {
                 $dates[] = Carbon::parse($day." +$i weeks ".$timezone)->toDateString();
             }

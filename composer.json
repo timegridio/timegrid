@@ -65,6 +65,7 @@
         "laracasts/generators": "^1.1",
         "phpunit/phpunit": "~5.0",
         "phpunit/phpunit-selenium": "~3.0",
+        "potsky/laravel-localization-helpers" : "2.4.*",
         "symfony/css-selector": "~3.0",
         "symfony/dom-crawler": "~3.0",
         "mockery/mockery": "0.9.*",

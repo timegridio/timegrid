@@ -1,20 +1,19 @@
 <?php
 
 return  [
-  //============================== New strings to translate ==============================//
-  'manager' =>  [
-    'left' =>  [
-      'dashboard'     => 'Dashboard',
-      'notifications' => 'Notifiche',
-      'preferences'   => 'Impostazioni',
-      'edit'          => 'Modifica',
+  //==================================== Translations ====================================//
+  'manager' => [
+    'left' => [
       'addressbook'   => 'Rubrica',
       'agenda'        => 'Agenda',
       'availability'  => 'Disponibilit&agrave;',
       'calendar'      => 'Calendario',
+      'dashboard'     => 'Dashboard',
+      'edit'          => 'Modifica',
+      'notifications' => 'Notifiche',
+      'preferences'   => 'Impostazioni',
       'services'      => 'Servizi',
       'staff'         => 'Staff',
-      'office'        => 'Divisi',
     ],
   ],
 ];
