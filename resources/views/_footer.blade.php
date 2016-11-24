@@ -14,5 +14,5 @@
         @endif
     </div>
     <!-- Default to the left -->
-    <strong>&copy; 2015 - 2016 <a href="http://alariva.com">alariva.com</a></strong>
+    <strong>powered by <a href="https://timegrid.io">timegrid</a></strong>
 </footer>
