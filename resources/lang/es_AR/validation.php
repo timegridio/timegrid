@@ -91,9 +91,9 @@ return [
     |
     */
 
-    'custom'               => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+    'custom' => [
+        'g-recaptcha-response' => [
+            'required' => 'Por favor, danos pruebas de que no sos un robot',
         ],
     ],
 
