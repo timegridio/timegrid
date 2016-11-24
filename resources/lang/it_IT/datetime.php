@@ -1,9 +1,11 @@
 <?php
 
 return  [
-  //==================================== Translations ====================================//
   'duration' => [
     'days' => 'giorno|giorni',
+    'hours'   => 'ora|ore',
+    'minutes' => 'minuto|minuti',
+    'seconds' => 'secondo|secondi',
   ],
   'weekday' => [
     'friday'    => 'Venerd&igrave;',
