@@ -18,7 +18,7 @@ $(document).ready(function(){
 
     $('#calendar').fullCalendar({
         defaultDate: moment(),
-        lang: timegrid.lang,
+        locale: timegrid.lang,
         header: {
             left: 'prev,next today',
             center: 'title',

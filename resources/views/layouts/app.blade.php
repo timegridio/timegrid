@@ -184,6 +184,8 @@
 <!-- Scripts -->
 <script src="{{ asset('js/app.min.js') }}"></script>
 
+@stack('footer_scripts')
+
 <script type="text/javascript">
 $(document).ready(function() {
     $('.btn').tooltipster({ animation: "grow", theme: 'tooltipster-light' });
@@ -194,8 +196,6 @@ $(document).ready(function() {
     });
 });
 </script>
-
-@stack('footer_scripts')
 
 </body>
 </html>

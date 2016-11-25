@@ -33,7 +33,10 @@ elixir(function(mix) {
     ], 'public/css/app.min.css');
 
     mix.scripts([
-        './bower_components/jquery/jquery.min.js',
+        './bower_components/jquery/dist/jquery.min.js',
+        './bower_components/moment/min/moment-with-locales.min.js',
+        './bower_components/moment/min/locales.min.js',
+        './bower_components/moment-timezone/builds/moment-timezone.min.js',
         './bower_components/adminlte/plugins/iCheck/icheck.min.js',
         './bower_components/bootstrap/dist/js/bootstrap.min.js',
         './bower_components/adminlte/dist/js/app.min.js',
@@ -96,8 +99,6 @@ elixir(function(mix) {
     // Date & Time Helpers
 
     mix.scripts([
-        './bower_components/moment/min/moment-with-locales.min.js',
-        './bower_components/moment-timezone/builds/moment-timezone.min.js',
         // './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         './bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
         './bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js',
