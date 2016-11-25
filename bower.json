@@ -33,10 +33,12 @@
     "select2": "select2-dist#^4.0.3",
     "bootstrap-list-filter": "^0.3.2",
     "moment-timezone": "^0.5.9",
-    "bootstrap-datepicker": "^1.6.4"
+    "bootstrap-datepicker": "^1.6.4",
+    "fullcalendar": "^3.0.1"
   },
   "resolutions": {
     "jquery": "^2.0",
-    "bootstrap-list-filter": "^0.3.2"
+    "bootstrap-list-filter": "^0.3.2",
+    "fullcalendar": "^3.0.1"
   }
 }
