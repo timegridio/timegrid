@@ -6,7 +6,7 @@
   "display": "browser",
   "orientation": "landscape",
   "Scope": "/",
-  "start_url": "https://timegrid.io/",
+  "start_url": "/",
   "icons": [
     {
       "src": "img/icons/icon-72x72.png",
