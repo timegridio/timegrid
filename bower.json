@@ -29,7 +29,8 @@
     "mjolnic-bootstrap-colorpicker": "~2.3.0",
     "jquery.steps": "^1.1.0",
     "bootstrap-switch": "^3.3.2",
-    "AdminLTE": "adminlte#^2.3.8"
+    "AdminLTE": "adminlte#^2.3.8",
+    "select2": "select2-dist#^4.0.3"
   },
   "resolutions": {
     "jquery": "^2.0"
