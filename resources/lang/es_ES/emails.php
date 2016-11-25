@@ -1,65 +1,81 @@
 <?php
 
-return  [
-  'user' => [
-    'welcome' => [
-      'subject'              => 'Bienvenido a timegrid.io',
-      'button'               => 'TODO: button',
-      'hello-paragraph'      => 'Timegrid ayuda a los profesionales y clientes a encontrar el momento perfecto en sus agendas para una cita.',
-      'hello-title'          => 'Hola :userName',
-      'quickstart-paragraph' => 'Simplemente ve a timegrid en cualquier momento y comienza a reservar horarios con profesionales directamente por Internet',
-      'quickstart-title'     => 'Todo listo para empezar',
+return [
+    'root'    => [
+        'report' => [
+            'subject' => 'Reporte de Root',
+        ],
     ],
-    'appointment-cancellation' => [
-      'appointment-title' => 'Aquí los detalles',
-      'button'            => 'Ver mi agenda',
-      'hello-paragraph'   => 'Disculpas, tu cita fue cancelada.',
-      'hello-title'       => 'Hola :userName,',
+    'manager' => [
+        'business-report' => [
+            'subject' => 'Reporte de agenda del :date en :businessName',
+            'welcome' => 'Hola :ownerName',
+            'button'  => 'Ver Agenda',
+        ],
+        'appointment-notification' => [
+            'subject'      => 'Tienes una nueva reserva',
+            'welcome'      => ':ownerName, tienes una nueva reserva',
+            'instructions' => 'Se realizó una reserva',
+            'title'        => 'Detalles de la reserva',
+        ],
     ],
-    'appointment-confirmation' => [
-      'appointment-title' => 'Aquí los detalles de la cita',
-      'button'            => 'Ver mi agenda',
-      'hello-paragraph'   => 'Tu cita fue confirmada.',
-      'hello-title'       => 'Hola :userName,',
+    'user'    => [
+        'welcome' => [
+            'subject'              => 'Te damos la bienvenida a timegrid.io',
+            'hello-title'          => 'Hola :userName',
+            'hello-paragraph'      => 'Timegrid ayuda a los profesionales y clientes a encontrar el momento perfecto en sus agendas para una cita.',
+            'quickstart-title'     => 'Todo listo para empezar',
+            'quickstart-paragraph' => 'Simplemente ve a timegrid en cualquier momento y comienza a reservar horarios con profesionales directamente por Internet',
+        ],
+        'appointment-notification' => [
+            'subject'              => 'Detalles de tu reserva',
+            'hello-title'          => ':userName, generaste una reserva',
+            'hello-paragraph'      => 'Tu reserva fue exitosa.',
+            'appointment-title'    => 'Aquí los detalles de tu reserva',
+            'button'               => 'Ver mi agenda',
+        ],
+        'appointment-confirmation' => [
+            'subject'              => 'Tu cita en :businessName fue confirmada',
+            'hello-title'          => 'Hola :userName,',
+            'hello-paragraph'      => 'Tu cita fue confirmada.',
+            'appointment-title'    => 'Aquí los detalles de la cita',
+            'button'               => 'Ver mi agenda',
+        ],
+        'appointment-cancellation' => [
+            'subject'              => 'La cita en :businessName fue cancelada',
+            'hello-title'          => 'Hola :userName,',
+            'hello-paragraph'      => 'Disculpas, tu cita fue cancelada.',
+            'appointment-title'    => 'Aquí los detalles',
+            'button'               => 'Ver mi agenda',
+        ],
     ],
-    'appointment-notification' => [
-      'appointment-title' => 'Aquí los detalles de tu reserva',
-      'button'            => 'Ver mi agenda',
-      'hello-paragraph'   => 'Tu reserva fue exitosa.',
-      'hello-title'       => ':userName, generaste una reserva',
+    'guest'   => [
+        'password' => [
+            'subject'      => 'Pasos para reestablecer tu contraseña',
+            'hello'        => 'Hola :userName,',
+            'instructions' => 'Haz click en el botón de reset para recuperar tu acceso.',
+            'button'       => 'Reestablecer mi contraseña',
+        ],
+        'appointment-validation' => [
+            'subject'            => 'Por favor valida tu reserva',
+            'hello-title'        => 'Valida tu reserva',
+            'hello-paragraph'    => 'Haz hecho una reserva online que necesita tu confirmación. De no hacerlo la misma caducará.',
+            'appointment-title'  => 'Detalles de la reserva',
+            'button'             => 'Validar Reserva',
+        ],
     ],
-  ],
-  //==================================== Translations ====================================//
-  'guest' => [
-    'password' => [
-      'hello'        => 'Hola :userName,',
-      'instructions' => 'Haz click en el botón de reset para recuperar tu acceso.',
+    'text'  => [
+        'business'          => 'Business',
+        'user'              => 'User',
+        'date'              => 'Date',
+        'time'              => 'Time',
+        'code'              => 'Code',
+        'where'             => 'Where',
+        'phone'             => 'Phone',
+        'service'           => 'Service',
+        'important'         => 'important',
+        'customer_notes'    => 'customer notes for you',
+        'there_are'         => 'There are',
+        'registered'        => 'registered users so far',
     ],
-  ],
-  'manager' => [
-    'appointment-notification' => [
-      'instructions' => 'Se realizó una reserva',
-      'title'        => 'Detalles de la reserva',
-      'welcome'      => ':ownerName, tienes una nueva reserva',
-    ],
-    'business-report' => [
-      'button'  => 'Ver Agenda',
-      'welcome' => 'Hola :ownerName',
-      'subject' => 'Agenda al :date',
-    ],
-  ],
-  'text' => [
-    'business'       => 'Business',
-    'code'           => 'Code',
-    'customer_notes' => 'customer notes for you',
-    'date'           => 'Date',
-    'important'      => 'important',
-    'phone'          => 'Phone',
-    'registered'     => 'registered users so far',
-    'service'        => 'Service',
-    'there_are'      => 'There are',
-    'time'           => 'Time',
-    'user'           => 'User',
-    'where'          => 'Where',
-  ],
 ];

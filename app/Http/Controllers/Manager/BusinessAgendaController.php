@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Manager;
 
-use App\TG\Business\Token as BusinessToken;
 use App\Http\Controllers\Controller;
+use App\TG\Business\Token as BusinessToken;
 use JavaScript;
 use Timegridio\Concierge\Concierge;
 use Timegridio\Concierge\Models\Business;
@@ -84,11 +84,16 @@ class BusinessAgendaController extends Controller
             'minTime'      => $business->pref('start_at'),
             'maxTime'      => $business->pref('finish_at'),
             'events'       => $jsAppointments,
-            'lang'         => session()->get('language'),
+            'lang'         => $this->getActiveLanguage($business->locale),
             'slotDuration' => $slotDuration,
         ]);
 
         return view('manager.businesses.appointments.calendar', compact('business', 'icalURL'));
+    }
+
+    protected function getActiveLanguage($locale)
+    {
+        return session()->get('language', substr($locale, 0, 2));
     }
 
     protected function generateICalURL(Business $business)

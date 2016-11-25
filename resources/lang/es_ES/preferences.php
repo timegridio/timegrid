@@ -49,8 +49,8 @@ return  [
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Si/No',
-      'help'   => 'Permitir a los clientes llegar entre los horarios de atención',
-      'label'  => 'Horario de Llegada Flexible',
+      'help'   => 'Dar citas con horario flexible por orden de llegada',
+      'label'  => 'Citas por orden de llegada',
     ],
     'finish_at' => [
       'format' => 'hh:mm:ss',
@@ -99,8 +99,8 @@ return  [
     ],
     'allow_guest_registration' => [
       'format' => 'Si/No',
-      'help'   => 'Permitir a usuarios no identificados a agregarse en tu agenda de contactos',
-      'label'  => 'Permitir Registro de Invitados',
+      'help'   => 'Permitirle a usuarios nuevos agregarse a tu agenda de clientes con un pedido de cita',
+      'label'  => 'Admitir citas de usuarios nuevos',
     ],
   ],
   'controls' => [

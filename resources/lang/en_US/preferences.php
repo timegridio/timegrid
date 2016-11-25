@@ -49,8 +49,8 @@ return  [
     ],
     'appointment_flexible_arrival' => [
       'format' => 'Yes/No',
-      'help'   => 'Let clients arrive between opening and closing hours',
-      'label'  => 'Flexible Arrival Time',
+      'help'   => 'Let clients arrive anytime during service time',
+      'label'  => 'Flexible appointments by arrival time order',
     ],
     'finish_at' => [
       'format' => 'hh:mm:ss',
@@ -99,8 +99,8 @@ return  [
     ],
     'allow_guest_registration' => [
       'format' => 'Yes/No',
-      'help'   => 'Let guest users to register a new contact for soft appointments',
-      'label'  => 'Allow Guest Registration',
+      'help'   => 'Let guest users to register on your addressbook through reserving an appointment',
+      'label'  => 'Allow guest users to reserve appointments',
     ],
   ],
   'controls' => [
