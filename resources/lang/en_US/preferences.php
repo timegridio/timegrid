@@ -99,8 +99,8 @@ return  [
     ],
     'allow_guest_registration' => [
       'format' => 'Yes/No',
-      'help'   => 'Let guest users to register a new contact for soft appointments',
-      'label'  => 'Allow Guest Registration',
+      'help'   => 'Let guest users to register on your addressbook through reserving an appointment',
+      'label'  => 'Allow guest users to reserve appointments',
     ],
   ],
   'controls' => [

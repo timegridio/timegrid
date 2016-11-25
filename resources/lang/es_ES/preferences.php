@@ -99,8 +99,8 @@ return  [
     ],
     'allow_guest_registration' => [
       'format' => 'Si/No',
-      'help'   => 'Permitir a usuarios no identificados a agregarse en tu agenda de contactos',
-      'label'  => 'Permitir Registro de Invitados',
+      'help'   => 'Permitirle a usuarios nuevos agregarse a tu agenda de clientes con un pedido de cita',
+      'label'  => 'Admitir citas de usuarios nuevos',
     ],
   ],
   'controls' => [
