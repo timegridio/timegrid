@@ -29,7 +29,7 @@
     "mjolnic-bootstrap-colorpicker": "~2.3.0",
     "jquery.steps": "^1.1.0",
     "bootstrap-switch": "^3.3.2",
-    "AdminLTE": "^2.3.8",
+    "adminlte": "^2.3.8",
     "select2": "^4.0.3",
     "bootstrap-list-filter": "^0.3.2",
     "moment-timezone": "^0.5.9",
