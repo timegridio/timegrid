@@ -29,13 +29,13 @@
     "mjolnic-bootstrap-colorpicker": "~2.3.0",
     "jquery.steps": "^1.1.0",
     "bootstrap-switch": "^3.3.2",
-    "AdminLTE": "adminlte#^2.3.8",
-    "select2": "select2-dist#^4.0.3",
+    "AdminLTE": "^2.3.8",
+    "select2": "^4.0.3",
     "bootstrap-list-filter": "^0.3.2",
     "moment-timezone": "^0.5.9",
     "bootstrap-datepicker": "^1.6.4",
     "fullcalendar": "^3.0.1",
-    "select2-bootstrap-theme": "select2-bootstrap-theme-dist#^0.1.0-beta.9"
+    "select2-bootstrap-theme": "^0.1.0-beta.9"
   },
   "resolutions": {
     "jquery": "^2.0",
