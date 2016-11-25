@@ -32,7 +32,8 @@
     "AdminLTE": "adminlte#^2.3.8",
     "select2": "select2-dist#^4.0.3",
     "bootstrap-list-filter": "^0.3.2",
-    "moment-timezone": "^0.5.9"
+    "moment-timezone": "^0.5.9",
+    "bootstrap-datepicker": "^1.6.4"
   },
   "resolutions": {
     "jquery": "^2.0",
