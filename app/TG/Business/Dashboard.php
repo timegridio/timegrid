@@ -12,38 +12,7 @@ class Dashboard
 
     protected $counter = [];
 
-    const BOXES = [
-        'appointments_active_today' => [
-            'icon'  => 'check',
-            'color' => 'green',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
-            ],
-        'appointments_canceled_today' => [
-            'icon'  => 'minus-circle',
-            'color' => 'red',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_canceled',
-            ],
-        'appointments_active_tomorrow' => [
-            'icon'  => 'hourglass-o',
-            'color' => 'yellow',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
-            ],
-        'contacts_subscribed' => [
-            'icon'  => 'users',
-            'color' => 'green',
-            'title' => 'manager.businesses.dashboard.panel.title_contacts_subscribed',
-            ],
-        'contacts_registered' => [
-            'icon'  => 'users',
-            'color' => 'aqua',
-            'title' => 'manager.businesses.dashboard.panel.title_contacts_registered',
-            ],
-        'appointments_total' => [
-            'icon'  => 'table',
-            'color' => 'aqua',
-            'title' => 'manager.businesses.dashboard.panel.title_appointments_total',
-            ],
-    ];
+    protected $boxes;
 
     public function __construct($business, $time)
     {
@@ -51,7 +20,51 @@ class Dashboard
 
         $this->time = $time;
 
+        $this->init();
+
         $this->loadCounters();
+    }
+
+    protected function init()
+    {
+        $this->boxes = [
+            'appointments_active_today' => [
+                'icon'  => 'check',
+                'color' => 'green',
+                'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
+                'link'  => route('manager.business.agenda.index', $this->business),
+                ],
+            'appointments_canceled_today' => [
+                'icon'  => 'minus-circle',
+                'color' => 'red',
+                'title' => 'manager.businesses.dashboard.panel.title_appointments_canceled',
+                'link'  => route('manager.business.agenda.index', $this->business),
+                ],
+            'appointments_active_tomorrow' => [
+                'icon'  => 'hourglass-o',
+                'color' => 'yellow',
+                'title' => 'manager.businesses.dashboard.panel.title_appointments_active',
+                'link'  => route('manager.business.agenda.index', $this->business),
+                ],
+            'contacts_subscribed' => [
+                'icon'  => 'users',
+                'color' => 'green',
+                'title' => 'manager.businesses.dashboard.panel.title_contacts_subscribed',
+                'link'  => route('manager.addressbook.index', $this->business),
+                ],
+            'contacts_registered' => [
+                'icon'  => 'users',
+                'color' => 'aqua',
+                'title' => 'manager.businesses.dashboard.panel.title_contacts_registered',
+                'link'  => route('manager.addressbook.index', $this->business),
+                ],
+            'appointments_total' => [
+                'icon'  => 'table',
+                'color' => 'aqua',
+                'title' => 'manager.businesses.dashboard.panel.title_appointments_total',
+                'link'  => route('manager.business.agenda.index', $this->business),
+                ],
+        ];
     }
 
     protected function loadCounters()
@@ -71,7 +84,7 @@ class Dashboard
     {
         $bag = new Collection();
 
-        foreach (self::BOXES as $key => $boxParameters) {
+        foreach ($this->boxes as $key => $boxParameters) {
             $boxParameters['number'] = $this->counter[$key];
             $bag->push($boxParameters);
         }
