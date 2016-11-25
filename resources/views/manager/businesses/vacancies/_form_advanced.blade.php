@@ -1,7 +1,7 @@
 @section('css')
 @parent
-<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/datetime.css') }}">
+<link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/iCheck/icheck.min.css') }}">
 <style>
 #vacancies{
@@ -33,11 +33,17 @@
     </div>
     <div class="row">
         {!! Form::label( trans('appointments.text.from') ) !!}<br>
-        {!! Form::input('', null, $startAt, ['id' => 'start_at', 'class' => 'form-control timepicker']) !!}
+        <div class="input-group bootstrap-timepicker timepicker">
+            {!! Form::input('', null, $startAt, ['id' => 'start_at', 'class' => 'form-control input-small', 'type' => 'text', 'data-template' => 'dropdown', 'data-minute-step' => '10']) !!}
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
     </div>
     <div class="row">
         {!! Form::label( trans('appointments.text.to') ) !!}<br>
-        {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control timepicker']) !!}
+        <div class="input-group bootstrap-timepicker timepicker">
+            {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control input-small', 'type' => 'text', 'data-template' => 'dropdown', 'data-minute-step' => '10']) !!}
+            <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
+        </div>
     </div>
     <div class="row">
         {!! Form::label( trans('&nbsp;') ) !!}<br>
@@ -73,8 +79,8 @@
 @endif
 
 @push('footer_scripts')
-<script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/datetime.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 <script src="{{ asset('js/iCheck/icheck.min.js') }}"></script>
 <script>
 $(document).ready(function(){
