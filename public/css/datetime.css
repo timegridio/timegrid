@@ -106,15 +106,15 @@
             border-top: 6px solid #ffffff;
         }
     }
-    &.a.btn, input {
+    a.btn, input {
         border-radius: 4px;
     }
 
-    &.table {
+    table {
         width: 100%;
         margin: 0;
 
-        &.td {
+        td {
             text-align: center;
             height: 30px;
             margin: 0;
@@ -127,7 +127,7 @@
             span {
                 width: 100%;
             }
-            &.a {
+            a {
                 border: 1px transparent solid;
                 width: 100%;
                 display: inline-block;
@@ -150,7 +150,7 @@
                     font-size: 18px;
                 }
             }
-            &.input {
+            input {
                 width: 25px;
                 margin: 0;
                 text-align: center;
