@@ -1,6 +1,7 @@
 {{-- Appointment Row Partial --}}
 <tr id="{{ $appointment->code }}">
-    <td>&nbsp;<code>{!! Icon::barcode() !!}&nbsp;{{ $appointment->code }}</code>&nbsp;{!! $appointment->statusIcon !!}</td>
+    <td><code>{{ $appointment->code }}</code></td>
+    <td><span class="label label-{!! $appointment->statusToCssClass() !!}">{{ $appointment->status() }}</td>
     <td>{{ $appointment->date('d/M') }}</td>
     <td title="{{ $appointment->timezone() }} {{ $appointment->start_at->diffForHumans() }}">{{ $appointment->time }}</td>
     <td title="{{ $appointment->timezone() }}">{{ $appointment->finishTime }}</td>
