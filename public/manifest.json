@@ -3,7 +3,7 @@
   "short_name": "timegrid",
   "theme_color": "#5b3167",
   "background_color": "#ffffff",
-  "display": "browser",
+  "display": "fullscreen",
   "orientation": "landscape",
   "Scope": "/",
   "start_url": "/",
