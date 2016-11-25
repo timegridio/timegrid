@@ -61,7 +61,7 @@ class BusinessAgendaController extends Controller
 
         $this->authorize('manage', $business);
 
-        $appointments = $this->concierge->business($business)->getUnservedAppointments();
+        $appointments = $this->concierge->business($business)->getActiveAppointments();
 
         $jsAppointments = [];
 
