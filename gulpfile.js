@@ -14,29 +14,29 @@ var elixir = require('laravel-elixir');
 elixir(function(mix) {
 
     mix.copy([
-        './bower_components/AdminLTE/plugins/iCheck/square/*.png',
+        './bower_components/adminlte/plugins/iCheck/square/*.png',
     ], 'public/css/iCheck/');
 
     mix.styles([
-        './bower_components/AdminLTE/plugins/iCheck/square/blue.css'
+        './bower_components/adminlte/plugins/iCheck/square/blue.css'
     ], 'public/css/iCheck/icheck.min.css');
 
     mix.scripts([
-        './bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
+        './bower_components/adminlte/plugins/iCheck/icheck.min.js',
     ], 'public/js/iCheck/icheck.min.js');
 
     mix.styles([
         './bower_components/bootstrap/dist/css/bootstrap.min.css',
-        './bower_components/AdminLTE/dist/css/AdminLTE.css',
-        './bower_components/AdminLTE/dist/css/skins/skin-blue.css',
-        './bower_components/AdminLTE/plugins/iCheck/square/blue.css'
+        './bower_components/adminlte/dist/css/AdminLTE.css',
+        './bower_components/adminlte/dist/css/skins/skin-blue.css',
+        './bower_components/adminlte/plugins/iCheck/square/blue.css'
     ], 'public/css/app.min.css');
 
     mix.scripts([
-        './bower_components/jquery/dist/jquery.min.js',
-        './bower_components/AdminLTE/plugins/iCheck/icheck.min.js',
+        './bower_components/jquery/jquery.min.js',
+        './bower_components/adminlte/plugins/iCheck/icheck.min.js',
         './bower_components/bootstrap/dist/js/bootstrap.min.js',
-        './bower_components/AdminLTE/dist/js/app.min.js',
+        './bower_components/adminlte/dist/js/app.min.js',
         './bower_components/tooltipster/js/jquery.tooltipster.min.js'
     ], 'public/js/app.min.js');
 
@@ -102,7 +102,7 @@ elixir(function(mix) {
         './bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
         './bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js',
         './bower_components/fullcalendar/dist/fullcalendar.min.js',
-        './bower_components/fullcalendar/dist/lang-all.js',
+        './bower_components/fullcalendar/dist/locale-all.js',
     ], 'public/js/datetime.js');
 
     mix.styles([
