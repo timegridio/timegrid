@@ -13,7 +13,7 @@
 
             <div class="panel-body">
                 @if($advanced)
-                    {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.storeBatch', $business]]) !!}
+                    {!! Form::open(['method' => 'post', 'route' => ['manager.business.vacancy.storeBatch', $business], 'class' => 'horizontal-form']) !!}
                     @include('manager.businesses.vacancies._form_advanced', ['submitLabel' => trans('manager.businesses.vacancies.btn.update')])
                     {!! Form::close() !!}
                 @else

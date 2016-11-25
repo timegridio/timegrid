@@ -15,9 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.6",
+    "bootstrap": "~3.3.7",
     "tooltipster": "~3.3.0",
-    "jquery": "~2.1.4",
+    "jquery": "~3.1.1",
     "animate.css": "~3.5.0",
     "bootstrap-select": "~1.9.3",
     "jquery-bootstrap-newsbox": "~1.0.2",
@@ -29,5 +29,8 @@
     "mjolnic-bootstrap-colorpicker": "~2.3.0",
     "jquery.steps": "^1.1.0",
     "bootstrap-switch": "^3.3.2"
+  },
+  "resolutions": {
+    "jquery": "^2.0"
   }
 }
