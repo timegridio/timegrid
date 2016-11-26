@@ -15,6 +15,23 @@
 </style>
 @endsection
 
+<div class="row">
+    <div class="col-md-6">
+        <div id="dates"
+               type="text"
+               class="datepicker-here"
+               data-language='es'
+               data-multiple-dates="15"
+               data-multiple-dates-separator=", "
+               data-show-other-months="true"
+               data-date-format="yyyy-m-d"
+               data-today-button="true"
+               data-clear-button="true"
+               data-position='top left'></div>
+        <br/>
+    </div>
+    <div class="col-md-6">
+
     @if(count($humanresourcesList))
         {!! Form::label( trans('manager.humanresource.index.title') ) !!}<br>
         {!! Form::select('staff', $humanresourcesList, null, ['id' => 'staff', 'class' => 'form-control select2']) !!}
@@ -22,9 +39,6 @@
 
     {!! Form::label( trans('manager.services.index.title') ) !!}<br>
     {!! Form::select('services', $servicesList, null, ['multiple', 'id' => 'services', 'class' => 'form-control select2']) !!}
-
-    {!! Form::label( trans_choice('datetime.duration.days', 2) ) !!}<br>
-    {!! Form::select('weekdays', $weekdaysList, ['mon', 'tue', 'wed', 'thu', 'fri'], ['multiple', 'id' => 'weekdays', 'class' => 'form-control select2']) !!}
 
     {!! Form::label( trans('appointments.text.from') ) !!}<br>
     <div class="input-group bootstrap-timepicker timepicker">
@@ -37,6 +51,9 @@
         {!! Form::input('', null, $finishAt, ['id' => 'finish_at', 'class' => 'form-control input-small', 'type' => 'text', 'data-template' => 'dropdown', 'data-minute-step' => '10']) !!}
         <span class="input-group-addon"><i class="glyphicon glyphicon-time"></i></span>
     </div>
+
+    </div>
+</div>
 
     {!! Form::label( trans('&nbsp;') ) !!}<br>
     {!! Button::withIcon(Icon::plus())->withAttributes(['id' => 'add'])->block() !!}
@@ -93,15 +110,6 @@ $(document).ready(function(){
             return false;
         }
 
-        var weekdays = [];
-        $('#weekdays :selected').each(function(i, selected){
-            weekdays[i] = $(selected).val();
-        });
-
-        if(weekdays.length == 0){
-            return false;
-        }
-
         var start_at = $('#start_at').val();
         var finish_at = $('#finish_at').val();
 
@@ -113,7 +121,7 @@ $(document).ready(function(){
 
         var serviceLine = services.join(',');
 
-        var daysLine = weekdays.join(',');
+        var daysLine = $('#dates').val();
 
         // Lets build-up the Vacancies statement code for the user
         statements.push(serviceLine + "\n " + daysLine + "\n  " + timeLine + "\n");
@@ -131,7 +139,6 @@ $(document).ready(function(){
     function resetControls()
     {
         $('#services').select2('deselectAll');
-        $('#weekdays').select2('deselectAll');
     }
 
     $('#start_at').timepicker();

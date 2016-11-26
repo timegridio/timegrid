@@ -100,7 +100,10 @@ elixir(function(mix) {
 
     mix.scripts([
         // './bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-        './bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
+        './bower_components/air-datepicker/dist/js/datepicker.min.js',
+        './bower_components/air-datepicker/dist/js/i18n/datepicker.es.js',
+        './bower_components/air-datepicker/dist/js/i18n/datepicker.en.js',
+        //'./bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js',
         './bower_components/bootstrap-timepicker/js/bootstrap-timepicker.js',
         './bower_components/fullcalendar/dist/fullcalendar.min.js',
         './bower_components/fullcalendar/dist/locale-all.js',
@@ -108,7 +111,8 @@ elixir(function(mix) {
 
     mix.styles([
         // './bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
-        './bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
+        './bower_components/air-datepicker/dist/css/datepicker.min.css',
+        //'./bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css',
         './bower_components/bootstrap-timepicker/css/timepicker.less',
         './bower_components/fullcalendar/dist/fullcalendar.min.css',
     ], 'public/css/datetime.css');

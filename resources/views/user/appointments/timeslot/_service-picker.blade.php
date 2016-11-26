@@ -69,10 +69,62 @@
 @push('footer_scripts')
 <script>
 
+    function convertToDate(string)
+    {
+        var date = new Date(string);
+        date.setHours(0,0,0,0);
+        // console.log(date + ' : '); // DEBUG
+        return date.getTime();
+    }
+
+    function pick(date) {
+
+            var business = $('#business').val();
+            var service = $('#service').val();
+            var date = new Date(date);
+
+            var timesSelect = $('#times');
+            var durationInput = $('#duration');
+            var timezoneInput = $('#timezone');
+            var timezoneIndicator = $('#timezoneIndicator');
+
+            var day = date.getDate();
+            var month = date.getMonth() + 1;
+            var year = date.getFullYear();
+
+            var date = year + '-' + month + '-' + day;
+
+            $('#date').val( date );
+            $('#date').change();
+
+            $.ajax({
+                url:'/api/vacancies/' + business + '/' + service + '/' + date,
+                type:'GET',
+                dataType: 'json',
+                success: function( data ) {
+                    timesSelect.find('option').remove();
+                    $.each(data.times,function(key, value)
+                    {
+                        timesSelect.append('<option value=' + value + '>' + value + '</option>');
+                    });
+
+                    durationInput.val(data.service.duration);
+                    timezoneInput.val(data.timezone);
+                    timezoneIndicator.text(data.timezone);
+                    timesSelect.attr('title', data.timezone);
+                },
+                fail: function ( data ) {
+                    durationInput.val(0);
+                }
+            });
+    };
+
     function updateDatepicker()
     {
         var business = $('#business').val();
         var service = $('#service').val();
+
+        $('#datepicker').prop('disabled', true);
 
         $.ajax({
             url:'/api/vacancies/' + business + '/' + service,
@@ -81,8 +133,36 @@
             success: function( data ) {
                 disabledDates = data.disabledDates;
                 console.log('disabledDates:' + disabledDates);
-                $('#datepicker').datepicker('setDatesDisabled', disabledDates);
-                $('#datepicker').show();
+
+                    var eventDates = disabledDates.map(convertToDate);
+
+                    var $picker = $('#datepicker');
+
+                    $picker.datepicker({
+                        language: timegrid.language,
+                        minDate: new Date(timegrid.startDate),
+                        maxDate: new Date(timegrid.endDate),
+                        clearButton: false,
+                        todayButton: false,
+                        onRenderCell: function (date, cellType) {
+                            var currentDate = date;
+
+                            // console.log(date + ' | ');
+
+                            if (cellType == 'day' && $.inArray(currentDate.getTime(), eventDates) > -1) {
+                                return {
+                                    classes: 'disabled-day',
+                                    disabled: true
+                                }
+                            }
+                        },
+                        onSelect: function onSelect(fd, date) {
+                            pick(date);
+                        }
+                    })
+
+                // $('#datepicker').show();
+                $('#datepicker').prop('disabled', false);
             },
             fail: function ( data ) {
                 console.log('Failed to load dates.');
