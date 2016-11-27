@@ -71,9 +71,8 @@
 
     function convertToDate(string)
     {
-        var date = new Date(string);
-        date.setHours(0,0,0,0);
-        // console.log(date + ' : '); // DEBUG
+        var date = moment(string).toDate();
+        // console.log('converting date ' + date); // DEBUG
         return date.getTime();
     }
 
@@ -145,9 +144,9 @@
                         clearButton: false,
                         todayButton: false,
                         onRenderCell: function (date, cellType) {
-                            var currentDate = date;
+                            var currentDate = moment(date).toDate();
 
-                            // console.log(date + ' | ');
+                            // console.log('rendering date ' + date); // DEBUG
 
                             if (cellType == 'day' && $.inArray(currentDate.getTime(), eventDates) > -1) {
                                 return {
