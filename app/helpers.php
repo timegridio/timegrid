@@ -61,15 +61,15 @@ if (!function_exists('str_link')) {
      *
      * @param string $route
      * @param string $caption
-     * @param string $fallback_caption
+     * @param string $fallbackCaption
      *
      * @return string
      */
-    function str_link($route, $caption, $fallback_caption = '#N/A')
+    function str_link($route, $caption, $fallbackCaption = '#N/A')
     {
         $caption = trim($caption);
 
-        return link_to($route, $caption ?: $fallback_caption);
+        return link_to($route, $caption ?: $fallbackCaption);
     }
 }
 
