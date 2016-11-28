@@ -35,7 +35,7 @@
                         <td title="{{ $appointment->timezone() }}">{{ $appointment->finishTime }}</td>
                         <td>{{ trans_duration($appointment->duration()) }}</td>
                         <td>{{ $appointment->service ? $appointment->service->name : '' }}</td>
-                        <td>{{ str_link( route('manager.addressbook.show', [$business, $appointment->contact->id]),(empty($appointment->contact->fullname) ? 'n/a' : $appointment->contact->fullname)  )  }}</td>
+                        <td>{{ str_link( route('manager.addressbook.show', [$business, $appointment->contact->id]), $appointment->contact->fullname) }}</td>
                         <td>
                         @include('widgets.appointment.row._buttons', ['appointment' => $appointment, 'user' => $appointment->contact->user])
                         </td>
