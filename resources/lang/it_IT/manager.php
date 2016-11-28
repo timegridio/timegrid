@@ -2,6 +2,10 @@
 
 return  [
   //============================== New strings to translate ==============================//
+  'agenda' => [
+    'title'    => 'Agenda',
+    'subtitle' => 'Elenco delle prenotazioni in corso',
+  ],
   'businesses' => [
     'form' => [
       'link' => [

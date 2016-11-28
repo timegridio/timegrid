@@ -2,6 +2,10 @@
 
 return  [
   //==================================== Translations ====================================//
+  'agenda' => [
+    'title'    => 'Agenda',
+    'subtitle' => 'Lista de reservas en pie',
+  ],
   'business' => [
     'btn' => [
       'tooltip' => [

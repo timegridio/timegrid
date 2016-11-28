@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.agenda.title'))
+@section('subtitle', trans('manager.agenda.subtitle'))
+
 @section('content')
 {!! Form::open(['id' => 'postAppointmentStatus', 'method' => 'post', 'route' => ['api.booking.action']]) !!}
 <div class="container-fluid">
