@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.humanresource.show.title'))
+@section('subtitle', trans('manager.humanresource.show.subtitle'))
+
 @section('content')
 <div class="container-fluid">
     <div class="row">

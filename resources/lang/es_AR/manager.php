@@ -247,8 +247,24 @@ return  [
       'update' => 'Actualizar',
     ],
     'create' => [
-      'instructions' => 'Agregar un Recurso Humano',
-      'title'        => 'Recursos Humanos',
+      'title'        => 'Agregar Especialistas',
+      'subtitle'     => 'Que provee servicios',
+      'instructions' => 'Agregar un especialista que provee servicios',
+    ],
+    'edit' => [
+      'title'        => 'Editar Especialista',
+      'subtitle'     => 'Información',
+      'instructions' => 'Editar información de especialista',
+    ],
+    'index' => [
+      'title'        => 'Especialistas',
+      'subtitle'     => 'Lista',
+      'instructions' => 'Lista de especialistas',
+    ],
+    'show' => [
+      'title'        => 'Especialista',
+      'subtitle'     => 'Información',
+      'instructions' => 'Datos del especialista',
     ],
     'form' => [
       'calendar_link' => [
@@ -260,10 +276,6 @@ return  [
       'name' => [
         'label' => 'Nombre',
       ],
-    ],
-    'index' => [
-      'instructions' => 'Gestiona tus Recursos Humanos aquí',
-      'title'        => 'Recursos Humanos',
     ],
   ],
   'humanresources' => [

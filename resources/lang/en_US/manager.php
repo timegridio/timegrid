@@ -247,8 +247,24 @@ return  [
       'update' => 'Update',
     ],
     'create' => [
-      'instructions' => 'Add human resources who will provide the services',
-      'title'        => 'Human Resources',
+      'title'        => 'Add Staff Members',
+      'subtitle'     => 'Who will provide the services',
+      'instructions' => 'Add staff member who will provide the services',
+    ],
+    'edit' => [
+      'title'        => 'Edit Staff Member',
+      'subtitle'     => 'Info',
+      'instructions' => 'Edit staff member info',
+    ],
+    'index' => [
+      'title'        => 'Staff Members',
+      'subtitle'     => 'List',
+      'instructions' => 'Staff members list',
+    ],
+    'show' => [
+      'title'        => 'Staff Member',
+      'subtitle'     => 'Info',
+      'instructions' => 'staff member info',
     ],
     'form' => [
       'calendar_link' => [
@@ -261,21 +277,17 @@ return  [
         'label' => 'Name',
       ],
     ],
-    'index' => [
-      'instructions' => 'Manage Human Resources here',
-      'title'        => 'Human Resources',
-    ],
   ],
   'humanresources' => [
     'msg' => [
       'destroy' => [
-        'success' => 'Human resource removed',
+        'success' => 'Staff member removed',
       ],
       'store' => [
-        'success' => 'Human resource added',
+        'success' => 'Staff member added',
       ],
       'update' => [
-        'success' => 'Human resource updated',
+        'success' => 'Staff member updated',
       ],
     ],
   ],

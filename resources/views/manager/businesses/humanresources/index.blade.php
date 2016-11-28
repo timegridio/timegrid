@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', trans('manager.humanresource.index.title'))
+@section('subtitle', trans('manager.humanresource.index.subtitle'))
+
 @section('content')
 <div class="container-fluid">
     <div class="col-md-6 col-md-offset-3">

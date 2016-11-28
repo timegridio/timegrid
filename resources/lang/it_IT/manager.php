@@ -325,8 +325,24 @@ return  [
       'update' => 'Aggiorna',
     ],
     'create' => [
-      'instructions' => 'Aggiungi una risorsa umana che fornir&agrave; il servizio',
       'title'        => 'Risorse Umane',
+      // 'subtitle'     => 'TODO: Translate',
+      'instructions' => 'Aggiungi una risorsa umana che fornir&agrave; il servizio',
+    ],
+    'edit' => [
+      // 'title'        => 'TODO: Translate',
+      // 'subtitle'     => 'TODO: Translate',
+      // 'instructions' => 'TODO: Translate',
+    ],
+    'index' => [
+      // 'title'        => 'TODO: Translate',
+      // 'subtitle'     => 'TODO: Translate',
+      // 'instructions' => 'TODO: Translate',
+    ],
+    'show' => [
+      // 'title'        => 'TODO: Translate',
+      // 'subtitle'     => 'TODO: Translate',
+      // 'instructions' => 'TODO: Translate',
     ],
     'form' => [
       'calendar_link' => [
@@ -338,10 +354,6 @@ return  [
       'name' => [
         'label' => 'Nome',
       ],
-    ],
-    'index' => [
-      'instructions' => 'Gestisci qui le Risorse Umane',
-      'title'        => 'Risorse Umane',
     ],
   ],
   'humanresources' => [
