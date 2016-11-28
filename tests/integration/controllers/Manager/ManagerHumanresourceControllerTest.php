@@ -27,7 +27,7 @@ class ManagerHumanresourceControllerTest extends TestCase
 
         $this->press('Save');
 
-        $this->see('Human resource added');
+        $this->see('Staff member added');
         $this->see('Lucy Doe');
     }
 
@@ -83,7 +83,7 @@ class ManagerHumanresourceControllerTest extends TestCase
 
         $this->press('Update');
 
-        $this->see('Human resource updated');
+        $this->see('Staff member updated');
         $this->see('Lucie Doe');
         $this->see('2');
     }
