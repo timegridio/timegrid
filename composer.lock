@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8fbeea23701bb57aa3717e4ef6d4aa41",
-    "content-hash": "25a5fc623f7caa6acb69144297246361",
+    "hash": "ffc7b0beea6404309948fbb2afbbf48c",
+    "content-hash": "dc6558c69382738db2e3a3916e0ff2b8",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3368,6 +3368,61 @@
                 "monitoring"
             ],
             "time": "2016-07-05 15:50:29"
+        },
+        {
+            "name": "seanstewart/plan-config",
+            "version": "dev-patch",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/alariva/Plan-Config.git",
+                "reference": "0e03b412a753214a5f083e9c5c28bac30af98fd7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/alariva/Plan-Config/zipball/0e03b412a753214a5f083e9c5c28bac30af98fd7",
+                "reference": "0e03b412a753214a5f083e9c5c28bac30af98fd7",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.3.*",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master@dev",
+                "phpunit/phpunit": "~4.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Seanstewart\\PlanConfig\\": "src/"
+                },
+                "files": [
+                    "src/functions.php"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sean Stewart",
+                    "email": "sean@ekoim.com"
+                }
+            ],
+            "description": "Plan config allows you to easily define attributes and limits for your SaaS application subscription plans.",
+            "homepage": "https://github.com/theseanstewart/Plan-Config",
+            "keywords": [
+                "config",
+                "laravel",
+                "laravel5",
+                "plans",
+                "saas",
+                "subscription plans"
+            ],
+            "support": {
+                "source": "https://github.com/alariva/Plan-Config/tree/patch"
+            },
+            "time": "2016-11-29 00:47:54"
         },
         {
             "name": "snowfire/beautymail",
@@ -7278,6 +7333,7 @@
         "timegridio/concierge": 20,
         "snowfire/beautymail": 20,
         "timegridio/icalreader": 20,
+        "seanstewart/plan-config": 20,
         "codeclimate/php-test-reporter": 20
     },
     "prefer-stable": false,

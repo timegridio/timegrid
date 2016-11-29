@@ -1,7 +1,9 @@
 <?php
 
 return  [
-  //============================== New strings to translate ==============================//
+  'saas' => [
+    'plan_limit_reached' => 'Si è raggiunto il limite del tuo piano',
+  ],
   'btn' => [
     'get_to_dashboard' => 'Andare al dashboard',
     'update'           => 'Aggiorna',

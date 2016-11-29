@@ -36,6 +36,12 @@ class BusinessServiceController extends Controller
         logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
+        if ($business->services()->count() > plan('limits.services', $business->plan)) {
+            flash()->warning(trans('app.saas.plan_limit_reached'));
+
+            return redirect()->back();
+        }
+
         $this->authorize('manageServices', $business);
 
         // BEGIN

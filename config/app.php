@@ -183,6 +183,7 @@ return [
         Alariva\Tidiochat\TidioChatServiceProvider::class,
         Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
         Timegridio\ICalReader\ICalReaderServiceProvider::class,
+        Seanstewart\PlanConfig\PlanConfigServiceProvider::class,
     ],
 
     /*
@@ -276,6 +277,7 @@ return [
         'Socialite'  => Laravel\Socialite\Facades\Socialite::class,
         'TidioChat'  => Alariva\Tidiochat\Facades\TidioChat::class,
         'Widget'     => Caffeinated\Widgets\Facades\Widget::class,
+        'Plan'       => Seanstewart\PlanConfig\Plan::class,
     ],
 
 ];

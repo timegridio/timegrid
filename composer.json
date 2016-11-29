@@ -20,6 +20,12 @@
         "source": "https://github.com/timegridio/timegrid"
     },
     "type": "project",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/alariva/Plan-Config"
+        }
+    ],
     "require": {
         "php": ">=5.6",
         "anhskohbo/no-captcha": "2.*",
@@ -55,7 +61,8 @@
         "timegridio/icalreader": "dev-master",
         "spatie/laravel-cookie-consent": "^1.2",
         "torann/geoip": "1.0.*",
-        "geoip2/geoip2": "~2.1"
+        "geoip2/geoip2": "~2.1",
+        "seanstewart/plan-config": "dev-patch"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

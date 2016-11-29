@@ -1,6 +1,9 @@
 <?php
 
 return  [
+  'saas' => [
+    'plan_limit_reached' => 'You reached your plan limit',
+  ],
   'btn' => [
     'get_to_dashboard' => 'Get to Dashboard',
     'update'           => 'Update',

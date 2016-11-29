@@ -41,6 +41,12 @@ class AddressbookController extends Controller
         logger()->info(__METHOD__);
         logger()->info(sprintf('businessId:%s', $business->id));
 
+        if ($business->contacts()->count() > plan('limits.contacts', $business->plan)) {
+            flash()->warning(trans('app.saas.plan_limit_reached'));
+
+            return redirect()->back();
+        }
+
         $this->authorize('manageContacts', $business);
 
         // BEGIN //
