@@ -112,7 +112,7 @@ return  [
     ],
     'step5' => [
       'content' => 'Ideal for growing businesses.',
-      'title'   => 'Starter',
+      'title'   => 'Premium',
     ],
   ],
 ];

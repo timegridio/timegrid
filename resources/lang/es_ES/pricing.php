@@ -20,7 +20,7 @@ return  [
       'name'   => 'Free',
       'submit' => 'Empezar',
     ],
-    'starter' => [
+    'premium' => [
       'hint'   => 'Ideal para negocios',
       'name'   => 'Premium',
       'submit' => 'Contratar',

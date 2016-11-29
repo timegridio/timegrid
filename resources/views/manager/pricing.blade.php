@@ -122,10 +122,10 @@
             <div class="col-lg-4 col-md-4 col-xs-6">
                 <ul class="plan plan2" id="plan2">
                     <li class="plan-name">
-                        {{trans('pricing.plan.starter.name')}}
+                        {{trans('pricing.plan.premium.name')}}
                     </li>
                     <li class="plan-hint">
-                        {{trans('pricing.plan.starter.hint')}}
+                        {{trans('pricing.plan.premium.hint')}}
                     </li>
                     <li class="plan-price">
                         {{-- Important to use unescaped for currency as might have html entities --}}
@@ -147,7 +147,7 @@
                         {{ trans('pricing.feature.customized_support') }}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.register', ['plan' => 'premium']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{ trans('pricing.plan.starter.submit') }}</a>
+                        <a href="{{ route('manager.business.register', ['plan' => 'premium']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{ trans('pricing.plan.premium.submit') }}</a>
                     </li>
                 </ul>
             </div>
