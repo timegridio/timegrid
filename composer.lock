@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ffc7b0beea6404309948fbb2afbbf48c",
-    "content-hash": "dc6558c69382738db2e3a3916e0ff2b8",
+    "hash": "2d6ec83d2d8c81e1041a4011088c5e3d",
+    "content-hash": "f155e0fa60cf1412d9fb868adad501a7",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -3371,20 +3371,20 @@
         },
         {
             "name": "seanstewart/plan-config",
-            "version": "dev-patch",
+            "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/alariva/Plan-Config.git",
-                "reference": "0e03b412a753214a5f083e9c5c28bac30af98fd7"
+                "url": "https://github.com/theseanstewart/Plan-Config.git",
+                "reference": "34fbe2d5da4140360bd2339550673cae10baf176"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/alariva/Plan-Config/zipball/0e03b412a753214a5f083e9c5c28bac30af98fd7",
-                "reference": "0e03b412a753214a5f083e9c5c28bac30af98fd7",
+                "url": "https://api.github.com/repos/theseanstewart/Plan-Config/zipball/34fbe2d5da4140360bd2339550673cae10baf176",
+                "reference": "34fbe2d5da4140360bd2339550673cae10baf176",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "5.3.*",
+                "illuminate/support": ">=5.0 <5.4",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -3400,6 +3400,7 @@
                     "src/functions.php"
                 ]
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3419,10 +3420,7 @@
                 "saas",
                 "subscription plans"
             ],
-            "support": {
-                "source": "https://github.com/alariva/Plan-Config/tree/patch"
-            },
-            "time": "2016-11-29 00:47:54"
+            "time": "2016-11-29 14:08:12"
         },
         {
             "name": "snowfire/beautymail",
