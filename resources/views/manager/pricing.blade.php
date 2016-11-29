@@ -147,7 +147,7 @@
                         {{ trans('pricing.feature.customized_support') }}
                     </li>
                     <li class="plan-action">
-                        <a href="{{ route('manager.business.register', ['plan' => 'starter']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{ trans('pricing.plan.starter.submit') }}</a>
+                        <a href="{{ route('manager.business.register', ['plan' => 'premium']) }}" class="btn btn-danger btn-lg">{!! Icon::shopping_cart() !!}&nbsp;{{ trans('pricing.plan.starter.submit') }}</a>
                     </li>
                 </ul>
             </div>
