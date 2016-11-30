@@ -38,6 +38,7 @@
     "bootstrap-timepicker": "^0.5.2",
     "jquery-ui": "^1.12.1",
     "fullcalendar": "^3.0.1",
-    "air-datepicker": "^2.2.3"
+    "air-datepicker": "^2.2.3",
+    "clipboard": "^1.5.15"
   }
 }

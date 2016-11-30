@@ -25,6 +25,10 @@ elixir(function(mix) {
         './bower_components/adminlte/plugins/iCheck/icheck.min.js',
     ], 'public/js/iCheck/icheck.min.js');
 
+    mix.scripts([
+        './bower_components/clipboard/dist/clipboard.min.js',
+    ], 'public/js/clipboard/clipboard.min.js');
+
     mix.styles([
         './bower_components/bootstrap/dist/css/bootstrap.min.css',
         './bower_components/adminlte/dist/css/AdminLTE.css',
