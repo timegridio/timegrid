@@ -65,8 +65,7 @@
         </a>
     </li>
 
-    <!-- Language Switcher -->
-    @include('manager._sidebar-menu-i18n')
+    {{-- @include('manager._sidebar-menu-i18n') --}}
 
 </ul>
 <!-- /.sidebar-menu -->
