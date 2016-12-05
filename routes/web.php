@@ -13,7 +13,7 @@
 
 
 Route::get('test', function () {
-    return rtrans('martes', 'input.days');
+    return rtrans('martedi', 'input.days');
 });
 
 //////////////////
