@@ -98,6 +98,9 @@ class SendBookingNotification
         $this->sendemail($email);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
+     */
     protected function sendEmail($email)
     {
         extract($email);
