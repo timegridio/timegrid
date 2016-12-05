@@ -11,6 +11,11 @@
 |
 */
 
+
+Route::get('test', function () {
+    return rtrans('martes', 'input.days');
+});
+
 //////////////////
 // ROOT CONTEXT //
 //////////////////

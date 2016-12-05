@@ -90,3 +90,10 @@ if (!function_exists('docs_url')) {
         return config("root.docs_url.{$locale}");
     }
 }
+
+if (!function_exists('rtrans')) {
+    function rtrans($foreign, $group = null, $locale = 'en')
+    {
+        return with(new App\TG\Support\ReverseTranslator)->get($foreign, $group, $locale);
+    }
+}
