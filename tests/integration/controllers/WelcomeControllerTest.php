@@ -13,7 +13,7 @@ class WelcomeControllerTest extends TestCase
         $this->visit('/');
 
         // Then I should see the jumbotron presentation
-        $this->see('The booking app for successful professionals')
+        $this->see('The booking app for successful service professionals')
              ->see('Let\'s begin')
              ->see('Login');
     }
