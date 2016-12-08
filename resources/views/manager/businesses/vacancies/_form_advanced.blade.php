@@ -20,13 +20,12 @@
         <div id="dates"
                type="text"
                class="datepicker-here"
-               data-language='es'
                data-multiple-dates="15"
                data-multiple-dates-separator=", "
                data-show-other-months="true"
                data-date-format="yyyy-m-d"
-               data-today-button="true"
-               data-clear-button="true"
+               data-today-button="false"
+               data-clear-button="false"
                data-position='top left'></div>
         <br/>
     </div>
@@ -152,6 +151,12 @@ $(document).ready(function(){
       checkboxClass: 'icheckbox_square-blue',
       radioClass: 'iradio_square-blue',
       increaseArea: '20%' // optional
+    });
+
+    $('#dates').datepicker({
+        language: timegrid.lang,
+        clearButton: false,
+        todayButton: false,
     });
 
 });

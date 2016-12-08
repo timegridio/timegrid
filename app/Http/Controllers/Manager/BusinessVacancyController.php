@@ -51,6 +51,7 @@ class BusinessVacancyController extends Controller
         JavaScript::put([
             'services'       => $business->services->pluck('slug')->all(),
             'humanresources' => $business->humanresources->pluck('slug')->all(),
+            'lang'           => $this->getActiveLanguage($business->locale),
         ]);
 
         $daysQuantity = $business->pref('vacancy_edit_days_quantity', config('root.vacancy_edit_days'));
@@ -285,6 +286,11 @@ class BusinessVacancyController extends Controller
         $out[] = "  {$startAt} - {$finishAt}";
 
         return implode("\n", $out);
+    }
+
+    protected function getActiveLanguage($locale)
+    {
+        return session()->get('language', substr($locale, 0, 2));
     }
 
     protected function rememberStatements($businessId, $statements)
