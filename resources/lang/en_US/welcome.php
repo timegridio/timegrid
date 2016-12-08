@@ -27,7 +27,7 @@ return [
       'begin' => 'Let\'s begin',
       'login' => 'Login',
     ],
-    'description' => 'The booking app for successful professionals.',
+    'description' => 'The booking app for successful service professionals.',
     'title'       => 'timegrid.io',
   ],
 ];
