@@ -31,7 +31,7 @@ return  [
     'need_help'             => 'Need help ?',
     'password'              => 'A password',
     'password_confirmation' => 'Repeat password',
-    'title'                 => 'Hi! We are going to build your profile in timegrid.io',
+    'title'                 => 'Hi! We are going to build your profile on timegrid.io',
   ],
   'reset' => [
     'btn' => [
