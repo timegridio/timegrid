@@ -32,6 +32,10 @@ class SendSoftAppointmentValidationRequest
         $email = $event->appointment->contact->email;
         $code = $event->appointment->code;
 
+        if ($event->appointment->business->pref('disable_outbound_mailing')) {
+            return;
+        }
+
         ////////////////////////////////////////////////////
         // Send Soft Appointment Validation Request Email //
         ////////////////////////////////////////////////////

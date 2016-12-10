@@ -6,16 +6,13 @@ use App\TG\TransMail;
 
 class SendSoftAppointmentValidationRequestTest extends TestCase
 {
-    use CreateBusiness, CreateContact, CreateAppointment;
+    use CreateAppointment;
 
     public function setUp()
     {
         parent::setUp();
         $this->transmail = Mockery::mock(TransMail::class);
         $this->appointment = $this->createAppointment();
-
-        $this->business = $this->createBusiness();
-        $this->contact = $this->createContact();
     }
 
     public function tearDown()
@@ -28,6 +25,8 @@ class SendSoftAppointmentValidationRequestTest extends TestCase
      */
     public function it_sends_a_soft_appointment_validation_request_email()
     {
+        $this->appointment->business->pref('disable_outbound_mailing', false);
+
         $this->transmail->shouldReceive('locale')->once()->andReturn($this->transmail);
         $this->transmail->shouldReceive('timezone')->once()->andReturn($this->transmail);
         $this->transmail->shouldReceive('template')->once()->andReturn($this->transmail);
@@ -40,5 +39,21 @@ class SendSoftAppointmentValidationRequestTest extends TestCase
         $listener->handle(new NewSoftAppointmentWasBooked($this->appointment));
 
         $this->assertTrue($this->transmail->success());
+    }
+
+    /**
+     * @test
+     */
+    public function it_skips_sending_a_soft_appointment_validation_request_email()
+    {
+        $transmailSpy = Mockery::spy(TransMail::class);
+
+        $this->appointment->business->pref('disable_outbound_mailing', true);
+
+        $listener = new SendSoftAppointmentValidationRequest($transmailSpy);
+
+        $listener->handle(new NewSoftAppointmentWasBooked($this->appointment));
+
+        $transmailSpy->shouldNotHaveReceived('send');
     }
 }

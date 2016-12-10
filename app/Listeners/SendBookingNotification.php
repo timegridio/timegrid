@@ -39,6 +39,10 @@ class SendBookingNotification
                    ->extra(compact('businessName', 'code', 'date'))
                    ->send();
 
+        if ($event->appointment->business->pref('disable_outbound_mailing')) {
+            return;
+        }
+
         /////////////////
         // Send emails //
         /////////////////

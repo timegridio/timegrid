@@ -102,6 +102,11 @@ return  [
       'help'   => 'Let guest users to register on your addressbook through reserving an appointment',
       'label'  => 'Allow guest users to reserve appointments',
     ],
+    'disable_outbound_mailing' => [
+      'format' => 'Yes/No',
+      'help'   => 'Prevent sending emails',
+      'label'  => 'Disable outbound mailing',
+    ],
   ],
   'controls' => [
     'select' => [

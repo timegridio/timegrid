@@ -102,6 +102,11 @@ return  [
       'help'   => 'Permitirle a usuarios nuevos agregarse a tu agenda de clientes con un pedido de turno',
       'label'  => 'Admitir turnos de usuarios nuevos',
     ],
+    'disable_outbound_mailing' => [
+      'format' => 'Si/No',
+      'help'   => 'No enviar correo saliente',
+      'label'  => 'Deshabilitar envío de correos',
+    ],
   ],
   'controls' => [
     'select' => [

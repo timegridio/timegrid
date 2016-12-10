@@ -23,17 +23,17 @@ return  [
       'label'  => 'Permetti appuntamenti lo stesso giorno',
     ],
     'show_map' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Pubblica la mappa della tua posizione (mostra la citt&agrave;)',
       'label'  => 'Pubblica Mappa',
     ],
     'show_phone' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Pubblica il tuo numero di telefono',
       'label'  => 'Pubblica Telefono',
     ],
     'show_postal_address' => [
-      'format' => 'S&iacute;/no',
+      'format' => 'Sí/no',
       'help'   => 'Pubblica il tuo indirizzo postale',
       'label'  => 'Pubblica Indirizzo',
     ],
@@ -48,7 +48,7 @@ return  [
       'label'  => 'Condizioni di Cancellazione',
     ],
     'appointment_flexible_arrival' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Permetti ai clienti di arrivare tra l\'orario di apertura e quello di chiusura',
       'label'  => 'Appuntamenti flessibili di ordine orario di arrivo',
     ],
@@ -63,7 +63,7 @@ return  [
       'label'  => 'Durata della prestazione (in minuti)',
     ],
     'vacancy_edit_advanced_mode' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Utilizz&agrave; la modalit&agrave; avanzata per pubblicare le giornate non lavorative',
       'label'  => 'Modalit&agrave; avanzata giorni non lavorativi',
     ],
@@ -88,25 +88,30 @@ return  [
       'label'  => 'Disponibilit&agrave; prossimi giorni',
     ],
     'report_daily_schedule' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Desidero ricevere una report giornaliero con gli appuntamenti attivi',
       'label'  => 'Abilita ricezione programma giornaliero',
     ],
     'vacancy_autopublish' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Permetti a timegrid di pubblicare automaticamente e settimanalmente (ogni domenica) i giorni non lavorativi nel calendario',
       'label'  => 'Abilita pubblicazione automatica giorni non lavorativi',
     ],
     'allow_guest_registration' => [
-      'format' => 'S&iacute;/No',
+      'format' => 'Sí/No',
       'help'   => 'Permetti agli utenti la registrazione di nuovi contatti per appuntamenti non importanti',
       'label'  => 'Abilita la registrazione degli Ospiti',
+    ],
+    'disable_outbound_mailing' => [
+      'format' => 'Sí/No',
+      'help'   => 'Non inviare e-mail in uscita',
+      'label'  => 'Disabilitare l\'invio di e-mail',
     ],
   ],
   'controls' => [
     'select' => [
       'no'  => 'No',
-      'yes' => 'S&iacute;',
+      'yes' => 'Sí',
     ],
   ],
 ];

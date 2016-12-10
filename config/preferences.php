@@ -21,6 +21,7 @@ return [
         'timeslot_step'                   => ['type' => 'int', 'value' => '0'],
         'report_daily_schedule'           => ['type' => 'bool', 'value' => false],
         'allow_guest_registration'        => ['type' => 'bool', 'value' => false],
+        'disable_outbound_mailing'        => ['type' => 'bool', 'value' => false],
     ],
     'App\Models\User' => [
         'timezone'                        => ['type' => 'string', 'value' => ''],
