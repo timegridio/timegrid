@@ -52,7 +52,7 @@ class BusinessController extends Controller
     {
         logger()->info(__METHOD__);
 
-        $businesses = Business::all();
+        $businesses = Business::where('listed', true)->get();
 
         return view('user.businesses.index', compact('businesses'));
     }

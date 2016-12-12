@@ -76,6 +76,7 @@ $factory->define(Timegridio\Concierge\Models\Business::class, function (Faker\Ge
         'strategy'        => 'dateslot',
         'plan'            => 'free',
         'category_id'     => factory(Timegridio\Concierge\Models\Category::class)->create()->id,
+        'listed'          => true,
     ];
 });
 
