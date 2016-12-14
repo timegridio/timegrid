@@ -65,4 +65,18 @@ return [
             'button'             => 'Conferma Appuntamento',
         ],
     ],
+    'text'  => [
+        'business'          => 'Commercio',
+        'user'              => 'Utente',
+        'date'              => 'Data',
+        'time'              => 'Orario',
+        'code'              => 'Codice',
+        'where'             => 'Posto',
+        'phone'             => 'Tel',
+        'service'           => 'Sevizio',
+        'important'         => 'Importante',
+        'customer_notes'    => 'Note',
+        'there_are'         => 'Ci sono',
+        'registered'        => 'utenti registrati finora',
+    ],
 ];
