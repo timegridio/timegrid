@@ -93,131 +93,131 @@ var tourDashboard = new Tour({
   steps: [
   {
     element: "#general",
-    title: "{{trans('tour.dashboard.panel.title')}}",
-    content: "{{trans('tour.dashboard.panel.content')}}",
+    title: "{{ trans('tour.dashboard.panel.title') }}",
+    content: "{{ trans('tour.dashboard.panel.content') }}",
     orphan: true,
     duration: 18000
   },
   {
     element: "#btnEdit",
-    title: "{{trans('tour.dashboard.edit.title')}}",
-    content: "{{trans('tour.dashboard.edit.content')}}",
+    title: "{{ trans('tour.dashboard.edit.title') }}",
+    content: "{{ trans('tour.dashboard.edit.content') }}",
     placement: "bottom"
   },
   {
     element: "#btnServices",
-    title: "{{trans('tour.dashboard.services.title')}}",
-    content: "{{trans('tour.dashboard.services.content')}}",
+    title: "{{ trans('tour.dashboard.services.title') }}",
+    content: "{{ trans('tour.dashboard.services.content') }}",
     placement: "bottom"
   },
   {
     element: "#btnVacancies",
-    title: "{{trans('tour.dashboard.vacancies.title')}}",
-    content: "{{trans('tour.dashboard.vacancies.content')}}",
+    title: "{{ trans('tour.dashboard.vacancies.title') }}",
+    content: "{{ trans('tour.dashboard.vacancies.content') }}",
     placement: "bottom"
   },
   {
     element: "#btnAgenda",
-    title: "{{trans('tour.dashboard.agenda.title')}}",
-    content: "{{trans('tour.dashboard.agenda.content')}}",
+    title: "{{ trans('tour.dashboard.agenda.title') }}",
+    content: "{{ trans('tour.dashboard.agenda.content') }}",
     placement: "bottom"
   },
   {
     element: "#btnContacts",
-    title: "{{trans('tour.dashboard.contacts.title')}}",
-    content: "{{trans('tour.dashboard.contacts.content')}}",
+    title: "{{ trans('tour.dashboard.contacts.title') }}",
+    content: "{{ trans('tour.dashboard.contacts.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator1",
-    title: "{{trans('tour.dashboard.indicator1.title')}}",
-    content: "{{trans('tour.dashboard.indicator1.content')}}",
+    title: "{{ trans('tour.dashboard.indicator1.title') }}",
+    content: "{{ trans('tour.dashboard.indicator1.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator2",
-    title: "{{trans('tour.dashboard.indicator2.title')}}",
-    content: "{{trans('tour.dashboard.indicator2.content')}}",
+    title: "{{ trans('tour.dashboard.indicator2.title') }}",
+    content: "{{ trans('tour.dashboard.indicator2.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator3",
-    title: "{{trans('tour.dashboard.indicator3.title')}}",
-    content: "{{trans('tour.dashboard.indicator3.content')}}",
+    title: "{{ trans('tour.dashboard.indicator3.title') }}",
+    content: "{{ trans('tour.dashboard.indicator3.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator4",
-    title: "{{trans('tour.dashboard.indicator4.title')}}",
-    content: "{{trans('tour.dashboard.indicator4.content')}}",
+    title: "{{ trans('tour.dashboard.indicator4.title') }}",
+    content: "{{ trans('tour.dashboard.indicator4.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator5",
-    title: "{{trans('tour.dashboard.indicator5.title')}}",
-    content: "{{trans('tour.dashboard.indicator5.content')}}",
+    title: "{{ trans('tour.dashboard.indicator5.title') }}",
+    content: "{{ trans('tour.dashboard.indicator5.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator6",
-    title: "{{trans('tour.dashboard.indicator6.title')}}",
-    content: "{{trans('tour.dashboard.indicator6.content')}}",
+    title: "{{ trans('tour.dashboard.indicator6.title') }}",
+    content: "{{ trans('tour.dashboard.indicator6.content') }}",
     placement: "bottom"
   },
   {
     element: "#indicator7",
-    title: "{{trans('tour.dashboard.indicator7.title')}}",
-    content: "{{trans('tour.dashboard.indicator7.content')}}",
+    title: "{{ trans('tour.dashboard.indicator7.title') }}",
+    content: "{{ trans('tour.dashboard.indicator7.content') }}",
     placement: "top"
   },
   {
     element: "#indicator8",
-    title: "{{trans('tour.dashboard.indicator8.title')}}",
-    content: "{{trans('tour.dashboard.indicator8.content')}}",
+    title: "{{ trans('tour.dashboard.indicator8.title') }}",
+    content: "{{ trans('tour.dashboard.indicator8.content') }}",
     placement: "top"
   },
   {
     element: "#indicator9",
-    title: "{{trans('tour.dashboard.indicator9.title')}}",
-    content: "{{trans('tour.dashboard.indicator9.content')}}",
+    title: "{{ trans('tour.dashboard.indicator9.title') }}",
+    content: "{{ trans('tour.dashboard.indicator9.content') }}",
     placement: "top"
   },
   {
     element: "#search",
-    title: "{{trans('tour.dashboard.search.title')}}",
-    content: "{{trans('tour.dashboard.search.content')}}",
+    title: "{{ trans('tour.dashboard.search.title') }}",
+    content: "{{ trans('tour.dashboard.search.content') }}",
     placement: "bottom",
     duration: 12000
   },
   {
     element: "#navHome",
-    title: "{{trans('tour.dashboard.home.title')}}",
-    content: "{{trans('tour.dashboard.home.content')}}",
+    title: "{{ trans('tour.dashboard.home.title') }}",
+    content: "{{ trans('tour.dashboard.home.content') }}",
     placement: "bottom"
   },
   {
     element: "#navLang",
-    title: "{{trans('tour.dashboard.lang.title')}}",
-    content: "{{trans('tour.dashboard.lang.content')}}",
+    title: "{{ trans('tour.dashboard.lang.title') }}",
+    content: "{{ trans('tour.dashboard.lang.content') }}",
     placement: "bottom",
     duration: 12000
   },
   {
     element: "#navProfile",
-    title: "{{trans('tour.dashboard.profile.title')}}",
-    content: "{{trans('tour.dashboard.profile.content')}}",
+    title: "{{ trans('tour.dashboard.profile.title') }}",
+    content: "{{ trans('tour.dashboard.profile.content') }}",
     placement: "bottom"
   },
   {
     element: "#btnDelete",
-    title: "{{trans('tour.dashboard.delete.title')}}",
-    content: "{{trans('tour.dashboard.delete.content')}}",
+    title: "{{ trans('tour.dashboard.delete.title') }}",
+    content: "{{ trans('tour.dashboard.delete.content') }}",
     placement: "bottom"
   },
   {
     element: "#enjoy",
-    title: "{{trans('tour.dashboard.enjoy.title')}}",
-    content: "{{trans('tour.dashboard.enjoy.content')}}",
+    title: "{{ trans('tour.dashboard.enjoy.title') }}",
+    content: "{{ trans('tour.dashboard.enjoy.content') }}",
     orphan: true,
     duration: 20000,
   },

@@ -94,23 +94,23 @@ return  [
     'prev' => 'Back',
   ],
   'pricing' => [
-    'step1' => [
+    'step0' => [
       'content' => 'Ideal plan for freelance professionals.',
       'title'   => 'Free',
     ],
-    'step2' => [
-      'content' => 'Unlimited contacts.',
-      'title'   => 'Contact Addressbook',
-    ],
-    'step3' => [
-      'content' => 'Up to 3 services.',
-      'title'   => 'Services',
-    ],
-    'step4' => [
+    'step1' => [
       'content' => 'Unlimited monthly appointments.',
       'title'   => 'Appointments',
     ],
-    'step5' => [
+    'step2' => [
+      'content' => 'Get your client\'s contacts in one place.',
+      'title'   => 'Contact Addressbook',
+    ],
+    'step3' => [
+      'content' => 'Make your service catalog ready to be reserved.',
+      'title'   => 'Services',
+    ],
+    'step4' => [
       'content' => 'Ideal for growing businesses.',
       'title'   => 'Premium',
     ],

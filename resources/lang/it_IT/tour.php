@@ -94,23 +94,23 @@ return  [
     'prev' => 'Indietro',
   ],
   'pricing' => [
-    'step1' => [
+    'step0' => [
       'content' => 'Il piano ideale per i liberi professionisti.',
       'title'   => 'Free',
     ],
-    'step2' => [
-      'content' => 'Contatti illimitati.',
-      'title'   => 'Rubrica contatti',
-    ],
-    'step3' => [
-      'content' => 'Fino a 3 servizi.',
-      'title'   => 'Servizi',
-    ],
-    'step4' => [
+    'step1' => [
       'content' => 'Appuntamenti mensili illimitati.',
       'title'   => 'Appuntamenti',
     ],
-    'step5' => [
+    'step2' => [
+      'content' => 'Prendi i contatti dei tuoi clienti in un solo punto.',
+      'title'   => 'Rubrica contatti',
+    ],
+    'step3' => [
+      'content' => 'Fai la tua catalogo di servizi pronti per essere riservato.',
+      'title'   => 'Servizi',
+    ],
+    'step4' => [
       'content' => 'Ideale per aziende in crescita.',
       'title'   => 'Premium',
     ],

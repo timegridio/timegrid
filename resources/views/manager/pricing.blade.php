@@ -168,32 +168,33 @@
 var tour = new Tour({
     duration: 6500,
     delay: 1000,
+    template: "@include('tour._template')",
     steps: [
     {
         element: "#plan1",
-        title: "{{trans('tour.pricing.step1.title')}}",
-        content: "{{trans('tour.pricing.step1.content')}}",
+        title: "{{ trans('tour.pricing.step0.title') }}",
+        content: "{{ trans('tour.pricing.step0.content') }}",
         placement: "left"
     },
     {
+        element: "#p1_appointments",
+        title: "{{ trans('tour.pricing.step1.title') }}",
+        content: "{{ trans('tour.pricing.step1.content') }}"
+    },
+    {
         element: "#p1_contacts",
-        title: "{{trans('tour.pricing.step2.title')}}",
-        content: "{{trans('tour.pricing.step2.content')}}"
+        title: "{{ trans('tour.pricing.step2.title') }}",
+        content: "{{ trans('tour.pricing.step2.content') }}"
     },
     {
         element: "#p1_services",
-        title: "{{trans('tour.pricing.step3.title')}}",
-        content: "{{trans('tour.pricing.step3.content')}}"
-    },
-    {
-        element: "#p1_appointments",
-        title: "{{trans('tour.pricing.step4.title')}}",
-        content: "{{trans('tour.pricing.step4.content')}}"
+        title: "{{ trans('tour.pricing.step3.title') }}",
+        content: "{{ trans('tour.pricing.step3.content') }}"
     },
     {
         element: "#plan2",
-        title: "{{trans('tour.pricing.step5.title')}}",
-        content: "{{trans('tour.pricing.step5.content')}}"
+        title: "{{ trans('tour.pricing.step4.title') }}",
+        content: "{{ trans('tour.pricing.step4.content') }}"
     }
     ]});
 

@@ -94,23 +94,23 @@ return  [
     'prev' => 'Anterior',
   ],
   'pricing' => [
-    'step1' => [
+    'step0' => [
       'content' => 'Ideal para profesionales independientes.',
       'title'   => 'Free',
     ],
-    'step2' => [
-      'content' => 'Contactos ilimitados.',
-      'title'   => 'Agenda de Contactos',
-    ],
-    'step3' => [
-      'content' => 'Hasta 3 servicios.',
-      'title'   => 'Servicios',
-    ],
-    'step4' => [
+    'step1' => [
       'content' => 'Citas mensuales ilimitadas.',
       'title'   => 'Citas',
     ],
-    'step5' => [
+    'step2' => [
+      'content' => 'Guarda tu lista de contactos en un solo lugar.',
+      'title'   => 'Agenda de Contactos',
+    ],
+    'step3' => [
+      'content' => 'Crea tu catálogo de servicios listos para ser reservados.',
+      'title'   => 'Servicios',
+    ],
+    'step4' => [
       'content' => 'Ideal para negocios en crecimiento.',
       'title'   => 'Premium',
     ],
