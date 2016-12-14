@@ -74,7 +74,7 @@ return [
         'phone'             => 'Phone',
         'service'           => 'Service',
         'important'         => 'important',
-        'customer_notes'    => 'customer notes for you',
+        'customer_notes'    => 'Customer notes for you',
         'there_are'         => 'There are',
         'registered'        => 'registered users so far',
     ],
