@@ -92,7 +92,7 @@ function prepareEvents(){
                     console.log('AJAX Fail');
             }).always(function (data) {
                     $(this).parent().show();
-                    prepareEvents();
+                    // prepareEvents();
                     console.log('AJAX Finish');
                     console.log(data);
             });
