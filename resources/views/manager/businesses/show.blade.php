@@ -4,18 +4,7 @@
 @section('subtitle', $business->name)
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/notifications.css') }}">
 <link rel="stylesheet" href="{{ asset('css/tour.css') }}">
-@parent
-<style type="text/css">
-.bizurl:hover {
-    color: #444;
-}
-.bizurl {
-    font-family: monospace;
-    color: #ddd;
-}
-</style>
 @endsection
 
 @section('content')
@@ -59,7 +48,6 @@
 @endsection
 
 @push('footer_scripts')
-<script src="{{ asset('js/newsbox.js') }}"></script>
 <script src="{{ asset('js/tour.js') }}"></script>
 <script type="text/javascript">
 (function() {
@@ -228,22 +216,6 @@ tourDashboard.init();
 
 // Start the tour
 tourDashboard.start();
-
-$(".demo").bootstrapNews({
-newsPerPage: 4,
-navigation: true,
-autoplay: true,
-direction:'up', // up or down
-animationSpeed: 'normal',
-newsTickerInterval: 4000, //4 secs
-pauseOnHover: true,
-onStop: null,
-onPause: null,
-onReset: null,
-onPrev: null,
-onNext: null,
-onToDo: null
-});
 
 })();
 </script>
