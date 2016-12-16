@@ -30,7 +30,7 @@ class BusinessPolicy
      */
     public function update(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -43,7 +43,7 @@ class BusinessPolicy
      */
     public function destroy(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -56,7 +56,7 @@ class BusinessPolicy
      */
     public function managePreferences(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -69,7 +69,7 @@ class BusinessPolicy
      */
     public function manage(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -82,7 +82,7 @@ class BusinessPolicy
      */
     public function manageContacts(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -95,7 +95,7 @@ class BusinessPolicy
      */
     public function manageHumanresources(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -108,7 +108,7 @@ class BusinessPolicy
      */
     public function manageServices(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 
     /**
@@ -121,6 +121,6 @@ class BusinessPolicy
      */
     public function manageVacancies(User $user, Business $business)
     {
-        return $user->isOwner($business);
+        return $user->isOwnerOf($business);
     }
 }
