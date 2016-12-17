@@ -82,7 +82,7 @@
                         </li>
                         @endif
 
-                        @if($user->isOwner($business->id))
+                        @if($user->isOwnerOf($business->id))
                         <li class="list-group-item">
                             {!! Button::primary(trans('user.go_to_business_dashboard', ['business' => $business->name]))->withIcon(Icon::dashboard())->block()->large()->asLinkTo(route('manager.business.show', $business), $business->name) !!}
                         </li>
