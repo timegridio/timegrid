@@ -1,4 +1,4 @@
-# Timegrid Contribution Guide
+# Contributing to Timegrid
 
 Thank you for considering contributing to Timegrid.
 
@@ -14,18 +14,32 @@ is specially welcoming for the following aspects:
   * User Manual documentation
   * Technical documentation
   * API Development
-  * Feature addition
+  * Feature additions
 
-# Principles
+## Submit bug reports or feature requests
 
-*timegrid* is intended to save people's time, navigation, configuration and use 
-should be simple.
+### Submit pull requests
 
-  * Nice and easy UX
-  * Low level flexibility, high level simplicity.
-  * Enhancements are valued over feature additions.
+ * Fork the [Timegrid repository](https://github.com/timegridio/timegrid)
+ * Create a new branch with the name `#issue_number-Short-description`
+   * _Example:_ `#100-Fix-Navbar`
+ * Make your changes and commit
+ * Check if your branch is still in sync with the repositorys **`master`** branch
+   * _Read:_ [Syncing a fork](https://help.github.com/articles/syncing-a-fork/)
+   * _Also read:_ [How to rebase a pull request](https://github.com/edx/edx-platform/wiki/How-to-Rebase-a-Pull-Request) 
+ * Push your branch and create a PR against the Timegrid **`master`** branch
 
-As a rule of the thumb, keep **PSR-2** and **tests** in mind.
+### Some rules
+
+To make the contribution process nice and easy for anyone, please follow some rules:
+ * Each contribution (bug or feature) should have an [issue on Github](https://github.com/timegridio/timegrid/issues)
+to have a detailed explanation.
+ * Only one feature/bugfix per issue. If you want to submit more, create multiple issues.
+ * Only one feature/bugfix per PR (*Pull Request*). Split more changes into multiple PRs.
+
+#### Coding Style
+
+Try to follow the [PSR-2 guidlines](https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-2-coding-style-guide.md)
 
 ## Up-for-grabs Issues
 
@@ -36,14 +50,9 @@ project, or to help share the load of working on open source projects.
 
 ## Questions / Doubts
 
-[Drop me a line](https://gitter.im/alariva/timegridDevelopment?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) 
-and I'll be happy to help.
+[Drop me a line](https://gitter.im/alariva/timegridDevelopment) and I'll be happy to help.
 
 You may also [subscribe the dev newsletter](http://eepurl.com/bF_ARX).
-
-# Which branch?
-
-You should branch out from `master`.
 
 # Reporting Issues
 
@@ -59,5 +68,4 @@ providing *required info*
     Type Of Issue: [Bug|Enhancement|Feature Request|Question]
     Timegrid environment: [online demo|local install]
     Browser Name and Version: 
-    Operating System: 
-    Country (OPTIONAL): 
+    Server Operating System: 
