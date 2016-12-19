@@ -99,7 +99,7 @@
                         {{trans('pricing.plan.free.hint')}}
                     </li>
                     <li class="plan-price">
-                        <big><span class="label label-success"><strong>{{trans('pricing.free')}}</strong></span></big>
+                        <span class="label label-success"><strong>{{trans('pricing.free')}}</strong></span>
                     </li>
                     <li id="p1_appointments">
                         {!! trans('pricing.feature.unlimited_appointments') !!}
