@@ -107,6 +107,7 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
   * [Webearit.com](https://www.webearit.com/) for contribution on Italian translation
   * [Draganrakovic](https://github.com/draganrakovic) for contributions
   * [Nerxo](https://github.com/Nerxo) for contributions
+  * [Sahil Sharma](https://github.com/sahilsharma011) for contributions and smart suggestions
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License

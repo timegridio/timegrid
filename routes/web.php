@@ -64,7 +64,7 @@ Route::group([], function () {
     // PRIVATE HOME / WIZARD //
     ///////////////////////////
 
-    Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWizard']);
+    Route::get('home', ['as' => 'home', 'uses' => 'User\WizardController@getWizard'])->middleware('auth');
 
     ///////////////////////
     // LANGUAGE SWITCHER //

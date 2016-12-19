@@ -83,7 +83,7 @@
         @include('_footer')
 
         <!-- /.container -->
-    </footer>
+
 </div>
 <!-- ./wrapper -->
 
