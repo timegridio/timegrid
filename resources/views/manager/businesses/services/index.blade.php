@@ -119,7 +119,7 @@ $(document).ready(function() {
             $('<input>', {
                 'type': 'hidden',
                 'name': '_token',
-                    'value': '{{{ csrf_token() }}}'
+                    'value': '{{ csrf_token() }}'
                 });
  
             var hiddenInput =
