@@ -54,10 +54,29 @@
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
                         <ul class="nav navbar-nav">
                             @include('_navi18n')
+
+                            @if(auth()->check())
+                                @include('user._navmenu')
+                            @endif
                         </ul>
                         <!-- Search input here -->
                     </div>
                     <!-- /.navbar-collapse -->
+                    <!-- Navbar Right Menu -->
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+
+                            @if(auth()->check())
+                                <!-- Notifications Menu -->
+                                @include('user._notifications-menu')
+
+                                <!-- User Account Menu -->
+                                @include('_user-account-menu')
+                            @endif
+
+                        </ul>
+                    </div>
+                    <!-- /.navbar-custom-menu -->
                 </div>
                 <!-- /.container-fluid -->
             </nav>
