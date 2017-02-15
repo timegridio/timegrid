@@ -77,18 +77,25 @@ Timegrid uses [Concierge package](https://github.com/timegridio/concierge) for d
 
 Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
 
-### Author Notes
-
-Timegrid was born as a pet project and aimed to solve my own needs as a freelancer.
-Contributions and suggestions are welcome!
-
 ## Contributing
 
-Just get involved.
+Contributions are welcome. **Please read the following notes.**
 
-[![Reserve Your Seat](http://i.imgur.com/pgkEz87.png)](https://timegrid.io/dev)
+### Author Notes
 
-Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev)
+**IMPORTANT NOTE**
+
+Dear tiny but human-qualified community,
+
+Timegrid was born as a pet project and aimed to solve my own needs as a freelancer.
+I'm also happy to hear that timegrid helped to solve a problem for others, at least partially.
+
+That said, I'm sorry to mention that currently overloaded with other projects, I won't be
+able to keep up on timegrid development on a fulltime basis like before.
+
+PR's and other contributions, as well as regular maintenance will still take place.
+
+Thanks for your patience and thanks for being around.
 
 ## Special Thanks & Credits
 
@@ -113,3 +120,5 @@ Or just [jump in our Trello board](https://trello.com/b/VNFqnxhc/timegrid-io-dev
 ## License
 
 Timegrid is open-sourced software licensed under the [AGPL](http://www.gnu.org/licenses/agpl-3.0-standalone.html)
+
+May all beings be happy.
