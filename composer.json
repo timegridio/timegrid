@@ -50,7 +50,7 @@
         "alariva/tidiochat": "^2.0",
         "timegridio/concierge": "dev-master#90e65c",
         "jenssegers/rollbar": "^1.5",
-        "eluceo/ical": "~0.11",
+        "eluceo/ical": "^0.11",
         "snowfire/beautymail": "dev-master",
         "timegridio/icalreader": "dev-master",
         "spatie/laravel-cookie-consent": "^1.2",
