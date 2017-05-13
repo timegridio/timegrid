@@ -121,4 +121,54 @@
     </div><!-- /.row -->
 </div>
 </body>
+<!-- Scripts -->
+<script src="{{ asset('js/app.min.js') }}"></script>
+<script>
+    $(document).ready(function () {
+
+        $('.lang').on('click', function(){
+
+            sessionStorage.language = $(this).data('lang');
+        });
+
+        if (typeof(Storage) !== "undefined") {
+            if (sessionStorage.language) {
+                $('#myModal').modal('hide');
+            } else {
+                $('#myModal').modal('show');
+            }
+        } else {
+            alert('storage does not work on this browser');
+        }
+    });
+
+</script>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title text-center">Select a Language</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    @foreach ($availableLanguages as $locale => $language)
+                            <div class="col-md-3 text-center">
+                                {!! link_to_route('lang.switch', $language, $locale, ['class' => 'lang', 'data-lang' => $locale]) !!}
+                            </div>
+                    @endforeach
+
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+
+    </div>
+</div>
 </html>
