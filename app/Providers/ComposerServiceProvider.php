@@ -14,7 +14,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         view()->composer(
-            ['manager._sidebar-menu-i18n', '_navi18n'],
+            ['manager._sidebar-menu-i18n', 'welcome','_navi18n'],
             \App\Http\ViewComposers\NavLanguageComposer::class
         );
 

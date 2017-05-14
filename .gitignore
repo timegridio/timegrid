@@ -9,3 +9,4 @@
 .env.testing
 *.sublime-workspace
 .wakatime-project
+.idea/
