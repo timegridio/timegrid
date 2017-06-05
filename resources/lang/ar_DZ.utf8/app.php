@@ -1,0 +1,82 @@
+<?php
+/*************************************************************************
+ Generated via "php artisan localization:missing" at 2016/01/27 11:25:57 
+*************************************************************************/
+
+return [
+  //==================================== Translations ====================================//
+  'btn' => [
+    'update' => 'تحديث',
+  ],
+  'business' => [
+    'category' => [
+      'garage'       => 'Car Mechanic',
+      'doctor'       => 'Healthcare',
+      'photography'  => 'Photography',
+      'spa'          => 'Spa & Beauty',
+      'martial-arts' => 'Martial Arts',
+      'yoga'         => 'Yoga',
+      'consulting'   => 'Consulting',
+      'hairdresser'  => 'Hairdresser',
+      'beauty'       => 'Beauty & Healthcare',
+    ],
+  ],
+  'dateformat' => [
+    'carbon'         => 'm/d/Y',
+    'datetimepicker' => 'MM/DD/YYYY',
+  ],
+  'footer' => [
+    'demo'  => 'تذكير : هذه نسخة تجريبيبة فقط',
+    'local' => 'Local environment advice.',
+  ],
+  'gender' => [
+    'F' => 'أنثى',
+    'M' => 'ذكر',
+  ],
+  'label' => [
+    'attention'       => 'تحذير',
+    'select_timezone' => 'TimeZone',
+  ],
+  'msg' => [
+    'invalid_token'     => 'We found some validation problems, please submit your form again.',
+    'general_exception' => 'Sorry, there was a problem. Don\'t worry, we are working on it ;)',
+    'invalid_url'       => 'The link you try to access does not exist, try browsing the directory.',
+    'slug_is_available' => 'The :baseurl name is available. Register it now.',
+  ],
+  'name' => 'timegrid.io',
+  'nav'  => [
+    'dashboard' => 'Dashboard',
+    'login'     => 'تسجيل الدخول',
+    'logout'    => 'تسجيل الخروج',
+    'help'      => 'مساعدة',
+    'preferences' => 'خيارات',
+    'manager'   => [
+      'business' => [
+        'register' => 'SignUp Business',
+        'list'     => 'قائمة',
+        'menu'     => 'My Businesses',
+      ],
+    ],
+    'manual'   => 'User Manual',
+    'register' => 'Register',
+    'user'     => [
+      'business' => [
+        'menu'             => 'Directory',
+        'my_appointments'  => 'My Reservations',
+        'my_subscriptions' => 'My Subscriptions',
+        'selector'         => 'Browse',
+      ],
+    ],
+    'wizard' => 'مساعدة',
+  ],
+  'notifications' => [
+    'title' => 'Recently',
+  ],
+  'search' => [
+    'msg' => [
+      'no_results' => 'We found nothing with this criteria: :criteria',
+    ],
+    'placeholder' => 'البحث',
+  ],
+  //================================== Obsolete strings ==================================//
+];
