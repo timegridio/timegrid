@@ -22,32 +22,21 @@
         color:#fff;
         background-color: #367FA9;
     }
-    img {
-        filter: none;
-        -webkit-filter: grayscale(20%);
-        -moz-filter:    grayscale(20%);
-        -ms-filter:     grayscale(20%);
-        -o-filter:      grayscale(20%);
-    }
-    img:hover {
-        filter: none;
-        -webkit-filter: grayscale(0%);
-        -moz-filter:    grayscale(0%);
-        -ms-filter:     grayscale(0%);
-        -o-filter:      grayscale(0%);
-    }
+	.image-container {
+		position: relative;
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		background-size: cover;
+		background-position: center center;
+		border-radius: 4px;
+	}
     #inspire {font-family: 'Arvo', serif;}
     .panel{
-        -o-transition:color .2s ease-out, background 1s ease-in;
-        -ms-transition:color .2s ease-out, background 1s ease-in;
-        -moz-transition:color .2s ease-out, background 1s ease-in;
-        -webkit-transition:color .2s ease-out, background 1s ease-in;
-        transition:color .2s ease-out, background 1s ease-in;
+    	text-align: center;
+    	border: none;
+    	box-shadow: none;
     }
-    #optimize:hover{background-color: #FFD8CC;}
-    #contact:hover{background-color: #FFF0CC;}
-    #do:hover{background-color: #E4FFCC;}
-    #love:hover{background-color: #FFCCEE;}
     </style>
 
 </head>
@@ -79,8 +68,8 @@
     <div class="row">
 
         <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail panel" id="optimize">
-                <img src="{{asset('img/jumbo/optimize.png')}}" alt="">
+            <div class="thumbnail panel">
+            	<div class="image-container" style="background-image:url('{{asset('img/jumbo/optimize.png')}}')"></div>
                 <div class="caption">
                     <h3>{{trans('welcome.feature.1.title')}}</h3>
                     <p>{{trans('welcome.feature.1.content')}}</p>
@@ -89,8 +78,8 @@
         </div>
 
         <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail panel" id="contact">
-                <img src="{{asset('img/jumbo/contact.png')}}" alt="">
+            <div class="thumbnail panel">
+            	<div class="image-container" style="background-image:url('{{asset('img/jumbo/contact.png')}}')"></div>
                 <div class="caption">
                     <h3>{{trans('welcome.feature.2.title')}}</h3>
                     <p>{{trans('welcome.feature.2.content')}}</p>
@@ -99,8 +88,8 @@
         </div>
 
         <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail panel" id="do">
-                <img src="{{asset('img/jumbo/do.png')}}" alt="">
+            <div class="thumbnail panel">
+            	<div class="image-container" style="background-image:url('{{asset('img/jumbo/do.png')}}')"></div>
                 <div class="caption">
                     <h3>{{trans('welcome.feature.3.title')}}</h3>
                     <p>{{trans('welcome.feature.3.content')}}</p>
@@ -109,8 +98,8 @@
         </div>
 
         <div class="col-md-3 col-sm-6 hero-feature">
-            <div class="thumbnail panel" id="love">
-                <img src="{{asset('img/jumbo/love.png')}}" alt="">
+            <div class="thumbnail panel">
+            	<div class="image-container" style="background-image:url('{{asset('img/jumbo/love.png')}}')"></div>
                 <div class="caption">
                     <h3>{{trans('welcome.feature.4.title')}}</h3>
                     <p>{{trans('welcome.feature.4.content')}}</p>
