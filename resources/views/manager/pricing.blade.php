@@ -23,6 +23,29 @@
         -webkit-transition: 300ms;
         transition: 300ms;
     }
+
+	.flat .plan li.noZoom {
+		 -o-transition-property: none !important;
+		 -moz-transition-property: none !important;
+		 -ms-transition-property: none !important;
+		 -webkit-transition-property: none !important;
+		 transition-property: none !important;
+
+		 /*CSS transforms*/
+		 -o-transform: none !important;
+		 -moz-transform: none !important;
+		 -ms-transform: none !important;
+		 -webkit-transform: none !important;
+		 transform: none !important;
+
+		 /*CSS animations*/
+		 -webkit-animation: none !important;
+		 -moz-animation: none !important;
+		 -o-animation: none !important;
+		 -ms-animation: none !important;
+		 animation: none !important;
+	}
+    
     .flat .plan li.plan-price {
         font-family: 'Lato', sans-serif;
         font-size: 2em;
@@ -61,12 +84,21 @@
         -ms-transform: scale(1.05);
         transform: scale(1.05);
     }
-    .plan-action .btn{
+
+    .flat .plan.featured :hover {
+        -webkit-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05);
+    }
+
+    .plan-action .btn {
         font-family: 'Lato', sans-serif;
         font-size: 1.5em;
         border: 0px;
+        -webkit-transition: 300ms;
+        transition: 300ms;
     }
-    .plan-action .btn:hover{
+    .plan-action .btn:hover {
         background-color: #5CB85C;
     }
     .flat .plan.featured li.plan-name {
@@ -95,7 +127,7 @@
                     <li class="plan-name">
                         {{trans('pricing.plan.free.name')}}
                     </li>
-                    <li class="plan-hint">
+                    <li class="plan-hint noZoom">
                         {{trans('pricing.plan.free.hint')}}
                     </li>
                     <li class="plan-price">
@@ -113,6 +145,9 @@
                     <li id="p1_specialists">
                         {!! trans('pricing.feature.one_specialist') !!}
                     </li>
+                    <li class="noZoom">
+						<strike>{{ trans('pricing.feature.customized_support') }}</strike>
+                    </li>
                     <li class="plan-action">
                         <a href="{{ route('manager.business.register', ['plan' => 'free']) }}" class="btn btn-danger btn-lg">{!! Icon::cloud_upload() !!}&nbsp;{{ trans('pricing.plan.free.submit') }}</a>
                     </li>
@@ -124,7 +159,7 @@
                     <li class="plan-name">
                         {{trans('pricing.plan.premium.name')}}
                     </li>
-                    <li class="plan-hint">
+                    <li class="plan-hint noZoom">
                         {{trans('pricing.plan.premium.hint')}}
                     </li>
                     <li class="plan-price">
