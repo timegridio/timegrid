@@ -1,6 +1,19 @@
 @extends('layouts.bare')
 
 @section('content')
+<style>
+	.caption {
+		height: 80px;
+		text-align: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.btn {
+        -webkit-transition: 300ms;
+        transition: 300ms;
+	}
+</style>
 <div class="container">
     <div class="row">
         {!! Alert::info(trans('wizard.alert')) !!}
