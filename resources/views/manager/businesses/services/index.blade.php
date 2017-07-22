@@ -20,7 +20,9 @@
                             'data-toggle' => 'tooltip',
                             'data-original-title' => trans('manager.service.btn.delete'),
                             'data-method' => 'DELETE',
-                            'data-confirm' => trans('manager.service.btn.delete').'?']
+                            'data-confirm' => trans('manager.service.btn.delete').'?'
+                           
+                            ]
                         )->asLinkTo( route('manager.business.service.destroy', [$service->business, $service]) ) !!}
 
                         {!! Button::normal()
@@ -52,18 +54,22 @@
 
         </div>
         @if ($business->services()->count())
-        {!! Alert::success(trans('manager.services.create.alert.go_to_vacancies')) !!}
-        {!! Button::success(trans('manager.services.create.btn.go_to_vacancies'))
+        {{-- {!! Alert::success(trans('manager.services.create.alert.go_to_vacancies')) !!} --}}
+
+        {{-- {!! Button::success(trans('manager.services.create.btn.go_to_vacancies'))
             ->withIcon(Icon::time())
             ->asLinkTo(route('manager.business.vacancy.create', $business))
             ->large()
-            ->block() !!}
+            ->block() !!} --}}
         @endif
+
+        
     </div>
 </div>
 @endsection
 
 @push('footer_scripts')
+
 <script>
 $(document).ready(function() {
 
@@ -84,28 +90,53 @@ $(document).ready(function() {
             var link = $(this);
             var httpMethod = link.data('method').toUpperCase();
             var form;
+            
+            form = laravel.createForm(link);
  
             // If the data-method attribute is not PUT or DELETE,
             // then we don't know what to do. Just ignore.
             if ( $.inArray(httpMethod, ['PUT', 'DELETE']) === - 1 ) {
                 return;
             }
- 
+
+            
             // Allow user to optionally provide data-confirm="Are you sure?"
             if ( link.data('confirm') ) {
-                if ( ! laravel.verifyConfirm(link) ) {
-                    return false;
+
+               // if ( ! laravel.verifyConfirm(link) ) {
+               //      return false;
+               //  }
+
+               swal({
+                  title: link.data('confirm'),
+                  text: "Are you sure?",
+                  type: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: "#DD6B55",
+                  confirmButtonText: "DELETE",
+                  cancelButtonText: "CANCEL",
+                  closeOnConfirm: true,
+                  closeOnCancel: true
+                },
+               function(isConfirm){
+                    if(isConfirm) {
+                        form.submit();
+                    }
                 }
+
+              );
+
             }
  
-            form = laravel.createForm(link);
-            form.submit();
+            // form = laravel.createForm(link);
+            // form.submit();
  
             e.preventDefault();
         },
  
         verifyConfirm: function(link) {
             return confirm(link.data('confirm'));
+
         },
  
         createForm: function(link) {

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Timegridio\Concierge\Models\Business;
 use Timegridio\Concierge\Models\Service;
+use SweetAlert;
 
 class BusinessServiceController extends Controller
 {
@@ -184,6 +185,9 @@ class BusinessServiceController extends Controller
 
         $this->authorize('manageServices', $business);
 
+
+        
+
         // BEGIN
 
         //////////////////
@@ -192,7 +196,9 @@ class BusinessServiceController extends Controller
 
         $service->forceDelete();
 
-        flash()->success(trans('manager.services.msg.destroy.success'));
+        //flash()->success(trans('manager.services.msg.destroy.success'));
+
+        alert()->success(trans('manager.services.msg.destroy.success'))->autoclose(3500);
 
         return redirect()->route('manager.business.service.index', $business);
     }

@@ -184,6 +184,7 @@ return [
         Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
         Timegridio\ICalReader\ICalReaderServiceProvider::class,
         Seanstewart\PlanConfig\PlanConfigServiceProvider::class,
+        UxWeb\SweetAlert\SweetAlertServiceProvider::class,
     ],
 
     /*
@@ -278,6 +279,7 @@ return [
         'TidioChat'  => Alariva\Tidiochat\Facades\TidioChat::class,
         'Widget'     => Caffeinated\Widgets\Facades\Widget::class,
         'Plan'       => Seanstewart\PlanConfig\Plan::class,
+        'SweetAlert'      => UxWeb\SweetAlert\SweetAlert::class,
     ],
 
 ];

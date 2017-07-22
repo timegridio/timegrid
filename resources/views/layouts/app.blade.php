@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('css/app.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/sweetalert.css') }}">
     
     <link rel="manifest" href="/manifest.json">
 
@@ -183,6 +184,10 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+
+@include('sweet::alert')
+
 
 @stack('footer_scripts')
 
