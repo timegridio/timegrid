@@ -25,11 +25,11 @@
     @if ($business->vacancies()->future()->count() == 0)
     <div class="row">
         <div class="col-md-12">
-            {!! Alert::warning(Button::withIcon(Icon::time())
+            {{-- {!! Alert::warning(Button::withIcon(Icon::time())
                 ->warning()
                 ->asLinkTo( route('manager.business.vacancy.create', $business)) . '&nbsp;' .
                     trans('manager.businesses.dashboard.alert.no_vacancies_set'))
-            !!}
+            !!} --}}
         </div>
     </div>
     @endif
