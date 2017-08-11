@@ -62,9 +62,9 @@ Current supported user interface languages are:
   * American English (`en_US`)
   * Spanish (`es_ES` and `es_AR`)
   * Italian (`it_IT`)
+  * French (`fr_FR`)
 
-Future targeted translations might be French and Arabic, however, feel free to contribute with your preferred 
-translation!
+Feel free to contribute with your preferred translation!
 
 ## Appointment Library
 
@@ -114,6 +114,7 @@ Thanks for your patience and thanks for being around.
   * [Draganrakovic](https://github.com/draganrakovic) for contributions
   * [Nerxo](https://github.com/Nerxo) for contributions
   * [Sahil Sharma](https://github.com/sahilsharma011) for contributions and smart suggestions
+  * [Mohammed Hicham](https://github.com/himan72) for contribution on French translation
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License
