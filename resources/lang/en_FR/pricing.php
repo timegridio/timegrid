@@ -3,27 +3,27 @@
 return  [
   //==================================== Translations ====================================//
   'feature' => [
-    'customized_support'     => 'Customized Support',
-    'one_specialist'         => '<strong>one</strong> specialist',
-    'unlimited_appointments' => '<strong>unlimited</strong> appointments',
-    'unlimited_contacts'     => '<strong>unlimited</strong> clients addressbook',
-    'unlimited_services'     => '<strong>unlimited</strong> service catalog',
-    'unlimited_specialists'  => '<strong>unlimited</strong> specialists',
+    'customized_support'     => 'Support Personnalisé',
+    'one_specialist'         => '<strong>Un</strong> spécialiste',
+    'unlimited_appointments' => '<strong>illimité</strong> appointments',
+    'unlimited_contacts'     => '<strong>illimité</strong> clients addressbook',
+    'unlimited_services'     => '<strong>illimité</strong> service catalog',
+    'unlimited_specialists'  => '<strong>illimité</strong> spécialistes',
     'up_to_contacts'         => '<strong>up to :limit</strong> clients',
-    'up_to_services'         => '<strong>up to :limit</strong> services catalog',
+    'up_to_services'         => '<strong>Jusqu\'à :limit</strong> catalogue de services',
   ],
   'free'  => 'FREE',
   'month' => 'month',
   'plan'  => [
     'free' => [
-      'hint'   => 'Ideal for freelancers',
-      'name'   => 'Free',
-      'submit' => 'Start',
+      'hint'   => 'Idéal pour les freelances',
+      'name'   => 'Gratuit',
+      'submit' => 'Démarrer',
     ],
     'premium' => [
-      'hint'   => 'Ideal for growing businesses',
+      'hint'   => 'Idéal pour les entreprises en pleine croissance',
       'name'   => 'Premium',
-      'submit' => 'Contract',
+      'submit' => 'Contrat',
     ],
   ],
 ];

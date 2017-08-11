@@ -6,154 +6,154 @@ return  [
     'msg' => [
       'validate' => [
         'error' => [
-          'bad-code'                              => 'Sorry, invalid appointment code',
-          'no-appointment-was-found'              => 'Sorry, no appointments were found with that code',
+          'bad-code'                              => 'Désolé, code de rendez-vous invalide',
+          'no-appointment-was-found'              => 'Désolé, aucun rendez-vous n\'a été trouvé avec ce code',
         ],
         'success' => [
-          'your-appointment-is-already-confirmed' => 'Cool, your appointment is already confirmed',
-          'your-appointment-was-confirmed'        => 'You confirmed your appointment successfully',
+          'your-appointment-is-already-confirmed' => 'Cool, votre rendez-vous est déjà confirmé',
+          'your-appointment-was-confirmed'        => 'Vous avez confirmé votre rendez-vous avec succès',
         ],
       ],
       'store' => [
-        'error'            => 'Sorry, there is no longer availability for the attempted reservation.',
-        'not-registered'   => 'You need to be listed on the contractor\'s addressbook in order to make a guest reservation.',
-        'sorry_duplicated' => 'Sorry, your appointment is duplicated with :code reserved before',
-        'success'          => 'Success! Your appointment was registered with code :code',
+        'error'            => 'Désolé, il n\'y a plus de disponibilité pour la tentative de réservation.',
+        'not-registered'   => 'Vous devez être listé sur le carnet d\'adresses du contractant afin de faire une réservation en tant qu\'invité.',
+        'sorry_duplicated' => 'Désolé, votre rendez-vous est en double avec :code réservé avant',
+        'success'          => 'Super! Votre rendez-vous a été enregistré avec le code :code',
       ],
-      'you_are_not_subscribed_to_business' => 'To be able to do a reservation you must subscribe the business first',
+      'you_are_not_subscribed_to_business' => 'Pour pouvoir faire une réservation, vous devez être inscrire.',
     ],
   ],
   //==================================== Translations ====================================//
   'appointments' => [
     'alert' => [
-      'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
-      'empty_list'               => 'You have no ongoing reservations.',
-      'no_vacancies'             => 'Sorry, the business cannot take any reservations now.',
+      'book_in_biz_on_behalf_of' => 'Carnet de Rendez-vous pour :contact à :biz',
+      'empty_list'               => 'Vous n\'avez aucune réservation en cours.',
+      'no_vacancies'             => 'Désolé, l\'entreprise ne peut prendre aucune réservation maintenant.',
     ],
     'btn' => [
-      'book'                     => 'Book appointment',
-      'book_in_biz'              => 'Book appointment for :biz',
-      'book_in_biz_on_behalf_of' => 'Book appointment for :contact at :biz',
-      'calendar'                 => 'View Calendar',
-      'confirm_booking'          => 'Confirm appointment reservation',
-      'more_dates'               => 'Check more dates',
+      'book'                     => 'Prennez un Rendez-vous',
+      'book_in_biz'              => 'Prennez un Rendez-vous avec :biz',
+      'book_in_biz_on_behalf_of' => 'Prennez un Rendez-vous avec :contact at :biz',
+      'calendar'                 => 'Afficher le calendrier',
+      'confirm_booking'          => 'Confirmer la réservation',
+      'more_dates'               => 'Voir plus de dates',
     ],
     'form' => [
       'btn' => [
-        'submit' => 'Confirm',
+        'submit' => 'Confirmer',
       ],
       'comments' => [
-        'label' => 'Would you like to leave any comments for the provider?',
+        'label' => 'Voulez-vous laisser des commentaires pour le fournisseur?',
       ],
       'date' => [
         'label' => 'Date',
       ],
       'email' => [
-        'label' => 'Your email',
+        'label' => 'Votre email',
       ],
       'service' => [
         'label' => 'Service',
       ],
       'time' => [
-        'label' => 'What time would you like to book?',
+        'label' => 'A quelle heure souhaitez-vous réserver?',
       ],
       'timetable' => [
-        'instructions' => 'Select a service to reserve',
+        'instructions' => 'Sélectionnez un service à réserver',
         'msg'          => [
-          'no_vacancies' => 'There is no availability for this date',
+          'no_vacancies' => 'Il n\'y a pas de disponibilité pour cette date',
         ],
-        'title' => 'Reserve appointment at :business',
+        'title' => 'Réserver un Rendez-vous avec :business',
       ],
     ],
     'index' => [
       'th' => [
-        'business'    => 'Business',
+        'business'    => 'Entreprise',
         'calendar'    => 'Date',
         'code'        => 'Code',
         'contact'     => 'Client',
-        'duration'    => 'Duration',
-        'finish_time' => 'Finishes',
-        'remaining'   => 'Within',
+        'duration'    => 'Durée',
+        'finish_time' => 'Termine',
+        'remaining'   => 'Dans',
         'service'     => 'Service',
-        'start_time'  => 'Begins',
+        'start_time'  => 'Commence',
         'status'      => 'Status',
       ],
-      'title' => 'Appointments',
+      'title' => 'Rendez-vous',
     ],
   ],
   'business' => [
     'btn' => [
-      'subscribe_to' => 'Subscribe to :business',
+      'subscribe_to' => 'S\'abonner à :business',
     ],
   ],
   'businesses' => [
     'index' => [
       'btn' => [
-        'create'       => 'Register business',
-        'manage'       => 'My businesses',
-        'power_create' => 'Register now',
+        'create'       => 'Inscrivez votre Entreprise',
+        'manage'       => 'Mes Entreprises',
+        'power_create' => 'S\'inscrire maintenant',
       ],
-      'title' => 'Available businesses',
+      'title' => 'Entreprises disponibles',
     ],
     'list' => [
-      'no_businesses' => 'No businesses available.',
+      'no_businesses' => 'Aucune Entreprise disponible.',
     ],
     'subscriptions' => [
-      'none_found' => 'No subscriptions available.',
-      'title'      => 'Subscriptions',
+      'none_found' => 'Aucun abonnements disponibles.',
+      'title'      => 'Abonnements',
     ],
   ],
   'contacts' => [
     'btn' => [
-      'store'  => 'Save',
-      'update' => 'Update',
+      'store'  => 'Sauvegarder',
+      'update' => 'Mettre à Jour',
     ],
     'create' => [
-      'help'  => 'Well done! You are about to go. Fill your contact profile for the first time so your reservation is handled accordingly. You will be able to change this info per business if you want to.',
-      'title' => 'My profile',
+      'help'  => 'Bien joué! Vous êtes sur le point de commencer. Remplissez votre profil de contact pour la première fois afin que votre réservation soit traitée en conséquence. Vous pourrez modifier cette information par entreprise si vous le souhaitez.',
+      'title' => 'Mon profile',
     ],
     'msg' => [
       'destroy' => [
-        'success' => 'Deleted successfully',
+        'success' => 'Supprimé avec succès',
       ],
       'store' => [
-        'associated_existing_contact' => 'Your profile was attached to an existing one',
-        'success'                     => 'Successfully saved',
+        'associated_existing_contact' => 'Votre profil a été rattaché à un',
+        'success'                     => 'Enregistré avec succès',
         'warning'                     => [
-          'already_registered' => 'This profile was already registered',
+          'already_registered' => 'Ce profil était déjà enregistré',
         ],
       ],
       'update' => [
-        'success' => 'Updated successfully',
+        'success' => 'Mis à jour avec succés',
       ],
     ],
   ],
   'dashboard' => [
     'card' => [
       'agenda' => [
-        'button'      => 'See Agenda',
-        'description' => 'Check out your current reservation.|[2,Inf] Check out your current reservations.',
-        'title'       => 'One appointment|[2,Inf] Your appointments',
+        'button'      => 'Voir l\'Agenda',
+        'description' => 'Consultez votre réservation actuelle.|[2,Inf] Découvrez vos réservations en cours.',
+        'title'       => 'Un rendez-vous|[2,Inf] Vos rendez-vous',
       ],
       'directory' => [
-        'button'      => 'Browse Directory',
-        'description' => 'Browse the directory and book your service.',
-        'title'       => 'Directory',
+        'button'      => 'Parcourir l\'annuaire',
+        'description' => 'Parcourez le répertoire et réservez votre service.',
+        'title'       => 'Annuaire',
       ],
       'subscriptions' => [
-        'button'      => 'See Subscriptions',
-        'description' => 'Manage your subscriptions to businesses.',
-        'title'       => 'Subscriptions',
+        'button'      => 'Voir les abonnements',
+        'description' => 'Gérez vos abonnements aux entreprises.',
+        'title'       => 'Abonnements',
       ],
     ],
   ],
   'msg' => [
     'preferences' => [
-      'success' => 'Your preferences have been saved.',
+      'success' => 'Vos préférences ont été enregistrées.',
     ],
   ],
   'preferences' => [
-    'title' => 'My preferences',
+    'title' => 'Mes préférences',
   ],
-  'go_to_business_dashboard' => 'Go to :business\'s dashboard',
+  'go_to_business_dashboard' => 'Aller à :business\'s dashboard',
 ];

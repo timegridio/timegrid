@@ -6,28 +6,28 @@
 return [
   'feature' => [
     1 => [
-      'content' => 'Allows your clients to choose when to book.',
-      'title'   => 'Optimize',
+      'content' => 'Permettre à vos clients de choisir leur date de réservation.',
+      'title'   => 'Optimiser',
     ],
     2 => [
-      'content' => 'Keep all your contacts together and get new subscribers.',
-      'title'   => 'Annuitize',
+      'content' => 'Gardez tous vos contacts ensemble et obtenez de nouveaux abonnés.',
+      'title'   => 'Annuler',
     ],
     3 => [
-      'content' => 'Provide a better service to your customers.',
-      'title'   => 'Professionalize',
+      'content' => 'Offrir un meilleur service à vos clients.',
+      'title'   => 'Professionnaliser',
     ],
     4 => [
-      'content' => 'It\'s time to enjoy the saved time and take your vacations.',
-      'title'   => 'Liberate',
+      'content' => 'Profiter du gain de temps et prennez vos vacances.',
+      'title'   => 'Libérer',
     ],
   ],
   'jumbotron' => [
     'btn' => [
-      'begin' => 'Let\'s begin',
-      'login' => 'Login',
+      'begin' => 'Commençons',
+      'login' => 'Connexion',
     ],
-    'description' => 'The booking app for successful service professionals.',
+    'description' => 'L\'application de réservation pour les professionnels des services réussis.',
     'title'       => 'timegrid.io',
   ],
 ];

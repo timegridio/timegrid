@@ -4,100 +4,100 @@ return  [
   //==================================== Translations ====================================//
   'agenda' => [
     'title'    => 'Agenda',
-    'subtitle' => 'List of the standing reservations',
+    'subtitle' => 'Liste des réservations permanentes',
   ],
   'business' => [
     'btn' => [
       'tooltip' => [
-        'agenda'         => 'Reservations schedule',
-        'contacts'       => 'Contact list',
-        'humanresources' => 'Staff',
-        'services'       => 'Manage services',
-        'vacancies'      => 'Publish availability',
+        'agenda'         => 'Calendrier des réservations',
+        'contacts'       => 'Liste des Contacts',
+        'humanresources' => 'Equipe',
+        'services'       => 'Gérer les services',
+        'vacancies'      => 'Publier la disponibilité',
       ],
     ],
     'hint' => [
-      'out_of_vacancies' => 'Publish your availability<br><br>For clients to begin taking reservations you need to publish your availability.',
-      'set_services'     => 'Add the services you provide',
+      'out_of_vacancies' => 'Publiez votre disponibilité<br><br>pour que les clients commencent à prendre des réservations, vous devez publier votre disponibilité.',
+      'set_services'     => 'Ajoutez les services que vous offrez',
     ],
     'service' => [
       'msg' => [
         'update' => [
-          'success' => 'Service updated!',
+          'success' => 'Service mis à jour!',
         ],
       ],
     ],
   ],
   'businesses' => [
     'btn' => [
-      'store'  => 'Register',
-      'update' => 'Update',
+      'store'  => 'S\'inscrire',
+      'update' => 'Mettre à jour',
     ],
     'check' => [
-      'remember_vacancies'  => 'Remember these vacancies as default',
-      'unpublish_vacancies' => 'Reset my current availability before publishing',
+      'remember_vacancies'  => 'Enregistrer ces disponibiltés par défaut',
+      'unpublish_vacancies' => 'Réinitialiser ma disponibilité actuelle avant de publier',
     ],
     'contacts' => [
       'btn' => [
-        'create' => 'Add a contact',
+        'create' => 'Ajouter un Contact',
       ],
     ],
     'create' => [
-      'title' => 'Register your business',
+      'title' => 'Enregistrez votre entreprise',
     ],
     'notifications' => [
       'title' => 'Notifications',
-      'help' => 'All what happened recently',
+      'help' => 'Tout ce qui s\'est passé récemment',
     ],
     'dashboard' => [
       'alert' => [
-        'no_services_set'  => 'There are still no services added. Add them from here!',
-        'no_vacancies_set' => 'You haven\'t yet published your availability. Do it from here!',
+        'no_services_set'  => 'Il n\'y a toujours pas de services ajoutés. Ajoutez-les à partir d\'ici!',
+        'no_vacancies_set' => 'Vous n\'avez pas encore publié votre disponibilité. Faites-le d\'ici!',
       ],
       'panel' => [
-        'title_appointments_active'    => 'Appointments Active',
-        'title_appointments_canceled'  => 'Appointments Canceled',
-        'title_appointments_served'    => 'Appointments Served',
-        'title_appointments_today'     => 'Today',
-        'title_appointments_tomorrow'  => 'Tomorrow',
-        'title_appointments_total'     => 'Total Appointments',
-        'title_contacts_subscribed'    => 'Contacts Subscribed',
-        'title_contacts_registered'    => 'Contacts Registered',
+        'title_appointments_active'    => 'Rendez-vous Actifs',
+        'title_appointments_canceled'  => 'Rendez-vous Annulés',
+        'title_appointments_served'    => 'Rendez-vous Accopmlis',
+        'title_appointments_today'     => 'Aujourd\'hui',
+        'title_appointments_tomorrow'  => 'Demain',
+        'title_appointments_total'     => 'Nombre total de rendez-vous',
+        'title_contacts_subscribed'    => 'Contacts inscrits',
+        'title_contacts_registered'    => 'Contacts Inscris',
         'title_total'                  => 'Total',
       ],
       'title' => 'Dashboard',
     ],
     'edit' => [
-      'title' => 'Business profile edit',
+      'title' => 'Edition du Profile d\'entreprise',
     ],
     'form' => [
       'category' => [
-        'label' => 'Industry',
+        'label' => 'Industrie',
       ],
       'description' => [
-        'label'       => 'Describe yourself',
-        'placeholder' => 'Describe your business and the services you provide',
+        'label'       => 'Présentez-vous',
+        'placeholder' => 'Décrivez votre entreprise et les services que vous offrez',
       ],
       'name' => [
-        'label'       => 'Name',
-        'placeholder' => 'Commercial name',
-        'validation'  => 'A name is required',
+        'label'       => 'Nom',
+        'placeholder' => 'Nom Commercial',
+        'validation'  => 'Un nom est requis',
       ],
       'link' => [
-        'label'       => 'Link',
-        'placeholder' => 'Your timegrid homepage link',
-        'validation'  => 'Your homepage link is invalid',
+        'label'       => 'Lien',
+        'placeholder' => 'Le lien de votre page d\'accueil sur timegrid',
+        'validation'  => 'Votre lien de page d\'accueil n\'est pas valide',
       ],
       'phone' => [
         'label'       => 'Mobile',
-        'placeholder' => 'your mobile number',
+        'placeholder' => 'Votre Numéro de mobile',
       ],
       'postal_address' => [
-        'label'       => 'Postal address',
-        'placeholder' => 'street name and number, area, city, country',
+        'label'       => 'Adresse Postale',
+        'placeholder' => 'nom de la rue et numéro, département, ville, pays',
       ],
       'social_facebook' => [
-        'label'       => 'Facebook Page',
+        'label'       => 'Page Facebook',
         'placeholder' => 'https://www.facebook.com/timegrid.io',
       ],
       'timezone' => [
@@ -105,65 +105,65 @@ return  [
       ],
       'slug' => [
         'label'       => 'Alias',
-        'placeholder' => 'this will be your timegrid URL',
-        'validation'  => 'An alias is required',
+        'placeholder' => 'Ce sera votre lien timegrid ',
+        'validation'  => 'Un alias est requis',
       ],
     ],
     'index' => [
-      'help' => 'From here you can manage all your businesses',
+      'help' => 'D\'içi vous pouvez gérer toutes vos entreprises',
       'msg'  => [
-        'no_appointments' => 'There are no active appointments right now',
+        'no_appointments' => 'Il n\'y a aucun rendez-vous actif jusqu\'à présent',
       ],
-      'register_business_help' => 'If you are a service provider and you wish to give online reservations, this is your chance!',
-      'title'                  => 'My businesses',
+      'register_business_help' => 'Si vous êtes un fournisseur de services et que vous souhaitez donner des réservations en ligne, c\'est une excellent opportunité!',
+      'title'                  => 'Mes Entreprises',
     ],
     'msg' => [
       'destroy' => [
-        'success' => 'Business removed',
+        'success' => 'Entreprise supprimée',
       ],
       'index' => [
-        'only_one_found' => 'You only have one business registered. Here your dashboard.',
+        'only_one_found' => 'Vous n\'avez qu\'une seule entreprise enregistrée. Voici votre Tableau de bord.',
       ],
       'preferences' => [
-        'success' => 'Successfully updated preferences!',
+        'success' => 'Préférences mises à jour avec succès!',
       ],
-      'register' => 'Great! We are going to register your business with :plan plan',
+      'register' => 'Génial! Nous allons enregistrer votre entreprise avec :plan plan',
       'store'    => [
-        'business_already_exists' => 'The business is already registered',
-        'success'                 => 'Business successfully registered',
+        'business_already_exists' => 'Cette Entreprise est déjà enregistrée',
+        'success'                 => 'Entreprise enregistrée avec succès',
       ],
       'update' => [
-        'success' => 'Updated business data',
+        'success' => 'Données commerciales mises à jour',
       ],
     ],
     'notifications' => [
-      'help'  => 'All what happened recently',
+      'help'  => 'Tout ce qui s\'est passé récemment',
       'title' => 'Notifications',
     ],
     'preferences' => [
-      'instructions' => 'Here you can customize the business settings to your needs.',
-      'title'        => 'Business preferences',
+      'instructions' => 'Ici, vous pouvez personnaliser les paramètres de votre entreprise selon vos besoins.',
+      'title'        => 'Préférences de votre Business',
     ],
     'vacancies' => [
       'btn' => [
-        'update' => 'Update availability',
+        'update' => 'Mise à jour de votre disponibilité',
       ],
     ],
   ],
   'contacts' => [
     'btn' => [
-      'confirm_delete' => 'Sure to delete contact?',
-      'delete'         => 'Delete',
-      'edit'           => 'Edit',
-      'store'          => 'Save',
-      'update'         => 'Update',
+      'confirm_delete' => 'Êtes-vous sûr de supprimer le contact?',
+      'delete'         => 'Supprimer',
+      'edit'           => 'Modifier',
+      'store'          => 'Sauvegarder',
+      'update'         => 'Mettre à jour',
     ],
     'create' => [
       'title' => 'Contacts',
     ],
     'form' => [
       'birthdate' => [
-        'label' => 'Birthdate',
+        'label' => 'Date de naissance',
       ],
       'description' => [
         'label' => 'Description',
@@ -172,21 +172,21 @@ return  [
         'label' => 'Email',
       ],
       'firstname' => [
-        'label'      => 'Name',
-        'validation' => 'Name is required',
+        'label'      => 'Nom',
+        'validation' => 'Le nom est requis',
       ],
       'gender' => [
         'female' => [
-          'label' => 'Female',
+          'label' => 'Femelle',
         ],
-        'label' => 'Gender',
+        'label' => 'Sexe',
         'male'  => [
-          'label' => 'Male',
+          'label' => 'Mâle',
         ],
       ],
       'lastname' => [
-        'label'      => 'Last name',
-        'validation' => 'Last name is required',
+        'label'      => 'Nom',
+        'validation' => 'Le Nom est requis',
       ],
       'mobile' => [
         'label' => 'Mobile',
@@ -198,21 +198,21 @@ return  [
         'label' => 'Notes',
       ],
       'postal_address' => [
-        'label'      => 'Postal address',
-        'validation' => 'Postal address is required',
+        'label'      => 'Addresse Postale',
+        'validation' => 'L\'adresse postale est requise',
       ],
       'prerequisites' => [
-        'label' => 'Prerequisites',
+        'label' => 'Conditions préalables',
       ],
     ],
     'label' => [
-      'birthdate'      => 'Birthdate',
+      'birthdate'      => 'Date de naissance',
       'email'          => 'Email',
-      'member_since'   => 'Subscribed since',
+      'member_since'   => 'Inscrit depuis',
       'mobile'         => 'Mobile',
       'nin'            => 'ID',
       'notes'          => 'Notes',
-      'postal_address' => 'Postal Address',
+      'postal_address' => 'Addresse Postale',
     ],
     'list' => [
       'btn' => [
@@ -220,146 +220,146 @@ return  [
       ],
       'header' => [
         'email'     => 'Email',
-        'firstname' => 'Name',
-        'lastname'  => 'Lastname',
+        'firstname' => 'Nom',
+        'lastname'  => 'Prénom',
         'mobile'    => 'Mobile',
-        'username'  => 'Username',
+        'username'  => 'Nom d\'utilisateur',
       ],
       'msg' => [
-        'filter_no_results' => 'Nothing here',
+        'filter_no_results' => 'Aucun résultat',
       ],
     ],
     'msg' => [
       'destroy' => [
-        'success' => 'Contact deleted!',
+        'success' => 'Contact supprimé!',
       ],
       'store' => [
-        'success'                          => 'Contact registered successfully!',
-        'warning_showing_existing_contact' => 'Advice: We found this existing contact',
+        'success'                          => 'Contact enregistré avec succès!',
+        'warning_showing_existing_contact' => 'Conseil: Nous avons trouvé ce contact',
       ],
       'update' => [
-        'success' => 'Updated successfully',
+        'success' => 'Mis à jour avec succés',
       ],
     ],
-    'title' => 'My customers',
+    'title' => 'Mes clients',
   ],
   'humanresource' => [
     'btn' => [
-      'create' => 'Add',
-      'delete' => 'Remove',
-      'store'  => 'Save',
-      'update' => 'Update',
+      'create' => 'Ajouter',
+      'delete' => 'Retirer',
+      'store'  => 'Sauvegarder',
+      'update' => 'Mettre à Jour',
     ],
     'create' => [
-      'title'        => 'Add Staff Members',
-      'subtitle'     => 'Who will provide the services',
-      'instructions' => 'Add staff member who will provide the services',
+      'title'        => 'Ajouter ses membres à votre équipe',
+      'subtitle'     => 'Qui fournira les services',
+      'instructions' => 'Ajouter un membre de votre équipe qui fournira les services',
     ],
     'edit' => [
-      'title'        => 'Edit Staff Member',
+      'title'        => 'Modifier le membre de votre équipe',
       'subtitle'     => 'Info',
-      'instructions' => 'Edit staff member info',
+      'instructions' => 'Modifier les informations du membre de votre équipe',
     ],
     'index' => [
-      'title'        => 'Staff Members',
-      'subtitle'     => 'List',
-      'instructions' => 'Staff members list',
+      'title'        => 'Les Membres de votre équipe',
+      'subtitle'     => 'Liste',
+      'instructions' => 'Liste des membres de votre équipe',
     ],
     'show' => [
-      'title'        => 'Staff Member',
+      'title'        => 'Membre de votre équipe',
       'subtitle'     => 'Info',
-      'instructions' => 'staff member info',
+      'instructions' => 'Membre de votre équipe info',
     ],
     'form' => [
       'calendar_link' => [
-        'label' => 'Calendar link',
+        'label' => 'Lien du Calendrier',
       ],
       'capacity' => [
-        'label' => 'Capacity',
+        'label' => 'Capacité',
       ],
       'name' => [
-        'label' => 'Name',
+        'label' => 'Nom',
       ],
     ],
   ],
   'humanresources' => [
     'msg' => [
       'destroy' => [
-        'success' => 'Staff member removed',
+        'success' => 'Membre d\'équipe supprimé',
       ],
       'store' => [
-        'success' => 'Staff member added',
+        'success' => 'Membre d\'équipe ajouté',
       ],
       'update' => [
-        'success' => 'Staff member updated',
+        'success' => 'Membre d\'équipe mis à jour',
       ],
     ],
   ],
   'service' => [
     'btn' => [
-      'delete' => 'Delete',
-      'update' => 'Update',
+      'delete' => 'Supprimer',
+      'update' => 'Mettre à jour',
     ],
     'form' => [
       'color' => [
-        'label' => 'Color',
+        'label' => 'Couleur',
       ],
       'duration' => [
-        'label' => 'Duration in minutes',
+        'label' => 'Durée en minutes',
       ],
       'name' => [
-        'label' => 'Service name',
+        'label' => 'Nom du Service',
       ],
       'servicetype' => [
-        'label' => 'Service Type',
+        'label' => 'Type de Service',
       ],
     ],
     'msg' => [
       'store' => [
-        'success' => 'Service stored successfully!',
+        'success' => 'Service sauvegardé avec succès!',
       ],
     ],
   ],
   'services' => [
     'btn' => [
-      'create' => 'Add a service',
-      'store'  => 'Save',
+      'create' => 'Ajouter un Service',
+      'store'  => 'Sauvegarder',
     ],
     'create' => [
       'alert' => [
-        'go_to_vacancies' => 'Well done! Now you can publish your availability.',
+        'go_to_vacancies' => 'Bien joué! Maintenant, vous pouvez publier votre disponibilité.',
       ],
       'btn' => [
-        'go_to_vacancies' => 'Set and publish my availability',
+        'go_to_vacancies' => 'Définir et publier ma disponibilité',
       ],
-      'instructions' => 'Give a name to your service, a wide description to help your customers be familiar with it.Add any instructions for your customers before they get to the appointment.',
-      'title'        => 'Add a service',
+      'instructions' => 'Donnez un nom à votre service avec une description precise pour aider vos clients à se familiariser avec. Ajoutez des instructions à vos clients avant leur arrivée au rendez-vous.',
+      'title'        => 'Ajouter un Service',
     ],
     'edit' => [
-      'title' => 'Edit service',
+      'title' => 'Modifier un service',
     ],
     'index' => [
-      'instructions' => 'Add as many services as you provide to configure availability for each of them.',
+      'instructions' => 'Ajoutez autant de services que vous fournissez pour que vous puissiez configurer votre disponibilité pour chacun d\'entre eux.',
       'title'        => 'Services',
     ],
     'msg' => [
       'destroy' => [
-        'success' => 'Service deleted!',
+        'success' => 'Service supprimé!',
       ],
     ],
   ],
   'vacancies' => [
     'edit' => [
-      'instructions' => 'Enter the appointments capacity for each service on each day day. This is, how may appointments can you handle per service per day?',
-      'title'        => 'Availability',
+      'instructions' => 'Entrez la capacité de rendez-vous pour chaque service pour chaque jour. C\'est ainsi que vous pouvez gérer les rendez-vous par service et par jour?',
+      'title'        => 'Disponibilité',
     ],
     'msg' => [
       'edit' => [
-        'no_services' => 'No services registered. Please register services for your business.',
+        'no_services' => 'Aucun service enregistré. Veuillez créer les services pour votre entreprise.',
       ],
       'store' => [
-        'nothing_changed' => 'You must indicate your availability at least for one date',
-        'success'         => 'Availability registered successfully!',
+        'nothing_changed' => 'Vous devez indiquer votre disponibilité pour au moins une date',
+        'success'         => 'La disponibilité a été enregistrée avec succès!',
       ],
     ],
     'table' => [

@@ -4,15 +4,15 @@
 *************************************************************************/
 
 return [
-  'alert'    => 'Well done! Please tell us what would you like to do',
+  'alert'    => 'Bien joué! Veuillez nous dire quels sont vos projets',
   'business' => [
-    'btn'     => 'I want to provide services',
-    'header'  => 'I run a business',
-    'caption' => 'Do you need to provide online appointments for your services? Register your business and start giving bookings today.',
+    'btn'     => 'Je souhaite offrir des services',
+    'header'  => 'Je dirige une entreprise',
+    'caption' => 'Avez-vous besoin de rendez-vous en ligne pour vos services? Enregistrez votre entreprise et commencez à prendre des rendez-vous dès aujourd\'hui.',
   ],
   'user' => [
-    'btn'     => 'I want to make reservations',
-    'header'  => 'I am a customer',
-    'caption' => 'Do you need to make a reservation for a service?',
+    'btn'     => 'Je veux faire des réservations',
+    'header'  => 'Je suis un client',
+    'caption' => 'Avez-vous besoin de faire une réservation pour un service?',
   ],
 ];

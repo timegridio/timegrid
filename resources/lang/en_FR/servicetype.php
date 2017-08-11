@@ -3,17 +3,17 @@
 return  [
 
   'btn' => [
-    'edit'   => 'Edit Service Types',
-    'update' => 'Update',
+    'edit'   => 'Modifier les types de Service',
+    'update' => 'Modifier',
   ],
 
   'title' => [
-    'edit' => 'Edit Service Types',
+    'edit' => 'Modifier les types de service',
   ],
 
   'msg' => [
     'update' => [
-        'success' => 'Service types were updated!',
+        'success' => 'Les types de service ont été mis à jour!',
     ],
   ],
 
