@@ -28,6 +28,19 @@ class LanguageControllerTest extends TestCase
         $this->assertResponseStatus(302);
     }
 
+    /**
+     * @test
+     */
+    public function it_switches_language_to_french_fr()
+    {
+        $applocale = 'fr_FR';
+        $this->call('GET', "/lang/$applocale");
+
+        $this->assertSessionHas('language', 'fr');
+        $this->assertSessionHas('applocale', $applocale);
+        $this->assertResponseStatus(302);
+    }
+
     /*
      * TODO: For some reason the custom header is not working, thus the test not
      * feasible by now.
