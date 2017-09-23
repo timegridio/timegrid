@@ -67,6 +67,8 @@ Current supported user interface languages are:
   * Spanish (`es_ES` and `es_AR`)
   * Italian (`it_IT`)
   * French (`fr_FR`)
+  * Russian (`ru_RU`)
+  * Armenian (`am_HY`)
 
 Feel free to contribute with your preferred translation!
 
@@ -119,6 +121,7 @@ Thanks for your patience and thanks for being around.
   * [Nerxo](https://github.com/Nerxo) for contributions
   * [Sahil Sharma](https://github.com/sahilsharma011) for contributions and smart suggestions
   * [Mohammed Hicham](https://github.com/himan72) for contribution on French translation
+  * Ani Shahbazyan for contribution on Russian and Armenian translations
   * Using modified icon originally made by [SimpleIcon](http://www.flaticon.com/authors/simpleicon) from www.flaticon.com
 
 ## License
