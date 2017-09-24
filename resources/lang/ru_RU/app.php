@@ -45,7 +45,7 @@ return  [
   ],
   'name' => 'timegrid.io',
   'nav'  => [
-    'help'    => 'Помощь'
+    'help'    => 'Помощь',
     'login'   => 'Войти',
     'logout'  => 'Выход',
     'manager' => [
