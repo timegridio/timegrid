@@ -21,7 +21,7 @@ return [
     ],
     'user'    => [
         'welcome' => [
-            'subject'              => 'Բարի գալուատ MyBeautyBook.am',
+            'subject'              => 'Բարի գալուատ timegrid.io',
             'hello-title'          => 'Ողջույն :userName',
             'hello-paragraph'      => 'Մեր օգնությամբ կարող եք կատարել օնլայն գրանցումներ',
             'quickstart-title'     => 'Պատրաստ է',

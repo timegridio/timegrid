@@ -29,6 +29,6 @@ return [
       'login' => 'Մուտք',
     ],
     'description' => 'Օնլայն գրանցումների 24/7 համակարգ.',
-    'title'       => 'MyBeautyBook.am',
+    'title'       => 'timegrid.io',
   ],
 ];

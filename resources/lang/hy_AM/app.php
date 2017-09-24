@@ -43,7 +43,7 @@ return  [
     'invalid_url'       => 'Հղումը գոյություն չունի',
     'slug_is_available' => ' :baseurl անունը հասանելի է։ Կարող եք գրանցել։',
   ],
-  'name' => 'MyBeautyBook.am',
+  'name' => 'timegrid.io',
   'nav'  => [
     'help'    => 'Օգնություն',
     'login'   => 'Մուտք',
