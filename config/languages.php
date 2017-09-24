@@ -7,5 +7,5 @@ return [
     'it_IT' => 'Italiano',
     'fr_FR' => 'Français',
     'ru_RU' => 'Russian',
-    'am_HY' => 'Armenian',
+    'hy_AM' => 'Armenian',
 ];
