@@ -7,6 +7,7 @@ return [
 
     'app' => [
         'name' => env('SYSLOG_APPNAME', 'default.timegrid'),
+        'allow_register' => (bool) env('ALLOW_REGISTER', true),
     ],
 
     'docs_url' => 
