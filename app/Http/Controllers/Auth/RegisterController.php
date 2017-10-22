@@ -44,6 +44,7 @@ class RegisterController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
+     *
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -52,19 +53,27 @@ class RegisterController extends Controller
                 'email'                => 'required|email|max:255|unique:users',
                 'password'             => 'required|confirmed|min:6',
                 'g-recaptcha-response' => 'required|captcha',
+                'allow_register'       => 'required|accepted',
             ];
 
         if (app()->environment('local') || app()->environment('testing')) {
             unset($rules['g-recaptcha-response']);
         }
 
-        return Validator::make($data, $rules);
+        $data['allow_register'] = config('root.app.allow_register', true);
+
+        $messages = [
+            'allow_register.accepted' => trans('app.allow_register'),
+        ];
+
+        return Validator::make($data, $rules, $messages);
     }
 
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
+     *
      * @return User
      */
     protected function create(array $data)

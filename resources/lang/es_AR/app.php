@@ -77,4 +77,5 @@ return  [
     ],
     'placeholder' => 'Buscar',
   ],
+  'allow_register' => 'Disculpas, el registro de nuevos usuarios no está permitido.'
 ];

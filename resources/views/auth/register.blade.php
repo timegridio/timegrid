@@ -9,6 +9,12 @@
     <div class="register-box-body">
         <p class="login-box-msg">{{ trans('auth.register.title') }}</p>
 
+        @unless(config('root.app.allow_register'))
+            <div class="alert alert-danger">
+                {{ trans('app.allow_register') }}
+            </div>
+        @endif
+
         @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>{{ trans('auth.login.alert.whoops') }}</strong> {{ trans('auth.login.alert.message') }}<br><br>
