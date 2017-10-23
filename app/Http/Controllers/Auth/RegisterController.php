@@ -53,17 +53,17 @@ class RegisterController extends Controller
                 'email'                => 'required|email|max:255|unique:users',
                 'password'             => 'required|confirmed|min:6',
                 'g-recaptcha-response' => 'required|captcha',
-                'allow_register_user'  => 'required|accepted',
+                'allow_register'       => 'required|accepted',
             ];
 
         if (app()->environment('local') || app()->environment('testing')) {
             unset($rules['g-recaptcha-response']);
         }
 
-        $data['allow_register_user'] = config('root.app.allow_register_user', true);
+        $data['allow_register'] = config('root.app.allow_register', true);
 
         $messages = [
-            'allow_register_user.accepted' => trans('app.allow_register_user'),
+            'allow_register.accepted' => trans('app.allow_register'),
         ];
 
         return Validator::make($data, $rules, $messages);

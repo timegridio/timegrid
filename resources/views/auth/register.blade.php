@@ -9,10 +9,10 @@
     <div class="register-box-body">
         <p class="login-box-msg">{{ trans('auth.register.title') }}</p>
 
-        @unless(config('root.app.allow_register_user'))
-        <div class="alert alert-danger">
-            {{ trans('app.allow_register_user') }}
-        </div>
+        @unless(config('root.app.allow_register'))
+            <div class="alert alert-danger">
+                {{ trans('app.allow_register') }}
+            </div>
         @endif
 
         @if (count($errors) > 0)

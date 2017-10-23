@@ -75,6 +75,5 @@ return  [
     ],
     'placeholder' => 'Buscar',
   ],
-  'allow_register_user' => 'Disculpas, el registro de nuevos usuarios no está permitido.',
-  'allow_register_business' => 'Disculpas, el registro de nuevos negocios no está permitido.',
+  'allow_register' => 'Disculpas, el registro de nuevos usuarios no está permitido.',
 ];
