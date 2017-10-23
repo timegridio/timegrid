@@ -76,5 +76,6 @@ return  [
     ],
     'placeholder' => 'search',
   ],
-  'allow_register' => 'Sorry, new users registration is not allowed.'
+  'allow_register_user' => 'Sorry, new users registration is not allowed.',
+  'allow_register_business' => 'Sorry, new business registration is not allowed.',
 ];

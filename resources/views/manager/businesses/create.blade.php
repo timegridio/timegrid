@@ -6,6 +6,13 @@
 @section('content')
 <div class="col-sm-12 col-sm-offset-0 col-md-8 col-md-offset-2">
 
+    @unless(config('root.app.allow_register_business'))
+    <div class="alert alert-danger">
+        {{ trans('app.allow_register_business') }}
+    </div>
+    @endif
+
+
     <div class="panel panel-default">
 
         <div class="panel-heading">

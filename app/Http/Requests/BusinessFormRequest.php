@@ -11,7 +11,7 @@ class BusinessFormRequest extends Request
      */
     public function authorize()
     {
-        return true;
+        return config('root.app.allow_register_business', true);
     }
 
     /**
