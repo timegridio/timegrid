@@ -184,6 +184,8 @@ return [
         Timegridio\Concierge\TimegridioConciergeServiceProvider::class,
         Timegridio\ICalReader\ICalReaderServiceProvider::class,
         Seanstewart\PlanConfig\PlanConfigServiceProvider::class,
+		
+		Propaganistas\LaravelIntl\IntlServiceProvider::class,
     ],
 
     /*

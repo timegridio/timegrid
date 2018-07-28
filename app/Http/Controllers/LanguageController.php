@@ -33,7 +33,13 @@ class LanguageController extends Controller
      */
     protected function setSessionLanguage($posixLocale)
     {
-        $localeSubtags = locale_parse($posixLocale);
+        //$localeSubtags = locale_parse($posixLocale);
+		if (function_exists('locale_parse')) {
+            $localeSubtags = locale_parse($posixLocale);
+        } else {
+            $localeSubtags = array('language' => substr($posixLocale, 0, 2));
+        }
+		
         $language = array_get($localeSubtags, 'language');
 
         session()->set('language', $language);
