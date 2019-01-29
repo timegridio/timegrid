@@ -1,17 +1,16 @@
-> :warning: **IMPORTANT WARNING** :warning: This project will become unsupported by 01/01/2018. If you require further information, please contact the author.
+> :warning: **IMPORTANT WARNING** :warning: This project became unsupported by 01/01/2018. If you require further information, please contact the author.
 
-<a href="http://www.timegrid.io/">
+<a href="#">
     <img src="http://i.imgur.com/pUUoU6H.png" alt="timegrid.io" title="timegrid.io" align="right" />
 </a>
 
 timegrid
 ============
 
-[![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg?maxAge=2592000?style=flat-square)](https://gitter.im/alariva/timegridDevelopment)
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![Current Beta](https://img.shields.io/badge/dev--beta-5.0-yellow.svg?style=flat-square)](http://demo.timegrid.io/)
+[![UNSUPPORTED](https://img.shields.io/badge/dev--beta-5.0-red.svg?style=flat-square)](#)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 [![Open Source Helpers](https://www.codetriage.com/timegridio/timegrid/badges/users.svg)](https://www.codetriage.com/timegridio/timegrid)
 
@@ -48,13 +47,11 @@ timegrid
 
 ## Live Demo
 
-[Test drive the *beta live demo*](http://demo.timegrid.io)
-
-> **HINT:** You may use a [maildrop.cc](http://maildrop.cc/) fake account for testing
+[Test drive the *beta live demo*](#) (No longer avialble)
 
 ## Installing
 
-> :warning: **IMPORTANT WARNING** :warning: This project will become unsupported by 01/01/2018. If you require further information, please contact the author.
+> :warning: **IMPORTANT WARNING** :warning: This project became unsupported by 01/01/2018. If you require further information, please contact the author.
 
 Read the [INSTALLING](INSTALLING.md) section.
 
@@ -99,13 +96,13 @@ I'm also happy to hear that timegrid helped to solve a problem for others, at le
 That said, I'm sorry to mention that currently overloaded with other projects, I won't be
 able to keep up on timegrid development on a fulltime basis like before.
 
-PR's and other contributions, as well as regular maintenance will still take place.
+I'm happy to help on specifics if you reach out to me.
 
 Thanks for your patience and thanks for being around.
 
 ## Special Thanks & Credits
 
-  * [PeGa!](http://ar.linkedin.com/in/pabloegonzalez) for infra support
+  * [PeGa!](https://www.linkedin.com/in/pega041) for infra support
   * [Mohamed G.Hafez](https://github.com/mg-freelancer) for contributions
   * [John Ezekiel](https://github.com/zeke8402) for friendly hints and creating a really nice [booking-app](https://github.com/zeke8402/booking-app)
   * [Victor](https://github.com/pappavic) for testing and documentation contributions
