@@ -4,6 +4,9 @@ php:
   - "5.6"
   - "7.1"
 
+services:
+  - mysql
+
 before_install:
   - sudo apt-get update
 
