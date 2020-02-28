@@ -57,7 +57,8 @@
         "torann/geoip": "1.0.*",
         "geoip2/geoip2": "~2.1",
         "seanstewart/plan-config": "dev-master",
-        "nesbot/carbon": "^1.22"
+        "nesbot/carbon": "^1.22",
+        "propaganistas/laravel-intl": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^2.0",

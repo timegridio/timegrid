@@ -1,6 +1,7 @@
 <?php
 
 use Carbon\Carbon;
+use Propaganistas\LaravelIntl\Facades\Language;
 
 if (!function_exists('setGlobalLocale')) {
     /**
@@ -14,7 +15,13 @@ if (!function_exists('setGlobalLocale')) {
     {
         app()->setLocale($posixLocale);
         setlocale(LC_TIME, $posixLocale);
-        Carbon::setLocale(locale_get_primary_language($posixLocale));
+        //Carbon::setLocale(locale_get_primary_language($posixLocale));
+		if (function_exists('locale_get_primary_language')) {
+            Carbon::setLocale(locale_get_primary_language($posixLocale));
+        } else {
+            Carbon::setLocale(Language::name($posixLocale));
+        }
+		
     }
 }
 

@@ -41,6 +41,8 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+$app->register(Propaganistas\LaravelIntl\IntlServiceProvider::class);
+
 # $app->useStoragePath(env('STORAGE_PATH', $app->storagePath()));
 
 /*
