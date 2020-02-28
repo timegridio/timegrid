@@ -21,7 +21,7 @@ before_script:
   - php artisan config:clear
   - php artisan migrate
   - php artisan db:seed
-  - php artisan geoip:update
+#  - php artisan geoip:update
   - php artisan config:cache
 
 script:
