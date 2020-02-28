@@ -25,7 +25,7 @@
         "anhskohbo/no-captcha": "2.*",
         "barryvdh/laravel-snappy": "~0.2",
         "bassjobsen/bootstrap-3-typeahead": "~4.0",
-        "camroncade/timezone": "0.1",
+        "camroncade/timezone": "0.2",
         "creativeorange/gravatar": "~1.0",
         "fenos/notifynder": "3.*",
         "graham-campbell/markdown": "^6.0",

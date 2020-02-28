@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1b7a01188afbd8f1324ace2a48e31846",
+    "content-hash": "302ff1d41b753bd755e51be5ca39d671",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -184,21 +184,24 @@
         },
         {
             "name": "camroncade/timezone",
-            "version": "0.1",
+            "version": "0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/camroncade/timezone.git",
-                "reference": "9d0c12bb96efbfeb97f122b40aca66f804ae98db"
+                "reference": "8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/camroncade/timezone/zipball/9d0c12bb96efbfeb97f122b40aca66f804ae98db",
-                "reference": "9d0c12bb96efbfeb97f122b40aca66f804ae98db",
+                "url": "https://api.github.com/repos/camroncade/timezone/zipball/8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7",
+                "reference": "8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7",
                 "shasum": ""
             },
             "require": {
                 "illuminate/support": ">=4.2",
                 "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^5.3"
             },
             "type": "library",
             "autoload": {
@@ -221,7 +224,11 @@
             ],
             "description": "Helps manage timezones in Laravel. Includes <select> form builder for timezones.",
             "homepage": "http://www.camroncade.com/managing-timezones-with-laravel/",
-            "time": "2015-05-20T20:32:03+00:00"
+            "keywords": [
+                "timezone",
+                "timezones"
+            ],
+            "time": "2019-04-15T22:06:38+00:00"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -2713,6 +2720,7 @@
                 "cron",
                 "schedule"
             ],
+            "abandoned": "dragonmantank/cron-expression",
             "time": "2016-01-26T21:23:30+00:00"
         },
         {
@@ -2932,12 +2940,12 @@
             "version": "V1.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/jjriv/emogrifier.git",
+                "url": "https://github.com/MyIntervals/emogrifier.git",
                 "reference": "dd9442740e044a11968bf6a5d94460a5426a2419"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jjriv/emogrifier/zipball/dd9442740e044a11968bf6a5d94460a5426a2419",
+                "url": "https://api.github.com/repos/MyIntervals/emogrifier/zipball/dd9442740e044a11968bf6a5d94460a5426a2419",
                 "reference": "dd9442740e044a11968bf6a5d94460a5426a2419",
                 "shasum": ""
             },
@@ -4511,7 +4519,7 @@
                 "reservation",
                 "timegrid"
             ],
-            "time": "2016-10-19 15:55:40"
+            "time": "2016-10-19T15:55:40+00:00"
         },
         {
             "name": "timegridio/icalreader",
@@ -4579,7 +4587,7 @@
                 "timegrid",
                 "timegridio"
             ],
-            "time": "2016-07-10 01:10:52"
+            "time": "2016-07-10T01:10:52+00:00"
         },
         {
             "name": "torann/geoip",
