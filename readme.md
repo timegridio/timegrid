@@ -43,15 +43,9 @@ timegrid
 
 ## Documentation
 
-  * [User Manual](http://www.timegrid.io/docs/en/user-manual/) (*work-in-progress* and [help is welcome!](https://github.com/timegridio/timegrid/issues/117))
-
-## Live Demo
-
-[Test drive the *beta live demo*](#) (No longer avialble)
+Read [the wiki](https://github.com/timegridio/timegrid/wiki)
 
 ## Installing
-
-> :warning: **IMPORTANT WARNING** :warning: This project became unsupported by 01/01/2018. If you require further information, please contact the author.
 
 Read the [INSTALLING](INSTALLING.md) section.
 
