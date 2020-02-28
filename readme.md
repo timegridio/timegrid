@@ -1,4 +1,4 @@
-> :warning: **IMPORTANT WARNING** :warning: This project became unsupported by 01/01/2018. If you require further information, please contact the author.
+> :smiley: Timegrid Development is back!
 
 <a href="#">
     <img src="http://i.imgur.com/pUUoU6H.png" alt="timegrid.io" title="timegrid.io" align="right" />
@@ -10,7 +10,7 @@ timegrid
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
 [![Code Climate](https://codeclimate.com/github/timegridio/timegrid/badges/gpa.svg)](https://codeclimate.com/github/timegridio/timegrid)
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
-[![UNSUPPORTED](https://img.shields.io/badge/dev--beta-5.0-red.svg?style=flat-square)](#)
+[![Gitter](https://badges.gitter.im/timegrid-development/community.svg)](https://gitter.im/timegrid-development/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
 [![Open Source Helpers](https://www.codetriage.com/timegridio/timegrid/badges/users.svg)](https://www.codetriage.com/timegridio/timegrid)
 
@@ -83,22 +83,6 @@ Timegrid is developed and maintained by [Ariel Vallese](http://alariva.com).
 ## Contributing
 
 Contributions are welcome. **Please read the following notes.**
-
-### Author Notes
-
-:warning: **IMPORTANT NOTE**
-
-Dear tiny but human-qualified community,
-
-Timegrid was born as a pet project and aimed to solve my own needs as a freelancer.
-I'm also happy to hear that timegrid helped to solve a problem for others, at least partially.
-
-That said, I'm sorry to mention that currently overloaded with other projects, I won't be
-able to keep up on timegrid development on a fulltime basis like before.
-
-I'm happy to help on specifics if you reach out to me.
-
-Thanks for your patience and thanks for being around.
 
 ## Special Thanks & Credits
 
