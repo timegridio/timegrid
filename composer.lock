@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "302ff1d41b753bd755e51be5ca39d671",
+    "content-hash": "b61ab721c91fdb4f95077b2e7eef3638",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -885,16 +885,16 @@
         },
         {
             "name": "fenos/notifynder",
-            "version": "3.2.15",
+            "version": "3.2.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fenos/Notifynder.git",
-                "reference": "cfd79728fdba48e2d5ad175eed315f036a2e4f3b"
+                "reference": "2f25c9ae85c725e57f4a988cae7113749916a995"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fenos/Notifynder/zipball/cfd79728fdba48e2d5ad175eed315f036a2e4f3b",
-                "reference": "cfd79728fdba48e2d5ad175eed315f036a2e4f3b",
+                "url": "https://api.github.com/repos/fenos/Notifynder/zipball/2f25c9ae85c725e57f4a988cae7113749916a995",
+                "reference": "2f25c9ae85c725e57f4a988cae7113749916a995",
                 "shasum": ""
             },
             "require": {
@@ -933,7 +933,7 @@
                 "laravel",
                 "notifications"
             ],
-            "time": "2016-08-25T11:54:37+00:00"
+            "time": "2016-10-26T15:19:46+00:00"
         },
         {
             "name": "geoip2/geoip2",
@@ -6213,6 +6213,7 @@
                 "mock",
                 "xunit"
             ],
+            "abandoned": true,
             "time": "2016-12-08T20:27:08+00:00"
         },
         {
@@ -6430,6 +6431,7 @@
                 "github",
                 "test"
             ],
+            "abandoned": "php-coveralls/php-coveralls",
             "time": "2016-01-20T17:35:46+00:00"
         },
         {

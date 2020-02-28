@@ -27,7 +27,7 @@
         "bassjobsen/bootstrap-3-typeahead": "~4.0",
         "camroncade/timezone": "0.2",
         "creativeorange/gravatar": "~1.0",
-        "fenos/notifynder": "3.*",
+        "fenos/notifynder": "^3.0",
         "graham-campbell/markdown": "^6.0",
         "guzzlehttp/guzzle": "~6.0",
         "intervention/image": "^2.2",
