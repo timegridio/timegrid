@@ -161,7 +161,7 @@ return [
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
         Barryvdh\Snappy\ServiceProvider::class,
         Bootstrapper\BootstrapperL5ServiceProvider::class,
-        Camroncade\Timezone\TimezoneServiceProvider::class,
+        Jackiedo\Timezonelist\TimezonelistServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Creativeorange\Gravatar\GravatarServiceProvider::class,
         GrahamCampbell\Markdown\MarkdownServiceProvider::class,

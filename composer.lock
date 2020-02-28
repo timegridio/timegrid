@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b61ab721c91fdb4f95077b2e7eef3638",
+    "content-hash": "03aa0d080ff64760df0636c4b88053b3",
     "packages": [
         {
             "name": "alariva/tidiochat",
@@ -181,54 +181,6 @@
             ],
             "description": "Bootstrap 3 Typeahead",
             "time": "2016-09-26T12:59:36+00:00"
-        },
-        {
-            "name": "camroncade/timezone",
-            "version": "0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/camroncade/timezone.git",
-                "reference": "8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/camroncade/timezone/zipball/8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7",
-                "reference": "8b53e4d8cb86a1e5835b7a116b6a82b9555db8d7",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": ">=4.2",
-                "php": ">=5.4.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^5.3"
-            },
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "src/migrations"
-                ],
-                "psr-0": {
-                    "Camroncade\\Timezone\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Camron Cade",
-                    "email": "camron@camroncade.com"
-                }
-            ],
-            "description": "Helps manage timezones in Laravel. Includes <select> form builder for timezones.",
-            "homepage": "http://www.camroncade.com/managing-timezones-with-laravel/",
-            "keywords": [
-                "timezone",
-                "timezones"
-            ],
-            "time": "2019-04-15T22:06:38+00:00"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1496,6 +1448,49 @@
                 "statistics"
             ],
             "time": "2016-11-03T07:42:58+00:00"
+        },
+        {
+            "name": "jackiedo/timezonelist",
+            "version": "5.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JackieDo/Timezone-List.git",
+                "reference": "e7bdd089209840dadaef5ab32574f1b5abd16ae3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JackieDo/Timezone-List/zipball/e7bdd089209840dadaef5ab32574f1b5abd16ae3",
+                "reference": "e7bdd089209840dadaef5ab32574f1b5abd16ae3",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "5.*",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Jackiedo\\Timezonelist\\": "src/Jackiedo/Timezonelist"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jackie Do",
+                    "email": "anhvudo@gmail.com"
+                }
+            ],
+            "description": "A small package use to create a timezone list box in Laravel",
+            "keywords": [
+                "laravel",
+                "timezone",
+                "timezonelist",
+                "timezones"
+            ],
+            "time": "2017-05-16T04:31:37+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

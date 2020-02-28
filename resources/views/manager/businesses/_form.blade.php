@@ -108,7 +108,7 @@
 <div class="form-group">
     {!! Form::label( trans('manager.businesses.form.timezone.label'), null, ['class' => 'control-label col-sm-3 col-md-3 col-lg-3'] ) !!}<br>
     <div class="col-sm-9 col-md-9 col-lg-9">
-        {!! Timezone::selectForm($timezone, trans('app.label.select_timezone'), ['name' => 'timezone', 'class' => 'form-control select2 col-sm-2', 'required'], ['customValue' => 'true']) !!}
+        {!! Timezonelist::create('timezone', $timezone, ['name' => 'timezone', 'class' => 'form-control select2 col-sm-2', 'required']) !!}
         <div class="help-block with-errors"></div>
     </div>
 </div>
