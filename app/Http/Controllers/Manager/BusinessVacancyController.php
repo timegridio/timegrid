@@ -86,8 +86,8 @@ class BusinessVacancyController extends Controller
             'sun' => trans('datetime.weekday.sunday'),
             ];
 
-        $startAt = $business->pref('start_at');
-        $finishAt = $business->pref('finish_at');
+        $startAt = Carbon::parse('today '.$business->pref('start_at').' '.$business->timezone)->format('h:i A');
+        $finishAt = Carbon::parse('today '.$business->pref('finish_at').' '.$business->timezone)->format('h:i A');
 
         $viewParams = compact('business', 'dates', 'advanced', 'template', 'servicesList', 'humanresourcesList', 'weekdaysList', 'startAt', 'finishAt');
 
