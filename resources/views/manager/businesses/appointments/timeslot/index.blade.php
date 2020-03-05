@@ -34,7 +34,11 @@
                         <td title="{{ $appointment->timezone() }} {{ $appointment->start_at->diffForHumans() }}">{{ $appointment->time }}</td>
                         <td title="{{ $appointment->timezone() }}">{{ $appointment->finishTime }}</td>
                         <td>{{ trans_duration($appointment->duration()) }}</td>
-                        <td>{{ $appointment->service ? $appointment->service->name : '' }}</td>
+                        <td>{{ $appointment->service ? $appointment->service->name : '' }}
+                        @if($appointment->comments)
+                            <i class="fa fa-pencil" data-tippy-content="{{ $appointment->comments }}"></i>
+                        @endif
+                        </td>
                         <td>{{ str_link( route('manager.addressbook.show', [$business, $appointment->contact->id]), $appointment->contact->fullname) }}</td>
                         <td>
                         @include('widgets.appointment.row._buttons', ['appointment' => $appointment, 'user' => $appointment->contact->user])
@@ -54,8 +58,12 @@
 
 {{-- ToDo: Reusable code with app/resources/views/user/appointments/dateslot/show.blade.php --}}
 @push('footer_scripts')
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
 <script>
 $(document).ready(function(){
+
+    tippy('[data-tippy-content]');
 
 function prepareEvents(){
 

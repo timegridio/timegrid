@@ -77,6 +77,7 @@ return  [
         'service'     => 'Service',
         'start_time'  => 'Begins',
         'status'      => 'Status',
+        'comments'    => 'Comments',
       ],
       'title' => 'Appointments',
     ],
