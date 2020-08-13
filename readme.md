@@ -1,5 +1,3 @@
-> :smiley: Timegrid Development is back!
-
 <a href="#">
     <img src="http://i.imgur.com/pUUoU6H.png" alt="timegrid.io" title="timegrid.io" align="right" />
 </a>
