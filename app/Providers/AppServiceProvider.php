@@ -7,6 +7,19 @@ use Illuminate\Support\ServiceProvider;
 class AppServiceProvider extends ServiceProvider
 {
     /**
+     * Bootstrap any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+		// Enfocre SSL in Production
+        if(config('app.env') === 'production') {
+           \URL::forceSchema('https');
+        }
+    }
+
+    /**
      * Register any application services.
      *
      * @return void
