@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-		// Enfocre SSL in Production
+        // Enfocre SSL in Production
         if(config('app.env') === 'production') {
            \URL::forceSchema('https');
         }
