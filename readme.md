@@ -2,7 +2,7 @@
     <img src="http://i.imgur.com/pUUoU6H.png" alt="timegrid.io" title="timegrid.io" align="right" />
 </a>
 
-timegrid
+timegrid (Archived)
 ============
 
 [![Build Status](https://travis-ci.org/timegridio/timegrid.svg?branch=master)](https://travis-ci.org/timegridio/timegrid)
@@ -10,7 +10,7 @@ timegrid
 [![Test Coverage](https://codeclimate.com/github/timegridio/timegrid/badges/coverage.svg)](https://codeclimate.com/github/timegridio/timegrid/coverage)
 [![Gitter](https://badges.gitter.im/timegrid-development/community.svg)](https://gitter.im/timegrid-development/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/:license-AGPL--3.0-blue.svg?style=flat-square)](http://www.gnu.org/licenses/agpl-3.0.txt)
-[![Open Source Helpers](https://www.codetriage.com/timegridio/timegrid/badges/users.svg)](https://www.codetriage.com/timegridio/timegrid)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 > **Timegrid** helps contractors and customers to find the perfect meeting time through *online appointments*.
 
